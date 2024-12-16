@@ -1,0 +1,155 @@
+const path = require('path');
+const sass = require('sass');
+const fs = require('fs');
+const crypto = require('crypto');
+const { exec } = require('child_process');
+const CleanCSS = require('clean-css'); // CSS Minify를 위한 라이브러리
+
+// SCSS 파일의 해시값 저장 객체
+const fileHashes = {};
+
+/**
+ * SCSS 파일 해시 생성
+ */
+function generateFileHash(filePath) {
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    return crypto.createHash('md5').update(fileContent).digest('hex');
+}
+
+/**
+ * CSS Minify
+ */
+function minifyCSS(cssContent) {
+    const minified = new CleanCSS().minify(cssContent);
+    if (minified.errors.length > 0) {
+        console.error(`CSS Minify 오류:`, minified.errors);
+        return cssContent; // Minify 실패 시 원본 반환
+    }
+    return minified.styles;
+}
+
+/**
+ * SCSS 파일 컴파일
+ */
+function compileSCSS(filePath, cssDir) {
+    const fileName = path.basename(filePath).replace(/\.scss$/, '.css');
+    const cssFilePath = path.join(cssDir, fileName);
+
+    try {
+        // SCSS 컴파일
+        const result = sass.compile(filePath);
+
+        // Minify 처리
+        const minifiedCSS = minifyCSS(result.css);
+
+        // Minify된 CSS 저장
+        fs.writeFileSync(cssFilePath, minifiedCSS, 'utf8');
+        console.log(`${fileName} -> 변환 및 압축 성공!`);
+    } catch (error) {
+        console.error(`${filePath} 변환 중 오류 발생:`, error);
+    }
+}
+
+/**
+ * SCSS 파일 업데이트 확인 및 컴파일
+ */
+function checkAndCompileSCSS(filePath, cssDir) {
+    const newHash = generateFileHash(filePath);
+
+    if (fileHashes[filePath] !== newHash) {
+        fileHashes[filePath] = newHash; // 새로운 해시값 저장
+        console.log(`${filePath} 내용 변경 감지! 변환 시작...`);
+        compileSCSS(filePath, cssDir);
+    } else {
+        console.log(`${filePath} 내용 변경 없음, 변환 스킵.`);
+    }
+}
+
+/**
+ * SCSS 폴더 내 모든 파일 컴파일
+ */
+function compileAllSCSS(scssDir, cssDir) {
+    const scssFiles = fs.readdirSync(scssDir).filter(file => file.endsWith('.scss'));
+
+    if (!scssFiles.length) {
+        console.log('변환할 SCSS 파일이 없습니다.');
+        return;
+    }
+
+    scssFiles.forEach(file => {
+        const filePath = path.join(scssDir, file);
+
+        // 초기 해시값 저장
+        fileHashes[filePath] = generateFileHash(filePath);
+
+        // 파일 컴파일
+        compileSCSS(filePath, cssDir);
+    });
+}
+
+/**
+ * 개발 서버 실행
+ */
+function startServer(folderName, scssDir, cssDir) {
+    const currentDir = process.cwd();
+    const targetDir = path.join(currentDir, folderName, 'src');
+    const indexFile = path.join(targetDir, 'index.html');
+
+    if (!fs.existsSync(indexFile)) {
+        console.error(`Error: index.html 파일이 없습니다: ${indexFile}`);
+        return;
+    }
+
+    console.log(`Starting server for ${indexFile}`);
+
+    exec(`npx live-server ${targetDir} --open=index.html --wait=10`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`서버 실행 중 오류 발생: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`서버 오류 메시지: ${stderr}`);
+        }
+        console.log(stdout);
+    });
+
+    // SCSS 파일 변경 감지
+    fs.watch(scssDir, (eventType, filename) => {
+        if (filename && eventType === 'change') {
+            console.log(`${filename} 파일 변경 감지!`);
+            const filePath = path.join(scssDir, filename);
+            checkAndCompileSCSS(filePath, cssDir);
+        }
+    });
+}
+
+/**
+ * dev 실행
+ */
+function dev() {
+    const folderName = process.argv[2]; // 명령줄 인자로 하위 폴더명 받기
+    if (!folderName) {
+        console.error('Error: 실행할 하위 폴더명을 입력하세요.');
+        console.log('Usage: node dev.js <folderName>');
+        process.exit(1);
+    }
+
+    const currentDir = process.cwd();
+    const scssDir = path.join(currentDir, folderName, 'src/assets/scss');
+    const cssDir = path.join(currentDir, folderName, 'src/assets/css');
+
+    if (!fs.existsSync(scssDir)) {
+        console.error(`SCSS 폴더가 없습니다: ${scssDir}`);
+        return;
+    }
+
+    fs.mkdirSync(cssDir, { recursive: true });
+
+    // 초기 SCSS 파일 변환 및 해시값 저장
+    compileAllSCSS(scssDir, cssDir);
+
+    // 개발 서버 시작 및 SCSS 감지
+    startServer(folderName, scssDir, cssDir);
+}
+
+dev();

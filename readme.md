@@ -1,0 +1,106 @@
+# SCSS Live Server, Build, and Export Project
+
+## 프로젝트 설명
+이 프로젝트는 **SCSS 파일 컴파일**, **CSS Minify**, **Live Server 실행**을 포함하여 다양한 웹 개발 워크플로우를 지원합니다.  
+또한, 빌드된 프로젝트를 특정 폴더에 복사하거나 템플릿 파일을 활용해 템플릿 HTML(또는 jsp)을 생성할 수 있습니다.
+
+---
+
+## 제공 구성 요소
+### 기본 제공 파일 및 폴더
+1. **`core/`**:
+   - `dev.js`: SCSS 컴파일 및 Live Server 실행 스크립트.
+   - `export.js`: 템플릿을 기반으로 HTML을 생성하는 스크립트.
+   - `build.js`: 프로젝트 폴더를 복사하여 여러 환경을 설정하는 스크립트.
+   - **`package.json`**: Core 디렉토리에서 사용되는 `npm` 패키지 관리 파일.
+
+2. **`template/`**:
+   - 템플릿 파일들이 위치한 폴더.
+   - 예: `KR.jsp`, `LG5.jsp`, `AEM.html` 등.
+
+3. **`README.md`**:
+   - 프로젝트 사용 설명서.
+
+---
+
+## 사용자 정의 프로젝트 생성 및 설정
+### 프로젝트 폴더 생성
+사용자는 `test1`, `test2`와 같은 사용자 정의 프로젝트 폴더를 생성하여 사용합니다.
+
+### 프로젝트 폴더 구조
+사용자가 생성한 프로젝트 폴더는 아래와 같은 구조를 따라야 합니다:   
+
+```plaintext
+project/
+├── core/                   # 기본 제공 폴더
+├── template/               # 기본 제공 템플릿 폴더
+├── test1/                  # 사용자 정의 프로젝트 폴더
+│   ├── package.json        # 사용자 정의 프로젝트 전용 package.json
+│   ├── common              # 변환되지 않고 단순 복사할 파일
+│   ├── src/                # 소스 코드 폴더
+│   │   ├── index.html      # Live Server에서 사용할 HTML 파일
+│   │   ├── assets/
+│   │   │   ├── scss/       # SCSS 파일 폴더
+│   │   │   │   └── style.scss
+│   │   │   ├── img/        # img 파일 폴더
+│   │   │   ├── css/        # 변환된 CSS 파일 폴더
+│   │   │   └── js/         # JavaScript 파일 폴더
+└── README.md
+```
+
+---
+   
+## core폴더에는 아래 패키지를 필수로 설치하여야 합니다.   
+   
+`sass`, `clean-css`, `live-server`   
+npm install sass clean-css live-server   
+   
+
+---
+
+## 사용자가 생성한 프로젝트 폴더에는 다음과 같은 package.json이 반드시 포함되어야 합니다.
+
+~~~
+{
+  "name": "my-project", // 프로젝트 이름 (사용자가 변경 가능)
+  "version": "1.0.0",
+  "description": "SCSS Live Server with Minify",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ../core/dev.js <폴더명>",
+    "build": "node ../core/build.js",
+    "export": "node ../core/export.js <대상 폴더명> <템플릿명>"
+  },
+  "keywords": ["scss", "live-server", "build", "export"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.62.0",
+    "clean-css": "^5.3.2",
+    "live-server": "^1.2.2"
+  }
+}
+~~~
+
+---
+
+## 명령어 안내
+
+1. liveServer
+    ```
+    npm run dev -- <폴더명>
+    ```
+    : 프로젝트 내 sample 또는, 국가별 확장한 폴더명을 입력 시 해당 화면을 보며 작업할 수 있음
+
+2. build
+    ```
+    npm run build -- <폴더명1> <폴더명2> ...
+    ```
+    : sample폴더 작업 후 확산할 국가명을 입력하면 해당 국가코드를 폴더명으로 한 폴더가 생성됨
+
+3. export
+    ```
+    npm run export -- <폴더명> <템플릿명>
+    ```
+    : 국가별 커스터마이징 또는 언어 베리를 마친 후 export 시 원하는 템플릿으로 생성됨 (단, 변환된 템플릿 파일 명은 프로젝트 명으로 생성)
