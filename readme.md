@@ -67,24 +67,19 @@ npm install sass clean-css live-server
 
 ~~~
 {
-  "name": "my-project", // 프로젝트 이름 (사용자가 변경 가능)
+  "name": "test1",      //생성한 프로젝트명
   "version": "1.0.0",
-  "description": "SCSS Live Server with Minify",
   "main": "index.js",
   "scripts": {
-    "dev": "node ../core/dev.js <폴더명>",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ../core/dev.js",
     "build": "node ../core/build.js",
-    "export": "node ../core/export.js <대상 폴더명> <템플릿명>"
+    "export": "node ../core/export.js"
   },
-  "keywords": ["scss", "live-server", "build", "export"],
-  "author": "Your Name",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "sass": "^1.62.0",
-    "clean-css": "^5.3.2",
-    "live-server": "^1.2.2"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
 ~~~
 
