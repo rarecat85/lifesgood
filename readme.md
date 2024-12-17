@@ -1,6 +1,6 @@
-# Life's Good 프로젝트를 위한 build sistem 
+# Life's Good 프로젝트를 위한 build system 
 
-## sistem 설명
+## system 설명
 **SCSS 파일 컴파일**, **CSS Minify**, **Live Server 실행**을 포함하여 다양한 웹 개발 워크플로우를 지원합니다.  
 또한, 빌드된 프로젝트를 특정 폴더에 복사하거나 템플릿 파일을 활용해 템플릿 HTML(또는 jsp)을 생성할 수 있습니다.
 
