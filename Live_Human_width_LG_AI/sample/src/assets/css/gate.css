@@ -1,0 +1,1 @@
+@charset "UTF-8";.section{width:100%;display:flex}.btn{height:2.375rem;padding:0 1rem;display:flex;align-items:center;justify-content:center;border-radius:6.25rem;background:#ea1917;font-size:.875rem;line-height:100%;font-weight:600;color:#fff}@media all and (min-width:1024px){.btn{height:2.75rem;padding:0 1.25rem;font-size:1rem}}
