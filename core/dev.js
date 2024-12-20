@@ -54,6 +54,12 @@ function compileSCSS(filePath, cssDir) {
  * SCSS 파일 업데이트 확인 및 컴파일
  */
 function checkAndCompileSCSS(filePath, cssDir) {
+    // `_`로 시작하는 파일은 제외
+    if (path.basename(filePath).startsWith('_')) {
+        console.log(`"${filePath}"는 컴파일 대상에서 제외됩니다.`);
+        return;
+    }
+
     const newHash = generateFileHash(filePath);
 
     if (fileHashes[filePath] !== newHash) {
@@ -69,7 +75,10 @@ function checkAndCompileSCSS(filePath, cssDir) {
  * SCSS 폴더 내 모든 파일 컴파일
  */
 function compileAllSCSS(scssDir, cssDir) {
-    const scssFiles = fs.readdirSync(scssDir).filter(file => file.endsWith('.scss'));
+    const scssFiles = fs.readdirSync(scssDir).filter(file => {
+        // `_`로 시작하는 파일 제외
+        return file.endsWith('.scss') && !file.startsWith('_');
+    });
 
     if (!scssFiles.length) {
         console.log('변환할 SCSS 파일이 없습니다.');
