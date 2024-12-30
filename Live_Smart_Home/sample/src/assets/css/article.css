@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/* color set */
+/* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1024부터 pc */
+/* PC 기준 inner 사이즈 */
+/* mobile 기준 section 상하 padding값, rem mixin에 넣어서 사용 - PC는 전부 달라서 변수화 하지 않음 */
+/* rem */
+/* media Query */
+/* font */
+/* img */
+/* btn */

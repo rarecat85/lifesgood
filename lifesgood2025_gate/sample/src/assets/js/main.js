@@ -41,15 +41,15 @@ document.addEventListener("DOMContentLoaded",function(){
 
             heroVisual1.addLabel('fadein')
                 .to(symbol, {
-                    opacity: 1,
+                  opacity:1,
                 })
                 .to(symbol, {
-                    width: "7rem",
+                    scale: 4,
                     filter: "blur(10px)",
                 })
                 .addLabel('logoChange')
                 .to(symbol, {
-                    width: "4.5rem",
+                    scale: 1,
                     filter: "blur(0px)",
                     transform: "translate(-50%, 0)",
                     marginTop: "4.5rem",
@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded",function(){
     });
     
     const contentBoxes = document.querySelectorAll(".content-bx");
-    // 이벤트 리스너 설정
-    contentBoxes.forEach((box) => {
+      // 이벤트 리스너 설정
+      contentBoxes.forEach(function(box){
         const video = box.querySelector("video");
         // 마우스 오버 이벤트
         box.addEventListener("mouseenter", function () {
@@ -88,30 +88,50 @@ document.addEventListener("DOMContentLoaded",function(){
         });
     });
 
+    const heroVideos = document.querySelector(".hero-visual .video-bx video");
     // 화면 크기에 따른 비디오 변경
     function switchVideo() {
-        const isPC = window.innerWidth >= 1025;
-
-        contentBoxes.forEach((box) => {
-            const video = box.querySelector("video");
-            const pcSrc = video.getAttribute("data-pc-video");
-            const mSrc = video.getAttribute("data-m-video");
-
-            // PC와 Mobile 데이터 적용
-            if (isPC && pcSrc) {
-                video.querySelector("source").setAttribute("src", pcSrc);
-                video.removeAttribute("autoplay"); // PC에서는 autoplay 비활성화
-            } else if (!isPC && mSrc) {
-                video.querySelector("source").setAttribute("src", mSrc);
-                video.setAttribute("autoplay", "autoplay"); // Mobile에서는 autoplay 활성화
-                video.play().catch((error) => {
-                    console.warn("Video playback failed:", error);
-                });
-            }
-
-            video.load(); // 비디오 소스를 새로 로드
-        });
-    };
+      const isPC = window.innerWidth >= 1025;
+  
+      contentBoxes.forEach(function (box) {
+          const video = box.querySelector("video");
+          const source = video.querySelector("source");
+          const pcSrc = video.getAttribute("data-pc-video");
+          const mSrc = video.getAttribute("data-m-video");
+          const currentSrc = source.getAttribute("src");
+  
+          // PC와 Mobile 데이터 적용
+          /* 1025px 이상 & 현재 경로와 pc경로가 다를 경우 */
+          if (isPC && currentSrc !== pcSrc) {
+              source.setAttribute("src", pcSrc);
+              video.removeAttribute("autoplay"); // PC에서는 autoplay 비활성화
+              video.load(); // 비디오 소스를 새로 로드
+              /* 1025px 이하 & 현재 경로와 pc경로가 다를 경우 */
+          } else if (!isPC && currentSrc !== mSrc) {
+              source.setAttribute("src", mSrc);
+              video.setAttribute("autoplay", "autoplay"); // Mobile에서는 autoplay 활성화
+              video.load(); // 비디오 소스를 새로 로드
+          }
+      });
+  
+      // heroVideos에 대한 비디오 소스 변경
+      if (heroVideos) {
+          const source = heroVideos.querySelector("source");
+          const pcSrc = heroVideos.getAttribute("data-pc-video");
+          const mSrc = heroVideos.getAttribute("data-m-video");
+          const currentSrc = source.getAttribute("src");
+  
+          if (isPC && currentSrc !== pcSrc) {
+              source.setAttribute("src", pcSrc);
+              heroVideos.setAttribute("autoplay", "autoplay"); // autoplay 항상 유지
+              heroVideos.load(); // 비디오 소스를 새로 로드
+          } else if (!isPC && currentSrc !== mSrc) {
+              source.setAttribute("src", mSrc);
+              heroVideos.setAttribute("autoplay", "autoplay"); // autoplay 항상 유지
+              heroVideos.load(); // 비디오 소스를 새로 로드
+          }
+      }
+  }
 
     // 이전 가로 크기를 저장
     let previousWidth = window.innerWidth;
@@ -135,7 +155,7 @@ document.addEventListener("DOMContentLoaded",function(){
             // 텍스트 노드의 내용을 글자 단위로 <span> 감싸기
             return node.textContent
                 .split('')
-                .map(char => `<span tabindex="-1" aria-hidden="true">${char}</span>`)
+                .map(char => `<span aria-hidden="true">${char}</span>`)
                 .join('');
         } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') {
             // <br> 태그는 그대로 유지
@@ -148,11 +168,12 @@ document.addEventListener("DOMContentLoaded",function(){
     fillTxt.innerHTML = wrappedText;
 
     window.addEventListener("scroll", function() {
-        const target = document.querySelector('.section.lifesgood');
-        const targetPosition = target.offsetTop; // 요소의 페이지에서의 위치
+        const target = document.querySelector('.lifesgood');
+        const targetPosition = target.getBoundingClientRect().top; // 요소의 페이지에서의 위치
         const targetHeight = target.offsetHeight; // 요소의 높이
+        console.log(targetPosition, targetHeight)
         // 현재 스크롤 위치가 target 요소의 영역에 들어갔을 때
-        if (window.scrollY + window.innerHeight / 2 > targetPosition && window.scrollY < targetPosition + targetHeight) {
+        if (targetPosition < targetHeight / 2) {
             target.classList.add('active'); // 활성화 클래스 추가
         } else {
             target.classList.remove('active'); // 활성화 클래스 추가
@@ -186,4 +207,25 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    /*팝업 스크립트 */
+    const popShowBtn = document.querySelector('.popup-show');
+    const layerPop = document.querySelector('.layer-pop');
+    const iframe = layerPop.querySelector('.iframe-bx');
+    const closeBtn = layerPop.querySelector('.close-btn');
+
+    // 팝업 열기
+    popShowBtn.addEventListener("click", function() {
+      const youtubeId = this.dataset.ytid;
+      // iframe의 src 속성 설정
+      iframe.innerHTML=`<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1" title="LG VS Company : CES 2025 Teaser I LG​" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+      // 팝업 활성화
+      layerPop.classList.add('active');
+      closeBtn.focus();
+    });
+    closeBtn.addEventListener("click", function() {
+      iframe.innerHTML="";
+      layerPop.classList.remove('active');
+      popShowBtn.focus();
+    });
 });
