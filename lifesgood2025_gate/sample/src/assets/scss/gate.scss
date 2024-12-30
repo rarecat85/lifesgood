@@ -1,0 +1,539 @@
+@import "_mixin";
+* {font-family: LGEI Text;}
+.campaign-2025 {
+    button {
+        cursor: pointer;
+        &:focus-visible {
+            outline: -webkit-focus-ring-color auto 1px;
+        }
+    }
+    /*2025 게이트 페이지*/
+    &.gate {
+        .section {
+            &:not(.hero-visual) {
+                position: relative;
+                z-index: 2;
+            }
+            //메인 영상 영역
+            &.hero-visual {
+                width: 100%;
+                height: 100vh;
+                position: relative;
+                .inner {
+                    clip: rect(0, auto, auto, 0);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    .fixed-content {
+                        width: 100%;
+                        height: 100%;
+                        position: fixed;
+                        transform: translateZ(0);
+                        will-change: transform;
+                        .video-bx {
+                            width: 100%;
+                            height: 100%;
+                            video {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover
+                            }
+                        }
+                        .txt-bx {
+                            width: 100%;
+                            text-align: center;
+                            transform: translate(-50%, -50%);
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            .title {
+                                font-family: 'LGEI Headline';
+                                font-weight: 500;
+                                font-size: rem(80);
+                                color: $white;
+                                @include desktop {
+                                    br {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .btn {
+                                margin: rem(40) auto 0;
+                            }
+                        }
+                        .play-btn {
+                            width: rem(32);
+                            height: rem(32);
+                            transform: translateX(-50%);
+                            position: absolute;
+                            left: 50%;
+                            bottom: rem(65);
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-image: url(../images/icon/icon_pause.svg);
+                            cursor: pointer;
+                            &.active {
+                                background-image: url(../images/icon/icon_play.svg);
+                            }
+                        }
+                    }
+                }
+            }
+            //overview
+            &.overview {
+                width: 100%;
+                text-align: center;
+                overflow: hidden;
+                .inner {
+                    padding-top: min(34vh, rem(380));
+                    padding-bottom: rem(72);
+                }
+                .txt-bx {
+                    .title {
+                        font-family: 'LGEI Headline';
+                        font-weight: 600;
+                        font-size: rem(56);
+                        margin-bottom: rem(8);
+                        @include desktop {
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
+                    p {
+                        font-size: rem(24);
+                        line-height: 1.167;
+                        & + p {
+                            margin-top: rem(28)
+                        }
+                    }
+                }
+            }
+            //intelligence
+            &.intelligence {
+                width: 100%;
+                min-height: 100vh;
+                background-color: #F0ECE4;
+                .title-wrap {
+                    display: flex;
+                    align-items: center;
+                    gap: clamp(rem(100), 12%, rem(220));
+                    padding: rem(80) 0;
+                    .title {
+                        font-family: 'LGEI Headline';
+                        font-weight: 600;
+                        font-size: rem(48);
+                        text-align: right;
+                        width: 50.5%;
+                        span {
+                            background: linear-gradient(90deg, rgba(253,49,46,1) 2%, rgba(249,20,235,1) 54%, rgba(130,39,255,1) 97%, rgba(180,50,245,1) 8799%);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent; 
+                        }
+                    }
+                    .des {
+                        font-size: rem(24);
+                        line-height: 1.166;
+                        width: 49.5%;
+                    }
+                }
+                ul {
+                    li {
+                        display: flex;
+                        .content-bx {
+                            width: 44.65%;
+                            min-height: rem(561);
+                            position: relative;
+                            video {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                object-fit: cover;
+                                transition: all 0.3s;
+                            }
+                            @include desktop {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+                        .des-bx {
+                            width: 55.35%;
+                            padding:rem(79) 0 rem(79) clamp(rem(100), 12%, rem(220)); 
+                            padding-bottom:rem(79);
+                            border-top: 1px solid #CBC8C2;
+                            dt {
+                                font-family: 'LGEI Headline';
+                                font-weight: 600;
+                                font-size: rem(56);
+                                margin-bottom: rem(16);
+                            }
+                            dd {
+                                font-size: rem(24);
+                                line-height: 1.167;
+                                color: #333333;
+                                a {
+                                    margin-top: rem(16);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //lifesgood
+            &.lifesgood {
+                background-color: #F6F4F0;
+                @keyframes txtFill {
+                    0% {
+                        color: #999999;
+                    }
+                    100% {
+                        color: #000000;
+                    }
+                }
+                .txt-bx {
+                    width: min(calc(100% - rem(40)), 1440px);
+                    margin: 0 auto;
+                    padding: rem(80) 0;
+                    .title {
+                        span {
+                            font-family: 'LGEI Headline';
+                            font-weight: 600;
+                            font-size: rem(36);
+                            line-height: 1.333;
+                            position: relative;
+                            color: #999999;
+                        }
+                    }
+                }
+                picture {
+                    img {
+                        width: 100%;
+                    }
+                }
+                &.active {
+                    .txt-bx {
+                        .title {
+                            span {
+                                animation: txtFill 0.2s forwards linear;
+                                @for $i from 1 to 400 {
+                                    &:nth-child(#{$i}) {
+                                        animation-delay: $i * 0.008s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //stories
+            &.stories {
+                background-color: #F0ECE4;
+                .inner {
+                    padding: rem(64) 0 rem(64) rem(16);
+                    margin: 0 auto;
+                    @include desktop {
+                        width: min(calc(100% - rem(40)), 1440px);
+                        padding: rem(120) 0;
+                    }
+                    .title {
+                        font-family: 'LGEI Headline';
+                        font-weight: 600;
+                        font-size: rem(56);
+                    }
+                    .slide-bx {
+                        margin-top: rem(20);
+                        .swiper-slide {
+                            height: auto;
+                            background-color: $white;
+                            border-radius: rem(28);
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                            }
+                            .txt-bx {
+                                padding: rem(20) rem(28) rem(92);
+                                dl {
+                                    dt {
+                                        font-weight: 300;
+                                        font-size: rem(36);
+                                        line-height: 1.2;
+                                        margin-bottom: rem(8);
+                                    }
+                                    dd {
+                                        font-size: rem(24);
+                                        line-height: 1.1;
+                                        text-wrap: balance;
+                                    }
+                                }
+                                .white-btn {
+                                    position: absolute;
+                                    bottom: rem(28);
+                                    left: rem(28);
+                                }
+                            }
+                        }
+                        .slide-controller {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: rem(16);
+                            margin-top: rem(20);
+                            margin-right: rem(16);
+                            button {
+                                display: block;
+                                width: rem(32);
+                                height: rem(32);
+                                position: relative;
+                                cursor: pointer;
+                                &::after {
+                                    content: "";
+                                    width: rem(8);
+                                    height: rem(12);
+                                    transform: translate(-50%, -50%);
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    background: url(../images/icon/slide_arrow.svg) no-repeat;
+                                    background-position: center;
+                                    background-size: rem(8);
+                                }
+                                &.slide-button-next {
+                                    transform: rotate(180deg);
+                                }
+                            }
+                        }
+                        @include desktop {
+                            .swiper-wrapper {
+                                flex-wrap: nowrap;
+                                gap: rem(24);
+                                .swiper-slide {
+                                    width: calc(100% / 3 - rem(16));
+                                }
+                            }
+                            .slide-controller {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .section-wrap {
+            background-color: $white;
+            position: relative;
+            .logo-wrap {
+                &.png-bx {
+                    position: relative;
+                    .symbol {
+                        width: 320vw;
+                        filter: blur(800px);
+                        transform: translate(-50%, -50%);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 0;
+                        &.hide {
+                            opacity: 0 !important;
+                        }
+                    }
+                }
+                &.gif-bx {
+                    width: 4.5rem;
+                    height: 4.5rem;
+                    margin: 0 auto;
+                    position: sticky;
+                    padding-bottom: min(34vh, rem(380));
+                    top: rem(60);
+                    z-index: 10;
+                    .gif {
+                        display: block;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        opacity: 0;
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    .btn{
+        @include btn($red);
+    }
+    .white-btn{
+        @include btn($white);
+    }
+}
+
+@media screen and (max-width:1025px) {
+    .campaign-2025 {
+        /*2025 게이트 페이지*/
+        &.gate {
+            .section {
+                //메인 영상 영역
+                &.hero-visual {
+                    .inner {
+                        .fixed-content {
+                            .txt-bx {
+                                transform: translate(0, 0);
+                                top: rem(40);
+                                left: 0;
+                                .title {
+                                    font-size: rem(36);
+                                }
+                                .btn {
+                                    margin-top: rem(12);
+                                }
+                            }
+                            .play-btn {
+                                bottom: rem(24);
+                            }
+                        }
+                    }
+                }
+                //overview
+                &.overview {
+                    .inner {
+                        padding: rem($mo_padding) rem(25) rem(16);
+                    }
+                    .txt-bx {
+                        .title {
+                            font-size: rem(28);
+                            line-height: 1.1428;
+                        }
+                        p {
+                            font-size: rem(16);
+                        }
+                    }
+                }
+                //intelligence
+                &.intelligence { 
+                    padding-bottom: rem($mo_padding);
+                    .title-wrap {
+                        display: block;
+                        padding: rem($mo_padding) rem(16);
+                        .title {
+                            width: fit-content;
+                            text-align: left;
+                            margin-bottom: rem(8);
+                            span {
+                                display: block;
+                                width: rem(190);
+                                font-size: rem(28);
+                                line-height: 1.2;
+                            }
+                        }
+                        .des {
+                            font-size: rem(16);
+                            word-break: keep-all;
+                            width: 100%;
+                            span {
+                                display: inline-block;
+                            }
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
+                    ul {
+                        li {
+                            display: block;
+                            padding: 0 rem(16);
+                            .content-bx {
+                                width: 100%;
+                                border-radius: rem(20);
+                                overflow: hidden;
+                                img {
+                                    display: none;
+                                }
+                                video {
+                                    position: static;
+                                    aspect-ratio: 328 /438;
+                                }
+                            }
+                            .des-bx {
+                                width: 100%;
+                                padding: rem(12) 0 0;
+                                border: 0;
+                                dt {
+                                    font-size: rem(28);
+                                    line-height: 1.1428;
+                                    margin-bottom: rem(8);
+                                }
+                                dd {
+                                    font-size: rem(16);
+                                }
+                            }
+                            & + li {
+                                margin-top: rem(64);
+                            }
+                        }
+                    }
+                }
+                //lifesgood
+                &.lifesgood  {
+                    .txt-bx {
+                        padding: rem($mo_padding) 0;
+                        .title {
+                            span {
+                                font-size: rem(24);
+                                line-height: 1.1666;
+                            }
+                        }
+                    }
+                }
+                //stories
+                &.stories {
+                    .inner {
+                        .title {
+                            font-size: rem(28);
+                            line-height: 1.1428;
+                        }
+                        .slide-bx {
+                            margin-top: rem(12);
+                            .swiper-slide {
+                                .txt-bx {
+                                    padding: rem(16) rem(20) rem(102);
+                                    dl {
+                                        dt {
+                                            font-size: rem(24);
+                                        }
+                                        dd {
+                                            font-size: rem(16);
+                                        }
+                                    }
+                                    .white-btn {
+                                        left: rem(20);
+                                        bottom: rem(24);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .section-wrap {
+                .logo-wrap {
+                    &.png-bx {
+                        display: none;
+                    }
+                    &.gif-bx {
+                        height: auto;
+                        position: static;
+                        padding: 0 0 rem($mo_padding);
+                        .gif {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
