@@ -1,1 +1,43 @@
-@charset "UTF-8";.section{width:100%;display:flex}.btn{height:2.375rem;padding:0 1rem;display:flex;align-items:center;justify-content:center;border-radius:6.25rem;background:#ea1917;font-size:.875rem;line-height:100%;font-weight:600;color:#fff}@media all and (min-width:1024px){.btn{height:2.75rem;padding:0 1.25rem;font-size:1rem}}
+@charset "UTF-8";
+/* color set */
+/* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1024부터 pc */
+/* PC 기준 inner 사이즈 */
+/* mobile 기준 section 상하 padding값, rem mixin에 넣어서 사용 - PC는 전부 달라서 변수화 하지 않음 */
+/* rem */
+/* media Query */
+/* font */
+/* img */
+/* btn */
+.section {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn {
+  height: 2.375rem;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 6.25rem;
+  background: #EA1917;
+  font-size: 0.875rem;
+  line-height: 100%;
+  font-weight: 600;
+  color: #fff;
+}
+@media all and (min-width: 1024px) {
+  .btn {
+    height: 2.75rem;
+    padding: 0 1.25rem;
+    font-size: 1rem;
+  }
+}

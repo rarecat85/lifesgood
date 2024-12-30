@@ -9,6 +9,8 @@
     }
     /*2025 게이트 페이지*/
     &.gate {
+        max-width: 1920px;
+        margin: 0 auto;
         .section {
             &:not(.hero-visual) {
                 position: relative;
@@ -448,14 +450,11 @@
                             padding: 0 rem(16);
                             .content-bx {
                                 width: 100%;
-                                border-radius: rem(20);
-                                overflow: hidden;
-                                img {
-                                    display: none;
-                                }
                                 video {
                                     position: static;
                                     aspect-ratio: 328 /438;
+                                    border-radius: rem(20);
+                                    overflow: hidden;
                                 }
                             }
                             .des-bx {

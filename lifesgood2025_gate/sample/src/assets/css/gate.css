@@ -21,6 +21,10 @@
 .campaign-2025 button:focus-visible {
   outline: -webkit-focus-ring-color auto 1px;
 }
+.campaign-2025.gate {
+  max-width: 1920px;
+  margin: 0 auto;
+}
 .campaign-2025.gate .section:not(.hero-visual) {
   position: relative;
   z-index: 2;
@@ -2114,15 +2118,12 @@
   }
   .campaign-2025.gate .section.intelligence ul li .content-bx {
     width: 100%;
-    border-radius: 1.25rem;
-    overflow: hidden;
-  }
-  .campaign-2025.gate .section.intelligence ul li .content-bx img {
-    display: none;
   }
   .campaign-2025.gate .section.intelligence ul li .content-bx video {
     position: static;
     aspect-ratio: 328/438;
+    border-radius: 1.25rem;
+    overflow: hidden;
   }
   .campaign-2025.gate .section.intelligence ul li .des-bx {
     width: 100%;
