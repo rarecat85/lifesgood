@@ -1,9 +1,0 @@
-@import "_mixin";
-
-.section {
-  width:100%;
-  display:flex;
-}
-.btn{
-  @include btn($red);
-}

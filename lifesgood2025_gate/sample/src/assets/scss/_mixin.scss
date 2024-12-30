@@ -45,43 +45,37 @@
 
 /* btn */
 @mixin btn($co:$white) {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    @include font(14,100%,600);
-    width: fit-content;
-    height:rem(38);
-    border-radius:rem(100);
-    padding:0 rem(16);
-    background:$co;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  @include font(14,100%,600);
+  width: fit-content;
+  height:rem(38);
+  border-radius:rem(100);
+  padding:0 rem(16);
+  background:$co;
+  @if ($co == $white) {
+    border:1px solid $midGray;
+    color:$black;
+    &:hover,
     &:active {
-        color: $black;
-        background-color: $white;
+      border:none;
+      background: $red;
+      color:$white;
     }
-    @if ($co == $white) {
-        border:1px solid $midGray;
-        color:$black;
-        &:active {
-            border:1px solid $red;
-            background-color: $red;
-            color:$white;
-        }
+  }
+  @else { 
+    color:$white;
+    &:hover,
+    &:active {
+      border:1px solid $midGray;
+      background: $white;
+      color:$black;
     }
-    @else { 
-        color:$white;
-    }
-    @include desktop{
-        font-size:rem(16);
-        height:rem(44);
-        padding:0 rem(20);
-        &:hover {
-            color: $black;
-            background-color: $white;
-            @if ($co == $white) {
-                border:1px solid $red;
-                background-color: $red;
-                color:$white;
-            }
-        }
-    }
+  }
+  @include desktop{
+    font-size:rem(16);
+    height:rem(44);
+    padding:0 rem(20);
+  }
 }
