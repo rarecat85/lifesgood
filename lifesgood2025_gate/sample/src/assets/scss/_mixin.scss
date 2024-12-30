@@ -54,9 +54,18 @@
     border-radius:rem(100);
     padding:0 rem(16);
     background:$co;
+    &:active {
+        color: $black;
+        background-color: $white;
+    }
     @if ($co == $white) {
         border:1px solid $midGray;
         color:$black;
+        &:active {
+            border:1px solid $red;
+            background-color: $red;
+            color:$white;
+        }
     }
     @else { 
         color:$white;
