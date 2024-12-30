@@ -162,6 +162,15 @@ function startServer(folderName, scssDir, cssDir) {
         }
         console.log(stdout);
     });
+
+    // SCSS 파일 변경 감지
+    fs.watch(scssDir, (eventType, filename) => {
+      if (filename && eventType === 'change') {
+          console.log(`${filename} 파일 변경 감지!`);
+          const filePath = path.join(scssDir, filename);
+          checkAndCompileSCSS(filePath, cssDir);
+      }
+  });
 }
 
 
