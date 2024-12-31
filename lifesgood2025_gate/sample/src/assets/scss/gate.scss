@@ -24,7 +24,9 @@
         height: 100vh;
         position: fixed;
         top: 0;
-        left: 0;
+        left: 50%;
+        max-width: 1920px;
+        transform: translateX(-50%);
         .inner {
           width: 100%;
           height: 100%;
@@ -143,7 +145,7 @@
             display: flex;
             .content-bx {
               width: 44.65%;
-              min-height: rem(561);
+              height: rem(560);
               position: relative;
               video {
                 width: 100%;
@@ -330,7 +332,7 @@
           position: relative;
           .symbol {
             filter: blur(800px);
-            transform: translate(-50%, -50%) scale(44.44);
+            transform: translate(-50%, -50%);
             position: absolute;
             top: 50%;
             left: 50%;
@@ -348,6 +350,7 @@
           padding-bottom: min(34vh, rem(380));
           top: rem(60);
           z-index: 10;
+          pointer-events: none;
           .gif {
             display: block;
             width: 4.5rem;

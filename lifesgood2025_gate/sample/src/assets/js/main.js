@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: ".overview .inner",
           scrub: 1,
-          end: "=+200%",
-          pin: true,
+          pin:true,
           duration: 1,
           onLeave: function () {
             symbol.classList.add("hide");
@@ -39,32 +38,27 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       heroVisual1
-        .addLabel("fadein")
+      .addLabel("fadeIn")
+        .to(symbol, {
+          scale: 44.44,
+        }, "fadeIn")
         .to(symbol, {
           opacity: 1,
-        })
+        }, "fadeIn")
         .to(symbol, {
           scale: 4,
-          filter: "blur(50px)",
+          filter: "blur(20px)",
         })
         .addLabel("logoChange")
-        .to(
-          symbol,
-          {
+        .to(symbol, {
             scale: 1,
             filter: "blur(0px)",
             transform: "translate(-50%, 0)",
             marginTop: "4.5rem",
-          },
-          "logoChange"
-        )
-        .to(
-          secOverflow,
-          {
+          },"logoChange")
+        .to(secOverflow, {
             overflow: "unset",
-          },
-          "logoChange"
-        );
+          },"logoChange")
     },
 
     // 모바일용 스크롤 트리거
@@ -74,89 +68,50 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
-  // 이벤트 리스너 설정
-  contentBoxes.forEach(function (box) {
-    const video = box.querySelector("video");
-    // 마우스 오버 이벤트
-    box.addEventListener("mouseenter", function () {
+  /*커텐트 박스 pc / m 초기 inner 사이즈에 따른 출력 값 */
+  contentBoxes.forEach(function(box){
+      const videoName = box.dataset.videoName; // 비디오 파일 이름
+      const imgName = box.dataset.imgName; // poster 이미지 이름
+      const altName = box.dataset.alt; // aria-label 이름
+      /* pc 사이즈 일 경우 */
       if (window.innerWidth > 1025) {
-        // PC 모드일 때만
+        box.innerHTML= `
+          <video muted playsinline loop poster="./assets/images/main/${imgName}.jpg" aria-label="${altName}" preload="none">
+            <source src="./assets/video/${videoName}.mp4">
+          </video>
+        `;
+      }
+      /* 모바일 사이즈 일 경우 */
+      else {
+        box.innerHTML= `
+          <video autoplay muted playsinline loop aria-label="${altName}" preload="none">
+            <source src="./assets/video/m/${videoName}.mp4">
+          </video>
+        `;
+      }
+  });
+
+  contentList.forEach(function (li, index) {
+    li.addEventListener("mouseenter", function () {
+      const video = contentBoxes[index].querySelector("video");
+      if (window.innerWidth > 1025) {
         video.setAttribute("autoplay", "autoplay");
         video.play();
       }
     });
-    // 마우스 아웃 이벤트
-    box.addEventListener("mouseleave", function () {
+    li.addEventListener("mouseleave", function () {
+      const video = contentBoxes[index].querySelector("video");
       if (window.innerWidth > 1025) {
-        // PC 모드일 때만
         video.removeAttribute("autoplay");
         video.pause();
         video.currentTime = 0;
-        video.load();
       }
     });
   });
 
   const heroVideos = document.querySelector(".hero-visual .video-bx video");
-  // 화면 크기에 따른 비디오 변경
-  function switchVideo() {
-    const isPC = window.innerWidth >= 1025;
-
-    contentBoxes.forEach(function (box) {
-      const video = box.querySelector("video");
-      const source = video.querySelector("source");
-      const pcSrc = video.getAttribute("data-pc-video");
-      const mSrc = video.getAttribute("data-m-video");
-      const currentSrc = source.getAttribute("src");
-
-      // PC와 Mobile 데이터 적용
-      /* 1025px 이상 & 현재 경로와 pc경로가 다를 경우 */
-      if (isPC && currentSrc !== pcSrc) {
-        source.setAttribute("src", pcSrc);
-        video.removeAttribute("autoplay"); // PC에서는 autoplay 비활성화
-        video.load(); // 비디오 소스를 새로 로드
-        /* 1025px 이하 & 현재 경로와 pc경로가 다를 경우 */
-      } else if (!isPC && currentSrc !== mSrc) {
-        source.setAttribute("src", mSrc);
-        video.setAttribute("autoplay", "autoplay"); // Mobile에서는 autoplay 활성화
-        video.load(); // 비디오 소스를 새로 로드
-      }
-    });
-
-    // heroVideos에 대한 비디오 소스 변경
-    if (heroVideos) {
-      const source = heroVideos.querySelector("source");
-      const pcSrc = heroVideos.getAttribute("data-pc-video");
-      const mSrc = heroVideos.getAttribute("data-m-video");
-      const currentSrc = source.getAttribute("src");
-
-      if (isPC && currentSrc !== pcSrc) {
-        source.setAttribute("src", pcSrc);
-        heroVideos.setAttribute("autoplay", "autoplay"); // autoplay 항상 유지
-        heroVideos.load(); // 비디오 소스를 새로 로드
-      } else if (!isPC && currentSrc !== mSrc) {
-        source.setAttribute("src", mSrc);
-        heroVideos.setAttribute("autoplay", "autoplay"); // autoplay 항상 유지
-        heroVideos.load(); // 비디오 소스를 새로 로드
-      }
-    }
-  }
-
-  // 이전 가로 크기를 저장
-  let previousWidth = window.innerWidth;
-
-  // 초기 로드 및 화면 크기 변경 이벤트
-  switchVideo();
-  window.addEventListener("resize", () => {
-    const currentWidth = window.innerWidth;
-
-    // 가로 크기가 변경된 경우에만 switchVideo 호출
-    if (currentWidth !== previousWidth) {
-      previousWidth = currentWidth;
-      switchVideo();
-    }
-  });
 
   const fillTxt = document.querySelector(".lifesgood .txt-bx .title");
   // 자식 노드 순회하며 <span> 태그로 감싸기
