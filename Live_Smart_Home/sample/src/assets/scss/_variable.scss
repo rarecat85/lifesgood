@@ -12,4 +12,6 @@ $pc : 1024px;
 
 $inner : 1440px; /* PC 기준 inner 사이즈 */
 
-$mo_padding : 64; /* mobile 기준 section 상하 padding값, rem mixin에 넣어서 사용 - PC는 전부 달라서 변수화 하지 않음 */
+/* device별 기준 section 상하 padding값, rem mixin에 넣어서 사용 */
+$mo_padding : 64; 
+$pc_padding : 154;
