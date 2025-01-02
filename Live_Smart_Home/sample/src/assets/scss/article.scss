@@ -109,7 +109,21 @@ body {
       }
     }
     &-desc {
-      @include font(16,112%,$cl:$warmGray);
+      @include font(16,112%);
+      background: linear-gradient(
+        to left,
+        #000 30%,
+        #8227FF 40%,
+        #B432F5 50%,
+        #F914EB 60%,
+        #FD312E 70%,
+        #000 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      background-size: 500% auto;
       @include desktop {
         font-size:rem(36);
       }
@@ -224,6 +238,7 @@ body {
       }
       .thinQ-tabs-imgbx-bgwrap {
         picture {
+          width:100%;
           position:absolute;
           top:0;
           left:0;
@@ -266,10 +281,12 @@ body {
         }
         &-prod {
           width:rem(110);
-          margin-top:rem(59);
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
           @include desktop {
             width:rem(362);
-            margin-top:rem(126);
           }
           img {
             @include img();
@@ -284,6 +301,9 @@ body {
           display:flex;
           align-items:center;
           margin-top:auto;
+          @include desktop {
+            padding:rem(6);
+          }
           li {
             height:rem(36);
             padding:0 rem(16);
@@ -291,6 +311,11 @@ body {
             align-items:center;
             border-radius:rem(100);
             @include font(14,100%,600);
+            @include desktop{
+              height:rem(44);
+              padding:0 rem(20);
+              font-size:rem(16);
+            }
             &.active {
               background:$red;
               color:$white;
@@ -302,6 +327,9 @@ body {
     &-conbx {
       margin-top:rem(12);
       position:relative;
+      @include desktop {
+        margin-top:rem(20);
+      }
       &-tabcon {
         width:100%;
         position:absolute;
@@ -312,18 +340,32 @@ body {
         flex-direction:column;
         text-align:center;
         visibility: hidden;
+        padding-bottom:rem(64);
+        @include desktop {
+          padding-bottom:rem(120);
+        }
         &.active {
           visibility: visible;
         }
         &-title {
           @include font(28,114%,550);
+          @include desktop {
+            @include font(56,110%);
+          }
         }
         &-desc {
           margin-top:rem(8);
           margin-bottom:rem(12);
           @include font(16,112%,$cl:$warmGray);
+          @include desktop {
+            @include font(24,116%);
+            margin-bottom:rem(24);
+          }
           span {
             font-weight:600;
+            @include desktop{
+              font-weight:700;
+            }
           }
         }
       }
