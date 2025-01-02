@@ -5,6 +5,11 @@
   @return calc($px / 16 * 1rem);
 }
 
+/* vw - pc 기준 */
+@function vw($px) {
+  @return calc(($px * 100) / 1920 * 1vw);
+}
+
 /* media Query */
 @mixin tablet {
   @media all and (min-width: #{$mo}){

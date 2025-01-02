@@ -1,6 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
   const heroVideo = document.querySelector(".hero-visual video");
+  const heroVideoBx = document.querySelector(".hero-visual .video-bx");
   const heroToggleBtn = document.querySelector(".play-btn");
+  let currentVideoSrc = "";
+
+  // 영상을 동적으로 설정하는 함수
+  function setHeroVideo() {
+    const isDesktop = window.innerWidth > 1025;
+    const newVideoSrc = isDesktop
+      ? "./assets/video/hero_video_pc.mp4"
+      : "./assets/video/hero_video_m.mp4";
+
+    // 현재 영상이 변경된 경우에만 업데이트
+    if (currentVideoSrc !== newVideoSrc) {
+      heroVideoBx.innerHTML = `
+        <video autoplay muted playsinline loop>
+          <source src="${newVideoSrc}">
+        </video>
+      `;
+      currentVideoSrc = newVideoSrc;
+    }
+  }
+
+  // 초기 영상 설정
+  setHeroVideo();
+
+  // 디바운싱된 리사이즈 이벤트 핸들러
+  let resizeTimeout;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(setHeroVideo, 150); // 150ms 딜레이로 디바운스
+  });
+  
+  /* kv 영상 play / pause 버튼 */
   heroToggleBtn.addEventListener("click", function () {
     if (this.classList.contains("active")) {
       this.classList.remove("active");
@@ -12,86 +44,81 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.matchMedia({
-    // PC용 스크롤 트리거
-    "(min-width: 1025px)": function () {
-      const secOverflow = document.querySelector("section.overview");
-      const symbol = document.querySelector(".logo-wrap.png-bx .symbol");
-      const symbolGif = document.querySelector(".logo-wrap.gif-bx .gif");
-      const heroVisual1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".overview .inner",
-          scrub: 1,
-          pin:true,
-          duration: 1,
-          onLeave: function () {
-            symbol.classList.add("hide");
-            symbolGif.classList.add("active");
-            symbolGif.src = "./assets/images/icon/ai_symbol.gif";
-          },
-          onEnterBack: function () {
-            symbol.classList.remove("hide");
-            symbolGif.classList.remove("active");
-            symbolGif.src = "./assets/images/icon/ai_symbol.png";
-          },
-        },
-      });
-
-      heroVisual1
-      .addLabel("fadeIn")
-        .to(symbol, {
-          scale: 44.44,
-        }, "fadeIn")
-        .to(symbol, {
-          opacity: 1,
-        }, "fadeIn")
-        .to(symbol, {
-          scale: 4,
-          filter: "blur(20px)",
-        })
-        .addLabel("logoChange")
-        .to(symbol, {
-            scale: 1,
-            filter: "blur(0px)",
-            transform: "translate(-50%, 0)",
-            marginTop: "4.5rem",
-          },"logoChange")
-        .to(secOverflow, {
-            overflow: "unset",
-          },"logoChange")
-    },
-
-    // 모바일용 스크롤 트리거
-    "(max-width: 1024px)": function () {
-      const symbolGif = document.querySelector(".logo-wrap.gif-bx .gif");
-      symbolGif.src = "./assets/images/icon/ai_symbol.gif";
+  const symbol = document.querySelector(".logo-wrap .symbol");
+  const gif = document.querySelector(".intelligence .gif");
+  const heroVisual1 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section.overview",
+      start : "top top",
+      end: "+=200%",
     },
   });
+  heroVisual1
+  .addLabel("default")
+  .to(symbol, {
+    scale: 44.44,
+    filter: "blur(800px)",
+  }, "default")
+  .to(symbol, {
+    opacity: 1,
+    duration: 0.7,
+  }, "default")
+  .to(symbol, {
+    scale: 1,
+    filter: "blur(0px)",
+    y: "9rem",
+  })
+  .addLabel("logoChange")
+  .to(symbol, {
+    opacity: 0,
+  }, "logoChange")
+  .to(gif, {
+    opacity: 1,
+  }, "logoChange");
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
-  /*커텐트 박스 pc / m 초기 inner 사이즈에 따른 출력 값 */
-  contentBoxes.forEach(function(box){
+
+  // 콘텐츠 업데이트 함수
+  function updateContentBoxes() {
+    contentBoxes.forEach(function (box) {
       const videoName = box.dataset.videoName; // 비디오 파일 이름
       const imgName = box.dataset.imgName; // poster 이미지 이름
       const altName = box.dataset.alt; // aria-label 이름
-      /* pc 사이즈 일 경우 */
+
+      // pc 사이즈일 경우
       if (window.innerWidth > 1025) {
-        box.innerHTML= `
-          <video muted playsinline loop poster="./assets/images/main/${imgName}.jpg" aria-label="${altName}" preload="none">
+        box.innerHTML = `
+          <video muted playsinline loop poster="./assets/images/main/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}.mp4">
           </video>
         `;
-      }
-      /* 모바일 사이즈 일 경우 */
+      } 
+      // 모바일 사이즈일 경우
       else {
-        box.innerHTML= `
-          <video autoplay muted playsinline loop aria-label="${altName}" preload="none">
+        box.innerHTML = `
+          <video autoplay muted playsinline loop aria-label="${altName}">
             <source src="./assets/video/m/${videoName}.mp4">
           </video>
         `;
       }
-  });
+    });
+  }
+
+  // 디바운스 함수
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      clearTimeout(timer);
+      timer = setTimeout(func, delay);
+    };
+  }
+
+  // 초기 실행
+  updateContentBoxes();
+
+  // 리사이즈 이벤트
+  window.addEventListener("resize", debounce(updateContentBoxes, 200));
 
   contentList.forEach(function (li, index) {
     li.addEventListener("mouseenter", function () {
@@ -110,68 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  const heroVideos = document.querySelector(".hero-visual .video-bx video");
-
-  const fillTxt = document.querySelector(".lifesgood .txt-bx .title");
-  // 자식 노드 순회하며 <span> 태그로 감싸기
-  const wrappedText = Array.from(fillTxt.childNodes)
-    .map((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        // 텍스트 노드의 내용을 글자 단위로 <span> 감싸기
-        return node.textContent
-          .split("")
-          .map((char) => `<span aria-hidden="true">${char}</span>`)
-          .join("");
-      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
-        // <br> 태그는 그대로 유지
-        return "<br>";
-      }
-      return ""; // 기타 노드는 무시
-    })
-    .join("");
-
-  // HTML 내용으로 다시 삽입
-  fillTxt.innerHTML = wrappedText;
-
-  window.addEventListener("scroll", function () {
-    const target = document.querySelector(".lifesgood");
-    const targetPosition = target.getBoundingClientRect().top; // 요소의 페이지에서의 위치
-    const targetHeight = target.offsetHeight; // 요소의 높이
-    // 현재 스크롤 위치가 target 요소의 영역에 들어갔을 때
-    if (targetPosition < targetHeight / 2) {
-      target.classList.add("active"); // 활성화 클래스 추가
-    } else {
-      target.classList.remove("active"); // 활성화 클래스 추가
-    }
-  });
-
-  /* storySlide 슬라이드 */
-  let storySlide = null;
-  function handleResize() {
-    let isMobileView = window.innerWidth <= 1025;
-    if (isMobileView && !storySlide) {
-      storySlide = new Swiper(".stories .swiper", {
-        slidesPerView: 1.1,
-        spaceBetween: 10,
-        speed: 1000,
-        navigation: {
-          nextEl: ".stories .slide-button-next",
-          prevEl: ".stories .slide-button-prev",
-        },
-        a11y: {
-          nextSlideMessage: "move to next slide",
-          prevSlideMessage: "move to prev slide",
-        },
-      });
-    } else if (!isMobileView && storySlide) {
-      // 1025px 초과일 때 슬라이드 제거
-      storySlide.destroy();
-      storySlide = null;
-    }
-  }
-  handleResize();
-  window.addEventListener("resize", handleResize);
 
   /*팝업 스크립트 */
   const popShowBtn = document.querySelector(".popup-show");
