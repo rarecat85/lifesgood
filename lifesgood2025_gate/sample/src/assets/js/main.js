@@ -44,37 +44,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   gsap.registerPlugin(ScrollTrigger);
+
   const symbol = document.querySelector(".logo-wrap .symbol");
   const gif = document.querySelector(".intelligence .gif");
-  const heroVisual1 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".section.overview",
-      start : "top top",
-      end: "+=200%",
-    },
+
+  // 타임라인 생성 함수
+  function createHeroVisualTimeline() {
+    const heroVisual = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section.overview",
+        start: "top top",
+        end: "+=200%",
+        onEnter: () => heroVisual.restart(),
+      },
   });
-  heroVisual1
-  .addLabel("default")
-  .to(symbol, {
-    scale: 44.44,
-    filter: "blur(800px)",
-  }, "default")
-  .to(symbol, {
-    opacity: 1,
-    duration: 0.7,
-  }, "default")
-  .to(symbol, {
-    scale: 1,
-    filter: "blur(0px)",
-    y: "9rem",
-  })
-  .addLabel("logoChange")
-  .to(symbol, {
-    opacity: 0,
-  }, "logoChange")
-  .to(gif, {
-    opacity: 1,
-  }, "logoChange");
+
+  heroVisual
+    .to(symbol, {
+      scale: 44.44,
+      filter: "blur(20px)",
+      opacity: 1,
+      duration: 0.7,
+    })
+    .to(symbol, {
+      scale: 1,
+      filter: "blur(0px)",
+      y: "9rem",
+    })
+    .addLabel("logoChange")
+    .to(symbol, {
+      opacity: 0,
+    }, "logoChange")
+    .to(gif, {
+      opacity: 1,
+    }, "logoChange");
+
+  return heroVisual;
+}
+createHeroVisualTimeline();
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
@@ -103,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
       }
     });
-  }
+  };
 
   // 디바운스 함수
   function debounce(func, delay) {
@@ -112,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       clearTimeout(timer);
       timer = setTimeout(func, delay);
     };
-  }
+  };
 
   // 초기 실행
   updateContentBoxes();
