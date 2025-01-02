@@ -1,3 +1,7 @@
+gsap.registerPlugin(ScrollTrigger);
+const { toArray } = gsap.utils;
+
+//overview animation
 const overViewSection = document.querySelector('.overview');
 const overviewLogo = document.querySelector('.overview-logo');
 const overviewTitle = document.querySelector('.overview-title');
@@ -56,3 +60,17 @@ if (overViewSection) {
   setOverviewAnimations();
   window.addEventListener('resize', handleResize); // 화면 크기 변경 감지
 }
+
+
+//click animation
+const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
+const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
+
+tabList.forEach((tab, index) => {
+  tab.addEventListener('click', () => {
+    tabList.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  })
+})
+
+gsap.to(tabBg[1],{borderRadius:100, scale:0, duration:1})
