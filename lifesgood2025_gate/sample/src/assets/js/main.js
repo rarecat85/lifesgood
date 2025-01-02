@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
   /* kv 영상 play / pause 버튼 */
   heroToggleBtn.addEventListener("click", function () {
     const heroVideo = document.querySelector(".hero-visual video");
-    console.log(heroVideo)
     if (this.classList.contains("active")) {
       this.classList.remove("active");
       heroVideo.play();
@@ -62,11 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   heroVisual
     .to(symbol, {
-      opacity: 1,
-    })
-    .to(symbol, {
       scale: 1,
       filter: "blur(0px)",
+      opacity:1,
+      duration: 0.6,
       y: "9rem",
     })
     .addLabel("logoChange")
