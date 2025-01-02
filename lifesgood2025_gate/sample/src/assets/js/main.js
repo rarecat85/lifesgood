@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const heroVideo = document.querySelector(".hero-visual video");
   const heroVideoBx = document.querySelector(".hero-visual .video-bx");
   const heroToggleBtn = document.querySelector(".play-btn");
   let currentVideoSrc = "";
@@ -34,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
   /* kv 영상 play / pause 버튼 */
   heroToggleBtn.addEventListener("click", function () {
+    const heroVideo = document.querySelector(".hero-visual video");
+    console.log(heroVideo)
     if (this.classList.contains("active")) {
       this.classList.remove("active");
       heroVideo.play();
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   heroVisual
     .to(symbol, {
       scale: 44.44,
-      filter: "blur(20px)",
+      filter: "blur(20000000px)",
       opacity: 1,
       duration: 0.7,
     })
