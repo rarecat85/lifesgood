@@ -62,10 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   heroVisual
     .to(symbol, {
-      scale: 44.44,
-      filter: "blur(20000000px)",
       opacity: 1,
-      duration: 0.7,
     })
     .to(symbol, {
       scale: 1,
