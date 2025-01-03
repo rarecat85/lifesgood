@@ -130,12 +130,25 @@ body {
     }
   }
   .products {
+    @include desktop {
+      margin-bottom:rem($pc_padding);
+    }
     .inner {
       @include desktop {
+        max-width:unset;
         display:flex;
         align-items:flex-start;
         justify-content:space-between;
         column-gap:rem(98);
+        position:relative;
+        padding:0;
+      }
+    }
+    &:nth-child(even) {
+      .inner {
+        @include desktop {
+          flex-direction:row-reverse;
+        }
       }
     }
     &-video {
@@ -144,8 +157,9 @@ body {
       border-radius:rem(20);
       overflow:hidden;
       @include desktop {
-        width:vw(732);
-        aspect-ratio:16/9;
+        width:100%;
+        aspect-ratio:1920/720;
+        border-radius:0;
         flex-shrink:0;
       }
       video {
@@ -158,30 +172,91 @@ body {
       flex-direction:column;
       row-gap:rem(8);
       @include desktop {
-        margin-top:rem(0);
-        row-gap:0;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin-top:0;
       }
       &-eyebrow {
         @include font(14,114%);
         @include desktop {
-          @include font(20,120%);
-          margin-bottom:rem(8);
+          display:none;
         }
       }
       &-title {
         @include font(28,114%,550);
         @include desktop {
-          @include font(56,110%);
-          margin-bottom:rem(4);
+          @include font(56,110%,$cl:$white);
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%, -50%);
         }
       }
       &-desc {
         @include font(16,112%,$cl:$warmGray);
         margin-bottom:rem(12);
         @include desktop {
-          @include font(24,116%);
-          margin-bottom:rem(24);
+          display:none;
         }
+      }
+      .btn {
+        @include desktop {
+          display:none;
+        }
+      }
+    }
+    
+    &.active {
+      .inner {
+        @include desktop {
+          width:rem(1440);
+        }
+      }
+      .products-video {
+        @include desktop {
+          width:vw(732);
+          aspect-ratio:16/9;
+          flex-shrink:0;
+          border-radius:rem(28);
+        }
+      }
+      .products-textbx {
+        @include desktop {
+          align-items:flex-start;
+          margin-top:rem(0);
+          row-gap:0;
+        }
+        &-eyebrow {
+          @include desktop {
+            display:flex;
+            @include font(20,120%);
+            margin-bottom:rem(8);
+          }
+        }
+        &-title {
+          @include desktop {
+            display:flex;
+            @include font(56,110%);
+            margin-bottom:rem(4);
+            position:relative;
+            top:0;
+            left:0;
+            transform:translate(0,0);
+            color:$black;
+          }
+        }
+        &-desc {
+          @include desktop {
+            display:flex;
+            @include font(24,116%);
+            margin-bottom:rem(24);
+          }
+      }
+      }
+      .btn {
+        display:flex;
       }
     }
   }
