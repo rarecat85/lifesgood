@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(symbol, {
       scale: 2,
       opacity:1,
-      duration: 0.6,
+      duration: 0.3,
     })
     .to(symbol, {
       scale:0.04,
