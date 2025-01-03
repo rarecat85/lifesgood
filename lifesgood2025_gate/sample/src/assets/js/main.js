@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         </video>
       `;
       currentVideoSrc = newVideoSrc;
-    }
-  }
+    };
+  };
 
   // 초기 영상 설정
   setHeroVideo();
@@ -49,35 +49,42 @@ document.addEventListener("DOMContentLoaded", function () {
   const gif = document.querySelector(".intelligence .gif");
 
   // 타임라인 생성 함수
-  function createHeroVisualTimeline() {
-    const heroVisual = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section.overview",
-        start: "top top",
-        onEnter: () => heroVisual.restart(),
-      },
-  });
+  gsap.registerPlugin(ScrollTrigger);
 
-  heroVisual
-    .to(symbol, {
-      scale: 2,
-      opacity:1,
-      duration: 0.3,
-    })
-    .to(symbol, {
-      scale:0.04,
-    })
-    .addLabel("logoChange")
-    .to(symbol, {
-      opacity: 0,
-    }, "logoChange")
-    .to(gif, {
-      opacity: 1,
-    }, "logoChange");
-
-  return heroVisual;
-}
-createHeroVisualTimeline();
+  // ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
+  ScrollTrigger.matchMedia({
+    "(min-width: 1025px)": function() {
+      const heroVisual = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.overview",
+          start: "top top",
+          end: "+=100%",
+          pin: true,
+          scrub: 1,
+          onLeave: function() {
+            gif.classList.add('active');
+            symbol.classList.add('active');
+          },
+          onEnterBack: function() {
+            gif.classList.remove('active');
+            symbol.classList.remove('active');
+          },
+        },
+      });
+    
+      heroVisual
+        .to(symbol, {
+          scale: 2,
+          opacity: 1,
+        })
+        .to(symbol, {
+          scale: 0.04,
+        })
+        .to(symbol, {
+          y: "7rem",
+        });
+    },
+});
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
@@ -92,7 +99,7 @@ createHeroVisualTimeline();
       // pc 사이즈일 경우
       if (window.innerWidth > 1025) {
         box.innerHTML = `
-          <video muted playsinline loop poster="./assets/images/main/${imgName}.jpg" aria-label="${altName}">
+          <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}.mp4">
           </video>
         `;
@@ -101,7 +108,7 @@ createHeroVisualTimeline();
       else {
         box.innerHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
-            <source src="./assets/video/m/${videoName}.mp4">
+            <source src="./assets/video/${videoName}_m.mp4">
           </video>
         `;
       }

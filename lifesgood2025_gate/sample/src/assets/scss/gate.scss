@@ -11,8 +11,6 @@
   }
   /*2025 게이트 페이지*/
   &.gate {
-    max-width: 1920px;
-    margin: 0 auto;
     .section {
       &:not(.hero-visual) {
         position: relative;
@@ -22,53 +20,60 @@
       &.hero-visual {
         width: 100%;
         height: 100svh;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        max-width: 1920px;
-        transform: translateX(-50%);
+        position: relative;
         .inner {
+          clip: rect(0, auto, auto, 0);
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          .video-bx {
+          .fixed-content {
             width: 100%;
             height: 100%;
-            video {
+            position: fixed;
+            transform: translateZ(0);
+            will-change: transform;
+            .video-bx {
               width: 100%;
               height: 100%;
-              object-fit: cover;
+              video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
-          }
-          .txt-bx {
-            width: 100%;
-            text-align: center;
-            transform: translate(-50%, -50%);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            .title {
-              font-family: "LGEI Headline";
-              font-weight: 600;
-              font-size: rem(80);
-              color: $white;
+            .txt-bx {
+              width: 100%;
+              text-align: center;
+              transform: translate(-50%, -50%);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              .title {
+                font-family: "LGEI Headline";
+                font-weight: 600;
+                font-size: rem(80);
+                color: $white;
+              }
+              .btn {
+                margin: rem(40) auto 0;
+              }
             }
-            .btn {
-              margin: rem(40) auto 0;
-            }
-          }
-          .play-btn {
-            width: rem(32);
-            height: rem(32);
-            transform: translateX(-50%);
-            position: absolute;
-            left: 50%;
-            bottom: rem(65);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-image: url(../images/icon/icon_pause.svg);
-            cursor: pointer;
-            &.active {
-              background-image: url(../images/icon/icon_play.svg);
+            .play-btn {
+              width: rem(32);
+              height: rem(32);
+              transform: translateX(-50%);
+              position: absolute;
+              left: 50%;
+              bottom: rem(65);
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-image: url(../img/icon_pause.svg);
+              cursor: pointer;
+              &.active {
+                background-image: url(../img/icon_play.svg);
+              }
             }
           }
         }
@@ -80,7 +85,11 @@
         position: relative;
         overflow: hidden;
         .inner {
-          padding: rem(408) 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100svh;
+          padding: rem(300) 0;
         }
         .txt-bx {
           width: min(calc(100% - rem(40)), 1280px);
@@ -112,17 +121,22 @@
         background-color: #f0ece4;
         .gif {
           max-width: rem(72);
-          transform: translate(-50%, rem(-300));
+          transform: translate(-50%, calc(-50% - rem(172)));
           left: 50%;
-          top: rem(390);
+          top: rem(262);
           position: sticky;
           opacity: 0;
+          z-index: 2;
+          transition: opacity 0.3s;
+          &.active {
+            opacity: 1;
+          }
         }
         .title-wrap {
           display: flex;
           align-items: center;
           gap: clamp(rem(100), 12%, rem(220));
-          padding: rem(80) 0;
+          padding: rem(8) 0 rem(80);
           .title {
             font-family: "LGEI Headline";
             font-weight: 600;
@@ -151,12 +165,15 @@
         ul {
           li {
             display: flex;
+            justify-content: center;
+            gap: clamp(rem(100), 12%, rem(220));
             transition: background-color 0.3s;
             .content-bx {
-              width: 44.65%;
+              width: 50.5%;
               height: rem(560);
               position: relative;
               overflow: hidden;
+              z-index: 1;
               video {
                 width: 100%;
                 height: 100%;
@@ -165,10 +182,8 @@
               }
             }
             .des-bx {
-              width: 55.35%;
-              padding: rem(79) 0 rem(79) clamp(rem(100), 12%, rem(220));
-              padding-bottom: rem(79);
-              border-top: 1px solid #cbc8c2;
+              width: 49.5%;
+              padding: rem(79) 0;
               dt {
                 font-family: "LGEI Headline";
                 font-weight: 600;
@@ -187,6 +202,16 @@
               }
             }
             @include desktop {
+              position: relative;
+              &::after {
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color:#cbc8c2;
+                position: absolute;
+                top: -1px;
+                left: 0;
+              }
               &:hover {
                 background-color: #f6f4f0;
                 .content-bx {
@@ -202,11 +227,13 @@
     }
     .section-wrap {
       background-color: $white;
-      position: relative;
-      margin-top: 100svh;
       .logo-wrap {
         &.png-bx {
-          position: relative;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
           .symbol {
             transform: translate(-50%, -50%);
             position: absolute;
@@ -214,6 +241,10 @@
             left: 50%;
             opacity: 0;
             will-change: transform;
+            transition: all 0.3s;
+            &.active {
+              opacity: 0 !important;
+            }
           }
         }
       }
@@ -283,7 +314,6 @@
     @include btn($white);
   }
 }
-
 @media screen and (max-width: 1025px) {
   .campaign-2025 {
     /*2025 게이트 페이지*/
@@ -292,26 +322,29 @@
         //메인 영상 영역
         &.hero-visual {
           .inner {
-            .txt-bx {
-              padding: 0 rem(25);
-              transform: translate(0, 0);
-              top: rem(40);
-              left: 0;
-              .title {
-                font-size: rem(36);
+            .fixed-content {
+              .txt-bx {
+                padding: 0 rem(25);
+                transform: translate(0, 0);
+                top: rem(40);
+                left: 0;
+                .title {
+                  font-size: rem(36);
+                }
+                .btn {
+                  margin-top: rem(12);
+                }
               }
-              .btn {
-                margin-top: rem(12);
+              .play-btn {
+                bottom: rem(24);
               }
-            }
-            .play-btn {
-              bottom: rem(24);
             }
           }
         }
         //overview
         &.overview {
           .inner {
+            height: auto;
             padding: rem($mo_padding) rem(25) rem(156);
           }
           .txt-bx {
