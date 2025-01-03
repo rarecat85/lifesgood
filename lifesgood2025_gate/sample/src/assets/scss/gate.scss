@@ -208,15 +208,12 @@
         &.png-bx {
           position: relative;
           .symbol {
-            transform: translate(-50%, -50%) scale(44.44);
-            filter: blur(20px);
+            transform: translate(-50%, -50%);
             position: absolute;
-            top: 50%;
+            top: calc(50% + rem(140));
             left: 50%;
             opacity: 0;
-            &.hide {
-              opacity: 0 !important;
-            }
+            will-change: transform;
           }
         }
       }

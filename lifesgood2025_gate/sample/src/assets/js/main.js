@@ -54,18 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".section.overview",
         start: "top top",
-        end: "+=200%",
         onEnter: () => heroVisual.restart(),
       },
   });
 
   heroVisual
     .to(symbol, {
-      scale: 1,
-      filter: "blur(0px)",
+      scale: 0.04, //원본 이미지 사이즈가 변경되면 값을 수정해야 합니다.
       opacity:1,
       duration: 0.6,
-      y: "9rem",
     })
     .addLabel("logoChange")
     .to(symbol, {
