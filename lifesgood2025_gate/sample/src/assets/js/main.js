@@ -60,9 +60,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   heroVisual
     .to(symbol, {
-      scale: 0.04, //원본 이미지 사이즈가 변경되면 값을 수정해야 합니다.
+      scale: 2,
       opacity:1,
       duration: 0.6,
+    })
+    .to(symbol, {
+      scale:0.04,
     })
     .addLabel("logoChange")
     .to(symbol, {
