@@ -78,13 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
           opacity: 1,
         })
         .to(symbol, {
-          scale: 0.04,
+          scale: 0.05,
         })
         .to(symbol, {
-          y: "7rem",
+          y: "9.5rem",
         });
     },
-});
+  });
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
@@ -147,6 +147,34 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  /* storySlide 슬라이드 */
+  let storySlide = null;
+  function handleResize() {
+      let isMobileView = window.innerWidth <= 1025;
+      if (isMobileView && !storySlide) {
+          storySlide = new Swiper(".stories .swiper", {
+              slidesPerView: 1.2,
+              spaceBetween: 10,
+              speed: 1000,
+              navigation: {
+                  nextEl: ".stories .slide-button-next",
+                  prevEl: ".stories .slide-button-prev",
+              },
+              a11y: {
+                  nextSlideMessage: 'move to next slide',
+                  prevSlideMessage: 'move to prev slide',
+              },
+          });
+      }
+      else if (!isMobileView && storySlide) {
+          // 1025px 초과일 때 슬라이드 제거
+          storySlide.destroy();
+          storySlide = null;
+      }
+  }
+  handleResize();
+  window.addEventListener("resize", handleResize);
 
   /*팝업 스크립트 */
   const popShowBtn = document.querySelector(".popup-show");
