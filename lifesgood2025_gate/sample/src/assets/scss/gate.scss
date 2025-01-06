@@ -20,60 +20,50 @@
       &.hero-visual {
         width: 100%;
         height: 100svh;
-        position: relative;
+        position: sticky;
+        top: 0;
         .inner {
-          clip: rect(0, auto, auto, 0);
-          position: absolute;
-          top: 0;
-          left: 0;
           width: 100%;
           height: 100%;
-          .fixed-content {
+          .video-bx {
             width: 100%;
             height: 100%;
-            position: fixed;
-            transform: translateZ(0);
-            will-change: transform;
-            .video-bx {
+            video {
               width: 100%;
               height: 100%;
-              video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
+              object-fit: cover;
             }
-            .txt-bx {
-              width: 100%;
-              text-align: center;
-              transform: translate(-50%, -50%);
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              .title {
-                font-family: "LGEI Headline";
-                font-weight: 600;
-                font-size: rem(80);
-                color: $white;
-              }
-              .btn {
-                margin: rem(40) auto 0;
-              }
+          }
+          .txt-bx {
+            width: 100%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            .title {
+              font-family: "LGEI Headline";
+              font-weight: 600;
+              font-size: rem(80);
+              color: $white;
             }
-            .play-btn {
-              width: rem(32);
-              height: rem(32);
-              transform: translateX(-50%);
-              position: absolute;
-              left: 50%;
-              bottom: rem(65);
-              background-repeat: no-repeat;
-              background-position: center center;
-              background-image: url(../img/icon_pause.svg);
-              cursor: pointer;
-              &.active {
-                background-image: url(../img/icon_play.svg);
-              }
+            .btn {
+              margin: rem(40) auto 0;
+            }
+          }
+          .play-btn {
+            width: rem(32);
+            height: rem(32);
+            transform: translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: rem(65);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url(../img/icon_pause.svg);
+            cursor: pointer;
+            &.active {
+              background-image: url(../img/icon_play.svg);
             }
           }
         }
@@ -88,9 +78,9 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 100svh;
+          min-height: 100svh;
           padding: rem(300) 0;
-        }
+        } 
         .txt-bx {
           width: min(calc(100% - rem(40)), 1280px);
           margin: 0 auto;
@@ -207,10 +197,26 @@
                 content: "";
                 width: 100%;
                 height: 1px;
-                background-color:#cbc8c2;
+                background-color: #cbc8c2;
                 position: absolute;
                 top: -1px;
                 left: 0;
+              }
+              &:first-child {
+                &::after {
+                  top: 0;
+                }
+              }
+              &:last-child {
+                &::before {
+                  content: "";
+                  width: 100%;
+                  height: 1px;
+                  background-color: #cbc8c2;
+                  position: absolute;
+                  bottom: 0px;
+                  left: 0;
+                }
               }
               &:hover {
                 background-color: #f6f4f0;
@@ -224,9 +230,104 @@
           }
         }
       }
+      &.stories {
+        background-color: #f0ece4;
+        .inner {
+          padding: rem(64) 0 rem(64) rem(16);
+          margin: 0 auto;
+          @include desktop {
+            width: min(calc(100% - rem(40)), 1440px);
+            padding: rem(120) 0;
+          }
+          .title {
+            font-family: "LGEI Headline";
+            font-weight: 600;
+            font-size: rem(56);
+          }
+          .slide-bx {
+            margin-top: rem(20);
+            .swiper-slide {
+              height: auto;
+              background-color: $white;
+              border-radius: rem(28);
+              overflow: hidden;
+              img {
+                width: 100%;
+                aspect-ratio: 464 / 300;
+                object-fit: cover;
+              }
+              .txt-bx {
+                padding: rem(20) rem(28) rem(92);
+                dl {
+                  dt {
+                    font-weight: 300;
+                    font-size: rem(36);
+                    line-height: 1.2;
+                    margin-bottom: rem(8);
+                  }
+                  dd {
+                    font-size: rem(24);
+                    line-height: 1.1;
+                    text-wrap: balance;
+                  }
+                }
+                .white-btn {
+                  position: absolute;
+                  bottom: rem(28);
+                  left: rem(28);
+                }
+              }
+            }
+            .slide-controller {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: rem(16);
+              margin-top: rem(20);
+              margin-right: rem(16);
+              button {
+                display: block;
+                width: rem(32);
+                height: rem(32);
+                position: relative;
+                cursor: pointer;
+                &::after {
+                  content: "";
+                  width: rem(8);
+                  height: rem(12);
+                  transform: translate(-50%, -50%);
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  background: url(../images/icon/slide_arrow.svg) no-repeat;
+                  background-position: center;
+                  background-size: rem(8);
+                }
+                &.slide-button-next {
+                  transform: rotate(180deg);
+                }
+              }
+            }
+            @include desktop {
+              .swiper-wrapper {
+                flex-wrap: nowrap;
+                gap: rem(24);
+                .swiper-slide {
+                  width: calc(100% / 3 - rem(16));
+                }
+              }
+              .slide-controller {
+                display: none;
+              }
+            }
+          }
+        }
+      }
     }
     .section-wrap {
       background-color: $white;
+      position: relative;
+      z-index: 2;
       .logo-wrap {
         &.png-bx {
           width: 100%;
@@ -322,22 +423,20 @@
         //메인 영상 영역
         &.hero-visual {
           .inner {
-            .fixed-content {
-              .txt-bx {
-                padding: 0 rem(25);
-                transform: translate(0, 0);
-                top: rem(40);
-                left: 0;
-                .title {
-                  font-size: rem(36);
-                }
-                .btn {
-                  margin-top: rem(12);
-                }
+            .txt-bx {
+              padding: 0 rem(25);
+              transform: translate(0, 0);
+              top: rem(40);
+              left: 0;
+              .title {
+                font-size: rem(36);
               }
-              .play-btn {
-                bottom: rem(24);
+              .btn {
+                margin-top: rem(12);
               }
+            }
+            .play-btn {
+              bottom: rem(24);
             }
           }
         }
@@ -373,13 +472,13 @@
             padding: rem($mo_padding) rem(16);
             .title {
               width: fit-content;
+              font-size: rem(28);
+              line-height: 1.2;
               text-align: left;
               margin-bottom: rem(8);
               span {
                 display: block;
                 width: rem(190);
-                font-size: rem(28);
-                line-height: 1.2;
               }
             }
             .des {
@@ -426,6 +525,34 @@
               }
               & + li {
                 margin-top: rem(64);
+              }
+            }
+          }
+        }
+        &.stories {
+          .inner {
+            .title {
+              font-size: rem(28);
+              line-height: 1.1428;
+            }
+            .slide-bx {
+              margin-top: rem(12);
+              .swiper-slide {
+                .txt-bx {
+                  padding: rem(16) rem(20) rem(102);
+                  dl {
+                    dt {
+                      font-size: rem(24);
+                    }
+                    dd {
+                      font-size: rem(16);
+                    }
+                  }
+                  .white-btn {
+                    left: rem(20);
+                    bottom: rem(24);
+                  }
+                }
               }
             }
           }
