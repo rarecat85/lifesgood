@@ -65,6 +65,7 @@ if (overViewSection) {
 //click animation
 const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
 const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
+const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
 
 let changeImg = tabBg.find(li => li.classList.contains('active')); // 초기 활성화된 이미지 설정
 let currentTimeline = null; // 진행 중인 타임라인 저장
@@ -77,8 +78,20 @@ tabList.forEach((tab, index) => {
     const currentImg = changeImg.querySelector('img');
 
     // 클릭된 탭 활성화 처리
-    tabList.forEach(t => t.classList.remove('active'));
+    tabList.forEach(t => {
+      t.classList.remove('active')
+      t.setAttribute('aria-selected','false');
+    });
     tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+
+    // tabContent 활성화 처리
+    tabCon.forEach(con => {
+      con.classList.remove('active');
+      con.setAttribute('tabindex','-1');
+    });
+    tabCon[index].classList.add('active');
+    tabCon[index].setAttribute('tabindex','0');
 
     // 새로운 타임라인 생성 및 저장
     currentTimeline = gsap.timeline()

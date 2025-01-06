@@ -12,7 +12,7 @@
 
 /* media Query */
 @mixin tablet {
-  @media all and (min-width: #{$mo}){
+  @media all and (min-width: #{$tab}){
     @content;
   }
 }
