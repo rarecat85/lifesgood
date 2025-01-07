@@ -8,6 +8,53 @@ ScrollSmoother.create({
   smoothTouch: 0.1,
 });
 
+
+
+//kv interraction
+const kvConBx = document.querySelector('.kv-conbx');
+const kvVideoBx = document.querySelector('.kv-conbx-video');
+const kvVideo = document.querySelector('.kv-conbx-video video');
+const kvDesc = document.querySelector('.kv-conbx-desc');
+const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
+const kvVideoClose = document.querySelector('.kv-conbx-video-close');
+
+// PC 여부 확인 함수
+const isPC = () => window.matchMedia('(min-width: 1025px)').matches;
+
+// controls 상태 업데이트 함수
+const updateVideoControls = () => {
+  if (isPC()) {
+    kvVideo.removeAttribute('controls'); // PC에서는 controls 제거
+  } else {
+    kvVideo.setAttribute('controls', 'controls'); // 모바일에서는 controls 추가
+  }
+};
+
+gsap.set(kvVideoClose,{autoAlpha:0})
+kvVideoBtn.addEventListener('click', ()=>{
+  gsap.timeline()
+  .to(kvDesc,{width:'100%'})
+  .to(kvVideoBx,{width:'100%',maxWidth:'100%'},'<')
+  .to(kvVideoBtn,{autoAlpha:0},'<')
+  .to(kvVideoClose,{autoAlpha:1},'<')
+
+  kvVideo.setAttribute('controls', 'controls');
+  kvVideo.play();
+})
+
+kvVideoClose.addEventListener('click', ()=>{
+  gsap.timeline()
+  .to(kvDesc,{width:''})
+  .to(kvVideoBx,{width:'', maxWidth:''},'<')
+  .to(kvVideoBtn,{autoAlpha:1},'<')
+  .to(kvVideoClose,{autoAlpha:0},'<')
+
+  kvVideo.removeAttribute('controls');
+  kvVideo.pause();
+  kvVideo.currentTime = 0;
+})
+
+
 //overview animation
 const overViewSection = document.querySelector('.overview');
 const overviewLogo = document.querySelector('.overview-logo');
@@ -72,9 +119,6 @@ if (overViewSection) {
 const prodSect = toArray('.products');
 let triggers = []; // 생성된 ScrollTrigger 저장 배열
 let animations = []; // 생성된 애니메이션 저장 배열
-
-// PC인지 확인하는 함수
-const isPC = () => window.matchMedia('(min-width: 1024px)').matches;
 
 // 애니메이션 초기화 함수
 const initAnimation = () => {
@@ -147,6 +191,7 @@ const destroyAnimation = () => {
 
 // 리사이즈 이벤트 핸들러
 const onResize = () => {
+  updateVideoControls();
   if (isPC()) {
     if (!triggers.length) {
       initAnimation();
@@ -161,9 +206,6 @@ const onResize = () => {
 // 초기화 및 리사이즈 이벤트 등록
 window.addEventListener('resize', onResize);
 onResize(); // 초기 실행
-
-
-
 
 
 
