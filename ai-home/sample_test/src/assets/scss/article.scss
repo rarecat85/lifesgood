@@ -205,12 +205,11 @@ body {
       border-radius:rem(20);
       overflow:hidden;
       @include desktop {
-        height:100%;
-        aspect-ratio:unset;
+        aspect-ratio:16/9;
         position:absolute;
         top:0;
         left:0;
-        transform-origin:center left;
+        transform-origin:bottom left;
         border-radius:0;
       }
       video {
@@ -235,7 +234,7 @@ body {
           justify-content:flex-start;
         }
         .products-video {
-          transform-origin:center right;
+          transform-origin:bottom right;
         }
       }
     }
