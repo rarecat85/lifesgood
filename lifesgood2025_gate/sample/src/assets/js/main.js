@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const symbol = document.querySelector(".logo-wrap .symbol");
   const gif = document.querySelector(".intelligence .gif");
+  // const img01 = document.querySelector(".overview .img-list .img01");
+  // const img02 = document.querySelector(".overview .img-list .img02");
 
   // 타임라인 생성 함수
   gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: ".section.overview",
           start: "top top",
-          end: "+=100%",
+          end: "+=120%",
           pin: true,
           scrub: 1,
           onLeave: function() {
@@ -73,6 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     
       heroVisual
+        // .addLabel('imgShow')
+        // .to(img01,{
+        //   x : "-25vw",
+        //   y : "-30svh",
+        //   scale: 1,
+        // }, "imgShow")
+        // .to(img02,{
+        //   x : "25vw",
+        //   y : "25svh",
+        //   scale: 1,
+        // }, "imgShow")
         .to(symbol, {
           scale: 2,
           opacity: 1,
