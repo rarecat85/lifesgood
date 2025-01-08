@@ -142,43 +142,40 @@ body {
       }
     }
     &-logo {
-      width:rem(48);
-      height:rem(48);
-      @include desktop {
-        width:rem(80);
-        height:rem(80);
+      display:flex;
+      align-items:center;
+      column-gap:rem(8);
+      &-logo-img {
+        width:rem(44);
+        height:rem(44);
+        @include desktop {
+          width:rem(48);
+          height:rem(48);
+        }
+        img {
+          @include img(cover);
+        }
       }
-      img {
-        @include img(cover);
-      }
-    }
-    &-title {
-      @include font(28,114%,550);
-      @include desktop {
-        @include font(56,107%);
-        br {
-          display:none;
+      &-title {
+        @include font(28,100%,550,$ls:0.028px);
+        background: linear-gradient(95deg, #FD312E 2.01%, #F914EB 56.87%, #B432F5 78.57%, #8227FF 97.14%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        text-align:left;
+        @include desktop {
+          @include font(44,$ls:-0.352px);
+          br {
+            display:none;
+          }
         }
       }
     }
     &-desc {
-      @include font(16,112%);
-      background: linear-gradient(
-        to left,
-        #000 30%,
-        #8227FF 40%,
-        #B432F5 50%,
-        #F914EB 60%,
-        #FD312E 70%,
-        #000 80%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-fill-color: transparent;
-      background-size: 500% auto;
+      @include font(20,120%,$warmGray);
       @include desktop {
-        font-size:rem(36);
+        font-size:rem(24,116%);
       }
     }
   }
