@@ -44,58 +44,137 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   gsap.registerPlugin(ScrollTrigger);
-
-  const symbol = document.querySelector(".logo-wrap .symbol");
+  const gate = document.querySelector(".campaign-2025.gate");
   const gif = document.querySelector(".intelligence .gif");
-  // const img01 = document.querySelector(".overview .img-list .img01");
-  // const img02 = document.querySelector(".overview .img-list .img02");
+  const img01 = document.querySelector(".overview .img-list .img01");
+  const img02 = document.querySelector(".overview .img-list .img02");
+  const img03 = document.querySelector(".overview .img-list .img03");
+  const img04 = document.querySelector(".overview .img-list .img04");
+  const img05 = document.querySelector(".overview .img-list .img05");
+  const img06 = document.querySelector(".overview .img-list .img06");
+  const title1 = document.querySelector(".overview .txt-bx .bx-1 .title");
+  const txt1 = document.querySelector(".overview .txt-bx .bx-1 p");
+  const title2 = document.querySelector(".overview .txt-bx .bx-2 .title");
+  const txt2 = document.querySelector(".overview .txt-bx .bx-2 p");
+  const redPoint = document.querySelector(".red-point");
 
   // 타임라인 생성 함수
   gsap.registerPlugin(ScrollTrigger);
 
-  // ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
+  //ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
   ScrollTrigger.matchMedia({
-    "(min-width: 1025px)": function() {
+    // PC (1440px 이상)
+    "(min-width: 1440px)": function() {
       const heroVisual = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.overview",
           start: "top top",
-          end: "+=120%",
+          end: "+=500%",
           pin: true,
           scrub: 1,
           onLeave: function() {
             gif.classList.add('active');
-            symbol.classList.add('active');
+            redPoint.classList.add('hide');
           },
           onEnterBack: function() {
             gif.classList.remove('active');
-            symbol.classList.remove('active');
+            redPoint.classList.remove('hide');
           },
         },
       });
-    
+  
       heroVisual
-        // .addLabel('imgShow')
-        // .to(img01,{
-        //   x : "-25vw",
-        //   y : "-30svh",
-        //   scale: 1,
-        // }, "imgShow")
-        // .to(img02,{
-        //   x : "25vw",
-        //   y : "25svh",
-        //   scale: 1,
-        // }, "imgShow")
-        .to(symbol, {
-          scale: 2,
-          opacity: 1,
-        })
-        .to(symbol, {
-          scale: 0.05,
-        })
-        .to(symbol, {
-          y: "9.5rem",
-        });
+        .addLabel('imgShow')
+        .to(img01, { x: "-33vw", y: "-10svh", scale: 0.5 }, "imgShow")
+        .to(img02, { x: "-24.5vw", y: "-35.3svh", scale: 0.3614 }, "imgShow")
+        .to(img03, { x: "30.5vw", y: "-29.8svh", scale: 0.5 }, "imgShow")
+        .to(img04, { x: "20.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
+        .to(img05, { x: "31.6vw", y: "22svh", scale: 0.5 }, "imgShow")
+        .to(img06, { x: "-20.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
+        .to(title1, { opacity: 1, y: 0 })
+        .to(txt1, { opacity: 1, y: 0 })
+        .addLabel('txtFade')
+        .to(title1, { opacity: 0 }, "txtFade")
+        .to(txt1, { opacity: 0 }, "txtFade")
+        .to(txt2, { opacity: 1, y: 0 })
+        .to(title2, { opacity: 1, y: 0 })
+        .to(redPoint, { opacity: 0.8 })
+        .to(redPoint, { scale: 1, opacity: 1 });
+    },
+  
+    // 태블릿 (1439px ~ 769px)
+    "(min-width: 769px) and (max-width: 1439px)": function() {
+      const heroVisual = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.overview",
+          start: "top top",
+          end: "+=500%",
+          pin: true,
+          scrub: 2,
+          onLeave: function() {
+            gif.classList.add('active');
+            redPoint.classList.add('hide');
+          },
+          onEnterBack: function() {
+            gif.classList.remove('active');
+            redPoint.classList.remove('hide');
+          },
+        },
+      });
+  
+      heroVisual
+        .addLabel('imgShow')
+        .to(img01, { x: "-43vw", y: "-30svh", scale: 0.3387 }, "imgShow")
+        .to(img03, { x: "42vw", y: "-29.8svh", scale: 0.41 }, "imgShow")
+        .to(img05, { x: "43vw", y: "36svh", scale: 0.3387 }, "imgShow")
+        .to(img06, { x: "-43vw", y: "34svh", scale: 0.3614 }, "imgShow")
+        .to(title1, { opacity: 1, y: 0 })
+        .to(txt1, { opacity: 1, y: 0 })
+        .addLabel('txtFade')
+        .to(title1, { opacity: 0 }, "txtFade")
+        .to(txt1, { opacity: 0 }, "txtFade")
+        .to(txt2, { opacity: 1, y: 0 })
+        .to(title2, { opacity: 1, y: 0 })
+        .to(redPoint, { opacity: 0.8 })
+        .to(redPoint, { scale: 1, opacity: 1 });
+    },
+  
+    // 모바일 (768px 이하)
+    "(max-width: 768px)": function() {
+      const heroVisual = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.overview",
+          start: "top top",
+          end: "+=300%",
+          pin: true,
+          scrub: 2,
+          onLeave: function() {
+            gif.classList.add('active');
+            redPoint.classList.add('hide');
+          },
+          onEnterBack: function() {
+            gif.classList.remove('active');
+            redPoint.classList.remove('hide');
+          },
+        },
+      });
+  
+      heroVisual
+        .addLabel('imgShow')
+        .to(img01, { x: "-120%", y: "-180%", scale: 0.44 }, "imgShow")
+        .to(img03, { x: "22%", y: "-190%", scale: 0.49 }, "imgShow")
+        .to(img05, { x: "22%", y: "80%", scale: 0.44 }, "imgShow")
+        .to(img06, { x: "-120%", y: "80%", scale: 0.49 }, "imgShow")
+        .to(title1, { opacity: 1, y: 0 })
+        .to(txt1, { opacity: 1, y: 0 })
+        .addLabel('txtFade')
+        .to(title1, { opacity: 0 }, "txtFade")
+        .to(txt1, { opacity: 0 }, "txtFade")
+        .to(txt2, { opacity: 1, y: 0 })
+        .to(title2, { opacity: 1, y: 0 })
+        .to(redPoint, { opacity: 0.8 })
+        .to(redPoint, { scale: 1, opacity: 1 })
+        .to(redPoint, { scale: 1});
     },
   });
 
@@ -141,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateContentBoxes();
 
   // 리사이즈 이벤트
-  window.addEventListener("resize", debounce(updateContentBoxes, 200));
+  //window.addEventListener("resize", debounce(updateContentBoxes, 200));
 
   contentList.forEach(function (li, index) {
     li.addEventListener("mouseenter", function () {
