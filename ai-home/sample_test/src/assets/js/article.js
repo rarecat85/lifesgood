@@ -8,112 +8,78 @@ ScrollSmoother.create({
   smoothTouch: 0.1,
 });
 
-
-
-//kv interraction
-const kvConBx = document.querySelector('.kv-conbx');
-const kvVideoBx = document.querySelector('.kv-conbx-video');
-const kvVideo = document.querySelector('.kv-conbx-video video');
-const kvDesc = document.querySelector('.kv-conbx-desc');
-const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
-const kvVideoClose = document.querySelector('.kv-conbx-video-close');
-
-// PC 여부 확인 함수
 const isPC = () => window.matchMedia('(min-width: 1025px)').matches;
+let isMobile;
 
-// controls 상태 업데이트 함수
-const updateVideoControls = () => {
+function kvAnimation() {
+  const kvVideoBx = document.querySelector('.kv-conbx-video');
+  const kvVideo = document.querySelector('.kv-conbx-video video');
+  const kvDesc = document.querySelector('.kv-conbx-desc');
+  const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
+  const kvVideoClose = document.querySelector('.kv-conbx-video-close');
+
   if (isPC()) {
-    kvVideo.removeAttribute('controls'); // PC에서는 controls 제거
+    kvVideo.removeAttribute('controls'); 
+
+    gsap.set(kvVideoClose,{autoAlpha:0})
+    kvVideoBtn.addEventListener('click', ()=>{
+      gsap.timeline()
+      .to(kvDesc,{width:'100%'})
+      .to(kvVideoBx,{width:'100%',maxWidth:'100%'},'<')
+      .to(kvVideoBtn,{autoAlpha:0},'<')
+      .to(kvVideoClose,{autoAlpha:1},'<')
+
+      kvVideo.setAttribute('controls', 'controls');
+      kvVideo.play();
+    })
+
+    kvVideoClose.addEventListener('click', ()=>{
+      gsap.timeline()
+      .to(kvDesc,{width:''})
+      .to(kvVideoBx,{width:'', maxWidth:''},'<')
+      .to(kvVideoBtn,{autoAlpha:1},'<')
+      .to(kvVideoClose,{autoAlpha:0},'<')
+
+      kvVideo.removeAttribute('controls');
+      kvVideo.pause();
+      kvVideo.currentTime = 0;
+    })
   } else {
-    kvVideo.setAttribute('controls', 'controls'); // 모바일에서는 controls 추가
+    kvVideo.setAttribute('controls', 'controls'); 
   }
-};
+}
 
-gsap.set(kvVideoClose,{autoAlpha:0})
-kvVideoBtn.addEventListener('click', ()=>{
-  gsap.timeline()
-  .to(kvDesc,{width:'100%'})
-  .to(kvVideoBx,{width:'100%',maxWidth:'100%'},'<')
-  .to(kvVideoBtn,{autoAlpha:0},'<')
-  .to(kvVideoClose,{autoAlpha:1},'<')
+function handleResize() {
+  const newIsMobile = isPC();
 
-  kvVideo.setAttribute('controls', 'controls');
-  kvVideo.play();
-})
+  kvAnimation();
 
-kvVideoClose.addEventListener('click', ()=>{
-  gsap.timeline()
-  .to(kvDesc,{width:''})
-  .to(kvVideoBx,{width:'', maxWidth:''},'<')
-  .to(kvVideoBtn,{autoAlpha:1},'<')
-  .to(kvVideoClose,{autoAlpha:0},'<')
+  if (newIsMobile !== isMobile) {
+    isMobile = newIsMobile;
+  } else if (overviewAnimation) {
+  }
+}
 
-  kvVideo.removeAttribute('controls');
-  kvVideo.pause();
-  kvVideo.currentTime = 0;
-})
+function prodAnimation() {
+
+}
 
 
-//overview animation
-// const overViewSection = document.querySelector('.overview');
-// const overviewLogo = document.querySelector('.overview-logo');
-// const overviewTitle = document.querySelector('.overview-title');
-// const overviewDesc = document.querySelector('.overview-desc');
+function init() {
+  const sections = Array.from(toArray('section'), section => section.className);
+  isMobile = isPC();
 
-// let isMobile = window.matchMedia('(max-width: 1024px)').matches;
-// let overviewAnimation = null; // 애니메이션 타임라인 참조
+  if(sections.includes('kv')) {
+    kvAnimation()
+  }
+  if(sections.includes('products')) {
+    prodAnimation()
+  }
 
-// function setOverviewAnimations() {
-//   const xValue = isMobile ? 0 : window.innerWidth / 2 - overviewLogo.offsetLeft;
+  window.addEventListener('resize', handleResize);
+}
 
-//   // 기존 애니메이션 제거
-//   if (overviewAnimation) {
-//     overviewAnimation.kill();
-//     overviewAnimation = null;
-//   }
-
-//   // 초기 상태 설정
-//   gsap.set(overviewDesc, { opacity: 0, y: 20 });
-//   gsap.set(overviewLogo, { opacity: 0, x: xValue, y: 20 });
-//   gsap.set(overviewTitle, { opacity: 0, y: 20 });
-
-//   // 새로운 애니메이션 타임라인 생성
-//   overviewAnimation = gsap.timeline()
-//     .to(overviewLogo, { opacity: 1, y: 0,  })
-//     .to(overviewLogo, { x: 0, duration: isMobile ? 0 : 0.5 }) // 모바일에서 x 애니메이션 제거
-//     .to(overviewTitle, { opacity: 1, y: 0, })
-//     .to(overviewDesc, { opacity: 1, y: 0 })
-//     .set(overviewDesc, { backgroundPosition: '100% 50%' }, '<')
-//     .to(overviewDesc, { backgroundPosition: '0% 50%', duration: 1.5 });
-
-//   // ScrollTrigger 설정
-//   ScrollTrigger.create({
-//     trigger: overViewSection,
-//     start: 'top 80%',
-//     end: 'bottom 80%',
-//     animation: overviewAnimation,
-//     toggleActions: 'restart none none none',
-//   });
-// }
-
-// function handleResize() {
-//   const newIsMobile = window.matchMedia('(max-width: 1024px)').matches;
-
-//   if (newIsMobile !== isMobile) {
-//     isMobile = newIsMobile;
-//     setOverviewAnimations(); // 애니메이션 재설정
-//   } else if (overviewAnimation) {
-//     // 크기 변경 중 애니메이션 정지 및 재설정
-//     overviewAnimation.pause(0);
-//     setOverviewAnimations();
-//   }
-// }
-
-// if (overViewSection) {
-//   setOverviewAnimations();
-//   window.addEventListener('resize', handleResize); // 화면 크기 변경 감지
-// }
+init()
 
 //Prod animation
 const prodSect = toArray('.products');
@@ -189,23 +155,23 @@ const destroyAnimation = () => {
   });
 };
 
-// 리사이즈 이벤트 핸들러
-const onResize = () => {
-  updateVideoControls();
-  if (isPC()) {
-    if (!triggers.length) {
-      initAnimation();
-    }
-  } else {
-    if (triggers.length) {
-      destroyAnimation();
-    }
-  }
-};
+// // 리사이즈 이벤트 핸들러
+// const onResize = () => {
+//   updateVideoControls();
+//   if (isPC()) {
+//     if (!triggers.length) {
+//       initAnimation();
+//     }
+//   } else {
+//     if (triggers.length) {
+//       destroyAnimation();
+//     }
+//   }
+// };
 
 // 초기화 및 리사이즈 이벤트 등록
-window.addEventListener('resize', onResize);
-onResize(); // 초기 실행
+// window.addEventListener('resize', onResize);
+// onResize(); // 초기 실행
 
 
 
