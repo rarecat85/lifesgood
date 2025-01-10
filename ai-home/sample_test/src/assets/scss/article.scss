@@ -38,6 +38,7 @@ body {
       padding-top:rem(56);
       @include desktop {
         padding-top:rem(120);
+        padding-bottom:0;
       }
     }
     &-title {
@@ -134,11 +135,10 @@ body {
       flex-direction:column;
       text-align:center;
       row-gap:rem(8);
+      padding:rem(54) 0 rem(110);
       @include desktop {
-        flex-direction:row;
-        flex-wrap:wrap;
+        height:rem(720);
         justify-content:center;
-        gap:rem(24) rem(10);
       }
     }
     &-logo {
@@ -177,6 +177,8 @@ body {
     &-desc {
       @include font(20,120%,$warmGray);
       @include desktop {
+        max-width:rem(600);
+        margin:0 auto;
         @include font(24,116%);
       }
     }

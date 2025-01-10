@@ -54,51 +54,96 @@ function overviewAnimation() {
   const overviewTitle = document.querySelector('.overview-logo-title');
   const overviewLogo = document.querySelector('.overview-logo-img');
   const overviewDesc = document.querySelector('.overview-desc');
-  let splitTextInstance; 
-  let lines;
 
-  function createSplitText() {
-    if (splitTextInstance) {
-      splitTextInstance.revert();
-    }
-    splitTextInstance = new SplitText(overviewDesc, { type: 'lines' });
-    lines = splitTextInstance.lines;
-    gsap.set(lines, { opacity: 0, y: 20 });
+  function calculateLogoXPosition() {
+    return innerWidth / 2 - overviewLogo.offsetLeft ;
   }
 
-  createSplitText();
+  function clearOverviewAnimation() {
+    // 기존 ScrollTrigger 및 애니메이션 초기화
+    ScrollTrigger.getById("overview-trigger")?.kill();
+  }
 
-  const overviewTL = gsap.timeline()
-    .set(overviewTitle, {
-      webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-      maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-      webkitMaskRepeat: "no-repeat",
-      maskRepeat: "no-repeat",
-    })
-    .set(overviewLogo, { x: innerWidth / 2 - overviewLogo.offsetLeft, y: 20, opacity: 0 })
-    .to(overviewLogo, { opacity: 1, y: 0, duration: 1 }) 
-    .to(overviewLogo, { x: 0, duration: 1 }) 
-    .to(overviewTitle, {
-      webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-      maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-      duration: 1,
-      ease: "power2.out"
-    })
-    .to(lines, { opacity: 1, y: 0, stagger: 0.2 }, '-=0.5');
+  function setupOverviewAnimation() {
+    clearOverviewAnimation(); // 기존 설정 제거
 
-  ScrollTrigger.create({
-    trigger: overviewSection,
-    start: 'top 80%',
-    end: 'bottom 80%',
-    animation: overviewTL,
-    toggleActions: 'restart none none none', 
-    onLeaveBack: () => {
-      overviewTL.pause(0); 
-    }
-  });
 
-  window.addEventListener('resize', () => createSplitText());
+    // 새 애니메이션 타임라인 설정
+    const overviewTL = gsap.timeline()
+      .set(overviewTitle, {
+        webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
+        maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
+        webkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+      })
+      .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
+      .set(overviewDesc, {opacity:0, y:20})
+      .to(overviewLogo, { opacity: 1, y: 0, duration: 1 }) 
+      .to(overviewLogo, { x: 0, duration: 1 }) 
+      .to(overviewTitle, {
+        webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+        maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+        duration: 1,
+        ease: "power2.out"
+      })
+      .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
+
+    // ScrollTrigger 생성
+    ScrollTrigger.create({
+      id: "overview-trigger",
+      trigger: overviewSection,
+      start: 'top center',
+      end: 'bottom center',
+      animation: overviewTL,
+      toggleActions: 'restart none none none', 
+    });
+  }
+
+  // 초기화 후 새 설정 실행
+  setupOverviewAnimation();
+
+  // 리사이즈 시 초기화 및 새 설정 실행
+  window.addEventListener('resize', setupOverviewAnimation);
 }
+
+function handleResize() {
+  const newIsMobile = !isPC(); 
+
+  if (newIsMobile !== isMobile) {
+    isMobile = newIsMobile;
+    prodAnimation(); 
+  }
+
+  // 전체 ScrollTrigger 새로고침
+  ScrollTrigger.refresh();
+
+  // 오버뷰 애니메이션 완전 초기화 후 재설정
+  overviewAnimation();
+}
+
+function init() {
+  const sections = Array.from(toArray('section'), section => section.className);
+  isMobile = !isPC();
+
+  if (sections.includes('kv')) {
+    kvAnimation();
+  }
+  if (sections.includes('products')) {
+    prodAnimation();
+  }
+  if (sections.includes('thinQ-tabs')) {
+    tabAnimation();
+  }
+  if (sections.includes('overview')) {
+    overviewAnimation();
+  }
+
+  // 리사이즈 이벤트 처리
+  window.addEventListener('resize', handleResize);
+}
+
+init();
+
 
 function prodAnimation() {
   const isDesktop = isPC(); 
@@ -144,8 +189,6 @@ function prodAnimation() {
     }
   });
 }
-
-
 
 function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
@@ -195,13 +238,11 @@ function handleResize() {
 
   if (newIsMobile !== isMobile) {
     isMobile = newIsMobile;
-
     prodAnimation(); 
   }
+  ScrollTrigger.refresh();
+  overviewAnimation();
 }
-
-
-
 
 function init() {
   const sections = Array.from(toArray('section'), section => section.className);
@@ -210,14 +251,14 @@ function init() {
   if(sections.includes('kv')) {
     kvAnimation()
   }
-  if(sections.includes('overview')) {
-    overviewAnimation()
-  }
   if(sections.includes('products')) {
     prodAnimation()
   }
   if(sections.includes('thinQ-tabs')) {
     tabAnimation()
+  }
+  if(sections.includes('overview')) {
+    overviewAnimation()
   }
 
   window.addEventListener('resize', handleResize);
