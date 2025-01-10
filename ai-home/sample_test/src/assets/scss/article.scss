@@ -159,11 +159,13 @@ body {
       &-title {
         @include font(28,100%,550,$ls:0.028px);
         background: linear-gradient(95deg, #FD312E 2.01%, #F914EB 56.87%, #B432F5 78.57%, #8227FF 97.14%);
-        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-fill-color: transparent;
         text-align:left;
+        -webkit-mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
+        mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
         @include desktop {
           @include font(44,$ls:-0.352px);
           br {
@@ -175,7 +177,7 @@ body {
     &-desc {
       @include font(20,120%,$warmGray);
       @include desktop {
-        font-size:rem(24,116%);
+        @include font(24,116%);
       }
     }
   }
@@ -312,7 +314,7 @@ body {
     @include desktop {
       margin-top:rem(120);
     }
-    .thinQ-tabs-imgbx {
+    &-imgbx {
       width:100%;
       aspect-ratio:1/1;
       border-radius:rem(20);
@@ -322,7 +324,7 @@ body {
         aspect-ratio:1440/810;
         border-radius:rem(28);
       }
-      .thinQ-tabs-imgbx-bgwrap {
+      &-bgwrap {
         picture {
           width:100%;
           position:absolute;
@@ -337,7 +339,7 @@ body {
           @include img(cover);
         }
       }
-      .thinQ-tabs-imgbx-fixedimg {
+      &-fixedimg {
         width:100%;
         height:100%;
         position:absolute;

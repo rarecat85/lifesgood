@@ -49,6 +49,104 @@ function kvAnimation() {
   }
 }
 
+function overviewAnimation() {
+  const overviewSection = document.querySelector('.overview');
+  const overviewTitle = document.querySelector('.overview-logo-title');
+  const overviewLogo = document.querySelector('.overview-logo-img');
+  const overviewDesc = document.querySelector('.overview-desc');
+  let splitTextInstance; 
+  let lines;
+
+  function createSplitText() {
+    if (splitTextInstance) {
+      splitTextInstance.revert();
+    }
+    splitTextInstance = new SplitText(overviewDesc, { type: 'lines' });
+    lines = splitTextInstance.lines;
+    gsap.set(lines, { opacity: 0, y: 20 });
+  }
+
+  createSplitText();
+
+  const overviewTL = gsap.timeline()
+    .set(overviewTitle, {
+      webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
+      maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
+      webkitMaskRepeat: "no-repeat",
+      maskRepeat: "no-repeat",
+    })
+    .set(overviewLogo, { x: innerWidth / 2 - overviewLogo.offsetLeft, y: 20, opacity: 0 })
+    .to(overviewLogo, { opacity: 1, y: 0, duration: 1 }) 
+    .to(overviewLogo, { x: 0, duration: 1 }) 
+    .to(overviewTitle, {
+      webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+      maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+      duration: 1,
+      ease: "power2.out"
+    })
+    .to(lines, { opacity: 1, y: 0, stagger: 0.2 }, '-=0.5');
+
+  ScrollTrigger.create({
+    trigger: overviewSection,
+    start: 'top 80%',
+    end: 'bottom 80%',
+    animation: overviewTL,
+    toggleActions: 'restart none none none', 
+    onLeaveBack: () => {
+      overviewTL.pause(0); 
+    }
+  });
+
+  window.addEventListener('resize', () => createSplitText());
+}
+
+
+
+
+
+function tabAnimation() {
+  const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
+  const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
+  const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
+  
+  let changeImg = tabBg.find(li => li.classList.contains('active'));
+  let currentTimeline = null;
+
+  tabList.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      if (currentTimeline) currentTimeline.progress(1);
+
+      const currentImg = changeImg.querySelector('img');
+
+      tabList.forEach(t => {
+        t.classList.remove('active')
+        t.setAttribute('aria-selected','false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+
+      tabCon.forEach(con => {
+        con.classList.remove('active');
+        con.setAttribute('tabindex','-1');
+      });
+      tabCon[index].classList.add('active');
+      tabCon[index].setAttribute('tabindex','0');
+
+      currentTimeline = gsap.timeline()
+      .to(currentImg, {borderRadius:'100%',scale:0,duration:1})
+      .eventCallback('onComplete', () => {
+        tabBg.forEach(bg => bg.classList.remove('active'));
+        tabBg[index].classList.add('active');
+
+        gsap.set(currentImg, {borderRadius:'0%',scale:1}); 
+        changeImg = tabBg[index]; 
+
+        currentTimeline = null;
+      })
+    })
+  })
+}
+
 function handleResize() {
   const newIsMobile = isPC();
 
@@ -60,9 +158,6 @@ function handleResize() {
   }
 }
 
-function prodAnimation() {
-
-}
 
 
 function init() {
@@ -72,155 +167,16 @@ function init() {
   if(sections.includes('kv')) {
     kvAnimation()
   }
-  if(sections.includes('products')) {
-    prodAnimation()
+  if(sections.includes('overview')) {
+    overviewAnimation()
+  }
+  if(sections.includes('thinQ-tabs')) {
+    tabAnimation()
   }
 
   window.addEventListener('resize', handleResize);
 }
 
 init()
-
-//Prod animation
-const prodSect = toArray('.products');
-let triggers = []; // 생성된 ScrollTrigger 저장 배열
-let animations = []; // 생성된 애니메이션 저장 배열
-
-// 애니메이션 초기화 함수
-const initAnimation = () => {
-  prodSect.forEach((section, index) => {
-    const prodInner = section.querySelector('.inner');
-    const prodVideoBx = section.querySelector('.products-video');
-    const prodVideo = prodVideoBx.querySelector('video');
-    const prodVideoTitle = section.querySelector('.products-video-title');
-    const pordTbxEyebrow = section.querySelector('.products-textbx-eyebrow');
-    const pordTbxTitle = section.querySelector('.products-textbx-title');
-    const pordTbxDesc = section.querySelector('.products-textbx-desc');
-    const prodTbxBtn = section.querySelector('.btn');
-
-    // 애니메이션 타임라인 생성
-    const prodTl = gsap.timeline()
-      .set([pordTbxEyebrow, pordTbxTitle, pordTbxDesc, prodTbxBtn], { opacity: 0, y: 20 })
-      .to(prodVideoTitle, { opacity: 0, y: 20 })
-      .call(() => {
-        prodVideo.play();
-      })
-      .to(prodInner, { maxWidth: '1440px' })
-      .to(prodVideoBx, { scale: 0.5083, borderRadius: 28 })
-      .to([pordTbxEyebrow, pordTbxTitle, pordTbxDesc, prodTbxBtn], { opacity: 1, y: 0, stagger: 0.2 });
-
-    // ScrollTrigger 생성
-    const trigger = ScrollTrigger.create({
-      trigger: section,
-      start: 'top',
-      end: '+=3000',
-      pin: true,
-      scrub: true,
-      animation: prodTl,
-      onLeaveBack: () => {
-        prodVideo.pause();
-        prodVideo.currentTime = 0;
-      },
-    });
-
-    animations.push(prodTl);
-    triggers.push(trigger);
-  });
-};
-
-// 애니메이션 및 트리거 제거 함수
-const destroyAnimation = () => {
-  // ScrollTrigger 제거
-  triggers.forEach(trigger => trigger.kill());
-  triggers = [];
-
-  // 애니메이션 초기화
-  animations.forEach(animation => animation.kill());
-  animations = [];
-
-  // DOM 요소 초기화
-  prodSect.forEach((section) => {
-    const prodInner = section.querySelector('.inner');
-    const prodVideoBx = section.querySelector('.products-video');
-    const prodVideoTitle = section.querySelector('.products-video-title');
-    const pordTbxEyebrow = section.querySelector('.products-textbx-eyebrow');
-    const pordTbxTitle = section.querySelector('.products-textbx-title');
-    const pordTbxDesc = section.querySelector('.products-textbx-desc');
-    const prodTbxBtn = section.querySelector('.btn');
-
-    gsap.set([pordTbxEyebrow, pordTbxTitle, pordTbxDesc, prodTbxBtn], { opacity: '', y: '' });
-    gsap.set(prodVideoTitle, { opacity: '', y: '' });
-    gsap.set(prodInner, { maxWidth: '' });
-    gsap.set(prodVideoBx, { scale: '1', borderRadius: '' });
-  });
-};
-
-// // 리사이즈 이벤트 핸들러
-// const onResize = () => {
-//   updateVideoControls();
-//   if (isPC()) {
-//     if (!triggers.length) {
-//       initAnimation();
-//     }
-//   } else {
-//     if (triggers.length) {
-//       destroyAnimation();
-//     }
-//   }
-// };
-
-// 초기화 및 리사이즈 이벤트 등록
-// window.addEventListener('resize', onResize);
-// onResize(); // 초기 실행
-
-
-
-//click animation
-const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
-const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
-const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
-
-let changeImg = tabBg.find(li => li.classList.contains('active')); // 초기 활성화된 이미지 설정
-let currentTimeline = null; // 진행 중인 타임라인 저장
-
-tabList.forEach((tab, index) => {
-  tab.addEventListener('click', () => {
-    if (currentTimeline) currentTimeline.progress(1); // 현재 타임라인이 진행 중이라면 강제 완료
-
-    // 현재 활성화된 이미지의 <img> 선택
-    const currentImg = changeImg.querySelector('img');
-
-    // 클릭된 탭 활성화 처리
-    tabList.forEach(t => {
-      t.classList.remove('active')
-      t.setAttribute('aria-selected','false');
-    });
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected','true');
-
-    // tabContent 활성화 처리
-    tabCon.forEach(con => {
-      con.classList.remove('active');
-      con.setAttribute('tabindex','-1');
-    });
-    tabCon[index].classList.add('active');
-    tabCon[index].setAttribute('tabindex','0');
-
-    // 새로운 타임라인 생성 및 저장
-    currentTimeline = gsap.timeline()
-    .to(currentImg, {borderRadius:'100%',scale:0,duration:1})
-    .eventCallback('onComplete', () => {
-      // 기존 활성화 상태 제거 및 새로운 활성화 상태 추가
-      tabBg.forEach(bg => bg.classList.remove('active'));
-      tabBg[index].classList.add('active');
-
-      gsap.set(currentImg, {borderRadius:'0%',scale:1}); // 이미지 초기화
-      changeImg = tabBg[index]; // 활성 이미지 업데이트
-
-      // 타임라인 완료 후 초기화
-      currentTimeline = null;
-    })
-  })
-})
 
 
