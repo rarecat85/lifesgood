@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
       heroVideoBx.innerHTML = `
-        <video autoplay muted playsinline loop>
+        <video autoplay muted playsinline loop aria-label="A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.">
           <source src="${newVideoSrc}">
         </video>
       `;
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   gsap.registerPlugin(ScrollTrigger);
-  const gate = document.querySelector(".campaign-2025.gate");
   const gif = document.querySelector(".intelligence .gif");
   const img01 = document.querySelector(".overview .img-list .img01");
   const img02 = document.querySelector(".overview .img-list .img02");
@@ -98,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(txt1, { opacity: 0 }, "txtFade")
         .to(txt2, { opacity: 1, y: 0 })
         .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { opacity: 0.8 })
+        .to(redPoint, { opacity: 0.4 })
         .to(redPoint, { scale: 1, opacity: 1 });
     },
   
@@ -180,33 +179,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
-
+  
+  // 초기 창 너비 상태 (true: PC, false: 모바일)
+  let isPC = window.innerWidth > 1025;
+  
   // 콘텐츠 업데이트 함수
   function updateContentBoxes() {
-    contentBoxes.forEach(function (box) {
+    contentBoxes.forEach(function (box, index) {
       const videoName = box.dataset.videoName; // 비디오 파일 이름
       const imgName = box.dataset.imgName; // poster 이미지 이름
       const altName = box.dataset.alt; // aria-label 이름
-
-      // pc 사이즈일 경우
+  
+      // 현재 창 너비에 따른 콘텐츠 설정
+      let videoHTML;
       if (window.innerWidth > 1025) {
-        box.innerHTML = `
+        videoHTML = `
           <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}.mp4">
           </video>
+          <button type="button" class="play-btn"></button>
         `;
-      } 
-      // 모바일 사이즈일 경우
-      else {
-        box.innerHTML = `
+      } else {
+        videoHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
             <source src="./assets/video/${videoName}_m.mp4">
           </video>
+          <button type="button" class="play-btn"></button>
         `;
       }
+  
+      // 콘텐츠가 동일한지 확인하여 불필요한 업데이트 방지
+      if (box.innerHTML !== videoHTML) {
+        box.innerHTML = videoHTML;
+  
+        // 버튼과 비디오 요소 선택
+        const playBtn = box.querySelector('.play-btn');
+        const video = box.querySelector('video');
+  
+        // 초기 상태에 따라 버튼 활성화 설정
+        if (video.paused) {
+          playBtn.classList.remove('active');
+        } else {
+          playBtn.classList.add('active');
+        }
+  
+        // 버튼 클릭 이벤트 리스너 추가
+        playBtn.addEventListener('click', function () {
+          if (video.paused) {
+            video.play();
+            playBtn.classList.add('active');
+          } else {
+            video.pause();
+            playBtn.classList.remove('active');
+          }
+        });
+  
+        // 마우스 오버 및 아웃 이벤트 리스너 추가 (PC 사이즈일 때만)
+        if (isPC) {
+          const li = contentList[index];
+          
+          // 기존 이벤트 리스너 제거 (중복 방지)
+          li.removeEventListener("mouseenter", handleMouseEnter);
+          li.removeEventListener("mouseleave", handleMouseLeave);
+          
+          // 이벤트 핸들러 정의
+          function handleMouseEnter() {
+            video.play();
+            playBtn.classList.add('active');
+          }
+  
+          function handleMouseLeave() {
+            video.pause();
+            video.currentTime = 0;
+            playBtn.classList.remove('active');
+          }
+  
+          // 새로운 이벤트 리스너 추가
+          li.addEventListener("mouseenter", handleMouseEnter);
+          li.addEventListener("mouseleave", handleMouseLeave);
+        }
+      }
     });
-  };
-
+  }
+  
   // 디바운스 함수
   function debounce(func, delay) {
     let timer;
@@ -214,36 +269,27 @@ document.addEventListener("DOMContentLoaded", function () {
       clearTimeout(timer);
       timer = setTimeout(func, delay);
     };
-  };
-
+  }
+  
+  // 창 너비 상태 변경 여부 확인 후 업데이트
+  function handleResize() {
+    const currentlyPC = window.innerWidth > 1025;
+    if (currentlyPC !== isPC) {
+      isPC = currentlyPC;
+      updateContentBoxes();
+    }
+  }
+  
   // 초기 실행
   updateContentBoxes();
-
-  // 리사이즈 이벤트
-  //window.addEventListener("resize", debounce(updateContentBoxes, 200));
-
-  contentList.forEach(function (li, index) {
-    li.addEventListener("mouseenter", function () {
-      const video = contentBoxes[index].querySelector("video");
-      if (window.innerWidth > 1025) {
-        video.setAttribute("autoplay", "autoplay");
-        video.play();
-      }
-    });
-    li.addEventListener("mouseleave", function () {
-      const video = contentBoxes[index].querySelector("video");
-      if (window.innerWidth > 1025) {
-        video.removeAttribute("autoplay");
-        video.pause();
-        video.currentTime = 0;
-      }
-    });
-  });
+  
+  // 리사이즈 이벤트 (가로 크기 변경 시에만 업데이트)
+  window.addEventListener("resize", debounce(handleResize, 200));
 
   /* storySlide 슬라이드 */
   let storySlide = null;
   function handleResize() {
-      let isMobileView = window.innerWidth <= 1025;
+      let isMobileView = window.innerWidth <= 796;
       if (isMobileView && !storySlide) {
           storySlide = new Swiper(".stories .swiper", {
               slidesPerView: 1.2,
