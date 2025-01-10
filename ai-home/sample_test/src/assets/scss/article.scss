@@ -196,6 +196,7 @@ body {
         align-items:center;
         justify-content:flex-end;
         position:relative;
+        transform-origin:center center;
       }
     }
     &-video {
@@ -206,9 +207,10 @@ body {
       @include desktop {
         aspect-ratio:16/9;
         position:absolute;
-        top:0;
-        left:0;
-        transform-origin:bottom left;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        transform-origin:center left;
         border-radius:0;
       }
       video {
@@ -233,7 +235,7 @@ body {
           justify-content:flex-start;
         }
         .products-video {
-          transform-origin:bottom right;
+          transform-origin:center right;
         }
       }
     }

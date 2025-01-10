@@ -100,7 +100,50 @@ function overviewAnimation() {
   window.addEventListener('resize', () => createSplitText());
 }
 
+function prodAnimation() {
+  const isDesktop = isPC(); 
+  const prodSections = toArray('.products');
 
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+  prodSections.forEach((section) => {
+    const prodInner = section.querySelector('.inner');
+    const prodVideoTitle = section.querySelector('.products-video-title');
+    const prodVideoBx = section.querySelector('.products-video');
+    const prodVideo = section.querySelector('video');
+    const prodTextBx = section.querySelector('.products-textbx');
+    const prodTextChildren = toArray(prodTextBx.children);
+
+    if (isDesktop) {
+      const prodTl = gsap.timeline({
+        defaults: { ease: 'linear' },
+      })
+        .set(prodTextChildren, { opacity: 0, y: 20 }) 
+        .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
+        .call(() => prodVideo.play()) 
+        .to(prodInner, { maxWidth: '1440px' }) 
+        .to(prodVideoBx, { scale: 0.5083, borderRadius: 28, duration: 2 })
+        .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 });
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top',
+        end: '+=1200',
+        pin: true,
+        scrub: true,
+        animation: prodTl,
+        onLeaveBack: () => {
+          prodVideo.pause();
+          prodVideo.currentTime = 0;
+        },
+      });
+    } else {
+      prodVideo.pause();
+      prodVideo.currentTime = 0;
+      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx], { clearProps: 'all' });
+    }
+  });
+}
 
 
 
@@ -148,27 +191,30 @@ function tabAnimation() {
 }
 
 function handleResize() {
-  const newIsMobile = isPC();
-
-  kvAnimation();
+  const newIsMobile = !isPC(); 
 
   if (newIsMobile !== isMobile) {
     isMobile = newIsMobile;
-  } else if (overviewAnimation) {
+
+    prodAnimation(); 
   }
 }
 
 
 
+
 function init() {
   const sections = Array.from(toArray('section'), section => section.className);
-  isMobile = isPC();
+  isMobile = !isPC();
 
   if(sections.includes('kv')) {
     kvAnimation()
   }
   if(sections.includes('overview')) {
     overviewAnimation()
+  }
+  if(sections.includes('products')) {
+    prodAnimation()
   }
   if(sections.includes('thinQ-tabs')) {
     tabAnimation()
