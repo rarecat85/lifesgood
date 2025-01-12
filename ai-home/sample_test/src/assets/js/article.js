@@ -18,9 +18,11 @@ function kvAnimation() {
   const kvDesc = document.querySelector('.kv-conbx-desc');
   const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
   const kvVideoClose = document.querySelector('.kv-conbx-video-close');
+  const videoSrc = kvVideo.getAttribute('src'); 
 
   if (isPC()) {
     gsap.set(kvVideoClose,{autoAlpha:0})
+    
     kvVideoBtn.addEventListener('click', ()=>{
       gsap.timeline()
       .to(kvDesc,{width:'100%'})
@@ -57,9 +59,8 @@ function kvAnimation() {
       );
     })
   } else {
-    const videoSrc = kvVideo.getAttribute('src');
     if (!videoSrc.includes('autoplay=1')) {
-      kvVideo.setAttribute('src', `${videoSrc}?autoplay=1&mute=1`);
+      kvVideo.setAttribute('src', `${videoSrc}?enablejsapi=1&autoplay=1&mute=1`);
     }  
   }
 }
@@ -210,20 +211,19 @@ function tabAnimation() {
 }
 
 function handleResize() {
-  console.log('resize' + isPC())
   const newIsMobile = !isPC(); 
 
   if (newIsMobile !== isMobile) {
     isMobile = newIsMobile;
+    kvAnimation(); 
     prodAnimation(); 
   }
-
+  
   ScrollTrigger.refresh();
   overviewAnimation();
 }
 
 function init() {
-  console.log('init')
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
