@@ -43,7 +43,7 @@ body {
         padding:rem($tab_padding) rem(24) 0;
       }
       @include desktop {
-        padding-top:rem($pc_padding);
+        padding:rem($pc_padding) 0 0;
       }
     }
     &-title {
