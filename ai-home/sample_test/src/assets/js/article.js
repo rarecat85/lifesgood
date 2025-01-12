@@ -8,7 +8,7 @@ ScrollSmoother.create({
   smoothTouch: 0.1,
 });
 
-const isPC = () => window.matchMedia('(min-width: 1025px)').matches;
+const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 
 function kvAnimation() {
@@ -106,45 +106,6 @@ function overviewAnimation() {
   window.addEventListener('resize', setupOverviewAnimation);
 }
 
-function handleResize() {
-  const newIsMobile = !isPC(); 
-
-  if (newIsMobile !== isMobile) {
-    isMobile = newIsMobile;
-    prodAnimation(); 
-  }
-
-  // 전체 ScrollTrigger 새로고침
-  ScrollTrigger.refresh();
-
-  // 오버뷰 애니메이션 완전 초기화 후 재설정
-  overviewAnimation();
-}
-
-function init() {
-  const sections = Array.from(toArray('section'), section => section.className);
-  isMobile = !isPC();
-
-  if (sections.includes('kv')) {
-    kvAnimation();
-  }
-  if (sections.includes('products')) {
-    prodAnimation();
-  }
-  if (sections.includes('thinQ-tabs')) {
-    tabAnimation();
-  }
-  if (sections.includes('overview')) {
-    overviewAnimation();
-  }
-
-  // 리사이즈 이벤트 처리
-  window.addEventListener('resize', handleResize);
-}
-
-init();
-
-
 function prodAnimation() {
   const isDesktop = isPC(); 
   const prodSections = toArray('.products');
@@ -166,8 +127,8 @@ function prodAnimation() {
         .set(prodTextChildren, { opacity: 0, y: 20 }) 
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
         .call(() => prodVideo.play()) 
-        .to(prodInner, { maxWidth: '1440px' }) 
-        .to(prodVideoBx, { scale: 0.5083, borderRadius: 28, duration: 2 })
+        .to(prodInner, { maxWidth: '1440px'}) 
+        .to(prodVideoBx, { scale: 0.5083,x:(24/16)+'rem', borderRadius: 28, duration: 2 })
         .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 });
 
       ScrollTrigger.create({
@@ -234,36 +195,40 @@ function tabAnimation() {
 }
 
 function handleResize() {
+  console.log('resize' + isPC())
   const newIsMobile = !isPC(); 
 
   if (newIsMobile !== isMobile) {
     isMobile = newIsMobile;
     prodAnimation(); 
   }
+
   ScrollTrigger.refresh();
   overviewAnimation();
 }
 
 function init() {
+  console.log('init')
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
-  if(sections.includes('kv')) {
-    kvAnimation()
+  if (sections.includes('kv')) {
+    kvAnimation();
   }
-  if(sections.includes('products')) {
-    prodAnimation()
+  if (sections.includes('products')) {
+    prodAnimation();
   }
-  if(sections.includes('thinQ-tabs')) {
-    tabAnimation()
+  if (sections.includes('overview')) {
+    overviewAnimation();
   }
-  if(sections.includes('overview')) {
-    overviewAnimation()
+  if (sections.includes('thinQ-tabs')) {
+    tabAnimation();
   }
 
+  // 리사이즈 이벤트 처리
   window.addEventListener('resize', handleResize);
 }
 
-init()
+init();
 
 
