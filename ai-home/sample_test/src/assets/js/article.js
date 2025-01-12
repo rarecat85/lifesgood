@@ -171,9 +171,30 @@ function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
   const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
   const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
-  
+  const titleElement = document.querySelector('.thinQ-tabs-imgbx-fixedimg-title');
+
+  const tabTitles = [
+    '"Hey, LG"',
+    '"Welcome back"' 
+  ];
+
   let changeImg = tabBg.find(li => li.classList.contains('active'));
   let currentTimeline = null;
+
+  function animateTitle(text) {
+    const splitText = text.split('');
+    titleElement.textContent = '';
+
+    splitText.forEach((char, index) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.opacity = '0';
+      span.style.transform = 'translateY(10px)';
+      titleElement.appendChild(span);
+
+      gsap.to(span, {opacity: 1, y: 0, delay: index * 0.05, duration: 0.2});
+    });
+  }
 
   tabList.forEach((tab, index) => {
     tab.addEventListener('click', () => {
@@ -182,33 +203,37 @@ function tabAnimation() {
       const currentImg = changeImg.querySelector('img');
 
       tabList.forEach(t => {
-        t.classList.remove('active')
-        t.setAttribute('aria-selected','false');
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
       });
       tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
+      tab.setAttribute('aria-selected', 'true');
 
       tabCon.forEach(con => {
         con.classList.remove('active');
-        con.setAttribute('tabindex','-1');
+        con.setAttribute('tabindex', '-1');
       });
       tabCon[index].classList.add('active');
-      tabCon[index].setAttribute('tabindex','0');
+      tabCon[index].setAttribute('tabindex', '0');
+
+      animateTitle(tabTitles[index]);
 
       currentTimeline = gsap.timeline()
-      .to(currentImg, {borderRadius:'100%',scale:0,duration:1})
-      .eventCallback('onComplete', () => {
-        tabBg.forEach(bg => bg.classList.remove('active'));
-        tabBg[index].classList.add('active');
+        .to(currentImg, { borderRadius: '100%', scale: 0, duration: 1 })
+        .eventCallback('onComplete', () => {
+          tabBg.forEach(bg => bg.classList.remove('active'));
+          tabBg[index].classList.add('active');
 
-        gsap.set(currentImg, {borderRadius:'0%',scale:1}); 
-        changeImg = tabBg[index]; 
+          gsap.set(currentImg, { borderRadius: '0%', scale: 1 });
+          changeImg = tabBg[index];
 
-        currentTimeline = null;
-      })
-    })
-  })
+          currentTimeline = null;
+        });
+    });
+  });
 }
+
+
 
 function handleResize() {
   const newIsMobile = !isPC(); 
