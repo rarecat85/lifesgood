@@ -13,39 +13,54 @@ let isMobile;
 
 function kvAnimation() {
   const kvVideoBx = document.querySelector('.kv-conbx-video');
-  const kvVideo = document.querySelector('.kv-conbx-video video');
+  const kvVideo = document.querySelector('.kv-conbx-video iframe');
+  const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
   const kvDesc = document.querySelector('.kv-conbx-desc');
   const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
   const kvVideoClose = document.querySelector('.kv-conbx-video-close');
 
   if (isPC()) {
-    kvVideo.removeAttribute('controls'); 
-
     gsap.set(kvVideoClose,{autoAlpha:0})
     kvVideoBtn.addEventListener('click', ()=>{
       gsap.timeline()
       .to(kvDesc,{width:'100%'})
       .to(kvVideoBx,{width:'100%',maxWidth:'100%'},'<')
+      .to(kvVideoThumb,{autoAlpha:0},'<')
       .to(kvVideoBtn,{autoAlpha:0},'<')
       .to(kvVideoClose,{autoAlpha:1},'<')
 
-      kvVideo.setAttribute('controls', 'controls');
-      kvVideo.play();
+      kvVideo.contentWindow.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: "playVideo",
+          args: []
+        }),
+        "*"
+      );       
     })
 
     kvVideoClose.addEventListener('click', ()=>{
       gsap.timeline()
       .to(kvDesc,{width:''})
       .to(kvVideoBx,{width:'', maxWidth:''},'<')
+      .to(kvVideoThumb, { autoAlpha: 1 }, '<')
       .to(kvVideoBtn,{autoAlpha:1},'<')
       .to(kvVideoClose,{autoAlpha:0},'<')
 
-      kvVideo.removeAttribute('controls');
-      kvVideo.pause();
-      kvVideo.currentTime = 0;
+      kvVideo.contentWindow.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: "stopVideo", 
+          args: []
+        }),
+        "*"
+      );
     })
   } else {
-    kvVideo.setAttribute('controls', 'controls'); 
+    const videoSrc = kvVideo.getAttribute('src');
+    if (!videoSrc.includes('autoplay=1')) {
+      kvVideo.setAttribute('src', `${videoSrc}?autoplay=1&mute=1`);
+    }  
   }
 }
 

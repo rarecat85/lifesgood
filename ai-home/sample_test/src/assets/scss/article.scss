@@ -92,6 +92,20 @@ body {
         overflow:hidden;
         position:relative;
         aspect-ratio:3/4;
+        &-thumb {
+          display:none;
+          @include tablet {
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            img {
+              @include img(cover);
+            }
+          }
+        }
+        iframe,
         video {
           @include img(cover);
         }
@@ -303,9 +317,11 @@ body {
       align-items:flex-start;
       justify-content:flex-start;
       flex-direction:column;
+      margin-top:rem(20);
       @include tablet {
         width:calc((410*100/1024)*1vw);
-        max-width:rem(410)
+        max-width:rem(410);
+        margin-top:0;
       }
       @include desktop {
         width:vw(610);
