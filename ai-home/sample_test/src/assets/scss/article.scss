@@ -336,6 +336,9 @@ body {
         @include desktop {
           @include font(24,116%);
         }
+        span {
+          font-weight:700;
+        }
       }
       &-disc {
         @include font(12,116%,$cl:$disc);

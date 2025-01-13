@@ -12,57 +12,60 @@ const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 
 function kvAnimation() {
+  const kvSection = document.querySelector('.kv');
   const kvVideoBx = document.querySelector('.kv-conbx-video');
   const kvVideo = document.querySelector('.kv-conbx-video iframe');
   const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
   const kvDesc = document.querySelector('.kv-conbx-desc');
-  const kvVideoBtn = document.querySelector('.kv-conbx-video-btn');
-  const kvVideoClose = document.querySelector('.kv-conbx-video-close');
-  const videoSrc = kvVideo.getAttribute('src'); 
+  const videoSrc = kvVideo.getAttribute('src');
+  let kvAnimationTl;
+  let scrollTriggerInstance;
 
-  if (isPC()) {
-    gsap.set(kvVideoClose,{autoAlpha:0})
-    
-    kvVideoBtn.addEventListener('click', ()=>{
-      gsap.timeline()
-      .to(kvDesc,{width:'100%'})
-      .to(kvVideoBx,{width:'100%',maxWidth:'100%'},'<')
-      .to(kvVideoThumb,{autoAlpha:0},'<')
-      .to(kvVideoBtn,{autoAlpha:0},'<')
-      .to(kvVideoClose,{autoAlpha:1},'<')
-
-      kvVideo.contentWindow.postMessage(
-        JSON.stringify({
-          event: "command",
-          func: "playVideo",
-          args: []
-        }),
-        "*"
-      );       
+  if(isPC()) {
+    kvAnimationTl = gsap.timeline({
+      onStart: () => {
+        kvVideo.contentWindow.postMessage(
+          JSON.stringify({
+            event: "command",
+            func: "playVideo",
+            args: [],
+          }),
+          "*"
+        );
+      },
+      onComplete: () => {
+        ScrollTrigger.refresh()
+      }
     })
+      .to(kvDesc, {width:'100%'})
+      .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
+      .to(kvVideoThumb, { autoAlpha: 0 }, '<')
 
-    kvVideoClose.addEventListener('click', ()=>{
-      gsap.timeline()
-      .to(kvDesc,{width:''})
-      .to(kvVideoBx,{width:'', maxWidth:''},'<')
-      .to(kvVideoThumb, { autoAlpha: 1 }, '<')
-      .to(kvVideoBtn,{autoAlpha:1},'<')
-      .to(kvVideoClose,{autoAlpha:0},'<')
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: kvSection,
+        start: 'top',
+        end: 'center end',
+        scrub:true,
+        animation: kvAnimationTl,
+        once: true
+      });
+  }else {
+    if (kvAnimationTl) {
+      kvAnimationTl.kill();
+      kvAnimationTl = null;
+    }
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+      scrollTriggerInstance = null;
+    }
+    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
 
-      kvVideo.contentWindow.postMessage(
-        JSON.stringify({
-          event: "command",
-          func: "stopVideo", 
-          args: []
-        }),
-        "*"
-      );
-    })
-  } else {
     if (!videoSrc.includes('autoplay=1')) {
-      kvVideo.setAttribute('src', `${videoSrc}?enablejsapi=1&autoplay=1&mute=1`);
+      kvVideo.setAttribute('src', `${videoSrc}&autoplay=1`);
     }  
   }
+
+  
 }
 
 function overviewAnimation() {
@@ -76,15 +79,12 @@ function overviewAnimation() {
   }
 
   function clearOverviewAnimation() {
-    // 기존 ScrollTrigger 및 애니메이션 초기화
     ScrollTrigger.getById("overview-trigger")?.kill();
   }
 
   function setupOverviewAnimation() {
-    clearOverviewAnimation(); // 기존 설정 제거
+    clearOverviewAnimation(); 
 
-
-    // 새 애니메이션 타임라인 설정
     const overviewTL = gsap.timeline()
       .set(overviewTitle, {
         webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
@@ -104,7 +104,6 @@ function overviewAnimation() {
       })
       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
 
-    // ScrollTrigger 생성
     ScrollTrigger.create({
       id: "overview-trigger",
       trigger: overviewSection,
@@ -115,18 +114,27 @@ function overviewAnimation() {
     });
   }
 
-  // 초기화 후 새 설정 실행
   setupOverviewAnimation();
-
-  // 리사이즈 시 초기화 및 새 설정 실행
   window.addEventListener('resize', setupOverviewAnimation);
 }
 
+
+let prodTriggers = [];
+
 function prodAnimation() {
-  const isDesktop = isPC(); 
+  const isDesktop = isPC();
   const prodSections = toArray('.products');
 
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  prodTriggers.forEach(trigger => trigger.kill());
+  prodTriggers.length = 0;
+
+  const resetVideoControls = (prodVideo, prodVideoBtn) => {
+    prodVideo.pause();
+    prodVideo.currentTime = 0;
+    prodVideoBtn.setAttribute('aria-pressed', 'false');
+    prodVideoBtn.setAttribute('aria-label', 'play');
+    prodVideoBtn.textContent = 'play';
+  };
 
   prodSections.forEach((section) => {
     const prodInner = section.querySelector('.inner');
@@ -135,9 +143,10 @@ function prodAnimation() {
     const prodVideo = section.querySelector('video');
     const prodTextBx = section.querySelector('.products-textbx');
     const prodTextChildren = toArray(prodTextBx.children);
+    const prodVideoBtn = section.querySelector('.products-video-btn');
 
     const resetProps = () => {
-      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx], { clearProps: 'all' });
+      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
     };
 
     const playVideoOnView = () => {
@@ -145,9 +154,11 @@ function prodAnimation() {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             prodVideo.play();
+            prodVideoBtn.setAttribute('aria-pressed', 'true');
+            prodVideoBtn.setAttribute('aria-label', 'pause');
+            prodVideoBtn.textContent = 'pause';
           } else {
-            prodVideo.pause();
-            prodVideo.currentTime = 0;
+            resetVideoControls(prodVideo, prodVideoBtn);
           }
         });
       }, {
@@ -156,18 +167,42 @@ function prodAnimation() {
       observer.observe(section);
     };
 
+    const addVideoButtonListeners = () => {
+      prodVideoBtn.addEventListener('click', () => {
+        const isPlaying = prodVideoBtn.getAttribute('aria-pressed') === 'true';
+        prodVideoBtn.setAttribute('aria-pressed', !isPlaying);
+        prodVideoBtn.setAttribute('aria-label', isPlaying ? 'play' : 'pause');
+        prodVideoBtn.textContent = isPlaying ? 'play' : 'pause';
+
+        if (isPlaying) {
+          prodVideo.pause();
+          prodVideo.currentTime = 0;
+        } else {
+          prodVideo.play();
+        }
+      });
+    };
+
+    addVideoButtonListeners();
+
     if (isDesktop) {
+      const isReverse = section.classList.contains('reverse');
+      const xValue = (24 / 16) + 'rem';
+      const adjustedX = isReverse ? `-${xValue}` : xValue;
+
       const prodTl = gsap.timeline({
         defaults: { ease: 'linear' },
       })
-        .set(prodTextChildren, { opacity: 0, y: 20 }) 
+        .set(prodVideoBtn, { opacity: 0 })
+        .set(prodTextChildren, { opacity: 0, y: 20 })
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
-        .call(() => prodVideo.play()) 
-        .to(prodInner, { maxWidth: '1440px'}) 
-        .to(prodVideoBx, { scale: 0.5083, x: (24 / 16) + 'rem', borderRadius: 28, duration: 2 })
-        .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 });
+        .call(() => prodVideo.play())
+        .to(prodInner, { maxWidth: '1440px' })
+        .to(prodVideoBx, { scale: 0.5083, x: adjustedX, borderRadius: 28, duration: 2 })
+        .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 })
+        .to(prodVideoBtn, { opacity: 1, scale: 2.4585 });
 
-      ScrollTrigger.create({
+      const trigger = ScrollTrigger.create({
         trigger: section,
         start: 'top',
         end: '+=1200',
@@ -175,16 +210,29 @@ function prodAnimation() {
         scrub: true,
         animation: prodTl,
         onLeaveBack: () => {
-          prodVideo.pause();
-          prodVideo.currentTime = 0;
+          resetVideoControls(prodVideo, prodVideoBtn);
         },
       });
+
+      prodTriggers.push(trigger);
     } else {
-      playVideoOnView();
       resetProps();
+      playVideoOnView();
     }
   });
+
+  window.addEventListener('resize', () => {
+    prodSections.forEach(section => {
+      const prodVideo = section.querySelector('video');
+      const prodVideoBtn = section.querySelector('.products-video-btn');
+
+      resetVideoControls(prodVideo, prodVideoBtn);
+    });
+
+    prodAnimation();
+  });
 }
+
 
 function handleResize() {
   const newIsMobile = !isPC(); 
