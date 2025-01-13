@@ -401,17 +401,16 @@ body {
       overflow:hidden;
       position:relative;
       @include tablet {
-        aspect-ratio:976/651;
+        aspect-ratio:unset;
+        height:rem(720);
         border-radius:rem(28);
-      }
-      @include desktop {
-        aspect-ratio:1440/810;
       }
       &-bgwrap {
         width:100%;
         height:100%;
         picture {
           width:100%;
+          height:100%;
           position:absolute;
           top:50%;
           left:50%;
@@ -468,14 +467,18 @@ body {
           }
         }
         &-prod {
-          width:rem(110);
+          width:rem(180);
           position:absolute;
           top:50%;
           left:50%;
           transform:translate(-50%,-50%);
-          margin-top:vw(150);
+          margin-left:rem(30);
+          margin-top:rem(42);
+          z-index:1;
           @include tablet {
-            width:vw(533);
+            width:rem(533);
+            margin-left:rem(90);
+            margin-top:rem(130);
           }
           img {
             @include img();
@@ -490,6 +493,8 @@ body {
           display:flex;
           align-items:center;
           margin-top:auto;
+          position:relative;
+          z-index:2;
           @include tablet {
             padding:rem(6);
           }
