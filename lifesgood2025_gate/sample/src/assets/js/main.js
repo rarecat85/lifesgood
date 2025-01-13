@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function setHeroVideo() {
     const isDesktop = window.innerWidth > 1025;
     const newVideoSrc = isDesktop
-      ? "./assets/video/hero_video_pc.mp4"
+      ? "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv.mp4"
       : "./assets/video/hero_video_m.mp4";
 
     // 현재 영상이 변경된 경우에만 업데이트
@@ -74,10 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             gif.classList.add('active');
             redPoint.classList.add('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
           },
           onEnterBack: function() {
             gif.classList.remove('active');
             redPoint.classList.remove('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
           },
         },
       });
@@ -97,8 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(txt1, { opacity: 0 }, "txtFade")
         .to(txt2, { opacity: 1, y: 0 })
         .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { opacity: 0.4 })
-        .to(redPoint, { scale: 1, opacity: 1 });
+        .to(redPoint, {opacity: 0.5})
+        .to(redPoint, { width: "10vw", scale:0.8, duration: 1 })
+        .to(redPoint, { width: 8, scale:1, duration: 0.3 });
     },
   
     // 태블릿 (1439px ~ 769px)
@@ -113,20 +116,22 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             gif.classList.add('active');
             redPoint.classList.add('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
           },
           onEnterBack: function() {
             gif.classList.remove('active');
             redPoint.classList.remove('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
           },
         },
       });
   
       heroVisual
         .addLabel('imgShow')
-        .to(img01, { x: "-43vw", y: "-30svh", scale: 0.3387 }, "imgShow")
-        .to(img03, { x: "42vw", y: "-29.8svh", scale: 0.41 }, "imgShow")
-        .to(img05, { x: "43vw", y: "36svh", scale: 0.3387 }, "imgShow")
-        .to(img06, { x: "-43vw", y: "34svh", scale: 0.3614 }, "imgShow")
+        .to(img01, { x: "-40vw", y: "-32.8lvh", scale: 0.425 }, "imgShow")
+        .to(img03, { x: "38.5vw", y: "-32.8lvh", scale: 0.51 }, "imgShow")
+        .to(img05, { x: "40vw", y: "32.8lvh", scale: 0.425 }, "imgShow")
+        .to(img06, { x: "-38.5vw", y: "32.8lvh", scale: 0.51 }, "imgShow")
         .to(title1, { opacity: 1, y: 0 })
         .to(txt1, { opacity: 1, y: 0 })
         .addLabel('txtFade')
@@ -134,12 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(txt1, { opacity: 0 }, "txtFade")
         .to(txt2, { opacity: 1, y: 0 })
         .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { opacity: 0.8 })
-        .to(redPoint, { scale: 1, opacity: 1 });
+        .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2 });
     },
   
     // 모바일 (768px 이하)
-    "(max-width: 768px)": function() {
+    "(max-width: 769px)": function() {
       const heroVisual = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.overview",
@@ -150,20 +154,22 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             gif.classList.add('active');
             redPoint.classList.add('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
           },
           onEnterBack: function() {
             gif.classList.remove('active');
             redPoint.classList.remove('hide');
+            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
           },
         },
       });
   
       heroVisual
         .addLabel('imgShow')
-        .to(img01, { x: "-120%", y: "-180%", scale: 0.44 }, "imgShow")
-        .to(img03, { x: "22%", y: "-190%", scale: 0.49 }, "imgShow")
-        .to(img05, { x: "22%", y: "80%", scale: 0.44 }, "imgShow")
-        .to(img06, { x: "-120%", y: "80%", scale: 0.49 }, "imgShow")
+        .to(img01, { x: "-36vw", y: "-40lvh", scale: 0.44 }, "imgShow")
+        .to(img03, { x: "35vw", y: "-42lvh", scale: 0.49 }, "imgShow")
+        .to(img05, { x: "36vw", y: "42lvh", scale: 0.44 }, "imgShow")
+        .to(img06, { x: "-35vw", y: "39lvh", scale: 0.49 }, "imgShow")
         .to(title1, { opacity: 1, y: 0 })
         .to(txt1, { opacity: 1, y: 0 })
         .addLabel('txtFade')
@@ -171,9 +177,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(txt1, { opacity: 0 }, "txtFade")
         .to(txt2, { opacity: 1, y: 0 })
         .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { opacity: 0.8 })
-        .to(redPoint, { scale: 1, opacity: 1 })
-        .to(redPoint, { scale: 1});
+        .to(redPoint, { opacity: 0.5 })
+        .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2});
     },
   });
 
@@ -289,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* storySlide 슬라이드 */
   let storySlide = null;
   function handleResize() {
-      let isMobileView = window.innerWidth <= 796;
+      let isMobileView = window.innerWidth <= 769;
       if (isMobileView && !storySlide) {
           storySlide = new Swiper(".stories .swiper", {
               slidesPerView: 1.2,
