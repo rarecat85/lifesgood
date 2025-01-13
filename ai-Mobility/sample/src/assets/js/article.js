@@ -136,6 +136,26 @@ function prodAnimation() {
     const prodTextBx = section.querySelector('.products-textbx');
     const prodTextChildren = toArray(prodTextBx.children);
 
+    const resetProps = () => {
+      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx], { clearProps: 'all' });
+    };
+
+    const playVideoOnView = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            prodVideo.play();
+          } else {
+            prodVideo.pause();
+            prodVideo.currentTime = 0;
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+      observer.observe(section);
+    };
+
     if (isDesktop) {
       const prodTl = gsap.timeline({
         defaults: { ease: 'linear' },
@@ -144,7 +164,7 @@ function prodAnimation() {
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
         .call(() => prodVideo.play()) 
         .to(prodInner, { maxWidth: '1440px'}) 
-        .to(prodVideoBx, { scale: 0.5083,x:(24/16)+'rem', borderRadius: 28, duration: 2 })
+        .to(prodVideoBx, { scale: 0.5083, x: (24 / 16) + 'rem', borderRadius: 28, duration: 2 })
         .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 });
 
       ScrollTrigger.create({
@@ -160,13 +180,11 @@ function prodAnimation() {
         },
       });
     } else {
-      prodVideo.pause();
-      prodVideo.currentTime = 0;
-      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx], { clearProps: 'all' });
+      playVideoOnView();
+      resetProps();
     }
   });
 }
-
 
 function handleResize() {
   const newIsMobile = !isPC(); 
