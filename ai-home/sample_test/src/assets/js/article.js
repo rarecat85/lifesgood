@@ -94,12 +94,11 @@ function overviewAnimation() {
       })
       .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
       .set(overviewDesc, {opacity:0, y:20})
-      .to(overviewLogo, { opacity: 1, y: 0, duration: 1 }) 
-      .to(overviewLogo, { x: 0, duration: 1 }) 
+      .to(overviewLogo, { opacity: 1, y: 0}) 
+      .to(overviewLogo, { x: 0 }) 
       .to(overviewTitle, {
         webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
         maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        duration: 1,
         ease: "power2.out"
       })
       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
@@ -107,8 +106,8 @@ function overviewAnimation() {
     ScrollTrigger.create({
       id: "overview-trigger",
       trigger: overviewSection,
-      start: 'top center',
-      end: 'bottom center',
+      start: 'top 80%',
+      end: 'bottom 80%',
       animation: overviewTL,
       toggleActions: 'restart none none none', 
     });
@@ -241,6 +240,7 @@ function tabAnimation() {
   const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
   const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
   const titleElement = document.querySelector('.thinQ-tabs-imgbx-fixedimg-title');
+  const tabicons = toArray('.thinQ-tabs-imgbx-fixedimg-tab-icon');
 
   const tabTitles = [
     '"Hey, LG"',
@@ -268,38 +268,44 @@ function tabAnimation() {
   tabList.forEach((tab, index) => {
     tab.addEventListener('click', () => {
       if (currentTimeline) currentTimeline.progress(1);
-
+  
       const currentImg = changeImg.querySelector('img');
-
+  
       tabList.forEach(t => {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
-
+  
       tabCon.forEach(con => {
         con.classList.remove('active');
         con.setAttribute('tabindex', '-1');
       });
       tabCon[index].classList.add('active');
       tabCon[index].setAttribute('tabindex', '0');
-
+  
+      tabicons.forEach(icon => {
+        icon.classList.remove('active');
+      });
+      tabicons[index].classList.add('active');
+  
       animateTitle(tabTitles[index]);
-
+  
       currentTimeline = gsap.timeline()
         .to(currentImg, { borderRadius: '100%', scale: 0, duration: 1 })
         .eventCallback('onComplete', () => {
           tabBg.forEach(bg => bg.classList.remove('active'));
           tabBg[index].classList.add('active');
-
+  
           gsap.set(currentImg, { borderRadius: '0%', scale: 1 });
           changeImg = tabBg[index];
-
+  
           currentTimeline = null;
         });
     });
   });
+
 }
 
 
