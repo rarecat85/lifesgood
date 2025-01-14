@@ -19,10 +19,10 @@
       left: 50%;
       background-repeat: no-repeat;
       background-position: center center;
-      background-image: url(../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg);
+      background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
       cursor: pointer;
       &.active {
-        background-image: url(../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg);
+        background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
       }
     }
     .section {
@@ -60,6 +60,11 @@
               font-weight: 600;
               font-size: rem(80);
               color: $white;
+              @include tablet {
+                .mobile-only {
+                  display: none;
+                }
+              }
             }
             .btn {
               margin: rem(40) auto 0;
@@ -142,7 +147,7 @@
               margin-top: rem(28);
             }
           }
-          img {
+          img.title {
             margin-top: rem(40);
           }
         }
@@ -152,7 +157,7 @@
           transform: translateX(-50%) scale(10);
           position: absolute;
           left: 50%;
-          bottom: calc(-20vh + rem(30));
+          bottom: -14vh;
           opacity: 0;
           z-index: -2;
           &.hide {
@@ -240,9 +245,9 @@
               }
               .play-btn {
                 bottom: rem(25);
-                background-image: url(../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg);
+                background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
                 &.active {
-                  background-image: url(../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg);
+                  background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
                 }
               }
             }
@@ -355,7 +360,7 @@
                   position: absolute;
                   top: 50%;
                   left: 50%;
-                  background: url(../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-slide_arrow.svg) no-repeat;
+                  background: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-slide_arrow.svg") no-repeat;
                   background-position: center;
                   background-size: rem(8);
                 }
@@ -498,8 +503,8 @@
             }
           }
           .red-point {
-            transform: translateX(-50%) scale(10);
-            bottom: -20vh;
+            transform: translateX(-50%) scale(5);
+            bottom: -16svh;
           }
         }
         //intelligence
@@ -596,7 +601,7 @@
               }
             }
             .play-btn {
-              bottom: rem(24);
+              bottom: rem(70);
             }
           }
         }
@@ -622,12 +627,16 @@
               letter-spacing: 0.0164em;
             }
           }
+          .red-point {
+            transform: translateX(-50%) scale(3);
+            bottom: -24svh;
+          }
         }
         //intelligence
         &.intelligence {
           .gif-bx {
             height: auto;
-            transform: translateY(-20svh);
+            transform: translateY(-14svh);
             position: relative;
             top: inherit;
             .gif {
@@ -636,10 +645,10 @@
           }
           .title-wrap {
             display: block;
-            padding: rem(28) rem(16) rem(40);
+            padding: 0 rem(16) rem(40);
             .title {
               width: 100%;
-              font-size: rem(28);
+              font-size: rem(24);
               line-height: 1.2;
               text-align: left;
               margin-bottom: rem(8);
@@ -661,13 +670,18 @@
               padding: 0 rem(16);
               .content-bx {
                 width: 100%;
+                height: auto;
                 min-height: unset;
                 overflow: hidden;
                 video {
                   position: static;
-                  aspect-ratio: 328 /438;
+                  aspect-ratio: 9 / 16;
                   border-radius: rem(20);
                   overflow: hidden;
+                }
+                .play-btn {
+                  transform: translate(-50%, -50%);
+                  top: 50%;
                 }
               }
               .des-bx {
@@ -689,7 +703,7 @@
                 }
               }
               & + li {
-                margin-top: rem(64);
+                margin-top: rem(40);
               }
             }
           }

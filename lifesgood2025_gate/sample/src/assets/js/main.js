@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function setHeroVideo() {
     const isDesktop = window.innerWidth > 1025;
     const newVideoSrc = isDesktop
-      ? "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv.mp4"
-      : "./assets/video/hero_video_m.mp4";
+      ? "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
+      : "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
 
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // 타임라인 생성 함수
   gsap.registerPlugin(ScrollTrigger);
   const gif = document.querySelector(".intelligence .gif");
   const img01 = document.querySelector(".overview .img-list .img01");
@@ -57,9 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const txt2 = document.querySelector(".overview .txt-bx .bx-2 p");
   const redPoint = document.querySelector(".red-point");
 
-  // 타임라인 생성 함수
-  gsap.registerPlugin(ScrollTrigger);
-
   //ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
   ScrollTrigger.matchMedia({
     // PC (1440px 이상)
@@ -71,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
           end: "+=500%",
           pin: true,
           scrub: 1,
+          markers:true,
           onLeave: function() {
             gif.classList.add('active');
             redPoint.classList.add('hide');
@@ -200,14 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.innerWidth > 1025) {
         videoHTML = `
           <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
-            <source src="./assets/video/${videoName}.mp4">
+            <source src="./assets/video/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn"></button>
         `;
       } else {
         videoHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
-            <source src="./assets/video/${videoName}_m.mp4">
+            <source src="./assets/video/${videoName}-mobile.mp4">
           </video>
           <button type="button" class="play-btn"></button>
         `;
@@ -222,9 +221,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const video = box.querySelector('video');
   
         // 초기 상태에 따라 버튼 활성화 설정
-        if (video.paused) {
-          playBtn.classList.remove('active');
+        if (isPC) {
+          if (video.paused) {
+            playBtn.classList.remove('active');
+          } else {
+            playBtn.classList.add('active');
+          }
         } else {
+          // 모바일: 비디오가 자동 재생되므로 active 클래스 추가
           playBtn.classList.add('active');
         }
   
@@ -334,6 +338,8 @@ document.addEventListener("DOMContentLoaded", function () {
     layerPop.classList.add("active");
     closeBtn.focus();
   });
+  
+  //팝업닫기
   closeBtn.addEventListener("click", function () {
     iframe.innerHTML = "";
     layerPop.classList.remove("active");
