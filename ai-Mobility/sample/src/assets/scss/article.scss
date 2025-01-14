@@ -253,11 +253,11 @@ body {
         transform:translate(-50%,-50%);
         font-size:0;
         &[aria-pressed=false] {
-          background:url('../img/btn_movie_play.svg');
+          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-play.svg');
           background-size:contain;
         }
         &[aria-pressed=true] {
-          background:url('../img/btn_movie_pause.svg');
+          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-pause.svg');
           background-size:contain;
         }
         @include tablet {
@@ -353,4 +353,6 @@ body {
       }
     }
   }
+
+
 }

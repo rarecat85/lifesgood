@@ -94,12 +94,11 @@ function overviewAnimation() {
       })
       .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
       .set(overviewDesc, {opacity:0, y:20})
-      .to(overviewLogo, { opacity: 1, y: 0, duration: 1 }) 
-      .to(overviewLogo, { x: 0, duration: 1 }) 
+      .to(overviewLogo, { opacity: 1, y: 0}) 
+      .to(overviewLogo, { x: 0 }) 
       .to(overviewTitle, {
         webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
         maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        duration: 1,
         ease: "power2.out"
       })
       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
@@ -107,8 +106,8 @@ function overviewAnimation() {
     ScrollTrigger.create({
       id: "overview-trigger",
       trigger: overviewSection,
-      start: 'top center',
-      end: 'bottom center',
+      start: 'top 80%',
+      end: 'bottom 80%',
       animation: overviewTL,
       toggleActions: 'restart none none none', 
     });
@@ -232,6 +231,7 @@ function prodAnimation() {
     prodAnimation();
   });
 }
+
 
 function handleResize() {
   const newIsMobile = !isPC(); 
