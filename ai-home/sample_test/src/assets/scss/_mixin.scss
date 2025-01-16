@@ -71,6 +71,7 @@
   }
   @else { 
     color:$white;
+    border:none;
     &:hover,
     &:active {
       border:1px solid $midGray;
