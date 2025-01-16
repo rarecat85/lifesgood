@@ -729,13 +729,18 @@ body {
         top:50%;
         left:50%;
         transform:translate(-50%,-50%);
-        padding:rem(20);
+        padding:0 rem(20);
         &-title {
           @include font(24,116%,$cl:#fff);
           margin-bottom:rem(12);
+          padding:0 rem(32);
           @include tablet {
             @include font(36);
             margin-bottom:rem(24);
+            padding:0 rem(80);
+          }
+          &.bk {
+            color:$warmGray;
           }
         }
       }
