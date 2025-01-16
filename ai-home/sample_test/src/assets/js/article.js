@@ -237,7 +237,7 @@ function prodAnimation() {
 
 function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
-  const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap picture');
+  const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap-bgimg');
   const tabCon = toArray('.thinQ-tabs-conbx-tabcon');
   const titleElement = document.querySelector('.thinQ-tabs-imgbx-fixedimg-title');
   const tabicons = toArray('.thinQ-tabs-imgbx-fixedimg-tab-icon');
@@ -293,12 +293,14 @@ function tabAnimation() {
       animateTitle(tabTitles[index]);
   
       currentTimeline = gsap.timeline()
-        .to(currentImg, { borderRadius: '100%', scale: 0, duration: 1 })
+        .set(currentImg, { opacity:0 })
+        .to(changeImg, { borderRadius: '100%', scale: 0, duration: 1 })
         .eventCallback('onComplete', () => {
           tabBg.forEach(bg => bg.classList.remove('active'));
           tabBg[index].classList.add('active');
   
-          gsap.set(currentImg, { borderRadius: '0%', scale: 1 });
+          gsap.set(currentImg, { opacity:1 });
+          gsap.set(changeImg, { borderRadius: '0%', scale: 1 });
           changeImg = tabBg[index];
   
           currentTimeline = null;
