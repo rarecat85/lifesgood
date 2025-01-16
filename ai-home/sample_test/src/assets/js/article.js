@@ -322,7 +322,7 @@ function canvasAnimation() {
 
   const videoSection = {frame:0}
 
-  const images = Array(frameCount)
+  const images = Array(frameCount + 1)
     .fill(null)
     .map((_, i) => {
       const img = new Image();
