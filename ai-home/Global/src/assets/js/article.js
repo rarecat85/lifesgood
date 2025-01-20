@@ -1,13 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
-
-// ScrollSmoother.create({
-//   smooth: 1,
-//   effects: true,
-//   smoothTouch: 0.1,
-// });
-
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 
@@ -67,56 +60,6 @@ function kvAnimation() {
 
   
 }
-
-// function overviewAnimation() {
-//   const overviewSection = document.querySelector('.overview');
-//   const overviewTitle = document.querySelector('.overview-logo-title');
-//   const overviewLogo = document.querySelector('.overview-logo-img');
-//   const overviewDesc = document.querySelector('.overview-desc');
-
-//   function calculateLogoXPosition() {
-//     return innerWidth / 2 - overviewLogo.offsetLeft ;
-//   }
-
-//   function clearOverviewAnimation() {
-//     ScrollTrigger.getById("overview-trigger")?.kill();
-//   }
-
-//   function setupOverviewAnimation() {
-//     clearOverviewAnimation(); 
-
-//     const overviewTL = gsap.timeline()
-//       .set(overviewTitle, {
-//         webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-//         maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-//         webkitMaskRepeat: "no-repeat",
-//         maskRepeat: "no-repeat",
-//       })
-//       .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
-//       .set(overviewDesc, {opacity:0, y:20})
-//       .to(overviewLogo, { opacity: 1, y: 0}) 
-//       .to(overviewLogo, { x: 0 }) 
-//       .to(overviewTitle, {
-//         webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-//         maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-//         ease: "power2.out"
-//       })
-//       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
-
-//     ScrollTrigger.create({
-//       id: "overview-trigger",
-//       trigger: overviewSection,
-//       start: 'top 80%',
-//       end: 'bottom 80%',
-//       animation: overviewTL,
-//       toggleActions: 'restart none none none', 
-//     });
-//   }
-
-//   setupOverviewAnimation();
-//   window.addEventListener('resize', setupOverviewAnimation);
-// }
-
 
 let prodTriggers = [];
 
@@ -232,9 +175,6 @@ function prodAnimation() {
   });
 }
 
-
-
-
 function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
   const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap-bgimg');
@@ -323,7 +263,7 @@ function canvasAnimation() {
   const frameCount = 38;
 
   const currentFrame = (index) => {
-    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 0 };
@@ -354,35 +294,6 @@ function canvasAnimation() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(currentImage, 0, 0, canvas.width / dpr, canvas.height / dpr);
     }
-  }
-}
-
-
-function stories() {
-  const storiesSwiper = document.querySelector('.stories-conbx');
-
-  if (storiesSwiper) {
-    const storiesSwiperOptions = {
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.stories-swiper-button-next',
-        prevEl: '.stories-swiper-button-prev',
-      },
-      pagination: {
-        el: '.stories-swiper-pagination',
-        type: 'fraction',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 16
-        }
-      },
-    };
-    
-    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
   }
 }
 
@@ -574,6 +485,7 @@ function productsSwiper() {
 }
 
 
+
 function handleResize() {
   const newIsMobile = !isPC(); 
 
@@ -584,7 +496,6 @@ function handleResize() {
   }
   
   ScrollTrigger.refresh();
-  // overviewAnimation();
 }
 
 function init() {
@@ -598,16 +509,9 @@ function init() {
     prodAnimation();
     productsSwiper();
   }
-  // if (sections.includes('overview')) {
-  //   overviewAnimation();
-  // }
   if (sections.includes('thinQ-tabs')) {
     tabAnimation();
     canvasAnimation();
-  }
-
-  if(sections.includes('stories')) {
-    stories();
   }
 
   // 리사이즈 이벤트 처리
