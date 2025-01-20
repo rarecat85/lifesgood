@@ -68,54 +68,54 @@ function kvAnimation() {
   
 }
 
-function overviewAnimation() {
-  const overviewSection = document.querySelector('.overview');
-  const overviewTitle = document.querySelector('.overview-logo-title');
-  const overviewLogo = document.querySelector('.overview-logo-img');
-  const overviewDesc = document.querySelector('.overview-desc');
+// function overviewAnimation() {
+//   const overviewSection = document.querySelector('.overview');
+//   const overviewTitle = document.querySelector('.overview-logo-title');
+//   const overviewLogo = document.querySelector('.overview-logo-img');
+//   const overviewDesc = document.querySelector('.overview-desc');
 
-  function calculateLogoXPosition() {
-    return innerWidth / 2 - overviewLogo.offsetLeft ;
-  }
+//   function calculateLogoXPosition() {
+//     return innerWidth / 2 - overviewLogo.offsetLeft ;
+//   }
 
-  function clearOverviewAnimation() {
-    ScrollTrigger.getById("overview-trigger")?.kill();
-  }
+//   function clearOverviewAnimation() {
+//     ScrollTrigger.getById("overview-trigger")?.kill();
+//   }
 
-  function setupOverviewAnimation() {
-    clearOverviewAnimation(); 
+//   function setupOverviewAnimation() {
+//     clearOverviewAnimation(); 
 
-    const overviewTL = gsap.timeline()
-      .set(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-        maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-        webkitMaskRepeat: "no-repeat",
-        maskRepeat: "no-repeat",
-      })
-      .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
-      .set(overviewDesc, {opacity:0, y:20})
-      .to(overviewLogo, { opacity: 1, y: 0}) 
-      .to(overviewLogo, { x: 0 }) 
-      .to(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        ease: "power2.out"
-      })
-      .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
+//     const overviewTL = gsap.timeline()
+//       .set(overviewTitle, {
+//         webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
+//         maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
+//         webkitMaskRepeat: "no-repeat",
+//         maskRepeat: "no-repeat",
+//       })
+//       .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
+//       .set(overviewDesc, {opacity:0, y:20})
+//       .to(overviewLogo, { opacity: 1, y: 0}) 
+//       .to(overviewLogo, { x: 0 }) 
+//       .to(overviewTitle, {
+//         webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+//         maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
+//         ease: "power2.out"
+//       })
+//       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
 
-    ScrollTrigger.create({
-      id: "overview-trigger",
-      trigger: overviewSection,
-      start: 'top 80%',
-      end: 'bottom 80%',
-      animation: overviewTL,
-      toggleActions: 'restart none none none', 
-    });
-  }
+//     ScrollTrigger.create({
+//       id: "overview-trigger",
+//       trigger: overviewSection,
+//       start: 'top 80%',
+//       end: 'bottom 80%',
+//       animation: overviewTL,
+//       toggleActions: 'restart none none none', 
+//     });
+//   }
 
-  setupOverviewAnimation();
-  window.addEventListener('resize', setupOverviewAnimation);
-}
+//   setupOverviewAnimation();
+//   window.addEventListener('resize', setupOverviewAnimation);
+// }
 
 
 let prodTriggers = [];
@@ -314,10 +314,8 @@ function canvasAnimation() {
   const canvas = document.querySelector('#canvas');
   const ctx = canvas.getContext('2d');
 
-  // Get device pixel ratio
   const dpr = window.devicePixelRatio || 1;
 
-  // Adjust canvas size for high resolution
   canvas.width = canvas.clientWidth * dpr;
   canvas.height = canvas.clientHeight * dpr;
   ctx.scale(dpr, dpr);
@@ -406,13 +404,12 @@ function productsSwiper() {
       productsSwipers.forEach((swiperElement) => {
         const swiperInstance = new Swiper(swiperElement, productsSwiperOptions);
   
-        // 각 슬라이드 클릭 이벤트 설정
         swiperElement.querySelectorAll('.swiper-slide').forEach((slide, index) => {
           if (!slide.dataset.eventBound) {
             slide.addEventListener('click', () => {
               handleSlideClick(slide, index, swiperElement);
             });
-            slide.dataset.eventBound = 'true'; // 이벤트 중복 방지 플래그
+            slide.dataset.eventBound = 'true'; 
           }
         });
         
@@ -431,18 +428,16 @@ function productsSwiper() {
     const allSlides = swiperElement.querySelectorAll('.swiper-slide');
   
     allSlides.forEach((slide, idx) => {
-      const img = slide.querySelector('img'); // 이미지 요소
+      const img = slide.querySelector('img');
       const imgSrc = img.getAttribute('src');
-      const contentImgSrc = imgSrc.replace('-thumb-', '-img-'); // '-thumb-'을 '-img-'로 대체
-      const backgroundImgSrc = contentImgSrc; // 동일 경로를 배경 이미지로 사용
+      const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
+      const backgroundImgSrc = contentImgSrc;
   
-      // 큰 이미지 또는 비디오 슬라이드 추가
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
       contentSlide.style.position = 'relative';
       contentSlide.style.overflow = 'hidden';
   
-      // 배경 이미지 스타일 추가 (블러 효과 포함)
       const backgroundDiv = document.createElement('div');
       backgroundDiv.style.position = 'absolute';
       backgroundDiv.style.top = '0';
@@ -455,7 +450,6 @@ function productsSwiper() {
       backgroundDiv.style.filter = 'blur(35px)';
       backgroundDiv.style.zIndex = '1';
   
-      // 슬라이드가 비디오인지 확인
       if (slide.classList.contains('video-slide')) {
         const videoMp4 = imgSrc.replace('assets/img', 'assets/video').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
         const videoWebm = imgSrc.replace('assets/img', 'assets/video').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
@@ -498,12 +492,14 @@ function productsSwiper() {
   
     layer.setAttribute('aria-hidden', 'false');
     layer.style.display = 'block';
-    document.body.classList.add('noscroll'); // body에 noscroll 클래스 추가
+    document.body.classList.add('noscroll');
   
     setTimeout(() => {
       const { contentSwiper, thumbSwiper } = initializeLayerSwipers();
-      contentSwiper.slideTo(index);
-      thumbSwiper.slideTo(index);
+      contentSwiper.update();
+      contentSwiper.slideTo(index, 0); 
+      thumbSwiper.update(); 
+      thumbSwiper.slideTo(index, 0); 
     }, 0);
   }
   
@@ -553,13 +549,14 @@ function productsSwiper() {
     return { contentSwiper, thumbSwiper };
   }
   
+  
   document.querySelector('.products-layer').addEventListener('click', (event) => {
     const layerContentBox = document.querySelector('.products-layer-conbx');
     if (!layerContentBox.contains(event.target)) {
       const layer = document.querySelector('.products-layer');
       layer.setAttribute('aria-hidden', 'true');
       layer.style.display = 'none';
-      document.body.classList.remove('noscroll'); // body에서 noscroll 클래스 제거
+      document.body.classList.remove('noscroll'); 
     }
   });
   
@@ -567,7 +564,7 @@ function productsSwiper() {
     const layer = document.querySelector('.products-layer');
     layer.setAttribute('aria-hidden', 'true');
     layer.style.display = 'none';
-    document.body.classList.remove('noscroll'); // body에서 noscroll 클래스 제거
+    document.body.classList.remove('noscroll'); 
   });
   
   initializeProductsSwipers();
@@ -584,7 +581,7 @@ function handleResize() {
   }
   
   ScrollTrigger.refresh();
-  overviewAnimation();
+  // overviewAnimation();
 }
 
 function init() {
@@ -598,9 +595,9 @@ function init() {
     prodAnimation();
     productsSwiper();
   }
-  if (sections.includes('overview')) {
-    overviewAnimation();
-  }
+  // if (sections.includes('overview')) {
+  //   overviewAnimation();
+  // }
   if (sections.includes('thinQ-tabs')) {
     tabAnimation();
     canvasAnimation();
