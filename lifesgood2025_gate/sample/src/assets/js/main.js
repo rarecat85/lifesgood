@@ -45,141 +45,169 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 타임라인 생성 함수
   gsap.registerPlugin(ScrollTrigger);
-  const gif = document.querySelector(".intelligence .gif");
-  const img01 = document.querySelector(".overview .img-list .img01");
-  const img02 = document.querySelector(".overview .img-list .img02");
-  const img03 = document.querySelector(".overview .img-list .img03");
-  const img04 = document.querySelector(".overview .img-list .img04");
-  const img05 = document.querySelector(".overview .img-list .img05");
-  const img06 = document.querySelector(".overview .img-list .img06");
-  const title1 = document.querySelector(".overview .txt-bx .bx-1 .title");
-  const txt1 = document.querySelector(".overview .txt-bx .bx-1 p");
-  const title2 = document.querySelector(".overview .txt-bx .bx-2 .title");
-  const txt2 = document.querySelector(".overview .txt-bx .bx-2 p");
-  const redPoint = document.querySelector(".red-point");
 
-  //ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
-  ScrollTrigger.matchMedia({
-    // PC (1440px 이상)
-    "(min-width: 1440px)": function() {
-      const heroVisual = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section.overview",
-          start: "top top",
-          end: "+=500%",
-          pin: true,
-          scrub: 1,
-          markers:true,
-          onLeave: function() {
-            gif.classList.add('active');
-            redPoint.classList.add('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
-          },
-          onEnterBack: function() {
-            gif.classList.remove('active');
-            redPoint.classList.remove('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
-          },
+// 요소 선택
+const gif = document.querySelector(".intelligence .gif");
+const img01 = document.querySelector(".overview .img-list .img01");
+const img02 = document.querySelector(".overview .img-list .img02");
+const img03 = document.querySelector(".overview .img-list .img03");
+const img04 = document.querySelector(".overview .img-list .img04");
+const img05 = document.querySelector(".overview .img-list .img05");
+const img06 = document.querySelector(".overview .img-list .img06");
+const title1 = document.querySelector(".overview .txt-bx .bx-1 .title");
+const txt1 = document.querySelector(".overview .txt-bx .bx-1 p");
+const title2 = document.querySelector(".overview .txt-bx .bx-2 .title");
+const txt2 = document.querySelector(".overview .txt-bx .bx-2 p");
+const redPoint = document.querySelector(".red-point");
+
+// ScrollTrigger의 matchMedia를 사용하여 미디어 쿼리 적용
+ScrollTrigger.matchMedia({
+  // PC (1440px 이상)
+  "(min-width: 1440px)": function() {
+    // 미디어 쿼리 활성화 시 기본 이미지 설정
+    redPoint.classList.remove('active');
+    redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+
+    const heroVisual = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section.overview",
+        start: "top top",
+        end: "+=500%",
+        pin: true,
+        scrub: 1,
+        onLeave: function() {
+          redPoint.classList.add('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif');
         },
-      });
-  
-      heroVisual
-        .addLabel('imgShow')
-        .to(img01, { x: "-33vw", y: "-10svh", scale: 0.5 }, "imgShow")
-        .to(img02, { x: "-24.5vw", y: "-35.3svh", scale: 0.3614 }, "imgShow")
-        .to(img03, { x: "30.5vw", y: "-29.8svh", scale: 0.5 }, "imgShow")
-        .to(img04, { x: "20.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
-        .to(img05, { x: "31.6vw", y: "22svh", scale: 0.5 }, "imgShow")
-        .to(img06, { x: "-20.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
-        .to(title1, { opacity: 1, y: 0 })
-        .to(txt1, { opacity: 1, y: 0 })
-        .addLabel('txtFade')
-        .to(title1, { opacity: 0 }, "txtFade")
-        .to(txt1, { opacity: 0 }, "txtFade")
-        .to(txt2, { opacity: 1, y: 0 })
-        .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, {opacity: 0.5})
-        .to(redPoint, { width: "10vw", scale:0.8, duration: 1 })
-        .to(redPoint, { width: 8, scale:1, duration: 0.3 });
-    },
-  
-    // 태블릿 (1439px ~ 769px)
-    "(min-width: 769px) and (max-width: 1439px)": function() {
-      const heroVisual = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section.overview",
-          start: "top top",
-          end: "+=500%",
-          pin: true,
-          scrub: 2,
-          onLeave: function() {
-            gif.classList.add('active');
-            redPoint.classList.add('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
-          },
-          onEnterBack: function() {
-            gif.classList.remove('active');
-            redPoint.classList.remove('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
-          },
+        onEnterBack: function() {
+          redPoint.classList.remove('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
         },
-      });
-  
-      heroVisual
-        .addLabel('imgShow')
-        .to(img01, { x: "-40vw", y: "-32.8lvh", scale: 0.425 }, "imgShow")
-        .to(img03, { x: "38.5vw", y: "-32.8lvh", scale: 0.51 }, "imgShow")
-        .to(img05, { x: "40vw", y: "32.8lvh", scale: 0.425 }, "imgShow")
-        .to(img06, { x: "-38.5vw", y: "32.8lvh", scale: 0.51 }, "imgShow")
-        .to(title1, { opacity: 1, y: 0 })
-        .to(txt1, { opacity: 1, y: 0 })
-        .addLabel('txtFade')
-        .to(title1, { opacity: 0 }, "txtFade")
-        .to(txt1, { opacity: 0 }, "txtFade")
-        .to(txt2, { opacity: 1, y: 0 })
-        .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2 });
-    },
-  
-    // 모바일 (768px 이하)
-    "(max-width: 769px)": function() {
-      const heroVisual = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section.overview",
-          start: "top top",
-          end: "+=300%",
-          pin: true,
-          scrub: 2,
-          onLeave: function() {
-            gif.classList.add('active');
-            redPoint.classList.add('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif')
-          },
-          onEnterBack: function() {
-            gif.classList.remove('active');
-            redPoint.classList.remove('hide');
-            gif.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg')
-          },
+      },
+    });
+
+    heroVisual
+      .addLabel('imgShow')
+      .to(img01, { x: "-33vw", y: "-10svh", scale: 0.5 }, "imgShow")
+      .to(img02, { x: "-24.5vw", y: "-35.3svh", scale: 0.3614 }, "imgShow")
+      .to(img03, { x: "30.5vw", y: "-29.8svh", scale: 0.5 }, "imgShow")
+      .to(img04, { x: "20.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
+      .to(img05, { x: "31.6vw", y: "22svh", scale: 0.5 }, "imgShow")
+      .to(img06, { x: "-28.5vw", y: "34svh", scale: 0.3614 }, "imgShow")
+      .to(title1, { opacity: 1, y: 0 })
+      .to(txt1, { opacity: 1, y: 0 })
+      .addLabel('txtFade')
+      .to(title1, { opacity: 0 }, "txtFade")
+      .to(txt1, { opacity: 0 }, "txtFade")
+      .to(txt2, { opacity: 1, y: 0 })
+      .to(title2, { opacity: 1, y: 0 })
+      .to(redPoint, {opacity: 0.5})
+      .to(redPoint, { width: "10vw", scale:0.8, duration: 1 })
+      .to(redPoint, { width: 8, scale:1, duration: 0.3 });
+
+    // 클린업 함수 (필요 시)
+    return () => {
+      // 예: redPoint 기본 상태로 복원
+      redPoint.classList.remove('active');
+      redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+    };
+  },
+
+  // 태블릿 (1439px ~ 769px)
+  "(min-width: 769px) and (max-width: 1439px)": function() {
+    // 미디어 쿼리 활성화 시 기본 이미지 설정
+    redPoint.classList.remove('active');
+    redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+
+    const heroVisual = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section.overview",
+        start: "top top",
+        end: "+=500%",
+        pin: true,
+        scrub: 1,
+        onLeave: function() {
+          redPoint.classList.add('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif');
         },
-      });
-  
-      heroVisual
-        .addLabel('imgShow')
-        .to(img01, { x: "-36vw", y: "-40lvh", scale: 0.44 }, "imgShow")
-        .to(img03, { x: "35vw", y: "-42lvh", scale: 0.49 }, "imgShow")
-        .to(img05, { x: "36vw", y: "42lvh", scale: 0.44 }, "imgShow")
-        .to(img06, { x: "-35vw", y: "39lvh", scale: 0.49 }, "imgShow")
-        .to(title1, { opacity: 1, y: 0 })
-        .to(txt1, { opacity: 1, y: 0 })
-        .addLabel('txtFade')
-        .to(title1, { opacity: 0 }, "txtFade")
-        .to(txt1, { opacity: 0 }, "txtFade")
-        .to(txt2, { opacity: 1, y: 0 })
-        .to(title2, { opacity: 1, y: 0 })
-        .to(redPoint, { opacity: 0.5 })
-        .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2});
-    },
-  });
+        onEnterBack: function() {
+          redPoint.classList.remove('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+        },
+      },
+    });
+
+    heroVisual
+      .addLabel('imgShow')
+      .to(img01, { x: "-40vw", y: "-32.8lvh", scale: 0.425 }, "imgShow")
+      .to(img03, { x: "38.5vw", y: "-32.8lvh", scale: 0.51 }, "imgShow")
+      .to(img05, { x: "40vw", y: "32.8lvh", scale: 0.425 }, "imgShow")
+      .to(img06, { x: "-38.5vw", y: "32.8lvh", scale: 0.51 }, "imgShow")
+      .to(title1, { opacity: 1, y: 0 })
+      .to(txt1, { opacity: 1, y: 0 })
+      .addLabel('txtFade')
+      .to(title1, { opacity: 0 }, "txtFade")
+      .to(txt1, { opacity: 0 }, "txtFade")
+      .to(txt2, { opacity: 1, y: 0 })
+      .to(title2, { opacity: 1, y: 0 })
+      .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2 });
+
+    // 클린업 함수 (필요 시)
+    return () => {
+      // 예: redPoint 기본 상태로 복원
+      redPoint.classList.remove('active');
+      redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+    };
+  },
+
+  // 모바일 (768px 이하)
+  "(max-width: 768px)": function() { // max-width 수정
+    // 미디어 쿼리 활성화 시 기본 이미지 설정
+    redPoint.classList.remove('active');
+    redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+
+    const heroVisual = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section.overview",
+        start: "top top",
+        end: "+=300%",
+        pin: true,
+        scrub: 1,
+        onLeave: function() {
+          redPoint.classList.add('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif');
+        },
+        onEnterBack: function() {
+          redPoint.classList.remove('active');
+          redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+        },
+      },
+    });
+
+    heroVisual
+      .addLabel('imgShow')
+      .to(img01, { x: "-36vw", y: "-40lvh", scale: 0.44 }, "imgShow")
+      .to(img03, { x: "35vw", y: "-42lvh", scale: 0.49 }, "imgShow")
+      .to(img05, { x: "36vw", y: "42lvh", scale: 0.44 }, "imgShow")
+      .to(img06, { x: "-35vw", y: "39lvh", scale: 0.49 }, "imgShow")
+      .to(title1, { opacity: 1, y: 0 })
+      .to(txt1, { opacity: 1, y: 0 })
+      .addLabel('txtFade')
+      .to(title1, { opacity: 0 }, "txtFade")
+      .to(txt1, { opacity: 0 }, "txtFade")
+      .to(txt2, { opacity: 1, y: 0 })
+      .to(title2, { opacity: 1, y: 0 })
+      .to(redPoint, { opacity: 0.5 })
+      .to(redPoint, { width: 8, scale:1, opacity: 0.5, duration:2 });
+
+    // 클린업 함수 (필요 시)
+    return () => {
+      // 예: redPoint 기본 상태로 복원
+      redPoint.classList.remove('active');
+      redPoint.setAttribute("src",'./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg');
+    };
+  },
+});
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
@@ -345,4 +373,13 @@ document.addEventListener("DOMContentLoaded", function () {
     layerPop.classList.remove("active");
     popShowBtn.focus();
   });
+  
+  window.addEventListener('scroll', function(){
+    const intelligence = document.querySelector('.intelligence');
+    
+  });
+});
+
+window.addEventListener('load', function() {
+  ScrollTrigger.refresh();
 });
