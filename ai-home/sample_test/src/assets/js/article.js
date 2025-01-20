@@ -314,30 +314,38 @@ function canvasAnimation() {
   const canvas = document.querySelector('#canvas');
   const ctx = canvas.getContext('2d');
 
+  // Get device pixel ratio
+  const dpr = window.devicePixelRatio || 1;
+
+  // Adjust canvas size for high resolution
+  canvas.width = canvas.clientWidth * dpr;
+  canvas.height = canvas.clientHeight * dpr;
+  ctx.scale(dpr, dpr);
+
   const frameCount = 38;
 
-  const currentFrame = (index)=>{
-    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${(index).toString().padStart(3,'0')}.png`
-  }
+  const currentFrame = (index) => {
+    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+  };
 
-  const videoSection = {frame:0}
+  const videoSection = { frame: 0 };
 
   const images = Array(frameCount + 1)
     .fill(null)
     .map((_, i) => {
       const img = new Image();
-      img.src = currentFrame(i); 
+      img.src = currentFrame(i);
       return img;
     });
 
-   const tl = gsap.to(videoSection, {
-    frame: frameCount, 
-    snap: 'frame', 
-    ease: 'none', 
-    duration: 5, 
-    repeat: -1, 
+  const tl = gsap.to(videoSection, {
+    frame: frameCount,
+    snap: 'frame',
+    ease: 'none',
+    duration: 3,
+    repeat: -1,
     yoyo: true,
-    onUpdate: render, 
+    onUpdate: render,
   });
 
   images[0].onload = render;
@@ -346,10 +354,11 @@ function canvasAnimation() {
     const currentImage = images[Math.round(videoSection.frame)];
     if (currentImage.complete) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(currentImage, 0, 0, canvas.width / dpr, canvas.height / dpr);
     }
   }
 }
+
 
 function stories() {
   const storiesSwiper = document.querySelector('.stories-conbx');
