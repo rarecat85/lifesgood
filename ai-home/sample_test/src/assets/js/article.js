@@ -388,7 +388,205 @@ function stories() {
   }
 }
 
-
+function productsSwiper() {
+  function initializeProductsSwipers() {
+    const productsSwipers = document.querySelectorAll('.products-textbx-thumbbx');
+  
+    if (productsSwipers.length > 0) {
+      const productsSwiperOptions = {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 16,
+          },
+        },
+      };
+  
+      productsSwipers.forEach((swiperElement) => {
+        const swiperInstance = new Swiper(swiperElement, productsSwiperOptions);
+  
+        // 각 슬라이드 클릭 이벤트 설정
+        swiperElement.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+          if (!slide.dataset.eventBound) {
+            slide.addEventListener('click', () => {
+              handleSlideClick(slide, index, swiperElement);
+            });
+            slide.dataset.eventBound = 'true'; // 이벤트 중복 방지 플래그
+          }
+        });
+        
+      });
+    }
+  }
+  
+  function handleSlideClick(slide, index, swiperElement) {
+    const layer = document.querySelector('.products-layer');
+    const contentWrapper = layer.querySelector('.products-layer-content-swiper-wrapper');
+    const thumbWrapper = layer.querySelector('.products-layer-content-thumb-swiper-wrapper');
+  
+    contentWrapper.innerHTML = '';
+    thumbWrapper.innerHTML = '';
+  
+    const allSlides = swiperElement.querySelectorAll('.swiper-slide');
+  
+    allSlides.forEach((slide, idx) => {
+      const img = slide.querySelector('img'); // 이미지 요소
+      const imgSrc = img.getAttribute('src');
+      const contentImgSrc = imgSrc.replace('-thumb-', '-img-'); // '-thumb-'을 '-img-'로 대체
+      const backgroundImgSrc = contentImgSrc; // 동일 경로를 배경 이미지로 사용
+  
+      // 큰 이미지 또는 비디오 슬라이드 추가
+      const contentSlide = document.createElement('div');
+      contentSlide.className = 'swiper-slide';
+      contentSlide.style.position = 'relative';
+      contentSlide.style.overflow = 'hidden';
+  
+      // 배경 이미지 스타일 추가 (블러 효과 포함)
+      const backgroundDiv = document.createElement('div');
+      backgroundDiv.style.position = 'absolute';
+      backgroundDiv.style.top = '0';
+      backgroundDiv.style.left = '0';
+      backgroundDiv.style.right = '0';
+      backgroundDiv.style.bottom = '0';
+      backgroundDiv.style.backgroundImage = `url('${backgroundImgSrc}')`;
+      backgroundDiv.style.backgroundSize = 'cover';
+      backgroundDiv.style.backgroundPosition = 'center';
+      backgroundDiv.style.filter = 'blur(35px)';
+      backgroundDiv.style.zIndex = '1';
+  
+      // 슬라이드가 비디오인지 확인
+      if (slide.classList.contains('video-slide')) {
+        // 비디오 파일 경로 생성
+        const videoMp4 = imgSrc
+          .replace('assets/img', 'assets/video') // 폴더 경로 변경
+          .replace('-img-', '-video-') // '-img-'을 '-video-'로 대체
+          .replace(/\.\w+$/, '.mp4'); // 확장자를 '.mp4'로 변경
+  
+        const videoWebm = imgSrc
+          .replace('assets/img', 'assets/video') // 폴더 경로 변경
+          .replace('-img-', '-video-') // '-img-'을 '-video-'로 대체
+          .replace(/\.\w+$/, '.webm'); // 확장자를 '.webm'으로 변경
+  
+        // 비디오 추가
+        const videoElement = document.createElement('video');
+        videoElement.controls = true;
+        videoElement.style.position = 'relative';
+        videoElement.style.zIndex = '2';
+  
+        // MP4와 WebM 소스 추가
+        const sourceMp4 = document.createElement('source');
+        sourceMp4.src = videoMp4;
+        sourceMp4.type = 'video/mp4';
+  
+        const sourceWebm = document.createElement('source');
+        sourceWebm.src = videoWebm;
+        sourceWebm.type = 'video/webm';
+  
+        // 비디오 태그에 소스 추가
+        videoElement.appendChild(sourceMp4);
+        videoElement.appendChild(sourceWebm);
+  
+        contentSlide.appendChild(videoElement);
+      } else {
+        // 이미지 추가
+        const contentImg = document.createElement('img');
+        contentImg.src = contentImgSrc; // 변환된 src 사용
+        contentImg.style.position = 'relative';
+        contentImg.style.zIndex = '2'; // 블러 처리된 배경 위에 오도록 설정
+        contentSlide.appendChild(contentImg);
+      }
+  
+      // DOM 조립
+      contentSlide.appendChild(backgroundDiv);
+      contentWrapper.appendChild(contentSlide);
+  
+      // 썸네일 슬라이드 추가 (기존 src 사용)
+      const thumbSlide = document.createElement('div');
+      thumbSlide.className = 'swiper-slide';
+      const thumbImg = document.createElement('img');
+      thumbImg.src = imgSrc;
+      thumbSlide.appendChild(thumbImg);
+      thumbWrapper.appendChild(thumbSlide);
+    });
+  
+    layer.setAttribute('aria-hidden', 'false');
+    layer.style.display = 'block';
+  
+    // DOM 변경 후 초기화
+    setTimeout(() => {
+      const { contentSwiper, thumbSwiper } = initializeLayerSwipers();
+      // 클릭된 인덱스에 해당하는 슬라이드로 이동
+      contentSwiper.slideTo(index);
+      thumbSwiper.slideTo(index);
+    }, 0);
+  }
+  
+    
+  function initializeLayerSwipers() {
+    let currentPlayingVideo = null; // 현재 재생 중인 비디오 추적
+  
+    // Thumb Swiper 초기화
+    const thumbSwiper = new Swiper('.products-layer-content-thumb-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 12,
+      freeMode: true,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.products-layer-content-thumb-swiper-btn-next',
+        prevEl: '.products-layer-content-thumb-swiper-btn-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 16,
+        },
+      },
+    });
+  
+    // Content Swiper 초기화 및 Thumb Swiper 연결
+    const contentSwiper = new Swiper('.products-layer-content-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      navigation: false,
+      thumbs: {
+        swiper: thumbSwiper, // Thumb Swiper 연결
+      },
+    });
+  
+    // 슬라이드 변경 시 비디오 멈춤 및 초기화
+    contentSwiper.on('slideChange', () => {
+      if (currentPlayingVideo) {
+        currentPlayingVideo.pause();
+        currentPlayingVideo.currentTime = 0; // 타임라인 초기화
+        currentPlayingVideo = null; // 현재 재생 중인 비디오 초기화
+      }
+  
+      const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
+      const videoElement = activeSlide.querySelector('video');
+  
+      // 활성 슬라이드가 비디오라면 추적
+      if (videoElement) {
+        currentPlayingVideo = videoElement;
+      }
+    });
+  
+    return { contentSwiper, thumbSwiper };
+  }
+  
+    
+  // 레이어 닫기 버튼 이벤트
+  document.querySelector('.products-layer-header-close').addEventListener('click', () => {
+    const layer = document.querySelector('.products-layer');
+    layer.setAttribute('aria-hidden', 'true');
+    layer.style.display = 'none';
+  });
+  
+  // 초기화 실행
+  initializeProductsSwipers();
+  
+}
 
 function handleResize() {
   const newIsMobile = !isPC(); 
@@ -412,6 +610,7 @@ function init() {
   }
   if (sections.includes('products')) {
     prodAnimation();
+    productsSwiper();
   }
   if (sections.includes('overview')) {
     overviewAnimation();
