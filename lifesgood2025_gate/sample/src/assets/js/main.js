@@ -229,14 +229,14 @@ ScrollTrigger.matchMedia({
           <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}-desktop.mp4">
           </video>
-          <button type="button" class="play-btn"></button>
+          <button type="button" class="play-btn" role="button" tabindex="0" aria-label="play" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
             <source src="./assets/video/${videoName}-mobile.mp4">
           </video>
-          <button type="button" class="play-btn"></button>
+          <button type="button" class="play-btn" role="button" tabindex="0" aria-label="play" aria-pressed="false"></button>
         `;
       }
   
@@ -374,9 +374,16 @@ ScrollTrigger.matchMedia({
     popShowBtn.focus();
   });
   
-  window.addEventListener('scroll', function(){
+  window.addEventListener('scroll', function() {
     const intelligence = document.querySelector('.intelligence');
-    
+    const sticky = document.querySelector('.intelligence .sticky');
+    const intelligencePosition = intelligence.getBoundingClientRect();
+    if(intelligencePosition.top < 0) {
+      sticky.classList.add('active');
+    }
+    else {
+      sticky.classList.remove('active');
+    }
   });
 });
 

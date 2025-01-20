@@ -20,11 +20,9 @@
   /*2025 게이트 페이지*/
   &.gate {
     .mobile-only {
-      display: none;
+      display: block;
       @include tablet {
-        .mobile-only {
-          display: none;
-        }
+        display: none;
       }
     }
     .play-btn {
@@ -231,7 +229,9 @@
           opacity: 0;
           z-index: -2;
           &.active {
-            width: rem(72) !important;
+            @include tablet {
+              width: rem(72) !important;
+            }
             opacity: 1 !important;
             transition: all 0.3s;
           }
@@ -243,24 +243,26 @@
         min-height: 100vh;
         background-color: #f0ece4;
         position: relative;
-        overflow: hidden;
         .sticky {
           width: 100%;
           background-color: #f0ece4;
           border-bottom: 1px solid #cbc8c2;
-          position: absolute;
-          top: -40%;
+          position: sticky;
+          top: 0;
           left: 0;
+          opacity: 0;
+          transform: translateY(rem(-20));
           z-index: 5;
           transition: all 0.3s;
           &.active {
-            top: 0;
+            transform: translateY(0);
+            opacity: 1;
           }
           .title {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: rem(32) 0;
+            height: rem(124);
             img {
               width: rem(106);
               margin-right: rem(16);
@@ -284,6 +286,7 @@
           }
         }
         ul {
+          margin-top: rem(-124);
           li {
             display: flex;
             justify-content: center;
@@ -587,7 +590,7 @@
                 margin-bottom: rem(8);
               }
               span {
-                font-size: rem(40);
+                font-size: rem(44);
               }
             }
             .txt {
@@ -597,6 +600,16 @@
         }
         //intelligence
         &.intelligence {
+          .sticky {
+            .title {
+              img {
+                width: rem(95);
+              }
+              span {
+                font-size: rem(40);
+              }
+            }
+          }
           ul {
             li {
               align-items: center;
@@ -655,23 +668,20 @@
           .inner {
             .txt-bx {
               padding: 0 rem(25);
-              transform: translate(0, 0);
-              top: rem(40);
-              left: 0;
               .title {
-                font-size: rem(32);
                 img {
-                  width: rem(62.25);
+                  width: rem(84.8);
                 }
                 span {
-                  font-size: rem(28);
+                  font-size: rem(20);
                 }
                 strong {
-                  font-size: rem(32);
+                  font-size: rem(44);
+                  margin-top: rem(12);
                 }
               }
               .btn {
-                margin-top: rem(20);
+                margin-top: rem(24);
               }
             }
             .play-btn {
@@ -703,7 +713,10 @@
           }
           .red-point {
             transform: translateX(-50%) scale(3);
-            bottom: -24svh;
+            bottom: -26svh;
+            &.active {
+              width: rem(56) !important;
+            }
           }
         }
         //article-banner 
@@ -712,7 +725,7 @@
           .txt-bx {
             .title {
               span {
-                font-size: rem(20);
+                font-size: rem(28);
                 line-height: 1.14;
               }
             }
@@ -723,7 +736,22 @@
         }
         //intelligence
         &.intelligence {
+          .sticky {
+            top: -1px;
+            .title {
+              height: rem(64);
+              padding: rem(10) 0;
+              img {
+                width: rem(63.33);
+                margin-right: rem(8);
+              }
+              span {
+                font-size: rem(24);
+              }
+            }
+          }
           ul {
+            margin-top: rem(-64);
             li {
               display: block;
               padding: 0 rem(16);
@@ -801,6 +829,28 @@
         .logo-wrap {
           &.png-bx {
             display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .campaign-2025 {
+    /*2025 게이트 페이지*/
+    &.gate {
+      .section {
+        //intelligence
+        &.intelligence {
+          .sticky {
+            .title {
+              img {
+                width: rem(55);
+              }
+              span {
+                font-size: rem(20);
+              }
+            }
           }
         }
       }
