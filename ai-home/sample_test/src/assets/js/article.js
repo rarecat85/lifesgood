@@ -398,7 +398,6 @@ function productsSwiper() {
         spaceBetween: 12,
         breakpoints: {
           768: {
-            slidesPerView: 4,
             spaceBetween: 16,
           },
         },
@@ -458,24 +457,14 @@ function productsSwiper() {
   
       // 슬라이드가 비디오인지 확인
       if (slide.classList.contains('video-slide')) {
-        // 비디오 파일 경로 생성
-        const videoMp4 = imgSrc
-          .replace('assets/img', 'assets/video') // 폴더 경로 변경
-          .replace('-img-', '-video-') // '-img-'을 '-video-'로 대체
-          .replace(/\.\w+$/, '.mp4'); // 확장자를 '.mp4'로 변경
+        const videoMp4 = imgSrc.replace('assets/img', 'assets/video').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
+        const videoWebm = imgSrc.replace('assets/img', 'assets/video').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
   
-        const videoWebm = imgSrc
-          .replace('assets/img', 'assets/video') // 폴더 경로 변경
-          .replace('-img-', '-video-') // '-img-'을 '-video-'로 대체
-          .replace(/\.\w+$/, '.webm'); // 확장자를 '.webm'으로 변경
-  
-        // 비디오 추가
         const videoElement = document.createElement('video');
         videoElement.controls = true;
         videoElement.style.position = 'relative';
         videoElement.style.zIndex = '2';
   
-        // MP4와 WebM 소스 추가
         const sourceMp4 = document.createElement('source');
         sourceMp4.src = videoMp4;
         sourceMp4.type = 'video/mp4';
@@ -484,25 +473,21 @@ function productsSwiper() {
         sourceWebm.src = videoWebm;
         sourceWebm.type = 'video/webm';
   
-        // 비디오 태그에 소스 추가
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
   
         contentSlide.appendChild(videoElement);
       } else {
-        // 이미지 추가
         const contentImg = document.createElement('img');
-        contentImg.src = contentImgSrc; // 변환된 src 사용
+        contentImg.src = contentImgSrc;
         contentImg.style.position = 'relative';
-        contentImg.style.zIndex = '2'; // 블러 처리된 배경 위에 오도록 설정
+        contentImg.style.zIndex = '2';
         contentSlide.appendChild(contentImg);
       }
   
-      // DOM 조립
       contentSlide.appendChild(backgroundDiv);
       contentWrapper.appendChild(contentSlide);
   
-      // 썸네일 슬라이드 추가 (기존 src 사용)
       const thumbSlide = document.createElement('div');
       thumbSlide.className = 'swiper-slide';
       const thumbImg = document.createElement('img');
@@ -513,21 +498,18 @@ function productsSwiper() {
   
     layer.setAttribute('aria-hidden', 'false');
     layer.style.display = 'block';
+    document.body.classList.add('noscroll'); // body에 noscroll 클래스 추가
   
-    // DOM 변경 후 초기화
     setTimeout(() => {
       const { contentSwiper, thumbSwiper } = initializeLayerSwipers();
-      // 클릭된 인덱스에 해당하는 슬라이드로 이동
       contentSwiper.slideTo(index);
       thumbSwiper.slideTo(index);
     }, 0);
   }
   
-    
   function initializeLayerSwipers() {
-    let currentPlayingVideo = null; // 현재 재생 중인 비디오 추적
+    let currentPlayingVideo = null;
   
-    // Thumb Swiper 초기화
     const thumbSwiper = new Swiper('.products-layer-content-thumb-swiper', {
       slidesPerView: 'auto',
       spaceBetween: 12,
@@ -539,34 +521,30 @@ function productsSwiper() {
       },
       breakpoints: {
         768: {
-          slidesPerView: 4,
           spaceBetween: 16,
         },
       },
     });
   
-    // Content Swiper 초기화 및 Thumb Swiper 연결
     const contentSwiper = new Swiper('.products-layer-content-swiper', {
       slidesPerView: 1,
       spaceBetween: 0,
       navigation: false,
       thumbs: {
-        swiper: thumbSwiper, // Thumb Swiper 연결
+        swiper: thumbSwiper,
       },
     });
   
-    // 슬라이드 변경 시 비디오 멈춤 및 초기화
     contentSwiper.on('slideChange', () => {
       if (currentPlayingVideo) {
         currentPlayingVideo.pause();
-        currentPlayingVideo.currentTime = 0; // 타임라인 초기화
-        currentPlayingVideo = null; // 현재 재생 중인 비디오 초기화
+        currentPlayingVideo.currentTime = 0;
+        currentPlayingVideo = null;
       }
   
       const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
       const videoElement = activeSlide.querySelector('video');
   
-      // 활성 슬라이드가 비디오라면 추적
       if (videoElement) {
         currentPlayingVideo = videoElement;
       }
@@ -575,18 +553,26 @@ function productsSwiper() {
     return { contentSwiper, thumbSwiper };
   }
   
-    
-  // 레이어 닫기 버튼 이벤트
+  document.querySelector('.products-layer').addEventListener('click', (event) => {
+    const layerContentBox = document.querySelector('.products-layer-conbx');
+    if (!layerContentBox.contains(event.target)) {
+      const layer = document.querySelector('.products-layer');
+      layer.setAttribute('aria-hidden', 'true');
+      layer.style.display = 'none';
+      document.body.classList.remove('noscroll'); // body에서 noscroll 클래스 제거
+    }
+  });
+  
   document.querySelector('.products-layer-header-close').addEventListener('click', () => {
     const layer = document.querySelector('.products-layer');
     layer.setAttribute('aria-hidden', 'true');
     layer.style.display = 'none';
+    document.body.classList.remove('noscroll'); // body에서 noscroll 클래스 제거
   });
   
-  // 초기화 실행
   initializeProductsSwipers();
-  
 }
+
 
 function handleResize() {
   const newIsMobile = !isPC(); 
