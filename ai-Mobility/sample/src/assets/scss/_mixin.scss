@@ -53,6 +53,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
+  text-decoration:none;
   @include font(14,100%,600);
   width: fit-content;
   height:rem(38);

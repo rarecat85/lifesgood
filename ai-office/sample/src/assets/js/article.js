@@ -68,54 +68,6 @@ function kvAnimation() {
   
 }
 
-function overviewAnimation() {
-  const overviewSection = document.querySelector('.overview');
-  const overviewTitle = document.querySelector('.overview-logo-title');
-  const overviewLogo = document.querySelector('.overview-logo-img');
-  const overviewDesc = document.querySelector('.overview-desc');
-
-  function calculateLogoXPosition() {
-    return innerWidth / 2 - overviewLogo.offsetLeft ;
-  }
-
-  function clearOverviewAnimation() {
-    ScrollTrigger.getById("overview-trigger")?.kill();
-  }
-
-  function setupOverviewAnimation() {
-    clearOverviewAnimation(); 
-
-    const overviewTL = gsap.timeline()
-      .set(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-        maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-        webkitMaskRepeat: "no-repeat",
-        maskRepeat: "no-repeat",
-      })
-      .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
-      .set(overviewDesc, {opacity:0, y:20})
-      .to(overviewLogo, { opacity: 1, y: 0}) 
-      .to(overviewLogo, { x: 0 }) 
-      .to(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        ease: "power2.out"
-      })
-      .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
-
-    ScrollTrigger.create({
-      id: "overview-trigger",
-      trigger: overviewSection,
-      start: 'top 80%',
-      end: 'bottom 80%',
-      animation: overviewTL,
-      toggleActions: 'restart none none none', 
-    });
-  }
-
-  setupOverviewAnimation();
-  window.addEventListener('resize', setupOverviewAnimation);
-}
 
 
 let prodTriggers = [];
@@ -232,6 +184,228 @@ function prodAnimation() {
   });
 }
 
+function productsSwiper() {
+  function initializeProductsSwipers() {
+    const productsSwipers = document.querySelectorAll('.products-textbx-thumbbx');
+  
+    if (productsSwipers.length > 0) {
+      const productsSwiperOptions = {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        breakpoints: {
+          768: {
+            spaceBetween: 16,
+          },
+        },
+      };
+  
+      productsSwipers.forEach((swiperElement) => {
+        const swiperInstance = new Swiper(swiperElement, productsSwiperOptions);
+  
+        swiperElement.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+          if (!slide.dataset.eventBound) {
+            slide.addEventListener('click', () => {
+              handleSlideClick(slide, index, swiperElement);
+            });
+            slide.dataset.eventBound = 'true'; 
+          }
+        });
+      });
+    }
+  }
+  
+  function handleSlideClick(slide, index, swiperElement) {
+    const layer = document.querySelector('.products-layer');
+    const contentWrapper = layer.querySelector('.products-layer-content-swiper-wrapper');
+    const thumbWrapper = layer.querySelector('.products-layer-content-thumb-swiper-wrapper');
+  
+    // 기존 내용 초기화
+    contentWrapper.innerHTML = '';
+    thumbWrapper.innerHTML = '';
+  
+    // `.products-textbx` 컨텍스트에서 Eyebrow와 버튼 찾기
+    const productsTextbx = swiperElement.closest('.products-textbx');
+    const eyebrowElement = productsTextbx?.querySelector('.products-textbx-eyebrow');
+    const btnElement = productsTextbx?.querySelector('.btn');
+  
+    // Eyebrow 텍스트 설정
+    const eyebrowText = eyebrowElement ? eyebrowElement.textContent.trim() : 'Untitled';
+    const headerTitleElement = layer.querySelector('.products-layer-header-title-bx-title');
+    headerTitleElement.textContent = eyebrowText;
+  
+    // 버튼 링크 설정
+    const buttonHref = btnElement ? btnElement.getAttribute('href') : null;
+    const headerButtonElement = layer.querySelector('.products-layer-header-title-bx-btn');
+    if (buttonHref) {
+      headerButtonElement.setAttribute('href', buttonHref);
+      headerButtonElement.style.display = 'flex'; // 버튼 보이기
+    } else {
+      headerButtonElement.style.display = 'none'; // 버튼 숨기기
+    }
+  
+    // 슬라이드 데이터 추가
+    const allSlides = swiperElement.querySelectorAll('.swiper-slide');
+  
+    allSlides.forEach((slide, idx) => {
+      const img = slide.querySelector('img');
+      const imgSrc = img.getAttribute('src');
+      const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
+  
+      const contentSlide = document.createElement('div');
+      contentSlide.className = 'swiper-slide';
+      contentSlide.style.position = 'relative';
+      contentSlide.style.overflow = 'hidden';
+  
+      const imageWrapper = document.createElement('div');
+      imageWrapper.style.position = 'absolute';
+      imageWrapper.style.top = '0';
+      imageWrapper.style.left = '0';
+      imageWrapper.style.right = '0';
+      imageWrapper.style.bottom = '0';
+      imageWrapper.style.zIndex = '1';
+      imageWrapper.style.overflow = 'hidden';
+  
+      const backgroundImg = document.createElement('img');
+      backgroundImg.src = contentImgSrc;
+      backgroundImg.style.width = '100%';
+      backgroundImg.style.height = '100%';
+      backgroundImg.style.objectFit = 'cover';
+      backgroundImg.style.filter = 'blur(35px)';
+  
+      imageWrapper.appendChild(backgroundImg);
+      contentSlide.appendChild(imageWrapper);
+  
+      if (slide.classList.contains('video-slide')) {
+        const videoMp4 = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
+        const videoWebm = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
+  
+        const videoElement = document.createElement('video');
+        videoElement.controls = true;
+        videoElement.style.position = 'relative';
+        videoElement.style.zIndex = '2';
+  
+        const sourceMp4 = document.createElement('source');
+        sourceMp4.src = videoMp4;
+        sourceMp4.type = 'video/mp4';
+  
+        const sourceWebm = document.createElement('source');
+        sourceWebm.src = videoWebm;
+        sourceWebm.type = 'video/webm';
+  
+        videoElement.appendChild(sourceMp4);
+        videoElement.appendChild(sourceWebm);
+  
+        contentSlide.appendChild(videoElement);
+      } else {
+        const contentImg = document.createElement('img');
+        contentImg.src = contentImgSrc;
+        contentImg.style.position = 'relative';
+        contentImg.style.zIndex = '2';
+        contentSlide.appendChild(contentImg);
+      }
+  
+      contentWrapper.appendChild(contentSlide);
+  
+      const thumbSlide = document.createElement('div');
+      thumbSlide.className = 'swiper-slide';
+      const thumbImg = document.createElement('img');
+      thumbImg.src = imgSrc;
+      thumbSlide.appendChild(thumbImg);
+      thumbWrapper.appendChild(thumbSlide);
+    });
+  
+    // 레이어 표시 및 스크롤 비활성화
+    layer.setAttribute('aria-hidden', 'false');
+    layer.style.display = 'block';
+    document.body.classList.add('noscroll');
+  
+    // Swiper 초기화 및 활성 슬라이드 이동
+    setTimeout(() => {
+      const { contentSwiper, thumbSwiper } = initializeLayerSwipers();
+      contentSwiper.update();
+      contentSwiper.slideTo(index, 0);
+      thumbSwiper.update();
+      thumbSwiper.slideTo(index, 0);
+    }, 0);
+  }
+  
+  
+  function initializeLayerSwipers() {
+    let currentPlayingVideo = null;
+  
+    const thumbSwiper = new Swiper('.products-layer-content-thumb-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 12,
+      freeMode: true,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.products-layer-content-thumb-swiper-btn-next',
+        prevEl: '.products-layer-content-thumb-swiper-btn-prev',
+      },
+      breakpoints: {
+        768: {
+          spaceBetween: 16,
+        },
+      },
+    });
+  
+    const contentSwiper = new Swiper('.products-layer-content-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      navigation: false,
+      thumbs: {
+        swiper: thumbSwiper,
+      },
+    });
+  
+    contentSwiper.on('slideChange', () => {
+      if (currentPlayingVideo) {
+        currentPlayingVideo.pause();
+        currentPlayingVideo.currentTime = 0;
+        currentPlayingVideo = null;
+      }
+  
+      const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
+      const videoElement = activeSlide.querySelector('video');
+  
+      if (videoElement) {
+        videoElement.muted = true;
+        videoElement.play();
+        currentPlayingVideo = videoElement;
+      }
+    });
+
+    const initialSlide = contentSwiper.slides[contentSwiper.activeIndex];
+    const initialVideo = initialSlide.querySelector('video');
+    if (initialVideo) {
+      initialVideo.muted = true;
+      initialVideo.play();
+      currentPlayingVideo = initialVideo;
+    }
+  
+    return { contentSwiper, thumbSwiper };
+  }
+  
+  document.querySelector('.products-layer').addEventListener('click', (event) => {
+    const layerContentBox = document.querySelector('.products-layer-conbx');
+    if (!layerContentBox.contains(event.target)) {
+      const layer = document.querySelector('.products-layer');
+      layer.setAttribute('aria-hidden', 'true');
+      layer.style.display = 'none';
+      document.body.classList.remove('noscroll'); 
+    }
+  });
+  
+  document.querySelector('.products-layer-header-close').addEventListener('click', () => {
+    const layer = document.querySelector('.products-layer');
+    layer.setAttribute('aria-hidden', 'true');
+    layer.style.display = 'none';
+    document.body.classList.remove('noscroll'); 
+  });
+  
+  initializeProductsSwipers();
+}
+
 function stories() {
   const storiesSwiper = document.querySelector('.stories-conbx');
 
@@ -271,7 +445,6 @@ function handleResize() {
   }
   
   ScrollTrigger.refresh();
-  overviewAnimation();
 }
 
 function init() {
@@ -283,9 +456,7 @@ function init() {
   }
   if (sections.includes('products')) {
     prodAnimation();
-  }
-  if (sections.includes('overview')) {
-    overviewAnimation();
+    productsSwiper();
   }
   if(sections.includes('stories')) {
     stories();
