@@ -442,9 +442,9 @@ body {
           }
         }
       }
-      .btn {
-        display:none;
-      }
+      // .btn {
+      //   display:none;
+      // }
     }
   }
 
@@ -984,15 +984,48 @@ body {
       @include desktop {
         padding:rem(32);
       }
+      &-title-bx {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        @include tablet {
+          width:auto;
+          margin-right:auto;
+          column-gap:rem(8);
+        }
+        @include desktop {
+          padding:rem(12);
+        }
+        &-title {
+          @include font(20,120%,550);
+          @include tablet {
+            @include font(28,114%);
+          }
+          @include desktop {
+            @include font(36,100%);
+          }
+        }
+        &-btn {
+        }
+      }
       &-close {
-        width:rem(32);
-        height:rem(32);
+        width:rem(40);
+        height:rem(40);
         background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat;
         background-size:contain;
         font-size:0;
+        position:absolute;
+        left:50%;
+        bottom:rem(-16);
+        transform:translate(-50%,100%);
         @include tablet {
           width:rem(40);
           height:rem(40);
+          position:relative;
+          left:0;
+          bottom:0;
+          transform:translate(0,0);
         }
         @include desktop {
           width:rem(48);

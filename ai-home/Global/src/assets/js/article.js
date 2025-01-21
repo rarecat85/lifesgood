@@ -332,9 +332,31 @@ function productsSwiper() {
     const contentWrapper = layer.querySelector('.products-layer-content-swiper-wrapper');
     const thumbWrapper = layer.querySelector('.products-layer-content-thumb-swiper-wrapper');
   
+    // 기존 내용 초기화
     contentWrapper.innerHTML = '';
     thumbWrapper.innerHTML = '';
   
+    // `.products-textbx` 컨텍스트에서 Eyebrow와 버튼 찾기
+    const productsTextbx = swiperElement.closest('.products-textbx');
+    const eyebrowElement = productsTextbx?.querySelector('.products-textbx-eyebrow');
+    const btnElement = productsTextbx?.querySelector('.btn');
+  
+    // Eyebrow 텍스트 설정
+    const eyebrowText = eyebrowElement ? eyebrowElement.textContent.trim() : 'Untitled';
+    const headerTitleElement = layer.querySelector('.products-layer-header-title-bx-title');
+    headerTitleElement.textContent = eyebrowText;
+  
+    // 버튼 링크 설정
+    const buttonHref = btnElement ? btnElement.getAttribute('href') : null;
+    const headerButtonElement = layer.querySelector('.products-layer-header-title-bx-btn');
+    if (buttonHref) {
+      headerButtonElement.setAttribute('href', buttonHref);
+      headerButtonElement.style.display = 'flex'; // 버튼 보이기
+    } else {
+      headerButtonElement.style.display = 'none'; // 버튼 숨기기
+    }
+  
+    // 슬라이드 데이터 추가
     const allSlides = swiperElement.querySelectorAll('.swiper-slide');
   
     allSlides.forEach((slide, idx) => {
@@ -361,7 +383,7 @@ function productsSwiper() {
       backgroundImg.style.width = '100%';
       backgroundImg.style.height = '100%';
       backgroundImg.style.objectFit = 'cover';
-      backgroundImg.style.filter = 'blur(35px)'; // 블러 효과 추가
+      backgroundImg.style.filter = 'blur(35px)';
   
       imageWrapper.appendChild(backgroundImg);
       contentSlide.appendChild(imageWrapper);
@@ -405,18 +427,21 @@ function productsSwiper() {
       thumbWrapper.appendChild(thumbSlide);
     });
   
+    // 레이어 표시 및 스크롤 비활성화
     layer.setAttribute('aria-hidden', 'false');
     layer.style.display = 'block';
     document.body.classList.add('noscroll');
   
+    // Swiper 초기화 및 활성 슬라이드 이동
     setTimeout(() => {
       const { contentSwiper, thumbSwiper } = initializeLayerSwipers();
       contentSwiper.update();
-      contentSwiper.slideTo(index, 0); 
-      thumbSwiper.update(); 
-      thumbSwiper.slideTo(index, 0); 
+      contentSwiper.slideTo(index, 0);
+      thumbSwiper.update();
+      thumbSwiper.slideTo(index, 0);
     }, 0);
   }
+  
   
   function initializeLayerSwipers() {
     let currentPlayingVideo = null;
@@ -493,7 +518,6 @@ function productsSwiper() {
   
   initializeProductsSwipers();
 }
-
 
 
 function handleResize() {
