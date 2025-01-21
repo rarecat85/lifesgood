@@ -68,56 +68,6 @@ function kvAnimation() {
   
 }
 
-function overviewAnimation() {
-  const overviewSection = document.querySelector('.overview');
-  const overviewTitle = document.querySelector('.overview-logo-title');
-  const overviewLogo = document.querySelector('.overview-logo-img');
-  const overviewDesc = document.querySelector('.overview-desc');
-
-  function calculateLogoXPosition() {
-    return innerWidth / 2 - overviewLogo.offsetLeft ;
-  }
-
-  function clearOverviewAnimation() {
-    ScrollTrigger.getById("overview-trigger")?.kill();
-  }
-
-  function setupOverviewAnimation() {
-    clearOverviewAnimation(); 
-
-    const overviewTL = gsap.timeline()
-      .set(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-        maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-        webkitMaskRepeat: "no-repeat",
-        maskRepeat: "no-repeat",
-      })
-      .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
-      .set(overviewDesc, {opacity:0, y:20})
-      .to(overviewLogo, { opacity: 1, y: 0}) 
-      .to(overviewLogo, { x: 0 }) 
-      .to(overviewTitle, {
-        webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-        ease: "power2.out"
-      })
-      .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
-
-    ScrollTrigger.create({
-      id: "overview-trigger",
-      trigger: overviewSection,
-      start: 'top 80%',
-      end: 'bottom 80%',
-      animation: overviewTL,
-      toggleActions: 'restart none none none', 
-    });
-  }
-
-  setupOverviewAnimation();
-  window.addEventListener('resize', setupOverviewAnimation);
-}
-
-
 let prodTriggers = [];
 
 function prodAnimation() {
@@ -140,12 +90,10 @@ function prodAnimation() {
     const prodVideoTitle = section.querySelector('.products-video-title');
     const prodVideoBx = section.querySelector('.products-video');
     const prodVideo = section.querySelector('video');
-    const prodTextBx = section.querySelector('.products-textbx');
-    const prodTextChildren = toArray(prodTextBx.children);
     const prodVideoBtn = section.querySelector('.products-video-btn');
 
     const resetProps = () => {
-      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
+      gsap.set([prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
     };
 
     const playVideoOnView = () => {
@@ -186,20 +134,16 @@ function prodAnimation() {
 
     if (isDesktop) {
       const isReverse = section.classList.contains('reverse');
-      const xValue = (24 / 16) + 'rem';
-      const adjustedX = isReverse ? `-${xValue}` : xValue;
 
       const prodTl = gsap.timeline({
         defaults: { ease: 'linear' },
       })
         .set(prodVideoBtn, { opacity: 0 })
-        .set(prodTextChildren, { opacity: 0, y: 20 })
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
         .call(() => prodVideo.play())
-        .to(prodInner, { maxWidth: '1440px' })
-        .to(prodVideoBx, { scale: 0.5083, x: adjustedX, borderRadius: 28, duration: 2 })
-        .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 })
-        .to(prodVideoBtn, { opacity: 1, scale: 2.4585 });
+        .to(prodInner, { maxWidth: '1440px', duration: 2  })
+        if(isDesktop) prodTl.to(prodVideoBx, { borderRadius: 28, })
+        .to(prodVideoBtn, { opacity: 1,});
 
       const trigger = ScrollTrigger.create({
         trigger: section,
@@ -231,6 +175,32 @@ function prodAnimation() {
     prodAnimation();
   });
 }
+
+function staticProdVideoControls() {
+  const videoContainers = document.querySelectorAll('.products-static-item-video');
+
+  videoContainers.forEach((videoContainer) => {
+      const video = videoContainer.querySelector('video');
+      const button = videoContainer.querySelector('.products-static-item-video-btn');
+
+      const togglePlayPause = () => {
+          if (video.paused) {
+              video.play();
+              button.setAttribute('aria-pressed', 'true');
+              button.textContent = 'pause';
+          } else {
+              video.pause();
+              button.setAttribute('aria-pressed', 'false');
+              button.textContent = 'play';
+          }
+      };
+
+      video.addEventListener('click', togglePlayPause);
+      button.addEventListener('click', togglePlayPause);
+  });
+}
+
+
 
 function stories() {
   const storiesSwiper = document.querySelector('.stories-conbx');
@@ -284,10 +254,9 @@ function init() {
   if (sections.includes('products')) {
     prodAnimation();
   }
-  if (sections.includes('overview')) {
-    overviewAnimation();
+  if (sections.includes('products-static')) {
+    staticProdVideoControls();
   }
-
   if(sections.includes('stories')) {
     stories();
   }
