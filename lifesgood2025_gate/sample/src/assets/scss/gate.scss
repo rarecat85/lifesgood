@@ -129,7 +129,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: rem(240) rem(16);
+        padding: rem(240) rem(16) rem(144);
         min-height: 100vh;
         background-color: #f0ece4;
         .txt-bx {
@@ -275,25 +275,24 @@
           top: 0;
           left: 0;
           opacity: 0;
-          transform: translateY(rem(-20));
           z-index: 5;
+          transition: opacity 0.3s;
           &.active {
-            transform: translateY(0);
             opacity: 1;
           }
           .title {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: rem(124);
+            height: rem(96);
             img {
-              width: rem(106);
+              width: rem(95);
               margin-right: rem(16);
             }
             span {
               font-family: "LGEI Headline";
               font-weight: 600;
-              font-size: rem(44);
+              font-size: rem(40);
               line-height: 1.1;
               background: linear-gradient(
                 90deg,
@@ -309,7 +308,6 @@
           }
         }
         ul {
-          margin-top: rem(-124);
           li {
             display: flex;
             justify-content: center;
@@ -625,17 +623,8 @@
         }
         //intelligence
         &.intelligence {
-          .sticky {
-            .title {
-              img {
-                width: rem(95);
-              }
-              span {
-                font-size: rem(40);
-              }
-            }
-          }
           ul {
+            margin-top: rem(-96);
             li {
               align-items: center;
               .des-bx {

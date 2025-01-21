@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(resizeTimeoutHeroVideo);
     resizeTimeoutHeroVideo = setTimeout(function () {
       setHeroVideo();
-      ScrollTrigger.refresh(); // Refresh ScrollTrigger after setting hero video
     }, 150); // 150ms 딜레이로 디바운스
   });
 
@@ -81,12 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             redPoint.classList.add('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
         },
       });
@@ -115,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
         redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-        ScrollTrigger.refresh(); // Refresh after cleanup
       };
     },
 
@@ -135,12 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             redPoint.classList.add('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
         },
       });
@@ -165,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
         redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-        ScrollTrigger.refresh(); // Refresh after cleanup
       };
     },
 
@@ -185,12 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
           onLeave: function() {
             redPoint.classList.add('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
             redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-            ScrollTrigger.refresh(); // Refresh after changing image
           },
         },
       });
@@ -216,7 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
         redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
-        ScrollTrigger.refresh(); // Refresh after cleanup
       };
     },
   });
@@ -356,13 +346,11 @@ document.addEventListener("DOMContentLoaded", function () {
           prevSlideMessage: 'move to prev slide',
         },
       });
-      ScrollTrigger.refresh(); // Refresh ScrollTrigger after initializing Swiper
     }
     else if (!isMobileView && storySlide) {
       // 1025px 초과일 때 슬라이드 제거
       storySlide.destroy();
       storySlide = null;
-      ScrollTrigger.refresh(); // Refresh ScrollTrigger after destroying Swiper
     }
   }
 
@@ -372,7 +360,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for storySlide resize
   window.addEventListener("resize", function() {
     handleStorySlideResize();
-    ScrollTrigger.refresh(); // Refresh ScrollTrigger after handling story slide resize
   });
 
   /* 팝업 스크립트 */
@@ -385,11 +372,10 @@ document.addEventListener("DOMContentLoaded", function () {
   popShowBtn.addEventListener("click", function () {
     const youtubeId = this.dataset.ytid;
     // iframe의 src 속성 설정
-    iframe.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1" title="LG VS Company : CES 2025 Teaser I LG​" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    iframe.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1?enablejsapi=1" title="LG VS Company : CES 2025 Teaser I LG​" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     // 팝업 활성화
     layerPop.classList.add("active");
     closeBtn.focus();
-    ScrollTrigger.refresh(); // Refresh ScrollTrigger after opening popup
   });
 
   // 팝업 닫기
@@ -397,7 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
     iframe.innerHTML = "";
     layerPop.classList.remove("active");
     popShowBtn.focus();
-    ScrollTrigger.refresh(); // Refresh ScrollTrigger after closing popup
   });
 
   // 헤더 요소 선택
@@ -411,46 +396,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 뷰포트 너비를 감지하는 함수
   function getHeaderHeight() {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 1440) {
       return pcHeader ? pcHeader.offsetHeight : 0;
     } else {
       return mobileHeader ? mobileHeader.offsetHeight : 0;
     }
   }
 
-  // 스크롤 이벤트 핸들러 (Renamed to handleStickyHeaderScroll)
-  function handleStickyHeaderScroll() {
-    if (!cHeaderSide) return; // Ensure .c-header-side exists
+  // [PC에서만 조정 가능하도록 만든 변수]
+//   - pcScrollThreshold: intelligence 섹션이 '뷰포트 상단'으로부터 얼마만큼 아래에 있을 때 Sticky를 활성화할지를 결정
+//   - 예) 200 이면, 뷰포트 상단에서 200px 떨어진 순간부터 Sticky가 적용됩니다.
+const pcScrollThreshold = 200;
 
-    // DOM 요소 선택
-    const intelligence = document.querySelector('.intelligence');
-    const sticky = document.querySelector('.intelligence .sticky');
-    const intelligencePosition = intelligence.getBoundingClientRect();
+// Sticky Header 스크롤 이벤트
+function handleStickyHeaderScroll() {
+  if (!cHeaderSide) return;
 
-    // 헤더 높이 가져오기
-    const headerHeight = getHeaderHeight() - 1;
+  const intelligence = document.querySelector('.intelligence');
+  const sticky = document.querySelector('.intelligence .sticky');
+  const intelligencePosition = intelligence.getBoundingClientRect();
 
-    // Check if c-header-side has 'is-fixed' class
-    if (cHeaderSide.classList.contains('is-fixed')) {
-      // If 'is-fixed' is present, apply styles as if scrolling up
+  // 헤더 높이 (모바일/PC 분기)
+  const headerHeight = getHeaderHeight() - 1;
+
+  // PC 해상도인지 여부
+  const isPCWidth = window.innerWidth >= 1440;
+
+  // -------------------------------
+  // Sticky 해제 조건 재설정 (예시)
+  // -------------------------------
+  // intelligencePosition.top >= pcScrollThreshold
+  //   => 뷰포트 상단에서 pcScrollThreshold(200px)보다 더 아래(즉 201, 300...)라면 Sticky 비활성화
+  // intelligencePosition.top < pcScrollThreshold
+  //   => 200px 지점에 도달하거나 그 위(- 값)로 올라갔으면 Sticky 활성화
+  // -------------------------------
+
+  // 만약 .c-header-side에 is-fixed 클래스가 있다면(= 스크롤 업 중인 상태)
+  if (cHeaderSide.classList.contains('is-fixed')) {
+    if (isPCWidth) {
+      // [*수정*] PC 해상도에서 threshold 적용
+      if (intelligencePosition.top < pcScrollThreshold) {
+        sticky.classList.add('active');
+        sticky.style.top = `${headerHeight}px`;
+      } else {
+        sticky.classList.remove('active');
+        sticky.style.top = '0px';
+      }
+    } else {
+      // 모바일/태블릿 로직 (원래처럼)
       if (intelligencePosition.top < 0) {
         sticky.classList.add('active');
         sticky.style.top = `${headerHeight}px`;
-      }
-    } else {
-      // If 'is-fixed' is not present, apply styles as if scrolling down
-      if (intelligencePosition.top < 0) {
-        sticky.classList.add('active');
+      } else {
+        sticky.classList.remove('active');
         sticky.style.top = '0px';
       }
     }
-
-    // 특정 조건에 따라 sticky 클래스를 제거
-    if (intelligencePosition.top >= 0) {
-      sticky.classList.remove('active');
-      sticky.style.top = '0px';
+  } 
+  else {
+    // 스크롤 다운 중인 상태
+    if (isPCWidth) {
+      // [*수정*] PC 해상도에서 threshold 적용
+      if (intelligencePosition.top < pcScrollThreshold) {
+        sticky.classList.add('active');
+        sticky.style.top = '0px';
+      } else {
+        sticky.classList.remove('active');
+        sticky.style.top = '0px';
+      }
+    } else {
+      // 모바일/태블릿 로직 (원래처럼)
+      if (intelligencePosition.top < 0) {
+        sticky.classList.add('active');
+        sticky.style.top = '0px';
+      } else {
+        sticky.classList.remove('active');
+        sticky.style.top = '0px';
+      }
     }
   }
+}
+
 
   // 리사이즈 이벤트 핸들러 for Sticky Header (Renamed to handleStickyHeaderResize)
   function handleStickyHeaderResize() {
@@ -464,7 +490,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       sticky.style.top = '0px';
     }
-    ScrollTrigger.refresh(); // Refresh ScrollTrigger after handling sticky header resize
   }
 
   // Throttle 함수 (성능 최적화를 위해 스크롤 이벤트 빈도 조절)
