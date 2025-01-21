@@ -207,46 +207,62 @@ body {
     //   }
     // }
     &.article-banner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: rem(240) rem(16);
-      min-height: 100vh;
-      background-color: #f0ece4;
-      .txt-bx {
-        text-align: center;
-        max-width: rem(850);
-        .title {
-          margin-bottom: rem(24);
-          img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: rem(16);
-          }
-          span {
-            font-family: "LGEI Headline";
-            font-weight: 600;
-            font-size: rem(56);
-            background: linear-gradient(
-              90deg,
-              rgba(253, 49, 46, 1) 2%,
-              rgba(249, 20, 235, 1) 54%,
-              rgba(130, 39, 255, 1) 97%,
-              rgba(180, 50, 245, 1) 8799%
-            );
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-          }
-        }
-        .txt {
-          font-weight: 400;
-          font-size: rem(28);
-          line-height: 1.165;
-          text-wrap: balance;
-        }
+     width:100%;
+     max-width:rem(696);
+     padding:rem(56) rem(16);
+     @include tablet {
+      padding:rem(144) rem(24);
+     }
+     @include desktop {
+      padding:rem(128) rem(24);
+      margin-bottom:rem(128);
+     }
+     .inner {
+      padding:rem(54) 0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      @include tablet {
+        padding:0;
       }
+     }
+     .article-banner-logo {
+      width:rem(95);
+      @include tablet {
+        width:rem(136);
+      }
+      img {
+        @include img();
+      }
+     }
+     .title {
+      @include font(28,115%,550,$ls:-0.224px);
+      margin-top:rem(8);
+      background: linear-gradient(
+        90deg,
+        rgba(253, 49, 46, 1) 2%,
+        rgba(249, 20, 235, 1) 54%,
+        rgba(130, 39, 255, 1) 97%,
+        rgba(180, 50, 245, 1) 8799%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      @include tablet {
+        @include font(44,100%,$ls:0);
+      }
+     }
+     .txt {
+      @include font(20,120%,$cl:$warmGray);
+      text-align:center;
+      margin-top:rem(16);
+      @include tablet {
+        @include font(24,116%,$cl:$black);
+      }
+      @include desktop {
+        margin-top:rem(20);
+      }
+     }
     }
   }
   .products {
@@ -534,17 +550,20 @@ body {
         padding-top:rem(31);
         padding-bottom:rem(8);
         @include tablet {
-          padding-top:rem(64);
+          padding-top:rem(48);
           padding-bottom:rem(16);
         }
         @include desktop {
-          padding-top:rem(80);
+          padding-top:rem(56);
           padding-bottom:rem(32);
         }
         &-title {
           @include font(28,110%,$cl:$white);
           @include tablet {
             @include font(56,110%);
+          }
+          span {
+            font-family:'LGEI Headline';
           }
         }
         &-logo {
@@ -562,7 +581,7 @@ body {
             transform:translate(0,0);
           }
           @include desktop {
-            width:rem(96);
+            width:rem(72);
           }
           img {
             @include img();
@@ -602,9 +621,9 @@ body {
         }
         &-tablist {
           padding:rem(4);
-          background:linear-gradient(0deg, #383838 0%, #383838 100%), rgba(179, 179, 179, 0.82);
-          background-blend-mode: color-dodge, normal;
-          filter:blur(25);
+          background:rgba(255,255,255,0.75);
+          // background-blend-mode: color-dodge, normal;
+          // backdrop-filter:blur(25px);
           border-radius:rem(100);
           display:flex;
           align-items:center;
@@ -1041,7 +1060,9 @@ body {
           opacity:0.5;
           position:relative;
         }
-        
+        .swiper-button-lock {
+          display:none;
+        }
       }
       &-thumb-swiper {
         width:calc(100% - rem(62) - rem(24));
