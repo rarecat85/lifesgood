@@ -53,6 +53,28 @@
         .inner {
           width: 100%;
           height: 100%;
+          position: relative;
+          z-index: 1;
+          &::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: rgb(0,0,0);
+            background: linear-gradient(130deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
           .video-bx {
             width: 100%;
             height: 100%;
@@ -69,6 +91,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            z-index: 2;
             .title {
               img {
                 display: block;
@@ -97,6 +120,7 @@
           }
           .play-btn {
             bottom: rem(65);
+            z-index: 2;
           }
         }
       }
@@ -190,7 +214,7 @@
             left: 50%;
             z-index: 7;
             &.bx-1 {
-              max-width: 640px;
+              max-width: 666px;
             }
           }
           .title {
@@ -253,7 +277,6 @@
           opacity: 0;
           transform: translateY(rem(-20));
           z-index: 5;
-          transition: all 0.3s;
           &.active {
             transform: translateY(0);
             opacity: 1;
@@ -512,9 +535,11 @@
   }
   .btn {
     @include btn($red);
+    text-decoration: none !important;
   }
   .white-btn {
     @include btn($white);
+    text-decoration: none !important;
   }
 }
 @media screen and (max-width: 1439px) {
