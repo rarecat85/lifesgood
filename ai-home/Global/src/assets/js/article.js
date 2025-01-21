@@ -457,9 +457,19 @@ function productsSwiper() {
       const videoElement = activeSlide.querySelector('video');
   
       if (videoElement) {
+        videoElement.muted = true;
+        videoElement.play();
         currentPlayingVideo = videoElement;
       }
     });
+
+    const initialSlide = contentSwiper.slides[contentSwiper.activeIndex];
+    const initialVideo = initialSlide.querySelector('video');
+    if (initialVideo) {
+      initialVideo.muted = true;
+      initialVideo.play();
+      currentPlayingVideo = initialVideo;
+    }
   
     return { contentSwiper, thumbSwiper };
   }
