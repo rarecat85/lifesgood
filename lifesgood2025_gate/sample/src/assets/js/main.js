@@ -74,7 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: ".section.overview",
           start: "top top",
-          end: "+=500%",
+          onRefresh: self => {    
+            let resizeTimer;
+            window.addEventListener("resize", () => {
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(() => {
+                ScrollTrigger.refresh();
+              }, 250);
+            });    
+          },
+          invalidateOnRefresh: true,
+          end: "+=300%",
           pin: true,
           scrub: 1,
           onLeave: function() {
@@ -125,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: ".section.overview",
           start: "top top",
-          end: "+=500%",
+          end: "+=300%",
           pin: true,
           scrub: 1,
           onLeave: function() {
@@ -316,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentlyPC !== isPC) {
       isPC = currentlyPC;
       updateContentBoxes();
-      ScrollTrigger.refresh(); // Refresh ScrollTrigger after updating content boxes
+      //ScrollTrigger.refresh(); // Refresh ScrollTrigger after updating content boxes
     }
   }
 
