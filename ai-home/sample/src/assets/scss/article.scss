@@ -411,35 +411,49 @@ body {
           margin-top:rem(16);
         }
       }
+      &-thumbbx-title {
+        width:100%;
+        margin-top:rem(12);
+        margin-bottom:rem(8);
+        @include font(20,120%,550,$warmGray);
+        @include tablet {
+          margin-top:rem(24);
+          margin-bottom:rem(12);
+          @include font(24,116%);
+        }
+      }
       &-thumbbx {
         width:100%;
-        margin:rem(12) 0;
+        margin-bottom:rem(12);
         @include tablet {
-          margin:rem(24) 0;
+          margin-bobbomt:rem(24);
         }
         &-wrapper {
           display:flex;
           align-items:center;
         }
         &-item {
-          width:rem(80);
-          height:rem(80);
+          width:rem(96);
+          height:rem(96);
           background:#333;
-          border-radius:50%;
+          border-radius:rem(8);
           overflow:hidden;
           border:2px solid #CBC8C2;
           cursor:pointer;
+          &:hover {
+            border:2px solid $red;
+          }
           img {
             @include img(cover);
           }
           @include tablet {
-            width:rem(64);
-            height:rem(64);
+            width:rem(120);
+            height:rem(120);
           }
-          @include desktop {
-            width:rem(80);
-            height:rem(80);
-          }
+          // @include desktop {
+          //   width:rem(80);
+          //   height:rem(80);
+          // }
         }
       }
       // .btn {
@@ -974,15 +988,18 @@ body {
     }
     &-header {
       width:100%;
-      padding:rem(16);
+      padding:rem(20) rem(16) 0;
       display:flex;
       align-items:center;
       justify-content:flex-end;
+      margin-bottom:rem(16);
       @include tablet {
-        padding:rem(24);
+        padding:rem(32) rem(24) 0;
+        margin-bottom:rem(20);
       }
       @include desktop {
-        padding:rem(32);
+        padding:rem(40) rem(32) 0;
+        margin-bottom:rem(24);
       }
       &-title-bx {
         width:100%;
@@ -1006,12 +1023,11 @@ body {
             @include font(36,100%);
           }
         }
-        &-btn {
-        }
       }
       &-close {
         width:rem(40);
         height:rem(40);
+        border-radius:50%;
         background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat;
         background-size:contain;
         font-size:0;
@@ -1022,10 +1038,12 @@ body {
         @include tablet {
           width:rem(40);
           height:rem(40);
-          position:relative;
-          left:0;
-          bottom:0;
-          transform:translate(0,0);
+          left:unset;
+          bottom:unset;
+          right:0;
+          top:0;
+          transform:translate(50%,-50%);
+          box-shadow:4px 4px 10px 0px rgba(0, 0, 0, 0.20);
         }
         @include desktop {
           width:rem(48);
@@ -1115,15 +1133,19 @@ body {
           justify-content:center;
         }
         .swiper-slide {
-          width:rem(64);
-          height:rem(64);
-          border-radius:50%;
+          width:rem(72);
+          height:rem(72);
+          border-radius:rem(4);
           overflow:hidden;
           border:2px solid #CBC8C2;
           cursor:pointer;
+          &:hover {
+            border:2px solid $red;
+          }
           @include tablet {
-            width:rem(80);
-            height:rem(80);
+            width:rem(120);
+            height:rem(120);
+            border-radius:rem(8);
           }
           img {
             @include img(cover);
