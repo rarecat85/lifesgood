@@ -373,10 +373,10 @@ body {
         max-width:rem(610);
       }
       &-eyebrow {
-        @include font(14,114%);
+        @include font(16,125%,600);
         margin-bottom:rem(8);
         @include tablet {
-          @include font(20,120%);
+          @include font(24,116%);
         }
       }
       &-title {
