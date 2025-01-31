@@ -452,6 +452,10 @@ function productsSwiper() {
       const img = slide.querySelector('img');
       const imgSrc = img.getAttribute('src');
       const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
+
+      // 🔹 data-title, data-desc 가져오기
+      const slideTitle = slide.dataset.title || '';
+      const slideDesc = slide.dataset.desc || '';
   
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
@@ -510,6 +514,9 @@ function productsSwiper() {
   
       const thumbSlide = document.createElement('div');
       thumbSlide.className = 'swiper-slide';
+      thumbSlide.dataset.title = slideTitle; // data-title 저장
+      thumbSlide.dataset.desc = slideDesc; // data-desc 저장
+
       const thumbImg = document.createElement('img');
       thumbImg.src = imgSrc;
       thumbSlide.appendChild(thumbImg);
@@ -528,10 +535,27 @@ function productsSwiper() {
       contentSwiper.slideTo(index, 0);
       thumbSwiper.update();
       thumbSwiper.slideTo(index, 0);
+
+      updateActiveSlideText(contentSwiper.activeIndex, thumbWrapper);
     }, 0);
   }
   
-  
+  function updateActiveSlideText(activeIndex, thumbWrapper) {
+    const layer = document.querySelector('.products-layer');
+    const titleElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-title');
+    const descElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-desc');
+
+    const activeThumbSlide = thumbWrapper.children[activeIndex];
+
+    if (activeThumbSlide) {
+        const title = activeThumbSlide.dataset.title || '';
+        const desc = activeThumbSlide.dataset.desc || '';
+
+        titleElement.textContent = title;
+        descElement.textContent = desc;
+    }
+  }
+
   function initializeLayerSwipers() {
     let currentPlayingVideo = null;
   
@@ -570,6 +594,9 @@ function productsSwiper() {
       const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
       const videoElement = activeSlide.querySelector('video');
   
+      const activeSlideIndex = contentSwiper.activeIndex;
+      updateActiveSlideText(activeSlideIndex, document.querySelector('.products-layer-content-thumb-swiper-wrapper'));
+      
       if (videoElement) {
         videoElement.muted = true;
         videoElement.play();
