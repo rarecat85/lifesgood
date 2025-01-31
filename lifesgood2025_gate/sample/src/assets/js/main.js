@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const articleBanner = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.article-banner",
-          start: "top top",
+          start: "250%",
           end: "10%",
           scrub: 1,
           onEnter: function() {
