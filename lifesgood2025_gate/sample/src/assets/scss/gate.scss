@@ -10,6 +10,7 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0 0);
 }
+
 .campaign-2025 {
   button {
     cursor: pointer;
@@ -102,7 +103,7 @@
               span {
                 font-family: "LGEI Headline";
                 font-weight: 600;
-                font-size: rem(40);
+                font-size: rem(52);
                 color: $white;
               }
               strong {
@@ -111,7 +112,7 @@
                 font-weight: 600;
                 font-size: rem(80);
                 color: $white;
-                margin-top: rem(16);
+                margin-top: rem(64);
               }
             }
             .btn {
@@ -130,7 +131,7 @@
         align-items: center;
         justify-content: center;
         padding: rem(240) rem(16) rem(144);
-        min-height: 100vh;
+        min-height: 100lvh;
         background-color: #f0ece4;
         .txt-bx {
           text-align: center;
@@ -142,11 +143,16 @@
               margin-left: auto;
               margin-right: auto;
               margin-bottom: rem(16);
+              opacity: 0;
+              transform: translateY(rem(10));
+              transition: all 0.3s;
             }
             span {
+              display: block;
               font-family: "LGEI Headline";
               font-weight: 600;
               font-size: rem(56);
+              line-height: 1.15;
               background: linear-gradient(
                 90deg,
                 rgba(253, 49, 46, 1) 2%,
@@ -157,6 +163,10 @@
               background-clip: text;
               -webkit-background-clip: text;
               color: transparent;
+              opacity: 0;
+              transform: translateY(rem(10));
+              transition: all 0.3s;
+              transition-delay: 0.1s;
             }
           }
           .txt {
@@ -164,6 +174,23 @@
             font-size: rem(28);
             line-height: 1.165;
             text-wrap: balance;
+            opacity: 0;
+            transform: translateY(rem(10));
+            transition: all 0.3s;
+            transition-delay: 0.15s;
+          }
+          &.active {
+            .title {
+              img,
+              span {
+                transform: translateY(0);
+                opacity: 1;
+              }
+            }
+            .txt {
+              transform: translateY(0);
+              opacity: 1;
+            }
           }
         }
       }
@@ -179,6 +206,9 @@
           justify-content: center;
           width: 100%;
           height: 100vh;
+          @supports (-webkit-touch-callout: none) {
+            height: -webkit-fill-available;
+          }
           li {
             width: 23.1%;
             border-radius: rem(28);
@@ -533,11 +563,9 @@
   }
   .btn {
     @include btn($red);
-    text-decoration: none !important;
   }
   .white-btn {
     @include btn($white);
-    text-decoration: none !important;
   }
 }
 @media screen and (max-width: 1439px) {
@@ -551,15 +579,15 @@
             .txt-bx {
               .title {
                 img {
-                  width: rem(105.56);
-                  margin-bottom: rem(8);
+                  width: rem(138);
+                  margin-bottom: rem(4);
                 }
                 span {
-                  font-size: rem(32);
+                  font-size: rem(44);
                 }
                 strong {
-                  font-size: rem(44);
-                  margin-top: rem(16);
+                  font-size: rem(64);
+                  margin-top: rem(46);
                 }
               }
             }
@@ -684,14 +712,15 @@
               padding: 0 rem(25);
               .title {
                 img {
-                  width: rem(84.8);
+                  width: rem(96);
+                  margin-bottom: rem(5);
                 }
                 span {
-                  font-size: rem(20);
+                  font-size: rem(24);
                 }
                 strong {
                   font-size: rem(44);
-                  margin-top: rem(12);
+                  margin-top: rem(28);
                 }
               }
               .btn {

@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // 요소 선택
-  const gif = document.querySelector(".intelligence .gif");
+  const articleBannerTxt = document.querySelector('.section.article-banner .txt-bx');
+
   const img01 = document.querySelector(".overview .img-list .img01");
   const img02 = document.querySelector(".overview .img-list .img02");
   const img03 = document.querySelector(".overview .img-list .img03");
@@ -69,6 +70,21 @@ document.addEventListener("DOMContentLoaded", function () {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
       redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+
+      const articleBanner = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.article-banner",
+          start: "250%",
+          end: "10%",
+          scrub: 1,
+          onEnter: function() {
+            articleBannerTxt.classList.add('active');
+          },
+          onLeaveBack: function() {
+            articleBannerTxt.classList.remove('active');
+          },
+        },
+      });
 
       const heroVisual = gsap.timeline({
         scrollTrigger: {
@@ -131,6 +147,22 @@ document.addEventListener("DOMContentLoaded", function () {
       redPoint.classList.remove('active');
       redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
 
+      const articleBanner = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.article-banner",
+          start: "450%",
+          end: "10%",
+          scrub: 1,
+          markers:true,
+          onEnter: function() {
+            articleBannerTxt.classList.add('active');
+          },
+          onLeaveBack: function() {
+            articleBannerTxt.classList.remove('active');
+          },
+        },
+      });
+
       const heroVisual = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.overview",
@@ -151,10 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       heroVisual
         .addLabel('imgShow')
-        .to(img01, { x: "-40vw", y: "-32.8lvh", scale: 0.425 }, "imgShow")
-        .to(img03, { x: "38.5vw", y: "-32.8lvh", scale: 0.51 }, "imgShow")
-        .to(img05, { x: "40vw", y: "32.8lvh", scale: 0.425 }, "imgShow")
-        .to(img06, { x: "-38.5vw", y: "32.8lvh", scale: 0.51 }, "imgShow")
+        .to(img01, { x: "-40vw", y: "-32.8svh", scale: 0.425 }, "imgShow")
+        .to(img03, { x: "38.5vw", y: "-32.8svh", scale: 0.51 }, "imgShow")
+        .to(img05, { x: "40vw", y: "32.8svh", scale: 0.425 }, "imgShow")
+        .to(img06, { x: "-38.5vw", y: "32.8svh", scale: 0.51 }, "imgShow")
         .to(title1, { opacity: 1, y: 0 })
         .to(txt1, { opacity: 1, y: 0 })
         .addLabel('txtFade')
@@ -177,6 +209,21 @@ document.addEventListener("DOMContentLoaded", function () {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
       redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      
+      const articleBanner = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section.article-banner",
+          start: "350%",
+          end: "10%",
+          scrub: 1,
+          onEnter: function() {
+            articleBannerTxt.classList.add('active');
+          },
+          onLeaveBack: function() {
+            articleBannerTxt.classList.remove('active');
+          },
+        },
+      });
 
       const heroVisual = gsap.timeline({
         scrollTrigger: {
@@ -220,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     },
   });
+
+  
 
   const contentList = document.querySelectorAll(".section.intelligence ul li");
   const contentBoxes = document.querySelectorAll(".content-bx");
@@ -326,7 +375,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentlyPC !== isPC) {
       isPC = currentlyPC;
       updateContentBoxes();
-      //ScrollTrigger.refresh(); // Refresh ScrollTrigger after updating content boxes
     }
   }
 
@@ -431,15 +479,6 @@ function handleStickyHeaderScroll() {
 
   // PC 해상도인지 여부
   const isPCWidth = window.innerWidth >= 1440;
-
-  // -------------------------------
-  // Sticky 해제 조건 재설정 (예시)
-  // -------------------------------
-  // intelligencePosition.top >= pcScrollThreshold
-  //   => 뷰포트 상단에서 pcScrollThreshold(200px)보다 더 아래(즉 201, 300...)라면 Sticky 비활성화
-  // intelligencePosition.top < pcScrollThreshold
-  //   => 200px 지점에 도달하거나 그 위(- 값)로 올라갔으면 Sticky 활성화
-  // -------------------------------
 
   // 만약 .c-header-side에 is-fixed 클래스가 있다면(= 스크롤 업 중인 상태)
   if (cHeaderSide.classList.contains('is-fixed')) {
