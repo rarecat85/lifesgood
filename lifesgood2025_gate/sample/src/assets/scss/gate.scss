@@ -128,17 +128,17 @@
       //article-banner
       &.article-banner {
         width: 100%;
-        max-width: rem(800);
-        padding: rem(56) rem(16);
-        margin: 0 auto;
+        padding: rem(64) rem(16);
+        background-color: #F0ECE4;
         @include tablet {
           padding: rem(144) rem(24);
         }
         @include desktop {
-          padding: rem(240) 0;
+          padding: rem(240) rem(24);
         }
         .inner {
-          padding: rem(54) 0;
+          max-width: rem(800);
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -152,10 +152,13 @@
           transform: translateY(rem(20));
           transition: all 0.3s;
           @include tablet {
-            width: rem(136);
+            width: rem(126);
+          }
+          @include desktop {
+            width: rem(148);
           }
           img {
-            @include img();
+            width: 100%;
           }
         }
         .title {
