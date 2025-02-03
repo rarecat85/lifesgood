@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // 요소 선택
-  const articleBannerTxt = document.querySelector('.section.article-banner .txt-bx');
+  const articleBannerAnimation = document.querySelector('.section.article-banner');
 
   const img01 = document.querySelector(".overview .img-list .img01");
   const img02 = document.querySelector(".overview .img-list .img02");
@@ -74,14 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const articleBanner = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.article-banner",
-          start: "250%",
+          start: "270%",
           end: "10%",
           scrub: 1,
           onEnter: function() {
-            articleBannerTxt.classList.add('active');
+            articleBannerAnimation.classList.add('active');
           },
           onLeaveBack: function() {
-            articleBannerTxt.classList.remove('active');
+            articleBannerAnimation.classList.remove('active');
           },
         },
       });
@@ -150,15 +150,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const articleBanner = gsap.timeline({
         scrollTrigger: {
           trigger: ".section.article-banner",
-          start: "450%",
+          start: "350%",
           end: "10%",
           scrub: 1,
           markers:true,
           onEnter: function() {
-            articleBannerTxt.classList.add('active');
+            articleBannerAnimation.classList.add('active');
           },
           onLeaveBack: function() {
-            articleBannerTxt.classList.remove('active');
+            articleBannerAnimation.classList.remove('active');
           },
         },
       });
@@ -217,10 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
           end: "10%",
           scrub: 1,
           onEnter: function() {
-            articleBannerTxt.classList.add('active');
+            articleBannerAnimation.classList.add('active');
           },
           onLeaveBack: function() {
-            articleBannerTxt.classList.remove('active');
+            articleBannerAnimation.classList.remove('active');
           },
         },
       });
