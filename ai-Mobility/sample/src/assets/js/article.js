@@ -33,7 +33,7 @@ function kvAnimation() {
           "*"
         );
       },
-      onComplete: () => {
+      onUpdate: () => {
         ScrollTrigger.refresh()
       }
     })
@@ -64,8 +64,22 @@ function kvAnimation() {
       kvVideo.setAttribute('src', `${videoSrc}&autoplay=1`);
     }  
   }
+}
 
-  
+function overviewAnimation() {
+  const overviewSection = document.querySelector('.overview');
+  const fadeText = toArray('.fade-up');
+
+  const overviewTl = gsap.timeline()
+  .from(fadeText,{opacity:0,y:20,stagger:0.5})
+
+  const overviewTrigger = ScrollTrigger.create({
+    trigger: overviewSection,
+    start: 'top center',
+    end: 'bottom center',
+    animation: overviewTl,
+    toggleActions: 'restart none none none'
+  });
 }
 
 let prodTriggers = [];
@@ -177,7 +191,8 @@ function prodAnimation() {
 }
 
 function staticProdVideoControls() {
-  const videoContainers = document.querySelectorAll('.products-static-item-video');
+  const videoSections = toArray('.products-static-item');
+  const videoContainers = toArray('.products-static-item-video');
 
   videoContainers.forEach((videoContainer) => {
       const video = videoContainer.querySelector('video');
@@ -192,12 +207,41 @@ function staticProdVideoControls() {
               video.pause();
               button.setAttribute('aria-pressed', 'false');
               button.textContent = 'play';
+              video.currentTime = 0;
           }
       };
 
       video.addEventListener('click', togglePlayPause);
       button.addEventListener('click', togglePlayPause);
-  });
+
+    });
+    
+    videoSections.forEach((videoSection) => {
+      const video = videoSection.querySelector('video');
+      const button = videoSection.querySelector('.products-static-item-video-btn');
+      ScrollTrigger.create({
+        trigger: videoSection,
+        start: 'top center',
+        end: 'bottom center',
+        scrub:true,
+        onEnter: () => {
+          const video = videoSection.querySelector('video');
+          if (video) {
+            video.play();
+            button.setAttribute('aria-pressed', 'true');
+            button.textContent = 'pause';
+          }
+        },
+        onLeaveBack: () => {
+          if (video) {
+            video.pause();
+            button.setAttribute('aria-pressed', 'false');
+            button.textContent = 'play';
+            video.currentTime = 0;
+          }
+        }
+      });
+    })
 }
 
 
@@ -241,7 +285,6 @@ function handleResize() {
   }
   
   ScrollTrigger.refresh();
-  overviewAnimation();
 }
 
 function init() {
@@ -253,6 +296,9 @@ function init() {
   }
   if (sections.includes('products')) {
     prodAnimation();
+  }
+  if (sections.includes('overview')) {
+    overviewAnimation();
   }
   if (sections.includes('products-static')) {
     staticProdVideoControls();
