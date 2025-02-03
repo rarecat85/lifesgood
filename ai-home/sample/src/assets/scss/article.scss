@@ -73,21 +73,23 @@ body {
         flex-direction:row;
         justify-content:flex-end;
         flex-wrap:wrap;
+        column-gap:rem(82);
       }
       @include desktop {
         margin-top:rem(64);
+        column-gap:rem(60);
       }
       &-desc{
         padding:0 rem(16);
         @include font(16,125%,$cl:$warmGray);
         @include tablet {
-          width:rem(315);
+          width:calc(30% - rem(41));
           padding:0;
           @include font(20,120%);
           margin-right:auto;
         }
         @include desktop {
-          width:rem(427);
+          width:calc(30% - rem(30));
           @include font(24,116%);
         }
       }
@@ -118,154 +120,76 @@ body {
           z-index:1;
         }
         @include tablet {
-          width:calc(100% - rem(397));
-          max-width:rem(579);
+          width:calc(70% - rem(41));
           aspect-ratio:16/9;
           border-radius:rem(28);
         }
         @include desktop {
-          width:calc(100% - rem(427));
-          max-width:rem(952);
+          width:calc(70% - rem(30));
           flex-shrink:0;
         }
       }
     }
   }
   .overview {
-    // padding:rem($mo-padding) 0;
-    // @include tablet {
-    //   padding:0;
-    // }
-    // @include desktop {
-    //   margin-bottom:rem(74);
-    // }
-    // .inner {
-    //   display:flex;
-    //   align-items:center;
-    //   flex-direction:column;
-    //   text-align:center;
-    //   row-gap:rem(12);
-    //   padding:rem(54) rem(20);
-    //   @include tablet {
-    //     padding:rem(100) rem(24);
-    //     row-gap:rem(16);
-    //   }
-    //   @include desktop {
-    //     padding:rem(164) 0;
-    //     justify-content:center;
-    //   }
-    // }
-    // &-logo {
-    //   display:flex;
-    //   align-items:center;
-    //   column-gap:rem(8);
-    //   &-logo-img {
-    //     width:rem(51);
-    //     height:rem(51);
-    //     @include tablet {
-    //       width:rem(44);
-    //       height:rem(44);
-    //     }
-    //     @include desktop {
-    //       width:rem(48);
-    //       height:rem(48);
-    //     }
-    //     img {
-    //       @include img();
-    //     }
-    //   }
-    //   &-title {
-    //     @include font(28,100%,550,$ls:0.028px);
-    //     background: linear-gradient(95deg, #FD312E 2.01%, #F914EB 56.87%, #B432F5 78.57%, #8227FF 97.14%);
-    //     -webkit-background-clip: text;
-    //     -webkit-text-fill-color: transparent;
-    //     text-align:left;
-    //     -webkit-mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
-    //     mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
-    //     -webkit-mask-repeat: no-repeat;
-    //     mask-repeat: no-repeat;
-    //     @include tablet {
-    //       @include font(44,110%,$ls:-0.352px);
-    //       br {
-    //         display:none;
-    //       }
-    //     }
-    //     @include desktop {
-    //       @include font(48,116%,$ls:-0.384px);
-    //     }
-    //   }
-    // }
-    // &-desc {
-    //   @include font(20,120%,$warmGray);
-    //   @include tablet {
-    //     max-width:rem(600);
-    //     margin:0 auto;
-    //     @include font(24,116%);
-    //   }
-    //   @include desktop {
-    //     @include font(28,114%);
-    //   }
-    // }
-    &.article-banner {
-     width:100%;
-     max-width:rem(696);
-     padding:rem(56) rem(16);
-     @include tablet {
-      padding:rem(144) rem(24);
-     }
-     @include desktop {
-      padding:rem(128) rem(24);
-      margin-bottom:rem(128);
-     }
-     .inner {
-      padding:rem(54) 0;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      @include tablet {
-        padding:0;
-      }
-     }
-     .article-banner-logo {
-      width:rem(95);
-      @include tablet {
-        width:rem(136);
-      }
-      img {
-        @include img();
-      }
-     }
-     .title {
-      @include font(28,115%,550,$ls:-0.224px);
-      margin-top:rem(8);
-      background: linear-gradient(
-        90deg,
-        rgba(253, 49, 46, 1) 2%,
-        rgba(249, 20, 235, 1) 54%,
-        rgba(130, 39, 255, 1) 97%,
-        rgba(180, 50, 245, 1) 8799%
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      @include tablet {
-        @include font(44,100%,$ls:0);
-      }
-     }
-     .txt {
-      @include font(20,120%,$cl:$warmGray);
-      text-align:center;
-      margin-top:rem(16);
-      @include tablet {
-        @include font(24,116%,$cl:$black);
-      }
-      @include desktop {
-        margin-top:rem(20);
-      }
-     }
+    width:100%;
+    max-width:rem(696);
+    padding:rem(56) rem(16);
+    @include tablet {
+    padding:rem(144) rem(24);
+    }
+    @include desktop {
+    padding:rem(128) rem(24);
+    }
+    .inner {
+    padding:rem(54) 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    @include tablet {
+      padding:0;
+    }
+    }
+    .article-banner-logo {
+    width:rem(95);
+    @include tablet {
+      width:rem(136);
+    }
+    img {
+      @include img();
+    }
+    }
+    .title {
+    @include font(28,115%,550,$ls:-0.224px);
+    margin-top:rem(8);
+    background: linear-gradient(
+      90deg,
+      rgba(253, 49, 46, 1) 2%,
+      rgba(249, 20, 235, 1) 54%,
+      rgba(130, 39, 255, 1) 97%,
+      rgba(180, 50, 245, 1) 8799%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    @include tablet {
+      @include font(44,100%,$ls:0);
+    }
+    }
+    .txt {
+    @include font(20,120%,$cl:$warmGray);
+    text-align:center;
+    margin-top:rem(16);
+    @include tablet {
+      @include font(24,116%,$cl:$black);
+    }
+    @include desktop {
+      margin-top:rem(20);
+    }
     }
   }
   .products {
+    overflow:hidden;
     @include tablet {
       max-width:unset;
       height:100vh;
@@ -365,7 +289,6 @@ body {
       margin-top:rem(20);
       @include tablet {
         width:calc((410*100/1024)*1vw);
-        max-width:rem(410);
         margin-top:0;
       }
       @include desktop {

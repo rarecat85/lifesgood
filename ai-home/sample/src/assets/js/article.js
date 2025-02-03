@@ -33,7 +33,7 @@ function kvAnimation() {
           "*"
         );
       },
-      onComplete: () => {
+      onUpdate: () => {
         ScrollTrigger.refresh()
       }
     })
@@ -64,58 +64,23 @@ function kvAnimation() {
       kvVideo.setAttribute('src', `${videoSrc}&autoplay=1`);
     }  
   }
-
-  
 }
 
-// function overviewAnimation() {
-//   const overviewSection = document.querySelector('.overview');
-//   const overviewTitle = document.querySelector('.overview-logo-title');
-//   const overviewLogo = document.querySelector('.overview-logo-img');
-//   const overviewDesc = document.querySelector('.overview-desc');
+function overviewAnimation() {
+  const overviewSection = document.querySelector('.overview');
+  const fadeText = toArray('.fade-up');
 
-//   function calculateLogoXPosition() {
-//     return innerWidth / 2 - overviewLogo.offsetLeft ;
-//   }
+  const overviewTl = gsap.timeline()
+  .from(fadeText,{opacity:0,y:20,stagger:0.5})
 
-//   function clearOverviewAnimation() {
-//     ScrollTrigger.getById("overview-trigger")?.kill();
-//   }
-
-//   function setupOverviewAnimation() {
-//     clearOverviewAnimation(); 
-
-//     const overviewTL = gsap.timeline()
-//       .set(overviewTitle, {
-//         webkitMaskImage: "linear-gradient(to right, black 0%, black 0%, transparent 0%)",
-//         maskImage: "linear-gradient(to right, black 0%, black 0%, transparent 100%)",
-//         webkitMaskRepeat: "no-repeat",
-//         maskRepeat: "no-repeat",
-//       })
-//       .set(overviewLogo, { x: calculateLogoXPosition(), y: 20, opacity: 0 })
-//       .set(overviewDesc, {opacity:0, y:20})
-//       .to(overviewLogo, { opacity: 1, y: 0}) 
-//       .to(overviewLogo, { x: 0 }) 
-//       .to(overviewTitle, {
-//         webkitMaskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-//         maskImage: "linear-gradient(to right, black 100%, black 100%, transparent 100%)",
-//         ease: "power2.out"
-//       })
-//       .to(overviewDesc, { opacity: 1, y: 0}, '-=0.5')
-
-//     ScrollTrigger.create({
-//       id: "overview-trigger",
-//       trigger: overviewSection,
-//       start: 'top 80%',
-//       end: 'bottom 80%',
-//       animation: overviewTL,
-//       toggleActions: 'restart none none none', 
-//     });
-//   }
-
-//   setupOverviewAnimation();
-//   window.addEventListener('resize', setupOverviewAnimation);
-// }
+  const overviewTrigger = ScrollTrigger.create({
+    trigger: overviewSection,
+    start: 'top center',
+    end: 'bottom center',
+    animation: overviewTl,
+    toggleActions: 'restart none none none'
+  });
+}
 
 
 let prodTriggers = [];
@@ -646,7 +611,6 @@ function handleResize() {
   }
   
   ScrollTrigger.refresh();
-  // overviewAnimation();
 }
 
 function init() {
@@ -660,9 +624,9 @@ function init() {
     prodAnimation();
     productsSwiper();
   }
-  // if (sections.includes('overview')) {
-  //   overviewAnimation();
-  // }
+  if (sections.includes('overview')) {
+    overviewAnimation();
+  }
   if (sections.includes('thinQ-tabs')) {
     tabAnimation();
     canvasAnimation();
