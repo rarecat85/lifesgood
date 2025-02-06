@@ -26,9 +26,6 @@ function kvAnimation() {
           "*"
         );
       },
-      onComplete: () => {
-        ScrollTrigger.refresh()
-      }
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
@@ -57,9 +54,24 @@ function kvAnimation() {
       kvVideo.setAttribute('src', `${videoSrc}&autoplay=1`);
     }  
   }
-
-  
 }
+
+function overviewAnimation() {
+  const overviewSection = document.querySelector('.overview');
+  const fadeText = toArray('.fade-up');
+
+  const overviewTl = gsap.timeline()
+  .from(fadeText,{opacity:0,y:20,stagger:0.5})
+
+  const overviewTrigger = ScrollTrigger.create({
+    trigger: overviewSection,
+    start: 'top center',
+    end: 'bottom center',
+    animation: overviewTl,
+    toggleActions: 'restart none none none'
+  });
+}
+
 
 let prodTriggers = [];
 
@@ -175,6 +187,9 @@ function prodAnimation() {
   });
 }
 
+
+
+
 function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
   const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap-bgimg');
@@ -263,7 +278,7 @@ function canvasAnimation() {
   const frameCount = 38;
 
   const currentFrame = (index) => {
-    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 0 };
@@ -294,6 +309,35 @@ function canvasAnimation() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(currentImage, 0, 0, canvas.width / dpr, canvas.height / dpr);
     }
+  }
+}
+
+
+function stories() {
+  const storiesSwiper = document.querySelector('.stories-conbx');
+
+  if (storiesSwiper) {
+    const storiesSwiperOptions = {
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.stories-swiper-button-next',
+        prevEl: '.stories-swiper-button-prev',
+      },
+      pagination: {
+        el: '.stories-swiper-pagination',
+        type: 'fraction',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 16
+        }
+      },
+    };
+    
+    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
   }
 }
 
@@ -363,6 +407,10 @@ function productsSwiper() {
       const img = slide.querySelector('img');
       const imgSrc = img.getAttribute('src');
       const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
+
+      // 🔹 data-title, data-desc 가져오기
+      const slideTitle = slide.dataset.title || '';
+      const slideDesc = slide.dataset.desc || '';
   
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
@@ -421,6 +469,9 @@ function productsSwiper() {
   
       const thumbSlide = document.createElement('div');
       thumbSlide.className = 'swiper-slide';
+      thumbSlide.dataset.title = slideTitle; // data-title 저장
+      thumbSlide.dataset.desc = slideDesc; // data-desc 저장
+
       const thumbImg = document.createElement('img');
       thumbImg.src = imgSrc;
       thumbSlide.appendChild(thumbImg);
@@ -439,10 +490,27 @@ function productsSwiper() {
       contentSwiper.slideTo(index, 0);
       thumbSwiper.update();
       thumbSwiper.slideTo(index, 0);
+
+      updateActiveSlideText(contentSwiper.activeIndex, thumbWrapper);
     }, 0);
   }
   
-  
+  function updateActiveSlideText(activeIndex, thumbWrapper) {
+    const layer = document.querySelector('.products-layer');
+    const titleElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-title');
+    const descElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-desc');
+
+    const activeThumbSlide = thumbWrapper.children[activeIndex];
+
+    if (activeThumbSlide) {
+        const title = activeThumbSlide.dataset.title || '';
+        const desc = activeThumbSlide.dataset.desc || '';
+
+        titleElement.textContent = title;
+        descElement.textContent = desc;
+    }
+  }
+
   function initializeLayerSwipers() {
     let currentPlayingVideo = null;
   
@@ -481,6 +549,9 @@ function productsSwiper() {
       const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
       const videoElement = activeSlide.querySelector('video');
   
+      const activeSlideIndex = contentSwiper.activeIndex;
+      updateActiveSlideText(activeSlideIndex, document.querySelector('.products-layer-content-thumb-swiper-wrapper'));
+      
       if (videoElement) {
         videoElement.muted = true;
         videoElement.play();
@@ -543,9 +614,16 @@ function init() {
     prodAnimation();
     productsSwiper();
   }
+  if (sections.includes('overview')) {
+    overviewAnimation();
+  }
   if (sections.includes('thinQ-tabs')) {
     tabAnimation();
     canvasAnimation();
+  }
+
+  if(sections.includes('stories')) {
+    stories();
   }
 
   // 리사이즈 이벤트 처리

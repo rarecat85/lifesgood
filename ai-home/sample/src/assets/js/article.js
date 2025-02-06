@@ -1,13 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
-
-// ScrollSmoother.create({
-//   smooth: 1,
-//   effects: true,
-//   smoothTouch: 0.1,
-// });
-
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 
@@ -33,9 +26,6 @@ function kvAnimation() {
           "*"
         );
       },
-      onUpdate: () => {
-        ScrollTrigger.refresh()
-      }
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
