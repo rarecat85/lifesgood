@@ -472,10 +472,12 @@ function productsSwiper() {
       thumbSlide.dataset.title = slideTitle; // data-title 저장
       thumbSlide.dataset.desc = slideDesc; // data-desc 저장
 
-      const thumbImg = document.createElement('img');
-      thumbImg.src = imgSrc;
-      thumbSlide.appendChild(thumbImg);
+      // const thumbImg = document.createElement('img');
+      // thumbImg.src = imgSrc;
+      thumbSlide.appendChild(slide.children[0]);
       thumbWrapper.appendChild(thumbSlide);
+
+      console.log(slide.children[0]);
     });
   
     // 레이어 표시 및 스크롤 비활성화
