@@ -605,6 +605,14 @@ function handleResize() {
   ScrollTrigger.refresh();
 }
 
+function debounce(func, delay=500) {
+  let timer;
+  return function (...args) {
+      if (timer) clearTimeout(timer);  // 기존 타이머 제거
+      timer = setTimeout(() => func.apply(this, args), delay); // 새 타이머 설정
+  };
+}
+
 function init() {
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
@@ -629,7 +637,7 @@ function init() {
   }
 
   // 리사이즈 이벤트 처리
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', debounce(handleResize));
 }
 
 init();
