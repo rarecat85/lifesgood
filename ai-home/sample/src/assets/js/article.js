@@ -275,13 +275,13 @@ function canvasAnimation() {
   canvas.height = canvas.clientHeight * dpr;
   ctx.scale(dpr, dpr);
 
-  const frameCount = 38;
+  const frameCount = 60;
 
   const currentFrame = (index) => {
     return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
   };
 
-  const videoSection = { frame: 0 };
+  const videoSection = { frame: 1 };
 
   const images = Array(frameCount + 1)
     .fill(null)
