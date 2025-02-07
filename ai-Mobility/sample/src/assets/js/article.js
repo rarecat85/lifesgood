@@ -78,7 +78,7 @@ function prodAnimation() {
   const isDesktop = isPC();
   const prodSections = document.querySelector('.products');
 
-  if(prodTriggers) {
+  if (prodTriggers) {
     prodTriggers.kill();
   }
 
@@ -98,24 +98,6 @@ function prodAnimation() {
 
   const resetProps = () => {
     gsap.set([prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
-  };
-
-  const playVideoOnView = () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          prodVideo.play();
-          prodVideoBtn.setAttribute('aria-pressed', 'true');
-          prodVideoBtn.setAttribute('aria-label', 'pause');
-          prodVideoBtn.textContent = 'pause';
-        } else {
-          resetVideoControls(prodVideo, prodVideoBtn);
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-    observer.observe(prodSections);
   };
 
   const addVideoButtonListeners = () => {
@@ -142,10 +124,10 @@ function prodAnimation() {
     })
       .set(prodVideoBtn, { opacity: 0 })
       .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
-      .call(() => prodVideo.play())
-      .to(prodInner, { maxWidth: '1200px', duration: 2  })
-      if(isDesktop) prodTl.to(prodVideoBx, { borderRadius: 28, })
-      .to(prodVideoBtn, { opacity: 1,});
+      .call(() => prodVideo.play()) // 비디오 자동 재생
+      .to(prodInner, { maxWidth: '1200px', duration: 2 })
+      .to(prodVideoBx, { borderRadius: 28 })
+      .to(prodVideoBtn, { opacity: 1 });
 
     prodTriggers = ScrollTrigger.create({
       trigger: prodSections,
@@ -161,9 +143,13 @@ function prodAnimation() {
 
   } else {
     resetProps();
-    playVideoOnView();
+    prodVideo.play(); // 모바일에서도 자동 재생 보장
+    prodVideoBtn.setAttribute('aria-pressed', 'true');
+    prodVideoBtn.setAttribute('aria-label', 'pause');
+    prodVideoBtn.textContent = 'pause';
   }
 }
+
 
 function staticProdVideoControls() {
   const videoSections = toArray('.products-static-item');
