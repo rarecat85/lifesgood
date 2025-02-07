@@ -29,12 +29,10 @@
     .play-btn {
       width: rem(32);
       height: rem(32);
-      transform: translateX(-50%);
-      position: absolute;
-      left: 50%;
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
+      margin-top: rem(40);
       cursor: pointer;
       &.active {
         background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
@@ -119,9 +117,33 @@
               margin: rem(40) auto 0;
             }
           }
-          .play-btn {
-            bottom: rem(65);
+          @keyframes scrollMove {
+            /* 시작: 바닥에 위치 */
+            0% {
+              transform: translateY(0);
+              /* 바닥에서 출발할 때는 빠르게 상승 */
+              animation-timing-function: ease-out;
+            }
+            /* 약 30% 시점에 최고 높이(-10rem)에 도달 */
+            50% {
+              transform: translateY(rem(-10));
+              /* 최고점에서 다시 떨어질 때는 속도를 줄여 자연스럽게 */
+              animation-timing-function: ease-in;
+            }
+            /* 나머지 시간동안 바닥에 머무름 */
+            100% {
+              transform: translateY(0);
+            }
+          }
+          .scroll-move {
+            transform: translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: rem(28);
             z-index: 2;
+            ellipse {
+              animation: "scrollMove" 1.5s infinite;
+            }
           }
         }
       }
@@ -372,6 +394,9 @@
                 transition: transform 0.3s;
               }
               .play-btn {
+                position: absolute;
+                transform: translate(-50%);
+                left: 50%;
                 bottom: rem(25);
                 background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
                 &.active {
@@ -607,6 +632,14 @@
                   margin-top: rem(46);
                 }
               }
+              .play-btn {
+                margin-top: rem(32)
+              }
+            }
+            .scroll-move {
+              svg {
+                transform: scale(0.944);
+              }
             }
           }
         }
@@ -743,9 +776,14 @@
               .btn {
                 margin-top: rem(24);
               }
+              .play-btn {
+                margin-top: rem(24)
+              }
             }
-            .play-btn {
-              bottom: rem(70);
+            .scroll-move {
+              svg {
+                transform: scale(0.83);
+              }
             }
           }
         }

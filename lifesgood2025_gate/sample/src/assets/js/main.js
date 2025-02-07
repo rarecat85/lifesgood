@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
           start: "350%",
           end: "10%",
           scrub: 1,
-          markers:true,
           onEnter: function() {
             articleBannerAnimation.classList.add('active');
           },
@@ -290,14 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
           <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}-desktop.mp4">
           </video>
-          <button type="button" class="play-btn" role="button" tabindex="0" aria-label="play" aria-pressed="false"></button>
+          <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
             <source src="./assets/video/${videoName}-mobile.mp4">
           </video>
-          <button type="button" class="play-btn" role="button" tabindex="0" aria-label="play" aria-pressed="false"></button>
+          <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       }
 
@@ -323,6 +322,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 버튼 클릭 이벤트 리스너 추가
         playBtn.addEventListener('click', function () {
+          const isPressed = this.getAttribute('aria-pressed') === 'true';
+          this.setAttribute('aria-pressed', String(!isPressed));
           if (video.paused) {
             video.play();
             playBtn.classList.add('active');
@@ -344,12 +345,14 @@ document.addEventListener("DOMContentLoaded", function () {
           function handleContentMouseEnter() {
             video.play();
             playBtn.classList.add('active');
+            playBtn.setAttribute('aria-pressed', "true");
           }
 
           function handleContentMouseLeave() {
             video.pause();
             video.currentTime = 0;
             playBtn.classList.remove('active');
+            playBtn.setAttribute('aria-pressed', "false");
           }
 
           // 새로운 이벤트 리스너 추가
