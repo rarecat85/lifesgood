@@ -592,6 +592,20 @@ function productsSwiper() {
   initializeProductsSwipers();
 }
 
+function disclaimerAction() {
+  const items = document.querySelectorAll(".disclaimer-list-item-header");
+
+  items.forEach(item => {
+    item.addEventListener("click", function () {
+      document.querySelectorAll(".disclaimer-list-item").forEach(el => {
+        el.classList.remove("on");
+      });
+
+      this.closest(".disclaimer-list-item").classList.add("on");
+    });
+  });
+}
+
 
 function handleResize() {
   const newIsMobile = !isPC(); 
@@ -634,6 +648,9 @@ function init() {
 
   if(sections.includes('stories')) {
     stories();
+  }
+  if(sections.includes('disclaimer')) {
+    disclaimerAction()();
   }
 
   // 리사이즈 이벤트 처리
