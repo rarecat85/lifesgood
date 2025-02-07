@@ -72,14 +72,15 @@ function overviewAnimation() {
   });
 }
 
-let prodTriggers = [];
+let prodTriggers;
 
 function prodAnimation() {
   const isDesktop = isPC();
-  const prodSections = toArray('.products');
+  const prodSections = document.querySelector('.products');
 
-  prodTriggers.forEach(trigger => trigger.kill());
-  prodTriggers.length = 0;
+  if(prodTriggers) {
+    prodTriggers.kill();
+  }
 
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
@@ -89,84 +90,79 @@ function prodAnimation() {
     prodVideoBtn.textContent = 'play';
   };
 
-  prodSections.forEach((section) => {
-    const prodInner = section.querySelector('.inner');
-    const prodVideoTitle = section.querySelector('.products-video-title');
-    const prodVideoBx = section.querySelector('.products-video');
-    const prodVideo = section.querySelector('video');
-    const prodVideoBtn = section.querySelector('.products-video-btn');
+  const prodInner = prodSections.querySelector('.inner');
+  const prodVideoTitle = prodSections.querySelector('.products-video-title');
+  const prodVideoBx = prodSections.querySelector('.products-video');
+  const prodVideo = prodSections.querySelector('video');
+  const prodVideoBtn = prodSections.querySelector('.products-video-btn');
 
-    const resetProps = () => {
-      gsap.set([prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
-    };
+  const resetProps = () => {
+    gsap.set([prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
+  };
 
-    const playVideoOnView = () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            prodVideo.play();
-            prodVideoBtn.setAttribute('aria-pressed', 'true');
-            prodVideoBtn.setAttribute('aria-label', 'pause');
-            prodVideoBtn.textContent = 'pause';
-          } else {
-            resetVideoControls(prodVideo, prodVideoBtn);
-          }
-        });
-      }, {
-        threshold: 0.5
-      });
-      observer.observe(section);
-    };
-
-    const addVideoButtonListeners = () => {
-      prodVideoBtn.addEventListener('click', () => {
-        const isPlaying = prodVideoBtn.getAttribute('aria-pressed') === 'true';
-        prodVideoBtn.setAttribute('aria-pressed', !isPlaying);
-        prodVideoBtn.setAttribute('aria-label', isPlaying ? 'play' : 'pause');
-        prodVideoBtn.textContent = isPlaying ? 'play' : 'pause';
-
-        if (isPlaying) {
-          prodVideo.pause();
-          prodVideo.currentTime = 0;
-        } else {
+  const playVideoOnView = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
           prodVideo.play();
+          prodVideoBtn.setAttribute('aria-pressed', 'true');
+          prodVideoBtn.setAttribute('aria-label', 'pause');
+          prodVideoBtn.textContent = 'pause';
+        } else {
+          resetVideoControls(prodVideo, prodVideoBtn);
         }
       });
-    };
+    }, {
+      threshold: 0.5
+    });
+    observer.observe(prodSections);
+  };
 
-    addVideoButtonListeners();
+  const addVideoButtonListeners = () => {
+    prodVideoBtn.addEventListener('click', () => {
+      const isPlaying = prodVideoBtn.getAttribute('aria-pressed') === 'true';
+      prodVideoBtn.setAttribute('aria-pressed', !isPlaying);
+      prodVideoBtn.setAttribute('aria-label', isPlaying ? 'play' : 'pause');
+      prodVideoBtn.textContent = isPlaying ? 'play' : 'pause';
 
-    if (isDesktop) {
-      const isReverse = section.classList.contains('reverse');
+      if (isPlaying) {
+        prodVideo.pause();
+        prodVideo.currentTime = 0;
+      } else {
+        prodVideo.play();
+      }
+    });
+  };
 
-      const prodTl = gsap.timeline({
-        defaults: { ease: 'linear' },
-      })
-        .set(prodVideoBtn, { opacity: 0 })
-        .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
-        .call(() => prodVideo.play())
-        .to(prodInner, { maxWidth: '1200px', duration: 2  })
-        if(isDesktop) prodTl.to(prodVideoBx, { borderRadius: 28, })
-        .to(prodVideoBtn, { opacity: 1,});
+  addVideoButtonListeners();
 
-      const trigger = ScrollTrigger.create({
-        trigger: section,
-        start: 'top',
-        end: '+=1200',
-        pin: true,
-        scrub: true,
-        animation: prodTl,
-        onLeaveBack: () => {
-          resetVideoControls(prodVideo, prodVideoBtn);
-        },
-      });
+  if (isDesktop) {
+    const prodTl = gsap.timeline({
+      defaults: { ease: 'linear' },
+    })
+      .set(prodVideoBtn, { opacity: 0 })
+      .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
+      .call(() => prodVideo.play())
+      .to(prodInner, { maxWidth: '1200px', duration: 2  })
+      if(isDesktop) prodTl.to(prodVideoBx, { borderRadius: 28, })
+      .to(prodVideoBtn, { opacity: 1,});
 
-      prodTriggers.push(trigger);
-    } else {
-      resetProps();
-      playVideoOnView();
-    }
-  });
+    prodTriggers = ScrollTrigger.create({
+      trigger: prodSections,
+      start: 'top',
+      end: '+=1200',
+      pin: true,
+      scrub: true,
+      animation: prodTl,
+      onLeaveBack: () => {
+        resetVideoControls(prodVideo, prodVideoBtn);
+      },
+    });
+
+  } else {
+    resetProps();
+    playVideoOnView();
+  }
 }
 
 function staticProdVideoControls() {
@@ -266,6 +262,13 @@ function handleResize() {
   ScrollTrigger.refresh();
 }
 
+function debounce(func, delay=500) {
+  let timer;
+  return function (...args) {
+      if (timer) clearTimeout(timer);  // 기존 타이머 제거
+      timer = setTimeout(() => func.apply(this, args), delay); // 새 타이머 설정
+  };
+}
 function init() {
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
@@ -287,7 +290,7 @@ function init() {
   }
   
   // 리사이즈 이벤트 처리
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', debounce(handleResize));
 }
 
 init();
