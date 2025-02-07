@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
       heroVideoBx.innerHTML = `
-        <video autoplay muted playsinline loop aria-label="A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.">
+        <video autoplay muted playsinline loop aria-label='A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.'>
           <source src="${newVideoSrc}">
         </video>
       `;

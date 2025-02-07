@@ -276,7 +276,7 @@
           top: 50%;
           left: 50%;
           .bx {
-            max-width: 560px;
+            max-width: 600px;
             transform: translate(-50%, -50%);
             position: absolute;
             top: 50%;
@@ -659,6 +659,9 @@
             .title {
               font-size: rem(44);
             }
+            img.title {
+              width: rem(220);
+            }
             p {
               font-size: rem(24);
             }
@@ -668,9 +671,6 @@
               &.bx-1 {
                 max-width: 520px;
               }
-            }
-            > img {
-              width: rem(220);
             }
           }
           .red-point {
@@ -802,6 +802,9 @@
             .title {
               font-size: rem(28);
               line-height: 1.1428;
+            }
+            img.title {
+              width: rem(172);
             }
             p {
               font-size: rem(20);
