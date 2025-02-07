@@ -650,7 +650,7 @@ function init() {
     stories();
   }
   if(sections.includes('disclaimer')) {
-    disclaimerAction()();
+    disclaimerAction();
   }
 
   // 리사이즈 이벤트 처리
