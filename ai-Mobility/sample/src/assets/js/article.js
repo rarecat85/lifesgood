@@ -145,7 +145,7 @@ function prodAnimation() {
         .set(prodVideoBtn, { opacity: 0 })
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
         .call(() => prodVideo.play())
-        .to(prodInner, { maxWidth: '1440px', duration: 2  })
+        .to(prodInner, { maxWidth: '1200px', duration: 2  })
         if(isDesktop) prodTl.to(prodVideoBx, { borderRadius: 28, })
         .to(prodVideoBtn, { opacity: 1,});
 
@@ -166,17 +166,6 @@ function prodAnimation() {
       resetProps();
       playVideoOnView();
     }
-  });
-
-  window.addEventListener('resize', () => {
-    prodSections.forEach(section => {
-      const prodVideo = section.querySelector('video');
-      const prodVideoBtn = section.querySelector('.products-video-btn');
-
-      resetVideoControls(prodVideo, prodVideoBtn);
-    });
-
-    prodAnimation();
   });
 }
 
