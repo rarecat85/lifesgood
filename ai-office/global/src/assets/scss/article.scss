@@ -474,20 +474,20 @@ body {
     width:100%;
     height:100%;
     position:fixed;
+    overflow-y:scroll;
     top:0;
     left:0;
     background:rgba(0,0,0,0.5);
     z-index:999;
     display:none;
+    padding:rem(94) 0;
     &-conbx {
       width:calc(100% - rem(16));
       max-width:rem(834);
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
       background:$white;
       border-radius:rem(20);
+      margin:0 auto;
+      position:relative;
       @include tablet {
         width:calc(100% - rem(24));
         border-radius:rem(28);
@@ -538,7 +538,7 @@ body {
         width:rem(40);
         height:rem(40);
         border-radius:50%;
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-layer-close.svg') no-repeat;
+        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat;
         background-size:contain;
         font-size:0;
         position:absolute;
@@ -548,11 +548,10 @@ body {
         @include tablet {
           width:rem(40);
           height:rem(40);
+          position:fixed;
           left:unset;
           bottom:unset;
-          right:0;
-          top:0;
-          transform:translate(50%,-50%);
+          transform:translate(100%,-150%);
           box-shadow:4px 4px 10px 0px rgba(0, 0, 0, 0.20);
         }
         @include desktop {
@@ -638,7 +637,7 @@ body {
           flex-shrink:0;
           z-index:999;
           display:flex;
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-layer-swiper-btn.svg') no-repeat center;
+          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-swiper-btn.svg') no-repeat center;
           &::before {
             content:'';
             width:rem(40);
