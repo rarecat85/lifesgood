@@ -950,7 +950,11 @@ body {
     }
     &-text {
       @include font(16,125%,$cl:#4A4946);
-      margin-top:rem(16);
+      margin-bottom:rem(40);
+    }
+    &-title {
+      @include font(24,120%,600);
+      margin-bottom:rem(16);
     }
   }
 
