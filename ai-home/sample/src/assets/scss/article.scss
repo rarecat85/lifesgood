@@ -926,16 +926,6 @@ body {
               display:flex;
               column-gap:rem(8);
               @include font(14,114%,$cl:#646464);
-              &::before {
-                content:'';
-                width:rem(3);
-                height:rem(3);
-                border-radius:50%;
-                background:#646464;
-                display:flex;
-                flex-shrink:0;
-                margin-top:rem(8);
-              }
             }
           }
         }
@@ -956,6 +946,10 @@ body {
           }
         }
       }
+    }
+    &-text {
+      @include font(16,125%,$cl:#4A4946);
+      margin-top:rem(16);
     }
   }
 
