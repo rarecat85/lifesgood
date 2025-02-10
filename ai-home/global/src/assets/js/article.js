@@ -278,7 +278,7 @@ function canvasAnimation() {
   const frameCount = 60;
 
   const currentFrame = (index) => {
-    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 1 };
@@ -312,6 +312,34 @@ function canvasAnimation() {
   }
 }
 
+
+function stories() {
+  const storiesSwiper = document.querySelector('.stories-conbx');
+
+  if (storiesSwiper) {
+    const storiesSwiperOptions = {
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.stories-swiper-button-next',
+        prevEl: '.stories-swiper-button-prev',
+      },
+      pagination: {
+        el: '.stories-swiper-pagination',
+        type: 'fraction',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 16
+        }
+      },
+    };
+    
+    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
+  }
+}
 
 function productsSwiper() {
   function initializeProductsSwipers() {
@@ -621,6 +649,9 @@ function init() {
     canvasAnimation();
   }
 
+  if(sections.includes('stories')) {
+    stories();
+  }
   if(document.querySelector('.disclaimer')) {
     disclaimerAction();
   }
