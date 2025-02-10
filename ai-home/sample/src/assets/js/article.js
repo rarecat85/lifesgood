@@ -411,6 +411,7 @@ function productsSwiper() {
       // 🔹 data-title, data-desc 가져오기
       const slideTitle = slide.dataset.title || '';
       const slideDesc = slide.dataset.desc || '';
+      const slideAlt = slide.dataset.alt || '';
   
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
@@ -455,6 +456,7 @@ function productsSwiper() {
   
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
+        videoElement.setAttribute('aria-label',slideAlt);
   
         contentSlide.appendChild(videoElement);
       } else {
@@ -462,6 +464,7 @@ function productsSwiper() {
         contentImg.src = contentImgSrc;
         contentImg.style.position = 'relative';
         contentImg.style.zIndex = '2';
+        contentImg.setAttribute('alt',slideAlt);
         contentSlide.appendChild(contentImg);
       }
   
