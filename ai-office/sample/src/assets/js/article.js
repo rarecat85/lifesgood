@@ -262,6 +262,11 @@ function productsSwiper() {
       const img = slide.querySelector('img');
       const imgSrc = img.getAttribute('src');
       const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
+
+      // 🔹 data-title, data-desc 가져오기
+      const slideTitle = slide.dataset.title || '';
+      const slideDesc = slide.dataset.desc || '';
+      const slideAlt = slide.dataset.alt || '';
   
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
@@ -306,6 +311,7 @@ function productsSwiper() {
   
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
+        videoElement.setAttribute('aria-label',slideAlt);
   
         contentSlide.appendChild(videoElement);
       } else {
@@ -313,6 +319,7 @@ function productsSwiper() {
         contentImg.src = contentImgSrc;
         contentImg.style.position = 'relative';
         contentImg.style.zIndex = '2';
+        contentImg.setAttribute('alt',slideAlt);
         contentSlide.appendChild(contentImg);
       }
   
@@ -320,9 +327,14 @@ function productsSwiper() {
   
       const thumbSlide = document.createElement('div');
       thumbSlide.className = 'swiper-slide';
-      const thumbImg = document.createElement('img');
-      thumbImg.src = imgSrc;
-      thumbSlide.appendChild(thumbImg);
+      thumbSlide.dataset.title = slideTitle; // data-title 저장
+      thumbSlide.dataset.desc = slideDesc; // data-desc 저장
+
+      // const thumbImg = document.createElement('img');
+      // thumbImg.src = imgSrc;
+      const thumbSlideItem = slide.children[0].cloneNode(true);
+      thumbSlideItem.dataset.dynamicParam5 = 'outer';
+      thumbSlide.appendChild(thumbSlideItem);
       thumbWrapper.appendChild(thumbSlide);
     });
   
@@ -338,10 +350,27 @@ function productsSwiper() {
       contentSwiper.slideTo(index, 0);
       thumbSwiper.update();
       thumbSwiper.slideTo(index, 0);
+
+      updateActiveSlideText(contentSwiper.activeIndex, thumbWrapper);
     }, 0);
   }
   
-  
+  function updateActiveSlideText(activeIndex, thumbWrapper) {
+    const layer = document.querySelector('.products-layer');
+    const titleElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-title');
+    const descElement = layer.querySelector('.products-layer-content-txtwrap-txtbx-desc');
+
+    const activeThumbSlide = thumbWrapper.children[activeIndex];
+
+    if (activeThumbSlide) {
+        const title = activeThumbSlide.dataset.title || '';
+        const desc = activeThumbSlide.dataset.desc || '';
+
+        titleElement.textContent = title;
+        descElement.textContent = desc;
+    }
+  }
+
   function initializeLayerSwipers() {
     let currentPlayingVideo = null;
   
@@ -380,6 +409,9 @@ function productsSwiper() {
       const activeSlide = contentSwiper.slides[contentSwiper.activeIndex];
       const videoElement = activeSlide.querySelector('video');
   
+      const activeSlideIndex = contentSwiper.activeIndex;
+      updateActiveSlideText(activeSlideIndex, document.querySelector('.products-layer-content-thumb-swiper-wrapper'));
+      
       if (videoElement) {
         videoElement.muted = true;
         videoElement.play();
@@ -747,7 +779,7 @@ function init() {
     stories();
   }
 
-  if(sections.includes('disclaimer')) {
+  if(document.querySelector('.disclaimer')) {
     disclaimerAction();
   }
   // 리사이즈 이벤트 처리
