@@ -1,8 +1,10 @@
 gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
+
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
+
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
   const kvVideoBx = document.querySelector('.kv-conbx-video');
@@ -54,7 +56,6 @@ function kvAnimation() {
     }  
   }
 }
-
 
 function overviewAnimation() {
   const overviewSection = document.querySelector('.overview');
@@ -184,34 +185,6 @@ function prodAnimation() {
 
     prodAnimation();
   });
-}
-
-function stories() {
-  const storiesSwiper = document.querySelector('.stories-conbx');
-
-  if (storiesSwiper) {
-    const storiesSwiperOptions = {
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.stories-swiper-button-next',
-        prevEl: '.stories-swiper-button-prev',
-      },
-      pagination: {
-        el: '.stories-swiper-pagination',
-        type: 'fraction',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 16
-        }
-      },
-    };
-    
-    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
-  }
 }
 function productsSwiper() {
   function initializeProductsSwipers() {
@@ -514,9 +487,6 @@ function init() {
   if (sections.includes('products')) {
     prodAnimation();
     productsSwiper();
-  }
-  if(sections.includes('stories')) {
-    stories();
   }
 
   if(document.querySelector('.disclaimer')) {
