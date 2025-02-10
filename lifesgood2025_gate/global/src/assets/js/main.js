@@ -9,11 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const newVideoSrc = isDesktop
       ? "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/gate/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
       : "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/gate/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
+    const newposterSrc = isDesktop
+      ? "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/gate/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.jpg"
+      : "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/gate/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.jpg";
 
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
       heroVideoBx.innerHTML = `
-        <video autoplay muted playsinline loop aria-label='A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.'>
+        <video autoplay muted playsinline loop aria-label='A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.' poster="${newposterSrc}">
           <source src="${newVideoSrc}">
         </video>
       `;
@@ -465,70 +468,69 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // [PC에서만 조정 가능하도록 만든 변수]
-//   - pcScrollThreshold: intelligence 섹션이 '뷰포트 상단'으로부터 얼마만큼 아래에 있을 때 Sticky를 활성화할지를 결정
-//   - 예) 200 이면, 뷰포트 상단에서 200px 떨어진 순간부터 Sticky가 적용됩니다.
-const pcScrollThreshold = 200;
+  //   - pcScrollThreshold: intelligence 섹션이 '뷰포트 상단'으로부터 얼마만큼 아래에 있을 때 Sticky를 활성화할지를 결정
+  //   - 예) 200 이면, 뷰포트 상단에서 200px 떨어진 순간부터 Sticky가 적용됩니다.
+  const pcScrollThreshold = 200;
 
-// Sticky Header 스크롤 이벤트
-function handleStickyHeaderScroll() {
-  if (!cHeaderSide) return;
+  // Sticky Header 스크롤 이벤트
+  function handleStickyHeaderScroll() {
+    if (!cHeaderSide) return;
 
-  const intelligence = document.querySelector('.intelligence');
-  const sticky = document.querySelector('.intelligence .sticky');
-  const intelligencePosition = intelligence.getBoundingClientRect();
+    const intelligence = document.querySelector('.intelligence');
+    const sticky = document.querySelector('.intelligence .sticky');
+    const intelligencePosition = intelligence.getBoundingClientRect();
 
-  // 헤더 높이 (모바일/PC 분기)
-  const headerHeight = getHeaderHeight() - 1;
+    // 헤더 높이 (모바일/PC 분기)
+    const headerHeight = getHeaderHeight() - 1;
 
-  // PC 해상도인지 여부
-  const isPCWidth = window.innerWidth >= 1440;
+    // PC 해상도인지 여부
+    const isPCWidth = window.innerWidth >= 1440;
 
-  // 만약 .c-header-side에 is-fixed 클래스가 있다면(= 스크롤 업 중인 상태)
-  if (cHeaderSide.classList.contains('is-fixed')) {
-    if (isPCWidth) {
-      // [*수정*] PC 해상도에서 threshold 적용
-      if (intelligencePosition.top < pcScrollThreshold) {
-        sticky.classList.add('active');
-        sticky.style.top = `${headerHeight}px`;
+    // 만약 .c-header-side에 is-fixed 클래스가 있다면(= 스크롤 업 중인 상태)
+    if (cHeaderSide.classList.contains('is-fixed')) {
+      if (isPCWidth) {
+        // [*수정*] PC 해상도에서 threshold 적용
+        if (intelligencePosition.top < pcScrollThreshold) {
+          sticky.classList.add('active');
+          sticky.style.top = `${headerHeight}px`;
+        } else {
+          sticky.classList.remove('active');
+          sticky.style.top = '0px';
+        }
       } else {
-        sticky.classList.remove('active');
-        sticky.style.top = '0px';
+        // 모바일/태블릿 로직 (원래처럼)
+        if (intelligencePosition.top < 0) {
+          sticky.classList.add('active');
+          sticky.style.top = `${headerHeight}px`;
+        } else {
+          sticky.classList.remove('active');
+          sticky.style.top = '0px';
+        }
       }
-    } else {
-      // 모바일/태블릿 로직 (원래처럼)
-      if (intelligencePosition.top < 0) {
-        sticky.classList.add('active');
-        sticky.style.top = `${headerHeight}px`;
+    } 
+    else {
+      // 스크롤 다운 중인 상태
+      if (isPCWidth) {
+        // [*수정*] PC 해상도에서 threshold 적용
+        if (intelligencePosition.top < pcScrollThreshold) {
+          sticky.classList.add('active');
+          sticky.style.top = '0px';
+        } else {
+          sticky.classList.remove('active');
+          sticky.style.top = '0px';
+        }
       } else {
-        sticky.classList.remove('active');
-        sticky.style.top = '0px';
-      }
-    }
-  } 
-  else {
-    // 스크롤 다운 중인 상태
-    if (isPCWidth) {
-      // [*수정*] PC 해상도에서 threshold 적용
-      if (intelligencePosition.top < pcScrollThreshold) {
-        sticky.classList.add('active');
-        sticky.style.top = '0px';
-      } else {
-        sticky.classList.remove('active');
-        sticky.style.top = '0px';
-      }
-    } else {
-      // 모바일/태블릿 로직 (원래처럼)
-      if (intelligencePosition.top < 0) {
-        sticky.classList.add('active');
-        sticky.style.top = '0px';
-      } else {
-        sticky.classList.remove('active');
-        sticky.style.top = '0px';
+        // 모바일/태블릿 로직 (원래처럼)
+        if (intelligencePosition.top < 0) {
+          sticky.classList.add('active');
+          sticky.style.top = '0px';
+        } else {
+          sticky.classList.remove('active');
+          sticky.style.top = '0px';
+        }
       }
     }
   }
-}
-
 
   // 리사이즈 이벤트 핸들러 for Sticky Header (Renamed to handleStickyHeaderResize)
   function handleStickyHeaderResize() {

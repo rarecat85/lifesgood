@@ -150,13 +150,13 @@
       //article-banner
       &.article-banner {
         width: 100%;
-        padding: rem(64) rem(16);
+        padding: rem(80) rem(16) rem(15);
         background-color: #F0ECE4;
         @include tablet {
-          padding: rem(144) rem(24);
+          padding: rem(120) rem(24) rem(23);
         }
         @include desktop {
-          padding: rem(240) rem(24);
+          padding: rem(160) rem(24) rem(63);
         }
         .inner {
           max-width: rem(800);
@@ -681,7 +681,6 @@
         //article-banner
         &.article-banner {
           min-height: unset;
-          padding: rem(80) rem(16);
           .txt-bx {
             max-width: rem(600);
             .title {
@@ -822,7 +821,6 @@
         }
         //article-banner
         &.article-banner {
-          padding: rem(64) rem(16);
           .txt-bx {
             .title {
               span {
