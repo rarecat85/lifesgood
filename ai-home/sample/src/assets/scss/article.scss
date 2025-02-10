@@ -884,6 +884,20 @@ body {
   }
 
   .disclaimer {
+    max-width:1920px;
+    margin:0 auto;
+    .inner {
+      width:100%;
+      max-width:$inner;
+      padding:0 rem(16) rem($mo_padding);
+      margin:0 auto;
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
     &-list {
       width:100%;
       background:#E6E1D6;
@@ -897,6 +911,7 @@ body {
           display:flex;
           align-items:center;
           justify-content:space-between;
+          cursor:pointer;
           &-title {
             @include font(16,125%,600);
           }

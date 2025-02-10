@@ -652,7 +652,7 @@ function init() {
   if(sections.includes('stories')) {
     stories();
   }
-  if(sections.includes('disclaimer')) {
+  if(document.querySelector('.disclaimer')) {
     disclaimerAction();
   }
 
