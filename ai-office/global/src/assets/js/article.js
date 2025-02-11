@@ -17,16 +17,6 @@ function kvAnimation() {
 
   if(isPC()) {
     kvAnimationTl = gsap.timeline({
-      onStart: () => {
-        kvVideo.contentWindow.postMessage(
-          JSON.stringify({
-            event: "command",
-            func: "playVideo",
-            args: [],
-          }),
-          "*"
-        );
-      },
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
@@ -49,11 +39,7 @@ function kvAnimation() {
       scrollTriggerInstance.kill();
       scrollTriggerInstance = null;
     }
-    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
-
-    if (!videoSrc.includes('autoplay=1')) {
-      kvVideo.setAttribute('src', `${videoSrc}&autoplay=1`);
-    }  
+    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' }); 
   }
 }
 
