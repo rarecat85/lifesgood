@@ -1095,6 +1095,7 @@ body {
           width:2px;
           background:linear-gradient(180deg, #FD312E -11.18%, #F914EB 51.06%, #B432F5 75.68%, #8227FF 96.75%);
           display:flex;
+          flex-shrink:0;
         }
         &-txtbx {
           &-title {
@@ -1168,10 +1169,10 @@ body {
         }
       }
       &-thumb-swiper {
-        width:calc(100% - rem(62) - rem(24));
         padding:rem(16);
         display:flex;
         align-items:center;
+        justify-content:center;
         position:relative;
         margin:0 auto;
         @include tablet {
@@ -1182,7 +1183,9 @@ body {
           padding:rem(32);
         }
         &-wrapper {
-          justify-content:center;
+          @include tablet{
+            width:auto;
+          }
         }
         .swiper-slide {
           width:rem(72);
