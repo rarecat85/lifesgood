@@ -173,7 +173,7 @@ body {
     -webkit-background-clip: text;
     color: transparent;
     @include tablet {
-      @include font(44,100%,$ls:0);
+      @include font(44,1.1,$ls:0);
     }
     }
     .txt {
