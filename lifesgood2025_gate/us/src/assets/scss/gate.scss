@@ -31,11 +31,11 @@
       height: rem(32);
       background-repeat: no-repeat;
       background-position: center center;
-      background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
+      background-image: url("../images/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
       margin-top: rem(40);
       cursor: pointer;
       &.active {
-        background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
+        background-image: url("../images/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
       }
     }
     .section {
@@ -400,9 +400,9 @@
                 transform: translate(-50%);
                 left: 50%;
                 bottom: rem(25);
-                background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
+                background-image: url("../images/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_play.svg");
                 &.active {
-                  background-image: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
+                  background-image: url("../images/lifes-good-campaign-2025-live-human-lgcom-gate-img-icon_pause.svg");
                 }
               }
             }
@@ -515,7 +515,7 @@
                   position: absolute;
                   top: 50%;
                   left: 50%;
-                  background: url("../img/lifes-good-campaign-2025-live-human-lgcom-gate-img-slide_arrow.svg") no-repeat;
+                  background: url("../images/lifes-good-campaign-2025-live-human-lgcom-gate-img-slide_arrow.svg") no-repeat;
                   background-position: center;
                   background-size: rem(8);
                 }

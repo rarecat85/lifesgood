@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function setHeroVideo() {
     const isDesktop = window.innerWidth > 1025;
     const newVideoSrc = isDesktop
-      ? "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
-      : "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
+      ? "./assets/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
+      : "./assets/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
     const newposterSrc = isDesktop
-      ? "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.jpg"
-      : "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.jpg";
+      ? "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.png"
+      : "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.png";
 
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
@@ -289,15 +289,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="./assets/images/${imgName}.jpg" aria-label="${altName}">
-            <source src="./assets/video/${videoName}-desktop.mp4">
+          <video muted playsinline loop poster="./assets/images/${imgName}.png" aria-label="${altName}">
+            <source src="./assets/videos/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
           <video autoplay muted playsinline loop aria-label="${altName}">
-            <source src="./assets/video/${videoName}-mobile.mp4">
+            <source src="./assets/videos/${videoName}-mobile.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
