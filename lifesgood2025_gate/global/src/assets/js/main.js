@@ -439,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iframe.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?mute=1&enablejsapi=1" enablejsapi="1" title="LG VS Company : CES 2025 Teaser I LG​" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     // 팝업 활성화
     layerPop.classList.add("active");
+    layerPop.setAttribute("aria-hidden",'false');
     closeBtn.focus();
   });
 
@@ -446,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
   closeBtn.addEventListener("click", function () {
     iframe.innerHTML = "";
     layerPop.classList.remove("active");
+    layerPop.setAttribute("aria-hidden",'true');
     popShowBtn.focus();
   });
 

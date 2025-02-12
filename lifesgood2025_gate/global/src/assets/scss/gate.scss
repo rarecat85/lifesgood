@@ -377,6 +377,7 @@
           }
         }
         ul {
+          margin-top: rem(-1);
           li {
             display: flex;
             justify-content: center;
@@ -701,7 +702,6 @@
         //intelligence
         &.intelligence {
           ul {
-            margin-top: rem(-96);
             li {
               align-items: center;
               .des-bx {
@@ -836,7 +836,6 @@
         //intelligence
         &.intelligence {
           .sticky {
-            top: -1px;
             .title {
               height: rem(64);
               padding: rem(10) 0;
@@ -850,7 +849,6 @@
             }
           }
           ul {
-            margin-top: rem(-64);
             li {
               display: block;
               padding: 0 rem(16);
