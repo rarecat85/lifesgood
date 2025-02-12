@@ -1044,25 +1044,27 @@ body {
         width:rem(40);
         height:rem(40);
         border-radius:50%;
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat;
-        background-size:contain;
+        background:$white url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat center;
+        background-size:rem(16);
         font-size:0;
         position:absolute;
         left:50%;
         bottom:rem(-16);
         transform:translate(-50%,100%);
+        border:1px solid #CBC8C2;
         @include tablet {
           width:rem(40);
           height:rem(40);
           position:fixed;
           left:unset;
           bottom:unset;
-          transform:translate(100%,-150%);
+          transform:translate(100%,-100%);
           box-shadow:4px 4px 10px 0px rgba(0, 0, 0, 0.20);
         }
         @include desktop {
           width:rem(48);
           height:rem(48);
+          transform:translate(100%,-150%);
         }
       }
     }
