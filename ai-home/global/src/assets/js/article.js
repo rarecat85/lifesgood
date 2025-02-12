@@ -432,7 +432,7 @@ function productsSwiper() {
   
         const sourceMp4 = document.createElement('source');
         sourceMp4.src = videoMp4;
-        sourceMp4.type = 'videos/mp4';
+        sourceMp4.type = 'video/mp4';
   
         const sourceWebm = document.createElement('source');
         sourceWebm.src = videoWebm;

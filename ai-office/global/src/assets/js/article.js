@@ -273,8 +273,8 @@ function productsSwiper() {
       contentSlide.appendChild(imageWrapper);
   
       if (slide.classList.contains('video-slide')) {
-        const videoMp4 = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
-        const videoWebm = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
+        const videoMp4 = imgSrc.replace('/images/', '/videos/').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
+        const videoWebm = imgSrc.replace('/images/', '/videos/').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
   
         const videoElement = document.createElement('video');
         videoElement.controls = true;
