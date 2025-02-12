@@ -240,11 +240,11 @@ body {
         transform:translate(-50%,-50%);
         font-size:0;
         &[aria-pressed=false] {
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-movie-play.svg');
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-movie-play.svg');
           background-size:contain;
         }
         &[aria-pressed=true] {
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-movie-pause.svg');
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-movie-pause.svg');
           background-size:contain;
         }
         @include tablet {
@@ -386,7 +386,7 @@ body {
 
   .thinQ-intro {
     max-width:unset;
-    background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro.png') no-repeat center;
+    background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro.png') no-repeat center;
     background-size:cover;
     padding:rem(30) rem(16);
     display:flex;
@@ -394,11 +394,11 @@ body {
     align-items:center;
     text-align:center;
     @include tablet {
-      background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro-tab.png') no-repeat center;
+      background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro-tab.png') no-repeat center;
       padding:rem(98) rem(48);
     }
     @include desktop {
-      background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro-pc.png') no-repeat center;
+      background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thinq-on-intro-pc.png') no-repeat center;
       background-size:cover;
       padding:rem(80) 0;
     }
@@ -859,14 +859,14 @@ body {
       .stories-swiper-button-prev {
         width:rem(24);
         height:rem(14);
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-stories-swiper-btn.svg') no-repeat;
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-stories-swiper-btn.svg') no-repeat;
         background-size:contain;
         transform:rotate(-180deg);
        }
       .stories-swiper-button-next {
         width:rem(24);
         height:rem(14);
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-stories-swiper-btn.svg') no-repeat;
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-stories-swiper-btn.svg') no-repeat;
         background-size:contain;
       }
       .stories-swiper-pagination {
@@ -919,7 +919,7 @@ body {
             content:'';
             width:rem(20);
             height:rem(20);
-            background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-disclaimer.svg') no-repeat;
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-disclaimer.svg') no-repeat;
             background-size:contain;
             display:flex;
             transform:scale(-1);
@@ -1044,7 +1044,7 @@ body {
         width:rem(40);
         height:rem(40);
         border-radius:50%;
-        background:$white url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat center;
+        background:$white url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-close.svg') no-repeat center;
         background-size:rem(16);
         font-size:0;
         position:absolute;
@@ -1146,7 +1146,7 @@ body {
           flex-shrink:0;
           z-index:999;
           display:flex;
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-swiper-btn.svg') no-repeat center;
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-layer-swiper-btn.svg') no-repeat center;
           &::before {
             content:'';
             width:rem(40);
