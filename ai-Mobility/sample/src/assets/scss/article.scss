@@ -282,6 +282,10 @@ body {
     display:flex;
     flex-direction:column;
     row-gap:rem(40);
+    .inner {
+      padding-top:0;
+      padding-bottom:0;
+    }
     @include tablet {
       row-gap:rem(72);
     }
@@ -420,10 +424,10 @@ body {
       position:relative;
       margin-top:rem(12);
       @include tablet {
-        margin-top:rem(8);
+        margin-top:rem(72);
       }
       @include desktop {
-        margin-top:rem(20);
+        margin-top:rem(120);
       }
       &-imgbx {
         width:100%;

@@ -16,6 +16,9 @@ function kvAnimation() {
 
   if(isPC()) {
     kvAnimationTl = gsap.timeline({
+      onComplete:()=>{
+        ScrollTrigger.refresh();
+      }
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
@@ -70,10 +73,10 @@ function prodAnimation() {
 
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
-    prodVideo.currentTime = 0;
-    prodVideoBtn.setAttribute('aria-pressed', 'false');
-    prodVideoBtn.setAttribute('aria-label', 'play');
-    prodVideoBtn.textContent = 'play';
+    // prodVideo.currentTime = 0;
+    // prodVideoBtn.setAttribute('aria-pressed', 'false');
+    // prodVideoBtn.setAttribute('aria-label', 'play');
+    // prodVideoBtn.textContent = 'play';
   };
 
   const prodInner = prodSections.querySelector('.inner');
@@ -95,7 +98,7 @@ function prodAnimation() {
 
       if (isPlaying) {
         prodVideo.pause();
-        prodVideo.currentTime = 0;
+        // prodVideo.currentTime = 0;
       } else {
         prodVideo.play();
       }
@@ -153,7 +156,7 @@ function staticProdVideoControls() {
               video.pause();
               button.setAttribute('aria-pressed', 'false');
               button.textContent = 'play';
-              video.currentTime = 0;
+              // video.currentTime = 0;
           }
       };
 
