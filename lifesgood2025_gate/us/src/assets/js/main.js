@@ -476,60 +476,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Sticky Header 스크롤 이벤트
   function handleStickyHeaderScroll() {
-    if (!cHeaderSide) return;
-
     const intelligence = document.querySelector('.intelligence');
     const sticky = document.querySelector('.intelligence .sticky');
     const intelligencePosition = intelligence.getBoundingClientRect();
 
-    // 헤더 높이 (모바일/PC 분기)
-    const headerHeight = getHeaderHeight() - 1;
-
     // PC 해상도인지 여부
     const isPCWidth = window.innerWidth >= 1440;
 
-    // 만약 .c-header-side에 is-fixed 클래스가 있다면(= 스크롤 업 중인 상태)
-    if (cHeaderSide.classList.contains('is-fixed')) {
-      if (isPCWidth) {
-        // [*수정*] PC 해상도에서 threshold 적용
-        if (intelligencePosition.top < pcScrollThreshold) {
-          sticky.classList.add('active');
-          sticky.style.top = `${headerHeight}px`;
-        } else {
-          sticky.classList.remove('active');
-          sticky.style.top = '0px';
-        }
+    // 스크롤 다운 중인 상태
+    if (isPCWidth) {
+      // [*수정*] PC 해상도에서 threshold 적용
+      if (intelligencePosition.top < pcScrollThreshold) {
+        sticky.classList.add('active');
       } else {
-        // 모바일/태블릿 로직 (원래처럼)
-        if (intelligencePosition.top < 0) {
-          sticky.classList.add('active');
-          sticky.style.top = `${headerHeight}px`;
-        } else {
-          sticky.classList.remove('active');
-          sticky.style.top = '0px';
-        }
+        sticky.classList.remove('active');
       }
-    } 
-    else {
-      // 스크롤 다운 중인 상태
-      if (isPCWidth) {
-        // [*수정*] PC 해상도에서 threshold 적용
-        if (intelligencePosition.top < pcScrollThreshold) {
-          sticky.classList.add('active');
-          sticky.style.top = '0px';
-        } else {
-          sticky.classList.remove('active');
-          sticky.style.top = '0px';
-        }
+    } else {
+      // 모바일/태블릿 로직 (원래처럼)
+      if (intelligencePosition.top < 0) {
+        sticky.classList.add('active');
       } else {
-        // 모바일/태블릿 로직 (원래처럼)
-        if (intelligencePosition.top < 0) {
-          sticky.classList.add('active');
-          sticky.style.top = '0px';
-        } else {
-          sticky.classList.remove('active');
-          sticky.style.top = '0px';
-        }
+        sticky.classList.remove('active');
       }
     }
   }

@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ? "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
       : "./assets/video/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
     const newposterSrc = isDesktop
-      ? "./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.jpg"
-      : "./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.jpg";
+      ? "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.jpg"
+      : "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.jpg";
 
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(min-width: 1440px)": function() {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
 
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
 
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(min-width: 769px) and (max-width: 1439px)": function() {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
 
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -174,11 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
 
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(max-width: 768px)": function() { // max-width 수정
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -236,11 +236,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/img/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
   });
@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="./assets/img/${imgName}.jpg" aria-label="${altName}">
+          <video muted playsinline loop poster="./assets/images/${imgName}.jpg" aria-label="${altName}">
             <source src="./assets/video/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
