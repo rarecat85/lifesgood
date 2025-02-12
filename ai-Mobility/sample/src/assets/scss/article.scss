@@ -246,11 +246,11 @@ body {
         transform:translate(-50%,-50%);
         font-size:0;
         &[aria-pressed=false] {
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-play.svg');
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-play.svg');
           background-size:contain;
         }
         &[aria-pressed=true] {
-          background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-pause.svg');
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-pause.svg');
           background-size:contain;
         }
         @include tablet {
@@ -360,11 +360,11 @@ body {
           transform:translate(-50%,-50%);
           font-size:0;
           &[aria-pressed=false] {
-            background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-play.svg');
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-play.svg');
             background-size:contain;
           }
           &[aria-pressed=true] {
-            background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-pause.svg');
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-btn-movie-pause.svg');
             background-size:contain;
           }
           @include tablet {
@@ -536,14 +536,14 @@ body {
       .stories-swiper-button-prev {
         width:rem(24);
         height:rem(14);
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-swiper-btn.svg') no-repeat;
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-swiper-btn.svg') no-repeat;
         background-size:contain;
         transform:rotate(-180deg);
        }
       .stories-swiper-button-next {
         width:rem(24);
         height:rem(14);
-        background:url('../img/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-swiper-btn.svg') no-repeat;
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-swiper-btn.svg') no-repeat;
         background-size:contain;
       }
       .stories-swiper-pagination {
