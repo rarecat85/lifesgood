@@ -17,6 +17,9 @@ function kvAnimation() {
 
   if(isPC()) {
     kvAnimationTl = gsap.timeline({
+      onComplete:()=>{
+        ScrollTrigger.refresh();
+      }
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
@@ -71,9 +74,9 @@ function prodAnimation() {
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
     prodVideo.currentTime = 0;
-    prodVideoBtn.setAttribute('aria-pressed', 'false');
-    prodVideoBtn.setAttribute('aria-label', 'play');
-    prodVideoBtn.textContent = 'play';
+    // prodVideoBtn.setAttribute('aria-pressed', 'false');
+    // prodVideoBtn.setAttribute('aria-label', 'play');
+    // prodVideoBtn.textContent = 'play';
   };
 
   prodSections.forEach((section) => {
@@ -116,7 +119,7 @@ function prodAnimation() {
 
         if (isPlaying) {
           prodVideo.pause();
-          prodVideo.currentTime = 0;
+          // prodVideo.currentTime = 0;
         } else {
           prodVideo.play();
         }
