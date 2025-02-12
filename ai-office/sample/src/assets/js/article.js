@@ -300,8 +300,8 @@ function productsSwiper() {
       contentSlide.appendChild(imageWrapper);
   
       if (slide.classList.contains('video-slide')) {
-        const videoMp4 = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
-        const videoWebm = imgSrc.replace('/img/', '/video/').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
+        const videoMp4 = imgSrc.replace('/images/', '/videos/').replace('-img-', '-video-').replace(/\.\w+$/, '.mp4');
+        const videoWebm = imgSrc.replace('/images/', '/videos/').replace('-img-', '-video-').replace(/\.\w+$/, '.webm');
   
         const videoElement = document.createElement('video');
         videoElement.controls = true;
@@ -310,11 +310,11 @@ function productsSwiper() {
   
         const sourceMp4 = document.createElement('source');
         sourceMp4.src = videoMp4;
-        sourceMp4.type = 'video/mp4';
+        sourceMp4.type = 'videos/mp4';
   
         const sourceWebm = document.createElement('source');
         sourceWebm.src = videoWebm;
-        sourceWebm.type = 'video/webm';
+        sourceWebm.type = 'videos/webm';
   
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
