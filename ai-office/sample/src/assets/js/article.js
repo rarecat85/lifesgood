@@ -284,6 +284,7 @@ function productsSwiper() {
       imageWrapper.style.bottom = '0';
       imageWrapper.style.zIndex = '1';
       imageWrapper.style.overflow = 'hidden';
+      imageWrapper.style.backgroundColor = 'rgba(0,0,0,0.25)';
   
       const backgroundImg = document.createElement('img');
       backgroundImg.src = contentImgSrc;

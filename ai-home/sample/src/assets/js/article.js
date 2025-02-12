@@ -16,6 +16,9 @@ function kvAnimation() {
 
   if(isPC()) {
     kvAnimationTl = gsap.timeline({
+      onComplete:()=>{
+        ScrollTrigger.refresh();
+      }
     })
       .to(kvDesc, {width:'100%'})
       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
@@ -27,7 +30,7 @@ function kvAnimation() {
         end: 'center end',
         scrub:true,
         animation: kvAnimationTl,
-        once: true
+        once: true,
       });
   }else {
     if (kvAnimationTl) {
@@ -71,9 +74,9 @@ function prodAnimation() {
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
     prodVideo.currentTime = 0;
-    prodVideoBtn.setAttribute('aria-pressed', 'false');
-    prodVideoBtn.setAttribute('aria-label', 'play');
-    prodVideoBtn.textContent = 'play';
+    // prodVideoBtn.setAttribute('aria-pressed', 'false');
+    // prodVideoBtn.setAttribute('aria-label', 'play');
+    // prodVideoBtn.textContent = 'play';
   };
 
   prodSections.forEach((section) => {
@@ -116,7 +119,7 @@ function prodAnimation() {
 
         if (isPlaying) {
           prodVideo.pause();
-          prodVideo.currentTime = 0;
+          // prodVideo.currentTime = 0;
         } else {
           prodVideo.play();
         }
@@ -412,6 +415,7 @@ function productsSwiper() {
       imageWrapper.style.bottom = '0';
       imageWrapper.style.zIndex = '1';
       imageWrapper.style.overflow = 'hidden';
+      imageWrapper.style.backgroundColor = 'rgba(0,0,0,0.25)';
   
       const backgroundImg = document.createElement('img');
       backgroundImg.src = contentImgSrc;
