@@ -289,14 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="./assets/images/${imgName}.png" aria-label="${altName}">
+          <video muted playsinline loop poster="./assets/images/${imgName}-desktop.png" aria-label="${altName}">
             <source src="./assets/videos/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
-          <video autoplay muted playsinline loop aria-label="${altName}">
+          <video autoplay muted playsinline loop poster="./assets/images/${imgName}-desktop-mobile.png" aria-label="${altName}">
             <source src="./assets/videos/${videoName}-mobile.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
