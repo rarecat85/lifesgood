@@ -193,7 +193,7 @@ function stories() {
       },
       breakpoints: {
         768: {
-            slidesPerView: 2,
+            slidesPerView: 'auto',
             spaceBetween: 16
         }
       },

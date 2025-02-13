@@ -539,7 +539,10 @@ body {
         width:rem(310);
         position:relative;
         @include tablet {
-          width:auto;
+          width:rem(480);
+        }
+        @include desktop {
+          width:rem(464);
         }
         &-imgbx {
           border-radius:rem(20);
@@ -556,11 +559,14 @@ body {
           top:0;
           left:0;
           padding:rem(24) rem(30);
+          @include tablet {
+            padding:rem(32);
+          }
           &-title {
-            @include font(24,116%,$cl:$white);
+            @include font(28,116%,$cl:$white);
             margin-bottom:rem(8);
             @include tablet {
-              @include font(36);
+              @include font(40);
             }
             @include desktop {
               @include font(40,112%);
@@ -608,7 +614,7 @@ body {
       .swiper-button-disabled {
         opacity:50%;
       }
-      @include tablet {
+      @include desktop {
         display:none;
       }
     }
