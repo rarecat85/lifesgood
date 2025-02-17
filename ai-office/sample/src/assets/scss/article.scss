@@ -128,7 +128,7 @@ body {
   }
   .overview {
     width:100%;
-    max-width:rem(696);
+    max-width:rem(600);
     padding:rem(80) rem(20);
     @include tablet {
     padding:rem(120) rem(24);
@@ -176,7 +176,7 @@ body {
     text-align:center;
     margin-top:rem(16);
     @include tablet {
-      @include font(24,116%,$cl:$black);
+      @include font(28,116%,$cl:$black);
     }
     @include desktop {
       margin-top:rem(20);
@@ -212,6 +212,18 @@ body {
       border-radius:rem(20);
       overflow:hidden;
       position:relative;
+      .dimmed {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba($color: #000000, $alpha: 0.4);
+        @include tablet {
+          display: block;
+        }
+      }
       @include tablet {
         width:100%;
         aspect-ratio:16/9;

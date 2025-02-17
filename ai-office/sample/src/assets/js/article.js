@@ -86,6 +86,7 @@ function prodAnimation() {
     const prodTextBx = section.querySelector('.products-textbx');
     const prodTextChildren = toArray(prodTextBx.children);
     const prodVideoBtn = section.querySelector('.products-video-btn');
+    const prodDimmed = section.querySelector('.dimmed');
 
     const resetProps = () => {
       gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
@@ -138,6 +139,7 @@ function prodAnimation() {
         .set(prodVideoBtn, { opacity: 0 })
         .set(prodTextChildren, { opacity: 0, y: 20 })
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
+        .to(prodDimmed, { opacity: 0, duration: 3 })
         .call(() => prodVideo.play())
         .to(prodInner, { maxWidth: '1440px' })
         .to(prodVideoBx, { scale: 0.5083, x: adjustedX, borderRadius: 28, duration: 2 })
