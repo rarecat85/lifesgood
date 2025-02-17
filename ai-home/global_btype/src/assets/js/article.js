@@ -91,40 +91,40 @@ function prodAnimation() {
       }
     };
 
-    if(!prodImgBx) {
-      const playVideoOnView = () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              prodVideo.play();
-              prodVideoBtn.setAttribute('aria-pressed', 'true');
-              prodVideoBtn.setAttribute('aria-label', 'pause');
-              prodVideoBtn.textContent = 'pause';
-            } else {
-              resetVideoControls(prodVideo, prodVideoBtn);
-            }
-          });
-        }, {
-          threshold: 0.5
-        });
-        observer.observe(section);
-      };
-  
-      const addVideoButtonListeners = () => {
-        prodVideoBtn.addEventListener('click', () => {
-          const isPlaying = prodVideoBtn.getAttribute('aria-pressed') === 'true';
-          prodVideoBtn.setAttribute('aria-pressed', !isPlaying);
-          prodVideoBtn.setAttribute('aria-label', isPlaying ? 'play' : 'pause');
-          prodVideoBtn.textContent = isPlaying ? 'play' : 'pause';
-  
-          if (isPlaying) {
-            prodVideo.pause();
-          } else {
+    const playVideoOnView = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
             prodVideo.play();
+            prodVideoBtn.setAttribute('aria-pressed', 'true');
+            prodVideoBtn.setAttribute('aria-label', 'pause');
+            prodVideoBtn.textContent = 'pause';
+          } else {
+            resetVideoControls(prodVideo, prodVideoBtn);
           }
         });
-      };
-  
+      }, {
+        threshold: 0.5
+      });
+      observer.observe(section);
+    };
+
+    const addVideoButtonListeners = () => {
+      prodVideoBtn.addEventListener('click', () => {
+        const isPlaying = prodVideoBtn.getAttribute('aria-pressed') === 'true';
+        prodVideoBtn.setAttribute('aria-pressed', !isPlaying);
+        prodVideoBtn.setAttribute('aria-label', isPlaying ? 'play' : 'pause');
+        prodVideoBtn.textContent = isPlaying ? 'play' : 'pause';
+
+        if (isPlaying) {
+          prodVideo.pause();
+        } else {
+          prodVideo.play();
+        }
+      });
+    };
+
+    if(!prodImgBx) {
       addVideoButtonListeners();
     }
   
@@ -164,7 +164,9 @@ function prodAnimation() {
       prodTriggers.push(trigger);
     } else {
       resetProps();
-      playVideoOnView();
+      if(!prodImgBx) {
+        playVideoOnView();
+      }
     }
   });
 
@@ -172,8 +174,11 @@ function prodAnimation() {
     prodSections.forEach(section => {
       const prodVideo = section.querySelector('video');
       const prodVideoBtn = section.querySelector('.products-video-btn');
+      const prodImgBx = section.querySelector('.products-video').classList.contains('img-type');
 
-      resetVideoControls(prodVideo, prodVideoBtn);
+      if(!prodImgBx) {
+        resetVideoControls(prodVideo, prodVideoBtn);
+      }
     });
 
     prodAnimation();

@@ -907,12 +907,15 @@ body {
           &::before {
             content:'';
             width:rem(40);
-            height:rem(80);
+            height:rem(72);
             background:linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 80%);
             display:flex;
             position:absolute;
             top:50%;
             transform:translate(-100%,-50%);
+            @include desktop {
+              height:rem(120);
+            }
           }
         }
         .products-layer-content-thumb-swiper-btn-prev {
@@ -936,17 +939,17 @@ body {
         position:relative;
         margin:0 auto;
         @include tablet {
-          width:calc(100% - rem(62) - rem(32));
+          // width:calc(100% - rem(62) - rem(32));
           padding:rem(24);
         }
         @include desktop {
           padding:rem(32);
         }
-        &-wrapper {
-          @include tablet{
-            width:auto;
-          }
-        }
+        // &-wrapper {
+        //   @include tablet{
+        //     width:auto;
+        //   }
+        // }
         .swiper-slide {
           width:rem(72);
           height:rem(72);
