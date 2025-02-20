@@ -273,7 +273,7 @@ function canvasAnimation() {
   const frameCount = 60;
 
   const currentFrame = (index) => {
-    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lge-global/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 1 };
