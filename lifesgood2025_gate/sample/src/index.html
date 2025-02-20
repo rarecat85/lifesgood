@@ -32,11 +32,13 @@
             <button type="button" aria-label="video play/pause button" class="play-btn"></button>
           </div>
           <div class="scroll-move">
-            <svg width="34" height="63" viewBox="0 0 34 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="32" height="48" rx="16" stroke="white" stroke-width="2"/>
-              <path d="M23.0703 55.9531L16.9989 61.9055L10.9275 55.9531" stroke="white" stroke-width="1.5" stroke-linecap="square"/>
-              <ellipse cx="16.9989" cy="36.9044" rx="2.42857" ry="2.38095" fill="white"/>
+            <button type="button" aria-label="스크롤을 아래로 이동">
+              <svg aria-hidden="true" width="34" height="63" viewBox="0 0 34 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="32" height="48" rx="16" stroke="white" stroke-width="2"/>
+                <path d="M23.0703 55.9531L16.9989 61.9055L10.9275 55.9531" stroke="white" stroke-width="1.5" stroke-linecap="square"/>
+                <ellipse cx="16.9989" cy="36.9044" rx="2.42857" ry="2.38095" fill="white"/>
               </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -158,9 +160,9 @@
           <div class="inner">
               <h2 class="title">Learn about Life's Good</h2>
               <div class="slide-bx">
-                  <div class="swiper">
+                  <div class="swiper" role="region" aria-label="스토리 슬라이드쇼">
                       <div class="swiper-wrapper">
-                          <div class="swiper-slide">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-more-stories-banner-01.png" alt="People enjoying camping with smiles, embracing the power of optimism." loading="lazy">
                               <div class="txt-bx">
                                   <dl>
@@ -170,7 +172,7 @@
                                   <a href="https://www.lg.com/global/lifes-good-in-action/optimism-your-feed/" class="white-btn">Learn More</a>
                               </div>
                           </div>
-                          <div class="swiper-slide">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-more-stories-banner-02.png" alt="A dog sleeping comfortably in the front of the LG Washtower with DirectDrive technology." loading="lazy">
                               <div class="txt-bx">
                                   <dl>
@@ -180,7 +182,7 @@
                                   <a href="https://www.lg.com/global/lifes-good-in-action/product-story-washtower/" class="white-btn">Learn More</a>
                               </div>
                           </div>
-                          <div class="swiper-slide">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-more-stories-banner-03.png" alt="A man skateboarding with a happy expression, demonstrating the power of optimism." loading="lazy">
                               <div class="txt-bx">
                                   <dl>
@@ -194,8 +196,8 @@
                       </div>
                   </div>
                   <div class="slide-controller">
-                      <button type="button" class="slide-button-prev"></button>
-                      <button type="button" class="slide-button-next"></button>
+                      <button type="button" class="slide-button-prev" aria-label="이전 슬라이드로 이동"></button>
+                      <button type="button" class="slide-button-next" aria-label="다음 슬라이드로 이동"></button>
                   </div>
               </div>
           </div>
