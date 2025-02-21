@@ -170,19 +170,7 @@ function prodAnimation() {
     }
   });
 
-  window.addEventListener('resize', () => {
-    prodSections.forEach(section => {
-      const prodVideo = section.querySelector('video');
-      const prodVideoBtn = section.querySelector('.products-video-btn');
-      const prodImgBx = section.querySelector('.products-video').classList.contains('img-type');
-
-      if(!prodImgBx) {
-        resetVideoControls(prodVideo, prodVideoBtn);
-      }
-    });
-
-    prodAnimation();
-  });
+  
 }
 
 function tabAnimation() {
@@ -613,9 +601,8 @@ function handleResize() {
     isMobile = newIsMobile;
     kvAnimation(); 
     prodAnimation(); 
+    ScrollTrigger.refresh();
   }
-  
-  ScrollTrigger.refresh();
 }
 
 function debounce(func, delay=500) {
