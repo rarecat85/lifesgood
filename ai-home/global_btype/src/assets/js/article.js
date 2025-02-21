@@ -3,6 +3,7 @@ const { toArray } = gsap.utils;
 
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
+let prevWidth = window.innerWidth;
 
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
@@ -170,7 +171,19 @@ function prodAnimation() {
     }
   });
 
-  
+  // window.addEventListener('resize', () => {
+  //   prodSections.forEach(section => {
+  //     const prodVideo = section.querySelector('video');
+  //     const prodVideoBtn = section.querySelector('.products-video-btn');
+  //     const prodImgBx = section.querySelector('.products-video').classList.contains('img-type');
+
+  //     if(!prodImgBx) {
+  //       resetVideoControls(prodVideo, prodVideoBtn);
+  //     }
+  //   });
+
+  //   prodAnimation();
+  // });
 }
 
 function tabAnimation() {
@@ -258,14 +271,13 @@ function canvasAnimation() {
   canvas.height = canvas.clientHeight * dpr;
   ctx.scale(dpr, dpr);
 
-  const frameCount = 60;
+  const frameCount = 59;
 
   const currentFrame = (index) => {
-    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lge-global/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lge-global/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${(index + 1).toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 1 };
-
   const images = Array(frameCount + 1)
     .fill(null)
     .map((_, i) => {
@@ -274,6 +286,7 @@ function canvasAnimation() {
       return img;
     });
 
+  
   const tl = gsap.to(videoSection, {
     frame: frameCount,
     snap: 'frame',
@@ -595,13 +608,17 @@ function disclaimerAction() {
 
 
 function handleResize() {
-  const newIsMobile = !isPC(); 
+  const currentWidth = window.innerWidth;
+  
+  if (currentWidth !== prevWidth) {
+    const newIsMobile = !isPC(); 
 
-  if (newIsMobile !== isMobile) {
-    isMobile = newIsMobile;
-    kvAnimation(); 
-    prodAnimation(); 
-    ScrollTrigger.refresh();
+    if (newIsMobile !== isMobile) {
+      isMobile = newIsMobile;
+      kvAnimation(); 
+      prodAnimation(); 
+      ScrollTrigger.refresh();
+    }
   }
 }
 
@@ -644,5 +661,3 @@ function init() {
 }
 
 init();
-
-
