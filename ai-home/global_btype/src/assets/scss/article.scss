@@ -827,7 +827,7 @@ body {
         @include desktop {
           width:rem(48);
           height:rem(48);
-          transform:translate(100%,-150%);
+          transform:translate(100%,calc(-150% + rem(16)));
         }
       }
     }
