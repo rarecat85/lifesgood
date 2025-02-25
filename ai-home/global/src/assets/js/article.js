@@ -48,7 +48,7 @@ function overviewAnimation() {
   const fadeText = toArray('.fade-up');
 
   const overviewTl = gsap.timeline()
-  .from(fadeText,{opacity:0,y:20,stagger:0.5})
+  .from(fadeText,{opacity:0,y:20})
 
   const overviewTrigger = ScrollTrigger.create({
     trigger: overviewSection,
@@ -631,6 +631,7 @@ function debounce(func, delay=500) {
 }
 
 function init() {
+  document.querySelector('body').classList.add('noscroll');
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
@@ -658,6 +659,11 @@ function init() {
 
   // 리사이즈 이벤트 처리
   window.addEventListener('resize', debounce(handleResize));
+
+  // 페이지 로드 완료 시 noscroll 클래스 제거
+  window.addEventListener('load', () => {
+    document.querySelector('body').classList.remove('noscroll');
+  });
 }
 
 init();
