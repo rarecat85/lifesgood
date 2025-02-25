@@ -94,6 +94,7 @@
             .title {
               img {
                 display: block;
+                width: rem(157);
                 margin-left: auto;
                 margin-right: auto;
                 margin-bottom: rem(8);
@@ -188,7 +189,7 @@
           font-weight: 600;
           font-size: rem(28);
           text-align: center;
-          line-height: 1.1;
+          line-height: 1.12;
           margin-top: rem(8);
           background: linear-gradient(130deg, rgba(253,49,46,1) 2%, rgba(249,20,235,1) 57%, rgba(180,50,245,1) 79%, rgba(130,39,255,1) 97%);
           background-clip: text;
