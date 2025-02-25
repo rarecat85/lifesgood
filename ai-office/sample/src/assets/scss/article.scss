@@ -236,6 +236,8 @@ body {
       }
       video {
         @include img(cover);
+        height: calc(100% + rem(4));
+        object-position: center rem(-2);
       }
       &-btn {
         width:rem(48);
@@ -380,6 +382,9 @@ body {
             width:rem(120);
             height:rem(120);
           }
+          &-btn {
+            display:block;
+          }
           // @include desktop {
           //   width:rem(80);
           //   height:rem(80);
@@ -389,246 +394,6 @@ body {
       // .btn {
       //   display:none;
       // }
-    }
-  }
-
-  .ourpicks {
-    &-title {
-      @include font(28,114%,550);
-      @include tablet {
-        @include font(44,109%);
-      }
-      @include desktop {
-        @include font(56,107%);
-      }
-    }
-    &-conbx {
-      margin-top:rem(12);
-      width:100%;
-      display:flex;
-      flex-direction:column;
-      row-gap:rem(20);
-      @include tablet {
-        margin-top:rem(8);
-        flex-direction:row;
-        row-gap:0;
-        column-gap:rem(16);
-      }
-      @include desktop {
-        margin-top:rem(24);
-        column-gap:rem(24);
-      }
-      &-item {
-        width:100%;
-        @include tablet {
-          width:50%;
-        }
-        &-imgbx {
-          width:100%;
-          border-radius:rem(20);
-          overflow:hidden;
-          @include tablet {
-            border-radius:rem(28);
-          }
-          @include desktop {
-            border-radius:rem(32);
-          }
-          img {
-            @include img(cover);
-          }
-        }
-        &-txtbx {
-          width:100%;
-          margin-top:rem(8);
-          @include tablet {
-            margin-top:rem(24);
-          }
-          &-eyebrow {
-            @include font(16,125%);
-            text-transform:capitalize;
-            margin-bottom:rem(4);
-          }
-          &-title {
-            @include font(20,120%,550);
-            @include tablet {
-              &.plplist {
-                @include font(28,85%);
-              }
-            }
-            @include desktop {
-              @include desktop {
-                @include font(24,116%);
-              }
-              &.plplist {
-                @include font(32,112%);
-              }
-            }
-          }
-          .btn {
-            margin-top:rem(12);
-            @include tablet {
-              margin-top:rem(16);
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .promotion {
-    &-title {
-      @include font(28,114%,550);
-      @include tablet {
-        @include font(44,109%);
-      }
-      @include desktop {
-        @include font(56,107%);
-      }
-    }
-    &-conbx {
-      width:100%;
-      position:relative;
-      margin-top:rem(12);
-      @include tablet {
-        margin-top:rem(8);
-      }
-      @include desktop {
-        margin-top:rem(20);
-      }
-      &-imgbx {
-        width:100%;
-        border-radius:rem(20);
-        overflow:hidden;
-        @include tablet {
-          border-radius:rem(28);
-        }
-        img {
-          @include img(cover);
-        }
-      }
-      &-txtbx {
-        width:100%;
-        position:absolute;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        padding:0 rem(20);
-        @include tablet {
-          padding:0 rem(32);
-        }
-        @include desktop {
-          padding:0 rem(80);
-        }
-        &-title {
-          @include font(24,116%,$cl:#fff);
-          margin-bottom:rem(12);
-          @include tablet {
-            @include font(36);
-            margin-bottom:rem(24);
-          }
-          &.bk {
-            color:$warmGray;
-          }
-        }
-      }
-    }
-  }
-
-  .stories {
-    &-title {
-      @include font(28,114%,550);
-      @include tablet {
-        @include font(44,109%);
-      }
-      @include desktop {
-        @include font(56,107%);
-      }
-    }
-    &-conbx {
-      width:100%;
-      margin-top:rem(12);
-      &-item {
-        width:rem(310);
-        position:relative;
-        @include tablet {
-          width:rem(480);
-        }
-        @include desktop {
-          width:rem(464);
-        }
-        &-imgbx {
-          border-radius:rem(20);
-          overflow:hidden;
-          @include tablet {
-            border-radius:rem(28);
-          }
-          img {
-            @include img(cover);
-          }
-        }
-        &-txtbx {
-          position:absolute;
-          top:0;
-          left:0;
-          padding:rem(24) rem(30);
-          @include tablet {
-            padding:rem(32);
-          }
-          &-title {
-            @include font(28,116%,$cl:$white);
-            margin-bottom:rem(8);
-            @include tablet {
-              @include font(40);
-            }
-            @include desktop {
-              @include font(40,112%);
-            }
-          }
-          &-desc {
-            @include font(16,125%,$cl:$white);
-            margin-bottom:rem(12);
-            @include tablet {
-              margin-bottom:rem(24);
-            }
-            @include desktop {
-              @include font(24,116%);
-            }
-          }
-        }
-      }
-    }
-    &-swiper-btnbx {
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      margin-top:rem(20);
-      gap:rem(16);
-      .stories-swiper-button-prev {
-        width:rem(24);
-        height:rem(14);
-        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-stories-swiper-btn.svg') no-repeat;
-        background-size:contain;
-        transform:rotate(-180deg);
-       }
-      .stories-swiper-button-next {
-        width:rem(24);
-        height:rem(14);
-        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-stories-swiper-btn.svg') no-repeat;
-        background-size:contain;
-      }
-      .stories-swiper-pagination {
-        width:auto;
-        @include font(14,114%,$cl:$warmGray);
-        text-transform:capitalize;
-      }
-      .swiper-button-disabled {
-        opacity:50%;
-      }
-      @include desktop {
-        display:none;
-      }
     }
   }
 
@@ -813,7 +578,7 @@ body {
         @include desktop {
           width:rem(48);
           height:rem(48);
-          transform:translate(100%,-150%);
+          transform:translate(100%,calc(-150% + rem(16)));
         }
       }
     }
@@ -899,12 +664,15 @@ body {
           &::before {
             content:'';
             width:rem(40);
-            height:rem(80);
+            height:rem(72);
             background:linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 80%);
             display:flex;
             position:absolute;
             top:50%;
             transform:translate(-100%,-50%);
+            @include desktop {
+              height:rem(120);
+            }
           }
         }
         .products-layer-content-thumb-swiper-btn-prev {
@@ -920,6 +688,7 @@ body {
         }
       }
       &-thumb-swiper {
+        // width:calc(100% - rem(62) - rem(24));
         padding:rem(16);
         display:flex;
         align-items:center;
@@ -927,17 +696,17 @@ body {
         position:relative;
         margin:0 auto;
         @include tablet {
-          width:calc(100% - rem(62) - rem(32));
+          // width:calc(100% - rem(62) - rem(32));
           padding:rem(24);
         }
         @include desktop {
           padding:rem(32);
         }
-        &-wrapper {
-          @include tablet{
-            width:auto;
-          }
-        }
+        // &-wrapper {
+        //   @include tablet{
+        //     width:auto;
+        //   }
+        // }
         .swiper-slide {
           width:rem(72);
           height:rem(72);

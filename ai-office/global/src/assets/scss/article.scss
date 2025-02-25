@@ -236,6 +236,8 @@ body {
       }
       video {
         @include img(cover);
+        height: calc(100% + rem(4));
+        object-position: center rem(-2);
       }
       &-btn {
         width:rem(48);
@@ -379,6 +381,9 @@ body {
           @include tablet {
             width:rem(120);
             height:rem(120);
+          }
+          &-btn {
+            display:block;
           }
           // @include desktop {
           //   width:rem(80);
@@ -573,7 +578,7 @@ body {
         @include desktop {
           width:rem(48);
           height:rem(48);
-          transform:translate(100%,-150%);
+          transform:translate(100%,calc(-150% + rem(16)));
         }
       }
     }
@@ -659,12 +664,15 @@ body {
           &::before {
             content:'';
             width:rem(40);
-            height:rem(80);
+            height:rem(72);
             background:linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 80%);
             display:flex;
             position:absolute;
             top:50%;
             transform:translate(-100%,-50%);
+            @include desktop {
+              height:rem(120);
+            }
           }
         }
         .products-layer-content-thumb-swiper-btn-prev {
@@ -680,6 +688,7 @@ body {
         }
       }
       &-thumb-swiper {
+        // width:calc(100% - rem(62) - rem(24));
         padding:rem(16);
         display:flex;
         align-items:center;
@@ -687,17 +696,17 @@ body {
         position:relative;
         margin:0 auto;
         @include tablet {
-          width:calc(100% - rem(62) - rem(32));
+          // width:calc(100% - rem(62) - rem(32));
           padding:rem(24);
         }
         @include desktop {
           padding:rem(32);
         }
-        &-wrapper {
-          @include tablet{
-            width:auto;
-          }
-        }
+        // &-wrapper {
+        //   @include tablet{
+        //     width:auto;
+        //   }
+        // }
         .swiper-slide {
           width:rem(72);
           height:rem(72);

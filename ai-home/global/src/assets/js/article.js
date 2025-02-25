@@ -3,6 +3,7 @@ const { toArray } = gsap.utils;
 
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
+let prevWidth = window.innerWidth;
 
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
@@ -71,9 +72,6 @@ function prodAnimation() {
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
     prodVideo.currentTime = 0;
-    // prodVideoBtn.setAttribute('aria-pressed', 'false');
-    // prodVideoBtn.setAttribute('aria-label', 'play');
-    // prodVideoBtn.textContent = 'play';
   };
 
   prodSections.forEach((section) => {
@@ -84,9 +82,14 @@ function prodAnimation() {
     const prodTextBx = section.querySelector('.products-textbx');
     const prodTextChildren = toArray(prodTextBx.children);
     const prodVideoBtn = section.querySelector('.products-video-btn');
+    const prodImgBx = prodVideoBx.classList.contains('img-type');
 
     const resetProps = () => {
-      gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
+      if(prodImgBx) {
+        gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx], { clearProps: 'all' });
+      }else {
+        gsap.set([prodTextChildren, prodVideoTitle, prodInner, prodVideoBx, prodVideoBtn], { clearProps: 'all' });
+      }
     };
 
     const playVideoOnView = () => {
@@ -116,14 +119,17 @@ function prodAnimation() {
 
         if (isPlaying) {
           prodVideo.pause();
-          // prodVideo.currentTime = 0;
         } else {
           prodVideo.play();
         }
       });
     };
 
-    addVideoButtonListeners();
+    if(!prodImgBx) {
+      addVideoButtonListeners();
+    }
+  
+    
 
     if (isDesktop) {
       const isReverse = section.classList.contains('reverse');
@@ -133,14 +139,14 @@ function prodAnimation() {
       const prodTl = gsap.timeline({
         defaults: { ease: 'linear' },
       })
-        .set(prodVideoBtn, { opacity: 0 })
-        .set(prodTextChildren, { opacity: 0, y: 20 })
+      if(!prodImgBx) prodTl.set(prodVideoBtn, { opacity: 0 });
+      prodTl.set(prodTextChildren, { opacity: 0, y: 20 })
         .to(prodVideoTitle, { opacity: 0, y: 20, duration: 3 })
-        .call(() => prodVideo.play())
-        .to(prodInner, { maxWidth: '1440px' })
-        .to(prodVideoBx, { scale: 0.5083, x: adjustedX, borderRadius: 28, duration: 2 })
-        .to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 })
-        .to(prodVideoBtn, { opacity: 1, scale: 2.4585 });
+      if(!prodImgBx) prodTl.call(() => prodVideo.play());
+      prodTl.to(prodInner, { maxWidth: '1440px' })
+      .to(prodVideoBx, { scale: 0.5083, x: adjustedX, borderRadius: 28, duration: 2 });
+      prodTl.to(prodTextChildren, { opacity: 1, y: 0, stagger: 0.2 })
+      if(!prodImgBx) prodTl.to(prodVideoBtn, { opacity: 1, scale: 2.4585 });
 
       const trigger = ScrollTrigger.create({
         trigger: section,
@@ -150,27 +156,34 @@ function prodAnimation() {
         scrub: true,
         animation: prodTl,
         onLeaveBack: () => {
-          resetVideoControls(prodVideo, prodVideoBtn);
+          if(!prodImgBx) {
+            resetVideoControls(prodVideo, prodVideoBtn);
+          }
         },
       });
 
       prodTriggers.push(trigger);
     } else {
       resetProps();
-      playVideoOnView();
+      if(!prodImgBx) {
+        playVideoOnView();
+      }
     }
   });
 
-  window.addEventListener('resize', () => {
-    prodSections.forEach(section => {
-      const prodVideo = section.querySelector('video');
-      const prodVideoBtn = section.querySelector('.products-video-btn');
+  // window.addEventListener('resize', () => {
+  //   prodSections.forEach(section => {
+  //     const prodVideo = section.querySelector('video');
+  //     const prodVideoBtn = section.querySelector('.products-video-btn');
+  //     const prodImgBx = section.querySelector('.products-video').classList.contains('img-type');
 
-      resetVideoControls(prodVideo, prodVideoBtn);
-    });
+  //     if(!prodImgBx) {
+  //       resetVideoControls(prodVideo, prodVideoBtn);
+  //     }
+  //   });
 
-    prodAnimation();
-  });
+  //   prodAnimation();
+  // });
 }
 
 function tabAnimation() {
@@ -181,7 +194,7 @@ function tabAnimation() {
   const tabicons = toArray('.thinQ-tabs-imgbx-fixedimg-tab-icon');
 
   const tabTitles = [
-    '"Hey, LG"',
+    '"Hi, LG"',
     '"Welcome back"' 
   ];
 
@@ -258,14 +271,13 @@ function canvasAnimation() {
   canvas.height = canvas.clientHeight * dpr;
   ctx.scale(dpr, dpr);
 
-  const frameCount = 60;
+  const frameCount = 59;
 
   const currentFrame = (index) => {
-    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeglobal/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${index.toString().padStart(3, '0')}.png`;
+    return `/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lge-global/ai-home/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${(index + 1).toString().padStart(3, '0')}.png`;
   };
 
   const videoSection = { frame: 1 };
-
   const images = Array(frameCount + 1)
     .fill(null)
     .map((_, i) => {
@@ -274,6 +286,7 @@ function canvasAnimation() {
       return img;
     });
 
+  
   const tl = gsap.to(videoSection, {
     frame: frameCount,
     snap: 'frame',
@@ -595,15 +608,18 @@ function disclaimerAction() {
 
 
 function handleResize() {
-  const newIsMobile = !isPC(); 
-
-  if (newIsMobile !== isMobile) {
-    isMobile = newIsMobile;
-    kvAnimation(); 
-    prodAnimation(); 
-  }
+  const currentWidth = window.innerWidth;
   
-  ScrollTrigger.refresh();
+  if (currentWidth !== prevWidth) {
+    const newIsMobile = !isPC(); 
+
+    if (newIsMobile !== isMobile) {
+      isMobile = newIsMobile;
+      kvAnimation(); 
+      prodAnimation(); 
+      ScrollTrigger.refresh();
+    }
+  }
 }
 
 function debounce(func, delay=500) {
@@ -645,5 +661,3 @@ function init() {
 }
 
 init();
-
-

@@ -1,8 +1,10 @@
 gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
+
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
+
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
   const kvVideoBx = document.querySelector('.kv-conbx-video');
@@ -40,10 +42,9 @@ function kvAnimation() {
       scrollTriggerInstance.kill();
       scrollTriggerInstance = null;
     }
-    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
+    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' }); 
   }
 }
-
 
 function overviewAnimation() {
   const overviewSection = document.querySelector('.overview');
@@ -176,33 +177,6 @@ function prodAnimation() {
     prodAnimation();
   });
 }
-
-function stories() {
-  const storiesSwiper = document.querySelector('.stories-conbx');
-
-  if (storiesSwiper) {
-    const storiesSwiperOptions = {
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.stories-swiper-button-next',
-        prevEl: '.stories-swiper-button-prev',
-      },
-      pagination: {
-        el: '.stories-swiper-pagination',
-        type: 'fraction',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-            spaceBetween: 16
-        }
-      },
-    };
-    
-    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
-  }
-}
 function productsSwiper() {
   function initializeProductsSwipers() {
     const productsSwipers = document.querySelectorAll('.products-textbx-thumbbx');
@@ -315,7 +289,7 @@ function productsSwiper() {
   
         const sourceWebm = document.createElement('source');
         sourceWebm.src = videoWebm;
-        sourceWebm.type = 'videos/webm';
+        sourceWebm.type = 'video/webm';
   
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
@@ -505,9 +479,6 @@ function init() {
   if (sections.includes('products')) {
     prodAnimation();
     productsSwiper();
-  }
-  if(sections.includes('stories')) {
-    stories();
   }
 
   if(document.querySelector('.disclaimer')) {
