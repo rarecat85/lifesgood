@@ -353,10 +353,6 @@ body {
       }
       &-thumbbx {
         width:100%;
-        margin-bottom:rem(12);
-        @include tablet {
-          margin-bobbomt:rem(24);
-        }
         &-wrapper {
           display:flex;
           align-items:center;
@@ -384,9 +380,12 @@ body {
           }
         }
       }
-      // .btn {
-      //   display:none;
-      // }
+      .btn {
+        margin-top:rem(12);
+        @include tablet {
+          margin-top:rem(24);
+        }
+      }
     }
   }
 
@@ -789,6 +788,15 @@ body {
   }
 
   .stories {
+    .inner {
+      padding:0 0 rem($mo_padding) rem(16);
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
     &-title {
       @include font(28,114%,550);
       @include tablet {
