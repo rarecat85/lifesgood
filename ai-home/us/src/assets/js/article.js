@@ -397,6 +397,13 @@ function productsSwiper() {
     if (buttonHref) {
       headerButtonElement.setAttribute('href', buttonHref);
       headerButtonElement.style.display = 'flex'; // 버튼 보이기
+      
+      // xboom 섹션인 경우 버튼 텍스트를 'Learn More'로 변경
+      if (eyebrowText === 'LG xboom') {
+        headerButtonElement.textContent = 'Learn More';
+      } else {
+        headerButtonElement.textContent = 'Buy Now';
+      }
     } else {
       headerButtonElement.style.display = 'none'; // 버튼 숨기기
     }
