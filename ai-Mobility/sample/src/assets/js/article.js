@@ -216,6 +216,10 @@ function stories() {
         768: {
             slidesPerView: 2,
             spaceBetween: 16
+        },
+        1441: {
+            slidesPerView: 3,
+            spaceBetween: 24
         }
       },
     };

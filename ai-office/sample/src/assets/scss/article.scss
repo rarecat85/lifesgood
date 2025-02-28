@@ -541,6 +541,15 @@ body {
   }
 
   .stories {
+    .inner {
+      padding:0 0 rem($mo_padding) rem(16);
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
     &-title {
       @include font(28,114%,550);
       @include tablet {

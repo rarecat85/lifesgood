@@ -1,0 +1,335 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+<head>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title><!--타이틀--></title>
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta property="og:title" content=""/>
+    <meta property="og:url" content="">
+    <meta property="og:description" content=""/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
+
+    <!-- your -->
+    <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/font.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="./assets/css/article.css" rel="stylesheet" type="text/css" />
+
+    <script src="../common/js/gsap.min.js"></script>
+    <script src="../common/js/ScrollTrigger.min.js"></script>
+    <script src="../common/js/ScrollSmoother.min.js"></script>
+    <script src="../common/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/article.js" defer></script>
+
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
+<body>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
+    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<main class="article-container">
+      <!-- hero -->
+      <section class="kv">
+        <div class="inner">
+          <h1 class="kv-title heading">Drive into the future</h1>
+          <div class="kv-conbx">
+            <p class="kv-conbx-desc">Move with freedom. Experience LG Affectionate Intelligence anywhere, beyond just home and office. While you're driving, LG AI syncs with your ready-to-connect devices elsewhere, detects your surroundings, and understands your behavior and emotions.</p>
+            <div class="kv-conbx-video">
+              <iframe 
+                src="https://www.youtube.com/embed/JYdxxM6J3no?enablejsapi=1&mute=1" 
+                enablejsapi="1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+              <div class="kv-conbx-video-thumb">
+                <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-kv-video-thumb.png" alt="The mother clutches her stomach in pain, her face contorted in discomfort.The family gathers and gets into a car, with LG AI guiding them to the hospital.">
+              </div>
+              <!-- <a href="javascript:void(0)" class="kv-conbx-video-btn" role="button">Watch the film</a>
+              <a href="javascript:void(0)" class="kv-conbx-video-close" role="button">close</a> -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- //hero -->
+
+      <!-- overview -->
+      <section class="overview">
+        <div class="inner">
+          <div class="article-banner-logo fade-up">
+            <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-black-logo.png" alt="LG AI logo">
+          </div>
+          <h2 class="title heading fade-up">Affectionate Intelligence</h2>
+          <p class="txt fade-up">Experience a new way of driving with LG's Digital Cockpit. The thoughtful care and personalized AI solutions you've enjoyed at home and in the office now extend seamlessly into your car. The result? Safer and more enjoyable journeys.</p>
+        </div>
+      </section>
+      <!-- //overview -->
+
+      <!-- Mobility -->
+      <section class="products">
+        <div class="inner">
+          <div class="products-video">
+            <video muted loop playsinline>
+              <source media="(max-width:768px)" src="./assets/videos/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-video-mobility-mobile.mp4" type="video/mp4">
+              <source media="(min-width:769px)" src="./assets/videos/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-video-mobility-desktop.mp4" type="video/mp4">
+            </video>
+            <picture>
+              <source media="(max-width:768px)" srcset="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-mobility-mobile.png">
+              <source media="(min-width:769px)" srcset="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-mobility-desktop.png">
+              <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-mobility-mobile.png" alt="A man is sitting in a car, feeling sad. When the LG AI device shows him a family photo, the man smiles." />
+            </picture>
+            <h3 class="products-video-title heading" aria-hidden="true">A better feel for the road</h3>
+            <a href="javascript:void(0)" class="products-video-btn" role="button" tabindex="0" aria-label="pause" aria-pressed="true">pause</a>
+          </div>
+      </section>
+      <!-- //Mobility -->
+
+      <section class="products-static">
+        <h2 class="products-static-title heading" aria-hidden="true">A better feel for the road</h2>
+        <div class="products-static-item">
+          <div class="inner">
+            <div class="products-static-item-video">
+              <video muted loop playsinline>
+                <source src="./assets/videos/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-video-hyper-personaliztion-desktop.mp4" type="video/mp4">
+              </video>
+              <picture>
+                <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-hyper-personaliztion-desktop.png" alt="Intelligently identifies faces, text, and driver/passenger's clothing attire with DIMS" />
+              </picture>
+              <a href="javascript:void(0)" class="products-static-item-video-btn" role="button" tabindex="0" aria-label="play" aria-pressed="false">pause</a>
+            </div>
+            <div class="products-static-item-textbx">
+              <h3 class="products-static-item-textbx-title heading">Hyper-personalization</h3>
+              <p class="products-static-item-textbx-desc">
+                Automatically adjusts seat settings, suggests preferred content, and provides necessary services based on the vehicle users' emotional state through the Driver & Interior Monitoring System (DIMS).
+              </p>
+              <a href="https://www.lg.com/global/mobility/adas-vision-system/in-cabin-solutions" class="btn white">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="products-static-item reverse">
+          <div class="inner">
+            <div class="products-static-item-video">
+              <video muted loop playsinline>
+                <source src="./assets/videos/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-video-safety-guardian-desktop.mp4" type="video/mp4">
+              </video>
+              <picture>
+                <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-safety-guardian-desktop.png" alt="It detects smartphone usage by tracking gaze and 3D body posture, issuing distraction warnings to help the driver stay focused on the road." />
+              </picture>
+              <a href="javascript:void(0)" class="products-static-item-video-btn" role="button" tabindex="0" aria-label="pause" aria-pressed="true">pause</a>
+            </div>
+            <div class="products-static-item-textbx">
+              <h3 class="products-static-item-textbx-title heading">Safety guardian</h3>
+              <p class="products-static-item-textbx-desc">
+                Detects dangerous states or behaviors such as drowsiness, distractions, and seatbelt misuse, helping to ensure safe travel by responding quickly in emergencies.
+              </p>
+              <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision" class="btn white">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="products-static-item">
+          <div class="inner">
+            <div class="products-static-item-video">
+              <video muted loop playsinline>
+                <source src="./assets/videos/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-video-ai-hmi-desktop.mp4" type="video/mp4">
+              </video>
+              <picture>
+                <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-ai-hmi-desktop.png" alt="It recognizes landmarks, remembers driver preferences, and uses AI to suggest personalized recommendations." />
+              </picture>
+              <a href="javascript:void(0)" class="products-static-item-video-btn" role="button" tabindex="0" aria-label="pause" aria-pressed="true">pause</a>
+            </div>
+            <div class="products-static-item-textbx">
+              <h3 class="products-static-item-textbx-title heading">AI-powered HMI in-car experience</h3>
+              <p class="products-static-item-textbx-desc">
+                Completes a more accurate and convenient driving experience through multimodal AI, utilizing touch, voice, and gaze.
+              </p>
+              <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma" class="btn white">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- promotion -->
+       <section class="promotion">
+        <div class="inner">
+          <div class="promotion-conbx">
+            <div class="promotion-conbx-imgbx">
+              <picture>
+                <source media="(max-width:768px)" srcset="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-promotion-conbx-img.png" />
+                <source media="(max-width:1024px)" srcset="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-promotion-conbx-img-tablet.png" />
+                <source media="(min-width:1025px)" srcset="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-promotion-conbx-img-desktop.png" />
+                <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-promotion-conbx-img.png" alt="LG vehicle solution's Digital Cockpit." />
+              </picture>
+            </div>
+            <div class="promotion-conbx-txtbx">
+              <p class="promotion-conbx-txtbx-eyebrow">LG Vehicle Solution</p>
+              <p class="promotion-conbx-txtbx-title">Driving better future mobility</p>
+              <a href="https://www.lg.com/global/mobility" class="btn white">Learn More</a>
+            </div>
+          </div>
+        </div>
+       </section>
+      <!-- //promotion -->
+
+      <!-- stories -->
+      <section class="stories">
+      <div class="inner">
+        <h2 class="stories-title heading">Other stories</h2>
+        <div class="stories-conbx swiper">
+          <div class="swiper-wrapper">
+            <div class="stories-conbx-item swiper-slide">
+              <div class="stories-conbx-item-imgbx">
+                <picture>
+                  <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-banner-01.png" alt="" />
+                </picture>
+              </div>
+              <div class="stories-conbx-item-txtbx">
+                <p class="stories-conbx-item-txtbx-title">Home, smart home</p>
+                <p class="stories-conbx-item-txtbx-desc">
+                  Focus more on your life. LG AI Home solutions are designed to make your home even more comfortable. LG Affectionate Intelligence is there to thoughtfully care for everyone in your home, easing worries to live more genuine, more human.
+                </p>
+                <a href="https://www.lg.com/us/lifesgood/ai-home/" class="btn white">Learn More</a>
+              </div>
+            </div>
+            <div class="stories-conbx-item swiper-slide">
+              <div class="stories-conbx-item-imgbx">
+                <picture>
+                  <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-banner-02.png" alt="" />
+                </picture>
+              </div>
+              <div class="stories-conbx-item-txtbx">
+                <p class="stories-conbx-item-txtbx-title">Work, behind the scenes</p>
+                <p class="stories-conbx-item-txtbx-desc">
+                  Work smarter but not harder. Experience LG Affectionate Intelligence at work. Productivity. Efficiency. Clarity. You can work even better at your work place where LG AI is ready to support you.
+                </p>
+                <a href="https://www.lg.com/us/lifesgood/ai-office/" class="btn white">Learn More</a>
+              </div>
+            </div>
+            <div class="stories-conbx-item swiper-slide">
+              <div class="stories-conbx-item-imgbx">
+                <picture>
+                  <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-mobility-img-stories-banner-03.png" alt="" />
+                </picture>
+              </div>
+              <div class="stories-conbx-item-txtbx">
+                <p class="stories-conbx-item-txtbx-title">Less artificial, more human</p>
+                <p class="stories-conbx-item-txtbx-desc">
+                  LG Affectionate Intelligence
+                </p>
+                <a href="https://www.lg.com/us/lifesgood" class="btn white">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <div class="stories-swiper-btnbx">
+            <div class="stories-swiper-button-prev"></div>
+            <div class="stories-swiper-pagination"></div>
+            <div class="stories-swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <!-- //stories -->
+    </main>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
+</body>
+</html>
