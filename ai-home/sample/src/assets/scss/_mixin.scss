@@ -64,7 +64,8 @@
     border:1px solid $midGray;
     color:$black;
     &:hover,
-    &:active {
+    &:active,
+    &:focus  {
       border:none;
       background: $red;
       color:$white;
@@ -75,7 +76,8 @@
     color:$white;
     border:none;
     &:hover,
-    &:active {
+    &:active,
+    &:focus  {
       border:1px solid $midGray;
       background: $white;
       color:$black;
