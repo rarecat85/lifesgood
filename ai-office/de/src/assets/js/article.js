@@ -74,9 +74,6 @@ function prodAnimation() {
   const resetVideoControls = (prodVideo, prodVideoBtn) => {
     prodVideo.pause();
     prodVideo.currentTime = 0;
-    // prodVideoBtn.setAttribute('aria-pressed', 'false');
-    // prodVideoBtn.setAttribute('aria-label', 'play');
-    // prodVideoBtn.textContent = 'play';
   };
 
   prodSections.forEach((section) => {
@@ -120,7 +117,6 @@ function prodAnimation() {
 
         if (isPlaying) {
           prodVideo.pause();
-          // prodVideo.currentTime = 0;
         } else {
           prodVideo.play();
         }
@@ -176,38 +172,6 @@ function prodAnimation() {
 
     prodAnimation();
   });
-}
-
-function stories() {
-  const storiesSwiper = document.querySelector('.stories-conbx');
-
-  if (storiesSwiper) {
-    const storiesSwiperOptions = {
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.stories-swiper-button-next',
-        prevEl: '.stories-swiper-button-prev',
-      },
-      pagination: {
-        el: '.stories-swiper-pagination',
-        type: 'fraction',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 16
-        },
-        1441: {
-            slidesPerView: 3,
-            spaceBetween: 24
-        }
-      },
-    };
-    
-    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
-  }
 }
 
 function productsSwiper() {
@@ -513,10 +477,6 @@ function init() {
   if (sections.includes('products')) {
     prodAnimation();
     productsSwiper();
-  }
-
-  if(sections.includes('stories')) {
-    stories();
   }
 
   if(document.querySelector('.disclaimer')) {
