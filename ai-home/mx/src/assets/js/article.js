@@ -258,56 +258,7 @@ function tabAnimation() {
         });
     });
   });
-
 }
-
-function canvasAnimation() {
-  const canvas = document.querySelector('#canvas');
-  const ctx = canvas.getContext('2d');
-
-  const dpr = window.devicePixelRatio || 1;
-
-  canvas.width = canvas.clientWidth * dpr;
-  canvas.height = canvas.clientHeight * dpr;
-  ctx.scale(dpr, dpr);
-
-  const frameCount = 59;
-
-  const currentFrame = (index) => {
-    return `./assets/frames/lifes-good-campaign-2025-live-human-lgcom-ai-home-frame-thinq-${(index + 1).toString().padStart(3, '0')}.png`;
-  };
-
-  const videoSection = { frame: 1 };
-  const images = Array(frameCount + 1)
-    .fill(null)
-    .map((_, i) => {
-      const img = new Image();
-      img.src = currentFrame(i);
-      return img;
-    });
-
-  
-  const tl = gsap.to(videoSection, {
-    frame: frameCount,
-    snap: 'frame',
-    ease: 'none',
-    duration: 3,
-    repeat: -1,
-    yoyo: true,
-    onUpdate: render,
-  });
-
-  images[0].onload = render;
-
-  function render() {
-    const currentImage = images[Math.round(videoSection.frame)];
-    if (currentImage.complete) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(currentImage, 0, 0, canvas.width / dpr, canvas.height / dpr);
-    }
-  }
-}
-
 
 function stories() {
   const storiesSwiper = document.querySelector('.stories-conbx');
@@ -327,12 +278,8 @@ function stories() {
       },
       breakpoints: {
         768: {
-          slidesPerView: 2,
-          spaceBetween: 16
-        },
-        1441: {
-            slidesPerView: 3,
-            spaceBetween: 24
+            slidesPerView: 2,
+            spaceBetween: 16
         }
       },
     };
@@ -651,7 +598,6 @@ function init() {
   }
   if (sections.includes('thinQ-tabs')) {
     tabAnimation();
-    canvasAnimation();
   }
 
   if(sections.includes('stories')) {
