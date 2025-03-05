@@ -5,43 +5,43 @@ const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 let prevWidth = window.innerWidth;
 
-function kvAnimation() {
-  const kvSection = document.querySelector('.kv');
-  const kvVideoBx = document.querySelector('.kv-conbx-video');
-  const kvVideo = document.querySelector('.kv-conbx-video iframe');
-  const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
-  const kvDesc = document.querySelector('.kv-conbx-desc');
-  const videoSrc = kvVideo.getAttribute('src');
-  let kvAnimationTl;
-  let scrollTriggerInstance;
+// function kvAnimation() {
+//   const kvSection = document.querySelector('.kv');
+//   const kvVideoBx = document.querySelector('.kv-conbx-video');
+//   const kvVideo = document.querySelector('.kv-conbx-video iframe');
+//   const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
+//   const kvDesc = document.querySelector('.kv-conbx-desc');
+//   const videoSrc = kvVideo.getAttribute('src');
+//   let kvAnimationTl;
+//   let scrollTriggerInstance;
 
-  if(isPC()) {
-    kvAnimationTl = gsap.timeline({
-    })
-      .to(kvDesc, {width:'100%'})
-      .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
-      .to(kvVideoThumb, { autoAlpha: 0 }, '<')
+//   if(isPC()) {
+//     kvAnimationTl = gsap.timeline({
+//     })
+//       .to(kvDesc, {width:'100%'})
+//       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
+//       .to(kvVideoThumb, { autoAlpha: 0 }, '<')
 
-      scrollTriggerInstance = ScrollTrigger.create({
-        trigger: kvSection,
-        start: 'top',
-        end: 'center end',
-        scrub:true,
-        animation: kvAnimationTl,
-        once: true
-      });
-  }else {
-    if (kvAnimationTl) {
-      kvAnimationTl.kill();
-      kvAnimationTl = null;
-    }
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill();
-      scrollTriggerInstance = null;
-    }
-    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
-  }
-}
+//       scrollTriggerInstance = ScrollTrigger.create({
+//         trigger: kvSection,
+//         start: 'top',
+//         end: 'center end',
+//         scrub:true,
+//         animation: kvAnimationTl,
+//         once: true
+//       });
+//   }else {
+//     if (kvAnimationTl) {
+//       kvAnimationTl.kill();
+//       kvAnimationTl = null;
+//     }
+//     if (scrollTriggerInstance) {
+//       scrollTriggerInstance.kill();
+//       scrollTriggerInstance = null;
+//     }
+//     gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
+//   }
+// }
 
 function overviewAnimation() {
   const overviewSection = document.querySelector('.overview');
@@ -570,7 +570,7 @@ function handleResize() {
 
     if (newIsMobile !== isMobile) {
       isMobile = newIsMobile;
-      kvAnimation(); 
+      // kvAnimation(); 
       prodAnimation(); 
       ScrollTrigger.refresh();
     }
@@ -590,9 +590,9 @@ function init() {
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
-  if (sections.includes('kv')) {
-    kvAnimation();
-  }
+  // if (sections.includes('kv')) {
+  //   kvAnimation();
+  // }
   if (sections.includes('products')) {
     prodAnimation();
     productsSwiper();
