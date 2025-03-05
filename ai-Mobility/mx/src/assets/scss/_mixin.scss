@@ -64,20 +64,24 @@
     border:1px solid $midGray;
     color:$black;
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       border:none;
       background: $red;
       color:$white;
+      text-decoration:none;
     }
   }
   @else { 
     color:$white;
     border:none;
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       border:1px solid $midGray;
       background: $white;
       color:$black;
+      text-decoration:none;
     }
   }
   @include desktop{
