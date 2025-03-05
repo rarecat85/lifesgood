@@ -1,0 +1,985 @@
+@import "_mixin";
+
+body {
+  background:$bg;
+  width:100%;
+  overflow-x:hidden;
+  &.noscroll {
+    overflow-y:hidden;
+  }
+}
+.heading {
+  font-family:'LGEI Headline';
+}
+.btn {
+  @include btn($white);
+  &.red {
+    @include btn($red);
+  }
+}
+.article-container {
+  width:100%;
+  margin:auto;
+  section {
+    max-width:1920px;
+    margin:0 auto;
+    .inner {
+      width:100%;
+      max-width:$inner;
+      padding:rem($mo_padding) rem(16);
+      margin:0 auto;
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
+  }
+  .kv {
+    .inner {
+      padding:rem($mo_padding) 0 0;
+      @include tablet {
+        padding:rem($tab_padding) rem(24) 0;
+      }
+      @include desktop {
+        padding:rem($pc_padding) 0 0;
+      }
+    }
+    &-title {
+      padding:0 rem(16);
+      @include font(52,100%,550);
+      @include tablet {
+        padding:0;
+        @include font(96);
+      }
+      @include desktop {
+        font-size:rem(136);
+      }
+    }
+    &-conbx {
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      margin-top:rem(32);
+      row-gap:rem(32);
+      @include tablet {
+        margin-top:rem(48);
+        flex-direction:row;
+        justify-content:flex-end;
+        flex-wrap:wrap;
+        column-gap:rem(82);
+      }
+      @include desktop {
+        margin-top:rem(64);
+        column-gap:rem(60);
+      }
+      &-desc{
+        padding:0 rem(16);
+        @include font(16,125%,$cl:$warmGray);
+        @include tablet {
+          width:calc(30% - rem(41));
+          padding:0;
+          @include font(20,120%);
+          margin-right:auto;
+        }
+        @include desktop {
+          width:calc(30% - rem(30));
+          @include font(24,116%);
+        }
+      }
+      &-video {
+        width:100%;
+        overflow:hidden;
+        position:relative;
+        aspect-ratio:16/9;
+        &-thumb {
+          display:none;
+          @include tablet {
+            display:flex;
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+            img {
+              @include img(cover);
+            }
+          }
+        }
+        iframe,
+        video {
+          @include img(cover);
+          position: relative;
+          z-index:1;
+        }
+        @include tablet {
+          width:calc(70% - rem(41));
+          aspect-ratio:16/9;
+          border-radius:rem(28);
+        }
+        @include desktop {
+          width:calc(70% - rem(30));
+          flex-shrink:0;
+        }
+      }
+    }
+  }
+  .overview {
+    width:100%;
+    max-width:rem(600);
+    padding:rem(80) rem(20);
+    @include tablet {
+    padding:rem(120) rem(24);
+    }
+    @include desktop {
+    padding:rem(160) rem(0);
+    }
+    .inner {
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    @include tablet {
+      padding:0;
+    }
+    }
+    .article-banner-logo {
+    width:rem(95);
+    @include tablet {
+      width:rem(136);
+    }
+    img {
+      @include img();
+    }
+    }
+    .title {
+    @include font(28,115%,550,$ls:-0.224px);
+    margin-top:rem(8);
+    background: linear-gradient(
+      90deg,
+      rgba(253, 49, 46, 1) 2%,
+      rgba(249, 20, 235, 1) 54%,
+      rgba(130, 39, 255, 1) 97%,
+      rgba(180, 50, 245, 1) 8799%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    @include tablet {
+      @include font(44,1.1,$ls:0);
+    }
+    }
+    .txt {
+    @include font(20,120%,$cl:$warmGray);
+    text-align:center;
+    margin-top:rem(16);
+    @include tablet {
+      @include font(28,116%,$cl:$black);
+    }
+    @include desktop {
+      margin-top:rem(20);
+    }
+    }
+  }
+  .products {
+    overflow:hidden;
+    @include tablet {
+      max-width:unset;
+      height:100vh;
+    }
+    .inner {
+      padding:0 rem(16) rem(40);
+      @include tablet {
+        width:100%;
+        height:100%;
+        max-width:100%;
+        padding:0 rem(24);
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        position:relative;
+        transform-origin:center center;
+      }
+      @include desktop {
+        padding:0;
+      }
+    }
+    &-video {
+      width:100%;
+      aspect-ratio:9/16;
+      border-radius:rem(20);
+      overflow:hidden;
+      position:relative;
+      .dimmed {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba($color: #000000, $alpha: 0.4);
+        @include tablet {
+          display: block;
+        }
+      }
+      @include tablet {
+        width:100%;
+        aspect-ratio:16/9;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        transform-origin:center left;
+        border-radius:0;
+      }
+      video {
+        @include img(cover);
+        height: calc(100% + rem(4));
+        object-position: center rem(-2);
+      }
+      &-btn {
+        width:rem(48);
+        height:rem(48);
+        display:flex;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        font-size:0;
+        &[aria-pressed=false] {
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-btn-movie-play.svg');
+          background-size:contain;
+        }
+        &[aria-pressed=true] {
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-btn-movie-pause.svg');
+          background-size:contain;
+        }
+        @include tablet {
+          width:rem(32);
+          height:rem(32);
+        }
+      }
+      &-title {
+        display:none;
+        @include tablet {
+          @include font(52,110%,550,$white);
+          text-align:center;
+          display:flex;
+          border-radius:0;
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
+        }
+        @include desktop {
+          @include font(64);
+          white-space:nowrap;
+        }
+      }
+    }
+    @include tablet {
+      &.reverse {
+        .inner {
+          justify-content:flex-start;
+        }
+        .products-video {
+          transform-origin:center right;
+        }
+      }
+    }
+    &-textbx {
+      width:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-start;
+      flex-direction:column;
+      margin-top:rem(20);
+      @include tablet {
+        width:calc((410*100/1024)*1vw);
+        margin-top:0;
+      }
+      @include desktop {
+        width:vw(610);
+        max-width:rem(610);
+      }
+      &-eyebrow {
+        @include font(16,125%,600);
+        margin-bottom:rem(8);
+        @include tablet {
+          @include font(24,116%);
+        }
+      }
+      &-title {
+        @include font(28,114%,550);
+        margin-bottom:rem(8);
+        @include tablet {
+          @include font(44,110%);
+        }
+        @include desktop {
+          @include font(56,107%);
+        }
+      }
+      &-desc {
+        @include font(16,125%,$cl:$warmGray);
+        // margin-bottom:rem(12);
+        @include tablet {
+          @include font(20,120%);
+          // margin-bottom:rem(24);
+        }
+        @include desktop {
+          @include font(24,116%);
+        }
+        span {
+          font-weight:700;
+        }
+      }
+      &-disc {
+        @include font(12,116%,$cl:$disc);
+        margin-top:rem(8);
+        @include tablet {
+          @include font(16,125%);
+          margin-top:rem(16);
+        }
+      }
+      &-thumbbx-title {
+        width:100%;
+        margin-top:rem(12);
+        margin-bottom:rem(8);
+        @include font(20,120%,550,$warmGray);
+        @include tablet {
+          margin-top:rem(24);
+          margin-bottom:rem(12);
+          @include font(24,116%);
+        }
+      }
+      &-thumbbx {
+        width:100%;
+        margin-bottom:rem(12);
+        @include tablet {
+          margin-bottom:rem(24);
+        }
+        &-wrapper {
+          display:flex;
+          align-items:center;
+        }
+        &-item {
+          width:rem(96);
+          height:rem(96);
+          background:#333;
+          border-radius:rem(8);
+          overflow:hidden;
+          border:2px solid #CBC8C2;
+          cursor:pointer;
+          &:hover {
+            border:2px solid $red;
+          }
+          img {
+            @include img(cover);
+          }
+          @include tablet {
+            width:rem(120);
+            height:rem(120);
+          }
+          &-btn {
+            display:block;
+          }
+          // @include desktop {
+          //   width:rem(80);
+          //   height:rem(80);
+          // }
+        }
+      }
+      // .btn {
+      //   display:none;
+      // }
+    }
+  }
+
+  .ourpicks {
+    &-title {
+      @include font(28,114%,550);
+      @include tablet {
+        @include font(44,109%);
+      }
+      @include desktop {
+        @include font(56,107%);
+      }
+    }
+    &-conbx {
+      margin-top:rem(12);
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      row-gap:rem(20);
+      @include tablet {
+        margin-top:rem(8);
+        flex-direction:row;
+        row-gap:0;
+        column-gap:rem(16);
+      }
+      @include desktop {
+        margin-top:rem(24);
+        column-gap:rem(24);
+      }
+      &-item {
+        width:100%;
+        @include tablet {
+          width:50%;
+        }
+        &-imgbx {
+          width:100%;
+          border-radius:rem(20);
+          overflow:hidden;
+          @include tablet {
+            border-radius:rem(28);
+          }
+          @include desktop {
+            border-radius:rem(32);
+          }
+          img {
+            @include img(cover);
+          }
+        }
+        &-txtbx {
+          width:100%;
+          margin-top:rem(8);
+          @include tablet {
+            margin-top:rem(24);
+          }
+          &-eyebrow {
+            @include font(16,125%);
+            text-transform:capitalize;
+            margin-bottom:rem(4);
+          }
+          &-title {
+            font-family:'LGEI Headline';
+            @include font(20,120%,550);
+            @include tablet {
+              &.plplist {
+                @include font(28,85%);
+              }
+            }
+            @include desktop {
+              @include desktop {
+                @include font(24,116%);
+              }
+              &.plplist {
+                @include font(32,112%);
+              }
+            }
+          }
+          .btn {
+            margin-top:rem(12);
+            @include tablet {
+              margin-top:rem(16);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .promotion {
+    &-title {
+      @include font(28,114%,550);
+      @include tablet {
+        @include font(44,109%);
+      }
+      @include desktop {
+        @include font(56,107%);
+      }
+    }
+    &-conbx {
+      width:100%;
+      position:relative;
+      margin-top:rem(12);
+      @include tablet {
+        margin-top:rem(8);
+      }
+      @include desktop {
+        margin-top:rem(20);
+      }
+      &-imgbx {
+        width:100%;
+        border-radius:rem(20);
+        overflow:hidden;
+        @include tablet {
+          border-radius:rem(28);
+        }
+        img {
+          @include img(cover);
+        }
+      }
+      &-txtbx {
+        width:100%;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        padding:0 rem(20);
+        @include tablet {
+          padding:0 rem(32);
+        }
+        @include desktop {
+          padding:0 rem(80);
+        }
+        &-title {
+          @include font(24,116%,$cl:#fff);
+          margin-bottom:rem(12);
+          @include tablet {
+            @include font(36);
+            margin-bottom:rem(24);
+          }
+          &.bk {
+            color:$warmGray;
+          }
+        }
+      }
+    }
+  }
+
+  .stories {
+    .inner {
+      padding:0 0 rem($mo_padding) rem(16);
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
+    &-title {
+      @include font(28,114%,550);
+      @include tablet {
+        @include font(44,109%);
+      }
+      @include desktop {
+        @include font(56,107%);
+      }
+    }
+    &-conbx {
+      width:100%;
+      margin-top:rem(12);
+      &-item {
+        width:rem(310);
+        position:relative;
+        @include tablet {
+          width:rem(480);
+        }
+        @include desktop {
+          width:rem(464);
+        }
+        &-imgbx {
+          border-radius:rem(20);
+          overflow:hidden;
+          @include tablet {
+            border-radius:rem(28);
+          }
+          img {
+            @include img(cover);
+          }
+        }
+        &-txtbx {
+          position:absolute;
+          top:0;
+          left:0;
+          padding:rem(24) rem(30);
+          @include tablet {
+            padding:rem(32);
+          }
+          &-title {
+            @include font(28,116%,$cl:$white);
+            margin-bottom:rem(8);
+            @include tablet {
+              @include font(40);
+            }
+            @include desktop {
+              @include font(40,112%);
+            }
+          }
+          &-desc {
+            @include font(16,125%,$cl:$white);
+            margin-bottom:rem(12);
+            @include tablet {
+              margin-bottom:rem(24);
+            }
+            @include desktop {
+              @include font(24,116%);
+            }
+          }
+        }
+      }
+    }
+    &-swiper-btnbx {
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      margin-top:rem(20);
+      gap:rem(16);
+      .stories-swiper-button-prev {
+        width:rem(24);
+        height:rem(14);
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-stories-swiper-btn.svg') no-repeat;
+        background-size:contain;
+        transform:rotate(-180deg);
+       }
+      .stories-swiper-button-next {
+        width:rem(24);
+        height:rem(14);
+        background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-stories-swiper-btn.svg') no-repeat;
+        background-size:contain;
+      }
+      .stories-swiper-pagination {
+        width:auto;
+        @include font(14,114%,$cl:$warmGray);
+        text-transform:capitalize;
+      }
+      .swiper-button-disabled {
+        opacity:50%;
+      }
+      @include desktop {
+        display:none;
+      }
+    }
+  }
+
+  .disclaimer {
+    max-width:1920px;
+    margin:0 auto;
+    .inner {
+      width:100%;
+      max-width:$inner;
+      padding:0 rem(16) rem($mo_padding);
+      margin:0 auto;
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
+    &-list {
+      width:100%;
+      background:#E6E1D6;
+      border-radius:rem(20);
+      padding:0 rem(24);
+      &-item {
+        width:100%;
+        &-header {
+          width:100%;
+          padding:rem(16) 0;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          cursor:pointer;
+          &-title {
+            @include font(16,125%,600);
+          }
+          &::after {
+            content:'';
+            width:rem(20);
+            height:rem(20);
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-btn-disclaimer.svg') no-repeat;
+            background-size:contain;
+            display:flex;
+            transform:scale(-1);
+          }
+        }
+        &-cont {
+          width:100%;
+          padding:0 rem(8) rem(16);
+          display:none;
+          &-title {
+            @include font(14,114%,$cl:$warmGray);
+            &:not(:first-child) {
+              margin-top:rem(8);
+            }
+          }
+          &-text {
+            margin-top:rem(4);
+            padding-left:rem(8);
+            li {
+              display:flex;
+              column-gap:rem(8);
+              @include font(14,114%,$cl:#646464);
+            }
+          }
+        }
+        &.on {
+          .disclaimer-list-item-header {
+            &::after {
+              transform:scale(1);
+            }
+          }
+          .disclaimer-list-item-cont {
+            display:flex;
+            flex-direction:column;
+          }
+        }
+        &:not(:first-child) {
+          .disclaimer-list-item-header {
+            border-top:1px solid #CBC8C2;
+          }
+        }
+      }
+    }
+    &-text {
+      @include font(16,125%,$cl:#4A4946);
+      &:not(:first-child) {
+        margin-top:rem(16);
+        margin-bottom:rem(12);
+      }
+    }
+    &-title {
+      @include font(24,120%,600);
+      margin-bottom:rem(16);
+    }
+  }
+  
+  .products-layer {
+    width:100%;
+    height:100%;
+    position:fixed;
+    overflow-y:scroll;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:999;
+    display:none;
+    padding:rem(94) 0;
+    &-conbx {
+      width:calc(100% - rem(16));
+      max-width:rem(834);
+      background:$white;
+      border-radius:rem(20);
+      margin:0 auto;
+      position:relative;
+      @include tablet {
+        width:calc(100% - rem(24));
+        border-radius:rem(28);
+      }
+      @include desktop {
+        width:calc(100% - rem(32));
+      }
+    }
+    &-header {
+      width:100%;
+      padding:rem(20) rem(16) 0;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      margin-bottom:rem(16);
+      @include tablet {
+        padding:rem(32) rem(24) 0;
+        margin-bottom:rem(20);
+      }
+      @include desktop {
+        padding:rem(40) rem(32) 0;
+        margin-bottom:rem(24);
+      }
+      &-title-bx {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        @include tablet {
+          width:auto;
+          margin-right:auto;
+          column-gap:rem(8);
+        }
+        @include desktop {
+          padding:rem(12);
+        }
+        &-title {
+          @include font(20,120%,550);
+          @include tablet {
+            @include font(28,114%);
+          }
+          @include desktop {
+            @include font(36,100%);
+          }
+        }
+      }
+      &-close {
+        width:rem(40);
+        height:rem(40);
+        border-radius:50%;
+        background:$white url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-layer-close.svg') no-repeat center;
+        background-size:rem(16);
+        font-size:0;
+        position:absolute;
+        left:50%;
+        bottom:rem(-16);
+        transform:translate(-50%,100%);
+        border:1px solid #CBC8C2;
+        @include tablet {
+          width:rem(40);
+          height:rem(40);
+          position:fixed;
+          left:unset;
+          bottom:unset;
+          transform:translate(100%,-100%);
+          box-shadow:4px 4px 10px 0px rgba(0, 0, 0, 0.20);
+        }
+        @include desktop {
+          width:rem(48);
+          height:rem(48);
+          transform:translate(100%,calc(-150% + rem(16)));
+        }
+      }
+    }
+    &-content {
+      width:100%;
+      padding-bottom:rem(16);
+      @include tablet {
+        padding:0 rem(24) rem(24);
+      }
+      @include desktop {
+        padding:0 rem(35) rem(32);
+      }
+      &-txtwrap {
+        width:100%;
+        padding:0 rem(16);
+        display:flex;
+        align-items:stretch;
+        column-gap:rem(14);
+        margin-bottom:rem(12);
+        @include tablet {
+          padding:0;
+          column-gap:rem(16);
+        }
+        @include desktop {
+          column-gap:rem(18);
+          margin-bottom:rem(16);
+        }
+        &::before {
+          content:'';
+          width:2px;
+          background:linear-gradient(180deg, #FD312E -11.18%, #F914EB 51.06%, #B432F5 75.68%, #8227FF 96.75%);
+          display:flex;
+          flex-shrink:0;
+        }
+        &-txtbx {
+          &-title {
+            @include font(16,125%,600,$warmGray);
+            margin-bottom:rem(4);
+            @include tablet {
+              @include font(20,120%);
+            }
+          }
+          &-desc {
+            @include font(14,114%,$cl:$warmGray);
+            @include tablet {
+              @include font(16,125%);
+            }
+          }
+        }
+      }
+      &-swiper {
+        width:100%;
+        .swiper-slide {
+          width:100%;
+          aspect-ratio: 344/230;
+          @include tablet {
+            aspect-ratio: 540/360;
+          }
+          @include desktop {
+            aspect-ratio: 840/560;
+          }
+          img {
+            @include img();
+          }
+          video {
+            @include img();
+          }
+        }
+      }
+      &-thumbbx {
+        width:100%;
+        display:flex;
+        align-items:center;
+        position:relative;
+        .products-layer-content-thumb-swiper-btn-prev,
+        .products-layer-content-thumb-swiper-btn-next {
+          width:rem(36);
+          height:rem(36);
+          flex-shrink:0;
+          z-index:999;
+          display:flex;
+          background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-layer-swiper-btn.svg') no-repeat center;
+          &::before {
+            content:'';
+            width:rem(40);
+            height:rem(72);
+            background:linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 80%);
+            display:flex;
+            position:absolute;
+            top:50%;
+            transform:translate(-100%,-50%);
+            @include desktop {
+              height:rem(120);
+            }
+          }
+        }
+        .products-layer-content-thumb-swiper-btn-prev {
+          transform:scale(-1);
+        }
+        .swiper-button-disabled {
+          display:flex;
+          opacity:0.5;
+          position:relative;
+        }
+        .swiper-button-lock {
+          display:none;
+        }
+      }
+      &-thumb-swiper {
+        // width:calc(100% - rem(62) - rem(24));
+        padding:rem(16);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        margin:0 auto;
+        @include tablet {
+          // width:calc(100% - rem(62) - rem(32));
+          padding:rem(24);
+        }
+        @include desktop {
+          padding:rem(32);
+        }
+        // &-wrapper {
+        //   @include tablet{
+        //     width:auto;
+        //   }
+        // }
+        .swiper-slide {
+          width:rem(72);
+          height:rem(72);
+          border-radius:rem(4);
+          overflow:hidden;
+          border:2px solid #CBC8C2;
+          cursor:pointer;
+          &:hover {
+            border:2px solid $red;
+          }
+          @include tablet {
+            width:rem(120);
+            height:rem(120);
+            border-radius:rem(8);
+          }
+          img {
+            @include img(cover);
+          }
+          &.swiper-slide-thumb-active {
+            border:2px solid $red;
+          }
+        }
+      }
+    }
+  }
+}
