@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector('body').classList.add('noscroll');
   const heroVideoBx = document.querySelector(".hero-visual .video-bx");
   const heroToggleBtn = document.querySelector(".play-btn");
   let currentVideoSrc = "";
@@ -569,4 +570,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // Refresh ScrollTrigger on window load
 window.addEventListener('load', function() {
   ScrollTrigger.refresh();
+  // 페이지 로드 완료 시 noscroll 클래스 제거
+  document.querySelector('body').classList.remove('noscroll');
 });
