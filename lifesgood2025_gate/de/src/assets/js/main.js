@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function setHeroVideo() {
     const isDesktop = window.innerWidth > 1025;
     const newVideoSrc = isDesktop
-      ? "./assets/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
-      : "./assets/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
+      ? "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-desktop.mp4"
+      : "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/lifes-good-campaign-2025-live-human-lgcom-gate-video-hero-kv-mobile.mp4";
     const newposterSrc = isDesktop
-      ? "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.png"
-      : "./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.png";
+      ? "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-desktop.png"
+      : "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-main-kv-mobile.png";
 
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(min-width: 1440px)": function() {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
 
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -109,11 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
 
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(min-width: 769px) and (max-width: 1439px)": function() {
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
 
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -175,11 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
 
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "(max-width: 768px)": function() { // max-width 수정
       // 미디어 쿼리 활성화 시 기본 이미지 설정
       redPoint.classList.remove('active');
-      redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+      redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       
       const articleBanner = gsap.timeline({
         scrollTrigger: {
@@ -237,11 +237,11 @@ document.addEventListener("DOMContentLoaded", function () {
           scrub: 1,
           onLeave: function() {
             redPoint.classList.add('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-ai-symbol.gif");
           },
           onEnterBack: function() {
             redPoint.classList.remove('active');
-            redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+            redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
           },
         },
       });
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return () => {
         // 예: redPoint 기본 상태로 복원
         redPoint.classList.remove('active');
-        redPoint.setAttribute("src","./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
+        redPoint.setAttribute("src","/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-red-point.svg");
       };
     },
   });
@@ -290,15 +290,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="./assets/images/${imgName}-desktop.png" aria-label="${altName}">
-            <source src="./assets/videos/${videoName}-desktop.mp4">
+          <video muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-desktop.png" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
-          <video autoplay muted playsinline loop poster="./assets/images/${imgName}-mobile.png" aria-label="${altName}">
-            <source src="./assets/videos/${videoName}-mobile.mp4">
+          <video autoplay muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-mobile.png" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-mobile.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
