@@ -1,5 +1,5 @@
 @import "_mixin";
-
+.c-wrapper.ST0007 {padding-top:0 !important;}
 body {
   background:$bg;
   width:100%;
@@ -353,10 +353,6 @@ body {
       }
       &-thumbbx {
         width:100%;
-        margin-bottom:rem(12);
-        @include tablet {
-          margin-bottom:rem(24);
-        }
         &-wrapper {
           display:flex;
           align-items:center;
@@ -384,9 +380,12 @@ body {
           }
         }
       }
-      // .btn {
-      //   display:none;
-      // }
+      .btn {
+        margin-top:rem(12);
+        @include tablet {
+          margin-top:rem(24);
+        }
+      }
     }
   }
 
