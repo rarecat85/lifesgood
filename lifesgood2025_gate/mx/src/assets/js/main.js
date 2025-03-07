@@ -247,10 +247,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       heroVisual
         .addLabel('imgShow')
-        .to(img01, { x: "-36vw", y: "-40lvh", scale: 0.44 }, "imgShow")
-        .to(img03, { x: "35vw", y: "-42lvh", scale: 0.49 }, "imgShow")
-        .to(img05, { x: "36vw", y: "42lvh", scale: 0.44 }, "imgShow")
-        .to(img06, { x: "-35vw", y: "39lvh", scale: 0.49 }, "imgShow")
+        .to(img01, { x: "-36vw", y: "-40svh", scale: 0.44 }, "imgShow")
+        .to(img03, { x: "35vw", y: "-42svh", scale: 0.49 }, "imgShow")
+        .to(img05, { x: "36vw", y: "42svh", scale: 0.44 }, "imgShow")
+        .to(img06, { x: "-35vw", y: "39svh", scale: 0.49 }, "imgShow")
         .to(title1, { opacity: 1, y: 0 })
         .to(txt1, { opacity: 1, y: 0 })
         .addLabel('txtFade')
@@ -564,9 +564,4 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('scroll', throttle(handleStickyHeaderScroll, 100)); // 100ms 간격으로 실행
   window.addEventListener('resize', throttle(handleStickyHeaderResize, 100)); // 리사이즈 시에도 처리
 
-});
-
-// Refresh ScrollTrigger on window load
-window.addEventListener('load', function() {
-  ScrollTrigger.refresh();
 });

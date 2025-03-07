@@ -20,6 +20,7 @@
   }
   /*2025 게이트 페이지*/
   &.gate {
+    overflow: hidden;
     .mobile-only {
       display: block;
       @include tablet {
@@ -238,18 +239,19 @@
       //overview
       &.overview {
         width: 100%;
+        min-height: 100lvh;
         text-align: center;
         position: relative;
         overflow: hidden;
+        .inner {
+          height: 100%;
+        }
         .img-list {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 100vh;
-          @supports (-ms-ime-align: auto) {
-            height: -webkit-fill-available;
-          }
+          height: 100%;
           li {
             width: 23.1%;
             border-radius: rem(28);
@@ -648,6 +650,7 @@
         }
         //overview
         &.overview {
+          overflow: unset;
           .img-list {
             li {
               width: 35%;
@@ -684,6 +687,7 @@
         //article-banner
         &.article-banner {
           min-height: unset;
+          z-index: 0;
           .txt-bx {
             max-width: rem(600);
             .title {
@@ -815,7 +819,7 @@
           }
           .red-point {
             transform: translateX(-50%) scale(3);
-            bottom: -26svh;
+            bottom: -24vh;
             &.active {
               width: rem(56) !important;
             }
@@ -942,7 +946,7 @@
         //overview
         &.overview {
           .red-point {
-            bottom: -20svh;
+            bottom: -20dvh;
           }
         }
         //intelligence
