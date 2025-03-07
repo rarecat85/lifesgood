@@ -603,3 +603,96 @@ body {
     }
   }
 }
+
+.disclaimer {
+    max-width:1920px;
+    margin:0 auto;
+    .inner {
+      width:100%;
+      max-width:$inner;
+      padding:0 rem(16) rem($mo_padding);
+      margin:0 auto;
+      @include tablet{
+        padding:0 rem(24) rem($tab_padding);
+      }
+      @include desktop {
+        padding:0 0 rem($pc_padding);
+      }
+    }
+    &-list {
+      width:100%;
+      background:#E6E1D6;
+      border-radius:rem(20);
+      padding:0 rem(24);
+      &-item {
+        width:100%;
+        &-header {
+          width:100%;
+          padding:rem(16) 0;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          cursor:pointer;
+          &-title {
+            @include font(16,125%,600);
+          }
+          &::after {
+            content:'';
+            width:rem(20);
+            height:rem(20);
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-btn-disclaimer.svg') no-repeat;
+            background-size:contain;
+            display:flex;
+            transform:scale(-1);
+          }
+        }
+        &-cont {
+          width:100%;
+          padding:0 rem(8) rem(16);
+          display:none;
+          &-title {
+            @include font(14,114%,$cl:$warmGray);
+            &:not(:first-child) {
+              margin-top:rem(8);
+            }
+          }
+          &-text {
+            margin-top:rem(4);
+            padding-left:rem(8);
+            li {
+              display:flex;
+              column-gap:rem(8);
+              @include font(14,114%,$cl:#646464);
+            }
+          }
+        }
+        &.on {
+          .disclaimer-list-item-header {
+            &::after {
+              transform:scale(1);
+            }
+          }
+          .disclaimer-list-item-cont {
+            display:flex;
+            flex-direction:column;
+          }
+        }
+        &:not(:first-child) {
+          .disclaimer-list-item-header {
+            border-top:1px solid #CBC8C2;
+          }
+        }
+      }
+    }
+    &-text {
+      @include font(16,125%,$cl:#4A4946);
+      &:not(:first-child) {
+        margin-top:rem(16);
+        margin-bottom:rem(12);
+      }
+    }
+    &-title {
+      @include font(24,120%,600);
+      margin-bottom:rem(16);
+    }
+  }
