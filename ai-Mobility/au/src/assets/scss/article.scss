@@ -393,16 +393,30 @@ body {
         }
         &-desc {
           @include font(16,125%,$cl:$warmGray);
-          margin-bottom:rem(12);
+          // margin-bottom:rem(12);
           @include tablet {
             @include font(20,120%);
-            margin-bottom:rem(24);
+            // margin-bottom:rem(24);
           }
           @include desktop {
             @include font(24,116%);
           }
           span {
             font-weight:700;
+          }
+        }
+        &-disc {
+          @include font(12,116%,$cl:$disc);
+          margin-top:rem(8);
+          @include tablet {
+            @include font(16,125%);
+            margin-top:rem(16);
+          }
+        }
+        .btn {
+          margin-top:rem(12);
+          @include tablet {
+            margin-top:rem(24);
           }
         }
       }
