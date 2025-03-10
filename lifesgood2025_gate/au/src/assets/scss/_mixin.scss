@@ -53,6 +53,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
+  text-decoration: none;
   @include font(14,100%,600);
   width: fit-content;
   height:rem(38);
@@ -63,7 +64,8 @@
     border:1px solid $midGray;
     color:$black;
     &:hover,
-    &:active {
+    &:active,
+    &:focus  {
       border:none;
       background: $red;
       color:$white;
@@ -73,7 +75,8 @@
   @else { 
     color:$white;
     &:hover,
-    &:active {
+    &:active,
+    &:focus  {
       border:1px solid $midGray;
       background: $white;
       color:$black;

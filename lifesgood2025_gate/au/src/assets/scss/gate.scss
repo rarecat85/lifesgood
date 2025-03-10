@@ -20,7 +20,6 @@
   }
   /*2025 게이트 페이지*/
   &.gate {
-    overflow: hidden;
     .mobile-only {
       display: block;
       @include tablet {
@@ -650,7 +649,6 @@
         }
         //overview
         &.overview {
-          overflow: unset;
           .img-list {
             li {
               width: 35%;

@@ -10,7 +10,11 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0 0);
 }
-
+body {
+  &.noscroll {
+    overflow: hidden;
+  }
+}
 .campaign-2025 {
   button {
     cursor: pointer;
@@ -650,7 +654,6 @@
         }
         //overview
         &.overview {
-          overflow: unset;
           .img-list {
             li {
               width: 35%;

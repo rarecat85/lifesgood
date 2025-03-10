@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector('body').classList.add('noscroll');
   const heroVideoBx = document.querySelector(".hero-visual .video-bx");
   const heroToggleBtn = document.querySelector(".play-btn");
   let currentVideoSrc = "";
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
       heroVideoBx.innerHTML = `
-        <video autoplay muted playsinline loop aria-label='A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.' poster="${newposterSrc}">
+        <video autoplay muted playsinline loop aria-label='Um homem e uma mulher estão deitados entrelaçados no sofá da sala enquanto a TV LG exibe um canal de culinária. Depois que a mulher adormece, o homem chama: "Oi LG", pedindo para assistir ao jogo de futebol, e o canal muda para a partida.' poster="${newposterSrc}">
           <source src="${newVideoSrc}">
         </video>
       `;
@@ -564,4 +565,14 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('scroll', throttle(handleStickyHeaderScroll, 100)); // 100ms 간격으로 실행
   window.addEventListener('resize', throttle(handleStickyHeaderResize, 100)); // 리사이즈 시에도 처리
 
+  // 페이지 로드 시 항상 페이지 상단으로 스크롤
+  window.scrollTo(0, 0);
+
+});
+
+// Refresh ScrollTrigger on window load
+window.addEventListener('load', function() {
+  ScrollTrigger.refresh();
+  // 페이지 로드 완료 시 noscroll 클래스 제거
+  document.querySelector('body').classList.remove('noscroll');
 });
