@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 현재 영상이 변경된 경우에만 업데이트
     if (currentVideoSrc !== newVideoSrc) {
       heroVideoBx.innerHTML = `
-        <video autoplay muted playsinline loop aria-label='A man and a woman lie intertwined on the living room sofa while the LG TV plays a cooking channel. After the woman falls asleep, the man calls out, "Hi LG," asking to play the soccer match, and the channel switches to the game.' poster="${newposterSrc}">
+        <video autoplay muted playsinline loop aria-label='Ein Mann und eine Frau liegen ineinander verschlungen auf dem Wohnzimmersofa, während auf dem LG TV ein Kochsender läuft. Nachdem die Frau eingeschlafen ist, ruft der Mann: „Hi LG“ und bittet darum, das Fußballspiel abzuspielen. Der Kanal schaltet daraufhin auf das Spiel um.' poster="${newposterSrc}">
           <source src="${newVideoSrc}">
         </video>
       `;
