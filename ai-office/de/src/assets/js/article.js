@@ -4,6 +4,7 @@ const { toArray } = gsap.utils;
 
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
+let prevWidth = window.innerWidth;
 
 // function kvAnimation() {
 //   const kvSection = document.querySelector('.kv');
@@ -444,15 +445,18 @@ function disclaimerAction() {
 }
 
 function handleResize() {
-  const newIsMobile = !isPC(); 
-
-  if (newIsMobile !== isMobile) {
-    isMobile = newIsMobile;
-    // kvAnimation(); 
-    prodAnimation(); 
-  }
+  const currentWidth = window.innerWidth;
   
-  ScrollTrigger.refresh();
+  if (currentWidth !== prevWidth) {
+    const newIsMobile = !isPC(); 
+
+    if (newIsMobile !== isMobile) {
+      isMobile = newIsMobile;
+      // kvAnimation(); 
+      prodAnimation(); 
+      ScrollTrigger.refresh();
+    }
+  }
 }
 
 function debounce(func, delay=500) {
