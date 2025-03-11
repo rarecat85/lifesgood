@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
-let isMobile;
+let isM; //250310 modify
 let prevWidth = window.innerWidth;
 
 function kvAnimation() {
@@ -625,8 +625,8 @@ function handleResize() {
   if (currentWidth !== prevWidth) {
     const newIsMobile = !isPC(); 
 
-    if (newIsMobile !== isMobile) {
-      isMobile = newIsMobile;
+    if (newIsMobile !== isM) { //250310 modify
+      isM = newIsMobile; //250310 modify
       kvAnimation(); 
       prodAnimation(); 
       ScrollTrigger.refresh();
@@ -645,7 +645,7 @@ function debounce(func, delay=500) {
 function init() {
   document.querySelector('body').classList.add('noscroll');
   const sections = Array.from(toArray('section'), section => section.className);
-  isMobile = !isPC();
+  isM = !isPC(); //250310 modify
 
   if (sections.includes('kv')) {
     kvAnimation();
