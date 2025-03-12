@@ -265,6 +265,7 @@
             <h4 class="products-textbx-thumbbx-title heading">Explore key features</h4>
             <div class="products-textbx-thumbbx swiper">
               <div class="products-textbx-thumbbx-wrapper swiper-wrapper">
+                
                 <div
                   class="products-textbx-thumbbx-item swiper-slide"
                   data-alt="In a room with furniture, the LG xboom on the table scans its surroundings. Then, the scene shifts to show a person holding the LG xboom."
@@ -281,7 +282,8 @@
                   data-alt="The LG xboom is placed on a living room table surrounded by furniture."
                   data-title="AI Calibration"
                   data-desc="AI calibration for space-filling sound. AI calibrates audio based on the size and shape of the space you’re in. Delivers full, undistorted sound whether in a spacious area or a small room.">
-                  <button class="products-textbx-thumbbx-item-btn" role="button" data-dynamic-param1="microsite_button_click" data-dynamic-param2="ai-home" data-dynamic-param3="xboom" data-dynamic-param4="image1" data-dynamic-param5="inner">
+                  <!-- 250311 change data dynamic param image1 -> image2 -->
+                  <button class="products-textbx-thumbbx-item-btn" role="button" data-dynamic-param1="microsite_button_click" data-dynamic-param2="ai-home" data-dynamic-param3="xboom" data-dynamic-param4="image2" data-dynamic-param5="inner">
                     <picture>
                       <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thumb-03-02.png" alt="LG xboom is placed on the table" />
                     </picture>
@@ -292,7 +294,8 @@
                   data-alt="The AI Lighting feature of the LG xboom is casting a yellow light, above it shows the Voice mode, Ambient mode, and AI Party mode features."
                   data-title="AI Lighting"
                   data-desc="AI lighting that syncs with sound. AI detects genre of your music and delivers the optimal the lighting that syncs with sound. Choose from Ambient, Party, Voice mode to set the mood. Check the informative lighting for speaker’s status.">
-                  <button class="products-textbx-thumbbx-item-btn" role="button" data-dynamic-param1="microsite_button_click" data-dynamic-param2="ai-home" data-dynamic-param3="xboom" data-dynamic-param4="image1" data-dynamic-param5="inner">
+                  <!-- 250311 change data dynamic param image1 -> image3 -->
+                  <button class="products-textbx-thumbbx-item-btn" role="button" data-dynamic-param1="microsite_button_click" data-dynamic-param2="ai-home" data-dynamic-param3="xboom" data-dynamic-param4="image3" data-dynamic-param5="inner">
                     <picture>
                       <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-thumb-03-03.png" alt="A front view of the LG xboom with orange light glowing." />
                     </picture>
@@ -436,7 +439,7 @@
                 *The voice support feature may vary depending on the model.<br />
                 *ThinQ ON will be launched primarily in Korea.
               </p>
-              <!-- <a href="" class="btn white">Learn More</a> -->
+              <a href="" class="btn white">Learn More</a>
             </div>
             <div class="thinQ-tabs-conbx-tabcon" id="thinQTapPanel02" role="tabpanel" tabindex="-1" aria-labelledby="thinQTap02">
               <h3 class="thinQ-tabs-conbx-tabcon-title heading">A smarter, more advanced home with LG AI</h3>
@@ -453,7 +456,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- //thinQ-tabs -->
 
       <!-- ourpicks -->
@@ -633,7 +636,8 @@
                 </ul>
               </div>
             </li>
-            <li class="disclaimer-list-item">
+            <!-- 250311 delete content-->
+            <!-- <li class="disclaimer-list-item">
               <div class="disclaimer-list-item-header">
                 <h3 class="disclaimer-list-item-header-title">LG xboom</h3>
               </div>
@@ -643,7 +647,7 @@
                   <li>*The video is for demonstration purposes.</li>
                 </ul>
               </div>
-            </li>
+            </li> -->
             <li class="disclaimer-list-item">
               <div class="disclaimer-list-item-header">
                 <h3 class="disclaimer-list-item-header-title">LG StanbyME</h3>

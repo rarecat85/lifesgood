@@ -41,7 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroVideo = document.querySelector(".hero-visual video");
     if (this.classList.contains("active")) {
       this.classList.remove("active");
-      heroVideo.play();
+      // Promise를 사용하여 play 요청 처리
+      const playPromise = heroVideo.play();
+      
+      // play()가 Promise를 반환하는 경우에만 처리
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // 재생 실패 (예: 사용자 상호작용 없이 자동재생 차단된 경우)
+          console.log("히어로 비디오 재생 실패:", error);
+          this.classList.add("active");
+        });
+      }
     } else {
       this.classList.add("active");
       heroVideo.pause();
@@ -289,15 +299,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-desktop.png" aria-label="${altName}">
-            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-desktop.mp4">
+          <video muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-desktop.png?ver=250311" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-desktop.mp4?ver=250311">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
         videoHTML = `
-          <video autoplay muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-mobile.png" aria-label="${altName}">
-            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-mobile.mp4">
+          <video autoplay muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-mobile.png?ver=250311" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-mobile.mp4?ver=250311">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
@@ -328,8 +338,23 @@ document.addEventListener("DOMContentLoaded", function () {
           const isPressed = this.getAttribute('aria-pressed') === 'true';
           this.setAttribute('aria-pressed', String(!isPressed));
           if (video.paused) {
-            video.play();
-            playBtn.classList.add('active');
+            // Promise를 사용하여 play 요청 처리
+            const playPromise = video.play();
+            
+            // play()가 Promise를 반환하는 경우에만 처리
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                // 재생 성공
+                playBtn.classList.add('active');
+              }).catch(error => {
+                // 재생 실패 (예: 사용자 상호작용 없이 자동재생 차단된 경우)
+                console.log("비디오 재생 실패:", error);
+                playBtn.classList.remove('active');
+              });
+            } else {
+              // 구형 브라우저 지원 (Promise를 반환하지 않는 경우)
+              playBtn.classList.add('active');
+            }
           } else {
             video.pause();
             playBtn.classList.remove('active');
@@ -346,16 +371,34 @@ document.addEventListener("DOMContentLoaded", function () {
           
           // 이벤트 핸들러 정의
           function handleContentMouseEnter() {
-            video.play();
-            playBtn.classList.add('active');
-            playBtn.setAttribute('aria-pressed', "true");
+            // Promise를 사용하여 play 요청 처리
+            const playPromise = video.play();
+            
+            // play()가 Promise를 반환하는 경우에만 처리
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                // 재생 성공
+                playBtn.classList.add('active');
+                playBtn.setAttribute('aria-pressed', "true");
+              }).catch(error => {
+                // 재생 실패 (예: 사용자 상호작용 없이 자동재생 차단된 경우)
+                console.log("비디오 재생 실패:", error);
+              });
+            } else {
+              // 구형 브라우저 지원
+              playBtn.classList.add('active');
+              playBtn.setAttribute('aria-pressed', "true");
+            }
           }
 
           function handleContentMouseLeave() {
-            video.pause();
-            video.currentTime = 0;
-            playBtn.classList.remove('active');
-            playBtn.setAttribute('aria-pressed', "false");
+            // 비디오가 재생 중인지 확인
+            if (!video.paused) {
+              video.pause();
+              video.currentTime = 0;
+              playBtn.classList.remove('active');
+              playBtn.setAttribute('aria-pressed', "false");
+            }
           }
 
           // 새로운 이벤트 리스너 추가
