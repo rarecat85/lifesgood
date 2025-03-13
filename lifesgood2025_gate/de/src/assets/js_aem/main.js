@@ -299,15 +299,22 @@ document.addEventListener("DOMContentLoaded", function () {
       let videoHTML;
       if (window.innerWidth > 1025) {
         videoHTML = `
-          <video muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-desktop.png?ver=250311" aria-label="${altName}">
-            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-desktop.mp4?ver=250311">
+          <video muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-desktop.png" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-desktop.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
       } else {
+        // 모바일 비디오 이름에 -mobile 추가, ai-home이 포함된 경우 -new도 추가
+        // ai-home 비디오만 -mobile-new 접미사 사용, 다른 비디오는 -mobile 접미사 사용
+        let mobileVideoName = `${videoName}-mobile`;
+        if (videoName.includes('ai-home')) {
+          mobileVideoName = `${videoName}-mobile-new`;
+        }
+          
         videoHTML = `
-          <video autoplay muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-mobile.png?ver=250311" aria-label="${altName}">
-            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${videoName}-mobile.mp4?ver=250311">
+          <video autoplay muted playsinline loop poster="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/images/${imgName}-mobile.png" aria-label="${altName}">
+            <source src="/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/gate/videos/${mobileVideoName}.mp4">
           </video>
           <button type="button" class="play-btn" role="button" tabindex="0" aria-pressed="false"></button>
         `;
