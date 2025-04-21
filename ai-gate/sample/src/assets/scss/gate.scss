@@ -24,6 +24,27 @@
   * {
     font-family: LGEI Text;
   }
+  /*비디오 공통*/
+  .video-bx {
+    .play-btn {
+      width: rem(32);
+      height: rem(32);
+      background-image: url("../images/lg-ai-gate-btn-play.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border-radius: 50%;
+      position: absolute;
+      bottom: rem(24);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      cursor: pointer;
+      &.pause {
+        background-image: url("../images/lg-ai-gate-btn-pause.svg");
+      }
+    }
+  }
   /*탭 컨테이너*/
   .tab-container {
     /*탭 목록*/
@@ -190,6 +211,7 @@
               font-weight: 400;
               font-size: rem(16);
               line-height: 1.25;
+              color: #4A4946;
             }
           }
           /*탭 비디오*/
@@ -203,30 +225,15 @@
               font-size: rem(56);
               line-height: 1.07;
               color: $white;
+              text-wrap: balance;
+              text-align: center;
+              width: 100%;
+              padding: 0 rem(16);
               position: absolute;
               transform: translate(-50%, -50%);
               top: 50%;
               left: 50%;
               z-index: 2;
-            }
-            .play-btn {
-              width: rem(32);
-              height: rem(32);
-              background-image: url(../images/lg-ai-gate-btn-play.svg);
-              background-position: center center;
-              background-repeat: no-repeat;
-              background-size: contain;
-              border-radius: 50%;
-              position: absolute;
-              bottom: rem(24);
-              left: 50%;
-              transform: translateX(-50%);
-              z-index: 2;
-              cursor: pointer;
-              
-              &.pause {
-                background-image: url(../images/lg-ai-gate-btn-pause.svg);
-              }
             }
             video {
               width: 100%;
@@ -247,6 +254,9 @@
                 border-radius: rem(28);
                 margin-bottom: rem(20);
                 overflow: hidden;
+                img {
+                  width: 100%;
+                }
               }
               .link-btn {
                 font-weight: 600;
@@ -334,14 +344,14 @@
       width: calc(100% - rem(40));
       max-width: 1440px;
       margin: 0 auto;
-      padding: rem(60) 0;
-      .title {
+      padding: rem(60) 0 rem(32);
+      .thinq-section-title {
         font-weight: 600;
         font-size: rem(56);
         line-height: 1.07;
         margin-bottom: rem(20);
       }
-      .text {
+      .thinq-section-text {
         font-size: rem(24);
         line-height: 1.16;
         margin-bottom: rem(24);
@@ -351,15 +361,34 @@
         border-radius: rem(28);
         overflow: hidden; 
         position: relative;
+        img,
+        video {
+          width: 100%;
+        }
+        .video-bx {
+          .play-btn {
+            bottom: rem(40);
+          }
+        }
+        .white-btn {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+        }
       }
       .flex-bx {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        gap: rem(20);
         margin-top: rem(40);
         &.reverse {
           flex-direction: row-reverse;
         }
         .img-bx {
+          width: min(51%, rem(732));
           img {
             width: 100%;
             border-radius: rem(28);
@@ -368,11 +397,285 @@
           figcaption {
             font-size: rem(16);
             line-height: 1.25;
+            color: #4A4946;
             margin-top: rem(8);
           }
         }
         .text-bx {
-          
+          width: min(49%, rem(610));
+          .title {
+            font-weight: 600;
+            font-size: rem(40);
+            line-height: 1.1;
+            margin-bottom: rem(8);
+            text-wrap: balance;
+          }
+          .text {
+            font-size: rem(24);
+            line-height: 1.16;
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+
+  //stories-section
+  .stories-section {
+    .inner {
+      padding: rem(32) 0;
+      margin: 0 auto;
+      @include tablet {
+        width: min(calc(100% - rem(40)), 1440px);
+        padding: rem(60) 0;
+      }
+      .title {
+        font-family: "LGEI Headline";
+        font-weight: 600;
+        font-size: rem(56);
+      }
+      .slide-bx {
+        margin-top: rem(20);
+        .swiper-slide {
+          height: auto;
+          background-color: $white;
+          border-radius: rem(28);
+          overflow: hidden;
+          img {
+            width: 100%;
+            aspect-ratio: 464 / 300;
+            object-fit: cover;
+          }
+          .txt-bx {
+            padding: rem(20) rem(28) rem(154);
+            p {
+              font-weight: 300;
+              font-size: rem(24);
+              line-height: 100%;
+            }
+            .white-btn {
+              position: absolute;
+              bottom: rem(28);
+              left: rem(28);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    /*비디오 공통*/
+    .video-bx {
+      .play-btn {
+        width: rem(24);
+        height: rem(24);
+      }
+    }
+    /*탭 컨테이너*/
+    .tab-container {
+      .tab-list {
+        gap: rem(24);
+      }
+      .panel-container {
+        .tab-panel {
+          .tab-panel-inner {
+            .tab-panel-title {
+              font-size: rem(24);
+            }
+            .tab-panel-text {
+              font-size: rem(16);
+            }
+            .tab-panel-banner {
+              margin-top: rem(8);
+              border-radius: rem(20);
+              .text-bx {
+                top: rem(20);
+                left: rem(20);
+                .title {
+                  font-size: rem(26);
+                  width: calc(100% - rem(20));
+                  br {
+                    display: none;
+                  }
+                }
+                .white-btn {
+                  margin-top: rem(20);
+                }
+              }
+            }
+            .tab-panel-slide {
+              .swiper {
+                .slide-controller {
+                  display: none;
+                }
+                .swiper-wrapper {
+                  flex-wrap: wrap;
+                  gap: rem(20) rem(10);
+                }
+                .swiper-slide {
+                  width: calc(50% - rem(5)); 
+                  .img-bx {
+                    border-radius: rem(20);
+                  }
+                  .slide-title {
+                    font-size: rem(24);
+                    margin-top: rem(12);
+                    text-wrap: balance;
+                  }
+                }
+              }
+            }
+            .tab-panel-disclaimer {
+              margin-top: rem(44);
+              li {
+                font-size: rem(12);
+              }
+            }
+            .video-bx {
+              border-radius: rem(20);
+              margin-top: rem(24);
+              .video-title {
+                font-size: rem(28);
+              }
+            }
+            .product-list {
+              margin-top: rem(24);
+              gap: rem(24) rem(10);
+              li {
+                width: calc(50% - rem(5));
+              }
+              .product-item {
+                .img-bx {
+                  border-radius: rem(20);
+                  margin-bottom: rem(8);
+                }
+                .link-btn {
+                  font-size: rem(14);
+                  &::after {
+                    width: rem(7);
+                    height: rem(12);
+                    background-size: rem(7) rem(12);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    /*오버뷰*/
+    .overview-section {
+      .inner {
+        padding: rem(64) 0;
+        .ai-logo {
+          width: rem(73);
+        }
+        .title {
+          font-size: rem(28);
+        }
+        .text {
+          font-size: rem(16);
+          text-wrap: balance;
+          strong {
+            font-size: rem(20);
+          }
+        }
+        .scroll-down-icon {
+          width: rem(26);
+          margin-top: rem(12);
+        }
+      }
+    }
+    /*제품 탭*/
+    .product-section {
+      .inner {
+        width: calc(100% - rem(32));
+        padding: rem(32) 0;
+      }
+    }
+    /*피처 탭*/
+    .feature-section  {
+      .inner {
+        padding-bottom: rem(56);
+      }
+    }
+    /*thinq 탭*/
+    .thinq-section {
+      .inner {
+        width: 100%;
+        padding: rem(32) 0;
+        .thinq-section-title,
+        .thinq-section-text {
+          width: calc(100% - rem(32));
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .white-btn {
+          margin-left: rem(16);
+        }
+        .thinq-section-title {
+          font-size: rem(28);
+        }
+        .thinq-section-text {
+          font-size: rem(16);
+          margin-bottom: rem(12);
+          br {
+            display: none;
+          }
+        }
+        .banner {
+          border-radius: 0;
+        }
+        .flex-bx {
+          display: block;
+          width: calc(100% - rem(32));
+          margin: rem(64) auto 0;
+          & + .flex-bx {
+            margin-top: rem(44);
+          }
+          .img-bx {
+            width: 100%;
+            img {
+              border-radius: rem(20);
+            }
+            figcaption {
+              font-size: rem(12);
+            }
+          }
+          .text-bx {
+            width: 100%;
+            margin-top: rem(24);
+            .title {
+              font-size: rem(28);
+            }
+            .text {
+              font-size: rem(16);
+            }
+          }
+        }
+      }
+    }
+    //stories-section
+    .stories-section {
+      .inner {
+        .title {
+          font-size: rem(28);
+          line-height: 1.1428;
+          padding: 0 rem(16);
+        }
+        .slide-bx {
+          margin-top: rem(12);
+          margin-left: rem(16);
+          .swiper-slide {
+            .txt-bx {
+              padding: rem(16) rem(20) rem(102);
+              .white-btn {
+                left: rem(20);
+                bottom: rem(24);
+              }
+            }
+          }
         }
       }
     }

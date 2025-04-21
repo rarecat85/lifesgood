@@ -21,16 +21,15 @@
           <div class="inner">
             <div class="video-bx">
               <div class="video-bx">
-                <div role="group">
-                  <video src="./assets/videos/lg-ai-gate-kv-desktop.mp4" 
-                        loop muted autoplay playsinline
-                        aria-labelledby="kv-video-description"
-                        tabindex="0">
-                  </video>
-                  <h1 id="kv-video-description" class="a11y-text">
-                    A woman walks by as the light turns on automatically. The phrase "Sensing wisely" appears on screen. A man and woman embrace as the XBOOM speaker activates, accompanied by the phrase "Understanding deeply." A man sits sadly in the driver's seat. The LG AI logo appears with the phrase "Caring warmly." A soccer match plays on TV. LG AI responds with voice interaction. The phrase "For your delightful life" shows below. XBOOM, the TV, and a family sitting on the sofa with their dog appear in a single frame. A mother and son use the washing machine together. The phrase "For your effortless life" appears. Scenes of the mother and son, a close-up of the AI Wash dial, and a man using the LG gram laptop are overlaid into one shot, with the phrase "For your effortless life." A man and woman sit in the front seats of a car. The LG AI logo appears between them, along with the phrase "For your well cared life." A person walks into an office with their dog. The air purifier turns on in response. Final shot: a white background with the LG AI logo and the phrase "Affectionate Intelligence for YOU."
-                  </h1>
-                </div>
+                <div class="video-bx responsive-video" 
+                data-desktop-video-src="./assets/videos/lg-ai-gate-kv-desktop.mp4" 
+                data-mobile-video-src="./assets/videos/lg-ai-gate-kv-mobile.mp4"
+                data-desktop-poster-src="./assets/images/lg-ai-gate-kv-desktop.png" 
+                data-mobile-poster-src="./assets/images/lg-ai-gate-kv-mobile.png" 
+                aria-labelledby="kv-video-description"
+                >
+                <span id="kv-video-description" class="a11y-text">A woman walks by as the light turns on automatically. The phrase "Sensing wisely" appears on screen. A man and woman embrace as the XBOOM speaker activates, accompanied by the phrase "Understanding deeply." A man sits sadly in the driver's seat. The LG AI logo appears with the phrase "Caring warmly." A soccer match plays on TV. LG AI responds with voice interaction. The phrase "For your delightful life" shows below. XBOOM, the TV, and a family sitting on the sofa with their dog appear in a single frame. A mother and son use the washing machine together. The phrase "For your effortless life" appears. Scenes of the mother and son, a close-up of the AI Wash dial, and a man using the LG gram laptop are overlaid into one shot, with the phrase "For your effortless life." A man and woman sit in the front seats of a car. The LG AI logo appears between them, along with the phrase "For your well cared life." A person walks into an office with their dog. The air purifier turns on in response. Final shot: a white background with the LG AI logo and the phrase "Affectionate Intelligence for YOU."</span>
+              </div>
               </div>
             </div>
           </div>
@@ -587,18 +586,21 @@
           </div>
         </section>
         <!-- E : feature-section -->
-        <!-- S : thinq-section -->
+        <!-- S : thinq-section (글로벌 사이트 / KR)-->
         <section class="thinq-section">
           <div class="inner">
-            <h2 class="title">ThinQ® helps make life happen</h2>
-            <p class="text">A platform for your smart LG appliances and devices, ThinQ puts control and convenience at your fingertips, to help <br>you simplify life and enjoy the comforts of home.</p>
-            <a href="javascript:void(0)" class="white-btn">Learn More</a>
+            <h2 class="thinq-section-title">Always ON for a better home</h2>
             <div class="banner">
-              <picture> 
-                <source srcset="./assets/images/lg-ai-gate-thinq-banner-desktop.png" media="(min-width: 769px)">
-                <source srcset="./assets/images/lg-ai-gate-thinq-banner-mobile.png" media="(max-width: 768px)">
-                <img src="./assets/images/lg-ai-gate-thinq-banner-mobile.png" alt="In a dark living room, the Stanby Me TV turns on with a 'Good Morning' message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically." loading="lazy">  
-              </picture>
+              <div class="video-bx responsive-video" 
+                  data-desktop-video-src="./assets/videos/lg-ai-gate-thinq-on-banner-desktop.mp4" 
+                  data-mobile-video-src="./assets/videos/lg-ai-gate-thinq-on-banner-mobile.mp4"
+                  data-desktop-poster-src="./assets/images/lg-ai-gate-thinq-on-banner-desktop.png" 
+                  data-mobile-poster-src="./assets/images/lg-ai-gate-thinq-on-banner-mobile.png" 
+                  aria-labelledby="thinq-on-banner-video-description">
+                  <span id="kv-video-description" class="a11y-text">In a dark living room, the Stanby Me TV turns on with a "Good Morning" message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically.</span>
+                  <a href="javascript:void(0)" class="white-btn">Learn More</a>
+                  <button type="button" class="play-btn" aria-label="Play video"></button>
+                </div>
             </div>
             <!-- S : thinq-flex-bx -->
             <div class="flex-bx">
@@ -634,7 +636,96 @@
             <!-- E : thinq-flex-bx -->
           </div>
         </section>
-        <!-- E : thinq-section -->
+        <!-- E : thinq-section (글로벌 사이트 / KR)-->
+        <!-- S : thinq-section (Local)-->
+        <section class="thinq-section">
+          <div class="inner">
+            <h2 class="thinq-section-title">ThinQ® helps make life happen</h2>
+            <p class="thinq-section-text">A platform for your smart LG appliances and devices, ThinQ puts control and convenience at your fingertips, to help <br>you simplify life and enjoy the comforts of home.</p>
+            <a href="javascript:void(0)" class="white-btn">Learn More</a>
+            <div class="banner">
+              <picture> 
+                <source srcset="./assets/images/lg-ai-gate-thinq-banner-desktop.png" media="(min-width: 769px)">
+                <source srcset="./assets/images/lg-ai-gate-thinq-banner-mobile.png" media="(max-width: 768px)">
+                <img src="./assets/images/lg-ai-gate-thinq-banner-mobile.png" alt="In a dark living room, the Stanby Me TV turns on with a 'Good Morning' message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically." loading="lazy">  
+              </picture>
+
+            </div>
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx">
+              <div class="img-bx">
+                <figure>
+                  <img src="./assets/images/lg-ai-gate-thinq-on-feature03.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">Simple Control with Voice Assistant</h3>
+                <p class="text">Tell your appliance exactly what you need by just saying it out, and the AI speaker will listen and check the cycle to let you know.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx reverse">
+              <div class="img-bx">
+                <figure>
+                  <img src="./assets/images/lg-ai-gate-thinq-on-feature04.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">Efficient Product Maintenance</h3>
+                <p class="text">Through the LG ThinQ app, check on your appliance, download new cycles, monitor cycle usage, and much more.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+          </div>
+        </section>
+        <!-- E : thinq-section (Local)-->
+        <!-- S : stories-section -->
+        <section class="stories-section">
+          <div class="inner">
+              <h2 class="title">More about LG Affectionate Intelligence</h2>
+              <div class="slide-bx">
+                  <div class="swiper" role="region" aria-label="스토리 슬라이드쇼">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
+                                <img src="./assets/images/lg-ai-gate-more-about-lg-ai-banner01-mobile.png" alt="LG Electronics executive holding certificate of accreditation for cybersecurity, with digital security graphic in background" loading="lazy">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p>LG Strengthens Cybersecurity Leadership With KOLAS IoT Cybersecurity Testing Accreditation</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-strengthens-cybersecurity-leadership-with-kolas-iot-cybersecurity-testing-accreditation/" class="white-btn">Learn More</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
+                                <img src="./assets/images/lg-ai-gate-more-about-lg-ai-banner02-mobile.png" alt="Visitors viewing LG curved LED display showcasing 'Life's Good 24/7' slogan at tech exhibition" loading="lazy">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p>LG Presents Its Latest Innovations Powered by “Affectionate Intelligence” at CES 2025</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-presents-its-latest-innovations-powered-by-affectionate-intelligence-at-ces-2025/" class="white-btn">Learn More</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./assets/images/lg-ai-gate-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
+                                <img src="./assets/images/lg-ai-gate-more-about-lg-ai-banner03-mobile.png" alt="Speaker presenting AI-powered B2B solutions on stage at LG event" loading="lazy">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p>LG Unveils a Day in a Life With “Affectionate Intelligence” at LG World Premiere</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-unveils-a-day-in-a-life-with-affectionate-intelligence-at-lg-world-premiere/" class="white-btn">Learn More</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+        <!-- E : stories-section -->
       </div>
     </main>
   </body>

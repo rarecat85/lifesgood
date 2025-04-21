@@ -3,11 +3,9 @@ function responsiveVideo(videoContainer = null) {
   const containers = videoContainer ? [videoContainer] : document.querySelectorAll('.responsive-video');
   
   containers.forEach(video => {
-    // 이미 초기화된 비디오는 건너뛰기
-    if (video.dataset.initialized === 'true') {
-      return;
-    }
-
+    // 초기화 여부 확인을 위한 플래그
+    const isInitialized = video.dataset.initialized === 'true';
+    
     const desktopVideoSrc = video.dataset.desktopVideoSrc;
     const mobileVideoSrc = video.dataset.mobileVideoSrc;
     const desktopPosterSrc = video.dataset.desktopPosterSrc;
@@ -36,8 +34,8 @@ function responsiveVideo(videoContainer = null) {
       });
     }
     
-    // 미디어 쿼리를 사용하여 모바일 여부 확인 (변수에서 가져온 값 사용)
-    const mobileMediaQuery = window.matchMedia(`(max-width: ${768}px)`);
+    // 미디어 쿼리를 사용하여 모바일 여부 확인
+    const mobileMediaQuery = window.matchMedia(`(max-width: 768px)`);
     
     // 화면 크기에 따라 적절한 비디오 소스와 포스터 설정
     const setVideoSource = () => {
@@ -67,11 +65,17 @@ function responsiveVideo(videoContainer = null) {
     // 초기 비디오 소스 설정
     setVideoSource();
     
-    // 미디어 쿼리 변경 시 비디오 소스 업데이트
-    mobileMediaQuery.addEventListener('change', setVideoSource);
+    // 이미 초기화된 비디오라면 기존 이벤트 리스너 제거 (중복 방지)
+    if (isInitialized && video.mobileMediaQueryListener) {
+      mobileMediaQuery.removeEventListener('change', video.mobileMediaQueryListener);
+    }
     
-    // 재생/일시정지 버튼 설정
-    if (playBtn) {
+    // 미디어 쿼리 변경 시 비디오 소스 업데이트 (모든 비디오에 연결)
+    video.mobileMediaQueryListener = setVideoSource;
+    mobileMediaQuery.addEventListener('change', video.mobileMediaQueryListener);
+    
+    // 재생/일시정지 버튼 설정 (초기화되지 않은 경우에만)
+    if (playBtn && !isInitialized) {
       // 초기 상태 설정 - 비디오가 재생 중이면 pause 클래스 추가
       if (videoElement.src && !videoElement.paused) {
         playBtn.classList.add('pause');
@@ -126,7 +130,7 @@ function initAllTabVideos() {
       newVideo.setAttribute('tabindex', '0');
       
       // 포스터 이미지만 설정
-      const mobileMediaQuery = window.matchMedia(`(max-width: ${768}px)`);
+      const mobileMediaQuery = window.matchMedia(`(max-width: 768px)`);
       const posterSrc = mobileMediaQuery.matches ? 
         video.dataset.mobilePosterSrc : 
         video.dataset.desktopPosterSrc;
@@ -183,7 +187,7 @@ function loadTabVideos(panel) {
     const videoElement = video.querySelector('video');
     
     if (videoElement && !videoElement.src) {
-      const mobileMediaQuery = window.matchMedia(`(max-width: ${768}px)`);
+      const mobileMediaQuery = window.matchMedia(`(max-width: 768px)`);
       const src = mobileMediaQuery.matches ? 
         video.dataset.mobileVideoSrc : 
         video.dataset.desktopVideoSrc;
@@ -195,6 +199,47 @@ function loadTabVideos(panel) {
       videoElement.play().catch(err => {
         console.error('비디오 재생 오류:', err);
       });
+    }
+  });
+}
+
+function preloadTabImages() {
+  // 모든 탭 패널 내 이미지 선택
+  const tabPanelImages = document.querySelectorAll('.tab-panel img[loading="lazy"]');
+  
+  // 현재 보이지 않는 탭의 이미지만 프리로드
+  tabPanelImages.forEach(img => {
+    const panel = img.closest('.tab-panel');
+    
+    // 현재 보이지 않는 탭의 이미지에 대해서만 처리
+    if (panel.hidden) {
+      // 현재 src 값을 저장
+      const originalSrc = img.getAttribute('src');
+      
+      // 이미 프리로드된 이미지는 건너뛰기
+      if (img.dataset.preloaded === 'true') {
+        return;
+      }
+      
+      // 이미지 프리로딩 처리
+      const preloadImage = new Image();
+      preloadImage.onload = function() {
+        // 프리로드 완료 표시
+        img.dataset.preloaded = 'true';
+      };
+      preloadImage.src = originalSrc;
+      
+      // picture 요소 내부의 source 태그도 프리로드 처리
+      if (img.parentElement.tagName.toLowerCase() === 'picture') {
+        const sources = img.parentElement.querySelectorAll('source');
+        sources.forEach(source => {
+          const sourceSrcset = source.getAttribute('srcset');
+          if (sourceSrcset) {
+            const preloadSource = new Image();
+            preloadSource.srcset = sourceSrcset;
+          }
+        });
+      }
     }
   });
 }
@@ -222,10 +267,22 @@ function toggleTabs(container) {
     
     // 첫 번째 패널의 비디오 로드
     loadTabVideos(panels[initialTabIndex]);
+    
+    // 다른 패널의 이미지 미리 로드 시작
+    setTimeout(preloadTabImages, 300);
   }
   
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
+      // 탭 클릭 직전에 보여질 패널 내의 이미지들의 loading 속성 제거
+      const targetPanel = panels[index];
+      const targetImages = targetPanel.querySelectorAll('img[loading="lazy"]');
+      targetImages.forEach(img => {
+        if (img.dataset.preloaded === 'true') {
+          img.removeAttribute('loading');
+        }
+      });
+      
       // 모든 탭 비활성화
       tabs.forEach(t => {
         t.classList.remove('active');
@@ -249,29 +306,62 @@ function toggleTabs(container) {
 }
 
 document.querySelectorAll(".tab-panel-slide .swiper").forEach(function(swiperElement) {
-  const swiper = new Swiper(swiperElement, {
-    slidesPerView: 4,
-    spaceBetween: 24,
-    observer: true,
-    observeParents: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      type: "fraction",
-    },
-    on: {
-      init: function() {
-        // 슬라이드 개수가 slidesPerView보다 적으면 wrapper에 클래스 추가
-        const slidesCount = this.slides.length;
-        if (slidesCount <= this.params.slidesPerView) {
-          this.el.querySelector('.swiper-wrapper').classList.add('swiper-no-swiping');
-        }
+  let swiper = null;
+  
+  // 스와이퍼 초기화 함수
+  const initSwiper = () => {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      // 768px 이하일 경우 스와이퍼 파괴
+      if (swiper !== null) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
+    } else {
+      // 768px 초과일 경우 스와이퍼 초기화
+      if (swiper === null) {
+        swiper = new Swiper(swiperElement, {
+          slidesPerView: 4,
+          spaceBetween: 24,
+          observer: true,
+          observeParents: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+          },
+          on: {
+            init: function() {
+              // 슬라이드 개수가 slidesPerView보다 적으면 wrapper에 클래스 추가
+              const slidesCount = this.slides.length;
+              if (slidesCount <= this.params.slidesPerView) {
+                this.el.querySelector('.swiper-wrapper').classList.add('swiper-no-swiping');
+              }
+            }
+          }
+        });
       }
     }
-  });
+  };
+  
+  // 초기 실행
+  initSwiper();
+  
+  // 리사이즈 이벤트에 대응
+  window.addEventListener('resize', initSwiper);
+});
+
+var storiesSlide = new Swiper(".stories-section .swiper", {
+  slidesPerView: 1.2,
+  spaceBetween: 10,
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 24,
+    },
+  },
 });
 
 function init() {
@@ -285,6 +375,12 @@ function init() {
     responsiveVideo(video);
   });
   
+  // thinq-section의 비디오도 로드
+  const thinqVideos = document.querySelectorAll('.thinq-section .responsive-video');
+  thinqVideos.forEach(video => {
+    responsiveVideo(video);
+  });
+  
   // 모든 탭의 비디오 미리 초기화
   initAllTabVideos();
   
@@ -292,6 +388,78 @@ function init() {
   const tabContainers = document.querySelectorAll('.tab-container');
   tabContainers.forEach(container => {
     toggleTabs(container);
+  });
+  
+  // 리사이즈 이벤트에 대한 처리 추가
+  let resizeTimeout;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      // 현재 화면 크기 확인
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      
+      // 모든 responsive-video 요소 처리
+      document.querySelectorAll('.responsive-video').forEach(video => {
+        if (!video.dataset.desktopVideoSrc || !video.dataset.mobileVideoSrc) return;
+        
+        const videoElement = video.querySelector('video');
+        if (!videoElement) return;
+        
+        // 비디오 소스 결정
+        const desktopVideoSrc = video.dataset.desktopVideoSrc;
+        const mobileVideoSrc = video.dataset.mobileVideoSrc;
+        const desktopPosterSrc = video.dataset.desktopPosterSrc;
+        const mobilePosterSrc = video.dataset.mobilePosterSrc;
+        
+        const currentSrc = videoElement.getAttribute('src');
+        const newSrc = isMobile ? mobileVideoSrc : desktopVideoSrc;
+        const newPoster = isMobile ? mobilePosterSrc : desktopPosterSrc;
+        
+        // 탭 패널 내부의 비디오인 경우, 보이는 상태일 때만 변경
+        const parentPanel = video.closest('.tab-panel');
+        if (parentPanel && parentPanel.hidden === true) return;
+        
+        // 소스가 변경된 경우에만 업데이트
+        if (currentSrc !== newSrc) {
+          const wasPlaying = !videoElement.paused;
+          const currentTime = videoElement.currentTime;
+          
+          // 새 비디오 요소 생성
+          const newVideo = document.createElement('video');
+          newVideo.muted = true;
+          newVideo.loop = true;
+          newVideo.playsInline = true;
+          newVideo.autoplay = wasPlaying;
+          newVideo.preload = "auto";
+          newVideo.setAttribute('tabindex', '0');
+          newVideo.poster = newPoster;
+          newVideo.src = newSrc;
+          
+          // 이전 비디오의 재생 상태 및 이벤트 리스너 복사
+          const playBtn = video.querySelector('.play-btn');
+          if (playBtn) {
+            newVideo.addEventListener('playing', () => {
+              playBtn.classList.add('pause');
+              playBtn.setAttribute('aria-label', 'Play video');
+            });
+          }
+          
+          // 이전 비디오 요소 제거
+          video.removeChild(videoElement);
+          
+          // 새 비디오 요소 추가
+          video.appendChild(newVideo);
+          
+          // 이전 재생 상태에 따라 재생 시작
+          if (wasPlaying) {
+            newVideo.currentTime = currentTime;
+            newVideo.play().catch(err => {
+              console.error('비디오 재생 오류:', err);
+            });
+          }
+        }
+      });
+    }, 150); // 150ms 딜레이로 디바운스
   });
 }
 
