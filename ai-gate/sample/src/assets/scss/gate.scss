@@ -14,8 +14,12 @@
   -webkit-background-clip: text;
   color: transparent;
 }
-
+.white-btn {
+  @include btn($white);
+}
 .gate-container {
+  max-width: 1920px;
+  margin: 0 auto;
   background-color: #F0ECE4;
   * {
     font-family: LGEI Text;
@@ -27,10 +31,12 @@
       display: flex;
       gap: rem(36);
       margin-bottom: rem(48);
+      overflow: auto;
       .tab {
         font-family: 'LG Smart UI';
         font-weight: 400;
         font-size: rem(20);
+        white-space: nowrap;
         cursor: pointer;
         border-bottom: 2px solid transparent;
         padding-bottom: rem(2);
@@ -43,18 +49,155 @@
     .panel-container {
       .tab-panel {
         .tab-panel-inner {
+          /*탭 타이틀*/
           .tab-panel-title {
             font-weight: 600;
             font-size: rem(40);
             line-height: 1.1;
-            text-align: center;
             text-wrap: balance;
-            margin-bottom: rem(48);
+            &.text-center {
+              text-align: center;
+            }
+            .eyebrow-logo {
+              display: block;
+              margin-bottom: rem(4);
+            }
           }
+          /*탭 텍스트*/
+          .tab-panel-text {
+            font-weight: 400;
+            font-size: rem(24);
+            line-height: 1.2;
+            margin-top: rem(8);
+          }
+          /*탭 배너*/
+          .tab-panel-banner {
+            margin-top: rem(20);
+            border-radius: rem(28);
+            overflow: hidden;
+            position: relative;
+            picture {
+              display: block;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+            .text-bx {
+              position: absolute;
+              top: rem(80);
+              left: rem(80);
+              z-index: 2;
+              .title {
+                font-weight: 600;
+                font-size: rem(40);
+                line-height: 1.1;
+                color: $white;
+                &.text-black {
+                  color: $black;
+                }
+              }
+              .white-btn {
+                margin-top: rem(24);
+              }
+            }
+          }
+          /*탭 슬라이드*/
+          .tab-panel-slide {
+            .swiper {
+              .slide-controller {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-top: rem(24);
+                .swiper-pagination {
+                  font-weight: 400;
+                  font-size: rem(24);
+                  line-height: 1.16;
+                  width: auto;
+                  position: static; 
+                  margin-right: rem(16);
+                }
+                .slide-btn {
+                  display: block;
+                  width: rem(64);
+                  height: rem(64);
+                  background-color: #F4F1EC;
+                  border: 1px solid #646464;
+                  border-radius: 50%;
+                  position: relative;
+                  margin-top: 0;
+                  top: 0;
+                  flex-shrink: 0;
+                  &.swiper-button-lock {
+                    display: none;
+                  }
+                  &::after {
+                    content: '';
+                    display: block;
+                    width: rem(24);
+                    height: rem(24);
+                    background-image: url("../images/lg-ai-gate-slide-arrow-right.svg");
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                  }
+                  &.swiper-button-next {
+                    right: initial;
+                  }
+                  &.swiper-button-prev {
+                    transform: rotate(180deg);
+                    left: initial;
+                    margin-right: rem(8);
+                  }
+                }
+              }
+              .swiper-wrapper {
+                margin-top: rem(20);
+                &.swiper-no-swiping {
+                  margin-top: 0;
+                }
+              }
+              .swiper-slide {
+                .img-bx {
+                  border-radius: rem(28);
+                  overflow: hidden;
+                  img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                  }
+                }
+                .slide-title {
+                  font-weight: 400;
+                  font-size: rem(36);
+                  line-height: 1.16;
+                  margin-top: rem(20);
+                }
+              }
+            }
+          }
+          /*탭 텍스트 디스클레이머*/
+          .tab-panel-disclaimer {
+            margin-top: rem(56);
+            li {
+              font-family: 'LG Smart UI';
+              font-weight: 400;
+              font-size: rem(16);
+              line-height: 1.25;
+            }
+          }
+          /*탭 비디오*/
           .video-bx {
             border-radius: rem(28);
             overflow: hidden;
             position: relative;
+            margin-top: rem(48);
             .video-title {
               font-weight: 600;
               font-size: rem(56);
@@ -91,12 +234,15 @@
               object-fit: cover;
             }
           }
+          /*탭 제품 리스트*/
           .product-list {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: rem(24);
             margin-top: rem(20);
             .product-item {
+              max-width: rem(220);
               .img-bx {
                 border-radius: rem(28);
                 margin-bottom: rem(20);
@@ -114,13 +260,13 @@
                   background-position: center center;
                   background-repeat: no-repeat;
                   margin-left: rem(4);
+                  /* RTL 방향에 따른 스타일 적용 */
+                  [dir="rtl"] & {
+                    margin-left: 0;
+                    margin-right: rem(4);
+                    transform: rotate(180deg);
+                  }
                 }
-              }
-            }
-            &.type-a {
-              justify-content: center;
-              .product-item {
-                max-width: rem(220);
               }
             }
           }
@@ -171,6 +317,64 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: rem(60) 0;
+    }
+  }
+  /*피처 탭*/
+  .feature-section {
+    .inner {
+      width: calc(100% - rem(40));
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-bottom: rem(64);
+    }
+  }
+  /*thinq 탭*/
+  .thinq-section {
+    .inner {
+      width: calc(100% - rem(40));
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: rem(60) 0;
+      .title {
+        font-weight: 600;
+        font-size: rem(56);
+        line-height: 1.07;
+        margin-bottom: rem(20);
+      }
+      .text {
+        font-size: rem(24);
+        line-height: 1.16;
+        margin-bottom: rem(24);
+      }
+      .banner {
+        margin-top: rem(20);
+        border-radius: rem(28);
+        overflow: hidden; 
+        position: relative;
+      }
+      .flex-bx {
+        display: flex;
+        align-items: center;
+        margin-top: rem(40);
+        &.reverse {
+          flex-direction: row-reverse;
+        }
+        .img-bx {
+          img {
+            width: 100%;
+            border-radius: rem(28);
+            overflow: hidden;
+          }
+          figcaption {
+            font-size: rem(16);
+            line-height: 1.25;
+            margin-top: rem(8);
+          }
+        }
+        .text-bx {
+          
+        }
+      }
     }
   }
 }
