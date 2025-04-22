@@ -382,17 +382,27 @@ function productsSwiper() {
       productsSwipers.forEach((swiperElement) => {
         const swiperInstance = new Swiper(swiperElement, productsSwiperOptions);
   
-        swiperElement.querySelectorAll('.products-slide-btn').forEach((button, index) => {
-          if (!button.dataset.eventBound) {
-            button.addEventListener('click', () => {
-              const slide = button.closest('.swiper-slide');
+        // products-slide-btn 대신 img-bx와 swiper-slide에 이벤트 연결
+        swiperElement.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+          if (!slide.dataset.eventBound) {
+            slide.addEventListener('click', () => {
               handleSlideClick(slide, index, swiperElement);
             });
-            button.dataset.eventBound = 'true'; 
+            slide.dataset.eventBound = 'true';
+            // 클릭 가능함을 표시하는 스타일 적용
+            slide.style.cursor = 'pointer';
           }
         });
       });
     }
+  }
+  
+  // 레이어 닫기 함수
+  function closeProductsLayer() {
+    const layer = document.querySelector('.products-layer');
+    layer.setAttribute('aria-hidden', 'true');
+    layer.style.display = 'none';
+    document.body.classList.remove('noscroll');
   }
   
   function handleSlideClick(slide, index, swiperElement) {
@@ -404,28 +414,26 @@ function productsSwiper() {
     contentWrapper.innerHTML = '';
     thumbWrapper.innerHTML = '';
   
-    // `.products-textbx` 컨텍스트에서 Eyebrow 찾기
-    const productsTextbx = swiperElement.closest('.products-textbx');
-    const eyebrowElement = productsTextbx?.querySelector('.products-textbx-eyebrow');
-  
-    // Eyebrow 텍스트 설정
-    const eyebrowText = eyebrowElement ? eyebrowElement.textContent.trim() : 'Untitled';
+    // 헤더 타이틀 설정 - slide-title 사용
+    const slideTitle = slide.querySelector('.slide-title').textContent.trim();
     const headerTitleElement = layer.querySelector('.products-layer-header-title-bx-title');
-    headerTitleElement.textContent = eyebrowText;
+    headerTitleElement.textContent = slideTitle;  // slide-title을 헤더 타이틀로 사용
   
     // 슬라이드 데이터 추가
     const allSlides = swiperElement.querySelectorAll('.swiper-slide');
   
     allSlides.forEach((slide, idx) => {
-      const slideBtn = slide.querySelector('.products-slide-btn');
-      const img = slide.querySelector('img');
+      // img-bx에서 데이터 가져오기
+      const imgBx = slide.querySelector('.img-bx');
+      const img = imgBx.querySelector('img');
+      const slideTitle = slide.querySelector('.slide-title').textContent.trim();
       const imgSrc = img.getAttribute('src');
       const contentImgSrc = imgSrc.replace('-thumb-', '-img-');
 
-      // data-title, data-desc, data-alt 가져오기 (버튼에서 가져오기)
-      const slideTitle = slideBtn.dataset.title || '';
-      const slideDesc = slideBtn.dataset.desc || '';
-      const slideAlt = slideBtn.dataset.alt || '';
+      // data-title, data-desc, data-alt 가져오기 (img-bx에서 가져오기)
+      const dataTitle = imgBx.dataset.title || '';
+      const dataDesc = imgBx.dataset.desc || '';
+      const dataAlt = imgBx.dataset.alt || '';
   
       const contentSlide = document.createElement('div');
       contentSlide.className = 'swiper-slide';
@@ -471,7 +479,7 @@ function productsSwiper() {
   
         videoElement.appendChild(sourceMp4);
         videoElement.appendChild(sourceWebm);
-        videoElement.setAttribute('aria-label',slideAlt);
+        videoElement.setAttribute('aria-label', dataAlt);
   
         contentSlide.appendChild(videoElement);
       } else {
@@ -479,7 +487,7 @@ function productsSwiper() {
         contentImg.src = contentImgSrc;
         contentImg.style.position = 'relative';
         contentImg.style.zIndex = '2';
-        contentImg.setAttribute('alt',slideAlt);
+        contentImg.setAttribute('alt', dataAlt);
         contentSlide.appendChild(contentImg);
       }
   
@@ -487,11 +495,15 @@ function productsSwiper() {
   
       const thumbSlide = document.createElement('div');
       thumbSlide.className = 'swiper-slide';
-      thumbSlide.dataset.title = slideTitle;
-      thumbSlide.dataset.desc = slideDesc;
+      // data-title 값을 썸네일 data-title로 설정
+      thumbSlide.dataset.title = dataTitle;
+      thumbSlide.dataset.desc = dataDesc;
 
-      const thumbSlideItem = slideBtn.cloneNode(true);
-      thumbSlideItem.dataset.dynamicParam5 = 'outer';
+      // thumbSlideItem을 만들어 추가
+      const thumbSlideItem = document.createElement('div');
+      thumbSlideItem.className = 'img-bx';
+      const thumbImg = img.cloneNode(true);
+      thumbSlideItem.appendChild(thumbImg);
       thumbSlide.appendChild(thumbSlideItem);
       thumbWrapper.appendChild(thumbSlide);
     });
@@ -591,18 +603,21 @@ function productsSwiper() {
   document.querySelector('.products-layer').addEventListener('click', (event) => {
     const layerContentBox = document.querySelector('.products-layer-conbx');
     if (!layerContentBox.contains(event.target)) {
-      const layer = document.querySelector('.products-layer');
-      layer.setAttribute('aria-hidden', 'true');
-      layer.style.display = 'none';
-      document.body.classList.remove('noscroll'); 
+      closeProductsLayer();
     }
   });
   
   document.querySelector('.products-layer-header-close').addEventListener('click', () => {
+    closeProductsLayer();
+  });
+  
+  // ESC 키를 눌렀을 때 레이어 닫기
+  document.addEventListener('keydown', (event) => {
     const layer = document.querySelector('.products-layer');
-    layer.setAttribute('aria-hidden', 'true');
-    layer.style.display = 'none';
-    document.body.classList.remove('noscroll'); 
+    // ESC 키 눌림 감지 및 레이어가 열려있는지 확인
+    if (event.key === 'Escape' && layer.style.display === 'block') {
+      closeProductsLayer();
+    }
   });
   
   initializeProductsSwipers();

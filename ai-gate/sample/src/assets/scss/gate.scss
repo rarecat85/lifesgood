@@ -528,7 +528,7 @@ body {
           column-gap:rem(8);
         }
         @include desktop {
-          padding:rem(12);
+          padding:0 rem(12);
         }
         &-title {
           @include font(20,120%,550);
@@ -651,6 +651,7 @@ body {
           z-index:999;
           display:flex;
           background:url('../images/lg-ai-gate-swiper-btn.svg') no-repeat center;
+          cursor: pointer;
         }
         .products-layer-content-thumb-swiper-btn-prev {
           transform:scale(-1);
