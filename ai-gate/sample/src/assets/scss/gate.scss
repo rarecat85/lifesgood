@@ -1,5 +1,9 @@
 @import "_mixin";
-
+body {
+  &.noscroll {
+    overflow: hidden;
+  }
+}
 .a11y-text {
   position: absolute;
   width: 1px;
@@ -200,6 +204,10 @@
                   font-size: rem(36);
                   line-height: 1.16;
                   margin-top: rem(20);
+                }
+                .products-slide-btn {
+                  cursor: pointer;
+                  text-align: left;
                 }
               }
             }
@@ -420,7 +428,6 @@
       }
     }
   }
-
   //stories-section
   .stories-section {
     .inner {
@@ -459,6 +466,229 @@
               bottom: rem(28);
               left: rem(28);
             }
+          }
+        }
+      }
+    }
+  }
+
+  .products-layer {
+    width:100%;
+    height:100%;
+    position:fixed;
+    overflow-y:scroll;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:999;
+    display:none;
+    padding:rem(94) 0;
+    &-conbx {
+      width:calc(100% - rem(16));
+      max-width:rem(834);
+      background:$white;
+      border-radius:rem(20);
+      margin:0 auto;
+      position:relative;
+      @include tablet {
+        width:calc(100% - rem(24));
+        border-radius:rem(28);
+      }
+      @include desktop {
+        width:calc(100% - rem(32));
+      }
+    }
+    &-header {
+      width:100%;
+      padding:rem(20) rem(16) 0;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      margin-bottom:rem(16);
+      @include tablet {
+        padding:rem(32) rem(24) 0;
+        margin-bottom:rem(20);
+      }
+      @include desktop {
+        padding:rem(40) rem(32) 0;
+        margin-bottom:rem(24);
+      }
+      &-title-bx {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        @include tablet {
+          width:auto;
+          margin-right:auto;
+          column-gap:rem(8);
+        }
+        @include desktop {
+          padding:rem(12);
+        }
+        &-title {
+          @include font(20,120%,550);
+          @include tablet {
+            @include font(28,114%);
+          }
+          @include desktop {
+            @include font(36,100%);
+          }
+        }
+      }
+      &-close {
+        width:rem(40);
+        height:rem(40);
+        border-radius:50%;
+        background:$white url('../images/lg-ai-gate-layer-close.svg') no-repeat center;
+        background-size:rem(16);
+        font-size:0;
+        position:absolute;
+        left:50%;
+        bottom:rem(-16);
+        transform:translate(-50%,100%);
+        border:1px solid #CBC8C2;
+        @include tablet {
+          width:rem(40);
+          height:rem(40);
+          position:fixed;
+          left:unset;
+          bottom:unset;
+          transform:translate(100%,-100%);
+          box-shadow:4px 4px 10px 0px rgba(0, 0, 0, 0.20);
+        }
+        @include desktop {
+          width:rem(48);
+          height:rem(48);
+          transform:translate(100%,calc(-150% + rem(16)));
+        }
+      }
+    }
+    &-content {
+      width:100%;
+      padding-bottom:rem(16);
+      @include tablet {
+        padding:0 rem(24) rem(24);
+      }
+      @include desktop {
+        padding:0 rem(35) rem(32);
+      }
+      &-txtwrap {
+        width:100%;
+        padding:0 rem(16);
+        display:flex;
+        align-items:stretch;
+        column-gap:rem(14);
+        margin-bottom:rem(12);
+        @include tablet {
+          padding:0;
+          column-gap:rem(16);
+        }
+        @include desktop {
+          column-gap:rem(18);
+          margin-bottom:rem(16);
+        }
+        &::before {
+          content:'';
+          width:2px;
+          background:linear-gradient(180deg, #FD312E -11.18%, #F914EB 51.06%, #B432F5 75.68%, #8227FF 96.75%);
+          display:flex;
+          flex-shrink:0;
+        }
+        &-txtbx {
+          &-title {
+            @include font(16,125%,600,$warmGray);
+            margin-bottom:rem(4);
+            @include tablet {
+              @include font(20,120%);
+            }
+          }
+          &-desc {
+            @include font(14,114%,$cl:$warmGray);
+            @include tablet {
+              @include font(16,125%);
+            }
+          }
+        }
+      }
+      &-swiper {
+        width:100%;
+        .swiper-slide {
+          width:100%;
+          aspect-ratio: 344/230;
+          @include tablet {
+            aspect-ratio: 540/360;
+          }
+          @include desktop {
+            aspect-ratio: 840/560;
+          }
+          img {
+            @include img();
+          }
+          video {
+            @include img();
+          }
+        }
+      }
+      &-thumbbx {
+        width:100%;
+        display:flex;
+        align-items:center;
+        position:relative;
+        .products-layer-content-thumb-swiper-btn-prev,
+        .products-layer-content-thumb-swiper-btn-next {
+          width:rem(36);
+          height:rem(36);
+          flex-shrink:0;
+          z-index:999;
+          display:flex;
+          background:url('../images/lg-ai-gate-swiper-btn.svg') no-repeat center;
+        }
+        .products-layer-content-thumb-swiper-btn-prev {
+          transform:scale(-1);
+        }
+        .swiper-button-disabled {
+          display:flex;
+          opacity:0.5;
+          position:relative;
+        }
+        .swiper-button-lock {
+          display:none;
+        }
+      }
+      &-thumb-swiper {
+        padding:rem(16);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        margin:0 auto;
+        // @include tablet {
+        //   padding:rem(24);
+        // }
+        // @include desktop {
+        //   padding:rem(32);
+        // }
+        .swiper-slide {
+          width:rem(72);
+          height:rem(72);
+          border-radius:rem(4);
+          overflow:hidden;
+          border:2px solid #CBC8C2;
+          cursor:pointer;
+          &:hover {
+            border:2px solid $red;
+          }
+          @include tablet {
+            width:rem(120);
+            height:rem(120);
+            border-radius:rem(8);
+          }
+          img {
+            @include img(cover);
+          }
+          &.swiper-slide-thumb-active {
+            border:2px solid $red;
           }
         }
       }
@@ -611,9 +841,6 @@
           width: calc(100% - rem(32));
           margin-left: auto;
           margin-right: auto;
-        }
-        .white-btn {
-          margin-left: rem(16);
         }
         .thinq-section-title {
           font-size: rem(28);
