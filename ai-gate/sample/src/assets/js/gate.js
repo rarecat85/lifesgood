@@ -268,9 +268,6 @@ function toggleTabs(container) {
     // 첫 번째 패널의 비디오 로드
     loadTabVideos(panels[initialTabIndex]);
     
-    // 첫 번째 패널의 swiper 업데이트
-    updatePanelSwiper(panels[initialTabIndex]);
-    
     // 다른 패널의 이미지 미리 로드 시작
     setTimeout(preloadTabImages, 300);
   }
@@ -304,40 +301,7 @@ function toggleTabs(container) {
       
       // 현재 활성화된 패널의 비디오 소스 설정 (아직 설정되지 않은 경우)
       loadTabVideos(panels[index]);
-      
-      // 현재 활성화된 패널의 swiper 업데이트
-      updatePanelSwiper(panels[index]);
     });
-  });
-}
-
-// 패널 내의 swiper 업데이트 함수
-function updatePanelSwiper(panel) {
-  // 패널 내의 모든 swiper 요소 찾기
-  const swipers = panel.querySelectorAll('.swiper');
-  
-  // 각 swiper에 대해 처리
-  swipers.forEach(swiperEl => {
-    // swiper 인스턴스 가져오기 (Swiper에서 내부적으로 할당한 인스턴스)
-    const swiperInstance = swiperEl.swiper;
-    
-    // swiper 인스턴스가 있는 경우에만 update 메서드 호출
-    if (swiperInstance) {
-      // 약간의 지연 후 update 호출 (DOM이 완전히 렌더링된 후)
-      setTimeout(() => {
-        swiperInstance.update();
-        
-        // products-textbx-thumbbx가 있는 경우 관련 swiper도 업데이트
-        if (swiperEl.classList.contains('products-textbx-thumbbx')) {
-          // 필요한 경우 추가적인 처리
-          const swiperWrapper = swiperEl.querySelector('.swiper-wrapper');
-          if (swiperWrapper) {
-            // 필요한 경우 스타일 재조정
-            swiperWrapper.style.transform = 'translate3d(0px, 0px, 0px)';
-          }
-        }
-      }, 100);
-    }
   });
 }
 
@@ -440,14 +404,14 @@ function productsSwiper() {
     contentWrapper.innerHTML = '';
     thumbWrapper.innerHTML = '';
   
-    // 슬라이드 버튼에서 제목 가져오기
-    const slideBtn = slide.querySelector('.products-slide-btn');
-    const slideTitleElement = slideBtn.querySelector('.slide-title');
-    const slideHeading = slideTitleElement ? slideTitleElement.textContent : 'Untitled';
-    
-    // 헤더 제목 설정 - slide-title 텍스트 사용
+    // `.products-textbx` 컨텍스트에서 Eyebrow 찾기
+    const productsTextbx = swiperElement.closest('.products-textbx');
+    const eyebrowElement = productsTextbx?.querySelector('.products-textbx-eyebrow');
+  
+    // Eyebrow 텍스트 설정
+    const eyebrowText = eyebrowElement ? eyebrowElement.textContent.trim() : 'Untitled';
     const headerTitleElement = layer.querySelector('.products-layer-header-title-bx-title');
-    headerTitleElement.textContent = slideHeading;
+    headerTitleElement.textContent = eyebrowText;
   
     // 슬라이드 데이터 추가
     const allSlides = swiperElement.querySelectorAll('.swiper-slide');
@@ -525,10 +489,6 @@ function productsSwiper() {
       thumbSlide.className = 'swiper-slide';
       thumbSlide.dataset.title = slideTitle;
       thumbSlide.dataset.desc = slideDesc;
-      
-      // 슬라이드 타이틀 텍스트 저장
-      const slideTitleText = slideBtn.querySelector('.slide-title')?.textContent || '';
-      thumbSlide.dataset.titleText = slideTitleText;
 
       const thumbSlideItem = slideBtn.cloneNode(true);
       thumbSlideItem.dataset.dynamicParam5 = 'outer';
@@ -561,7 +521,6 @@ function productsSwiper() {
     const activeThumbSlide = thumbWrapper.children[activeIndex];
 
     if (activeThumbSlide) {
-        // data-title 속성 값을 사용
         const title = activeThumbSlide.dataset.title || '';
         const desc = activeThumbSlide.dataset.desc || '';
 
@@ -574,9 +533,9 @@ function productsSwiper() {
     let currentPlayingVideo = null;
   
     const thumbSwiper = new Swiper('.products-layer-content-thumb-swiper', {
-      slidesPerView: 'auto',
+      slidesPerView: "auto",
       spaceBetween: 12,
-      freeMode: true,
+      speed: 400,
       watchSlidesProgress: true,
       navigation: {
         nextEl: '.products-layer-content-thumb-swiper-btn-next',
@@ -644,19 +603,6 @@ function productsSwiper() {
     layer.setAttribute('aria-hidden', 'true');
     layer.style.display = 'none';
     document.body.classList.remove('noscroll'); 
-  });
-  
-  // ESC 키를 눌렀을 때 레이어 닫기
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      const layer = document.querySelector('.products-layer');
-      // 레이어가 현재 표시되고 있는 경우에만 닫기
-      if (layer.style.display === 'block') {
-        layer.setAttribute('aria-hidden', 'true');
-        layer.style.display = 'none';
-        document.body.classList.remove('noscroll');
-      }
-    }
   });
   
   initializeProductsSwipers();

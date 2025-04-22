@@ -62,6 +62,7 @@ body {
         font-family: 'LG Smart UI';
         font-weight: 400;
         font-size: rem(20);
+        color: $black;
         white-space: nowrap;
         cursor: pointer;
         border-bottom: 2px solid transparent;
@@ -104,6 +105,7 @@ body {
             position: relative;
             picture {
               display: block;
+              position: relative;
               img {
                 width: 100%;
                 height: 100%;
@@ -203,9 +205,11 @@ body {
                   font-weight: 400;
                   font-size: rem(36);
                   line-height: 1.16;
+                  color: $black;
                   margin-top: rem(20);
                 }
                 .products-slide-btn {
+                  display: block;
                   cursor: pointer;
                   text-align: left;
                 }
@@ -635,6 +639,10 @@ body {
         display:flex;
         align-items:center;
         position:relative;
+        margin-top: rem(16);
+        @include tablet {
+          margin-top: rem(24);
+        }
         .products-layer-content-thumb-swiper-btn-prev,
         .products-layer-content-thumb-swiper-btn-next {
           width:rem(36);
@@ -657,27 +665,20 @@ body {
         }
       }
       &-thumb-swiper {
-        padding:rem(16);
         display:flex;
         align-items:center;
         justify-content:center;
         position:relative;
         margin:0 auto;
-        // @include tablet {
-        //   padding:rem(24);
-        // }
-        // @include desktop {
-        //   padding:rem(32);
-        // }
         .swiper-slide {
           width:rem(72);
           height:rem(72);
-          border-radius:rem(4);
-          overflow:hidden;
-          border:2px solid #CBC8C2;
-          cursor:pointer;
+          border-radius: rem(4);
+          overflow: hidden;
+          border: 2px solid #CBC8C2;
+          cursor: pointer;
           &:hover {
-            border:2px solid $red;
+            border: 2px solid $red;
           }
           @include tablet {
             width:rem(120);
@@ -686,6 +687,13 @@ body {
           }
           img {
             @include img(cover);
+          }
+          .products-slide-btn {
+            display: block;
+            cursor: pointer;
+            .slide-title {
+              display: none;
+            }
           }
           &.swiper-slide-thumb-active {
             border:2px solid $red;
