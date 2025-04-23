@@ -16,7 +16,7 @@ const featuerList = {
     data: {
       1: {
         title: "AI Sound",
-        subTitle: "AI perfects sound for every genre",
+        subTitle: "refines your listening with sound tuned to every genre by AI",
         description: "Choose manually from rhythm, melody, or voice-oriented modes based on your preference, or let AI set the most optimal mode for you. AI analyzes audio and adjusts the sound to suit the genre.",
         type: "image",
         mainImg: "ai-gate-image-product-category-audio-feature01-popup.png",
@@ -25,8 +25,8 @@ const featuerList = {
       },
       2: {
         title: "AI Lighting",
-        subTitle: 'AI lighting that syncs with sound',
-        description: "AI detects genre of your music and delivers the optimal the lighting that syncs with sound. Choose from Ambient, Party, Voice mode to set the mood. Check the informative lighting for speaker's status.",
+        subTitle: 'creates the right vibe by syncing with every sound—powered by AI',
+        description: "Experience AI match your music with lighting that syncs perfectly to the sound. Choose from Ambient, Party, or Voice mode to set the mood, with real-time lighting that reflects your speaker’s status.",
         type: "image",
         mainImg: "ai-gate-image-product-category-audio-feature02-popup.png",
         thumbImg: "ai-gate-image-product-category-audio-feature02.png",
@@ -34,8 +34,8 @@ const featuerList = {
       },
       3: {
         title: "AI Calibration",
-        subTitle: "AI calibration for space-filling sound",
-        description: "AI calibrates audio based on the size and shape of the space you're in. Delivers full, undistorted sound whether in a spacious area or a small room.",
+        subTitle: "fills your space with perfectly tuned sound",
+        description: "Enjoy rich, distortion-free audio as AI calibrates sound to match the size and shape of your room—whether you're in a wide-open space or a cozy corner.",
         type: "image",
         mainImg: "ai-gate-image-product-category-audio-feature03-popup.png",
         thumbImg: "ai-gate-image-product-category-audio-feature03.png",

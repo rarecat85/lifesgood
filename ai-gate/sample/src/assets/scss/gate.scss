@@ -34,7 +34,7 @@ body {
     .play-btn {
       width: rem(32);
       height: rem(32);
-      background-image: url("../images/ai-gate-btn-play.svg");
+      background-image: url("../images/ai-gate-image-btn-play.svg");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -46,7 +46,7 @@ body {
       z-index: 2;
       cursor: pointer;
       &.pause {
-        background-image: url("../images/ai-gate-btn-pause.svg");
+        background-image: url("../images/ai-gate-image-btn-pause.svg");
       }
     }
   }
@@ -166,7 +166,7 @@ body {
                     display: block;
                     width: rem(24);
                     height: rem(24);
-                    background-image: url("../images/ai-gate-slide-arrow-right.svg");
+                    background-image: url("../images/ai-gate-image-slide-arrow-right.svg");
                     background-position: center center;
                     background-repeat: no-repeat;
                     transform: translate(-50%, -50%);
@@ -279,7 +279,7 @@ body {
                   width: rem(9);
                   height: rem(14);
                   vertical-align: rem(-1.5);
-                  background-image: url("../images/ai-gate-arrow-right.svg");
+                  background-image: url("../images/ai-gate-image-arrow-right.svg");
                   background-position: center center;
                   background-repeat: no-repeat;
                   margin-left: rem(4);
@@ -547,7 +547,7 @@ body {
         width:rem(40);
         height:rem(40);
         border-radius:50%;
-        background:$white url('../images/ai-gate-layer-close.svg') no-repeat center;
+        background:$white url('../images/ai-gate-image-layer-close.svg') no-repeat center;
         background-size:rem(16);
         font-size:0;
         position:absolute;
@@ -653,7 +653,7 @@ body {
           flex-shrink:0;
           z-index:999;
           display:flex;
-          background:url('../images/ai-gate-swiper-btn.svg') no-repeat center;
+          background:url('../images/ai-gate-image-swiper-btn.svg') no-repeat center;
           cursor: pointer;
         }
         .products-layer-content-thumb-swiper-btn-prev {
