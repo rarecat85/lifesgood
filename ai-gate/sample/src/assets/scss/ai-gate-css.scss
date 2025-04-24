@@ -299,6 +299,14 @@ body {
                   }
                 }
               }
+              a {
+                &:hover {
+                  .link-btn {
+                    text-decoration: underline;
+                    text-underline-position: under;
+                  }
+                }
+              }
             }
           }
         }

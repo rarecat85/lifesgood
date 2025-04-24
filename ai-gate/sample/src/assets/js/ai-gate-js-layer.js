@@ -90,7 +90,7 @@ const featuerList = {
       2: {
         title: "AI Lighting",
         subTitle: 'creates the right vibe by syncing with every sound—powered by AI',
-        description: "Experience AI match your music with lighting that syncs perfectly to the sound. Choose from Ambient, Party, or Voice mode to set the mood, with real-time lighting that reflects your speaker’s status.",
+        description: "Experience AI match your music with lighting that syncs perfectly to the sound. Choose from Ambient, Party, or Voice mode to set the mood, with real-time lighting that reflects your speaker's status.",
         type: "image",
         mainImg: "ai-gate-image-product-category-audio-feature02-popup.png",
         thumbImg: "ai-gate-image-product-category-audio-feature02.png",
@@ -268,19 +268,21 @@ function createContentSlides(layerType, popupElement) {
       const slide = document.createElement('div');
       slide.className = 'swiper-slide';
       
+      // 모든 슬라이드에 배경 추가
+      const slideBackground = document.createElement('div');
+      slideBackground.classList.add('slide-bg');
+      slideBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
+      slide.append(slideBackground);
+      
       // 이미지 타입인 경우
       if (item.type === 'image') {
-        const slideBackground = document.createElement('div');
-        slideBackground.classList.add('slide-bg');
-        slideBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
-        slide.append(slideBackground);
-        
         const img = document.createElement('img');
         img.src = `${IMAGE_PATH}${item.mainImg}`;
         img.alt = item.imgAlt || '';
         
         slide.appendChild(img);
       }
+      
       // 비디오 타입인 경우
       else if (item.type === 'video') {
         const video = document.createElement('video');
@@ -297,10 +299,6 @@ function createContentSlides(layerType, popupElement) {
           video.setAttribute('aria-label', item.imgAlt);
         }
         
-        const videoBackground = document.createElement('div');
-        videoBackground.classList.add('slide-bg');
-        videoBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
-        slide.append(videoBackground);
         slide.appendChild(video);
       }
       
