@@ -1,7 +1,7 @@
 /* 레이어 컨텐츠 데이터 정의 */
 // 미디어 경로 상수 정의 (여기만 변경해주세요.)
-const IMAGE_PATH = '/content/dam/projects/project_gmc/ai-gate0/image/';
-const VIDEO_PATH = '/content/dam/projects/project_gmc/ai-gate0/video/';
+const IMAGE_PATH = './assets/images/';
+const VIDEO_PATH = './assets/videos/';
 
 // 스와이퍼 인스턴스 저장 변수
 let thumbSwiper = null;
@@ -11,7 +11,71 @@ let currentLayerType = null;
 // 포커스 트랩 변수
 let lastFocusedElementBeforePopup = null;
 
+// 스크롤바 너비를 CSS 변수로 설정하는 함수 (덜컥 거림 방지)
+function setScrollbarWidthProperty() {
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+}
+
 const featuerList = {
+  "layer-tv": {
+    data: {
+      1: {
+        title: "AI Voice ID",
+        subTitle: "unlocks a personalized experience by recognizing your voice",
+        description: "Enjoy personalized recommendations the moment you speak—LG AI Voice ID recognizes your unique voice signature and tailors the experience just for you.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature01-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature01.png",
+        imgAlt: "On an LG OLED TV screen is the webOS 25 home page filled with apps and entertainment content. By the TV is the LG AI Magic Remote, the AI button is highlighted as if activated by the user's voice. A speech bubble is beside it, \"suggest a movie I'll like\"",
+      },
+      2: {
+        title: "AI Search",
+        subTitle: "finds what you need—just by speaking to your remote",
+        description: "Ask your TV anything. Built-in AI recognizes your voice and swiftly provides personalized recommendations to your requests. You can also get additional results and solutions with Microsoft Copilot.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature02-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature02.png",
+        imgAlt: "LG OLED TV screen showing how AI Search works. A small chat window is open showing how the user asked for what sports games are available. AI search responded via chat and by showing thumbnails of different available content. There is also a prompt to ask Microsoft Copilot.",
+      },
+      3: {
+        title: "AI Concierge",
+        subTitle: "lets you enjoy one-click personalized recommendations",
+        description: "Press the AI button on your remote to open AI Concierge, offering personalized keywords and recommendations based on your search and viewing history.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature03-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature03.png",
+        imgAlt: "The LG AI Magic Remote in use. Shortly pressing the AI button activates the AI Assistant on the OLED TV screen, which then suggests keywords.",
+      },
+      4: {
+        title: "AI Chatbot",
+        subTitle: "answers your requests right when you need it",
+        description: "Have your own AI Chatbot actively resolve and help you with your requests. Simply speak to your TV as it can classify your intentions and respond accordingly.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature04-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature04.png",
+        imgAlt: "Sci-fi content is playing on an LG OLED TV screen. On the left side of the screen is the AI Chatbot interface. The user messages the chatbot that the screen is too dark and the chatbot offers solutions to the request.",
+      },
+      5: {
+        title: "AI Picture/Sound Wizard",
+        subTitle: "tunes picture and sound to your taste effortlessly",
+        description: "With a quick setup, let your LG TV gently learn your preferences and intelligently auto-adjust picture and sound—no manual tuning needed.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature05-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature05.png",
+        imgAlt: "Woman singing into microphone with headphones, highlighted by LG α11 AI Processor sound enhancement",
+      },
+      6: {
+        title: "AI Magic Remote",
+        subTitle: "enhances your experience with the Magic Remote and its own AI button",
+        description: "Control your TV easily with AI magic remote - no extra device needed! Simple but powerful click, drag and drop functions make using webOS intuitive and easy to operate.",
+        type: "image",
+        mainImg: "ai-gate-image-product-category-tv-feature06-popup.png",
+        thumbImg: "ai-gate-image-product-category-tv-feature06.png",
+        imgAlt: "Two connected scenes with LG AI Magic Remote in front of a TV—first showing a sci-fi scene, second showing a home screen with personalized content",
+      },
+    }
+  },
   "layer-audio": {
     data: {
       1: {
@@ -41,6 +105,28 @@ const featuerList = {
         thumbImg: "ai-gate-image-product-category-audio-feature03.png",
         imgAlt: "LG XBOOM speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture",
       }
+    }
+  },
+  "layer-appliances":{
+    data: {
+      1: {
+        title: "AI Wash",
+        subTitle: "makes your laundry easier with AI to the core",
+        description: "Get optimized washing as AI adjusts motions based on your laundry type to enhance fabric care and save energy—especially with soft fabrics.",
+        type: "video",
+        mainVideo: "ai-gate-image-product-category-appliances-feature01-popup.mp4",
+        thumbImg: "ai-gate-image-product-category-appliances-feature01.png",
+        imgAlt: "Hand adjusting AI Wash cycle on LG washing machine using smart control dial",
+      },
+      2: {
+        title: "AI Dry",
+        subTitle: "helps complete your laundry smarter with AI at the core",
+        description: "Effortlessly enjoy optimal drying as LG AI adjusts heat and time to each load—helping protect delicate fabrics while saving energy.",
+        type: "video",
+        mainVideo: "ai-gate-image-product-category-appliances-feature02-popup.mp4",
+        thumbImg: "ai-gate-image-product-category-appliances-feature02.png",
+        imgAlt: "User selecting AI Dry cycle on LG dryer using digital control dial",
+      },
     }
   },
   "layer-conditioning": {
@@ -104,6 +190,9 @@ function openLayerPopup(layerType) {
     if (popupElement) {
       popupElement.setAttribute('aria-hidden', 'false');
       popupElement.classList.add('active');
+      
+      // 스크롤바 너비를 CSS 변수로 설정
+      setScrollbarWidthProperty();
       
       // body에 noscroll 클래스 추가
       document.body.classList.add('noscroll');
@@ -203,6 +292,10 @@ function createContentSlides(layerType, popupElement) {
           video.setAttribute('aria-label', item.imgAlt);
         }
         
+        const videoBackground = document.createElement('div');
+        videoBackground.classList.add('video-bg');
+        videoBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
+        slide.append(videoBackground);
         slide.appendChild(video);
       }
       
@@ -353,7 +446,7 @@ function handleLayerButtonClick(event) {
   const classList = button.classList;
   
   // layer-audio, layer-airconditioning, layer-computing 등의 클래스 감지
-  const layerTypes = ['layer-audio', 'layer-conditioning', 'layer-computing'];
+  const layerTypes = ['layer-tv', 'layer-audio','layer-appliances', 'layer-conditioning', 'layer-computing'];
   
   for (const layerType of layerTypes) {
     if (classList.contains(layerType)) {
@@ -365,6 +458,12 @@ function handleLayerButtonClick(event) {
 
 // 문서 로드 후 이벤트 리스너 설정
 document.addEventListener('DOMContentLoaded', function() {
+  // 스크롤바 너비를 CSS 변수로 설정
+  setScrollbarWidthProperty();
+  
+  // 브라우저 크기 변경 시 스크롤바 너비 재계산
+  window.addEventListener('resize', setScrollbarWidthProperty);
+  
   // 레이어 열기 버튼에 이벤트 리스너 추가
   const layerButtons = document.querySelectorAll('.layer-open');
   layerButtons.forEach(button => {

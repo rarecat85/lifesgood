@@ -2,6 +2,7 @@
 body {
   &.noscroll {
     overflow: hidden;
+    padding-right: var(--scrollbar-width);
   }
 }
 .a11y-text {
@@ -303,6 +304,9 @@ body {
       width: 100%;
       object-fit: cover;
     }
+    .play-btn {
+      bottom: rem(40);
+    }
   }
   /*오버뷰*/
   .overview-section {
@@ -475,7 +479,6 @@ body {
       }
     }
   }
-
   .products-layer {
     width:100%;
     height:100%;
@@ -634,6 +637,17 @@ body {
           }
           video {
             @include img();
+          }
+          .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(35px) brightness(0.25);
+            background-size: cover;
+            background-position: center;
           }
         }
       }
@@ -804,6 +818,12 @@ body {
             }
           }
         }
+      }
+    }
+    /*키 비주얼*/
+    .kv-section {
+      .play-btn {
+        bottom: rem(24);
       }
     }
     /*오버뷰*/
