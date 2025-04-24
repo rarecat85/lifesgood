@@ -270,6 +270,11 @@ function createContentSlides(layerType, popupElement) {
       
       // 이미지 타입인 경우
       if (item.type === 'image') {
+        const slideBackground = document.createElement('div');
+        slideBackground.classList.add('slide-bg');
+        slideBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
+        slide.append(slideBackground);
+        
         const img = document.createElement('img');
         img.src = `${IMAGE_PATH}${item.mainImg}`;
         img.alt = item.imgAlt || '';
@@ -293,7 +298,7 @@ function createContentSlides(layerType, popupElement) {
         }
         
         const videoBackground = document.createElement('div');
-        videoBackground.classList.add('video-bg');
+        videoBackground.classList.add('slide-bg');
         videoBackground.style.backgroundImage = `url(${IMAGE_PATH}${item.thumbImg})`;
         slide.append(videoBackground);
         slide.appendChild(video);
