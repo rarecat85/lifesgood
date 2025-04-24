@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LG Affectionate Intelligence | LG Global</title>
 
-    <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="../common/css/font.css" rel="stylesheet" type="text/css" />
-    <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/ai-gate-reset.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/ai-gate-font.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
-    <script src="../common/js/swiper-bundle.min.js"></script>
+    <script src="../common/js/ai-gate-swiper-bundle.min.js"></script>
     <script src="./assets/js/ai-gate-js-layer.js" defer></script>
     <script src="./assets/js/ai-gate-js-common.js" defer></script>
 
@@ -35,7 +35,11 @@
         <!-- S : overview-section -->
         <section class="overview-section">
           <div class="inner">
-            <img src="./assets/images/ai-gate-image-overview-ai-logo-desktop.svg" alt="LG AI" class="ai-logo">
+            <picture>
+              <source media="(min-width: 768px)" srcset="./assets/images/ai-gate-image-overview-ai-logo-desktop.svg">
+              <source media="(max-width: 767px)" srcset="./assets/images/ai-gate-image-overview-ai-logo-mobile.svg">
+              <img src="./assets/images/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI" class="ai-logo">
+            </picture>
             <h2 class="title">
               <span class="gradient-text">Affectionate Intelligence</span> for YOU
             </h2>

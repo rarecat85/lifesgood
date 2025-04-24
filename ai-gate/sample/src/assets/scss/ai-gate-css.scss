@@ -29,6 +29,9 @@ body {
   * {
     font-family: LGEI Text;
   }
+  .swiper-wrapper {
+    height: auto;
+  }
   /*비디오 공통*/
   .video-bx {
     position: relative;
@@ -109,7 +112,6 @@ body {
               position: relative;
               img {
                 width: 100%;
-                height: 100%;
                 object-fit: cover;
               }
             }
@@ -177,11 +179,18 @@ body {
                   }
                   &.swiper-button-next {
                     right: initial;
+                    [dir="rtl"] & {
+                      left: 0;
+                    }
                   }
                   &.swiper-button-prev {
                     transform: rotate(180deg);
                     left: initial;
                     margin-right: rem(8);
+                    [dir="rtl"] & {
+                      right: 0;
+                      margin-left: rem(8);
+                    }
                   }
                 }
               }
@@ -198,7 +207,6 @@ body {
                   img {
                     display: block;
                     width: 100%;
-                    height: 100%;
                     object-fit: cover;
                   }
                 }
@@ -251,7 +259,6 @@ body {
             }
             video {
               width: 100%;
-              height: 100%;
               object-fit: cover;
             }
           }
@@ -558,6 +565,7 @@ body {
         bottom:rem(-16);
         transform:translate(-50%,100%);
         border:1px solid #CBC8C2;
+        z-index: 10;
         @include tablet {
           width:rem(40);
           height:rem(40);
@@ -571,6 +579,14 @@ body {
           width:rem(48);
           height:rem(48);
           transform:translate(100%,calc(-150% + rem(16)));
+        }
+        [dir="rtl"] & {
+          @include desktop {
+            transform:translate(-100%,calc(-150% + rem(16)));
+          }
+          @include tablet {
+            transform:translate(-100%,-100%);
+          }
         }
       }
     }
@@ -650,6 +666,7 @@ body {
             background-position: center;
           }
         }
+        
       }
       &-thumbbx {
         width:100%;
@@ -830,9 +847,6 @@ body {
     .overview-section {
       .inner {
         padding: rem(64) 0;
-        .ai-logo {
-          width: rem(73);
-        }
         .title {
           font-size: rem(28);
         }
@@ -881,6 +895,13 @@ body {
           margin-bottom: rem(12);
           br {
             display: none;
+          }
+        }
+        >.white-btn {
+          margin-left: rem(16);
+          [dir="rtl"] & {
+            margin-left: 0;
+            margin-right: rem(16);
           }
         }
         .banner {
