@@ -1,7 +1,7 @@
 /* 레이어 컨텐츠 데이터 정의 */
 // 미디어 경로 상수 정의 (여기만 변경해주세요.)
-const IMAGE_PATH = './assets/images/';
-const VIDEO_PATH = './assets/videos/';
+const IMAGE_PATH = './assets/image/';
+const VIDEO_PATH = './assets/video/';
 
 // 스와이퍼 인스턴스 저장 변수
 let thumbSwiper = null;
@@ -114,7 +114,7 @@ const featuerList = {
         subTitle: "makes your laundry easier with AI to the core",
         description: "Get optimized washing as AI adjusts motions based on your laundry type to enhance fabric care and save energy—especially with soft fabrics.",
         type: "video",
-        mainVideo: "ai-gate-image-product-category-appliances-feature01-popup.mp4",
+        mainVideo: "ai-gate-video-product-category-appliances-feature01-popup.mp4",
         thumbImg: "ai-gate-image-product-category-appliances-feature01.png",
         imgAlt: "Hand adjusting AI Wash cycle on LG washing machine using smart control dial",
       },
@@ -123,7 +123,7 @@ const featuerList = {
         subTitle: "helps complete your laundry smarter with AI at the core",
         description: "Effortlessly enjoy optimal drying as LG AI adjusts heat and time to each load—helping protect delicate fabrics while saving energy.",
         type: "video",
-        mainVideo: "ai-gate-image-product-category-appliances-feature02-popup.mp4",
+        mainVideo: "ai-gate-video-product-category-appliances-feature02-popup.mp4",
         thumbImg: "ai-gate-image-product-category-appliances-feature02.png",
         imgAlt: "User selecting AI Dry cycle on LG dryer using digital control dial",
       },
