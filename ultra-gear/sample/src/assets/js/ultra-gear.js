@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.create({
       trigger: '.ultra-gear-overview',
       start: 'top bottom', // overview 섹션이 화면 하단에 닿기 시작할 때
-      once: true,
+      once: false,
       onEnter: () => {
         // KV 영역이 완전히 지나간 후에만 애니메이션 활성화
         lists.forEach((list, listIndex) => {
@@ -148,5 +148,26 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // fadeup 애니메이션 적용
   applyFadeUpAnimation();
+
+  // specs 섹션 비디오 재생/일시정지 토글 기능
+  const videoPlayButtons = document.querySelectorAll('.video-list .play-btn');
+  
+  videoPlayButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // 현재 버튼이 속한 li 요소 내의 video 찾기
+      const videoContainer = this.closest('.border-bx');
+      const video = videoContainer.querySelector('video');
+      
+      if(this.classList.contains('active')) {
+        // 일시정지 상태일 때 -> 재생으로 변경
+        video.play();
+        this.classList.remove('active');
+      } else {
+        // 재생 상태일 때 -> 일시정지로 변경
+        video.pause();
+        this.classList.add('active');
+      }
+    });
+  });
 
 });
