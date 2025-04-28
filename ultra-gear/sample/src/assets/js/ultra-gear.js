@@ -30,12 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 스크롤 트리거 생성
     ScrollTrigger.create({
-      trigger: '.ultra-gear-container',
+      trigger: '.ultra-gear-kv',
       start: 'top top',
       end: '+=500%', // 스크롤 거리 조정 (필요에 따라 변경)
       pin: true,     // 섹션 고정
-      pinSpacing: true,
-      scrub: 0.5,    // 스크롤에 따른 애니메이션 부드러움 조정
+      scrub: 1,    // 스크롤에 따른 애니메이션 부드러움 조정
       onUpdate: function(self) {
         // 비디오의 재생 위치를 스크롤 진행도에 맞게 설정
         if (video.duration) {
@@ -114,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // overview 섹션이 나타날 때만 리스트 아이템 애니메이션을 시작하도록 설정
     ScrollTrigger.create({
-      trigger: '.ultra-gear-overview',
-      start: 'top bottom', // overview 섹션이 화면 하단에 닿기 시작할 때
-      once: false,
+      trigger: '.ultra-gear-list-container',
+      start: '=+520%', // overview 섹션이 화면 하단에 닿기 시작할 때
+      markers: true,
       onEnter: () => {
         // KV 영역이 완전히 지나간 후에만 애니메이션 활성화
         lists.forEach((list, listIndex) => {
@@ -137,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
               scrollTrigger: {
                 trigger: list,
                 start: 'top 80%',
-                once: true
               }
             });
           });
