@@ -11,6 +11,7 @@
 
 .ultra-gear-container {
   background-color: #F0ECE4;
+  position: relative;
   * {
     font-family: LGEI Text;
   }
@@ -20,6 +21,9 @@
       margin-left: auto;
       margin-right: auto;
     }
+  }
+  .sticky-wrap {
+    top: 100%;
   }
   /*kv*/
   .ultra-gear-kv {
@@ -355,6 +359,7 @@
     padding: rem(72) 0 rem(48);
     .inner {
       max-width: 1440px;
+      width: calc(100% - rem(96));
       margin-left: auto;
       margin-right: auto;
       .banner-link {
@@ -363,21 +368,102 @@
         border-radius: rem(28);
         overflow: hidden;
         position: relative;
-        strong {
-          font-family: LGEI Headline;
-          font-weight: 700;
-          font-size: rem(48);
-          color: $white;
+        .txt-bx {
           position: absolute;
           top: rem(48);
           left: rem(48);
           z-index: 2;
+          strong {
+            font-family: LGEI Headline;
+            font-weight: 700;
+            font-size: rem(48);
+            color: $white;
+          }
+          img {
+            display: block;
+            margin-top: rem(44);
+          }
         }
-        img {
+        .bg {
           display: block;
           max-width: 100%;
+          min-height: rem(240);
+          object-fit: cover;
+          object-position: right;
         }
       } 
+    }
+  }
+  /*faq*/
+  .ultra-gear-faq {
+    padding: rem(48) 0 rem(64);
+    .inner {
+      max-width: 1440px;
+      width: calc(100% - rem(96));
+      margin-left: auto;
+      margin-right: auto;
+      .title {
+        font-weight: 700;
+        font-size: rem(56);
+        padding-bottom: rem(20);
+        border-bottom: rem(1) solid #cbc8c2;
+      }
+      ul {
+        li {
+          margin-top: rem(20);
+          .question {
+            font-size: rem(20);
+            margin-bottom: rem(20);
+            position: relative;
+            padding-left: rem(30);
+            &::before {
+              content: 'Q.';
+              position: absolute;
+              left: 0;
+              color: $black;
+            }
+          }
+          .answer {
+            font-size: rem(16);
+            line-height: 1.25;
+            background-color: $white;
+            padding: rem(24);
+            border-radius: rem(28);
+            p {
+              max-width: 1000px;
+              position: relative;
+              padding-left: rem(30);
+              &::before {
+                content: 'A.';
+                font-size: rem(20);
+                position: absolute;
+                top: rem(-2);
+                left: 0;
+                color: $black;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+  }
+  /*info*/
+  .ultra-gear-info {
+    .inner {
+      max-width: 1440px;
+      width: calc(100% - rem(96));
+      margin-left: auto;
+      margin-right: auto;
+      .title {
+        font-weight: 700;
+        font-size: rem(56);
+      }
+    }
+    & + .ultra-gear-info { 
+      padding-top: rem(56);
+      margin-top: rem(49);
+      border-top: 1px solid #CBC8C2;
     }
   }
 }

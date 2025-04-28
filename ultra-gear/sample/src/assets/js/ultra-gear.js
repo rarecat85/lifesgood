@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 스크롤 트리거 생성
     ScrollTrigger.create({
-      trigger: '.ultra-gear-kv',
+      trigger: '.ultra-gear-container',
       start: 'top top',
       end: '+=500%', // 스크롤 거리 조정 (필요에 따라 변경)
       pin: true,     // 섹션 고정
