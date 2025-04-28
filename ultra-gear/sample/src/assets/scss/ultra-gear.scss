@@ -1,0 +1,224 @@
+@import "_mixin";
+
+.a11y-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.ultra-gear-container {
+  * {
+    font-family: LGEI Text;
+  }
+  section {
+    .inner {
+      max-width: 1920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  /*kv*/
+  .ultra-gear-kv {
+    width: 100%;
+    height: 100vh;
+    background-color: $black;
+    .inner {
+      width: 100%;
+      height: 100%;
+      .video-container {
+        width: 100%;
+        height: 100%;
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  /*overview*/
+  .ultra-gear-overview {
+    background-color: $black;
+    overflow: hidden;
+    padding-bottom: rem(120);
+    .ultra-gear-logo {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: rem(120) 0;
+    }
+    .ultra-gear-list-container {
+      padding: rem(48) rem(48) 0;
+      .ultra-gear-list {
+        display: flex;
+        gap: rem(24);
+        li {
+          position: relative;
+          border-radius: rem(28);
+          overflow: hidden;
+          .slide-bx {
+            max-width: rem(489);
+            width: 100%;
+            .slide-control { 
+              display: flex;
+              align-items: center;
+              position: absolute;
+              bottom: rem(32);
+              right: rem(32);
+              z-index: 2;
+              .play-btn {
+                width: rem(16);
+                height: rem(16);
+                background-image: url("../images/ultra-gear-pause-btn.svg");
+                background-size: rem(16) rem(16);
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
+                margin: 0 rem(12);
+                &.active {
+                  background-image: url("../images/ultra-gear-play-btn.svg");
+                }
+              }
+              .slide-btn {
+                width: rem(16);
+                height: rem(16);
+                background-image: url("../images/ultra-gear-slide-arrow.svg");
+                background-size: rem(7) rem(12);
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
+                &.slide-button-prev {
+                  transform: rotate(180deg);
+                }
+              }
+            }
+          }
+          .center-txt {
+            position: absolute;
+            left: 50%;
+            bottom: rem(32);
+            transform: translateX(-50%);
+            color: $white;
+            font-family: 'LG Smart UI';
+            font-weight: 400;
+            font-size: rem(20);
+            
+          }
+          .txt-bx {
+            position: absolute;
+            bottom: rem(32);
+            left: rem(32);
+            z-index: 2;
+            color: $white;
+            p {
+              font-family: 'LG Smart UI';
+              font-weight: 400;
+              font-size: rem(20);  
+              margin-bottom: rem(8);
+            }
+            strong {
+              font-weight: 700;
+              font-size: rem(36);
+            }
+          }
+          .title-txt {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            color: $white;
+            font-weight: 700;
+            font-size: rem(64);
+          }
+        }
+        &.list-01 {
+          li {
+            &:nth-child(2) {
+              width: 20%;
+              overflow: unset;
+              z-index: 2;
+              img {
+                max-width: 80%;
+                position: absolute;
+                bottom: 0;
+                right: rem(-40);
+              }
+              .txt-bx {
+                left: 25%;
+              }
+            }
+            &:not(:nth-child(2)) {
+              max-width: rem(489);
+              width: 28%;
+              img {
+                aspect-ratio: 489 / 286;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+        &.list-02 {
+          video,
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          li {
+            &:nth-child(1) {
+              video {
+                max-height: rem(288);
+                aspect-ratio: 768 / 288;
+              }
+            }
+          }
+          .title-txt {
+            font-size: rem(96);
+          }
+        }
+        &.list-03 {
+          video,
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        & + .ultra-gear-list {
+          margin-top: rem(24);
+        }
+      }
+    } 
+  }
+  /*feature*/
+  .ultra-gear-feature {
+    margin-top: rem(-1);
+    position: relative;
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+    }
+    .txt-bx {
+      position: absolute;
+      top: rem(48);
+      transform: translateX(-50%);
+      left: 50%;
+      z-index: 2;
+      text-align: center;
+      font-weight: 400;
+      color: $white;
+      .title {
+        font-size: rem(56);
+        margin-bottom: rem(8);
+      }
+      .txt {
+        font-size: rem(24);
+      }
+    }
+  }
+}
