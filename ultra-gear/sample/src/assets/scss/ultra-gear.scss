@@ -224,9 +224,12 @@ html {
     margin-top: rem(-1);
     position: relative;
     overflow: hidden;
+    video,
     img {
       display: block;
       width: 100%;
+      object-fit: cover;
+      object-position: center;
     }
     .txt-bx {
       max-width: 860px;

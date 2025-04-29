@@ -147,6 +147,25 @@ document.addEventListener('DOMContentLoaded', function() {
   // fadeup 애니메이션 적용
   applyFadeUpAnimation();
 
+  // feature 섹션 비디오 자동 재생 설정
+  const featureVideo = document.querySelector('.ultra-gear-feature video');
+  if (featureVideo) {
+    // 초기 상태 설정 (화면에 보이기 전에는 일시정지)
+    featureVideo.pause();
+    
+    // ScrollTrigger 설정
+    ScrollTrigger.create({
+      trigger: '.ultra-gear-feature',
+      start: 'top bottom', // 섹션의 상단이 화면 하단에 닿을 때
+      onEnter: () => {
+        featureVideo.play();
+      },
+      onLeaveBack: () => {
+        featureVideo.pause();
+      }
+    });
+  }
+
   // specs 섹션 비디오 재생/일시정지 토글 기능
   const videoPlayButtons = document.querySelectorAll('.video-list .play-btn');
   
@@ -167,5 +186,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // feature 섹션 비디오 재생/일시정지 토글 기능
+  const featurePlayBtn = document.querySelector('.ultra-gear-feature .play-btn');
+  if (featurePlayBtn) {
+    featurePlayBtn.addEventListener('click', function() {
+      // 현재 버튼이 속한 video-bx 요소 내의 video 찾기
+      const videoContainer = this.closest('.video-bx');
+      const video = videoContainer.querySelector('video');
+      
+      if(this.classList.contains('active')) {
+        // 일시정지 상태일 때 -> 재생으로 변경
+        video.play();
+        this.classList.remove('active');
+      } else {
+        // 재생 상태일 때 -> 일시정지로 변경
+        video.pause();
+        this.classList.add('active');
+      }
+    });
+  }
 
 });
