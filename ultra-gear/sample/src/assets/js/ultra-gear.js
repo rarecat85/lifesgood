@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.create({
       trigger: '.ultra-gear-kv',
       start: 'top top',
-      end: '+=500%', // 스크롤 거리 조정 (필요에 따라 변경)
+      end: '+=1000%', // 스크롤 거리 조정 (필요에 따라 변경)
       pin: true,     // 섹션 고정
       scrub: 1,    // 스크롤에 따른 애니메이션 부드러움 조정
       onUpdate: function(self) {
@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // overview 섹션이 나타날 때만 리스트 아이템 애니메이션을 시작하도록 설정
     ScrollTrigger.create({
       trigger: '.ultra-gear-list-container',
-      start: '=+520%', // overview 섹션이 화면 하단에 닿기 시작할 때
-      markers: true,
+      start: 'bottom bottom', // overview 섹션이 화면 하단에 닿기 시작할 때
+      end: '+=500%', // 스크롤 거리 조정 (필요에 따라 변경)
       onEnter: () => {
         // KV 영역이 완전히 지나간 후에만 애니메이션 활성화
         lists.forEach((list, listIndex) => {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
               delay: itemDelay,
               scrollTrigger: {
                 trigger: list,
-                start: 'top 80%',
+                start: 'top 30%',
               }
             });
           });
