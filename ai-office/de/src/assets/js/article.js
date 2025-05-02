@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
 
 
@@ -492,6 +493,24 @@ function init() {
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
     document.querySelector('body').classList.remove('noscroll');
+
+    const url = new URL(window.location.href);
+    const sectionParam = url.searchParams.get("section");
+  
+    if (sectionParam) {
+      const targetElem = document.querySelector(`[data-section="${sectionParam}"]`);
+      
+      if (targetElem) {
+        gsap.to(window, {
+          scrollTo: {
+            y: targetElem,
+            offsetY: 50
+          },
+          duration: 1,
+          ease: "power2.out",
+        });
+      }
+    }
   });
 }
 
