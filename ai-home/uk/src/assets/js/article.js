@@ -1,9 +1,11 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
 
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 let prevWidth = window.innerWidth;
+let kvScrollTriggerInstance;
 
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
@@ -30,6 +32,8 @@ function kvAnimation() {
         animation: kvAnimationTl,
         once: true
       });
+
+      kvScrollTriggerInstance = scrollTriggerInstance;
   }else {
     if (kvAnimationTl) {
       kvAnimationTl.kill();
@@ -39,6 +43,7 @@ function kvAnimation() {
       scrollTriggerInstance.kill();
       scrollTriggerInstance = null;
     }
+    kvScrollTriggerInstance = null;
     gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
   }
 }
@@ -612,6 +617,41 @@ function init() {
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
     document.querySelector('body').classList.remove('noscroll');
+    
+    const url = new URL(window.location.href);
+    const sectionParam = url.searchParams.get("section");
+  
+    if (sectionParam) {
+      const targetElem = document.querySelector(`[data-section="${sectionParam}"]`);
+      
+      if (targetElem) {
+        gsap.to(window, {
+          scrollTo: {
+            y: targetElem,
+            offsetY: 50
+          },
+          duration: 1,
+          ease: "power2.out",
+          onComplete: () => {
+            if (isKvAnimationComplete()) {
+              adjustScrollPosition(targetElem);
+            } else {
+              const checkInterval = setInterval(() => {
+                if (isKvAnimationComplete()) {
+                  clearInterval(checkInterval);
+                  adjustScrollPosition(targetElem);
+                }
+              }, 100);
+
+              setTimeout(() => {
+                clearInterval(checkInterval);
+                adjustScrollPosition(targetElem);
+              }, 5000);
+            }
+          }
+        });
+      }
+    }
   });
 }
 
