@@ -32,7 +32,7 @@ function kvAnimation() {
         animation: kvAnimationTl,
         once: true
       });
-
+      
       kvScrollTriggerInstance = scrollTriggerInstance;
   }else {
     if (kvAnimationTl) {
@@ -586,6 +586,22 @@ function debounce(func, delay=500) {
   };
 }
 
+function isKvAnimationComplete() {
+  if (!document.querySelector('.kv') || !isPC() || !kvScrollTriggerInstance) {
+    return true;
+  }
+  
+  return kvScrollTriggerInstance.progress >= 1;
+}
+
+function adjustScrollPosition(targetElem) {
+  const targetPosition = targetElem.getBoundingClientRect().top + window.scrollY - 50;
+  window.scrollTo({
+    top: targetPosition,
+    behavior: 'smooth'
+  });
+}
+
 function init() {
   document.querySelector('body').classList.add('noscroll');
   const sections = Array.from(toArray('section'), section => section.className);
@@ -642,7 +658,7 @@ function init() {
                   adjustScrollPosition(targetElem);
                 }
               }, 100);
-
+              
               setTimeout(() => {
                 clearInterval(checkInterval);
                 adjustScrollPosition(targetElem);
