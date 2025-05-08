@@ -187,6 +187,139 @@ function prodAnimation() {
 
     prodAnimation();
   });
+  // 플로팅 배너 표시/숨김 제어를 위한 ScrollTrigger 생성
+  setupFloatingBannerWithScrollTrigger();
+}
+
+// ScrollTrigger를 이용한 플로팅 배너 설정 함수
+function setupFloatingBannerWithScrollTrigger() {
+  const floatingBanner = document.querySelector('.products-floating-banner');
+  if (!floatingBanner) return;
+  
+  // 닫기 버튼 이벤트 리스너
+  const closeBtn = floatingBanner.querySelector('.products-floating-banner-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      floatingBanner.style.display = 'none';
+    });
+  }
+
+  // 기존 ScrollTrigger 인스턴스 제거
+  ScrollTrigger.getAll().forEach(trigger => {
+    if (trigger.vars.id === 'floatingBannerTrigger') {
+      trigger.kill();
+    }
+  });
+
+  // 전체 products 섹션을 관리하는 함수
+  function updateFloatingBanner() {
+    // 각 섹션별 플로팅 배너 데이터 정의
+    const floatingBannerData = {
+      cassette: {
+        imgSrc: "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgems/ai-office/images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-floating-banner-img-cassette.png",
+        title: 'Cassette Redondo – Diseño elegante con flujo de aire sin puntos ciegos y enfriamiento 30% más rápido, disponible en frío y calor (34,000 BTU’s)',
+        link: 'https://www.lg.com/mx/business/hvac/soluciones-residenciales/divididos/cassette-redondo/'
+      }
+    };
+
+    const floatingBanner = document.querySelector('.products-floating-banner');
+    if (!floatingBanner) return;
+    
+    // 모든 products 섹션 가져오기
+    const productSections = document.querySelectorAll('.products');
+    const lastSection = productSections[productSections.length - 1];
+    
+    // 화면 중앙에 가장 가까운 섹션 찾기
+    let closestSection = null;
+    let minDistance = Infinity;
+    
+    // 화면에 보이는 섹션들 중에 floatingBannerData에 일치하는 값이 있는지 확인
+    let hasMatchingSection = false;
+    let matchingSectionData = null;
+    
+    productSections.forEach(section => {
+      // 섹션이 화면에 보이는지 확인
+      const rect = section.getBoundingClientRect();
+      let isVisible;
+      
+      // 마지막 섹션인 경우 다른 조건 적용
+      if (section === lastSection) {
+        // 마지막 섹션은 bottom이 화면 하단을 넘어가지 않았을 때만 visible로 간주
+        isVisible = 
+          (rect.top < window.innerHeight && rect.bottom > 0) && // 세로로 화면에 보이는지
+          (rect.bottom > window.innerHeight); // 섹션의 하단이 화면 하단을 넘어갔는지
+      } else {
+        // 다른 섹션들은 기존 조건 유지
+        isVisible = 
+          (rect.top < window.innerHeight && rect.bottom > 0) && // 세로로 화면에 보이는지
+          (rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3); // 화면의 특정 부분에 보이는지
+      }
+      
+      // 화면 중앙에서 섹션 중앙까지의 거리 계산
+      if (isVisible) {
+        const screenCenter = window.innerHeight / 2;
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(screenCenter - sectionCenter);
+        
+        // 가장 가까운 섹션 업데이트
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestSection = section;
+        }
+        
+        // 현재 보이는 섹션의 data-section 값이 floatingBannerData에 있는지 확인
+        const sectionId = section.getAttribute('data-section');
+        if (sectionId && floatingBannerData[sectionId]) {
+          hasMatchingSection = true;
+          matchingSectionData = {
+            id: sectionId,
+            data: floatingBannerData[sectionId]
+          };
+        }
+      }
+    });
+    
+    // 가장 가까운 섹션이 변경되면 콘솔에 출력
+    if (closestSection && (!window.lastActiveSection || window.lastActiveSection !== closestSection)) {
+      const sectionId = closestSection.getAttribute('data-section');
+      console.log('현재 활성 섹션:', sectionId);
+      
+      // 이전 활성 섹션 정보 저장
+      window.lastActiveSection = closestSection;
+    }
+    
+    // floatingBannerData에 매칭되는 섹션이 있을 경우 배너 업데이트 및 표시
+    if (hasMatchingSection && matchingSectionData) {
+      const { id, data } = matchingSectionData;
+      
+      // 배너 내용 업데이트
+      const imgElement = floatingBanner.querySelector('.products-floating-banner-content-img img');
+      const titleElement = floatingBanner.querySelector('.products-floating-banner-content-title');
+      const linkElement = floatingBanner.querySelector('.btn');
+      
+      if (imgElement) imgElement.src = data.imgSrc;
+      if (titleElement) titleElement.textContent = data.title;
+      if (linkElement) linkElement.href = data.link;
+      
+      // 배너 표시
+      floatingBanner.style.display = 'flex';
+    } else {
+      // 매칭되는 섹션이 없으면 배너 숨김
+      floatingBanner.style.display = 'none';
+    }
+  }
+  
+  // 스크롤 이벤트에 배너 업데이트 함수 연결
+  ScrollTrigger.create({
+    id: 'floatingBannerTrigger',
+    start: 0,
+    end: 'max',
+    onUpdate: updateFloatingBanner,
+    markers: false,
+  });
+  
+  // 초기 상태 설정
+  updateFloatingBanner();
 }
 
 function productsSwiper() {
