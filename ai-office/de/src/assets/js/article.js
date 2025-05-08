@@ -202,7 +202,7 @@ function setupFloatingBannerWithScrollTrigger() {
     // 각 섹션별 플로팅 배너 데이터 정의
     const floatingBannerData = {
       gram: {
-        imgSrc: "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/ai-home/images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-floating-banner-img-gram.png",
+        imgSrc: "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgede/ai-office/images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-floating-banner-img-gram.png",
         title: '17 Zoll LG gram Notebook mit Intel® Core™ Ultra 7 Prozessor',
         link: 'https://www.lg.com/de/notebooks/gram-pro/17z90tp-g/'
       }
