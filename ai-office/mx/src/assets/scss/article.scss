@@ -219,7 +219,7 @@ body {
       display:flex;
       align-items:flex-end;
       flex-direction:column;
-      z-index:10;
+      z-index:101;
       box-shadow:0px -4px 8px 0px rgba(0, 0, 0, 0.10);
       display:none;
       &-close {
@@ -370,7 +370,7 @@ body {
             content:'';
             width:rem(16);
             height:rem(16);
-            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-arrow.svg') no-repeat center;
+            background:url('../images/lifes-good-campaign-2025-live-human-lgcom-ai-office-img-arrow.svg') no-repeat center;
             background-size:contain;
             display:flex;
             @include tablet {
