@@ -218,8 +218,8 @@ function setupFloatingBannerWithScrollTrigger() {
     const floatingBannerData = {
       oled: {
         imgSrc: "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeuk/ai-home/images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-floating-banner-img-oled.png",
-        title: '65 inch LG OLED evo AI C4 4K Smart TV',
-        link: 'https://www.lg.com/uk/tvs-soundbars/oled-evo/oled65c45la/buy/'
+        title: '65 inch LG OLED evo AI C5 4K Smart TV 2025',
+        link: 'https://www.lg.com/uk/tvs-soundbars/oled-evo/oled65c56lb/'
       },
       washtower: {
         imgSrc: "/content/dam/master-2/hq_gmg/brand-platform/life's-good-campaign/2025/live-human/lgcom/lgeuk/ai-home/images/lifes-good-campaign-2025-live-human-lgcom-ai-home-img-floating-banner-img-washtower.png", 
