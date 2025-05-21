@@ -324,12 +324,13 @@ document.querySelectorAll(".tab-panel-slide .swiper").forEach(function(swiperEle
           spaceBetween: 24,
           observer: true,
           observeParents: true,
+          autoHeight: true,
           navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            prevEl: ".tab-panel-slide .swiper-button-next",
+            nextEl: ".tab-panel-slide .swiper-button-prev",
           },
           pagination: {
-            el: ".swiper-pagination",
+            el: ".tab-panel-slide .swiper-pagination",
             type: "fraction",
           },
           on: {
@@ -367,6 +368,14 @@ var storiesSlide = new Swiper(".stories-section .swiper", {
 var youtubeVideoSlide = new Swiper(".youtube-video-list .swiper", {
   slidesPerView: 1,
   spaceBetween: 10,
+  navigation: {
+    prevEl: ".youtube-video-list .swiper-button-prev",
+    nextEl: ".youtube-video-list .swiper-button-next",
+  },
+  pagination: {
+    el: ".youtube-video-list .swiper-pagination",
+    type: "fraction",
+  },
   breakpoints: {
     768: {
       slidesPerView: 3,

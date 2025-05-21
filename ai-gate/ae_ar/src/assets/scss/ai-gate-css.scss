@@ -102,6 +102,7 @@ body {
             font-weight: 400;
             font-size: rem(24);
             line-height: 1.2;
+            color: #333333;
             margin-top: rem(8);
           }
           /*탭 배너*/
@@ -420,7 +421,7 @@ body {
         max-width: 1196px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: rem(40);
+        margin-top: rem(64);
         .swiper {
           .swiper-slide {
             .video-btn {
@@ -555,12 +556,13 @@ body {
   }
   //stories-section
   .stories-section {
+    padding: rem(120) 0 rem(60);
     .inner {
       padding: rem(32) 0;
       margin: 0 auto;
       @include tablet {
         width: min(calc(100% - rem(40)), 1440px);
-        padding: rem(60) 0;
+        padding: rem(60) 0; 
       }
       .title {
         // font-family: "LGEI Headline";

@@ -14,7 +14,6 @@
     <link href="../common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
     <script src="../common/js/ai-gate-swiper-bundle.min.js"></script>
-    <!-- <script src="./assets/js/ai-gate-js-layer.js" defer></script> -->
     <script src="./assets/js/ai-gate-js-common.js" defer></script>
 
   </head>
@@ -272,7 +271,11 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                      <picture>
+                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                      </picture> 
                       Evolves to satisfy your every entertainment need 
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -360,7 +363,11 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                      <picture>
+                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                      </picture>
                       Sounds uniquely right
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -429,7 +436,11 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                      <picture>
+                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                      </picture>
                       Lighten your every load
                     </h2>
                     <!-- E : tab-panel-title -->  
@@ -495,7 +506,11 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                      <picture>
+                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                      </picture> 
                       Comforts with perfectly tuned cooling
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -562,7 +577,11 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">  
+                      <picture>
+                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">
+                      </picture>  
                       Powers everything you do
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -682,7 +701,11 @@
                   </div>
                   <!-- E : swiper-slide05 -->
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-controller">
+                  <div class="swiper-button-prev slide-btn"></div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-next slide-btn"></div>
+                </div>
               </div>
             </div>
             <!-- E : youtube-video-list -->
@@ -761,36 +784,6 @@
           </div>
         </section>
         <!-- E : stories-section -->
-        <!-- S : layer-popup -->
-        <!-- <div class="products-layer" role="dialog" aria-hidden="true" aria-modal="true" tabindex="-1">
-          <div class="products-layer-conbx">
-            <div class="products-layer-header">
-              <div class="products-layer-header-title-bx">
-                <h2 class="products-layer-header-title-bx-title heading"></h2>
-              </div>
-              <a href="javascript:void(0)" class="products-layer-header-close" role="button" aria-label="colse">close</a>
-            </div>
-            <div class="products-layer-content">
-              <div class="products-layer-content-txtwrap">
-                <div class="products-layer-content-txtwrap-txtbx">
-                  <h3 class="products-layer-content-txtwrap-txtbx-title heading"></h3>
-                  <p class="products-layer-content-txtwrap-txtbx-desc"></p>
-                </div>
-              </div>
-              <div class="products-layer-content-swiper swiper">
-                <div class="products-layer-content-swiper-wrapper swiper-wrapper"></div>
-              </div>
-              <div class="products-layer-content-thumbbx">
-                <div class="products-layer-content-thumb-swiper-btn-prev"></div>
-                <div class="products-layer-content-thumb-swiper swiper">
-                  <div class="products-layer-content-thumb-swiper-wrapper swiper-wrapper"></div>
-                </div>
-                <div class="products-layer-content-thumb-swiper-btn-next"></div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <!-- E : layer-popup -->
       </div>
     </main>
   </body>
