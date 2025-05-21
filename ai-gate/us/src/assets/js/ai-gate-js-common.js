@@ -380,123 +380,123 @@ var youtubeVideoSlide = new Swiper(".youtube-video-list .swiper", {
 });
 
 /* youtube pop */
-// const popShowBtn = document.querySelector(".youtube-video-list .video-btn");
-// popShowBtn.addEventListener("click", openYoutubePop);
+const popShowBtn = document.querySelector(".youtube-video-list .video-btn");
+popShowBtn.addEventListener("click", openYoutubePop);
 
-// function openYoutubePop() {
-//   const body = document.querySelector("body");
-//   const youtubeId = this.dataset.src;
+function openYoutubePop() {
+  const body = document.querySelector("body");
+  const youtubeId = this.dataset.src;
   
-//   // 기존 팝업이 있으면 제거
-//   const existingPop = document.querySelector('.youtube-pop');
-//   if (existingPop) {
-//     existingPop.remove();
-//   }
+  // 기존 팝업이 있으면 제거
+  const existingPop = document.querySelector('.youtube-pop');
+  if (existingPop) {
+    existingPop.remove();
+  }
   
-//   // 새로운 팝업 요소 생성
-//   const popupElement = document.createElement('div');
-//   popupElement.className = 'youtube-pop';
+  // 새로운 팝업 요소 생성
+  const popupElement = document.createElement('div');
+  popupElement.className = 'youtube-pop';
   
-//   // 로딩 상태 표시
-//   popupElement.innerHTML = `
-//     <div class="youtube-pop-inner">
-//       <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
-//       <div class="loading-container">
-//         <div class="loading-wrapper">
-//           <div class="spinner" role="status" aria-live="polite">
-//             <span class="a11y-text">로딩중...</span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   `;
+  // 로딩 상태 표시
+  popupElement.innerHTML = `
+    <div class="youtube-pop-inner">
+      <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
+      <div class="loading-container">
+        <div class="loading-wrapper">
+          <div class="spinner" role="status" aria-live="polite">
+            <span class="a11y-text">로딩중...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
   
-//   // body에 팝업 요소 추가
-//   body.appendChild(popupElement);
+  // body에 팝업 요소 추가
+  body.appendChild(popupElement);
   
-//   // 닫기 버튼에 이벤트 리스너 추가
-//   const closeButton = popupElement.querySelector('.youtube-pop-close');
-//   closeButton.addEventListener('click', closeYoutubePop);
+  // 닫기 버튼에 이벤트 리스너 추가
+  const closeButton = popupElement.querySelector('.youtube-pop-close');
+  closeButton.addEventListener('click', closeYoutubePop);
   
-//   // ESC 키 누르면 팝업 닫히도록 이벤트 리스너 추가
-//   document.addEventListener('keydown', handleEscKey);
+  // ESC 키 누르면 팝업 닫히도록 이벤트 리스너 추가
+  document.addEventListener('keydown', handleEscKey);
   
-//   // body에 스크롤 방지 클래스 추가
-//   body.classList.add('popup-open');
+  // body에 스크롤 방지 클래스 추가
+  body.classList.add('popup-open');
   
-//   // YouTube oEmbed API를 사용하여 동영상 정보 가져오기
-//   fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${youtubeId}&format=json`)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('동영상 정보를 가져올 수 없습니다.');
-//       }
-//       return response.json();
-//     })
-//     .then(data => {
-//       // YouTube 동영상 제목 가져오기
-//       const videoTitle = data.title || 'YouTube 동영상';
+  // YouTube oEmbed API를 사용하여 동영상 정보 가져오기
+  fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${youtubeId}&format=json`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('동영상 정보를 가져올 수 없습니다.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // YouTube 동영상 제목 가져오기
+      const videoTitle = data.title || 'YouTube 동영상';
       
-//       // iframe 요소로 팝업 내용 업데이트
-//       const popupInner = popupElement.querySelector('.youtube-pop-inner');
-//       popupInner.innerHTML = `
-//         <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
-//         <iframe 
-//           src="https://www.youtube.com/embed/${youtubeId}?mute=1&enablejsapi=1" 
-//           enablejsapi="1" 
-//           title="${videoTitle}" 
-//           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-//           referrerpolicy="strict-origin-when-cross-origin" 
-//           allowfullscreen>
-//         </iframe>
-//       `;
+      // iframe 요소로 팝업 내용 업데이트
+      const popupInner = popupElement.querySelector('.youtube-pop-inner');
+      popupInner.innerHTML = `
+        <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
+        <iframe 
+          src="https://www.youtube.com/embed/${youtubeId}?mute=1&enablejsapi=1" 
+          enablejsapi="1" 
+          title="${videoTitle}" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      `;
       
-//       // 닫기 버튼에 이벤트 리스너 다시 추가
-//       const newCloseButton = popupInner.querySelector('.youtube-pop-close');
-//       newCloseButton.addEventListener('click', closeYoutubePop);
-//     })
-//     .catch(error => {
-//       console.error('YouTube 동영상 정보 가져오기 오류:', error);
+      // 닫기 버튼에 이벤트 리스너 다시 추가
+      const newCloseButton = popupInner.querySelector('.youtube-pop-close');
+      newCloseButton.addEventListener('click', closeYoutubePop);
+    })
+    .catch(error => {
+      console.error('YouTube 동영상 정보 가져오기 오류:', error);
       
-//       // 오류 시 기본 iframe으로 표시
-//       const popupInner = popupElement.querySelector('.youtube-pop-inner');
-//       popupInner.innerHTML = `
-//         <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
-//         <iframe 
-//           src="https://www.youtube.com/embed/${youtubeId}?mute=1&enablejsapi=1" 
-//           enablejsapi="1" 
-//           title="YouTube 동영상" 
-//           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-//           referrerpolicy="strict-origin-when-cross-origin" 
-//           allowfullscreen>
-//         </iframe>
-//       `;
+      // 오류 시 기본 iframe으로 표시
+      const popupInner = popupElement.querySelector('.youtube-pop-inner');
+      popupInner.innerHTML = `
+        <button type="button" class="youtube-pop-close" aria-label="Close video">×</button>
+        <iframe 
+          src="https://www.youtube.com/embed/${youtubeId}?mute=1&enablejsapi=1" 
+          enablejsapi="1" 
+          title="YouTube 동영상" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      `;
       
-//       // 닫기 버튼에 이벤트 리스너 다시 추가
-//       const newCloseButton = popupInner.querySelector('.youtube-pop-close');
-//       newCloseButton.addEventListener('click', closeYoutubePop);
-//     });
-// }
+      // 닫기 버튼에 이벤트 리스너 다시 추가
+      const newCloseButton = popupInner.querySelector('.youtube-pop-close');
+      newCloseButton.addEventListener('click', closeYoutubePop);
+    });
+}
 
-// // 유튜브 팝업 닫기 함수
-// function closeYoutubePop() {
-//   const popup = document.querySelector('.youtube-pop');
-//   if (popup) {
-//     popup.remove();
-//   }
+// 유튜브 팝업 닫기 함수
+function closeYoutubePop() {
+  const popup = document.querySelector('.youtube-pop');
+  if (popup) {
+    popup.remove();
+  }
   
-//   // ESC 키 이벤트 리스너 제거
-//   document.removeEventListener('keydown', handleEscKey);
+  // ESC 키 이벤트 리스너 제거
+  document.removeEventListener('keydown', handleEscKey);
   
-//   // body에서 스크롤 방지 클래스 제거
-//   document.querySelector('body').classList.remove('popup-open');
-// }
+  // body에서 스크롤 방지 클래스 제거
+  document.querySelector('body').classList.remove('popup-open');
+}
 
-// // ESC 키 처리 함수
-// function handleEscKey(event) {
-//   if (event.key === 'Escape') {
-//     closeYoutubePop();
-//   }
-// }
+// ESC 키 처리 함수
+function handleEscKey(event) {
+  if (event.key === 'Escape') {
+    closeYoutubePop();
+  }
+}
 
 function init() {
   // toArray 함수 대신 Array.from 사용

@@ -148,6 +148,7 @@ body {
                 .swiper-pagination {
                   font-weight: 400;
                   font-size: rem(24);
+                  color: #646464;
                   line-height: 1.16;
                   width: auto;
                   position: static; 
@@ -330,7 +331,7 @@ body {
   .overview-section {
     .inner {
       text-align: center;
-      padding: rem(120) 0;
+      padding: rem(120) 0 rem(240);
       .ai-logo {
         margin-bottom: rem(24);
       }

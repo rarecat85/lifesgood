@@ -81,6 +81,7 @@ body {
     }
     /*탭 컨텐츠*/
     .panel-container {
+      overflow: hidden;
       .tab-panel {
         .tab-panel-inner {
           /*탭 타이틀*/
