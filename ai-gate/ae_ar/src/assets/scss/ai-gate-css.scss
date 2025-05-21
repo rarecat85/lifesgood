@@ -861,12 +861,14 @@ body {
     .tab-container {
       .tab-list {
         gap: rem(24);
+        margin-bottom: rem(24);
       }
       .panel-container {
         .tab-panel {
           .tab-panel-inner {
             .tab-panel-title {
-              font-size: rem(24);
+              font-size: rem(28);
+              line-height: 1.1428;
             }
             .tab-panel-text {
               font-size: rem(16);
@@ -977,15 +979,17 @@ body {
     }
     /*제품 탭*/
     .product-section {
+      padding: 0 0 rem(32);
       .inner {
         width: calc(100% - rem(32));
-        padding: rem(32) 0;
+        padding: rem(32) 0 rem(28);
       }
     }
     /*피처 탭*/
     .feature-section  {
+      padding-bottom: rem(56);
       .inner {
-        padding-bottom: rem(56);
+        padding: rem(32) 0;
       }
     }
     /*thinq 탭*/
@@ -1048,12 +1052,29 @@ body {
         }
         .youtube-video-list {
           width: calc(100% - rem(32));
+          margin-top: rem(154);
+          padding-bottom: rem(56);
+          .swiper-controller {
+            gap: rem(16);
+            margin-top: rem(24);
+            .slide-btn {
+              width: rem(32);
+              height: rem(32);
+              &::after {
+                width: rem(12);
+                height: rem(12);
+                background-size: rem(12);
+              }
+            }
+          }width: calc(100% - rem(32));
         }
       }
     }
     //stories-section
     .stories-section {
+      padding: 0;
       .inner {
+        padding: rem(64) 0;
         .title {
           font-size: rem(28);
           line-height: 1.1428;
