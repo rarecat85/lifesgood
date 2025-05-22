@@ -26,8 +26,6 @@ body {
   @include btn($white);
 }
 .gate-container {
-  max-width: 1920px;
-  margin: 0 auto;
   background-color: #F0ECE4;
   * {
     font-family: 'LG Smart UI';
@@ -63,8 +61,9 @@ body {
     .tab-list {
       display: flex;
       gap: rem(36);
-      margin-bottom: rem(48);
+      margin-bottom: rem(40);
       overflow: auto;
+      padding-bottom: rem(8);
       .tab {
         font-family: 'LG Smart UI';
         font-weight: 400;
@@ -867,7 +866,7 @@ body {
         .tab-panel {
           .tab-panel-inner {
             .tab-panel-title {
-              font-size: rem(28);
+              font-size: rem(24);
               line-height: 1.1428;
             }
             .tab-panel-text {
@@ -969,6 +968,7 @@ body {
           text-wrap: balance;
           strong {
             font-size: rem(20);
+            margin-top: rem(40);
           }
         }
         .scroll-down-icon {
@@ -1054,9 +1054,22 @@ body {
           width: calc(100% - rem(32));
           margin-top: rem(154);
           padding-bottom: rem(56);
+          .swiper {
+            .swiper-slide {
+              .video-btn {
+                &::after {
+                  width: rem(50);
+                  height: rem(50);
+                }
+              }
+            }
+          }
           .swiper-controller {
             gap: rem(16);
             margin-top: rem(24);
+            .swiper-pagination {
+              margin: 0;
+            }
             .slide-btn {
               width: rem(32);
               height: rem(32);
