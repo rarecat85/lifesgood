@@ -1,30 +1,83 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+<head>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title><!--타이틀--></title>
+    <meta name="Keywords" content="LG AI، الذكاء العاطفي، الذكاء الاصطناعي الموجه نحو الإنسان، منصة الحياة الذكية، حلول تكنولوجية متقدمة">
+    <meta name="Description" content='تسعى LG AI لتحقيق حياة مليئة بالبهجة والسهولة والعناية من خلال "الاستشعار بحكمة، والفهم بعمق، والعناية بحرارة." اختبر جودة حياة أعلى مع ذكاء LG العاطفي، حيث يتجاوز الذكاء الاصطناعي ليقدم رعاية دافئة وموجهة نحو الإنسان.'>
+    <meta property="og:title" content="الذكاء الاصطناعي من إل جي | إل جي الإمارات"/>
+    <meta property="og:url" content="https://www.lg.com/ae_ar/lg-ai">
+    <meta property="og:description" content='تسعى LG AI لتحقيق حياة مليئة بالبهجة والسهولة والعناية من خلال "الاستشعار بحكمة، والفهم بعمق، والعناية بحرارة." اختبر جودة حياة أعلى مع ذكاء LG العاطفي، حيث يتجاوز الذكاء الاصطناعي ليقدم رعاية دافئة وموجهة نحو الإنسان.'/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
-<html lang="en" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الذكاء الاصطناعي من إل جي | إل جي الإمارات</title>
+    <!-- your -->
+    <link href="/ae_ar/lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css" />
+    <link href="/ae_ar/lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="/ae_ar/lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
 
-    <link href="../common/css/ai-gate-reset.css" rel="stylesheet" type="text/css" />
-    <link href="../common/css/ai-gate-font.css" rel="stylesheet" type="text/css" />
-    <link href="../common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-    <link href="./assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
-    <script src="../common/js/ai-gate-swiper-bundle.min.js"></script>
-    <!-- <script src="./assets/js/ai-gate-js-layer.js" defer></script> -->
-    <script src="./assets/js/ai-gate-js-common.js" defer></script>
+    <script src="/ae_ar/lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
+    <script src="/ae_ar/lg-ai/assets/js/ai-gate-js-layer.js" defer></script>
+    <script src="/ae_ar/lg-ai/assets/js/ai-gate-js-common.js" defer></script>
 
-  </head>
-  <body>
-    <main>
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
+<body>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
+    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<main>
       <div class="gate-container">
         <!-- S : kv-section -->
         <section class="kv-section">
           <div class="inner">
             <div class="video-bx responsive-video" 
-            data-desktop-video-src="./assets/video/ai-gate-video-kv-video-desktop.mp4" 
-            data-mobile-video-src="./assets/video/ai-gate-video-kv-video-mobile.mp4"
-            data-desktop-poster-src="./assets/image/ai-gate-image-kv-desktop.png" 
-            data-mobile-poster-src="./assets/image/ai-gate-image-kv-mobile.png" 
+            data-desktop-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-kv-video-desktop.mp4" 
+            data-mobile-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-kv-video-mobile.mp4"
+            data-desktop-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-kv-desktop.png" 
+            data-mobile-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-kv-mobile.png" 
             aria-labelledby="kv-video-description">
             <h1 id="kv-video-description" class="a11y-text">
               مرأة تمر بجانب الضوء الذي ينقلب تلقائيًا. تظهر العبارة "الاستشعار بحكمة" على الشاشة.
@@ -47,9 +100,9 @@
         <section class="overview-section">
           <div class="inner">
             <picture>
-              <source media="(min-width: 768px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
-              <source media="(max-width: 767px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
-              <img src="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="شعار LG AI" class="ai-logo">
+              <source media="(min-width: 768px)" srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
+              <source media="(max-width: 767px)" srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
+              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="شعار LG AI" class="ai-logo">
             </picture>
             <h2 class="title">
               <span class="gradient-text">الذكاء المحب</span> لك
@@ -62,7 +115,7 @@
               لذلك، يبدأ الذكاء الاصطناعي من إل جي معك، حيث يستشعر، ويفهم، ويعتني بحياتك بحب.
               <strong>اكتشف كيف تكون الحياة رائعة مع الذكاء الاصطناعي من LG</strong>
             </p>
-            <img src="./assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="أيقونة التمرير لأسفل" class="scroll-down-icon">
+            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="أيقونة التمرير لأسفل" class="scroll-down-icon">
           </div>
         </section>
         <!-- E : overview-section -->
@@ -86,9 +139,9 @@
                     <h2 class="tab-panel-title text-center">يفهم الذكاء الاصطناعي من LG حياتك ويُحسن التجارب ليملأ حياتك بلحظات ممتعة.</h2>
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" 
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit01-banner-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit01-banner-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit01-banner-desktop.png" 
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit01-banner-mobile.png" 
+                      data-desktop-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit01-banner-desktop.mp4" data-mobile-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit01-banner-mobile.mp4"
+                      data-desktop-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png" 
+                      data-mobile-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png" 
                       aria-labelledby="benefit01-banner-video-description"
                       >
                       <span id="benefit01-banner-video-description" class="a11y-text">
@@ -104,7 +157,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/oled-evo">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products01.png" alt="عرض أمامي لمنتج LG OLED evo AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-products01.png" alt="عرض أمامي لمنتج LG OLED evo AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -112,7 +165,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/oled-tvs">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products02.png" alt="عرض أمامي لمنتج LG OLED AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="عرض أمامي لمنتج LG OLED AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -120,7 +173,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/qned-tvs">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products03.png" alt="عرض أمامي لمنتج LG QNED AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="عرض أمامي لمنتج LG QNED AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -128,7 +181,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/uhd-tvs">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products04.png" alt="عرض أمامي لمنتج LG Ultra HD AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="عرض أمامي لمنتج LG Ultra HD AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -136,7 +189,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/sound-bars">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products05.png" alt="عرض أمامي لمنتج  LG Soundbar" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit01-products05.png" alt="عرض أمامي لمنتج  LG Soundbar" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -152,9 +205,9 @@
                     <h2 class="tab-panel-title text-center">يستشعر الذكاء الاصطناعي من LG احتياجاتك ويقدم الحلول لتجعل حياتك تسير بسلاسة وفقًا لإيقاعك.</h2>
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" 
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit02-banner-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit02-banner-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit02-banner-desktop.png" 
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit02-banner-mobile.png" 
+                      data-desktop-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit02-banner-desktop.mp4" data-mobile-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit02-banner-mobile.mp4"
+                      data-desktop-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png" 
+                      data-mobile-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png" 
                       aria-labelledby="benefit02-banner-video-description">
                       <span id="benefit02-banner-video-description" class="a11y-text">أم وابنها يستخدمان غسالة LG AI معًا، يديران القرص لتفعيل AI Wash. يظهر رجل يستخدم جهاز LG gram المحمول في نفس التسلسل.</span>
                       <h3 class="video-title">من أجل حياة من غير جهد</h3>
@@ -166,7 +219,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/washing-machines/washtower">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products01.png" alt="عرض أمامي لمنتج LG WashTower AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="عرض أمامي لمنتج LG WashTower AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -174,7 +227,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/washing-machines">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products02.png" alt="عرض أمامي لمنتج غسالة LG AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="عرض أمامي لمنتج غسالة LG AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -182,7 +235,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/dryers">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products03.png" alt="عرض أمامي لمنتج LG Dryer AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="عرض أمامي لمنتج LG Dryer AI" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -190,7 +243,7 @@
                       <li class="product-item">
                         <a href="javascript:void(0)">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products04.png" alt="عرض أمامي لمنتج LG InstaView AI" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="عرض أمامي لمنتج LG InstaView AI" loading="lazy">
                           </div>
                           <!-- <span class="link-btn">تعرف على المزيد</span> -->
                         </a>
@@ -206,9 +259,9 @@
                     <h2 class="tab-panel-title text-center">يهتم الذكاء الاصطناعي من LG بك، وبمساحتك، وكوكبك ليجعل حياتك مُعَتنى بها، كما ترغب.</h2>
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" 
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit03-banner-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit03-banner-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit03-banner-desktop.png" 
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit03-banner-mobile.png" 
+                      data-desktop-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit03-banner-desktop.mp4" data-mobile-video-src="/ae_ar/lg-ai/assets/video/ai-gate-video-benefit03-banner-mobile.mp4"
+                      data-desktop-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png" 
+                      data-mobile-poster-src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png" 
                       aria-labelledby="benefit03-banner-video-description">
                       <span id="benefit03-banner-video-description" class="a11y-text">رجل يدخل المكتب ممسكًا بسلسلة كلب. رجل في مقعد السائق يبدو حزينًا بينما يعرض له LG AI صورة عائلية. يتم عرض شاشة السيارة عن قرب بينما يسحب LG AI خريطة ويسترجع ذكرى.</span>
                       <h3 class="video-title">من أجل حياتك المُعَتنى بها</h3>
@@ -220,7 +273,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/ae_ar/non-tropical-split-air-conditioners">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI product front view" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI product front view" loading="lazy">
                           </div>
                           <span class="link-btn">تعرف على المزيد</span>
                         </a>
@@ -228,7 +281,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products02.png" alt="عرض جانبي لمنتج نظام الرؤية ADAS" loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit03-products02.png" alt="عرض جانبي لمنتج نظام الرؤية ADAS" loading="lazy">
                           </div>
                           <!-- <span class="link-btn">تعرف على المزيد</span> -->
                         </a>
@@ -236,7 +289,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products03.png" alt="المستخدم يتفاعل مع واجهة اللمس المدعومة من حل AI HMI متعدد الأنماط، ويختار قائمة القهوة مع موجه مساعد الذكاء الاصطناعي." loading="lazy">
+                            <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit03-products03.png" alt="المستخدم يتفاعل مع واجهة اللمس المدعومة من حل AI HMI متعدد الأنماط، ويختار قائمة القهوة مع موجه مساعد الذكاء الاصطناعي." loading="lazy">
                           </div>
                           <!-- <span class="link-btn">تعرف على المزيد</span> -->
                         </a>
@@ -273,9 +326,9 @@
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
                       </picture> 
                       يتطور ليلبي كل احتياجاتك
                     </h2>
@@ -288,9 +341,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="فوق جهاز التحكم عن بُعد LG Magic، يتم عرض ميزات مثل AI Voice ID، وAI Search، وAI Chatbot، وAI Concierge، وAI Picture Wizard، وAI Sound Wizard." loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="فوق جهاز التحكم عن بُعد LG Magic، يتم عرض ميزات مثل AI Voice ID، وAI Search، وAI Chatbot، وAI Concierge، وAI Picture Wizard، وAI Sound Wizard." loading="lazy">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title">
@@ -312,37 +365,37 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature01.png" alt='على شاشة تلفزيون LG OLED، توجد صفحة رئيسية webOS 25 مليئة بالتطبيقات ومحتوى الترفيه. بجانب التلفاز يوجد جهاز التحكم عن بُعد LG AI Magic، حيث يتم تمييز زر الذكاء الاصطناعي كما لو كان قد تم تفعيله بواسطة صوت المستخدم. تظهر فقاعة حوار بجانبه، تقول "اقترح لي فيلمًا سأحبه".'>
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png" alt='على شاشة تلفزيون LG OLED، توجد صفحة رئيسية webOS 25 مليئة بالتطبيقات ومحتوى الترفيه. بجانب التلفاز يوجد جهاز التحكم عن بُعد LG AI Magic، حيث يتم تمييز زر الذكاء الاصطناعي كما لو كان قد تم تفعيله بواسطة صوت المستخدم. تظهر فقاعة حوار بجانبه، تقول "اقترح لي فيلمًا سأحبه".'>
                             </div>
                             <p class="slide-title">AI Voice ID</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature02.png" alt="شاشة تلفزيون LG OLED تعرض كيفية عمل AI Search. نافذة دردشة صغيرة مفتوحة تظهر كيفية طلب المستخدم للمباريات الرياضية المتاحة. استجاب بحث الذكاء الاصطناعي عبر الدردشة وعرض صور مصغرة لمحتوى مختلف متاح. هناك أيضًا موجه لطرح سؤال على Microsoft Copilot.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png" alt="شاشة تلفزيون LG OLED تعرض كيفية عمل AI Search. نافذة دردشة صغيرة مفتوحة تظهر كيفية طلب المستخدم للمباريات الرياضية المتاحة. استجاب بحث الذكاء الاصطناعي عبر الدردشة وعرض صور مصغرة لمحتوى مختلف متاح. هناك أيضًا موجه لطرح سؤال على Microsoft Copilot.">
                             </div>
                             <p class="slide-title">AI Search</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature03.png" alt="جهاز التحكم عن بُعد LG AI Magic قيد الاستخدام. بالضغط القصير على زر الذكاء الاصطناعي يتم تفعيل المساعد الذكي على شاشة تلفزيون OLED، والذي يقترح بعد ذلك الكلمات المفتاحية.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png" alt="جهاز التحكم عن بُعد LG AI Magic قيد الاستخدام. بالضغط القصير على زر الذكاء الاصطناعي يتم تفعيل المساعد الذكي على شاشة تلفزيون OLED، والذي يقترح بعد ذلك الكلمات المفتاحية.">
                             </div>
                             <p class="slide-title">AI Concierge</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature04.png" alt="محتوى خيالي علمي يعرض على شاشة تلفزيون LG OLED. على الجانب الأيسر من الشاشة توجد واجهة AI Chatbot. يرسل المستخدم رسالة إلى chatbot أن الشاشة مظلمة جدًا، فيقوم chatbot بتقديم حلول للطلب.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png" alt="محتوى خيالي علمي يعرض على شاشة تلفزيون LG OLED. على الجانب الأيسر من الشاشة توجد واجهة AI Chatbot. يرسل المستخدم رسالة إلى chatbot أن الشاشة مظلمة جدًا، فيقوم chatbot بتقديم حلول للطلب.">
                             </div>
                             <p class="slide-title">AI Chatbot</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature05.png" alt="امرأة تغني في ميكروفون مع سماعات رأس، مميزة من خلال تحسين الصوت بواسطة معالج LG α11 AI.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="امرأة تغني في ميكروفون مع سماعات رأس، مميزة من خلال تحسين الصوت بواسطة معالج LG α11 AI.">
                             </div>
                             <p class="slide-title">AI Picture/Sound Wizard</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature06.png" alt="مشهدين متصلين مع جهاز التحكم عن بُعد LG AI Magic أمام التلفزيون—الأول يظهر مشهد خيال علمي، والثاني يظهر الشاشة الرئيسية مع محتوى مخصص.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png" alt="مشهدين متصلين مع جهاز التحكم عن بُعد LG AI Magic أمام التلفزيون—الأول يظهر مشهد خيال علمي، والثاني يظهر الشاشة الرئيسية مع محتوى مخصص.">
                             </div>
                             <p class="slide-title">AI Magic Remote</p>
                           </div>
@@ -365,9 +418,9 @@
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
                       </picture>
                       الصوت الصحيح الفريد
                     </h2>
@@ -380,9 +433,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="امرأة ورجل يعانقان في غرفة المعيشة، مع تشغيل سماعة XBOOM بجانبهما." loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="امرأة ورجل يعانقان في غرفة المعيشة، مع تشغيل سماعة XBOOM بجانبهما." loading="lazy">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title">
@@ -404,19 +457,19 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature01.png" alt="سماعة LG XBOOM مع أوضاع صوتية مدعومة بالذكاء الاصطناعي تشمل تعزيز الجهير (Bass Boost)، تعزيز الصوت (Voice Enhance)، ووضع القياسي (Standard).">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="سماعة LG XBOOM مع أوضاع صوتية مدعومة بالذكاء الاصطناعي تشمل تعزيز الجهير (Bass Boost)، تعزيز الصوت (Voice Enhance)، ووضع القياسي (Standard).">
                             </div>
                             <p class="slide-title">AI Sound</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature02.png" alt="سماعة LG XBOOM مع إضاءة مدعومة بالذكاء الاصطناعي تتكيف مع أوضاع الصوت، البيئة، والحفلات.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="سماعة LG XBOOM مع إضاءة مدعومة بالذكاء الاصطناعي تتكيف مع أوضاع الصوت، البيئة، والحفلات.">
                             </div>
                             <p class="slide-title">AI Lighting</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature03.png" alt="سماعة LG XBOOM موضوعة على طاولة في غرفة ذات درجات حمراء مع جدران مغطاة بنمط شبكي وأثاث حديث.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="سماعة LG XBOOM موضوعة على طاولة في غرفة ذات درجات حمراء مع جدران مغطاة بنمط شبكي وأثاث حديث.">
                             </div>
                             <p class="slide-title">AI Calibration</p>
                           </div>
@@ -438,9 +491,9 @@
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
                       </picture>
                       يخفف عنك كل عبء
                     </h2>
@@ -453,9 +506,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="غسالة ومجفف مدمجان من LG في غرفة غسيل حديثة مع خزائن خشبية ومقاعد للجلوس." loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="غسالة ومجفف مدمجان من LG في غرفة غسيل حديثة مع خزائن خشبية ومقاعد للجلوس." loading="lazy">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title">
@@ -477,13 +530,13 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="يد تقوم بضبط دورة AI Wash على غسالة LG باستخدام قرص التحكم الذكي.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="يد تقوم بضبط دورة AI Wash على غسالة LG باستخدام قرص التحكم الذكي.">
                             </div>
                             <p class="slide-title">AI Wash</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="يختار المستخدم دورة AI Dry على مجفف LG باستخدام قرص التحكم الرقمي.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="يختار المستخدم دورة AI Dry على مجفف LG باستخدام قرص التحكم الرقمي.">
                             </div>
                             <p class="slide-title">AI Dry</p>
                           </div>
@@ -508,9 +561,9 @@
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
                       </picture> 
                       الراحة مع تبريد مضبوط بشكل مثالي
                     </h2>
@@ -523,9 +576,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="مكيف الهواء LG DUAL Inverter يبرد غرفة معيشة حديثة تطل على المحيط، ويعمل بتقنية الذكاء الاصطناعي ThinQ." loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="مكيف الهواء LG DUAL Inverter يبرد غرفة معيشة حديثة تطل على المحيط، ويعمل بتقنية الذكاء الاصطناعي ThinQ." loading="lazy">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title text-black">
@@ -546,13 +599,13 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="امرأة تسترخي في غرفة معيشة ذكية بينما يقوم مكيف الهواء LG AI بضبط درجة الحرارة وتدفق الهواء والرطوبة تلقائيًا.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="امرأة تسترخي في غرفة معيشة ذكية بينما يقوم مكيف الهواء LG AI بضبط درجة الحرارة وتدفق الهواء والرطوبة تلقائيًا.">
                             </div>
                             <p class="slide-title">AI Air</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="واجهة الهاتف الذكي تعرض رسمًا بيانيًا لاستهلاك الطاقة أمام مكيف هواء LG، مع إبراز ميزة AI kW Manager لمراقبة الطاقة بكفاءة.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="واجهة الهاتف الذكي تعرض رسمًا بيانيًا لاستهلاك الطاقة أمام مكيف هواء LG، مع إبراز ميزة AI kW Manager لمراقبة الطاقة بكفاءة.">
                             </div>
                             <p class="slide-title">AI kW Manager</p>
                           </div>
@@ -579,9 +632,9 @@
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">
                       </picture>  
                       تدعم كل ما تفعله
                     </h2>
@@ -594,9 +647,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="امرأة تستخدم كمبيوتر محمول LG gram مع إعداد شاشتين لعقد مؤتمرات الفيديو والقيام بمهام متعددة في مكتبها المنزلي." loading="lazy">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="امرأة تستخدم كمبيوتر محمول LG gram مع إعداد شاشتين لعقد مؤتمرات الفيديو والقيام بمهام متعددة في مكتبها المنزلي." loading="lazy">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title text-black">
@@ -618,13 +671,13 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-computing-feature01.png" alt="كمبيوتر محمول LG gram مزوّد بتقنية الذكاء الاصطناعي على الجهاز، ويعرض واجهة المساعد الذكي على الشاشة.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="كمبيوتر محمول LG gram مزوّد بتقنية الذكاء الاصطناعي على الجهاز، ويعرض واجهة المساعد الذكي على الشاشة.">
                             </div>
                             <p class="slide-title">gram Chat On-Device</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-computing-feature02.png" alt="كمبيوتر محمول LG gram مزوّد بتقنية Cloud AI، يعرض واجهة المساعد الذكي للدعم عبر الإنترنت وزيادة الإنتاجية.">
+                              <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="كمبيوتر محمول LG gram مزوّد بتقنية Cloud AI، يعرض واجهة المساعد الذكي للدعم عبر الإنترنت وزيادة الإنتاجية.">
                             </div>
                             <p class="slide-title">gram Chat Cloud</p>
                           </div>
@@ -654,9 +707,9 @@
             <a href="https://www.lg.com/ae_ar/lg-thinq" class="white-btn">تعرف على المزيد</a>
             <div class="banner">
               <picture> 
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
-                <img src="./assets/image/ai-gate-image-thinq-banner-mobile.png" alt="شخص يحمل هاتفًا ذكيًا مع تطبيق LG ThinQ مفتوح، يدير أجهزة المنزل الذكي أثناء شرب القهوة." loading="lazy">  
+                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
+                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
+                <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" alt="شخص يحمل هاتفًا ذكيًا مع تطبيق LG ThinQ مفتوح، يدير أجهزة المنزل الذكي أثناء شرب القهوة." loading="lazy">  
               </picture>
 
             </div>
@@ -667,35 +720,35 @@
                   <!-- S : swiper-slide01 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="TvFhuqvQLYI" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb01.jpg" alt="انتقل إلى فيديو اليوتيوب">
+                      <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-youtube-thumb01.jpg" alt="انتقل إلى فيديو اليوتيوب">
                     </button>
                   </div>
                   <!-- E : swiper-slide01 -->
                   <!-- S : swiper-slide02 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="iQyFMATSUDU" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb02.jpg" alt="انتقل إلى فيديو اليوتيوب">
+                      <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-youtube-thumb02.jpg" alt="انتقل إلى فيديو اليوتيوب">
                     </button>
                   </div>
                   <!-- E : swiper-slide02 -->
                   <!-- S : swiper-slide03 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="W6pXClCE3P4" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb03.jpg" alt="انتقل إلى فيديو اليوتيوب">
+                      <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-youtube-thumb03.jpg" alt="انتقل إلى فيديو اليوتيوب">
                     </button>
                   </div>
                   <!-- E : swiper-slide03 -->
                   <!-- S : swiper-slide04 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="oEuZqLxQrUY" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb04.jpg" alt="انتقل إلى فيديو اليوتيوب">
+                      <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-youtube-thumb04.jpg" alt="انتقل إلى فيديو اليوتيوب">
                     </button>
                   </div>
                   <!-- E : swiper-slide04 -->
                   <!-- S : swiper-slide05 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="UFRyOs-6h5s" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb05.jpg" alt="انتقل إلى فيديو اليوتيوب">
+                      <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-youtube-thumb05.jpg" alt="انتقل إلى فيديو اليوتيوب">
                     </button>
                   </div>
                   <!-- E : swiper-slide05 -->
@@ -712,7 +765,7 @@
             <div class="flex-bx">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature03.png" alt="في مطبخ ذكي حديث، تستخدم امرأة أمرًا صوتيًا لبدء تشغيل الغسالة باستخدام LG ThinQ AI، بينما يقرأ رجل على الأريكة في الخلفية." loading="lazy">
+                  <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-thinq-on-feature03.png" alt="في مطبخ ذكي حديث، تستخدم امرأة أمرًا صوتيًا لبدء تشغيل الغسالة باستخدام LG ThinQ AI، بينما يقرأ رجل على الأريكة في الخلفية." loading="lazy">
                 </figure>
               </div>
               <div class="text-bx">
@@ -725,7 +778,7 @@
             <div class="flex-bx reverse">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature04.png" alt="الهاتف الذكي يعرض تطبيق LG ThinQ الذي يتحكم في فرن LG InstaView Slide-In Range، مما يتيح صيانة المنتج بكفاءة في المطبخ." loading="lazy">
+                  <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-thinq-on-feature04.png" alt="الهاتف الذكي يعرض تطبيق LG ThinQ الذي يتحكم في فرن LG InstaView Slide-In Range، مما يتيح صيانة المنتج بكفاءة في المطبخ." loading="lazy">
                 </figure>
               </div>
               <div class="text-bx">
@@ -748,9 +801,9 @@
                       <div class="swiper-wrapper">
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="تنفيذي من LG Electronics يحمل شهادة الاعتماد للأمن السيبراني، مع رسم بياني للأمن الرقمي في الخلفية." loading="lazy">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
+                                <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="تنفيذي من LG Electronics يحمل شهادة الاعتماد للأمن السيبراني، مع رسم بياني للأمن الرقمي في الخلفية." loading="lazy">
                               </picture>
                               <div class="txt-bx">
                                   <p>تعزز LG ريادتها في الأمن السيبراني من خلال اعتماد اختبار الأمن السيبراني لإنترنت الأشياء من KOLAS.</p>
@@ -759,9 +812,9 @@
                           </div>
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt='الزوار يشاهدون عرض شاشة LED المنحنية من LG التي تعرض شعار "الحياة جيدة على مدار الساعة طوال أيام الأسبوع" في معرض تكنولوجي.' loading="lazy">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
+                                <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt='الزوار يشاهدون عرض شاشة LED المنحنية من LG التي تعرض شعار "الحياة جيدة على مدار الساعة طوال أيام الأسبوع" في معرض تكنولوجي.' loading="lazy">
                               </picture>
                               <div class="txt-bx">
                                   <p>تقدم LG أحدث ابتكاراتها المدعومة بـ "الذكاء العاطفي" في CES 2025.</p>
@@ -770,9 +823,9 @@
                           </div>
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="متحدث يقدم حلول B2B المدعومة بالذكاء الاصطناعي على المسرح في حدث من LG." loading="lazy">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
+                                <source srcset="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
+                                <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="متحدث يقدم حلول B2B المدعومة بالذكاء الاصطناعي على المسرح في حدث من LG." loading="lazy">
                               </picture>
                               <div class="txt-bx">
                                   <p>تقدم LG يومًا في الحياة مع "الذكاء العاطفي" في العرض الأول لعالم LG.</p>
@@ -787,5 +840,63 @@
         <!-- E : stories-section -->
       </div>
     </main>
-  </body>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
+</body>
 </html>

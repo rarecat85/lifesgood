@@ -28,7 +28,7 @@ body {
 .gate-container {
   background-color: #F0ECE4;
   * {
-    font-family: 'LG Smart UI';
+    // font-family: "LG Smart","Segoe UI","Microsoft Sans Serif",sans-serif;
   }
   .swiper-wrapper {
     height: auto;
@@ -65,7 +65,6 @@ body {
       overflow: auto;
       padding-bottom: rem(8);
       .tab {
-        font-family: 'LG Smart UI';
         font-weight: 400;
         font-size: rem(20);
         color: $black;
@@ -233,7 +232,6 @@ body {
           .tab-panel-disclaimer {
             margin-top: rem(56);
             li {
-              font-family: 'LG Smart UI';
               font-weight: 400;
               font-size: rem(16);
               line-height: 1.25;
@@ -960,6 +958,9 @@ body {
     .overview-section {
       .inner {
         padding: rem(64) 0;
+        .ai-logo {
+          margin-bottom: rem(8);
+        }
         .title {
           font-size: rem(28);
         }
