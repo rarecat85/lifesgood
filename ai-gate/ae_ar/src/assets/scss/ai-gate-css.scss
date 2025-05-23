@@ -1,5 +1,7 @@
 @import "_mixin";
+
 body {
+  text-align: inherit;
   &.noscroll {
     overflow: hidden;
     padding-right: var(--scrollbar-width);
@@ -588,7 +590,7 @@ body {
             .white-btn {
               position: absolute;
               bottom: rem(28);
-              left: rem(28);
+              right: rem(28);
             }
           }
         }
@@ -1101,7 +1103,7 @@ body {
             .txt-bx {
               padding: rem(16) rem(20) rem(102);
               .white-btn {
-                left: rem(20);
+                right: rem(20);
                 bottom: rem(24);
               }
             }
