@@ -12,6 +12,8 @@
    - `dev.js`: SCSS 컴파일 및 Live Server 실행 스크립트.
    - `export.js`: 템플릿을 기반으로 HTML을 생성하는 스크립트.
    - `build.js`: 프로젝트 폴더를 복사하여 여러 환경을 설정하는 스크립트.
+   - `component-dev.js`: 컴포넌트 기반 개발 환경을 제공하는 스크립트.
+   - `component-build.js`: 컴포넌트를 통합하여 빌드하는 스크립트.
    - **`package.json`**: Core 디렉토리에서 사용되는 `npm` 패키지 관리 파일.
 
 2. **`template/`**:
@@ -36,14 +38,22 @@ project/
 ├── template/               # 기본 제공 템플릿 폴더
 ├── lifesgood2024_gate/     # 사용자 정의 프로젝트 폴더
 │   ├── package.json        # 사용자 정의 프로젝트 전용 package.json
-│   ├── common/             # 변환되지 않고 단순 복사할 파일
-│   │   ├── font/           # font 폴더 (sample 화면을 볼 때 사용)
-│   │   ├── js/             # 공통 js 폴더
-│   │   ├── css/            # 공통 css 폴더
-│   ├── src/                # 소스 코드 폴더
-│   │   ├── index.html      # Live Server에서 사용할 HTML 파일
-│   │   ├── assets/
-│   │   │   ├── scss/       # SCSS 파일 폴더
+│   ├── sample
+│   │   ├── common/             # 변환되지 않고 단순 복사할 파일
+│   │   │   ├── font/           # font 폴더 (sample 화면을 볼 때 사용)
+│   │   │   ├── js/             # 공통 js 폴더
+│   │   │   ├── css/            # 공통 css 폴더
+│   │   ├── src/                # 소스 코드 폴더
+│   │   │   ├── index.html      # Live Server에서 사용할 HTML 파일
+│   │   │   ├── components/     # 컴포넌트 폴더 (컴포넌트 기반 개발시 사용)
+│   │   │   │   ├── header/     # 헤더 컴포넌트 예시
+│   │   │   │   │   ├── header.html
+│   │   │   │   │   ├── header.scss
+│   │   │   │   ├── footer/     # 푸터 컴포넌트 예시 
+│   │   │   │   │   ├── footer.html
+│   │   │   │   │   ├── footer.scss
+│   │   │   ├── assets/
+│   │   │   │   ├── scss/       # SCSS 파일 폴더
 │   │   │   │   └── style.scss
 │   │   │   ├── img/        # img 파일 폴더
 │   │   │   ├── css/        # 변환된 CSS 파일 폴더
@@ -60,6 +70,11 @@ project/
 npm install sass clean-css live-server   
 ```   
 
+**패키지 설명:**
+- **sass**: SCSS 파일을 CSS로 컴파일합니다.
+- **clean-css**: CSS 파일을 최소화(minify)합니다.
+- **live-server**: 실시간 변경감지 기능이 있는 로컬 개발 서버를 제공합니다.
+
 
 ---
 
@@ -74,7 +89,9 @@ npm install sass clean-css live-server
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ../core/dev.js",
     "build": "node ../core/build.js",
-    "export": "node ../core/export.js"
+    "export": "node ../core/export.js",
+    "component-dev": "node ../core/component-dev.js",
+    "component-build": "node ../core/component-build.js"
   },
   "keywords": [],
   "author": "",
@@ -130,3 +147,63 @@ cd <프로젝트명>
     npm run export -- KR KR
     ```
     * 프로젝트 하위에 KR폴더 아래 프로젝트명.jsp 가 생성됩니다.
+
+4. 컴포넌트 기반 개발 (Component-Dev)
+    ```
+    npm run component-dev -- <폴더명>
+    ```
+    * 컴포넌트 기반 개발 환경을 시작합니다.
+    * src/components/ 폴더 내 각 컴포넌트의 HTML과 SCSS를 자동으로 병합합니다.
+    * index.html 파일에서 {{컴포넌트명}} 형태로 작성된 태그를 해당 컴포넌트의 내용으로 대체합니다.
+    * 예: index.html에 `{{header}}` 태그가 있다면 이를 components/header/header.html의 내용으로 대체합니다.
+    * 컴포넌트 SCSS 파일은 메인 CSS 파일에 자동으로 병합되어 추가됩니다.
+    * **컴포넌트 호출 여부에 따른 HTML 처리**
+      * 컴포넌트 호출이 있는 경우: main.html 파일이 생성되고 라이브 서버는 main.html을 실행합니다.
+      * 컴포넌트 호출이 없는 경우: main.html이 생성되지 않고 index.html을 직접 사용합니다.
+    * 예시 실행:
+    ```
+    npm run component-dev -- sample
+    ```
+
+5. 컴포넌트 기반 빌드 (Component-Build)
+    ```
+    npm run component-build -- <폴더명1> <폴더명2> ...
+    ```
+    * component-dev로 생성된 main.html 파일을 기반으로 국가별 폴더를 생성합니다.
+    * 생성된 폴더에는 main.html이 index.html로 복사되며, 다음 항목들이 포함됩니다:
+      * assets 폴더: CSS, JS, 이미지 등
+      * common 폴더: 공통 파일 (있는 경우)
+      * components 폴더: 컴포넌트의 SCSS 파일들 (원본 폴더 구조 유지)
+    * 컴포넌트 스타일은 CSS 파일에 이미 병합되어 있습니다.
+    * 예시 실행:
+    ```
+    npm run component-build -- KR UK US
+    ```
+    * 실행 결과: 프로젝트 폴더 내에 KR, UK, US 폴더가 생성됩니다.
+    * 생성된 폴더에서도 `npm run component-dev -- KR`과 같이 개발 서버를 실행할 수 있습니다.
+
+---
+
+## 컴포넌트 기반 개발 주의사항
+
+1. **컴포넌트 구조**: 각 컴포넌트는 src/components/ 폴더 내에 자체 폴더를 가져야 하며, 컴포넌트와 동일한 이름의 HTML 파일과 SCSS 파일을 포함해야 합니다.
+   
+2. **컴포넌트 참조**: index.html 파일에서 컴포넌트를 참조할 때는 `{{컴포넌트명}}` 형식으로 작성합니다.
+
+3. **경로 참조**: 컴포넌트 내에서 assets 폴더를 참조할 때는 상대 경로를 사용합니다. 시스템이 자동으로 경로를 조정합니다.
+
+4. **CSS 병합**: 모든 컴포넌트의 SCSS 파일은 자동으로 메인 CSS 파일에 병합됩니다. 별도의 link 태그를 추가할 필요가 없습니다.
+
+5. **컴포넌트 호출 감지**: 
+   - index.html에 `{{컴포넌트명}}` 형태의 호출이 있으면 main.html이 생성되고 main.html로 라이브 서버가 실행됩니다.
+   - 컴포넌트 호출이 없으면 index.html 파일을 그대로 사용하고 main.html은 생성되지 않습니다.
+   - 이를 통해 component-build로 생성된 폴더에서도 component-dev를 문제없이 사용할 수 있습니다.
+
+6. **작업 순서**: 
+   - 먼저 샘플 폴더에서 컴포넌트 개발 작업을 진행합니다. (`npm run component-dev -- sample`)
+   - 개발이 완료되면 component-build를 실행하여 국가별 폴더를 생성합니다. (`npm run component-build -- KR UK US`)
+   - 각 국가별 폴더에서 필요한 커스터마이징을 진행합니다.
+   - 국가별 폴더에서도 component-dev를 실행하여 개발할 수 있습니다.
+   - 모든 작업이 완료되면 export.js를 실행하여 템플릿에 적용합니다. (`npm run export -- KR KR`)
+   - export.js는 컴포넌트 기반으로 통합된 HTML을 템플릿에 삽입하여 최종 결과물을 생성합니다.
+   - 컴포넌트 개발 → 빌드 → 커스터마이징 → 템플릿 적용의 전체 워크플로우를 지원합니다.
