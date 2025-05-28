@@ -787,7 +787,7 @@
                           </picture>
                           <div class="txt-bx">
                               <p>LG Strengthens Cybersecurity Leadership With KOLAS IoT Cybersecurity Testing Accreditation</p>
-                              <a href="https://www.lgnewsroom.com/2025/01/lg-strengthens-cybersecurity-leadership-with-kolas-iot-cybersecurity-testing-accreditation/" class="white-btn">Learn More</a>
+                              <a href="https://www.lgnewsroom.com/2025/01/lg-strengthens-cybersecurity-leadership-with-kolas-iot-cybersecurity-testing-accreditation/" target="_blank" rel="noopener noreferrer" class="white-btn">Learn More</a>
                           </div>
                       </div>
                       <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
@@ -798,7 +798,7 @@
                           </picture>
                           <div class="txt-bx">
                               <p>LG Presents Its Latest Innovations Powered by "Affectionate Intelligence" at CES 2025</p>
-                              <a href="https://www.lgnewsroom.com/2025/01/lg-presents-its-latest-innovations-powered-by-affectionate-intelligence-at-ces-2025/" class="white-btn">Learn More</a>
+                              <a href="https://www.lgnewsroom.com/2025/01/lg-presents-its-latest-innovations-powered-by-affectionate-intelligence-at-ces-2025/" target="_blank" rel="noopener noreferrer" class="white-btn">Learn More</a>
                           </div>
                       </div>
                       <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
@@ -809,7 +809,7 @@
                           </picture>
                           <div class="txt-bx">
                               <p>LG Unveils a Day in a Life With "Affectionate Intelligence" at LG World Premiere</p>
-                              <a href="https://www.lgnewsroom.com/2025/01/lg-unveils-a-day-in-a-life-with-affectionate-intelligence-at-lg-world-premiere/" class="white-btn">Learn More</a>
+                              <a href="https://www.lgnewsroom.com/2025/01/lg-unveils-a-day-in-a-life-with-affectionate-intelligence-at-lg-world-premiere/" target="_blank" rel="noopener noreferrer" class="white-btn">Learn More</a>
                           </div>
                       </div>
                   </div>
