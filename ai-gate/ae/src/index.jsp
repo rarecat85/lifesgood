@@ -166,9 +166,9 @@
                     </a>
                   </li>
                   <li class="product-item">
-                    <a href="https://www.lg.com/ae/uhd-tvs">
+                    <a href="https://www.lg.com/ae/nanocell-tvs">
                       <div class="img-bx">
-                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG Ultra HD AI product front view" loading="lazy">
+                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG Nanocell AI product front view" loading="lazy">
                       </div>
                       <span class="link-btn">Learn More</span>
                     </a>
