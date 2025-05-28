@@ -237,7 +237,7 @@
                                   <a href="https://www.lg.com/us/lifesgood/product-story-washtower/" class="white-btn">Learn More</a>
                               </div>
                           </div>
-                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                          <!-- <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <img src="./assets/images/lifes-good-campaign-2025-live-human-lgcom-gate-img-more-stories-banner-03.png" alt="A dog is lying on the sofa, sleeping. Behind it, the LG WashTower is running." loading="lazy">
                               <div class="txt-bx">
                                   <dl>
@@ -247,7 +247,7 @@
                                   </dl>
                                   <a href="https://www.lg.com/us/lifesgood/2023-campaign" class="white-btn">Learn More</a>
                               </div>
-                          </div>
+                          </div> -->
                       </div>
                   </div>
                   <div class="slide-controller">
