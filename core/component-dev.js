@@ -427,16 +427,16 @@ function watchFiles(folderName) {
     // index.html에 컴포넌트 호출이 있는지 확인
     const hasComponents = hasComponentCalls(indexContent, componentFolders);
     
-    // CSS 파일 링크 찾기
-    const cssLinkMatch = indexContent.match(/<link[^>]*href=["']([^"']*\.css)[^>]*>/);
+    // CSS 파일 링크 찾기 - ./assets/css/로 시작하는 로컬 CSS 파일만 찾기
+    const cssLinkMatch = indexContent.match(/<link[^>]*href=["']\.\/assets\/css\/([^"']*\.css)[^>]*>/);
     
     if (cssLinkMatch && cssLinkMatch[1]) {
         // 상대 경로에서 파일 이름만 추출
-        const cssFileName = path.basename(cssLinkMatch[1]);
+        const cssFileName = cssLinkMatch[1];
         mainCssFile = path.join(cssDir, cssFileName);
-        console.log(`HTML에서 CSS 파일 참조 발견: ${cssFileName}`);
+        console.log(`HTML에서 로컬 CSS 파일 참조 발견: ${cssFileName}`);
     } else {
-        console.log(`HTML에서 CSS 파일 참조를 찾을 수 없습니다. 컴포넌트 CSS는 병합되지 않습니다.`);
+        console.log(`HTML에서 로컬 CSS 파일 참조를 찾을 수 없습니다. 컴포넌트 CSS는 병합되지 않습니다.`);
     }
     
     // 메인 SCSS 파일 초기 컴파일
