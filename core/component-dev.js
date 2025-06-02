@@ -340,10 +340,11 @@ function startServer(folderName) {
     const useMainHtml = watchFiles(folderName);
     
     // index.html에 컴포넌트 호출이 있는지 확인한 결과에 따라 실행할 HTML 결정
-    const htmlToOpen = useMainHtml ? 'main.html' : 'index.html';
+    const htmlToOpen = useMainHtml ? 'src/main.html' : 'src/index.html';
     
-    // Live Server 실행
-    exec(`npx live-server ${srcPath} --open=${htmlToOpen} --wait=100`, (error, stdout, stderr) => {
+    // Live Server 실행 - common 폴더 접근을 위해 상위 디렉토리를 루트로 설정
+    const serverRoot = path.join(currentDir, folderName);
+    exec(`npx live-server ${serverRoot} --open=${htmlToOpen} --wait=100`, (error, stdout, stderr) => {
         if (error) {
             console.error(`서버 실행 중 오류 발생: ${error.message}`);
             return;
