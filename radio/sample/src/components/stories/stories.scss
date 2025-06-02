@@ -1,0 +1,136 @@
+@import '../../assets/scss/mixin';
+
+body {
+   background: $bg;
+}
+
+.stories {
+   .inner {
+      // padding: rem(32) 0;
+      padding: 0 rem(16) rem($mo_padding);
+      margin: 0 auto;
+
+      @include tablet {
+         padding: 0 rem(24) rem($tab_padding);
+      }
+
+      @include desktop {
+         padding: 0 rem(24) rem($pc_padding);
+      }
+   }
+
+   &-title {
+      // font-family: "LGEI Headline";
+      @include font(28, 32px, 550);
+
+      @include tablet {
+         @include font(44, 48px, 550);
+      }
+
+      @include desktop {
+         @include font(56, 60px, 550);
+      }
+   }
+
+   &-slide-bx {
+      margin-top: rem(12);
+
+      @include tablet {
+         margin-top: rem(20);
+      }
+
+      @include desktop {
+         margin-top: rem(22);
+      }
+
+      .swiper-slide {
+         position: relative;
+         height: auto;
+         background-color: $white;
+         border-radius: rem(28);
+         overflow: hidden;
+
+         img {
+            width: 100%;
+            aspect-ratio: 310 / 206.67;
+            object-fit: cover;
+         }
+
+         .txt-bx {
+            display: flex;
+            flex-direction: column;
+            gap: rem(6);
+            padding: rem(16) rem(20) rem(108) rem(20);
+
+            @include tablet {
+               gap: rem(8);
+               padding-bottom: rem(92);
+            }
+
+            @include desktop {
+               padding-bottom: rem(117);
+            }
+
+            strong {
+               @include font(24, 28px, 400);
+
+               @include tablet {
+                  @include font(32, 36px, 300);
+               }
+
+               @include desktop {
+                  @include font(36, 42px, 300);
+               }
+            }
+
+            p {
+               @include font(16, 20px, 400, $warmGray);
+
+               @include tablet {
+                  @include font(16, 20px, 400);
+               }
+
+               @include desktop {
+                  @include font(24, 120%, 400);
+               }
+            }
+
+            .white-btn {
+               @include btn($white);
+               position: absolute;
+               bottom: rem(24);
+               left: rem(20);
+            }
+         }
+      }
+   }
+
+   .swiper-btnbx {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(16);
+      margin-top: rem(20);
+
+      @include tablet {
+         display: none;
+      }
+
+      &-prev,
+      &-next {
+         width: rem(24);
+         height: rem(14);
+         background: url('/src/assets/images/stories-arrow-ico.svg') no-repeat;
+         background-size: contain;
+      }
+
+      &-next {
+         transform: rotate(180deg);
+      }
+
+      .swiper-button-disabled {
+         opacity: 0.5;
+      }
+   }
+}
