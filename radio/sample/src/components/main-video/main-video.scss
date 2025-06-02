@@ -1,0 +1,29 @@
+@use '../../assets/scss/mixin' as *;
+
+.main-video {
+  width:100%;
+  aspect-ratio: 9/16;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  @include tablet {
+    aspect-ratio: 16/9;
+  }
+  .video-bx {
+    width:86.666%;
+    aspect-ratio: 9/16;
+    margin:0 auto;
+    overflow:hidden;
+    border-radius:rem(20);
+    video {
+      @include img();
+    }
+    @include tablet {
+      width:75%;
+      aspect-ratio: 16/9;
+      border-radius:rem(40);
+    }
+  }
+}
