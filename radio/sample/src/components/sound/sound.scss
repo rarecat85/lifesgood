@@ -1,0 +1,197 @@
+@use '../../assets/scss/mixin'as *;
+@use '../../assets/scss/variable'as *;
+
+
+.sound {
+    // padding-bottom: rem($mo_padding);
+    padding-bottom: rem(56);
+
+    @include tablet {
+        // padding-bottom: rem($tab_padding);
+        padding-bottom: rem(72);
+    }
+
+    @include desktop {
+        // padding-bottom: rem($pc_padding);
+        padding-bottom: rem(120);
+    }
+
+    &-title {
+        text-align: center;
+        padding-bottom: rem(16);
+        @include font(28, 32px, 550);
+
+        @include tablet {
+            padding-bottom: rem(20);
+            @include font(44, 48px, 550);
+        }
+
+        @include desktop {
+            padding-bottom: rem(56);
+            @include font(56, 60px, 550);
+        }
+    }
+
+    &-swiper {
+        width: 100%;
+        overflow-x: hidden;
+
+        .swiper-wrapper {
+            // -- 수정 필요 
+            display: flex;
+            padding: 0 rem(32);
+
+            @include tablet {
+                padding-left: rem(300);
+            }
+
+            @include desktop {
+                padding-left: rem(427);
+            }
+
+            .swiper-slide {
+                width: 100%;
+                height: auto;
+                margin: auto 0;
+                overflow: hidden;
+
+                .sound-imgbx {
+                    position: relative;
+
+                    &-album {
+                        width: 65%;
+                        height: 100%;
+                        aspect-ratio: 217/217;
+                        opacity: 0.5;
+
+                        &.active {
+                            width: 75%;
+                            opacity: 1;
+                        }
+
+                        img {
+                            @include img(cover);
+                        }
+                    }
+
+                    &-track {
+                        display: none;
+
+                        &.active {
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 0;
+                            z-index: -1;
+                            min-width: rem(170.31);
+                            min-height: rem(171.25);
+                            width: 50%;
+                        }
+
+                        img {
+                            @include img(contain);
+                        }
+                    }
+                }
+
+                .sound-txtbx {
+                    // display: none;
+                    opacity: 0;
+                    padding: rem(24) rem(48) rem(24) rem(16);
+
+                    &.active {
+                        opacity: 1;
+                    }
+
+                    &-controllers {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: rem(8) 0;
+                    }
+
+                    &-title {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 100%;
+                        border: 1px solid #f00;
+                        @include font(20, 24px, 550);
+
+                        @include desktop {
+                            @include font(36, 42px, 550);
+                        }
+                    }
+
+                    p {
+                        @include font(14, 16px, 400);
+
+                        @include tablet {
+                            @include font(14, 16px, 400);
+                        }
+
+                        @include desktop {
+                            @include font(24, 28px, 400);
+                        }
+                    }
+                }
+            }
+        }
+
+        .sound-swiper-controller {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: rem(16);
+            margin: rem(20) auto 0;
+            background-color: #E6E1D6;
+            width: fit-content;
+            padding: rem(4);
+            border-radius: rem(32);
+
+            &-btn {
+                width: rem(36);
+                height: rem(36);
+                margin-top: 0;
+                position: static;
+
+                &::after {
+                    width: rem(18);
+                    height: rem(18);
+                    background-image: url('../../assets/images/influence-slide-prev.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                &.swiper-button-next {
+                    &::after {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            .swiper-pagination {
+                width: auto;
+                height: rem(8);
+                position: static;
+                margin-top: 0;
+
+                .swiper-pagination-bullet {
+                    width: rem(8);
+                    height: rem(8);
+                    background-color: #B8B4AB;
+                    opacity: 1;
+                    transition: all 0.3s;
+
+                    &.swiper-pagination-bullet-active {
+                        width: rem(24);
+                        background-color: #000;
+                        border-radius: rem(4);
+                    }
+                }
+            }
+        }
+
+    }
+}
