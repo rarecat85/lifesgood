@@ -317,6 +317,9 @@ function processIndexHTML(indexPath, componentFolders, srcPath, outputPath) {
     // 인덱스 HTML 읽기
     const indexContent = fs.readFileSync(indexPath, 'utf8');
     
+    // index.html 초기 해시값 설정
+    htmlFileHashes[indexPath] = generateFileHash(indexPath);
+    
     // 컴포넌트 태그 처리
     const processedHTML = processComponentTags(indexContent, componentFolders, srcPath);
     
@@ -421,6 +424,9 @@ function watchFiles(folderName) {
     
     // index.html 내용 읽기
     const indexContent = fs.readFileSync(indexPath, 'utf8');
+    
+    // index.html 초기 해시값 설정
+    htmlFileHashes[indexPath] = generateFileHash(indexPath);
     
     // index.html에 컴포넌트 호출이 있는지 확인
     const hasComponents = hasComponentCalls(indexContent, componentFolders);
@@ -727,22 +733,27 @@ function watchFiles(folderName) {
     // 인덱스 HTML 파일 변경 감지
     fs.watch(indexPath, (eventType) => {
         if (eventType === 'change') {
-            console.log(`index.html 변경 감지`);
+            const newHash = generateFileHash(indexPath);
             
-            // index.html 내용 다시 읽기
-            const updatedIndexContent = fs.readFileSync(indexPath, 'utf8');
-            
-            // 컴포넌트 호출 여부 확인
-            const updatedHasComponents = hasComponentCalls(updatedIndexContent, componentFolders);
-            
-            if (updatedHasComponents) {
-                // 컴포넌트 호출이 있으면 main.html 생성
-                processIndexHTML(indexPath, componentFolders, srcPath, mainHtmlPath);
-                console.log(`컴포넌트 호출이 감지되어 main.html 업데이트됨`);
-            } else if (fs.existsSync(mainHtmlPath)) {
-                // 컴포넌트 호출이 없지만 main.html이 있으면 삭제
-                fs.unlinkSync(mainHtmlPath);
-                console.log(`컴포넌트 호출이 없어졌으므로 main.html 삭제됨`);
+            if (htmlFileHashes[indexPath] !== newHash) {
+                htmlFileHashes[indexPath] = newHash;
+                console.log(`index.html 변경 감지`);
+                
+                // index.html 내용 다시 읽기
+                const updatedIndexContent = fs.readFileSync(indexPath, 'utf8');
+                
+                // 컴포넌트 호출 여부 확인
+                const updatedHasComponents = hasComponentCalls(updatedIndexContent, componentFolders);
+                
+                if (updatedHasComponents) {
+                    // 컴포넌트 호출이 있으면 main.html 생성
+                    processIndexHTML(indexPath, componentFolders, srcPath, mainHtmlPath);
+                    console.log(`컴포넌트 호출이 감지되어 main.html 업데이트됨`);
+                } else if (fs.existsSync(mainHtmlPath)) {
+                    // 컴포넌트 호출이 없지만 main.html이 있으면 삭제
+                    fs.unlinkSync(mainHtmlPath);
+                    console.log(`컴포넌트 호출이 없어졌으므로 main.html 삭제됨`);
+                }
             }
         }
     });
