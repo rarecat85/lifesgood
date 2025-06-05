@@ -37,22 +37,13 @@
 
         .swiper-wrapper {
             box-sizing: border-box;
-            // padding-left: rem(32);
-
-            // @include tablet {
-            //     padding-left: rem(300);
-            // }
-
-            // @include desktop {
-            //     padding-left: rem(427);
-            // }
 
             .swiper-slide {
                 min-width: rem(192);
                 width: fit-content;
                 height: 100%;
                 margin: auto 0;
-                padding: 0 rem(56);
+                padding: 0 rem(48);
 
                 @include tablet {
                     min-width: rem(310);
@@ -76,6 +67,7 @@
 
                 .sound-imgbx {
                     position: relative;
+                    padding: 0 rem(8);
 
                     &-album {
                         width: 63%;
@@ -114,7 +106,7 @@
                             transform: translateY(-50%);
                             z-index: -2;
                             aspect-ratio: 182/183;
-                            width: 63%;
+                            width: 60%;
                             height: 100%;
 
                             @include tablet {
@@ -142,35 +134,86 @@
                     }
 
                     &-controllers {
+                        position: relative;
+                        width: 100%;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        gap: rem(16);
                         padding: rem(8) 0;
 
                         &-btn {
                             position: relative;
-                            width: rem(32);
-                            height: rem(32);
+                            min-width: rem(32);
+                            min-height: rem(32);
                             border: 1px solid #000;
                             border-radius: 50%;
 
-                            &::after {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                content: '';
-                                width: rem(10);
-                                height: rem(12);
-                                background-image: url('../../assets/images/sound-play-ico.svg');
-                                background-size: contain;
-                                background-repeat: no-repeat;
-                                background-position: center;
+                            &[aria-pressed=false] {
+                                &::after {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    content: '';
+                                    width: rem(10);
+                                    height: rem(12);
+                                    padding-left: 0;
+                                    background: url('../../assets/images/sound-stop-ico.svg') no-repeat center;
+                                    background-size: contain;
+                                }
                             }
+
+                            &[aria-pressed=true] {
+
+                                &::after {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    content: '';
+                                    width: rem(10);
+                                    height: rem(12);
+                                    padding-left: rem(2);
+                                    background: url('../../assets/images/sound-play-ico.svg') no-repeat center;
+                                    background-size: contain;
+                                }
+                            }
+                        }
+
+                        .progress-container {
+                            position: relative;
+                            width: 100%;
+
+                            .progress-bar {
+                                position: relative;
+                                min-width: rem(168);
+                                height: rem(4);
+                                border-radius: rem(100);
+                                background: #cbcbc2; // 변수화 
+
+                                .progress-circle {
+                                    position: absolute;
+                                    top: rem(-6);
+                                    width: rem(16);
+                                    height: rem(16);
+                                    border-radius: 50%;
+                                    background: #ea1917; // 변수화 
+                                    transform: translateX(0%);
+                                }
+                            }
+                        }
+
+                        .volume-btn {
+                            min-width: rem(22);
+                            min-height: rem(25);
+                            background: url('../../assets/images/sound-volume-ico.svg') no-repeat center;
+                            background-size: contain;
                         }
                     }
 
                     &-title {
+                        position: relative;
                         white-space: nowrap;
                         overflow: hidden;
                         width: 100%;
@@ -178,6 +221,16 @@
 
                         @include desktop {
                             @include font(36, 42px, 550);
+                        }
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: rem(97);
+                            height: 100%;
+                            background: linear-gradient(90deg, rgba(240, 236, 228, 0) 0%, #F0ECE4 100%);
                         }
                     }
 
@@ -208,14 +261,14 @@
 
             &-btn {
                 position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
+                // 수정 필요(간격)
+                top: 30%;
+                transform: translateY(-30%);
                 width: rem(36);
                 height: rem(36);
                 margin-top: 0;
                 border-radius: 50%;
                 background: #d9d3c8;
-
 
                 &::after {
                     width: rem(18);
