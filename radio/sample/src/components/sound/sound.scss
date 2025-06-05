@@ -33,40 +33,69 @@
     }
 
     &-swiper {
-        width: 100%;
-        overflow-x: hidden;
+        position: relative;
 
         .swiper-wrapper {
-            // -- 수정 필요 
-            display: flex;
-            padding: 0 rem(32);
+            box-sizing: border-box;
+            // padding-left: rem(32);
 
-            @include tablet {
-                padding-left: rem(300);
-            }
+            // @include tablet {
+            //     padding-left: rem(300);
+            // }
 
-            @include desktop {
-                padding-left: rem(427);
-            }
+            // @include desktop {
+            //     padding-left: rem(427);
+            // }
 
             .swiper-slide {
-                width: 100%;
-                height: auto;
+                min-width: rem(192);
+                width: fit-content;
+                height: 100%;
                 margin: auto 0;
-                overflow: hidden;
+                padding: 0 rem(56);
+
+                @include tablet {
+                    min-width: rem(310);
+                }
+
+                @include desktop {
+                    min-width: rem(430);
+                }
+
+                &.active {
+                    min-width: calc(#{rem(217)} + #{rem(182/2)});
+
+                    @include tablet {
+                        min-width: calc(#{rem(310)} + #{rem(260/2)});
+                    }
+
+                    @include desktop {
+                        min-width: calc(#{rem(430)} + #{rem(346.79/2)});
+                    }
+                }
 
                 .sound-imgbx {
                     position: relative;
 
                     &-album {
-                        width: 65%;
+                        width: 63%;
                         height: 100%;
-                        aspect-ratio: 217/217;
+                        aspect-ratio: 192/192;
                         opacity: 0.5;
 
                         &.active {
+                            aspect-ratio: 217/217;
                             width: 75%;
                             opacity: 1;
+
+                            @include tablet {
+                                aspect-ratio: 310/310;
+                            }
+
+                            @include desktop {
+                                aspect-ratio: 430/430;
+                            }
+
                         }
 
                         img {
@@ -81,12 +110,21 @@
                             display: block;
                             position: absolute;
                             top: 50%;
-                            transform: translateY(-50%);
                             right: 0;
-                            z-index: -1;
-                            min-width: rem(170.31);
-                            min-height: rem(171.25);
-                            width: 50%;
+                            transform: translateY(-50%);
+                            z-index: -2;
+                            aspect-ratio: 182/183;
+                            width: 63%;
+                            height: 100%;
+
+                            @include tablet {
+                                aspect-ratio: 260/260;
+                            }
+
+                            @include desktop {
+                                aspect-ratio: 346.79/346.79;
+                            }
+
                         }
 
                         img {
@@ -96,9 +134,8 @@
                 }
 
                 .sound-txtbx {
-                    // display: none;
                     opacity: 0;
-                    padding: rem(24) rem(48) rem(24) rem(16);
+                    padding: rem(8) 0 rem(20);
 
                     &.active {
                         opacity: 1;
@@ -109,13 +146,34 @@
                         align-items: center;
                         justify-content: space-between;
                         padding: rem(8) 0;
+
+                        &-btn {
+                            position: relative;
+                            width: rem(32);
+                            height: rem(32);
+                            border: 1px solid #000;
+                            border-radius: 50%;
+
+                            &::after {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                content: '';
+                                width: rem(10);
+                                height: rem(12);
+                                background-image: url('../../assets/images/sound-play-ico.svg');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+                        }
                     }
 
                     &-title {
                         white-space: nowrap;
                         overflow: hidden;
                         width: 100%;
-                        border: 1px solid #f00;
                         @include font(20, 24px, 550);
 
                         @include desktop {
@@ -143,17 +201,21 @@
             align-items: center;
             justify-content: center;
             gap: rem(16);
-            margin: rem(20) auto 0;
-            background-color: #E6E1D6;
+            margin: 0 auto;
             width: fit-content;
             padding: rem(4);
             border-radius: rem(32);
 
             &-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
                 width: rem(36);
                 height: rem(36);
                 margin-top: 0;
-                position: static;
+                border-radius: 50%;
+                background: #d9d3c8;
+
 
                 &::after {
                     width: rem(18);
@@ -165,6 +227,7 @@
                 }
 
                 &.swiper-button-next {
+
                     &::after {
                         transform: rotate(180deg);
                     }
