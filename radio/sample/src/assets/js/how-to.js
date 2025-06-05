@@ -39,6 +39,11 @@ function howTo() {
             if (bullets[index]) {
               bullets[index].style.setProperty('--bullet-duration', `${video.duration}s`);
               console.log(`Applied --bullet-duration: ${video.duration}s to bullet ${index + 1}`);
+              
+              // duration 설정 후 bullet-ready 클래스 추가 (약간의 지연 후)
+              setTimeout(() => {
+                bullets[index].classList.add('bullet-ready');''
+              }, 50);
             }
             
             // 모든 비디오가 로드되면 첫 번째 비디오 재생
@@ -54,6 +59,7 @@ function howTo() {
       slideChange: function() {
         const activeIndex = this.activeIndex;
         const videos = document.querySelectorAll('.how-to-video-bx video');
+        const bullets = document.querySelectorAll('.how-to-video-slide .swiper-pagination .swiper-pagination-bullet');
         
         // 모든 비디오 정지
         videos.forEach(video => {
@@ -61,9 +67,21 @@ function howTo() {
           video.currentTime = 0;
         });
         
+        // 모든 bullet의 bullet-ready 클래스 제거 (애니메이션 리셋)
+        bullets.forEach(bullet => {
+          bullet.classList.remove('bullet-ready');
+        });
+        
         // 현재 활성 비디오 재생
         if (videos[activeIndex]) {
           videos[activeIndex].play();
+          
+          // 현재 활성 bullet에 bullet-ready 클래스 추가
+          if (bullets[activeIndex] && bullets[activeIndex].style.getPropertyValue('--bullet-duration')) {
+            setTimeout(() => {
+              bullets[activeIndex].classList.add('bullet-ready');
+            }, 50);
+          }
         }
       }
     }
