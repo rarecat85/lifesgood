@@ -41,22 +41,22 @@ let bannerScrollTrigger = null;
 //     })
 // }
 
-// 배너 컨트롤러 함수
-function bannerMusicControlAnimation() {
-    const bannerStopbtn = document.querySelector('.banner-main-area-controls .stop-btn');
+// 배너 컨트롤러 함수(장식용인지 확인 필요)
+// function bannerMusicControlAnimation() {
+//     const bannerStopbtn = document.querySelector('.banner-main-area-controls .stop-btn');
 
-    bannerStopbtn.addEventListener('click', function () {
-        const isStoped = bannerStopbtn.getAttribute('aria-pressed');
+//     bannerStopbtn.addEventListener('click', function () {
+//         const isStoped = bannerStopbtn.getAttribute('aria-pressed');
 
-        if (isStoped === 'true') {
-            bannerStopbtn.setAttribute('aria-label', 'play');
-            bannerStopbtn.setAttribute('aria-pressed', 'false');
-        } else {
-            bannerStopbtn.setAttribute('aria-label', 'pause');
-            bannerStopbtn.setAttribute('aria-pressed', 'true');
-        }
-    });
-}
+//         if (isStoped === 'true') {
+//             bannerStopbtn.setAttribute('aria-label', 'play');
+//             bannerStopbtn.setAttribute('aria-pressed', 'false');
+//         } else {
+//             bannerStopbtn.setAttribute('aria-label', 'pause');
+//             bannerStopbtn.setAttribute('aria-pressed', 'true');
+//         }
+//     });
+// }
 
 // 배너 좌우 이미지 애니메이션 함수
 function bannerImageAnimation() {
