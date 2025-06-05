@@ -58,53 +58,9 @@ let bannerScrollTrigger = null;
 //     });
 // }
 
-// 배너 좌우 이미지 애니메이션 함수
-function bannerImageAnimation() {
-    const stackimgsLeft = document.querySelectorAll('.banner-imgbx-1 .stack-imgbx img');
-    const stackimgsRight = document.querySelectorAll('.banner-imgbx-2 .stack-imgbx img');
-    const stackimgsLength = stackimgsLeft.length;
-    // 애니메이션 간격 시간
-    const intervalTime = 500;
-
-    let currentIndex = 0;
-    let timeoutId = null;
-
-    const removeStack = () => {
-        stackimgsLeft.forEach(img => img.classList.remove('visible'));
-        stackimgsRight.forEach(img => img.classList.remove('visible'));
-    };
-
-    const stack = () => {
-        currentIndex = 0;
-
-        const stackProcess = () => {
-            if (currentIndex < stackimgsLength) {
-                stackimgsLeft[currentIndex].classList.add('visible');
-                stackimgsRight[currentIndex].classList.add('visible');
-                currentIndex++;
-                timeoutId = setTimeout(stackProcess, intervalTime);
-            } else {
-                // stack 이미지 모두 표시된 후, 모두 제거
-                resetStack();
-            }
-        };
-
-        stackProcess();
-    };
-
-    const resetStack = () => {
-        removeStack();
-        timeoutId = setTimeout(stack, intervalTime);
-    };
-
-    resetStack();
-}
-
 // 리사이즈 함수 
 function handleResize() {
-    console.log('리사이즈 이벤트 실행...')
-
-    bannerFlolatingAnimation();
+    // bannerFlolatingAnimation();
 }
 
 // 디바운스 함수
@@ -119,8 +75,7 @@ function debounce(func, delay = 500) {
 // 배너 init 함수
 function initBanner() {
     // bannerFlolatingAnimation();
-    bannerMusicControlAnimation();
-    bannerImageAnimation();
+    // bannerMusicControlAnimation();
 
     window.addEventListener('resize', debounce(handleResize));
 
