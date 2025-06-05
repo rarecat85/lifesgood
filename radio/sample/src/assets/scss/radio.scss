@@ -1,4 +1,5 @@
 @use './variable' as *;
+@use './mixin' as *;
 
 .radio-container {
   width:100%;
@@ -8,5 +9,9 @@
     width:100%;
     max-width: $inner;
     margin:0 auto;
+    padding:0 1rem;
+    @include tablet {
+      padding:0;
+    }
   }
 }
