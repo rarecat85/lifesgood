@@ -201,10 +201,14 @@
           }
           &::after {
             opacity: 1;
-            transform: scaleX(1);
-            border-radius: rem(12);
-            transition: transform var(--bullet-duration) linear, border-radius 3s linear;
+            transform: scaleX(0.375); // 초기값을 0으로 설정
+            border-radius: 50%;
+            transition: transform var(--bullet-duration, 0s) linear, border-radius 3s linear;
             transition-delay: 0.1s;
+          }
+          &.bullet-ready::after {
+            transform: scaleX(1); // duration 설정 후 1로 변경
+            border-radius: rem(12);
           }
         }
       }
@@ -283,6 +287,10 @@
       @include desktop {
         font-size: rem(36);
         margin-bottom: rem(16);
+      }
+      &-num {
+        font-family: LGEI Headline;
+        font-weight: 600;
       }
     }
     &-txt {
