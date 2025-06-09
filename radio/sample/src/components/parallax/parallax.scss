@@ -1,0 +1,115 @@
+@use '../../assets/scss/mixin' as *;
+@use '../../assets/scss/variable' as *;
+
+.parallax {
+  &-container {
+    position: relative;
+    // overflow: hidden;
+    min-height: 600px;
+    background-color: $black;
+    padding-bottom: rem(90);
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+    @keyframes scrollMove {
+      /* 시작: 바닥에 위치 */
+      0% {
+        transform: translateY(0);
+        /* 바닥에서 출발할 때는 빠르게 상승 */
+        animation-timing-function: ease-out;
+      }
+      /* 약 30% 시점에 최고 높이(-10rem)에 도달 */
+      50% {
+        transform: translateY(rem(-20));
+        /* 최고점에서 다시 떨어질 때는 속도를 줄여 자연스럽게 */
+        animation-timing-function: ease-in;
+      }
+      /* 나머지 시간동안 바닥에 머무름 */
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .scroll-move {
+      position: sticky;
+      bottom: rem(10);
+      z-index: 3;
+      span {
+        display: block;
+        font-size: rem(14);
+        font-weight: 550;
+        line-height: 1.07;
+        margin-top: rem(10);
+        color: $white;
+        text-align: center;
+        @include tablet {
+          font-size: rem(16);
+        }
+        @include desktop {
+          font-size: rem(18);
+        }
+      }
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+      ellipse {
+        animation: "scrollMove" 1.5s infinite;
+      }
+      &.scroll-move-static {
+        position: relative;
+        margin: 0 auto;
+      }
+    }
+  }
+  &-txt-bx {
+    width: 100%;
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    @include tablet {
+      top: 10%;
+    }
+    @include desktop {
+      top: 14%;
+    }
+    &-logo {
+      width: rem(295);
+      margin-left: auto;
+      margin-right: auto;
+      @include tablet {
+        width: rem(431);
+      }
+      @include desktop {
+        width: rem(585);
+      }
+    }
+    &-title {
+      font-size: rem(28);
+      font-weight: 550;
+      line-height: 1.07;
+      margin-top: rem(40);
+      @include tablet {
+        font-size: rem(44);
+      }
+      @include desktop {
+        font-size: rem(56);
+      }
+    }
+  }
+  &-item {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s linear;
+    &-01 {
+      bottom: 4.5%;
+    }
+    &-03 {
+      transition-duration: 0.8s;
+      z-index: 2;
+    }
+  }
+}
