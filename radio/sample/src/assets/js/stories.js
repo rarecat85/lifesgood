@@ -9,7 +9,7 @@ if (storiesSwiper) {
       prevEl: ".swiper-btnbx-prev",
     },
     breakpoints: {
-      768: {
+      769: {
         slidesPerView: 3,
         spaceBetween: 16,
       },
