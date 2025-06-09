@@ -1,4 +1,5 @@
-@import '../../assets/scss/mixin';
+@use '../../assets/scss/mixin' as *;
+@use '../../assets/scss/variable' as *;
 
 body {
    background: $bg;
@@ -6,7 +7,6 @@ body {
 
 .stories {
    .inner {
-      // padding: rem(32) 0;
       padding: 0 rem(16) rem($mo_padding);
       margin: 0 auto;
 
@@ -15,12 +15,11 @@ body {
       }
 
       @include desktop {
-         padding: 0 rem(24) rem($pc_padding);
+         padding: 0 0 rem($pc_padding);
       }
    }
 
    &-title {
-      // font-family: "LGEI Headline";
       @include font(28, 32px, 550);
 
       @include tablet {
