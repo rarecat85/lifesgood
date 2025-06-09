@@ -1,4 +1,6 @@
-@import '../../assets/scss/mixin';
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
 
 body {
     &.noscroll {
@@ -7,8 +9,7 @@ body {
 }
 
 .banner {
-    margin: 0 auto;
-    position: relative;
+    width: 100%;
     padding: 0 rem(16) rem($mo_padding);
 
     @include tablet {
@@ -19,101 +20,146 @@ body {
         padding: 0 0 rem($pc_padding);
     }
 
-    .banner-wrapper {
-        max-width: 1920px;
-        background: #e6e1d6;
-        border-radius: rem(20);
-        margin: 0 auto;
+    &-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        max-width: $inner;
+        height: 100%;
+        margin: 0 auto;
+        border-radius: rem(20);
+        background: #e6e1d6;
+        // overflow: hidden;
 
         @include tablet {
+            display: flex;
             flex-direction: row;
             justify-content: space-between;
-            padding: 0;
             border-radius: rem(24);
         }
 
         @include desktop {
-            padding: 0;
+            max-height: rem(400);
             border-radius: rem(28);
         }
     }
 
     .inner {
-        padding: rem(40) rem(36.5) rem(38);
+        padding: rem(40) rem(36.5) 0;
 
         @include tablet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // min-width: rem(481);
             padding: rem(24) 0;
         }
 
         @include desktop {
-            padding: rem(40) 0;
+            padding: 0;
         }
     }
 
     &-imgbx-1 {
-        width: 100%;
-        height: 100%;
-        position: relative;
         display: none;
 
-        img {
-            @include img(cover);
+        @include tablet {
+            display: block;
+            max-width: rem(270);
+            width: 100%;
+            height: 100%;
         }
 
-        @include tablet {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: rem(212);
+        @include desktop {
+            max-width: rem(335);
+        }
+
+        img {
+            @include img(contain);
         }
     }
 
     &-imgbx-2 {
-        position: relative;
-        margin-top: rem(24);
         width: 100%;
+        height: 100%;
+        padding-top: rem(40);
 
         @include tablet {
-            margin-top: 0;
+            padding-top: 0;
+            max-width: rem(255);
+            height: 100%;
+        }
+
+        @include desktop {
+            max-width: rem(320);
         }
 
         img {
-            @include img(cover);
+            @include img(contain);
         }
     }
 
     &-main-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include tablet {
+            max-width: rem(261);
+        }
+
         &-imgbx {
-            width: 100%;
-            margin-bottom: rem(8);
+            width: rem(255);
+            height: rem(130);
+            margin-bottom: rem(16);
 
             @include tablet {
-                margin-bottom: rem(24);
+                width: rem(219);
+                height: rem(112);
+                margin-bottom: rem(8);
+            }
+
+            @include desktop {
+                width: rem(259);
+                height: rem(132);
             }
 
             img {
-                @include img(cover);
+                @include img(contain);
             }
         }
 
         &-title {
-            font-family: "LGEI Headline";
+            font-family: 'LGEI Text';
+            // max-width: rem(230);
             width: fit-content;
-            padding: 0 rem(16);
             padding-bottom: rem(16);
+            margin: 0 auto;
 
             @include tablet {
-                padding: 0 rem(16);
+                // max-width: rem(183);
                 padding-bottom: rem(8);
+            }
+
+            @include desktop {
+                // max-width: rem(24);
+                padding-bottom: rem(16);
             }
 
             .top {
                 width: 100%;
+
                 p {
-                    @include font(20, 24px, 550);
+                    @include font(20, 120%, 550);
+
+                    @include tablet {
+                        @include font(16, 125%, 550);
+                    }
+
+                    @include desktop {
+                        @include font(20, 120%, 550);
+                    }
                 }
             }
 
@@ -123,29 +169,75 @@ body {
                 justify-content: space-between;
 
                 p {
-                    @include font(20, 24px, 550);
+                    @include font(20, 120%, 550);
+
+                    @include tablet {
+                        @include font(16, 125%, 550);
+                    }
+
+                    @include desktop {
+                        @include font(20, 120%, 550);
+                    }
                 }
             }
         }
 
         &-controls {
+            // max-width: rem(230);
+            max-width: rem(244);
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: rem(36);
-            padding: 0 rem(16.29);
+            padding-bottom: rem(24);
+            margin: 0 auto;
+
+            @include tablet {
+                // max-width: rem(183);
+                max-width: rem(196);
+                padding-bottom: rem(16);
+            }
+
+            @include desktop {
+                // max-width: rem(228);
+                max-width: rem(244);
+                padding-bottom: rem(32);
+            }
 
             .prev-btn {
-                width: rem(27.43);
-                height: rem(16);
+                width: rem(32);
+                height: rem(32);
+                aspect-ratio: 1/1;
                 background: url('/src/assets/images/banner-arrow-ico.svg') no-repeat center;
+                background-size: contain;
                 cursor: pointer;
+
+                @include tablet {
+                    width: rem(24);
+                    height: rem(24);
+                }
+
+                @include desktop {
+                    width: rem(32);
+                    height: rem(32);
+                }
             }
 
             .stop-btn {
-                width: rem(18);
-                height: rem(24);
+                width: rem(32);
+                height: rem(32);
                 cursor: pointer;
+                background-size: contain;
+
+                @include tablet {
+                    width: rem(24);
+                    height: rem(24);
+                }
+
+                @include desktop {
+                    width: rem(32);
+                    height: rem(32);
+                }
 
                 &[aria-pressed=false] {
                     // 새로운 svg 아이콘 필요
@@ -158,18 +250,29 @@ body {
             }
 
             .next-btn {
-                width: rem(27.43);
-                height: rem(16);
+                width: rem(32);
+                height: rem(32);
+                aspect-ratio: 1/1;
                 background: url('/src/assets/images/banner-arrow-ico.svg') no-repeat center;
+                background-size: contain;
                 transform: rotate(180deg);
                 cursor: pointer;
+
+                @include tablet {
+                    width: rem(24);
+                    height: rem(24);
+                }
+
+                @include desktop {
+                    width: rem(32);
+                    height: rem(32);
+                }
             }
         }
 
         &-startbtn {
-            position: sticky;
-            bottom: 5%;
-            z-index: 10;
+            position: static;
+            z-index: 99;
             width: rem(248);
             height: rem(48);
             padding: 0 rem(8) 0 rem(10);
@@ -178,9 +281,21 @@ body {
             align-items: center;
             justify-content: space-between;
             will-change: transform;
+            transform: translateZ(0);
             background: $red;
             border-radius: rem(32);
             cursor: pointer;
+
+            @include tablet {
+                width: rem(233);
+                height: rem(48);
+            }
+
+            @include desktop {
+                width: rem(261);
+                height: rem(56);
+                padding-left: rem(10);
+            }
 
             &:hover {
                 background: $white;
@@ -199,15 +314,20 @@ body {
                 }
             }
 
-            @include tablet {
-                width: rem(261);
-                height: rem(56);
-            }
-
             p {
                 min-width: rem(188);
                 text-align: center;
-                @include font(18, 20px, 600, $white);
+                @include font(18, 120%, 600, $white);
+
+                @include tablet {
+                    min-width: rem(185);
+                    @include font(16, 125%, 600);
+                }
+
+                @include desktop {
+                    min-width: rem(201);
+                    @include font(20, 120%, 600);
+                }
             }
 
             .blendbx {
@@ -219,6 +339,11 @@ body {
                 height: rem(32);
                 background: $white;
                 border-radius: 50%;
+
+                @include desktop {
+                    width: rem(36);
+                    height: rem(36);
+                }
 
                 @keyframes blend1Animation {
                     0% {
@@ -315,19 +440,19 @@ body {
                 }
 
                 &-blend-1 {
-                    animation: blend1Animation 1s ease-in-out infinite;
+                    animation: blend1Animation 1s ease infinite;
                 }
 
                 &-blend-2 {
-                    animation: blend2Animation 1s ease-in-out infinite;
+                    animation: blend2Animation 1s ease infinite;
                 }
 
                 &-blend-3 {
-                    animation: blend3Animation 1s ease-in-out infinite;
+                    animation: blend3Animation 1s ease infinite;
                 }
 
                 &-blend-4 {
-                    animation: blend4Animation 1s ease-in-out infinite;
+                    animation: blend4Animation 1s ease infinite;
                 }
             }
         }
