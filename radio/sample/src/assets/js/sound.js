@@ -279,6 +279,7 @@ if (soundSwiper) {
                 soundTitleAnimation(0);
                 moveCenterNavigation();
                 handleAudio();
+                resetExtraPadding();
             },
             slideChange: function () {
                 const index_currentSlide = this.realIndex;
