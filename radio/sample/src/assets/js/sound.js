@@ -158,8 +158,6 @@ if (soundSwiper) {
         const tracks = document.querySelectorAll(".sound-imgbx-track");
         const track = tracks[index];
 
-        console.log(trackTimelines[index])
-
         // 현재 슬라이드 타임라인 
         if (!trackTimelines[index]) {
             const tl = gsap.timeline({
@@ -292,14 +290,25 @@ if (soundSwiper) {
                 soundTexts.forEach(el => el.classList.remove("active"));
 
                 if (currentSlide) {
+                    // 컨트롤러 초기화
                     resetAll();
 
+                   // 타임라인 초기화
+                    if (trackTimelines[this.previousIndex]) {
+                        gsap.set(soundTracks[this.previousIndex], {
+                            rotation: 0
+                        });
+                        trackTimelines[this.previousIndex].kill();
+                        delete trackTimelines[this.previousIndex];
+                        trackStarted[this.previousIndex] = false;
+                    }
                     if (trackTimelines[this.realIndex]) {
                         trackTimelines[this.realIndex].kill();
                         delete trackTimelines[this.realIndex];
                         trackStarted[this.realIndex] = false;
                     }
 
+                    // 현재 슬라이드 활성화
                     imgbxs[index_currentSlide].classList.add("active");
                     soundAlbums[index_currentSlide].classList.add("active");
                     soundTracks[index_currentSlide].classList.add("active");
@@ -307,6 +316,7 @@ if (soundSwiper) {
                     soundTitleAnimation(index_currentSlide);
                 }
 
+                // Swiper Wrapper 기기별 패딩 업데이트
                 if (this.realIndex === 1) {
                     updateExtraPadding();
                 } else if (this.realIndex === 0) {

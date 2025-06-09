@@ -173,6 +173,7 @@
                             min-height: rem(32);
                             border: 1px solid #000;
                             border-radius: 50%;
+                            cursor: pointer;
 
                             @include tablet {
                                 width: rem(40);
@@ -233,6 +234,7 @@
                                 height: rem(4);
                                 border-radius: rem(100);
                                 background: #cbcbc2;
+                                cursor: pointer;
 
                                 @include tablet {
                                     min-width: rem(280);
