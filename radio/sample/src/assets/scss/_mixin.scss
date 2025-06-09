@@ -1,4 +1,4 @@
-@import "_variable";
+@use "./variable" as *;
 
 /* rem */
 @function rem($px) {
