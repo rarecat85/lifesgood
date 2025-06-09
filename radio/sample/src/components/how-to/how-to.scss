@@ -1,0 +1,309 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.how-to {
+  &-container {
+    padding: rem(64) 0;
+    overflow: hidden;
+    text-align: center;
+    @include tablet {
+      padding: rem(80) 0;
+    }
+    @include desktop {
+      padding: rem(120) 0;
+    }
+  }
+  &-title {
+    font-family: LGEI Text;
+    font-weight: 550;
+    font-size: rem(28);
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: rem(8);
+    @include tablet {
+      font-size: rem(44);
+    }
+    @include desktop {
+      font-size: rem(56);
+      margin-bottom: rem(16);
+    }
+  }
+  &-subtitle {
+    font-family: LGEI Text;
+    font-size: rem(20);
+    text-align: center;
+    margin-bottom: rem(20);
+    @include tablet {
+      font-size: rem(24);
+      margin-bottom: rem(32);
+    }
+    @include desktop {
+      font-size: rem(36);
+      margin-bottom: rem(48);
+    }
+  }
+  &-video-bx {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: #e6e1d6;
+    overflow: hidden;
+    @include tablet {
+      border-radius: 1.75rem;
+    }
+  }
+  &-video-control-btn {
+    width: rem(32);
+    height: rem(32);
+    border-radius: 50%;
+    background: rgba(217, 211, 200, 0.75);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    bottom: rem(16);
+    right: rem(16);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+    @include tablet {
+      width: rem(48);
+      height: rem(48);
+      bottom: rem(24);
+      right: rem(24);
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: rem(16);
+      height: rem(16);
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      @include tablet {
+        width: rem(24);
+        height: rem(24);
+      }
+    }
+    &:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+    }
+    &.pause {
+      &::after {
+        background-image: url("../images/how-to-pause-icon.svg");
+      }
+    }
+    &.play {
+      &::after {
+        background-image: url("../images/how-to-play-icon.svg");
+      }
+    }
+    &.restart {
+      &::after {
+        background-image: url("../images/how-to-restart-icon.svg");
+      }
+    }
+  }
+  &-video-slide {
+    width: 100%;
+    margin-bottom: rem(20);
+    @include tablet {
+      width: calc(100% - rem(48));
+      margin-bottom: rem(32);
+    }
+    @include desktop {
+      width: 100%;
+      margin-bottom: rem(48);
+    }
+    video {
+      width: min(calc(100% - rem(100)), rem(640));
+      object-fit: scale-down;
+      aspect-ratio: 1;
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+    .swiper-slide-active {
+      video {
+        opacity: 1;
+      }
+      .how-to-video-control-btn {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .swiper-pagination {
+      width: auto;
+      height: rem(8);
+      position: static;
+      margin-top: rem(20);
+      @include tablet {
+        height: rem(12);
+        margin-top: rem(24);
+      }
+      @include desktop {
+        height: rem(12);
+        margin-top: rem(24);
+      }
+      .swiper-pagination-bullet {
+        width: rem(8);
+        height: rem(8);
+        margin: 0 rem(5);
+        background-color: #b8b4ab;
+        opacity: 1;
+        overflow: hidden;
+        transition: all 0.3s linear;
+        @include tablet {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        @include desktop {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: rem(8);
+          transform: scaleX(0.375);
+          border-radius: 50%;
+          transform-origin: left;
+          background-color: #000000;
+          opacity: 0;
+          @include tablet {
+            height: rem(12);
+          }
+          @include desktop {
+            height: rem(12);
+          }
+        }
+        &.swiper-pagination-bullet-active {
+          width: rem(20);
+          border-radius: rem(12);
+          @include tablet {
+            width: rem(32);
+          }
+          @include desktop {
+            width: rem(32);
+          }
+          &::after {
+            opacity: 1;
+            transform: scaleX(0.375); // 초기값을 0으로 설정
+            border-radius: 50%;
+            transition: transform var(--bullet-duration, 0s) linear, border-radius 3s linear;
+            transition-delay: 0.1s;
+          }
+          &.bullet-ready::after {
+            transform: scaleX(1); // duration 설정 후 1로 변경
+            border-radius: rem(12);
+          }
+        }
+      }
+    }
+    .swiper-navigation {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: rem(16);
+      width: calc(100% - rem(48));
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      button {
+        width: rem(48);
+        height: rem(48);
+        border-radius: 50%;
+        background: rgba(217, 211, 200, 0.75);
+        backdrop-filter: blur(10px);
+        margin-top: 0;
+        position: static;
+        bottom: rem(24);
+        right: rem(24);
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &::after {
+          content: "";
+          display: block;
+          width: rem(24);
+          height: rem(24);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+        }
+        &:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+        }
+        &.swiper-button-prev {
+          &::after {
+            background-image: url("../images/how-to-next-icon.svg");
+            transform: translate(-50%, -50%) rotate(180deg);
+          }
+        }
+        &.swiper-button-next {
+          &::after {
+            background-image: url("../images/how-to-next-icon.svg");
+          }
+        }
+      }
+      @include tablet {
+        display: flex;
+      }
+      @include desktop {
+        width: min(calc(63vw - rem(40)), rem(1152));
+      }
+    }
+  }
+  &-txt-slide {
+    width: min(calc(100% - rem(48)), rem(1152));
+    text-align: center;
+    &-title {
+      font-family: LGEI Text;
+      font-weight: 550;
+      font-size: rem(20);
+      margin-bottom: rem(4);
+      @include tablet {
+        font-size: rem(28);
+        margin-bottom: rem(8);
+      }
+      @include desktop {
+        font-size: rem(36);
+        margin-bottom: rem(16);
+      }
+      &-num {
+        font-family: LGEI Headline;
+        font-weight: 600;
+      }
+    }
+    &-txt {
+      font-family: LGEI Text;
+      font-size: rem(16);
+      line-height: 1.16;
+      color: #333333;
+      @include tablet {
+        font-size: rem(20);
+      }
+      @include desktop {
+        font-size: rem(24);
+      }
+    }
+  }
+}

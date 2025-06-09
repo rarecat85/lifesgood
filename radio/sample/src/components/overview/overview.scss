@@ -1,0 +1,239 @@
+@use '../../assets/scss/variable' as *;
+@use '../../assets/scss/mixin' as *;
+
+
+.overview {
+  .inner {
+    padding: rem(64) rem(16);
+    @include tablet {
+      padding: rem(80) rem(24);
+    }
+    @include desktop {
+      padding: rem(120) 0;
+    }
+  }
+  &-heading {
+    margin-bottom:rem(56);
+    @include tablet {
+      margin-bottom: rem(80);
+    }
+    &-title {
+      max-width: rem(1240);
+      margin: 0 auto;
+      @include font(28,114%,400,$black);
+      text-align: center;
+      margin-bottom: rem(32);
+      @include tablet {
+        font-size:rem(44);
+        margin-bottom: rem(56);
+      }
+      @include desktop {
+        font-size:rem(48);
+        margin-bottom:rem(80);
+      }
+    }
+    &-img {
+      width:100%;
+      border-radius: rem(20);
+      overflow: hidden;
+      aspect-ratio: 328/438;
+      position:relative;
+      picture {
+        img {
+          @include img();
+        }
+      }
+      @include tablet {
+        max-width: rem(864);
+        aspect-ratio: 864/432;
+        border-radius: rem(28);
+        margin: 0 auto;
+      }
+      @include desktop {
+        max-width: rem(1240);
+      }
+      .overview-heading-motion-imgs {
+        width:100%;
+        position:absolute;
+        top:0;
+        left:50%;
+        transform:translateX(-50%);
+        .motion-icon {
+          position:absolute;
+          visibility: hidden;
+          &.heart-icon {
+            width:vw(200);
+            top:vw(100);
+            left:50%;
+            transform:translateX(vw(545));
+            @include tablet {
+              width:rem(46);
+              transform:translateX(rem(158));
+            }
+            @include desktop {
+              width:rem(72);
+              top:rem(20);
+              left:50%;
+              transform:translateX(rem(248));
+            }
+          }
+          &.smile-icon {
+            width:vw(275);
+            top:vw(370);
+            left:50%;
+            transform:translateX(vw(250));
+            @include tablet {
+              width:rem(60);
+              top:rem(80);
+              transform:translateX(rem(90));
+            }
+            @include desktop {
+              width:rem(88);
+              top:rem(112);
+              left:50%;
+              transform:translateX(rem(144));
+            }
+          }
+          &.img-icon {
+            width:vw(300);
+            top:vw(450);
+            left:50%;
+            transform:translateX(calc(-100% - vw(150)));
+            @include tablet {
+              width:rem(72);
+              top:rem(110);
+              left:50%;
+              transform:translateX(calc(-100% - rem(80)));
+            }
+            @include desktop {
+              width:rem(96);
+              top:rem(171);
+              left:50%;
+              transform:translateX(calc(-100% - rem(121)));
+            }
+          }
+          &.like-icon01 {
+            width:vw(100);
+            top:vw(150);
+            left:50%;
+            transform:translateX(-50%);
+            opacity:0.5;
+            @include tablet {
+              width:rem(24);
+              top:rem(25);
+            }
+            @include desktop {
+              width:rem(28);
+              top:rem(37);
+              left:50%;
+              transform:translateX(-50%);
+            }
+          }
+          &.like-icon02 {
+            width:vw(125);
+            top:vw(400);
+            left:50%;
+            transform:translateX(calc(-100% - vw(650)));
+            opacity:0.7;
+            @include tablet {
+              width:rem(30);
+              top:rem(109);
+              left:50%;
+              transform:translateX(calc(-100% - rem(270)));
+            }
+            @include desktop {
+              width:rem(36);
+              top:rem(109);
+              left:50%;
+              transform:translateX(calc(-100% - rem(316)));
+            }
+          }
+          &.like-icon03 {
+            width:vw(150);
+            top:vw(670);
+            left:50%;
+            transform:translateX(calc(-100% - vw(120)));
+            @include tablet {
+              width:rem(36);
+              top:rem(160);
+              left:50%;
+              transform:translateX(calc(-100% - rem(75)));
+            }
+            @include desktop {
+              width:rem(40);
+              top:rem(235);
+              left:50%;
+              transform:translateX(calc(-100% - rem(115)));
+            }
+          }
+        }
+      }
+    }
+  }
+  &-cont {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    &-box {
+      @include tablet {
+        display:flex;
+        align-items:flex-start;
+        column-gap: rem(80);
+      }
+      @include desktop {
+        column-gap: rem(120);
+      }
+    }
+    &:not(:last-child) {
+      margin-bottom: rem(56);
+      @include tablet {
+        margin-bottom: 0;
+        flex-direction:column-reverse;
+        row-gap:rem(56);
+      }
+      @include desktop {
+        row-gap: rem(80);
+      }
+    }
+    &-img {
+      width:100%;
+      margin-bottom:rem(24);
+      img {
+        @include img();
+      }
+      @include tablet {
+        margin-bottom:rem(56);
+      }
+      @include desktop {
+        margin-bottom: rem(80);
+      }
+    }
+    &-txt {
+      @include font(16,125%,400,$warmGray);
+      span {
+        font-weight:600;
+      }
+      @include tablet {
+        font-size:rem(24);
+      }
+      @include desktop {
+        font-size:rem(36);
+      }
+    }
+    &-lifesgood-logo {
+      width: rem(194);
+      margin-top: rem(16);
+      img {
+        @include img();
+      }
+      @include tablet {
+        width: rem(242);
+        margin-top: rem(24);
+      }
+      @include desktop {
+        width: rem(362);
+        margin-top: rem(40);
+      }
+    }
+  }
+}
