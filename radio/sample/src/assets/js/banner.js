@@ -5,7 +5,7 @@ let bannerScrollTrigger = null;
 // 배너 플로팅 함수
 function bannerFlolatingAnimation() {
     // 시작 요소 입력 필요
-    const startElement = document.querySelector('.overview-cont-lifesgood-logo');
+    const startElement = document.querySelector('.influence-container');
     const endElement = document.querySelector('.banner-main-area-startbtn');
 
     // 이전 스크롤 트리거 요소 제거
