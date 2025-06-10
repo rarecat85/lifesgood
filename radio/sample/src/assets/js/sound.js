@@ -1,8 +1,3 @@
-// 1. 사용자 프로그래스바 드래그 이동 가능하게
-// 2. 드래그 이용시 swiper - allowTouchMove: false
-// 3. 드래그 이용 안할 시 swiper - allowTouchMove: true
-
-
 const soundSwiper = document.querySelector(".sound .sound-swiper");
 
 if (soundSwiper) {
