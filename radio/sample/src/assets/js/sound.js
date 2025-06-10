@@ -1,10 +1,12 @@
 const soundSwiper = document.querySelector(".sound .sound-swiper");
-const trackTimelines = {};
-const trackStarted = {};
 
 if (soundSwiper) {
+    const trackTimelines = {};
+    const trackStarted = {};
+
     // 미디어 쿼리 설정
     const mediaQueries = {
+        mobile: window.matchMedia("(max-width: 768px)"),
         tablet: window.matchMedia("(min-width: 769px) and (max-width: 1440px)"),
         desktop: window.matchMedia("(min-width: 1441px)")
     };
@@ -25,7 +27,7 @@ if (soundSwiper) {
         }
     }
 
-    // 디바이스별 간격 업데이트 함수 - 초기화
+    // 디바이스별 간격 업데이트 함수
     function resetExtraPadding() {
         const swiperWrapper = document.querySelector(".sound .swiper-wrapper");
         swiperWrapper.style.paddingLeft = "0px";
@@ -39,6 +41,7 @@ if (soundSwiper) {
     function resetAll() {
         const audios = document.querySelectorAll("audio");
 
+        // 오디오 초기화
         audios.forEach(audio => {
             audio.pause();
             audio.currentTime = 0;
@@ -50,7 +53,7 @@ if (soundSwiper) {
             tl.timeScale(0);
         });
 
-        // 컨트롤러 버튼 초기화 
+        // 컨트롤러 초기화 
         audioControllerBtns.forEach(btn => {
             btn.setAttribute("aria-pressed", "false");
             btn.setAttribute("aria-label", "play");
@@ -94,12 +97,13 @@ if (soundSwiper) {
                     audioControllerBtn.setAttribute("aria-pressed", "true");
                     audioControllerBtn.setAttribute("aria-label", "pause");
                     soundTrackAnimation(idx, false);
+                    soundTitleAnimation(idx, false);
                 } else {
                     audio.pause();
                     audioControllerBtn.setAttribute("aria-pressed", "false");
                     audioControllerBtn.setAttribute("aria-label", "play");
                     soundTrackAnimation(idx, true);
-
+                    soundTitleAnimation(idx, true);
                 }
             });
 
@@ -122,13 +126,41 @@ if (soundSwiper) {
                 }
             });
 
-            // 프로그래스바 클릭 이벤트(오디오 시간대 변경)
-            progressBar.addEventListener("click", e => {
-                const rect = progressBar.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const percentage = clickX / rect.width;
-                audio.currentTime = percentage * audio.duration;
+            // 프로그래스바 마우스 이벤트
+            let isProgressDragging = false;
+            let lastTime = 0;
+
+            progressBar.addEventListener("pointerdown", (e) => {
+                touchStatus = false;
+                isProgressDragging = true;
+                audioTimeUpdate(e);
             });
+
+            document.addEventListener("pointermove", (e) => {
+                if (isProgressDragging)
+
+                audioTimeUpdate(e);
+
+                const now = new Date().getTime();
+                if (now - lastTime >= wait) {
+                    fn.apply(this, args);
+                    lastTime = now;
+                }
+            });
+
+            document.addEventListener("pointerup", () => {
+                if (isProgressDragging) {
+                    touchStatus = true;
+                    isProgressDragging = false;
+                }
+            });
+
+            function audioTimeUpdate(e) {
+                const rect = progressBar.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(1, x / rect.width));
+                audio.currentTime = percentage * audio.duration;
+            }
 
             // 볼륨 슬라이더 이벤트
             // volumeSlider.addEventListener("pointerdown", e => e.stopPropagation());
@@ -211,8 +243,8 @@ if (soundSwiper) {
         }
     }
 
-    // 타이틀 애니메이션 함수(기본값 첫번째 슬라이드)
-    function soundTitleAnimation(index = 0) {
+    // 타이틀 애니메이션 함수
+    function soundTitleAnimation(index = 0, isStopped = true) {
         const titleWrappers = document.querySelectorAll(".sound-txtbx-title-wrapper");
         const CopiedtitleWrapper = titleWrappers[index];
 
@@ -227,15 +259,21 @@ if (soundSwiper) {
         const speed = 100;
         const duration = textDistanceWidth / speed;
 
-        gsap.fromTo(CopiedtitleWrapper, {
-            x: 0
-        }, {
-            x: -textDistanceWidth,
-            ease: "none",
-            duration: duration,
-            repeat: -1,
-            repeatDelay: 0
-        });
+        if (isStopped) {
+            gsap.killTweensOf(CopiedtitleWrapper);
+            CopiedtitleWrapper.style.transform = "translateX(0)";
+            CopiedtitleWrapper.innerHTML = originalText;
+        } else {
+            gsap.fromTo(CopiedtitleWrapper, {
+                x: 0
+            }, {
+                x: -textDistanceWidth,
+                ease: "none",
+                duration: duration,
+                repeat: -1,
+                repeatDelay: 0
+            });
+        }
     }
 
     // 슬라이드 화살표 위치 조정 함수(앨범 높이의 중앙 위치하도록)
@@ -254,10 +292,16 @@ if (soundSwiper) {
     const soundTracks = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-track");
     const soundTexts = document.querySelectorAll(".sound .swiper-slide .sound-txtbx");
 
+    let touchStatus = true;
+
+    // Sound Swiper 초기화 및 설정
     const swiperOptions = {
         slidesPerView: 1,
         centeredSlides: true,
         slideToClickedSlide: true,
+        touchable: true,
+        // allowTouchMove: touchStatus,
+        allowTouchMove: false,
         mousewheel: {
             forceToAxis: true,
         },
@@ -269,32 +313,36 @@ if (soundSwiper) {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
-        touchable: true,
         on: {
             init: function () {
                 imgbxs[0].classList.add("active");
                 soundAlbums[0].classList.add("active");
                 soundTracks[0].classList.add("active");
                 soundTexts[0].classList.add("active");
-                soundTitleAnimation(0);
-                moveCenterNavigation();
+
                 handleAudio();
+                moveCenterNavigation();
                 resetExtraPadding();
             },
             slideChange: function () {
-                const index_currentSlide = this.realIndex;
-                const currentSlide = this.slides[index_currentSlide];
-
                 imgbxs.forEach(el => el.classList.remove("active"));
                 soundAlbums.forEach(el => el.classList.remove("active"));
                 soundTracks.forEach(el => el.classList.remove("active"));
                 soundTexts.forEach(el => el.classList.remove("active"));
 
-                if (currentSlide) {
-                    // 컨트롤러 초기화
-                    resetAll();
+                const index_currentSlide = this.realIndex;
+                const currentSlide = this.slides[index_currentSlide];
 
-                   // 타임라인 초기화
+                if (currentSlide) {
+                    imgbxs[index_currentSlide].classList.add("active");
+                    soundAlbums[index_currentSlide].classList.add("active");
+                    soundTracks[index_currentSlide].classList.add("active");
+                    soundTexts[index_currentSlide].classList.add("active");
+
+                    resetAll(); // 컨트롤러 초기화
+                    soundTitleAnimation(this.realIndex, true); // 타이틀 애니메이션 초기화
+
+                    // 타임라인 초기화
                     if (trackTimelines[this.previousIndex]) {
                         gsap.set(soundTracks[this.previousIndex], {
                             rotation: 0
@@ -308,13 +356,6 @@ if (soundSwiper) {
                         delete trackTimelines[this.realIndex];
                         trackStarted[this.realIndex] = false;
                     }
-
-                    // 현재 슬라이드 활성화
-                    imgbxs[index_currentSlide].classList.add("active");
-                    soundAlbums[index_currentSlide].classList.add("active");
-                    soundTracks[index_currentSlide].classList.add("active");
-                    soundTexts[index_currentSlide].classList.add("active");
-                    soundTitleAnimation(index_currentSlide);
                 }
 
                 // Swiper Wrapper 기기별 패딩 업데이트
@@ -341,10 +382,12 @@ if (soundSwiper) {
 
     const swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
+    // 리사이즈 함수
     function handleResize() {
         moveCenterNavigation();
     }
 
+    // 디바운스 함수
     function debounce(func, delay = 500) {
         let timer;
         return function (...args) {
@@ -353,6 +396,7 @@ if (soundSwiper) {
         }
     }
 
+    // Sound 섹션 init 함수
     function initSound() {
         moveCenterNavigation();
         window.addEventListener('resize', debounce(handleResize));

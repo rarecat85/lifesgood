@@ -210,7 +210,6 @@ body {
                 aspect-ratio: 1/1;
                 background: url('/src/assets/images/banner-arrow-ico.svg') no-repeat center;
                 background-size: contain;
-                cursor: pointer;
 
                 @include tablet {
                     width: rem(24);
@@ -226,7 +225,7 @@ body {
             .stop-btn {
                 width: rem(32);
                 height: rem(32);
-                cursor: pointer;
+                background: url('/src/assets/images/banner-stop-ico.svg') no-repeat center;
                 background-size: contain;
 
                 @include tablet {
@@ -239,14 +238,13 @@ body {
                     height: rem(32);
                 }
 
-                &[aria-pressed=false] {
-                    // 새로운 svg 아이콘 필요
-                    background: url('/src/assets/images/banner-play-ico.svg') no-repeat center;
-                }
+                // &[aria-pressed=false] {
+                //     background: url('/src/assets/images/banner-play-ico.svg') no-repeat center;
+                // }
 
-                &[aria-pressed=true] {
-                    background: url('/src/assets/images/banner-stop-ico.svg') no-repeat center;
-                }
+                // &[aria-pressed=true] {
+                //     background: url('/src/assets/images/banner-stop-ico.svg') no-repeat center;
+                // }
             }
 
             .next-btn {
@@ -256,7 +254,6 @@ body {
                 background: url('/src/assets/images/banner-arrow-ico.svg') no-repeat center;
                 background-size: contain;
                 transform: rotate(180deg);
-                cursor: pointer;
 
                 @include tablet {
                     width: rem(24);
@@ -284,7 +281,6 @@ body {
             transform: translateZ(0);
             background: $red;
             border-radius: rem(32);
-            cursor: pointer;
 
             @include tablet {
                 width: rem(233);
