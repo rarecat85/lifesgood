@@ -137,15 +137,16 @@ if (soundSwiper) {
             });
 
             document.addEventListener("pointermove", (e) => {
-                if (isProgressDragging)
-
-                audioTimeUpdate(e);
-
-                const now = new Date().getTime();
-                if (now - lastTime >= wait) {
-                    fn.apply(this, args);
-                    lastTime = now;
+                if (isProgressDragging) {
+                    const now = new Date().getTime();
+                    if (now - lastTime >= 30) {
+                        audioTimeUpdate(e);
+                        lastTime = now;
+                    }
                 }
+
+
+
             });
 
             document.addEventListener("pointerup", () => {
