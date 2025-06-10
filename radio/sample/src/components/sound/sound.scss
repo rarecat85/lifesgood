@@ -66,11 +66,11 @@
 
                     // 활성화된 슬라이드 스타일
                     @include tablet {
-                        min-width: calc(#{rem(310)} + #{rem(260/2)});
+                        min-width: calc(#{rem(310)} + #{rem(calc(260/2))});
                     }
 
                     @include desktop {
-                        min-width: calc(#{rem(427)} + #{rem(360/2)});
+                        min-width: calc(#{rem(427)} + #{rem(calc(360/2))});
                     }
 
                 }
@@ -94,12 +94,12 @@
                         width: auto;
 
                         @include tablet {
-                            min-width: calc(#{rem(310)} + #{rem(260/2)});
+                            min-width: calc(#{rem(310)} + #{rem(calc(260/2))});
                             width: 100%;
                         }
 
                         @include desktop {
-                            min-width: calc(#{rem(427)} + #{rem(360/2)});
+                            min-width: calc(#{rem(427)} + #{rem(calc(360/2))});
                         }
                     }
 
@@ -402,7 +402,7 @@
                             content: '';
                             position: absolute;
                             top: 0;
-                            right: 0;
+                            right: rem(-1);
                             width: rem(97);
                             height: 100%;
                             background: linear-gradient(90deg, rgba(240, 236, 228, 0.00) 0%, #F0ECE4 100%);
