@@ -65,7 +65,7 @@ function init() {
 
   const mainVideoTrigger = ScrollTrigger.create({
     trigger: mainVideo,
-    start: 'top',
+    start: 'top center',
     end: 'bottom center',
     animation: mainVideoTl,
     toggleActions: 'restart none reverse none',
