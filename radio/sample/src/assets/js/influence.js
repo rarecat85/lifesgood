@@ -43,7 +43,7 @@ function influence() {
     
     if (activeVideoBx && activeTxtBx) {
       // 활성화된 슬라이드의 video-bx에 txt-bx 높이 + 추가 간격만큼 bottom 값 적용
-      activeVideoBx.style.bottom = `${activeTxtBx.clientHeight + extraPadding}px`;
+      activeVideoBx.style.bottom = `${(activeTxtBx.clientHeight + extraPadding) / 16}rem`;
     }
   }
   
