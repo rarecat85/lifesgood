@@ -107,7 +107,6 @@ function overviewAnimation() {
   
   function getCurrentBreakpoint() {
     const width = window.innerWidth;
-    if (width < 426) return 'xs';
     if (width < 769) return 'mobile';
     if (width < 1441) return 'tablet';
     return 'desktop';
@@ -118,11 +117,14 @@ function overviewAnimation() {
     
     console.log(`Resize detected: ${currentBreakpoint} -> ${newBreakpoint}`); // 디버깅용
     
-    // 브레이크포인트가 변경되었을 때만 애니메이션 재실행
-    if (newBreakpoint !== currentBreakpoint) {
+    // mobile, tablet 구간에서는 매번 리프레시, desktop 구간에서는 브레이크포인트 변경시에만
+    const shouldRefresh = (newBreakpoint === 'mobile' || newBreakpoint === 'tablet') || 
+                         (newBreakpoint !== currentBreakpoint);
+    
+    if (shouldRefresh) {
       currentBreakpoint = newBreakpoint;
       
-      console.log('Breakpoint changed, reinitializing animations'); // 디버깅용
+      console.log(`Reinitializing animations - Current: ${newBreakpoint}`); // 디버깅용
       
       // ScrollTrigger 전체 새로고침
       if (typeof ScrollTrigger !== 'undefined') {

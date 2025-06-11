@@ -63,107 +63,109 @@
           visibility: hidden;
           &.heart-icon {
             width:vw(200);
-            top:vw(100);
+            top:vw(820);
             left:50%;
-            transform:translateX(vw(545));
+            transform:translateX(-70%);
             @include tablet {
               width:rem(46);
-              transform:translateX(rem(158));
+              top:rem(120);
+              transform:translateX(rem(0));
             }
             @include desktop {
-              width:rem(72);
-              top:rem(20);
+              width:rem(60);
+              top:rem(160);
               left:50%;
-              transform:translateX(rem(248));
+              transform:translateX(0);
             }
           }
           &.smile-icon {
             width:vw(275);
             top:vw(370);
             left:50%;
-            transform:translateX(vw(250));
+            transform:translateX(vw(200));
             @include tablet {
               width:rem(60);
-              top:rem(80);
-              transform:translateX(rem(90));
+              top:rem(50);
+              transform:translateX(rem(70));
             }
             @include desktop {
               width:rem(88);
-              top:rem(112);
+              top:rem(40);
               left:50%;
-              transform:translateX(rem(144));
+              transform:translateX(rem(80));
             }
           }
           &.img-icon {
             width:vw(300);
             top:vw(450);
             left:50%;
-            transform:translateX(calc(-100% - vw(150)));
+            transform:translateX(calc(-100% - vw(470)));
             @include tablet {
               width:rem(72);
-              top:rem(110);
+              top:rem(50);
               left:50%;
-              transform:translateX(calc(-100% - rem(80)));
+              transform:translateX(calc(-100% - rem(50)));
             }
             @include desktop {
               width:rem(96);
-              top:rem(171);
+              top:rem(71);
               left:50%;
-              transform:translateX(calc(-100% - rem(121)));
+              transform:translateX(calc(-100% - rem(65)));
             }
           }
           &.like-icon01 {
             width:vw(100);
-            top:vw(150);
+            top:vw(420);
             left:50%;
-            transform:translateX(-50%);
-            opacity:0.5;
+            transform:translateX(vw(650));
+            opacity:0.7;
             @include tablet {
               width:rem(24);
-              top:rem(25);
+              top:rem(70);
+              transform:translateX(rem(150));
             }
             @include desktop {
-              width:rem(28);
-              top:rem(37);
+              width:rem(36);
+              top:rem(27);
               left:50%;
-              transform:translateX(-50%);
+              transform:translateX(calc(-100% - rem(15)));
             }
           }
           &.like-icon02 {
             width:vw(125);
-            top:vw(400);
+            top:vw(250);
             left:50%;
-            transform:translateX(calc(-100% - vw(650)));
-            opacity:0.7;
+            transform:translateX(calc(-100% - vw(250)));
+            opacity:0.5;
             @include tablet {
               width:rem(30);
-              top:rem(109);
+              top:rem(29);
               left:50%;
-              transform:translateX(calc(-100% - rem(270)));
+              transform:translateX(-50%);
             }
             @include desktop {
-              width:rem(36);
-              top:rem(109);
+              width:rem(28);
+              top:rem(78);
               left:50%;
-              transform:translateX(calc(-100% - rem(316)));
+              transform:translateX(rem(220));
             }
           }
           &.like-icon03 {
             width:vw(150);
             top:vw(670);
             left:50%;
-            transform:translateX(calc(-100% - vw(120)));
+            transform:translateX(calc(-100% - vw(420)));
             @include tablet {
               width:rem(36);
-              top:rem(160);
+              top:rem(100);
               left:50%;
-              transform:translateX(calc(-100% - rem(75)));
+              transform:translateX(calc(-100% - rem(40)));
             }
             @include desktop {
               width:rem(40);
-              top:rem(235);
+              top:rem(145);
               left:50%;
-              transform:translateX(calc(-100% - rem(115)));
+              transform:translateX(calc(-100% - rem(60)));
             }
           }
         }
