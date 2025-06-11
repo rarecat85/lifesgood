@@ -75,11 +75,18 @@
       width: rem(295);
       margin-left: auto;
       margin-right: auto;
+      position: relative;
       @include tablet {
         width: rem(431);
       }
       @include desktop {
         width: rem(585);
+      }
+      &-sticker {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(50%, 50%);
       }
     }
     &-title {
