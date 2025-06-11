@@ -4,7 +4,6 @@
 .parallax {
   &-container {
     position: relative;
-    // overflow: hidden;
     min-height: 600px;
     background-color: $black;
     padding-bottom: rem(90);
@@ -37,7 +36,7 @@
       span {
         display: block;
         font-size: rem(14);
-        font-weight: 550;
+        font-weight: 400;
         line-height: 1.07;
         margin-top: rem(10);
         color: $white;
@@ -46,7 +45,8 @@
           font-size: rem(16);
         }
         @include desktop {
-          font-size: rem(18);
+          font-size: rem(20);
+          margin-bottom: rem(11);
         }
       }
       svg {
@@ -65,16 +65,12 @@
   &-txt-bx {
     width: 100%;
     position: absolute;
-    top: 14%;
+    top: rem(200);
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
     text-align: center;
-    @include tablet {
-      top: 10%;
-    }
-    @include desktop {
-      top: 14%;
-    }
+    transition: all 0.5s linear;
     &-logo {
       width: rem(295);
       margin-left: auto;
@@ -88,16 +84,22 @@
     }
     &-title {
       font-size: rem(28);
-      font-weight: 550;
+      font-weight: 700;
       line-height: 1.07;
+      letter-spacing: 0;
       margin-top: rem(40);
       @include tablet {
         font-size: rem(44);
       }
       @include desktop {
-        font-size: rem(56);
+        font-size: rem(37);
       }
     }
+  }
+  &-item-bx {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
   }
   &-item {
     position: absolute;
