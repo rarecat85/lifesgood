@@ -175,6 +175,7 @@
     display:flex;
     flex-direction: column;
     &-box {
+      width:100%;
       @include tablet {
         display:flex;
         align-items:flex-start;
@@ -184,7 +185,7 @@
         column-gap: rem(120);
       }
     }
-    &:not(:last-child) {
+    &:first-child {
       margin-bottom: rem(56);
       @include tablet {
         margin-bottom: 0;
@@ -198,6 +199,7 @@
     &-img {
       width:100%;
       margin-bottom:rem(24);
+      position:relative;
       img {
         @include img();
       }
@@ -206,6 +208,23 @@
       }
       @include desktop {
         margin-bottom: rem(80);
+      }
+      .overview-heart-tower-img {
+        position:absolute;
+        top:rem(-23);
+        left:rem(9);
+        width:rem(85);
+        height:auto;
+        @include tablet {
+          top:rem(-32);
+          left:rem(12);
+          width:rem(110);
+        }
+        @include desktop {
+          top:rem(-40);
+          left:rem(16);
+          width:rem(162);
+        }
       }
     }
     &-txt {
