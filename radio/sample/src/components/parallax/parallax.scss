@@ -3,13 +3,14 @@
 
 .parallax {
   &-container {
+    width:100%;
     position: relative;
     min-height: 600px;
     background-color: $black;
     padding-bottom: rem(90);
+    overflow: hidden;
     img {
-      max-width: 100%;
-      object-fit: cover;
+      @include img();
     }
     @keyframes scrollMove {
       /* 시작: 바닥에 위치 */
@@ -63,19 +64,17 @@
     }
   }
   &-txt-bx {
-    width: 100%;
     position: absolute;
     top: rem(200);
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
     text-align: center;
-    transition: all 0.5s linear;
     &-logo {
       width: rem(295);
-      margin-left: auto;
-      margin-right: auto;
+      margin:0 auto;
       position: relative;
+      opacity: 0;
       @include tablet {
         width: rem(431);
       }
@@ -86,6 +85,8 @@
         position: absolute;
         bottom: rem(-20);
         right: rem(-124);
+        opacity: 0;
+        transform: scale(0);
       }
     }
     &-title {
@@ -94,6 +95,7 @@
       line-height: 1.07;
       letter-spacing: 0;
       margin-top: rem(40);
+      opacity: 0;
       @include tablet {
         font-size: rem(44);
       }
@@ -101,6 +103,33 @@
         font-size: rem(37);
       }
     }
+         &-radio-controls {
+       width:100%;
+       margin-top:rem(12);
+       display:flex;
+       align-items:center;
+       column-gap:rem(3);
+       opacity: 0;
+       &-boll {
+         width:rem(14);
+         height:rem(14);
+         border-radius:50%;
+         background:$black;
+         flex-shrink:0;
+       }
+       &-line {
+         height:rem(4);
+         background:$black;
+         border-radius:rem(100);
+         flex-shrink:0;
+         &:first-child {
+           width: 0; // 첫 번째 line 초기값
+         }
+         &:last-child {
+           width:calc(100% - rem(10)); // 두 번째 line 초기값
+         }
+       }
+     }
   }
   &-item-bx {
     overflow: hidden;
@@ -116,6 +145,7 @@
     }
   }
   &-item {
+    width:100%;
     position: absolute;
     bottom: 0;
     left: 0;
