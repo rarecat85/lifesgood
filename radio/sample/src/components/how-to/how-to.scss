@@ -297,7 +297,6 @@
     width: min(calc(100% - rem(48)), rem(1152));
     text-align: center;
     &-title {
-      font-family: LGEI Text;
       font-weight: 550;
       font-size: rem(20);
       margin-bottom: rem(4);
@@ -310,7 +309,6 @@
         margin-bottom: rem(16);
       }
       &-num {
-        font-family: LGEI Headline;
         font-weight: 600;
       }
     }
