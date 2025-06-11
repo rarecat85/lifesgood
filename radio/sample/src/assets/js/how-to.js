@@ -26,7 +26,7 @@ function howTo() {
     on: {
       init: function() {
         const videos = document.querySelectorAll('.how-to-video-bx video');
-        const bullets = document.querySelectorAll('.how-to-video-slide .swiper-pagination .swiper-pagination-bullet');
+        const controlBtns = document.querySelectorAll('.how-to-video-control-btn');
         let loadedCount = 0;
         
         // 모든 비디오의 메타데이터가 로드될 때까지 기다림
@@ -35,52 +35,85 @@ function howTo() {
             loadedCount++;
             console.log(`Video ${index + 1} Duration:`, video.duration);
             
-            // 해당 pagination bullet에 transition-duration 적용
-            if (bullets[index]) {
-              bullets[index].style.setProperty('--bullet-duration', `${video.duration}s`);
-              console.log(`Applied --bullet-duration: ${video.duration}s to bullet ${index + 1}`);
-              
-              // duration 설정 후 bullet-ready 클래스 추가 (약간의 지연 후)
-              setTimeout(() => {
-                bullets[index].classList.add('bullet-ready');''
-              }, 50);
+            // 해당 컨트롤 버튼에 progress duration 설정
+            if (controlBtns[index]) {
+              controlBtns[index].style.setProperty('--progress-duration', `${video.duration}s`);
+              console.log(`Applied --progress-duration: ${video.duration}s to control button ${index + 1}`);
             }
             
             // 모든 비디오가 로드되면 첫 번째 비디오 재생
             if (loadedCount === videos.length) {  
               const activeIndex = this.activeIndex || 0;
               if (videos[activeIndex]) {
-                videos[activeIndex].play();
+                // 재생 시도 전 확인
+                const playPromise = videos[activeIndex].play();
+                if (playPromise !== undefined) {
+                  playPromise.then(() => {
+                    console.log('Video playback started successfully');
+                    // 첫 번째 컨트롤 버튼의 progress 시작
+                    const progressCircle = controlBtns[activeIndex]?.querySelector('.progress-circle-fill');
+                    if (progressCircle) {
+                      const duration = videos[activeIndex].duration;
+                      console.log(`Setting initial progress animation duration: ${duration}s`);
+                      // CSS 변수 사용하여 애니메이션 시작
+                      progressCircle.classList.add('progress-active');
+                    }
+                  }).catch(error => {
+                    console.log('Auto-play prevented:', error);
+                    // 자동재생이 차단된 경우 사용자 상호작용 대기
+                  });
+                }
               }
             }
           });
+          
+          // 비디오 로드 에러 처리
+          video.addEventListener('error', function(e) {
+            console.error(`Video ${index + 1} load error:`, e);
+          });
+          
+          // 비디오 로드 시작
+          video.load();
         });
       },
       slideChange: function() {
         const activeIndex = this.activeIndex;
         const videos = document.querySelectorAll('.how-to-video-bx video');
-        const bullets = document.querySelectorAll('.how-to-video-slide .swiper-pagination .swiper-pagination-bullet');
+        const controlBtns = document.querySelectorAll('.how-to-video-control-btn');
         
-        // 모든 비디오 정지
-        videos.forEach(video => {
+        // 모든 비디오 정지 및 progress 리셋
+        videos.forEach((video, index) => {
           video.pause();
           video.currentTime = 0;
-        });
-        
-        // 모든 bullet의 bullet-ready 클래스 제거 (애니메이션 리셋)
-        bullets.forEach(bullet => {
-          bullet.classList.remove('bullet-ready');
+          
+          // progress circle 리셋
+          const progressCircle = controlBtns[index]?.querySelector('.progress-circle-fill');
+          if (progressCircle) {
+            progressCircle.classList.remove('progress-active', 'progress-completed');
+            progressCircle.style.transition = 'none';
+            progressCircle.style.strokeDashoffset = '283';
+          }
         });
         
         // 현재 활성 비디오 재생
         if (videos[activeIndex]) {
-          videos[activeIndex].play();
-          
-          // 현재 활성 bullet에 bullet-ready 클래스 추가
-          if (bullets[activeIndex] && bullets[activeIndex].style.getPropertyValue('--bullet-duration')) {
-            setTimeout(() => {
-              bullets[activeIndex].classList.add('bullet-ready');
-            }, 50);
+          const playPromise = videos[activeIndex].play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              // 현재 활성 컨트롤 버튼의 progress 시작
+              const activeProgressCircle = controlBtns[activeIndex]?.querySelector('.progress-circle-fill');
+              if (activeProgressCircle) {
+                setTimeout(() => {
+                  const duration = videos[activeIndex].duration;
+                  console.log(`Setting slide change progress animation duration: ${duration}s`);
+                  // CSS 기본 transition으로 복원 후 애니메이션 시작
+                  activeProgressCircle.style.transition = '';
+                  activeProgressCircle.classList.add('progress-active');
+                }, 50);
+              }
+            }).catch(error => {
+              console.log('Auto-play prevented on slide change:', error);
+            });
           }
         }
       }
@@ -103,24 +136,60 @@ function howTo() {
   const videoControlBtns = document.querySelectorAll('.how-to-video-control-btn');
   videoControlBtns.forEach(btn => {
     const video = btn.closest('.how-to-video-bx').querySelector('video');
+    const progressCircle = btn.querySelector('.progress-circle-fill');
     
     // 비디오 컨트롤 버튼 클릭 이벤트
     btn.addEventListener('click', () => {
       if (video.ended) {
         // 비디오가 끝난 상태에서 클릭하면 restart
         video.currentTime = 0;
-        video.play();
         btn.classList.remove('restart');
         btn.classList.add('pause');
         btn.setAttribute('aria-label', 'pause');
         btn.querySelector('.sr-only').textContent = 'Pause';
+        // progress 재시작 - CSS 변수와 클래스 활용
+        if (progressCircle) {
+          // 리셋 후 애니메이션 시작
+          progressCircle.classList.remove('progress-active', 'progress-completed');
+          progressCircle.classList.add('progress-reset');
+          
+          setTimeout(() => {
+            progressCircle.classList.remove('progress-reset');
+            progressCircle.classList.add('progress-active');
+          }, 50);
+        }
+        // 비디오 재생은 약간의 지연 후 시작
+        setTimeout(() => {
+          video.play();
+        }, 10);
       } else if (video.paused) {
-        // 일시정지 상태에서 클릭하면 재생
+        // 일시정지 상태에서 클릭하면 현재 지점에서 재생
         video.play();
         btn.classList.remove('play');
         btn.classList.add('pause');
         btn.setAttribute('aria-label', 'pause');
         btn.querySelector('.sr-only').textContent = 'Pause';
+        // progress 현재 지점에서 재개 - 남은 시간 계산하여 CSS 변수 업데이트
+        if (progressCircle && video.duration) {
+          const remainingTime = video.duration - video.currentTime;
+          const currentProgress = video.currentTime / video.duration;
+          const currentOffset = 283 * (1 - currentProgress);
+          
+          console.log(`Resuming: currentTime=${video.currentTime}s, remainingTime=${remainingTime}s`);
+          
+          // 현재 지점으로 즉시 설정
+          progressCircle.style.transition = 'none';
+          progressCircle.style.strokeDashoffset = currentOffset;
+          
+          // 새로운 duration으로 CSS 변수 업데이트
+          btn.style.setProperty('--progress-duration', `${remainingTime}s`);
+          
+          // 애니메이션 재개
+          setTimeout(() => {
+            progressCircle.style.transition = '';  // CSS 기본값으로 복원
+            progressCircle.classList.add('progress-active');
+          }, 50);
+        }
       } else {
         // 재생 중에 클릭하면 일시정지
         video.pause();
@@ -128,6 +197,17 @@ function howTo() {
         btn.classList.add('play');
         btn.setAttribute('aria-label', 'play');
         btn.querySelector('.sr-only').textContent = 'Play';
+        // progress 현재 지점에서 멈춤
+        if (progressCircle) {
+          progressCircle.classList.remove('progress-active');
+          // 현재 지점 계산하여 고정
+          if (video.duration) {
+            const currentProgress = video.currentTime / video.duration;
+            const currentOffset = 283 * (1 - currentProgress);
+            progressCircle.style.transition = 'none';
+            progressCircle.style.strokeDashoffset = currentOffset;
+          }
+        }
       }
     });
     
@@ -155,6 +235,11 @@ function howTo() {
       btn.classList.add('restart');
       btn.setAttribute('aria-label', 'restart');
       btn.querySelector('.sr-only').textContent = 'Restart';
+      // progress 완료 상태로 유지
+      if (progressCircle) {
+        progressCircle.classList.remove('progress-active');
+        progressCircle.classList.add('progress-completed');
+      }
     });
   });
 } 
