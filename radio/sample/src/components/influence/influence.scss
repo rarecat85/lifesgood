@@ -64,9 +64,19 @@
     visibility: hidden;
     transition: all 0.3s;
     &-title {
+      flex: 1;
+      min-width: 0;
       strong {
         font-weight: 600;
-        font-size: rem(24);
+        font-size: rem(20);
+        display: block;
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        @include desktop {
+          font-size: rem(24);
+        }
       }
       span {
         display: block;

@@ -95,7 +95,10 @@
       &-fill {
         stroke-dasharray: calc(2 * 3.14 * 48); // 2π × 48 ≈ 295
         stroke-dashoffset: calc(2 * 3.14 * 48);
-        
+        stroke-width: rem(1.5);
+        @include desktop {
+          stroke-width: rem(2);
+        }
         // CSS animation 사용
         &.progress-active {
           animation: progressFill var(--progress-duration, 0s) linear forwards;
@@ -110,12 +113,12 @@
         &.progress-completed {
           stroke-dashoffset: 0;
           animation: none;
+          stroke: transparent;
         }
         
         // 애니메이션 리셋을 위한 초기상태
         &.progress-reset {
           stroke-dashoffset: 295;
-          animation: none;
         }
       }
       
@@ -188,50 +191,6 @@
       .how-to-video-control-btn {
         opacity: 1;
         visibility: visible;
-      }
-    }
-    .swiper-pagination {
-      width: auto;
-      height: rem(8);
-      position: static;
-      margin-top: rem(20);
-      @include tablet {
-        height: rem(12);
-        margin-top: rem(24);
-      }
-      @include desktop {
-        height: rem(12);
-        margin-top: rem(24);
-      }
-      .swiper-pagination-bullet {
-        width: rem(8);
-        height: rem(8);
-        margin: 0 rem(5);
-        background-color: #b8b4ab;
-        opacity: 1;
-        overflow: hidden;
-        transition: all 0.3s linear;
-        @include tablet {
-          width: rem(12);
-          height: rem(12);
-          margin: 0 rem(6);
-        }
-        @include desktop {
-          width: rem(12);
-          height: rem(12);
-          margin: 0 rem(6);
-        }
-        &.swiper-pagination-bullet-active {
-          width: rem(20);
-          border-radius: rem(12);
-          background-color: #000000;
-          @include tablet {
-            width: rem(32);
-          }
-          @include desktop {
-            width: rem(32);
-          }
-        }
       }
     }
     .swiper-navigation {
@@ -309,7 +268,15 @@
         margin-bottom: rem(16);
       }
       &-num {
-        font-weight: 600;
+        img {
+          width: rem(24);
+          @include tablet {
+            width: rem(28);
+          }
+          @include desktop {
+            width: rem(40);
+          }
+        }
       }
     }
     &-txt {
@@ -317,11 +284,59 @@
       font-size: rem(16);
       line-height: 1.16;
       color: #333333;
+      br{
+        display: none;
+      }
       @include tablet {
         font-size: rem(20);
+        br{
+          display: block;
+        }
       }
       @include desktop {
         font-size: rem(24);
+      }
+    }
+    .swiper-pagination {
+      width: auto;
+      position: static;
+      margin-top: rem(20);
+      @include tablet {
+        height: rem(12);
+        margin-top: rem(32);
+      }
+      @include desktop {
+        height: rem(12);
+        margin-top: rem(48);
+      }
+      .swiper-pagination-bullet {
+        width: rem(8);
+        margin: 0 rem(5);
+        background: #b8b4ab;
+        opacity: 1;
+        overflow: hidden;
+        transition: all 0.3s linear;
+        @include tablet {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        @include desktop {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        &.swiper-pagination-bullet-active {
+          width: rem(20);
+          border-radius: rem(12);
+          background: #000000;
+          @include tablet {
+            width: rem(32);
+          }
+          @include desktop {
+            width: rem(32);
+          }
+        }
       }
     }
   }

@@ -57,10 +57,6 @@ function howTo() {
     mousewheel: {
       forceToAxis: true,
     },
-    pagination: {
-      el: ".how-to-video-slide .swiper-pagination",
-      clickable: true,
-    },
     navigation: {
       nextEl: ".how-to-video-slide .swiper-button-next",
       prevEl: ".how-to-video-slide .swiper-button-prev",
@@ -136,6 +132,10 @@ function howTo() {
     slidesPerView: 1,
     spaceBetween: 16,
     autoHeight: true,
+    pagination: {
+      el: ".how-to-txt-slide .swiper-pagination",
+      clickable: true,
+    },
   });
 
   // Swiper 연결
