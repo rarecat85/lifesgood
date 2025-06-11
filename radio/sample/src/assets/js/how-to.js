@@ -131,7 +131,6 @@ function howTo() {
     },
     slidesPerView: 1,
     spaceBetween: 16,
-    autoHeight: true,
     pagination: {
       el: ".how-to-txt-slide .swiper-pagination",
       clickable: true,
