@@ -23,8 +23,8 @@
       width: 86.666%;
       aspect-ratio: 4/3;
       margin: 0 auto;
-      border-radius: rem(20);
-      overflow: hidden;
+      // border-radius: rem(20);
+      // overflow: hidden;
       
       #youtube-player {
         width: 100%;
@@ -45,7 +45,7 @@
     @include tablet {
       .player-wrapper {
         width: 75%;
-        border-radius: rem(40);
+        // border-radius: rem(40);
       }
     }
   }
