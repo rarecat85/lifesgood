@@ -63,7 +63,6 @@
                 }
 
                 &.swiper-slide-active {
-
                     // 활성화된 슬라이드 스타일
                     @include tablet {
                         min-width: calc(#{rem(310)} + #{rem(calc(260/2))});
@@ -171,6 +170,7 @@
                             position: relative;
                             min-width: rem(32);
                             min-height: rem(32);
+                            padding: rem(8);
                             border: 1px solid #000;
                             border-radius: 50%;
                             cursor: pointer;
@@ -178,6 +178,7 @@
                             @include tablet {
                                 width: rem(40);
                                 height: rem(40);
+                                padding: rem(12);
                             }
 
                             @include desktop {
@@ -194,10 +195,10 @@
                                     transform: translate(-50%, -50%);
                                     width: rem(16);
                                     height: rem(16);
-                                    background: url('../../assets/images/sound-stop-ico.svg') no-repeat center;
+                                    background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-stop-icon.svg') no-repeat center;
                                     background-size: contain;
 
-                                    @include tablet {
+                                    @include desktop {
                                         width: rem(24);
                                         height: rem(24);
                                     }
@@ -213,10 +214,10 @@
                                     transform: translate(-50%, -50%);
                                     width: rem(16);
                                     height: rem(16);
-                                    background: url('../../assets/images/sound-play-ico.svg') no-repeat center;
+                                    background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-play-icon.svg') no-repeat center;
                                     background-size: contain;
 
-                                    @include tablet {
+                                    @include desktop {
                                         width: rem(24);
                                         height: rem(24);
                                     }
@@ -283,6 +284,7 @@
                             position: relative;
                             min-width: rem(32);
                             min-height: rem(32);
+
                             cursor: pointer;
 
                             @include tablet {
@@ -302,9 +304,9 @@
                                     top: 50%;
                                     left: 50%;
                                     transform: translate(-50%, -50%);
-                                    width: rem(32);
-                                    height: rem(32);
-                                    background: url('../../assets/images/sound-mute-ico.svg') no-repeat center;
+                                    width: rem(30);
+                                    height: rem(30);
+                                    background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-mute-icon.svg') no-repeat center;
                                     background-size: contain;
 
                                     @include tablet {
@@ -313,16 +315,10 @@
                                     }
 
                                     @include desktop {
-                                        width: rem(44);
-                                        height: rem(44);
+                                        width: rem(48);
+                                        height: rem(48);
                                     }
                                 }
-
-                                // &:hover {
-                                //     .volume-slider {
-                                //         display: none;
-                                //     }
-                                // }
                             }
 
                             &[aria-pressed=false] {
@@ -334,7 +330,7 @@
                                     transform: translate(-50%, -50%);
                                     width: rem(20);
                                     height: rem(20);
-                                    background: url('../../assets/images/sound-volume-ico.svg') no-repeat center;
+                                    background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-unmute-icon.svg') no-repeat center;
                                     background-size: contain;
 
                                     @include tablet {
@@ -348,36 +344,6 @@
                                     }
                                 }
                             }
-
-                            // &:hover {
-                            //     .volume-slider {
-                            //         display: block;
-                            //     }
-                            // }
-
-                            // .volume-slider {
-                            //     display: none;
-                            //     appearance: none;
-                            //     position: absolute;
-                            //     top: -50%;
-                            //     left: 50%;
-                            //     transform: translateX(-50%) rotate(-90deg);
-                            //     transform-origin: center;
-                            //     width: rem(50);
-                            //     height: rem(4);
-                            //     background: #cbcbc2;
-                            //     border-radius: rem(2);
-                            //     cursor: pointer;
-
-                            //     &::-webkit-slider-thumb {
-                            //         appearance: none;
-                            //         width: rem(12);
-                            //         height: rem(12);
-                            //         border-radius: 50%;
-                            //         background: #ea1917;
-                            //         cursor: pointer;
-                            //     }
-                            // }
                         }
                     }
 
@@ -534,14 +500,14 @@
 
                 &.swiper-button-prev {
                     &::after {
-                        background-image: url("../images/how-to-next-icon.svg");
+                        background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-next-icon.svg");
                         transform: translate(-50%, -50%) rotate(180deg);
                     }
                 }
 
                 &.swiper-button-next {
                     &::after {
-                        background-image: url("../images/how-to-next-icon.svg");
+                        background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-next-icon.svg");
                     }
                 }
             }
