@@ -1,21 +1,18 @@
-@use '../../assets/scss/mixin' as *;
-@use '../../assets/scss/variable' as *;
+@use '../../assets/scss/mixin'as *;
+@use '../../assets/scss/variable'as *;
 
 body {
    background: $bg;
 }
 
 .stories {
+   margin: 0 auto;
+
    .inner {
-      padding: 0 rem(16) rem($mo_padding);
-      margin: 0 auto;
+      max-width: $inner;
 
       @include tablet {
-         padding: 0 rem(24) rem($tab_padding);
-      }
-
-      @include desktop {
-         padding: 0 0 rem($pc_padding);
+         padding-left: rem(24);
       }
    }
 
@@ -35,11 +32,24 @@ body {
       margin-top: rem(12);
 
       @include tablet {
-         margin-top: rem(20);
+         margin-top: rem(32);
       }
 
       @include desktop {
-         margin-top: rem(22);
+         margin-top: rem(48);
+      }
+
+      .swiper {
+         padding: 0 rem(16) rem($mo_padding);
+         max-width: $inner;;
+
+         @include tablet {
+            padding: 0 rem(24) rem($tab_padding);
+         }
+
+         @include desktop {
+            padding: 0 0 rem($pc_padding);
+         }
       }
 
       .swiper-wrapper {
@@ -71,8 +81,7 @@ body {
                   gap: rem(8);
                }
 
-               @include desktop {
-               }
+               @include desktop {}
 
                h3 {
                   @include font(24, 28px, 400);
