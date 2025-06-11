@@ -5,9 +5,10 @@ function parallax() {
   const parallaxItems = gsap.utils.toArray('.parallax-item');
   const parallaxTxtBx = document.querySelector('.parallax-txt-bx');
   const parallaxLogo = document.querySelector('.parallax-txt-bx-logo');
+  const parallaxRadioControls = document.querySelector('.parallax-txt-bx-radio-controls');
   const parallaxSticker = document.querySelector('.parallax-txt-bx-logo-sticker');
   const parallaxTitle = document.querySelector('.parallax-txt-bx-title');
-  const parallaxRadioControls = document.querySelector('.parallax-txt-bx-radio-controls');
+  const parallaxRadioBtns = document.querySelector('.parallax-txt-bx-btns');
   const firstLine = document.querySelector('.parallax-txt-bx-radio-controls-line:first-child');
   const secondLine = document.querySelector('.parallax-txt-bx-radio-controls-line:last-child');
 
@@ -56,7 +57,8 @@ function parallax() {
     "-=0.2" // 스티커 애니메이션이 끝나기 0.2초 전에 시작
   )
    // 4. 라디오 컨트롤 - 나타나기
-   .fromTo(parallaxRadioControls,
+   introTimeline.addLabel("radioControls", "-=0.3")
+   .fromTo([parallaxRadioControls, parallaxRadioBtns],
      {
        opacity: 0
      },
@@ -65,7 +67,7 @@ function parallax() {
        duration: 0.3,
        ease: "power2.out"
      },
-     "-=0.3" // 타이틀 애니메이션과 함께 시작
+     "radioControls"
    )
    // 5. 첫 번째 라인 - 0에서 현재값까지 확장
    .fromTo(firstLine,
