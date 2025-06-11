@@ -80,13 +80,12 @@
         width: rem(431);
       }
       @include desktop {
-        width: rem(585);
+        width: rem(680);
       }
       &-sticker {
         position: absolute;
-        bottom: 0;
-        right: 0;
-        transform: translate(50%, 50%);
+        bottom: rem(-20);
+        right: rem(-124);
       }
     }
     &-title {
@@ -107,6 +106,14 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+  }
+  &-bg {
+    width: 100%;
+    min-height: 100vh;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
   }
   &-item {
     position: absolute;
