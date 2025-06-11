@@ -92,13 +92,9 @@
       height: 100%;
       transform: rotate(-90deg); // 12시 방향에서 시작
       
-      &-bg {
-        opacity: 0.3;
-      }
-      
       &-fill {
-        stroke-dasharray: 283; // 2π × 45 ≈ 283
-        stroke-dashoffset: 283;
+        stroke-dasharray: calc(2 * 3.14 * 48); // 2π × 48 ≈ 295
+        stroke-dashoffset: calc(2 * 3.14 * 48);
         
         // CSS animation 사용
         &.progress-active {
@@ -118,7 +114,7 @@
         
         // 애니메이션 리셋을 위한 초기상태
         &.progress-reset {
-          stroke-dashoffset: 283;
+          stroke-dashoffset: 295;
           animation: none;
         }
       }
@@ -126,7 +122,7 @@
       // progress 애니메이션 정의
       @keyframes progressFill {
         from {
-          stroke-dashoffset: 283;
+          stroke-dashoffset: 295;
         }
         to {
           stroke-dashoffset: 0;
