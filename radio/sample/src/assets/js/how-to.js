@@ -31,7 +31,6 @@ function howTo() {
       btn.classList.remove('play', 'pause', 'restart');
       btn.classList.add(state);
       btn.setAttribute('aria-label', label);
-      btn.querySelector('.sr-only').textContent = label.charAt(0).toUpperCase() + label.slice(1);
     }
   };
 
