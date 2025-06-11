@@ -53,9 +53,6 @@ function init() {
   function onPlayerReady(event) {
     isPlayerReady = true;
     console.log('YouTube 플레이어 준비 완료');
-    
-    // 반응형 크기 조정
-    resizePlayer();
   }
 
   // 플레이어 상태 변경 시 호출
@@ -94,49 +91,11 @@ function init() {
     }
   }
 
-  // 플레이어 크기 조정 함수
-  function resizePlayer() {
-    if (player && isPlayerReady && playerContainer) {
-      const containerWidth = playerContainer.offsetWidth;
-      const containerHeight = playerContainer.offsetHeight;
-      
-      // 16:9 비율 유지
-      const aspectRatio = 16 / 9;
-      let playerWidth = containerWidth;
-      let playerHeight = containerWidth / aspectRatio;
-
-      // 컨테이너 높이를 초과하지 않도록 조정
-      if (playerHeight > containerHeight) {
-        playerHeight = containerHeight;
-        playerWidth = containerHeight * aspectRatio;
-      }
-
-      try {
-        player.setSize(playerWidth, playerHeight);
-      } catch (error) {
-        console.log('플레이어 크기 조정 오류:', error);
-      }
-    }
-  }
-
   // YouTube 플레이어 생성
   createYouTubePlayer();
 
-  // 창 크기 변경 시 플레이어 크기 조정
-  let resizeTimeout;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(resizePlayer, 100);
-  });
-
   // GSAP 애니메이션 설정
-  const isLargeScreen = window.innerWidth >= 1440;
   const animationProps = { width: '100%', duration: 1, ease: 'power2.out' };
-  
-  // 1440px 미만일 때만 borderRadius 애니메이션 추가
-  if (!isLargeScreen) {
-    animationProps.borderRadius = '0';
-  }
   
   const mainVideoTl = gsap.timeline({
     onComplete: playVideo, 
