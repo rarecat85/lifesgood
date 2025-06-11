@@ -55,7 +55,7 @@ function howTo() {
                     if (progressCircle) {
                       const duration = videos[activeIndex].duration;
                       console.log(`Setting initial progress animation duration: ${duration}s`);
-                      // CSS 변수 사용하여 애니메이션 시작
+                      // CSS animation 시작
                       progressCircle.classList.add('progress-active');
                     }
                   }).catch(error => {
@@ -89,9 +89,8 @@ function howTo() {
           // progress circle 리셋
           const progressCircle = controlBtns[index]?.querySelector('.progress-circle-fill');
           if (progressCircle) {
-            progressCircle.classList.remove('progress-active', 'progress-completed');
-            progressCircle.style.transition = 'none';
-            progressCircle.style.strokeDashoffset = '283';
+            progressCircle.classList.remove('progress-active', 'progress-completed', 'progress-paused');
+            progressCircle.classList.add('progress-reset');
           }
         });
         
@@ -106,8 +105,8 @@ function howTo() {
                 setTimeout(() => {
                   const duration = videos[activeIndex].duration;
                   console.log(`Setting slide change progress animation duration: ${duration}s`);
-                  // CSS 기본 transition으로 복원 후 애니메이션 시작
-                  activeProgressCircle.style.transition = '';
+                  // CSS animation 시작
+                  activeProgressCircle.classList.remove('progress-reset');
                   activeProgressCircle.classList.add('progress-active');
                 }, 50);
               }
@@ -150,7 +149,7 @@ function howTo() {
         // progress 재시작 - CSS 변수와 클래스 활용
         if (progressCircle) {
           // 리셋 후 애니메이션 시작
-          progressCircle.classList.remove('progress-active', 'progress-completed');
+          progressCircle.classList.remove('progress-active', 'progress-completed', 'progress-paused');
           progressCircle.classList.add('progress-reset');
           
           setTimeout(() => {
@@ -169,26 +168,11 @@ function howTo() {
         btn.classList.add('pause');
         btn.setAttribute('aria-label', 'pause');
         btn.querySelector('.sr-only').textContent = 'Pause';
-        // progress 현재 지점에서 재개 - 남은 시간 계산하여 CSS 변수 업데이트
-        if (progressCircle && video.duration) {
-          const remainingTime = video.duration - video.currentTime;
-          const currentProgress = video.currentTime / video.duration;
-          const currentOffset = 283 * (1 - currentProgress);
-          
-          console.log(`Resuming: currentTime=${video.currentTime}s, remainingTime=${remainingTime}s`);
-          
-          // 현재 지점으로 즉시 설정
-          progressCircle.style.transition = 'none';
-          progressCircle.style.strokeDashoffset = currentOffset;
-          
-          // 새로운 duration으로 CSS 변수 업데이트
-          btn.style.setProperty('--progress-duration', `${remainingTime}s`);
-          
-          // 애니메이션 재개
-          setTimeout(() => {
-            progressCircle.style.transition = '';  // CSS 기본값으로 복원
-            progressCircle.classList.add('progress-active');
-          }, 50);
+        // progress 재개 - animation-play-state를 running으로 변경
+        if (progressCircle) {
+          console.log('Resuming animation with play-state: running');
+          progressCircle.classList.remove('progress-paused');
+          progressCircle.classList.add('progress-active');
         }
       } else {
         // 재생 중에 클릭하면 일시정지
@@ -197,16 +181,11 @@ function howTo() {
         btn.classList.add('play');
         btn.setAttribute('aria-label', 'play');
         btn.querySelector('.sr-only').textContent = 'Play';
-        // progress 현재 지점에서 멈춤
+        // progress 일시정지 - animation-play-state를 paused로 변경
         if (progressCircle) {
+          console.log('Pausing animation with play-state: paused');
           progressCircle.classList.remove('progress-active');
-          // 현재 지점 계산하여 고정
-          if (video.duration) {
-            const currentProgress = video.currentTime / video.duration;
-            const currentOffset = 283 * (1 - currentProgress);
-            progressCircle.style.transition = 'none';
-            progressCircle.style.strokeDashoffset = currentOffset;
-          }
+          progressCircle.classList.add('progress-paused');
         }
       }
     });

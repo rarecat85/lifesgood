@@ -99,20 +99,37 @@
       &-fill {
         stroke-dasharray: 283; // 2π × 45 ≈ 283
         stroke-dashoffset: 283;
-        transition: stroke-dashoffset var(--progress-duration, 0s) linear;
         
+        // CSS animation 사용
         &.progress-active {
-          stroke-dashoffset: 0;
+          animation: progressFill var(--progress-duration, 0s) linear forwards;
+          animation-play-state: running;
+        }
+        
+        &.progress-paused {
+          animation: progressFill var(--progress-duration, 0s) linear forwards;
+          animation-play-state: paused;
         }
         
         &.progress-completed {
           stroke-dashoffset: 0;
+          animation: none;
         }
         
         // 애니메이션 리셋을 위한 초기상태
         &.progress-reset {
           stroke-dashoffset: 283;
-          transition: none;
+          animation: none;
+        }
+      }
+      
+      // progress 애니메이션 정의
+      @keyframes progressFill {
+        from {
+          stroke-dashoffset: 283;
+        }
+        to {
+          stroke-dashoffset: 0;
         }
       }
     }
