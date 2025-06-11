@@ -1,13 +1,62 @@
 function howTo() {
+  // DOM 요소들을 한 번만 선택
+  const videos = document.querySelectorAll('.how-to-video-bx video');
+  const controlBtns = document.querySelectorAll('.how-to-video-control-btn');
   
-  howToVideoSlide = new Swiper(".how-to-video-slide", {
+  // 유틸리티 함수들
+  const progressUtils = {
+    reset: (progressCircle) => {
+      progressCircle.classList.remove('progress-active', 'progress-completed', 'progress-paused');
+      progressCircle.classList.add('progress-reset');
+    },
+    
+    start: (progressCircle) => {
+      progressCircle.classList.remove('progress-reset', 'progress-paused');
+      progressCircle.classList.add('progress-active');
+    },
+    
+    pause: (progressCircle) => {
+      progressCircle.classList.remove('progress-active');
+      progressCircle.classList.add('progress-paused');
+    },
+    
+    complete: (progressCircle) => {
+      progressCircle.classList.remove('progress-active');
+      progressCircle.classList.add('progress-completed');
+    }
+  };
+
+  const buttonUtils = {
+    setState: (btn, state, label) => {
+      btn.classList.remove('play', 'pause', 'restart');
+      btn.classList.add(state);
+      btn.setAttribute('aria-label', label);
+      btn.querySelector('.sr-only').textContent = label.charAt(0).toUpperCase() + label.slice(1);
+    }
+  };
+
+  const videoUtils = {
+    playWithPromise: (video) => {
+      const playPromise = video.play();
+      return playPromise !== undefined ? playPromise : Promise.resolve();
+    },
+    
+    setupDuration: (video, controlBtn) => {
+      if (controlBtn && video.duration) {
+        controlBtn.style.setProperty('--progress-duration', `${video.duration}s`);
+      }
+    }
+  };
+
+  // Swiper 초기화
+  const howToVideoSlide = new Swiper(".how-to-video-slide", {
     slidesPerView: 1,
     spaceBetween: 16,
     speed: 700,
     slideToClickedSlide: true,
     centeredSlides: true,
     mousewheel: {
-      forceToAxis: true, // 이 옵션이 핵심입니다.
+      forceToAxis: true,
     },
     pagination: {
       el: ".how-to-video-slide .swiper-pagination",
@@ -25,69 +74,62 @@ function howTo() {
     },
     on: {
       init: function() {
-        const videos = document.querySelectorAll('.how-to-video-bx video');
-        const bullets = document.querySelectorAll('.how-to-video-slide .swiper-pagination .swiper-pagination-bullet');
         let loadedCount = 0;
         
-        // 모든 비디오의 메타데이터가 로드될 때까지 기다림
         videos.forEach((video, index) => {
-          video.addEventListener('loadedmetadata', function() {
+          video.addEventListener('loadedmetadata', () => {
             loadedCount++;
-            console.log(`Video ${index + 1} Duration:`, video.duration);
-            
-            // 해당 pagination bullet에 transition-duration 적용
-            if (bullets[index]) {
-              bullets[index].style.setProperty('--bullet-duration', `${video.duration}s`);
-              console.log(`Applied --bullet-duration: ${video.duration}s to bullet ${index + 1}`);
-              
-              // duration 설정 후 bullet-ready 클래스 추가 (약간의 지연 후)
-              setTimeout(() => {
-                bullets[index].classList.add('bullet-ready');''
-              }, 50);
-            }
+            videoUtils.setupDuration(video, controlBtns[index]);
             
             // 모든 비디오가 로드되면 첫 번째 비디오 재생
-            if (loadedCount === videos.length) {  
+            if (loadedCount === videos.length) {
               const activeIndex = this.activeIndex || 0;
-              if (videos[activeIndex]) {
-                videos[activeIndex].play();
+              const activeVideo = videos[activeIndex];
+              const activeProgressCircle = controlBtns[activeIndex]?.querySelector('.progress-circle-fill');
+              
+              if (activeVideo && activeProgressCircle) {
+                videoUtils.playWithPromise(activeVideo)
+                  .then(() => progressUtils.start(activeProgressCircle))
+                  .catch(error => console.log('Auto-play prevented:', error));
               }
             }
           });
+          
+          video.addEventListener('error', (e) => console.error(`Video ${index + 1} load error:`, e));
+          video.load();
         });
       },
+      
       slideChange: function() {
         const activeIndex = this.activeIndex;
-        const videos = document.querySelectorAll('.how-to-video-bx video');
-        const bullets = document.querySelectorAll('.how-to-video-slide .swiper-pagination .swiper-pagination-bullet');
         
-        // 모든 비디오 정지
-        videos.forEach(video => {
+        // 모든 비디오 정지 및 progress 리셋
+        videos.forEach((video, index) => {
           video.pause();
           video.currentTime = 0;
-        });
-        
-        // 모든 bullet의 bullet-ready 클래스 제거 (애니메이션 리셋)
-        bullets.forEach(bullet => {
-          bullet.classList.remove('bullet-ready');
+          
+          const progressCircle = controlBtns[index]?.querySelector('.progress-circle-fill');
+          if (progressCircle) {
+            progressUtils.reset(progressCircle);
+          }
         });
         
         // 현재 활성 비디오 재생
-        if (videos[activeIndex]) {
-          videos[activeIndex].play();
-          
-          // 현재 활성 bullet에 bullet-ready 클래스 추가
-          if (bullets[activeIndex] && bullets[activeIndex].style.getPropertyValue('--bullet-duration')) {
-            setTimeout(() => {
-              bullets[activeIndex].classList.add('bullet-ready');
-            }, 50);
-          }
+        const activeVideo = videos[activeIndex];
+        const activeProgressCircle = controlBtns[activeIndex]?.querySelector('.progress-circle-fill');
+        
+        if (activeVideo && activeProgressCircle) {
+          videoUtils.playWithPromise(activeVideo)
+            .then(() => {
+              setTimeout(() => progressUtils.start(activeProgressCircle), 50);
+            })
+            .catch(error => console.log('Auto-play prevented on slide change:', error));
         }
       }
     }
   });
 
-  howToTxtSlide = new Swiper(".how-to-txt-slide", {
+  const howToTxtSlide = new Swiper(".how-to-txt-slide", {
     effect: 'fade',
     fadeEffect: {
       crossFade: true,
@@ -97,66 +139,60 @@ function howTo() {
     autoHeight: true,
   });
 
+  // Swiper 연결
   howToVideoSlide.controller.control = howToTxtSlide;
   howToTxtSlide.controller.control = howToVideoSlide;
 
-  const videoControlBtns = document.querySelectorAll('.how-to-video-control-btn');
-  videoControlBtns.forEach(btn => {
+  // 비디오 컨트롤 버튼 이벤트 설정
+  controlBtns.forEach(btn => {
     const video = btn.closest('.how-to-video-bx').querySelector('video');
+    const progressCircle = btn.querySelector('.progress-circle-fill');
     
-    // 비디오 컨트롤 버튼 클릭 이벤트
+    if (!video || !progressCircle) return;
+
+    // 버튼 클릭 이벤트
     btn.addEventListener('click', () => {
       if (video.ended) {
-        // 비디오가 끝난 상태에서 클릭하면 restart
+        // Restart
         video.currentTime = 0;
-        video.play();
-        btn.classList.remove('restart');
-        btn.classList.add('pause');
-        btn.setAttribute('aria-label', 'pause');
-        btn.querySelector('.sr-only').textContent = 'Pause';
+        buttonUtils.setState(btn, 'pause', 'pause');
+        progressUtils.reset(progressCircle);
+        
+        setTimeout(() => {
+          progressUtils.start(progressCircle);
+          video.play();
+        }, 50);
+        
       } else if (video.paused) {
-        // 일시정지 상태에서 클릭하면 재생
+        // Play
         video.play();
-        btn.classList.remove('play');
-        btn.classList.add('pause');
-        btn.setAttribute('aria-label', 'pause');
-        btn.querySelector('.sr-only').textContent = 'Pause';
+        buttonUtils.setState(btn, 'pause', 'pause');
+        progressUtils.start(progressCircle);
+        
       } else {
-        // 재생 중에 클릭하면 일시정지
+        // Pause
         video.pause();
-        btn.classList.remove('pause');
-        btn.classList.add('play');
-        btn.setAttribute('aria-label', 'play');
-        btn.querySelector('.sr-only').textContent = 'Play';
+        buttonUtils.setState(btn, 'play', 'play');
+        progressUtils.pause(progressCircle);
       }
     });
     
-    // 비디오 재생 시작 시 버튼 상태 변경
+    // 비디오 이벤트 리스너
     video.addEventListener('play', () => {
-      btn.classList.remove('play', 'restart');
-      btn.classList.add('pause');
-      btn.setAttribute('aria-label', 'pause');
-      btn.querySelector('.sr-only').textContent = 'Pause';
+      buttonUtils.setState(btn, 'pause', 'pause');
     });
     
-    // 비디오 일시정지 시 버튼 상태 변경
     video.addEventListener('pause', () => {
       if (!video.ended) {
-        btn.classList.remove('pause', 'restart');
-        btn.classList.add('play');
-        btn.setAttribute('aria-label', 'play');
-        btn.querySelector('.sr-only').textContent = 'Play';
+        buttonUtils.setState(btn, 'play', 'play');
       }
     });
     
-    // 비디오 종료 시 restart 버튼으로 변경
     video.addEventListener('ended', () => {
-      btn.classList.remove('play', 'pause');
-      btn.classList.add('restart');
-      btn.setAttribute('aria-label', 'restart');
-      btn.querySelector('.sr-only').textContent = 'Restart';
+      buttonUtils.setState(btn, 'restart', 'restart');
+      progressUtils.complete(progressCircle);
     });
   });
-} 
+}
 
 howTo();

@@ -74,12 +74,62 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include tablet {
       width: rem(48);
       height: rem(48);
       bottom: rem(24);
       right: rem(24);
     }
+    
+    .progress-circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg); // 12시 방향에서 시작
+      
+      &-fill {
+        stroke-dasharray: calc(2 * 3.14 * 48); // 2π × 48 ≈ 295
+        stroke-dashoffset: calc(2 * 3.14 * 48);
+        
+        // CSS animation 사용
+        &.progress-active {
+          animation: progressFill var(--progress-duration, 0s) linear forwards;
+          animation-play-state: running;
+        }
+        
+        &.progress-paused {
+          animation: progressFill var(--progress-duration, 0s) linear forwards;
+          animation-play-state: paused;
+        }
+        
+        &.progress-completed {
+          stroke-dashoffset: 0;
+          animation: none;
+        }
+        
+        // 애니메이션 리셋을 위한 초기상태
+        &.progress-reset {
+          stroke-dashoffset: 295;
+          animation: none;
+        }
+      }
+      
+      // progress 애니메이션 정의
+      @keyframes progressFill {
+        from {
+          stroke-dashoffset: 295;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    
     &::after {
       content: "";
       display: block;
@@ -87,10 +137,8 @@
       height: rem(16);
       background-repeat: no-repeat;
       background-size: contain;
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
+      position: relative;
+      z-index: 1;
       @include tablet {
         width: rem(24);
         height: rem(24);
@@ -173,42 +221,15 @@
           height: rem(12);
           margin: 0 rem(6);
         }
-        &::after {
-          content: "";
-          display: block;
-          width: 100%;
-          height: rem(8);
-          transform: scaleX(0.375);
-          border-radius: 50%;
-          transform-origin: left;
-          background-color: #000000;
-          opacity: 0;
-          @include tablet {
-            height: rem(12);
-          }
-          @include desktop {
-            height: rem(12);
-          }
-        }
         &.swiper-pagination-bullet-active {
           width: rem(20);
           border-radius: rem(12);
+          background-color: #000000;
           @include tablet {
             width: rem(32);
           }
           @include desktop {
             width: rem(32);
-          }
-          &::after {
-            opacity: 1;
-            transform: scaleX(0.375); // 초기값을 0으로 설정
-            border-radius: 50%;
-            transition: transform var(--bullet-duration, 0s) linear, border-radius 3s linear;
-            transition-delay: 0.1s;
-          }
-          &.bullet-ready::after {
-            transform: scaleX(1); // duration 설정 후 1로 변경
-            border-radius: rem(12);
           }
         }
       }
