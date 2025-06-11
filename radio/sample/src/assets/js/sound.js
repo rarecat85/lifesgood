@@ -16,13 +16,10 @@ if (soundSwiper) {
         const swiperWrapper = document.querySelector(".sound .swiper-wrapper");
 
         if (mediaQueries.tablet.matches) {
-            // 태블릿 추가 간격
-            swiperWrapper.style.paddingLeft = "110px";
+            swiperWrapper.style.paddingLeft = "120px";
         } else if (mediaQueries.desktop.matches) {
-            // 데스크탑 추가 간격
             swiperWrapper.style.paddingLeft = "150px";
         } else {
-            // 모바일 초기화
             resetExtraPadding();
         }
     }
@@ -75,8 +72,6 @@ if (soundSwiper) {
             const volumeBtn = group.querySelector(".volume-btn");
             const audioId = audioControllerBtn.getAttribute("aria-controls");
             const audio = document.getElementById(audioId);
-            // const volumeSlider = group.querySelector(".volume-slider");
-            // volumeSlider.value = audio.volume.toString();
 
             // 초기화
             audio.pause();
@@ -131,7 +126,8 @@ if (soundSwiper) {
             let lastTime = 0;
 
             progressBar.addEventListener("pointerdown", (e) => {
-                touchStatus = false;
+                soundSwiper.allowTouchMove = false;
+                e.stopPropagation();
                 isProgressDragging = true;
                 audioTimeUpdate(e);
             });
@@ -144,14 +140,11 @@ if (soundSwiper) {
                         lastTime = now;
                     }
                 }
-
-
-
             });
 
             document.addEventListener("pointerup", () => {
                 if (isProgressDragging) {
-                    touchStatus = true;
+                    soundSwiper.allowTouchMove = true;
                     isProgressDragging = false;
                 }
             });
@@ -162,19 +155,6 @@ if (soundSwiper) {
                 const percentage = Math.max(0, Math.min(1, x / rect.width));
                 audio.currentTime = percentage * audio.duration;
             }
-
-            // 볼륨 슬라이더 이벤트
-            // volumeSlider.addEventListener("pointerdown", e => e.stopPropagation());
-            // volumeSlider.addEventListener("click", e => e.stopPropagation());
-
-            // volumeSlider.addEventListener("input", e => {
-            //     const vol = parseFloat(e.target.value);
-            //     audio.volume = vol;
-
-            //     if (vol > 0) {
-            //         audio.muted = false;
-            //     }
-            // });
 
             // 뮤트/언뮤트 클릭 이벤트
             volumeBtn.addEventListener("click", () => {
@@ -293,16 +273,13 @@ if (soundSwiper) {
     const soundTracks = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-track");
     const soundTexts = document.querySelectorAll(".sound .swiper-slide .sound-txtbx");
 
-    let touchStatus = true;
-
     // Sound Swiper 초기화 및 설정
     const swiperOptions = {
         slidesPerView: 1,
         centeredSlides: true,
         slideToClickedSlide: true,
         touchable: true,
-        // allowTouchMove: touchStatus,
-        allowTouchMove: false,
+        allowTouchMove: true,
         mousewheel: {
             forceToAxis: true,
         },
@@ -357,13 +334,15 @@ if (soundSwiper) {
                         delete trackTimelines[this.realIndex];
                         trackStarted[this.realIndex] = false;
                     }
-                }
 
-                // Swiper Wrapper 기기별 패딩 업데이트
-                if (this.realIndex === 1) {
-                    updateExtraPadding();
-                } else if (this.realIndex === 0) {
-                    resetExtraPadding();
+                    // Swiper Wrapper 기기별 패딩 업데이트
+                    if (this.realIndex >= 1) {
+                        updateExtraPadding();
+                    }
+
+                    if (this.realIndex === 0) {
+                        resetExtraPadding();
+                    }
                 }
             }
         },
@@ -383,25 +362,33 @@ if (soundSwiper) {
 
     const swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
-    // 리사이즈 함수
-    function handleResize() {
-        moveCenterNavigation();
-    }
-
-    // 디바운스 함수
-    function debounce(func, delay = 500) {
-        let timer;
-        return function (...args) {
-            if (timer) clearTimeout(timer);
-            timer = setTimeout(() => func.apply(this, args), delay);
+    function handleSwiperResize(){
+        if(swiperInstance.realIndex >= 1){
+            console.log(123123)
         }
     }
 
-    // Sound 섹션 init 함수
-    function initSound() {
-        moveCenterNavigation();
-        window.addEventListener('resize', debounce(handleResize));
-    }
-
-    initSound();
+    window.addEventListener('resize', debounce(handleSwiperResize));
 }
+
+// 리사이즈 함수
+function handleResize() {
+    moveCenterNavigation();
+}
+
+// 디바운스 함수
+function debounce(func, delay = 100) {
+    let timer;
+    return function (...args) {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    }
+}
+
+// Sound 섹션 init 함수
+function initSound() {
+    moveCenterNavigation();
+    window.addEventListener('resize', debounce(handleResize));
+}
+
+initSound();

@@ -166,6 +166,14 @@
                         gap: rem(16);
                         padding: rem(8) 0;
 
+                        @include tablet {
+                            padding: rem(12) 0 rem(8);
+                        }
+
+                        @include desktop {
+                            padding: rem(16) 0 rem(16);
+                        }
+
                         &-btn {
                             position: relative;
                             min-width: rem(32);
@@ -403,7 +411,7 @@
 
             @include desktop {
                 height: rem(12);
-                margin-top: rem(40);
+                margin-top: rem(48);
             }
 
             .swiper-pagination-bullet {
