@@ -39,7 +39,6 @@ body {
                 color: #4A4946;
 
                 @include tablet {
-                    font-family: 'LGSmartUI';
                     @include font(16, 125%, 400);
                 }
             }
