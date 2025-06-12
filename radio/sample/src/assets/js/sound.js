@@ -264,7 +264,6 @@ if (soundSwiper) {
         const album = document.querySelector('.swiper-slide-active .sound-imgbx-album');
 
         const navigationPosition = (album.getBoundingClientRect().top - soundSwiper.getBoundingClientRect().top) + (album.getBoundingClientRect().height / 2);
-
         swiperNavigation.style.top = `${navigationPosition}px `;
     }
 
@@ -279,10 +278,8 @@ if (soundSwiper) {
         centeredSlides: true,
         slideToClickedSlide: true,
         touchable: true,
+        speed: 500,
         allowTouchMove: true,
-        mousewheel: {
-            forceToAxis: true,
-        },
         pagination: {
             el: ".sound .swiper-pagination",
             clickable: true,
@@ -302,6 +299,7 @@ if (soundSwiper) {
                 moveCenterNavigation();
                 resetExtraPadding();
             },
+
             slideChange: function () {
                 imgbxs.forEach(el => el.classList.remove("active"));
                 soundAlbums.forEach(el => el.classList.remove("active"));
@@ -312,13 +310,13 @@ if (soundSwiper) {
                 const currentSlide = this.slides[index_currentSlide];
 
                 if (currentSlide) {
+                    resetAll(); // 컨트롤러 초기화
+                    soundTitleAnimation(this.realIndex, true); // 타이틀 애니메이션 초기화
+
                     imgbxs[index_currentSlide].classList.add("active");
                     soundAlbums[index_currentSlide].classList.add("active");
                     soundTracks[index_currentSlide].classList.add("active");
                     soundTexts[index_currentSlide].classList.add("active");
-
-                    resetAll(); // 컨트롤러 초기화
-                    soundTitleAnimation(this.realIndex, true); // 타이틀 애니메이션 초기화
 
                     // 타임라인 초기화
                     if (trackTimelines[this.previousIndex]) {
@@ -336,7 +334,7 @@ if (soundSwiper) {
                     }
 
                     // Swiper Wrapper 기기별 패딩 업데이트
-                    if (this.realIndex >= 1) {
+                    if (this.realIndex === 1) {
                         updateExtraPadding();
                     }
 
