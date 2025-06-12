@@ -360,11 +360,17 @@ if (soundSwiper) {
         },
     }
 
-    const swiperInstance = new Swiper(soundSwiper, swiperOptions);
+    let swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
-    function handleSwiperResize(){
-        if(swiperInstance.realIndex >= 1){
-            console.log(123123)
+    function handleSwiperResize() {
+        if (swiperInstance.realIndex >= 1) {
+            imgbxs.forEach(el => el.classList.remove("active"));
+            soundAlbums.forEach(el => el.classList.remove("active"));
+            soundTracks.forEach(el => el.classList.remove("active"));
+            soundTexts.forEach(el => el.classList.remove("active"));
+
+            swiperInstance.destroy(true, true);
+            swiperInstance = new Swiper(soundSwiper, swiperOptions);
         }
     }
 
