@@ -2,10 +2,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 반응형 설정
 const RESPONSIVE = {
+  desktop4k: {
+    breakpoint: 2560,
+    startPosition: 200, // 시작 위치
+    endPosition: 80   // 최종 이동 위치
+  },
   desktop: {
     breakpoint: 1025,
-    startPosition: 200, // 시작 위치
-    endPosition: 120   // 최종 이동 위치
+    startPosition: 120, // 시작 위치
+    endPosition: 80   // 최종 이동 위치
   },
   tablet: {
     breakpoint: 769,
@@ -14,15 +19,17 @@ const RESPONSIVE = {
   },
   mobile: {
     breakpoint: 0,
-    startPosition: 100,
-    endPosition: 80
+    startPosition: 56,
+    endPosition: 20
   }
 };
 
 // 현재 화면 크기에 따른 설정 가져오기
 function getCurrentSettings() {
   const width = window.innerWidth;
-  if (width >= RESPONSIVE.desktop.breakpoint) {
+  if (width >= RESPONSIVE.desktop4k.breakpoint) {
+    return RESPONSIVE.desktop4k;
+  } else if (width >= RESPONSIVE.desktop.breakpoint) {
     return RESPONSIVE.desktop;
   } else if (width >= RESPONSIVE.tablet.breakpoint) {
     return RESPONSIVE.tablet;
@@ -60,6 +67,12 @@ function parallax() {
   const containerBottom = containerTop + containerRect.height;
   const isOutsideParallaxArea = initialScrollY > containerBottom - 200;
 
+  // 새로고침 시 parallax 영역 체크 및 스크롤 위치 조정
+  if (!isOutsideParallaxArea) {
+    // parallax 영역 내에서 새로고침한 경우 스크롤을 0으로 초기화
+    window.scrollTo(0, 0);
+  }
+
   // 초기 위치 설정
   gsap.set(parallaxTxtBx, {
     position: "absolute",
@@ -67,6 +80,113 @@ function parallax() {
     opacity: 1,
     visibility: "visible"
   });
+
+  // 인트로 애니메이션 재생 함수
+  function playIntroAnimation() {
+    // 기존 애니메이션 중단
+    if (introTimeline) {
+      introTimeline.kill();
+    }
+
+    // 요소들 초기 상태로 리셋
+    gsap.set([parallaxLogo, parallaxSticker, parallaxTitle, parallaxRadioControls, parallaxRadioBtns], {
+      opacity: 0
+    });
+    gsap.set(parallaxLogo, { y: 50 });
+    gsap.set(parallaxSticker, { scale: 0 });
+    gsap.set(parallaxTitle, { y: 30 });
+    gsap.set(firstLine, { width: "0%" });
+    gsap.set(secondLine, { width: "calc(100% - 1rem)" });
+
+    // 인트로 애니메이션 재생
+    const newIntroTimeline = gsap.timeline({ delay: 0.5 });
+    
+    // 1. 로고 - 아래에서 나타나기
+    newIntroTimeline
+      .fromTo(
+        parallaxLogo,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      )
+      // 2. 스티커 - 띠용하고 나타나기 (scale + bounce)
+      .fromTo(
+        parallaxSticker,
+        {
+          opacity: 0,
+          scale: 0,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.5)",
+        },
+        "-=0.3"
+      )
+      // 3. 타이틀 - 아래에서 나타나기
+      .fromTo(
+        parallaxTitle,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      )
+      // 4. 라디오 컨트롤 - 나타나기
+      .addLabel("radioControls", "-=0.3")
+      .fromTo(
+        [parallaxRadioControls, parallaxRadioBtns],
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "radioControls"
+      )
+      // 5. 첫 번째 라인 - 0에서 현재값까지 확장
+      .fromTo(
+        firstLine,
+        {
+          width: "0%",
+        },
+        {
+          width: "calc(100% - 1rem)",
+          duration: 3.5,
+          ease: "power1.out",
+        },
+        "-=0.1"
+      )
+      // 6. 두 번째 라인 - 현재값에서 0까지 축소
+      .fromTo(
+        secondLine,
+        {
+          width: "calc(100% - 1rem)",
+        },
+        {
+          width: "0%",
+          duration: 3.5,
+          ease: "power1.out",
+        },
+        "<"
+      );
+  }
 
   // 새로고침 시 parallax 영역을 벗어났다면 요소들을 완료된 상태로 설정하되 숨김
   if (isOutsideParallaxArea) {
@@ -86,6 +206,17 @@ function parallax() {
       top: `${containerBottom - containerTop}px`,
       opacity: 0,
       visibility: "hidden"
+    });
+  } else {
+    // parallax 영역 내에서 새로고침한 경우, 초기 위치를 컨테이너 기준으로 설정
+    const containerRect = parallaxContainer.getBoundingClientRect();
+    const containerTop = containerRect.top + window.scrollY;
+    
+    gsap.set(parallaxTxtBx, {
+      position: "absolute",
+      top: `${settings.startPosition}px`,
+      opacity: 1,
+      visibility: "visible"
     });
   }
 
@@ -210,7 +341,7 @@ function parallax() {
     trigger: "body",
     start: () => {
       const settings = getCurrentSettings();
-      return `top+=${settings.startPosition} top`;
+      return `top+=${settings.startPosition - settings.endPosition} top`;
     },
     end: () => {
       const settings = getCurrentSettings();
@@ -225,7 +356,7 @@ function parallax() {
       
       // 상태 결정
       let targetState;
-      if (scrollY < settings.startPosition) {
+      if (scrollY < settings.startPosition - settings.endPosition) {
         targetState = "initial";
       } else if (scrollY < totalDistance) {
         targetState = "fixed";
@@ -238,36 +369,30 @@ function parallax() {
         gsap.killTweensOf(parallaxTxtBx); // 기존 애니메이션 중단
 
         if (targetState === "initial") {
-          gsap.to(parallaxTxtBx, {
+          gsap.set(parallaxTxtBx, {
             position: "absolute",
             top: `${settings.startPosition}px`,
             opacity: 1,
-            visibility: "visible",
-            duration: 0.3,
-            ease: "power2.out"
+            visibility: "visible"
           });
         } else if (targetState === "fixed") {
           // 현재 위치 계산
-          const currentTop = parseFloat(gsap.getProperty(parallaxTxtBx, "top"));
+          const rect = parallaxTxtBx.getBoundingClientRect();
+          const currentScreenTop = rect.top;
           
-          // 스크롤이 totalDistance보다 크면 totalDistance로 위치 지정
-          const targetTop = scrollY > totalDistance ? totalDistance : settings.startPosition;
-          
-          gsap.to(parallaxTxtBx, {
+          gsap.set(parallaxTxtBx, {
             position: "fixed",
-            top: `${targetTop}px`,
+            top: `${currentScreenTop}px`,
             opacity: 1,
-            visibility: "visible",
-            duration: 0.3,
-            ease: "power2.out"
+            visibility: "visible"
           });
 
-          // endPosition으로 부드럽게 이동
+          // endPosition으로 부드럽게 이동 (빠른 스크롤 시에는 즉시)
+          const duration = Math.abs(scrollY - (currentState === "initial" ? settings.startPosition - settings.endPosition : totalDistance)) > 50 ? 0 : 0.3;
           gsap.to(parallaxTxtBx, {
             top: `${settings.endPosition}px`,
-            duration: 0.3,
-            ease: "power2.out",
-            delay: 0.1
+            duration: duration,
+            ease: "power2.out"
           });
         } else if (targetState === "absolute") {
           // fixed에서 absolute로 전환
@@ -275,32 +400,24 @@ function parallax() {
           const containerTop = containerRect.top + scrollY;
           const containerBottom = containerTop + containerRect.height;
           
-          // 현재 위치 계산
-          const currentTop = parseFloat(gsap.getProperty(parallaxTxtBx, "top"));
-          
-          // 스크롤이 totalDistance보다 크면 totalDistance를 사용
-          const absoluteTop = scrollY > totalDistance ? totalDistance : scrollY + settings.endPosition - containerTop;
-
           // parallax 컨테이너 영역을 벗어났는지 체크
           if (scrollY > containerBottom - 200) {
             // txt-bx를 숨김
-            gsap.to(parallaxTxtBx, {
+            gsap.set(parallaxTxtBx, {
               position: "absolute",
               top: `${containerBottom - containerTop}px`,
               opacity: 0,
-              visibility: "hidden",
-              duration: 0.3,
-              ease: "power2.out"
+              visibility: "hidden"
             });
           } else {
-            // 정상적인 absolute 위치 설정
-            gsap.to(parallaxTxtBx, {
+            // 스크롤 위치와 endPosition을 고려한 위치 계산
+            const absoluteTop = scrollY + settings.endPosition - containerTop;
+            
+            gsap.set(parallaxTxtBx, {
               position: "absolute",
               top: `${absoluteTop}px`,
               opacity: 1,
-              visibility: "visible",
-              duration: 0.3,
-              ease: "power2.out"
+              visibility: "visible"
             });
           }
         }
