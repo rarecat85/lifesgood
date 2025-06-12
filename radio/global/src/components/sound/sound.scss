@@ -384,6 +384,7 @@
                     }
 
                     p {
+                      color: #333333;
                         @include font(16, 125%, 400);
 
                         @include tablet {
