@@ -98,6 +98,7 @@
     z-index: 1;
     text-align: center;
     @include tablet {
+      top: 12vw;
       width: rem(431);
     }
     @include desktop {
