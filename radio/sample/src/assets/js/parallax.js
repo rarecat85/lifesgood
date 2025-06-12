@@ -78,7 +78,16 @@ function parallax() {
     position: "absolute",
     top: `${settings.startPosition}px`,
     opacity: 1,
-    visibility: "visible"
+    visibility: "visible",
+    onRefresh: self => {    
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 250);
+      });    
+    },
   });
 
   // 인트로 애니메이션 재생 함수
