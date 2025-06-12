@@ -186,8 +186,14 @@ function parallax() {
   const parallax = gsap.timeline({
     scrollTrigger: {
       trigger: parallaxContainer,
-      start: "6%",
-      end: "10%",
+      start: () => {
+        const settings = getCurrentSettings();
+        return `top+=${settings.startPosition} top`;
+      },
+      end: () => {
+        const settings = getCurrentSettings();
+        return `top+=${settings.startPosition + settings.endPosition} top`;
+      },
       scrub: true,
     },
   });
@@ -200,116 +206,16 @@ function parallax() {
   // txt-bx 애니메이션 - 통합 ScrollTrigger로 관리
   let currentState = "initial"; // 'initial', 'fixed', 'absolute'
   
-  // 인트로 애니메이션 재생 함수
-  function playIntroAnimation() {
-    // 기존 애니메이션 중단
-    gsap.killTweensOf([parallaxLogo, parallaxSticker, parallaxTitle, parallaxRadioControls, parallaxRadioBtns, firstLine, secondLine]);
-    
-    // 초기 상태로 리셋
-    gsap.set([parallaxLogo, parallaxSticker, parallaxTitle, parallaxRadioControls, parallaxRadioBtns], {
-      opacity: 0
-    });
-    gsap.set(parallaxLogo, { y: 50 });
-    gsap.set(parallaxSticker, { scale: 0 });
-    gsap.set(parallaxTitle, { y: 30 });
-    gsap.set(firstLine, { width: "0%" });
-    gsap.set(secondLine, { width: "calc(100% - 1rem)" });
-    
-    // 인트로 애니메이션 재생
-    const newIntroTimeline = gsap.timeline({ delay: 0.5 });
-    
-    // 1. 로고 - 아래에서 나타나기
-    newIntroTimeline
-      .fromTo(
-        parallaxLogo,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        }
-      )
-      // 2. 스티커 - 띠용하고 나타나기 (scale + bounce)
-      .fromTo(
-        parallaxSticker,
-        {
-          opacity: 0,
-          scale: 0,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.5)",
-        },
-        "-=0.3" // 로고 애니메이션이 끝나기 0.3초 전에 시작
-      )
-      // 3. 타이틀 - 아래에서 나타나기
-      .fromTo(
-        parallaxTitle,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "-=0.2" // 스티커 애니메이션이 끝나기 0.2초 전에 시작
-      );
-    // 4. 라디오 컨트롤 - 나타나기
-    newIntroTimeline
-      .addLabel("radioControls", "-=0.3")
-      .fromTo(
-        [parallaxRadioControls, parallaxRadioBtns],
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        "radioControls"
-      )
-      // 5. 첫 번째 라인 - 0에서 현재값까지 확장
-      .fromTo(
-        firstLine,
-        {
-          width: "0%",
-        },
-        {
-          width: "calc(100% - 1rem)", // rem(10) = 0.625rem ≈ 1rem
-          duration: 3.5,
-          ease: "power1.out",
-        },
-        "-=0.1"
-      )
-      // 6. 두 번째 라인 - 현재값에서 0까지 축소
-      .fromTo(
-        secondLine,
-        {
-          width: "calc(100% - 1rem)",
-        },
-        {
-          width: "0%",
-          duration: 3.5,
-          ease: "power1.out",
-        },
-        "<" // 첫 번째 라인과 동시에 시작
-      );
-  }
-
   ScrollTrigger.create({
     trigger: "body",
-    start: "top top",
-    end: "bottom bottom",
+    start: () => {
+      const settings = getCurrentSettings();
+      return `top+=${settings.startPosition} top`;
+    },
+    end: () => {
+      const settings = getCurrentSettings();
+      return `top+=${settings.startPosition + settings.endPosition} top`;
+    },
     onUpdate: (self) => {
       const scrollY = window.scrollY;
       const settings = getCurrentSettings();
@@ -332,32 +238,36 @@ function parallax() {
         gsap.killTweensOf(parallaxTxtBx); // 기존 애니메이션 중단
 
         if (targetState === "initial") {
-          gsap.set(parallaxTxtBx, {
+          gsap.to(parallaxTxtBx, {
             position: "absolute",
             top: `${settings.startPosition}px`,
             opacity: 1,
-            visibility: "visible"
+            visibility: "visible",
+            duration: 0.3,
+            ease: "power2.out"
           });
         } else if (targetState === "fixed") {
+          // 현재 위치 계산
+          const currentTop = parseFloat(gsap.getProperty(parallaxTxtBx, "top"));
+          
           // 스크롤이 totalDistance보다 크면 totalDistance로 위치 지정
           const targetTop = scrollY > totalDistance ? totalDistance : settings.startPosition;
           
-          gsap.set(parallaxTxtBx, {
+          gsap.to(parallaxTxtBx, {
             position: "fixed",
             top: `${targetTop}px`,
             opacity: 1,
-            visibility: "visible"
+            visibility: "visible",
+            duration: 0.3,
+            ease: "power2.out"
           });
 
-          // endPosition으로 부드럽게 이동 (빠른 스크롤 시에는 즉시)
-          const duration =
-            Math.abs(scrollY - (currentState === "initial" ? settings.startPosition : totalDistance)) > 50
-              ? 0
-              : 0.3;
+          // endPosition으로 부드럽게 이동
           gsap.to(parallaxTxtBx, {
             top: `${settings.endPosition}px`,
-            duration: duration,
+            duration: 0.3,
             ease: "power2.out",
+            delay: 0.1
           });
         } else if (targetState === "absolute") {
           // fixed에서 absolute로 전환
@@ -365,25 +275,32 @@ function parallax() {
           const containerTop = containerRect.top + scrollY;
           const containerBottom = containerTop + containerRect.height;
           
+          // 현재 위치 계산
+          const currentTop = parseFloat(gsap.getProperty(parallaxTxtBx, "top"));
+          
           // 스크롤이 totalDistance보다 크면 totalDistance를 사용
           const absoluteTop = scrollY > totalDistance ? totalDistance : scrollY + settings.endPosition - containerTop;
 
           // parallax 컨테이너 영역을 벗어났는지 체크
           if (scrollY > containerBottom - 200) {
             // txt-bx를 숨김
-            gsap.set(parallaxTxtBx, {
+            gsap.to(parallaxTxtBx, {
               position: "absolute",
               top: `${containerBottom - containerTop}px`,
               opacity: 0,
-              visibility: "hidden"
+              visibility: "hidden",
+              duration: 0.3,
+              ease: "power2.out"
             });
           } else {
             // 정상적인 absolute 위치 설정
-            gsap.set(parallaxTxtBx, {
+            gsap.to(parallaxTxtBx, {
               position: "absolute",
               top: `${absoluteTop}px`,
               opacity: 1,
-              visibility: "visible"
+              visibility: "visible",
+              duration: 0.3,
+              ease: "power2.out"
             });
           }
         }
