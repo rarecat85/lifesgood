@@ -3,7 +3,7 @@ let bannerScrollTrigger = null;
 // 배너 플로팅 함수
 function bannerFlolatingAnimation() {
     // 시작 요소 입력 필요
-    const startElement = document.querySelector('.influence-container');
+    const startElement = document.querySelector('.overview');
     const endElement = document.querySelector('.banner-main-area-startbtn');
 
     // 이전 스크롤 트리거 요소 제거
@@ -16,8 +16,9 @@ function bannerFlolatingAnimation() {
     }
 
     // 시작 요소의 위치, 끝 요소 위치 계산값
-    const startDetailPosition = startElement.getBoundingClientRect().top + window.scrollY;
+    const startDetailPosition = startElement.getBoundingClientRect().bottom + window.scrollY;
     const endDetailPosition = endElement.getBoundingClientRect().top + window.scrollY;
+
 
     // 시작 요소와 끝 요소간의 거리 계산값 
     const distance = Math.abs(endDetailPosition - startDetailPosition);
@@ -27,7 +28,7 @@ function bannerFlolatingAnimation() {
         ease: 'none',
         scrollTrigger: {
             trigger: startElement,
-            start: 'top 90%',
+            start: 'bottom 90%',
             end: `+=${distance} 90.1%`,
             scrub: true,
         }
