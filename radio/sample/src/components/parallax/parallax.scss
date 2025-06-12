@@ -92,11 +92,20 @@
   }
   &-txt-bx {
     position: absolute;
-    top: rem(200);
+    top: rem(56);
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
     text-align: center;
+    @include tablet {
+      width: rem(431);
+    }
+    @include desktop {
+      width: rem(680);
+    }
+    @media (min-width: 1921px) {
+      top: 16vw;
+    }
     &-logo {
       width: rem(295);
       margin: 0 auto;

@@ -41,6 +41,7 @@
     font-family: LGEI Text;
     font-size: rem(20);
     text-align: center;
+    color: #333333;
     margin-bottom: rem(20);
     @include tablet {
       font-size: rem(24);
@@ -95,9 +96,9 @@
       &-fill {
         stroke-dasharray: calc(2 * 3.14 * 48); // 2π × 48 ≈ 295
         stroke-dashoffset: calc(2 * 3.14 * 48);
-        stroke-width: rem(1.5);
+        stroke-width: rem(3);
         @include desktop {
-          stroke-width: rem(2);
+          stroke-width: rem(4);
         }
         // CSS animation 사용
         &.progress-active {
