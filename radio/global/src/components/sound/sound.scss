@@ -179,7 +179,7 @@
                             min-width: rem(32);
                             min-height: rem(32);
                             padding: rem(8);
-                            border: 1px solid #000;
+                            border: rem(1) solid #000;
                             border-radius: 50%;
                             cursor: pointer;
 
@@ -187,11 +187,13 @@
                                 width: rem(40);
                                 height: rem(40);
                                 padding: rem(12);
+                                border: rem(1.4) solid #000;
                             }
 
                             @include desktop {
                                 width: rem(48);
                                 height: rem(48);
+                                border: rem(2) solid #000;
                             }
 
                             &[aria-pressed=true] {
