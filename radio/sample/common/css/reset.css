@@ -21,3 +21,5 @@ button {background:none;border:0;outline:0;padding:0;}
 body {position:relative;font-weight:400; line-height:1; color:#000; font-family: 'LGEI Text', sans-serif;}
 
 a {color:inherit;}
+
+a:active, a:focus, a:hover {text-decoration: none;}

@@ -1,5 +1,5 @@
 function overviewAnimation() { 
-  const highlightElement = document.querySelector('.highlight');
+  const highlightElement = document.querySelector('.radio-highlight');
   
   if (highlightElement) {
     const originalText = highlightElement.textContent;
