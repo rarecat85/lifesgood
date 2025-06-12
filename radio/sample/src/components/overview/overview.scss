@@ -20,12 +20,15 @@
     &-title {
       max-width: rem(1240);
       margin: 0 auto;
-      span {
-        font-family: inherit;
-      }
       @include font(28,114%,400,$black);
       text-align: center;
       margin-bottom: rem(32);
+      span {
+        font-family: inherit;
+        span {
+          font-family: inherit;
+        }
+      }
       @include tablet {
         font-size:rem(44);
         margin-bottom: rem(56);
@@ -233,7 +236,7 @@
       }
     }
     &-txt {
-      @include font(20,125%,400,$warmGray);
+      @include font(16,125%,400,$warmGray);
       span {
         font-weight:600;
       }

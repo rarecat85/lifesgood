@@ -23,6 +23,12 @@
       @include font(28,114%,400,$black);
       text-align: center;
       margin-bottom: rem(32);
+      span {
+        font-family: inherit;
+        span {
+          font-family: inherit;
+        }
+      }
       @include tablet {
         font-size:rem(44);
         margin-bottom: rem(56);
