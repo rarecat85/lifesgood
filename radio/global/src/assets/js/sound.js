@@ -230,29 +230,42 @@ if (soundSwiper) {
         const titleWrappers = document.querySelectorAll(".sound-txtbx-title-wrapper");
         const titleWrappersIdx = titleWrappers[index];
 
-        // "타이틀 - 갭 - 타이틀" 형식으로 dataset 추가
-        if (!titleWrappersIdx.dataset.original) {
-            titleWrappersIdx.dataset.original = titleWrappersIdx.innerHTML;
-            titleWrappersIdx.innerHTML = `<span class="repeat-text">${titleWrappersIdx.dataset.original}</span><span class="repeat-gap"></span><span class="repeat-text">${titleWrappersIdx.dataset.original}</span>`;
-        }
+        // 순수 텍스트 넓이
+        const instantContainer = document.createElement("span");
+        instantContainer.style.font = window.getComputedStyle(titleWrappersIdx).font;
+        instantContainer.innerText = titleWrappersIdx.innerText;
+        document.body.appendChild(instantContainer);
+        const pureTextWidth = instantContainer.offsetWidth;
+        document.body.removeChild(instantContainer);
 
-        const repeatTexts = titleWrappersIdx.querySelectorAll(".repeat-text");
-        const repeatGap = titleWrappersIdx.querySelector(".repeat-gap");
-        const textWidth = repeatTexts[0].offsetWidth + repeatGap.offsetWidth;
-        const speed = 100;
-        const duration = textWidth / speed;
+        // 타이틀 넓이가 컨테이너보다 작다면 애니메이션 중지
+        if (titleWrappersIdx.offsetWidth >= pureTextWidth) {
+            isStopped = true;
+        } else {
+            // "타이틀 - 갭 - 타이틀" 형식으로 dataset 추가
+            if (!titleWrappersIdx.dataset.original) {
+                titleWrappersIdx.dataset.original = titleWrappersIdx.innerHTML;
+                titleWrappersIdx.innerHTML = `<span class="repeat-text">${titleWrappersIdx.dataset.original}</span><span class="repeat-gap"></span><span class="repeat-text">${titleWrappersIdx.dataset.original}</span>`;
+            }
 
-        function animateRepeat() {
-            gsap.fromTo(
-                titleWrappersIdx, {
-                    x: 0,
-                }, {
-                    x: -textWidth,
-                    ease: "none",
-                    duration: duration,
-                    repeat: -1,
-                }
-            );
+            const repeatTexts = titleWrappersIdx.querySelectorAll(".repeat-text");
+            const repeatGap = titleWrappersIdx.querySelector(".repeat-gap");
+            const textWidth = repeatTexts[0].offsetWidth + repeatGap.offsetWidth;
+            const speed = 100;
+            const duration = textWidth / speed;
+
+            function animateRepeat() {
+                gsap.fromTo(
+                    titleWrappersIdx, {
+                        x: 0,
+                    }, {
+                        x: -textWidth,
+                        ease: "none",
+                        duration: duration,
+                        repeat: -1,
+                    }
+                );
+            }
         }
 
         if (isStopped) {
@@ -382,6 +395,10 @@ if (soundSwiper) {
             handleAudio();
             soundTitleAnimation(0, true);
         }
+
+        moveCenterNavigation();
+        // handleAudio();
+        // soundTitleAnimation(0, true);
     }
 
     window.addEventListener('resize', debounce(handleSwiperResize));

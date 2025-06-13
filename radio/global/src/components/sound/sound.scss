@@ -63,6 +63,7 @@
                 }
 
                 &.swiper-slide-active {
+
                     // 활성화된 슬라이드 스타일
                     @include tablet {
                         min-width: calc(#{rem(310)} + #{rem(calc(260/2))});
@@ -75,6 +76,7 @@
                 }
 
                 .sound-imgbx {
+                    border: 1px solid transparent;
                     position: relative;
                     width: rem(180);
                     height: 100%;
@@ -409,7 +411,7 @@
                     }
 
                     p {
-                      color: #333333;
+                        color: #333333;
                         @include font(16, 125%, 400);
 
                         @include tablet {
