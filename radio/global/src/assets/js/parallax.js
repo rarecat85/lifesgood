@@ -152,6 +152,9 @@ function parallax() {
           ease: "power1.out",
         },
         "<"
+      )
+      .to(
+        parallaxRadioControls, {overflow: "unset"}
       );
   }
 
@@ -237,6 +240,9 @@ function parallax() {
         ease: "power1.out",
       },
       "<"
+    )
+    .to(
+      parallaxRadioControls, {overflow: "unset"}
     );
 
   // Parallax 아이템 애니메이션
