@@ -227,8 +227,8 @@
     width: 100%;
     img {
       width: 100%;
-      min-height: rem(900);
-      object-fit: cover;
+      min-height: rem(850);
+      object-fit: none;
       @include tablet {
         min-height: rem(1909);
         object-fit: none;

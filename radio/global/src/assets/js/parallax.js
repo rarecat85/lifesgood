@@ -19,7 +19,7 @@ const RESPONSIVE = {
   },
   mobile: {
     breakpoint: 0,
-    startPosition: 56,
+    startPosition: 0,
     endPosition: 20
   }
 };
