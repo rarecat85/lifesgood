@@ -229,7 +229,7 @@
     img {
       width: 100%;
       min-height: rem(800);
-      object-fit: none;
+      object-fit: cover;
       @media (min-width: 400px) {
         min-height: rem(880);
       }
