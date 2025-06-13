@@ -118,6 +118,7 @@ if (soundSwiper) {
                     audioControllerBtn.setAttribute("aria-pressed", "false");
                     audioControllerBtn.setAttribute("aria-label", "play");
                     soundTrackAnimation(idx, true);
+                    soundTitleAnimation(idx, true);
                 }
             });
 
@@ -227,33 +228,41 @@ if (soundSwiper) {
     // 타이틀 애니메이션 함수
     function soundTitleAnimation(index = 0, isStopped = true) {
         const titleWrappers = document.querySelectorAll(".sound-txtbx-title-wrapper");
-        const CopiedtitleWrapper = titleWrappers[index];
+        const titleWrappersIdx = titleWrappers[index];
 
-        // 텍스트 복제
-        const originalText = CopiedtitleWrapper.innerHTML;
-        CopiedtitleWrapper.innerHTML = originalText + originalText;
+        // "타이틀 - 갭 - 타이틀" 형식으로 dataset 추가
+        if (!titleWrappersIdx.dataset.original) {
+            titleWrappersIdx.dataset.original = titleWrappersIdx.innerHTML;
+            titleWrappersIdx.innerHTML = `<span class="repeat-text">${titleWrappersIdx.dataset.original}</span><span class="repeat-gap"></span><span class="repeat-text">${titleWrappersIdx.dataset.original}</span>`;
+        }
 
-        // 텍스트 이동거리 계산
-        const textDistanceWidth = CopiedtitleWrapper.scrollWidth / 2;
-
-        // 텍스트 이동속도 설정
+        const repeatTexts = titleWrappersIdx.querySelectorAll(".repeat-text");
+        const repeatGap = titleWrappersIdx.querySelector(".repeat-gap");
+        const textWidth = repeatTexts[0].offsetWidth + repeatGap.offsetWidth;
         const speed = 100;
-        const duration = textDistanceWidth / speed;
+        const duration = textWidth / speed;
+
+        function animateRepeat() {
+            gsap.fromTo(
+                titleWrappersIdx, {
+                    x: 0,
+                }, {
+                    x: -textWidth,
+                    ease: "none",
+                    duration: duration,
+                    repeat: -1,
+                }
+            );
+        }
 
         if (isStopped) {
-            gsap.killTweensOf(CopiedtitleWrapper);
-            CopiedtitleWrapper.style.transform = "translateX(0)";
-            CopiedtitleWrapper.innerHTML = originalText;
-        } else {
-            gsap.fromTo(CopiedtitleWrapper, {
-                x: 0
-            }, {
-                x: -textDistanceWidth,
-                ease: "none",
-                duration: duration,
-                repeat: -1,
-                repeatDelay: 0
+            gsap.killTweensOf(titleWrappersIdx);
+            gsap.set(titleWrappersIdx, {
+                x: 0,
             });
+        } else {
+            gsap.killTweensOf(titleWrappersIdx);
+            animateRepeat();
         }
     }
 
@@ -369,7 +378,14 @@ if (soundSwiper) {
 
             swiperInstance.destroy(true, true);
             swiperInstance = new Swiper(soundSwiper, swiperOptions);
+
+            handleAudio();
+            soundTitleAnimation(0, true);
         }
+
+        moveCenterNavigation();
+        // handleAudio();
+        // soundTitleAnimation(0, true);
     }
 
     window.addEventListener('resize', debounce(handleSwiperResize));
