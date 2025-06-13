@@ -359,7 +359,6 @@
 
                     &-title {
                         position: relative;
-                        white-space: nowrap;
                         overflow: hidden;
                         width: 100%;
                         padding-bottom: rem(4);
@@ -382,6 +381,30 @@
                             width: rem(97);
                             height: 100%;
                             background: linear-gradient(90deg, rgba(240, 236, 228, 0.00) 0%, #F0ECE4 100%);
+                        }
+
+                        &-wrapper {
+                            display: flex;
+                            white-space: nowrap;
+                        }
+
+                        .repeat-text {
+                            flex-shrink: 0;
+                        }
+
+                        .repeat-gap {
+                            display: inline-block;
+                            width: calc(100% - rem(80));
+                            height: 1px;
+                            flex-shrink: 0;
+
+                            @include tablet {
+                                 width: calc(100% - rem(200));
+                            }
+
+                            @include desktop {
+                                 width: calc(100% - rem(300));
+                            }
                         }
                     }
 
