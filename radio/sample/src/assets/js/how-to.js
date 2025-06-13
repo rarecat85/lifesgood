@@ -63,9 +63,13 @@ function howTo() {
     },
     breakpoints: {
       1441: {
-        slidesPerView: 1.6,
+        slidesPerView: "auto",
         spaceBetween: 24,
       },
+      1921: {
+        slidesPerView: "auto",
+        spaceBetween: 24,
+      }
     },
     on: {
       init: function() {

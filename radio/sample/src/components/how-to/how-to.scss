@@ -56,7 +56,7 @@
     width: 100%;
     height: 100%;
     border-radius: 0;
-    background-color: #E5E3D9;
+    background-color: #E9E4DB;
     overflow: hidden;
     @include tablet {
       border-radius: 1.75rem;
@@ -188,6 +188,11 @@
         width: min(calc(100% - rem(100)), rem(640));
       }
     }
+    .swiper-slide {
+      @media (min-width: 1441px) {
+        width: 1200px;
+      }
+    }
     .swiper-slide-active {
       video {
         opacity: 1;
@@ -208,6 +213,7 @@
       top: 50%;
       left: 50%;
       z-index: 2;
+      pointer-events: none;
       @include tablet {
         width: calc(100% - rem(48));
       }
@@ -223,6 +229,7 @@
         right: rem(24);
         cursor: pointer;
         transition: all 0.3s linear;
+        pointer-events: auto;
         @include tablet {
           width: rem(48);
           height: rem(48);
@@ -260,7 +267,7 @@
         }
       }
       @include desktop {
-        width: min(calc(63vw - rem(40)), rem(1152));
+        width: rem(calc(1200 - 48));
       }
     }
   }

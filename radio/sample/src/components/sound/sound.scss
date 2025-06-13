@@ -472,85 +472,73 @@
                 }
             }
         }
-
         .swiper-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: rem(16);
-            width: calc(100% - rem(16));
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            z-index: 2;
-
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: rem(16);
+          width: calc(100% - rem(32));
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+          pointer-events: none;
+          @include tablet {
+            width: calc(100% - rem(48));
+          }
+          button {
+            width: rem(32);
+            height: rem(32);
+            border-radius: 50%;
+            background: rgba(217, 211, 200, 0.75);
+            backdrop-filter: blur(20px);
+            margin-top: 0;
+            position: static;
+            bottom: rem(24);
+            right: rem(24);
+            cursor: pointer;
+            transition: all 0.3s linear;
+            pointer-events: auto;
             @include tablet {
-                width: calc(100% - rem(72));
-                padding: 0 rem(16);
+              width: rem(48);
+              height: rem(48);
             }
-
-            button {
-                width: rem(32);
-                height: rem(32);
-                border-radius: 50%;
-                background: rgba(217, 211, 200, 0.75);
-                backdrop-filter: blur(10px);
-                margin-top: 0;
-                position: static;
-                bottom: rem(16);
-                right: rem(16);
-                cursor: pointer;
-                transition: all 0.3s linear;
-
-                @include tablet {
-                    width: rem(48);
-                    height: rem(48);
-
-                    bottom: rem(24);
-                    right: rem(24);
-                }
-
-                &::after {
-                    content: "";
-                    display: block;
-                    width: rem(16);
-                    height: rem(16);
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: center;
-                    position: absolute;
-                    transform: translate(-50%, -50%);
-                    top: 50%;
-                    left: 50%;
-
-                    @include tablet {
-                        width: rem(24);
-                        height: rem(24);
-                    }
-                }
-
-                &:hover {
-                    background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
-                }
-
-                &.swiper-button-prev {
-                    &::after {
-                        background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-next-icon.svg");
-                        transform: translate(-50%, -50%) rotate(180deg);
-                    }
-                }
-
-                &.swiper-button-next {
-                    &::after {
-                        background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-next-icon.svg");
-                    }
-                }
+            &::after {
+              content: "";
+              display: block;
+              width: rem(16);
+              height: rem(16);
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center;
+              position: absolute;
+              transform: translate(-50%, -50%);
+              top: 50%;
+              left: 50%;
+              @include tablet {
+                width: rem(24);
+                height: rem(24);
+              }
             }
-
-            @include desktop {
-                width: min(calc(63vw - rem(40)), rem(1152));
+            &:hover {
+              background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
             }
+            &.swiper-button-prev {
+              &::after {
+                background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+                transform: translate(-50%, -50%) rotate(180deg);
+              }
+            }
+            &.swiper-button-next {
+              &::after {
+                background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+              }
+            }
+          }
+          @include desktop {
+            width: rem(calc(1200 - 48));
+          }
         }
     }
 }
