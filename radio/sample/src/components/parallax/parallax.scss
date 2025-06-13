@@ -171,6 +171,7 @@
       align-items: center;
       column-gap: rem(3);
       opacity: 0;
+      overflow: hidden;
       @include tablet {
         max-width: rem(460);
       }
@@ -227,8 +228,11 @@
     width: 100%;
     img {
       width: 100%;
-      min-height: rem(850);
+      min-height: rem(800);
       object-fit: none;
+      @media (min-width: 400px) {
+        min-height: rem(880);
+      }
       @include tablet {
         min-height: rem(1909);
         object-fit: none;
