@@ -289,6 +289,7 @@ if (soundSwiper) {
         swiperNavigation.style.top = `${navigationPosition}px `;
     }
 
+
     const imgbxs = document.querySelectorAll(".sound .swiper-slide .sound-imgbx");
     const soundAlbums = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-album");
     const soundTracks = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-track");
@@ -364,7 +365,13 @@ if (soundSwiper) {
                         resetExtraPadding();
                     }
                 }
-            }
+            },
+
+            beforeSlideChangeStart: function () {
+                console.log(1234);
+            },
+
+            // afterSlideChangeStart: function () {}
         },
         breakpoints: {
             769: {
@@ -382,6 +389,37 @@ if (soundSwiper) {
 
     let swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
+
+    function initTxtSwiper() {
+        const txtSwiper = document.querySelector('.sound-txt-swiper');
+        if (txtSwiper) {
+            const textSwiper = new Swiper(txtSwiper, {
+                slidesPerView: 1,
+                speed: 500,
+                allowTouchMove: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                controller: {
+                    control: swiperInstance
+                },
+                on: {
+                    slideChange() {
+                        resetAll();
+                        soundTitleAnimation(this.realIndex, true);
+                        swiperInstance.slideTo(this.realIndex);
+                        moveCenterNavigation();
+                    }
+                }
+            });
+
+            swiperInstance.controller.control = textSwiper;
+        }
+    }
+
+    initTxtSwiper();
+
     function handleSwiperResize() {
         if (swiperInstance.realIndex >= 1) {
             imgbxs.forEach(el => el.classList.remove("active"));
@@ -392,17 +430,19 @@ if (soundSwiper) {
             swiperInstance.destroy(true, true);
             swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
+            initTxtSwiper();
+
             handleAudio();
             soundTitleAnimation(0, true);
         }
 
         moveCenterNavigation();
-        // handleAudio();
-        // soundTitleAnimation(0, true);
     }
 
     window.addEventListener('resize', debounce(handleSwiperResize));
 }
+
+
 
 // 리사이즈 함수
 function handleResize() {
@@ -423,5 +463,6 @@ function initSound() {
     moveCenterNavigation();
     window.addEventListener('resize', debounce(handleResize));
 }
+
 
 initSound();
