@@ -57,6 +57,10 @@ function howTo() {
     mousewheel: {
       forceToAxis: true,
     },
+    pagination: {
+      el: ".how-to-video-slide .swiper-pagination",
+      clickable: true,
+    },
     navigation: {
       nextEl: ".how-to-video-slide .swiper-button-next",
       prevEl: ".how-to-video-slide .swiper-button-prev",
