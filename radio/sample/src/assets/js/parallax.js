@@ -378,4 +378,7 @@ function parallax() {
     .to(parallaxItems[2], { y: "-10%", scale: 1.05 });
 }
 
-parallax();
+
+document.addEventListener("DOMContentLoaded", () => {
+  parallax();
+});

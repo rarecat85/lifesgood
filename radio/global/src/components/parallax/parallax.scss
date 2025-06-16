@@ -124,25 +124,69 @@
         transform: scale(0);
         bottom: rem(-30);
         width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: rem(-20);
         @include tablet {
           width: auto;
           bottom: rem(-10);
           right: rem(-78);
           transform: scale(0);
+          flex-direction: column;
+          gap: rem(-15);
         }
         @include desktop {
           width: auto;
           bottom: rem(-20);
           right: rem(-124);
           transform: scale(0);
+          gap: rem(-20);
         }
-        img {
-          width: rem(116);
+        &-logo {
+          position: relative;
+          z-index: 2;
+          margin-left: rem(-15);
+          margin-top:rem(20);
+          img {
+            width: rem(80);
+            @include tablet {
+              width: rem(90);
+            }
+            @include desktop {
+              width: rem(150);
+            }
+          }
           @include tablet {
-            width: rem(90);
+            margin-left:0;
+            margin-top:rem(-20);
           }
           @include desktop {
-            width: rem(150);
+            margin-left:0;
+            margin-top:rem(-40);
+          }
+        }
+        &-radio {
+          position: relative;
+          z-index: 1;
+          margin-right: rem(-15);
+          img {
+            width: rem(80);
+            @include tablet {
+              width: rem(90);
+            }
+            @include desktop {
+              width: rem(150);
+            }
+          }
+          @include tablet {
+            margin-right:rem(-10);
+            margin-top:0;
+          }
+          @include desktop {
+            margin-right:rem(-30);
+            margin-top:0;
           }
         }
       }

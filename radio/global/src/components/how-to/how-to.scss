@@ -56,8 +56,9 @@
     width: 100%;
     height: 100%;
     border-radius: 0;
-    background-color: #E5E3D9;
+    background-color: #E5E3DA;
     overflow: hidden;
+    position: relative;
     @include tablet {
       border-radius: 1.75rem;
     }
@@ -188,127 +189,19 @@
         width: min(calc(100% - rem(100)), rem(640));
       }
     }
+    .swiper-slide {
+      @media (min-width: 1441px) {
+        width: 1200px;
+      }
+    }
     .swiper-slide-active {
       video {
         opacity: 1;
       }
-      .how-to-video-control-btn {
+      .how-to-video-control-btn,
+      .how-to-txt-bx {
         opacity: 1;
         visibility: visible;
-      }
-    }
-    .swiper-navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: rem(16);
-      width: calc(100% - rem(32));
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-      z-index: 2;
-      @include tablet {
-        width: calc(100% - rem(48));
-      }
-      button {
-        width: rem(32);
-        height: rem(32);
-        border-radius: 50%;
-        background: rgba(217, 211, 200, 0.75);
-        backdrop-filter: blur(20px);
-        margin-top: 0;
-        position: static;
-        bottom: rem(24);
-        right: rem(24);
-        cursor: pointer;
-        transition: all 0.3s linear;
-        @include tablet {
-          width: rem(48);
-          height: rem(48);
-        }
-        &::after {
-          content: "";
-          display: block;
-          width: rem(16);
-          height: rem(16);
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center;
-          position: absolute;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          left: 50%;
-          @include tablet {
-            width: rem(24);
-            height: rem(24);
-          }
-        }
-        &:hover {
-          background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
-        }
-        &.swiper-button-prev {
-          &::after {
-            background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
-            transform: translate(-50%, -50%) rotate(180deg);
-          }
-        }
-        &.swiper-button-next {
-          &::after {
-            background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
-          }
-        }
-      }
-      @include desktop {
-        width: min(calc(63vw - rem(40)), rem(1152));
-      }
-    }
-  }
-  &-txt-slide {
-    width: min(calc(100% - rem(48)), rem(1152));
-    text-align: center;
-    &-title {
-      font-weight: 550;
-      font-size: rem(20);
-      margin-bottom: rem(4);
-      @include tablet {
-        font-size: rem(28);
-        margin-bottom: rem(8);
-      }
-      @include desktop {
-        font-size: rem(36);
-        margin-bottom: rem(16);
-      }
-      &-num {
-        display: inline-block;
-        vertical-align: rem(2);
-        img {
-          width: rem(24);
-          @include tablet {
-            width: rem(28);
-          }
-          @include desktop {
-            width: rem(40);
-          }
-        }
-      }
-    }
-    &-txt {
-      font-family: LGEI Text;
-      font-size: rem(16);
-      line-height: 1.16;
-      color: #333333;
-      br{
-        display: none;
-      }
-      @include tablet {
-        font-size: rem(20);
-        br{
-          display: block;
-        }
-      }
-      @include desktop {
-        font-size: rem(24);
       }
     }
     .swiper-pagination {
@@ -351,6 +244,133 @@
             width: rem(32);
           }
         }
+      }
+    }
+    .swiper-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: rem(16);
+      width: calc(100% - rem(32));
+      position: absolute;
+      transform: translateX(-50%);
+      top: 48vw;
+      left: 50%;
+      z-index: 2;
+      pointer-events: none;
+      @include tablet {
+        top: rem(296);
+        width: calc(100% - rem(48));
+      }
+      button {
+        width: rem(32);
+        height: rem(32);
+        border-radius: 50%;
+        background: rgba(217, 211, 200, 0.75);
+        backdrop-filter: blur(20px);
+        margin-top: 0;
+        position: static;
+        bottom: rem(24);
+        right: rem(24);
+        cursor: pointer;
+        transition: all 0.3s linear;
+        pointer-events: auto;
+        @include tablet {
+          width: rem(48);
+          height: rem(48);
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: rem(16);
+          height: rem(16);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+          @include tablet {
+            width: rem(24);
+            height: rem(24);
+          }
+        }
+        &:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+        }
+        &.swiper-button-prev {
+          &::after {
+            background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+            transform: translate(-50%, -50%) rotate(180deg);
+          }
+        }
+        &.swiper-button-next {
+          &::after {
+            background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+          }
+        }
+      }
+      @include desktop {
+        width: rem(calc(1200 - 48));
+      }
+    }
+  }
+  &-txt-bx {
+    width: 100%;
+    text-align: center;
+    margin-top: rem(20);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+    @include tablet {
+      margin-top: rem(32);
+    }
+    @include desktop {
+      margin-top: rem(48);
+    }
+    &-title {
+      font-weight: 550;
+      font-size: rem(20);
+      margin-bottom: rem(4);
+      @include tablet {
+        font-size: rem(28);
+        margin-bottom: rem(8);
+      }
+      @include desktop {
+        font-size: rem(36);
+        margin-bottom: rem(16);
+      }
+      &-num {
+        display: inline-block;
+        vertical-align: rem(2);
+        img {
+          width: rem(24);
+          @include tablet {
+            width: rem(28);
+          }
+          @include desktop {
+            width: rem(40);
+          }
+        }
+      }
+    }
+    &-txt {
+      font-family: LGEI Text;
+      font-size: rem(16);
+      line-height: 1.16;
+      color: #333333;
+      br{
+        display: none;
+      }
+      @include tablet {
+        font-size: rem(20);
+        br{
+          display: block;
+        }
+      }
+      @include desktop {
+        font-size: rem(24);
       }
     }
   }
