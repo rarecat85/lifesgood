@@ -57,6 +57,10 @@ function howTo() {
     mousewheel: {
       forceToAxis: true,
     },
+    pagination: {
+      el: ".how-to-video-slide .swiper-pagination",
+      clickable: true,
+    },
     navigation: {
       nextEl: ".how-to-video-slide .swiper-button-next",
       prevEl: ".how-to-video-slide .swiper-button-prev",
@@ -127,23 +131,6 @@ function howTo() {
       }
     }
   });
-
-  const howToTxtSlide = new Swiper(".how-to-txt-slide", {
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    slidesPerView: 1,
-    spaceBetween: 16,
-    pagination: {
-      el: ".how-to-txt-slide .swiper-pagination",
-      clickable: true,
-    },
-  });
-
-  // Swiper 연결
-  howToVideoSlide.controller.control = howToTxtSlide;
-  howToTxtSlide.controller.control = howToVideoSlide;
 
   // 비디오 컨트롤 버튼 이벤트 설정
   controlBtns.forEach(btn => {

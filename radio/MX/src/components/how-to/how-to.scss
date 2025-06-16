@@ -58,6 +58,7 @@
     border-radius: 0;
     background-color: #E9E4DB;
     overflow: hidden;
+    position: relative;
     @include tablet {
       border-radius: 1.75rem;
     }
@@ -197,9 +198,52 @@
       video {
         opacity: 1;
       }
-      .how-to-video-control-btn {
+      .how-to-video-control-btn,
+      .how-to-txt-bx {
         opacity: 1;
         visibility: visible;
+      }
+    }
+    .swiper-pagination {
+      width: auto;
+      position: static;
+      margin-top: rem(20);
+      @include tablet {
+        height: rem(12);
+        margin-top: rem(32);
+      }
+      @include desktop {
+        height: rem(12);
+        margin-top: rem(48);
+      }
+      .swiper-pagination-bullet {
+        width: rem(8);
+        margin: 0 rem(5);
+        background: #b8b4ab;
+        opacity: 1;
+        overflow: hidden;
+        transition: all 0.3s linear;
+        @include tablet {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        @include desktop {
+          width: rem(12);
+          height: rem(12);
+          margin: 0 rem(6);
+        }
+        &.swiper-pagination-bullet-active {
+          width: rem(20);
+          border-radius: rem(12);
+          background: #000000;
+          @include tablet {
+            width: rem(32);
+          }
+          @include desktop {
+            width: rem(32);
+          }
+        }
       }
     }
     .swiper-navigation {
@@ -209,12 +253,13 @@
       gap: rem(16);
       width: calc(100% - rem(32));
       position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
+      transform: translateX(-50%);
+      top: 48vw;
       left: 50%;
       z-index: 2;
       pointer-events: none;
       @include tablet {
+        top: rem(296);
         width: calc(100% - rem(48));
       }
       button {
@@ -271,9 +316,19 @@
       }
     }
   }
-  &-txt-slide {
-    width: min(calc(100% - rem(48)), rem(1152));
+  &-txt-bx {
+    width: 100%;
     text-align: center;
+    margin-top: rem(20);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+    @include tablet {
+      margin-top: rem(32);
+    }
+    @include desktop {
+      margin-top: rem(48);
+    }
     &-title {
       font-weight: 550;
       font-size: rem(20);
@@ -316,48 +371,6 @@
       }
       @include desktop {
         font-size: rem(24);
-      }
-    }
-    .swiper-pagination {
-      width: auto;
-      position: static;
-      margin-top: rem(20);
-      @include tablet {
-        height: rem(12);
-        margin-top: rem(32);
-      }
-      @include desktop {
-        height: rem(12);
-        margin-top: rem(48);
-      }
-      .swiper-pagination-bullet {
-        width: rem(8);
-        margin: 0 rem(5);
-        background: #b8b4ab;
-        opacity: 1;
-        overflow: hidden;
-        transition: all 0.3s linear;
-        @include tablet {
-          width: rem(12);
-          height: rem(12);
-          margin: 0 rem(6);
-        }
-        @include desktop {
-          width: rem(12);
-          height: rem(12);
-          margin: 0 rem(6);
-        }
-        &.swiper-pagination-bullet-active {
-          width: rem(20);
-          border-radius: rem(12);
-          background: #000000;
-          @include tablet {
-            width: rem(32);
-          }
-          @include desktop {
-            width: rem(32);
-          }
-        }
       }
     }
   }
