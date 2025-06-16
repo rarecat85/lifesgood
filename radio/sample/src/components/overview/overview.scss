@@ -189,11 +189,9 @@
         align-items:flex-start;
         column-gap: rem(80);
       }
-      @include desktop {
-        column-gap: rem(120);
-      }
     }
     &:first-child {
+      letter-spacing: rem(-0.18);
       margin-bottom: rem(56);
       @include tablet {
         margin-bottom: 0;
@@ -202,6 +200,11 @@
       }
       @include desktop {
         row-gap: rem(80);
+      }
+    }
+    &:last-child {
+      @include desktop {
+        max-width: rem(610);
       }
     }
     &-img {
