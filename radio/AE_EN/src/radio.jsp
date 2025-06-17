@@ -1,31 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title>Life's Good | Radio Optimism | LG UAE</title>
+    <meta name="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation">
+    <meta name="Description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station.">
+    <meta property="og:title" content="Life's Good | Radio Optimism | LG UAE"/>
+    <meta property="og:url" content="https://www.lg.com/UAE/lifesgood/">
+    <meta property="og:description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
-  <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
-  <link href="../common/css/font.css" rel="stylesheet" type="text/css" />
-  <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-  <link href="./assets/css/radio.css" rel="stylesheet" type="text/css" />
+    <!-- your -->
+    <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/font.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="./assets/css/radio.css" rel="stylesheet" type="text/css" />
 
-  <script src="../common/js/gsap.min.js"></script>
-  <script src="../common/js/ScrollTrigger.min.js"></script>
-  <script src="../common/js/SplitText.min.js"></script>
-  <script src="../common/js/swiper-bundle.min.js"></script>
-  <script src="./assets/js/radio.js" defer></script>
-  <script src="./assets/js/overview.js" defer></script>
-  <script src="./assets/js/sound.js" defer></script>
-  <script src="./assets/js/banner.js" defer></script>
-  <script src="./assets/js/stories.js" defer></script>
+    <script src="../common/js/gsap.min.js"></script>
+    <script src="../common/js/ScrollTrigger.min.js"></script>
+    <script src="../common/js/SplitText.min.js"></script>
+    <script src="../common/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/overview.js" defer></script>
+    <script src="./assets/js/sound.js" defer></script>
+    <script src="./assets/js/banner.js" defer></script>
+    <script src="./assets/js/stories.js" defer></script>
+    <script src="./assets/js/how-to.js" defer></script>
+    <script src="./assets/js/main-video.js" defer></script>
+    <script src="./assets/js/parallax.js" defer></script>
 
-<script src="./assets/js/how-to.js" defer></script>
-<script src="./assets/js/influence.js" defer></script>
-<script src="./assets/js/main-video.js" defer></script>
-<script src="./assets/js/parallax.js" defer></script></head>
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
 <body>
-  <div class="radio-container">
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
+    <meta itemprop="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<div class="radio-container">
     <!-- S : parallax -->
 <section class="parallax-container">
   <div class="parallax-txt-bx">
@@ -754,5 +806,63 @@
 </section>
 <!-- E : stories -->
   </div>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
 </body>
 </html>
