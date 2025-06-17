@@ -169,8 +169,8 @@ if (soundSwiper) {
 
     // LP 회전 함수
     function soundTrackAnimation(index = 0, isStopped = false) {
-        const tracks = document.querySelectorAll(".sound-imgbx-track");
-        const track = tracks[index];
+        const activeContainer = document.querySelector('.sound-img-active');
+        const track = activeContainer.querySelector('.sound-imgbx-track');
 
         // 현재 슬라이드 타임라인 
         if (!trackTimelines[index]) {
@@ -289,9 +289,6 @@ if (soundSwiper) {
         swiperNavigation.style.top = `${navigationPosition}px `;
     }
 
-    const imgbxs = document.querySelectorAll(".sound .swiper-slide .sound-imgbx");
-    const soundAlbums = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-album");
-    const soundTracks = document.querySelectorAll(".sound .swiper-slide .sound-imgbx-track");
     const soundTexts = document.querySelectorAll(".sound .swiper-slide .sound-txtbx");
 
     // Sound Swiper 초기화 및 설정
@@ -312,10 +309,24 @@ if (soundSwiper) {
         },
         on: {
             init: function () {
-                imgbxs[0].classList.add("active");
-                soundAlbums[0].classList.add("active");
-                soundTracks[0].classList.add("active");
                 soundTexts[0].classList.add("active");
+
+                // 첫 번째 슬라이드의 sound-imgbx를 sound-img-active로 복사
+                const firstSlide = this.slides[0];
+                const firstImgBx = firstSlide.querySelector('.sound-imgbx');
+                const activeContainer = document.querySelector('.sound-img-active');
+                
+                if (firstImgBx && activeContainer) {
+                    const clonedImgBx = firstImgBx.cloneNode(true);
+                    activeContainer.innerHTML = '';
+                    activeContainer.appendChild(clonedImgBx);
+                    
+                    // 새로 들어온 요소에만 페이드인 효과 적용
+                    gsap.fromTo(clonedImgBx, 
+                        { opacity: 0 },
+                        { opacity: 1, duration: 0.5, ease: "power2.out" }
+                    );
+                }
 
                 handleAudio();
                 moveCenterNavigation();
@@ -323,86 +334,151 @@ if (soundSwiper) {
             },
 
             slideChange: function () {
-                imgbxs.forEach(el => el.classList.remove("active"));
-                soundAlbums.forEach(el => el.classList.remove("active"));
-                soundTracks.forEach(el => el.classList.remove("active"));
                 soundTexts.forEach(el => el.classList.remove("active"));
 
                 const index_currentSlide = this.realIndex;
                 const currentSlide = this.slides[index_currentSlide];
+            },
 
-                if (currentSlide) {
-                    resetAll(); // 컨트롤러 초기화
-                    soundTitleAnimation(this.realIndex, true); // 타이틀 애니메이션 초기화
-
-                    imgbxs[index_currentSlide].classList.add("active");
-                    soundAlbums[index_currentSlide].classList.add("active");
-                    soundTracks[index_currentSlide].classList.add("active");
-                    soundTexts[index_currentSlide].classList.add("active");
-
-                    // 타임라인 초기화
-                    if (trackTimelines[this.previousIndex]) {
-                        gsap.set(soundTracks[this.previousIndex], {
-                            rotation: 0
-                        });
-                        trackTimelines[this.previousIndex].kill();
-                        delete trackTimelines[this.previousIndex];
-                        trackStarted[this.previousIndex] = false;
-                    }
-                    if (trackTimelines[this.realIndex]) {
-                        trackTimelines[this.realIndex].kill();
-                        delete trackTimelines[this.realIndex];
-                        trackStarted[this.realIndex] = false;
-                    }
-
-                    // Swiper Wrapper 기기별 패딩 업데이트
-                    if (this.realIndex === 1) {
-                        updateExtraPadding();
-                    }
-
-                    if (this.realIndex === 0) {
-                        resetExtraPadding();
-                    }
+            activeIndexChange: function () {
+                console.log('activeIndexChange triggered');
+                
+                // 현재 활성화된 슬라이드 찾기
+                const activeSlide = this.slides[this.activeIndex];
+                console.log('Active slide:', activeSlide);
+                
+                if (!activeSlide) {
+                    console.log('No active slide found');
+                    return;
                 }
-            }
+
+                // sound-imgbx 찾기
+                const activeImgBx = activeSlide.querySelector('.sound-imgbx');
+                console.log('Active imgBx:', activeImgBx);
+                
+
+                // 활성 컨테이너 찾기
+                const activeContainer = document.querySelector('.sound-img-active');
+                
+
+                try {
+                    // 기존 요소 저장
+                    const oldImgBx = activeContainer.querySelector('.sound-imgbx');
+                    
+                    // 새로운 요소 생성 및 추가
+                    const clonedImgBx = activeImgBx.cloneNode(true);
+                    clonedImgBx.style.opacity = '0';
+                    activeContainer.appendChild(clonedImgBx);
+                    
+                    // 새로 들어온 요소에 페이드인 효과 적용
+                    gsap.to(clonedImgBx, {
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        onComplete: () => {
+                            // 페이드인 완료 후 기존 요소 제거
+                            if (oldImgBx) {
+                                oldImgBx.remove();
+                            }
+                        }
+                    });
+                    
+                } catch (error) {
+                    console.error('Error copying imgBx:', error);
+                }
+            },
+
+            // afterSlideChangeStart: function () {}
         },
         breakpoints: {
             769: {
                 slidesPerView: 'auto',
-                spaceBetween: 100,
                 centeredSlides: true,
             },
-            1441: {
-                slidesPerView: 'auto',
-                spaceBetween: 122,
-                centeredSlides: true,
-            }
         },
     }
 
     let swiperInstance = new Swiper(soundSwiper, swiperOptions);
 
+
+    function initTxtSwiper() {
+        const txtSwiper = document.querySelector('.sound-txt-swiper');
+        if (txtSwiper) {
+            const textSwiper = new Swiper(txtSwiper, {
+                slidesPerView: 1,
+                speed: 500,
+                allowTouchMove: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                controller: {
+                    control: swiperInstance
+                },
+                on: {
+                    slideChange() {
+                        resetAll();
+                        soundTitleAnimation(this.realIndex, true);
+                        swiperInstance.slideTo(this.realIndex);
+                        moveCenterNavigation();
+                    }
+                }
+            });
+
+            swiperInstance.controller.control = textSwiper;
+        }
+    }
+
+    initTxtSwiper();
+
     function handleSwiperResize() {
         if (swiperInstance.realIndex >= 1) {
-            imgbxs.forEach(el => el.classList.remove("active"));
-            soundAlbums.forEach(el => el.classList.remove("active"));
-            soundTracks.forEach(el => el.classList.remove("active"));
             soundTexts.forEach(el => el.classList.remove("active"));
 
             swiperInstance.destroy(true, true);
             swiperInstance = new Swiper(soundSwiper, swiperOptions);
+
+            initTxtSwiper();
+
+            // 현재 활성 슬라이드의 이미지 복사
+            const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+            const activeImgBx = activeSlide.querySelector('.sound-imgbx');
+            const activeContainer = document.querySelector('.sound-img-active');
+            
+            if (activeImgBx && activeContainer) {
+                // 기존 요소 저장
+                const oldImgBx = activeContainer.querySelector('.sound-imgbx');
+                
+                // 새로운 요소 생성 및 추가
+                const clonedImgBx = activeImgBx.cloneNode(true);
+                clonedImgBx.style.opacity = '0';
+                activeContainer.appendChild(clonedImgBx);
+                
+                // 새로 들어온 요소에 페이드인 효과 적용
+                gsap.to(clonedImgBx, {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        // 페이드인 완료 후 기존 요소 제거
+                        if (oldImgBx) {
+                            oldImgBx.remove();
+                        }
+                    }
+                });
+            }
 
             handleAudio();
             soundTitleAnimation(0, true);
         }
 
         moveCenterNavigation();
-        // handleAudio();
-        // soundTitleAnimation(0, true);
     }
 
-    window.addEventListener('resize', debounce(handleSwiperResize));
+    window.addEventListener('resize', debounce(handleSwiperResize, 250)); // 디바운스 시간을 250ms로 증가
 }
+
+
 
 // 리사이즈 함수
 function handleResize() {
@@ -423,5 +499,6 @@ function initSound() {
     moveCenterNavigation();
     window.addEventListener('resize', debounce(handleResize));
 }
+
 
 initSound();
