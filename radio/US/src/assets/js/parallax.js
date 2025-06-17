@@ -60,10 +60,19 @@ function parallax() {
       opacity: 0
     });
     gsap.set(parallaxLogo, { y: 50 });
-    gsap.set(parallaxSticker, { scale: 0 });
+    gsap.set(parallaxSticker, { scale: 1 }); // 스티커 컨테이너는 scale 1로 설정
     gsap.set(parallaxTitle, { y: 30 });
     gsap.set(firstLine, { width: "0%" });
     gsap.set(secondLine, { width: "calc(100% - 1rem)" });
+
+    // 스티커 초기 상태 설정
+    const radioSticker = document.querySelector(".parallax-txt-bx-logo-sticker-radio");
+    const logoSticker = document.querySelector(".parallax-txt-bx-logo-sticker-logo");
+    gsap.set([radioSticker, logoSticker], { 
+      opacity: 0,
+      scale: 0,
+      rotation: 0
+    });
 
     // 인트로 애니메이션 재생
     const newIntroTimeline = gsap.timeline({ delay: 0.5 });
@@ -83,22 +92,68 @@ function parallax() {
           ease: "power2.out",
         }
       )
-      // 2. 스티커 - 띠용하고 나타나기 (scale + bounce)
+      // 2. 스티커 컨테이너 나타나기
       .fromTo(
         parallaxSticker,
         {
           opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.1,
+        },
+        "-=0.3"
+      )
+      // 3. 스티커들 나타나기 (아주 약간의 시차)
+      .fromTo(
+        radioSticker,
+        {
+          opacity: 0,
           scale: 0,
+          rotation: -20,
         },
         {
           opacity: 1,
           scale: 1,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.5)",
+          duration: 0.4,
+          ease: "elastic.out(1, 0.3)",
         },
-        "-=0.3"
+        "-=0.1"
       )
-      // 3. 타이틀 - 아래에서 나타나기
+      .fromTo(
+        logoSticker,
+        {
+          opacity: 0,
+          scale: 0,
+          rotation: 20,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "elastic.out(1, 0.3)",
+        },
+        "-=0.3"  // 라디오 스티커보다 0.1초 먼저 시작
+      )
+      // 4. 스티커들 회전 (약간의 시차)
+      .to(
+        radioSticker,
+        {
+          rotation: 0,
+          duration: 0.25,
+          ease: "power2.out",
+        }
+      )
+      .to(
+        logoSticker,
+        {
+          rotation: 0,
+          duration: 0.25,
+          ease: "power2.out",
+        },
+        "-=0.15"
+      )
+      // 5. 타이틀 - 아래에서 나타나기
       .fromTo(
         parallaxTitle,
         {
@@ -113,7 +168,7 @@ function parallax() {
         },
         "-=0.2"
       )
-      // 4. 라디오 컨트롤 - 나타나기
+      // 6. 라디오 컨트롤 - 나타나기
       .addLabel("radioControls", "-=0.3")
       .fromTo(
         [parallaxRadioControls, parallaxRadioBtns],
@@ -127,7 +182,7 @@ function parallax() {
         },
         "radioControls"
       )
-      // 5. 첫 번째 라인 - 0에서 현재값까지 확장
+      // 7. 첫 번째 라인 - 0에서 현재값까지 확장
       .fromTo(
         firstLine,
         {
@@ -140,7 +195,7 @@ function parallax() {
         },
         "-=0.1"
       )
-      // 6. 두 번째 라인 - 현재값에서 0까지 축소
+      // 8. 두 번째 라인 - 현재값에서 0까지 축소
       .fromTo(
         secondLine,
         {
@@ -161,6 +216,16 @@ function parallax() {
   // 최초 로딩 애니메이션 타임라인
   const introTimeline = gsap.timeline({ delay: 0.5 });
 
+  // 스티커 초기 상태 설정
+  const radioSticker = document.querySelector(".parallax-txt-bx-logo-sticker-radio");
+  const logoSticker = document.querySelector(".parallax-txt-bx-logo-sticker-logo");
+  gsap.set([radioSticker, logoSticker], { 
+    opacity: 0,
+    scale: 0,
+    rotation: 0
+  });
+  gsap.set(parallaxSticker, { scale: 1 }); // 스티커 컨테이너는 scale 1로 설정
+
   // 인트로 애니메이션 실행
   introTimeline
     .fromTo(
@@ -176,19 +241,65 @@ function parallax() {
         ease: "power2.out",
       }
     )
+    // 스티커 컨테이너 나타나기
     .fromTo(
       parallaxSticker,
       {
         opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.1,
+      },
+      "-=0.3"
+    )
+    // 스티커들 나타나기 (아주 약간의 시차)
+    .fromTo(
+      radioSticker,
+      {
+        opacity: 0,
         scale: 0,
+        rotation: -20,
       },
       {
         opacity: 1,
         scale: 1,
-        duration: 0.6,
-        ease: "elastic.out(1, 0.5)",
+        duration: 0.4,
+        ease: "elastic.out(1, 0.3)",
       },
-      "-=0.3"
+      "-=0.1"
+    )
+    .fromTo(
+      logoSticker,
+      {
+        opacity: 0,
+        scale: 0,
+        rotation: 20,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "elastic.out(1, 0.3)",
+      },
+      "-=0.3"  // 라디오 스티커보다 0.1초 먼저 시작
+    )
+    .to(
+      radioSticker,
+      {
+        rotation: 0,
+        duration: 0.25,
+        ease: "power2.out",
+      }
+    )
+    .to(
+      logoSticker,
+      {
+        rotation: 0,
+        duration: 0.25,
+        ease: "power2.out",
+      },
+      "-=0.15"
     )
     .fromTo(
       parallaxTitle,
@@ -267,4 +378,7 @@ function parallax() {
     .to(parallaxItems[2], { y: "-10%", scale: 1.05 });
 }
 
-parallax();
+
+document.addEventListener("DOMContentLoaded", () => {
+  parallax();
+});
