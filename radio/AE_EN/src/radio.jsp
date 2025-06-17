@@ -7,12 +7,12 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title><!--타이틀--></title>
-    <meta name="Keywords" content="">
-    <meta name="Description" content="">
-    <meta property="og:title" content=""/>
-    <meta property="og:url" content="">
-    <meta property="og:description" content=""/>
+    <title>Life's Good | Radio Optimism | LG UAE</title>
+    <meta name="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation">
+    <meta name="Description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station.">
+    <meta property="og:title" content="Life's Good | Radio Optimism | LG UAE"/>
+    <meta property="og:url" content="https://www.lg.com/UAE/lifesgood/">
+    <meta property="og:description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
     <meta property="og:image" content="">
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
@@ -60,8 +60,8 @@
     <meta itemprop="name" content="{Browser Title}"/>
     <meta itemprop="image" content="{Share Image}"/>
     <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
-    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+    <meta itemprop="description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
+    <meta itemprop="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation"/>
 </div>
 <c:set var='bizType' value='${$bizType }'/>
 <c:set var='siteType' value='MKT'/>
