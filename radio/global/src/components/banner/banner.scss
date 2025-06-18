@@ -2,12 +2,6 @@
 @use "../../assets/scss/variable"as *;
 
 
-body {
-    &.noscroll {
-        overflow-y: hidden;
-    }
-}
-
 .banner {
     width: 100%;
     padding: 0 rem(16) rem($mo_padding);
