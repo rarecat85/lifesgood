@@ -139,10 +139,18 @@ body {
          height: rem(14);
          background: url('/src/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-arrow-icon.svg') no-repeat;
          background-size: contain;
+
+         [dir='rtl'] & {
+            transform: rotate(180deg);
+         }
       }
 
       &-next {
          transform: rotate(180deg);
+
+         [dir='rtl'] & {
+            transform: rotate(0);
+         }
       }
 
       .swiper-button-disabled {
