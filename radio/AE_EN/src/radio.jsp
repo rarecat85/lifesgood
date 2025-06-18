@@ -430,12 +430,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-Beam-of-Positivity.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
                   alt="The album cover of Beam of Positivity, created by LG through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-Beam-of-Positivity.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
                   alt="The LP image of Beam of Positivity, created by LG through AI.">
               </div>
             </div>
@@ -446,12 +446,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-Keep-Swimming.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
                   alt="The album cover of Keep Swimming, created by Mom through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-Keep-Swimming.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
                   alt="The LP image of Keep Swimming, created by Mom through AI.">
               </div>
             </div>
@@ -462,12 +462,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-The-Tale-of-Optimistic-Toby.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
                   alt="The album cover of The Tale of Optimistic Toby, created by Kyle through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-The-Tale-of-Optimistic-Toby.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
                   alt="The LP image of The Tale of Optimistic Toby, created by Kyle through AI.">
               </div>
             </div>
@@ -478,12 +478,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-My-Dad-My-Hero.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
                   alt="The album cover of My Dad, My Hero, created by Cam through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-My-Dad-My-Hero.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
                   alt="The LP image of My Dad, My Hero, created by Cam through AI.">
               </div>
             </div>
@@ -494,12 +494,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-Carpool-Hero.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
                   alt="The album cover of Carpool Hero, created by Tina through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-Carpool-Hero.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
                   alt="The LP image of Carpool Hero, created by Tina through AI.">
               </div>
             </div>
@@ -510,12 +510,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-Loving-Life-with-my-Beautiful-Wife.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
                   alt="The album cover of Loving Life with my Beautiful Wife, created by Devon through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-Loving-Life-with-my-Beautiful-Wife.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
                   alt="The LP image of Loving Life with my Beautiful Wife, created by Devon through AI.">
               </div>
             </div>
@@ -526,12 +526,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-Spreading-Joy-Spreading-Light.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
                   alt="The album cover of Spreading Joy, Spreading Light, created by LG through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-Spreading-Joy-Spreading-Light.png"
+                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
                   alt="The LP image of Spreading Joy, Spreading Light, created by LG through AI.">
               </div>
             </div>
@@ -557,7 +557,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player:Beam of Positivity">
                 <audio id="audio-1" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-Beam-of-Positivity.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
                     type="audio/mpeg">
                   The audio track Beam of Positivity, created by LG through AI.
                 </audio>
@@ -584,7 +584,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Keep Swimming">
                 <audio id="audio-2" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-Keep-Swimming.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
                     type="audio/mpeg">
                   The audio track Keep Swimming, created by Mom through AI.
                 </audio>
@@ -611,7 +611,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: The Tale of Optimistic Toby">
                 <audio id="audio-3" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-The-Tale-of-Optimistic-Toby.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
                     type="audio/mpeg">
                   The audio track The Tale of Optimistic Toby, created by Kyle through AI.
                 </audio>
@@ -638,7 +638,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: My Dad, My Hero">
                 <audio id="audio-4" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-My-Dad-My-Hero.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
                     type="audio/mpeg">
                   The audio track My Dad, My Hero, created by Cam through AI.
                 </audio>
@@ -666,7 +666,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Carpool Hero">
                 <audio id="audio-5" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-Carpool-Hero.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
                     type="audio/mpeg">
                   The audio track Carpool Hero, created by Tina through AI.
                 </audio>
@@ -694,7 +694,7 @@
                 title="Audio player: Loving Life with my Beautiful Wife">
                 <audio id="audio-6" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-Loving-Life-with-my-Beautiful-Wife.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
                     type="audio/mpeg">
                   The audio track Loving Life with my Beautiful Wife, created by Devon through AI.
                 </audio>
@@ -721,7 +721,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Spreading Joy, Spreading Light">
                 <audio id="audio-7" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-Spreading-Joy-Spreading-Light.mp3"
+                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
                     type="audio/mpeg">
                   The audio track Spreading Joy, Spreading Light, created by LG through AI.
                 </audio>
