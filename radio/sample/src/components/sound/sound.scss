@@ -1,5 +1,5 @@
-@use "../../assets/scss/mixin" as *;
-@use "../../assets/scss/variable" as *;
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
 
 .sr-only {
   position: absolute;
@@ -47,13 +47,16 @@
       pointer-events: none;
       width: calc(25500 / 360 * 1vw);
       height: 100%;
+
       @include tablet {
         width: rem(437.5);
       }
+
       @include desktop {
         width: rem(610);
       }
     }
+
     .sound-imgbx {
       width: calc(25500 / 360 * 1vw);
       aspect-ratio: 308.5/238;
@@ -61,71 +64,104 @@
       align-items: center;
       justify-content: center;
       position: relative;
+
       @include tablet {
         width: rem(437.5);
         aspect-ratio: 437.5/310;
       }
+
       @include desktop {
         width: rem(610);
         aspect-ratio: 610/430;
       }
+
       &-album {
         width: calc(18000 / 360 * 1vw);
+
         img {
           @include img();
         }
+
         @include tablet {
           width: rem(310);
         }
+
         @include desktop {
           width: rem(430);
         }
       }
+
       &-track {
         width: calc(15000 / 360 * 1vw);
         position: relative;
         margin-left: calc(7500 / 360 * -1vw);
         z-index: -1;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: calc(7500 / 360 * -1vw);
+        }
+
         img {
           @include img();
         }
+
         @include tablet {
           width: rem(255);
           margin-left: rem(-127.5);
+
+          [dir="rtl"] & {
+            margin-left: 0;
+            margin-right: rem(-127.5);
+          }
         }
+
         @include desktop {
           width: rem(360);
           margin-left: rem(-180);
+
+          [dir="rtl"] & {
+            margin-left: 0;
+            margin-right: rem(-180);
+          }
         }
       }
     }
+
     .swiper-slide {
       width: calc(25500 / 360 * 1vw);
       display: flex;
       justify-content: center;
       align-items: center;
+
       @include tablet {
         width: rem(437.5);
       }
+
       @include desktop {
         width: rem(610);
       }
+
       .sound-imgbx {
         .sound-imgbx-album {
           width: calc(18000 / 360 * 1vw);
           opacity: 0.5;
           transition: opacity 0.3s linear;
+
           @include tablet {
             width: rem(220);
           }
+
           @include desktop {
             width: rem(305);
           }
         }
+
         .sound-imgbx-track {
           display: none;
         }
       }
+
       &-active {
         .sound-imgbx {
           .sound-imgbx-album {
@@ -135,6 +171,7 @@
         }
       }
     }
+
     .swiper-navigation {
       display: flex;
       justify-content: space-between;
@@ -198,12 +235,20 @@
           &::after {
             background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
             transform: translate(-50%, -50%) rotate(180deg);
+
+            [dir="rtl"] & {
+              transform: translate(-50%, -50%) rotate(0);
+            }
           }
         }
 
         &.swiper-button-next {
           &::after {
             background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+
+            [dir="rtl"] & {
+              transform: translate(-50%, -50%) rotate(180deg);
+            }
           }
         }
       }
@@ -462,6 +507,10 @@
             width: rem(97);
             height: 100%;
             background: linear-gradient(90deg, rgba(240, 236, 228, 0) 0%, #f0ece4 100%);
+
+            [dir="rtl"] & {
+              height: 0;
+            }
           }
 
           &-wrapper {
