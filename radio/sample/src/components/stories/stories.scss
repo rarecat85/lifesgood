@@ -13,10 +13,19 @@ body {
 
       @include tablet {
          padding-left: rem(24);
+
+         [dir='rtl'] & {
+            padding-left: 0;
+            padding-right: rem(24);
+         }
       }
 
       @include desktop {
          padding-left: 0;
+
+         [dir='rtl'] & {
+            padding-right: 0;
+         }
       }
    }
 
