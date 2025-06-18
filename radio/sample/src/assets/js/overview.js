@@ -16,13 +16,16 @@ function overviewAnimation() {
     
     const allChars = highlightElement.querySelectorAll('.split-char');
     
+    // RTL 환경 감지
+    const isRTL = document.documentElement.dir === 'rtl';
+    
     gsap.set(allChars,{backgroundColor:'transparent'})
     gsap.to(allChars, {
       backgroundColor: '#fff082', 
       ease: "linear",
       stagger: {
         amount: 0.4, 
-        from: "start"
+        from: isRTL ? "end" : "start"
       },
       scrollTrigger: {
         trigger: highlightElement,
