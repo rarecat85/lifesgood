@@ -208,14 +208,17 @@
     &-radio-controls {
       width: 100%;
       max-width: rem(296);
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: rem(12);
+      margin: rem(12) auto 0;
       display: flex;
       align-items: center;
       column-gap: rem(3);
       opacity: 0;
       overflow: hidden;
+
+      [dir='rtl'] & {
+        flex-direction: row-reverse;
+      }
+
       @include tablet {
         max-width: rem(460);
       }
