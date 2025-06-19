@@ -8,7 +8,8 @@
     "cmp-dev": "node ../core/component-dev.js",
     "build": "node ../core/build.js",
     "cmp-build": "node ../core/component-build.js",
-    "export": "node ../core/export.js"
+    "export": "node ../core/export.js",
+    "dam": "node ../core/dam.js"
   },
   "keywords": [],
   "author": "",
