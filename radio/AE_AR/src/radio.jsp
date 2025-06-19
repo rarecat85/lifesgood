@@ -294,8 +294,7 @@
             <!-- S : slide item 01-->
             <div class="swiper-slide">
               <div class="how-to-video-bx">
-                &quot;
-                <video muted playsinline aria-label="فيديو الخطوة الأولى من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
+                <video muted plays inline aria-label="فيديو الخطوة الأولى من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
                   <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01.mp4"
                     type="video/mp4">
                 </video>
