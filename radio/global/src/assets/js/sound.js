@@ -315,17 +315,20 @@ if (soundSwiper) {
                 const firstSlide = this.slides[0];
                 const firstImgBx = firstSlide.querySelector('.sound-imgbx');
                 const activeContainer = document.querySelector('.sound-img-active');
-                
+
                 if (firstImgBx && activeContainer) {
                     const clonedImgBx = firstImgBx.cloneNode(true);
                     activeContainer.innerHTML = '';
                     activeContainer.appendChild(clonedImgBx);
-                    
+
                     // 새로 들어온 요소에만 페이드인 효과 적용
-                    gsap.fromTo(clonedImgBx, 
-                        { opacity: 0 },
-                        { opacity: 1, duration: 0.5, ease: "power2.out" }
-                    );
+                    gsap.fromTo(clonedImgBx, {
+                        opacity: 0
+                    }, {
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
                 }
 
                 handleAudio();
@@ -342,11 +345,10 @@ if (soundSwiper) {
 
             activeIndexChange: function () {
                 console.log('activeIndexChange triggered');
-                
+
                 // 현재 활성화된 슬라이드 찾기
                 const activeSlide = this.slides[this.activeIndex];
-                console.log('Active slide:', activeSlide);
-                
+
                 if (!activeSlide) {
                     console.log('No active slide found');
                     return;
@@ -354,41 +356,42 @@ if (soundSwiper) {
 
                 // sound-imgbx 찾기
                 const activeImgBx = activeSlide.querySelector('.sound-imgbx');
-                console.log('Active imgBx:', activeImgBx);
-                
 
                 // 활성 컨테이너 찾기
                 const activeContainer = document.querySelector('.sound-img-active');
-                
 
                 try {
                     // 기존 요소 저장
                     const oldImgBx = activeContainer.querySelector('.sound-imgbx');
-                    
+
                     // 새로운 요소 생성 및 추가
                     const clonedImgBx = activeImgBx.cloneNode(true);
                     clonedImgBx.style.opacity = '0';
                     activeContainer.appendChild(clonedImgBx);
-                    
+
                     // 새로 들어온 요소에 페이드인 효과 적용
                     gsap.to(clonedImgBx, {
                         opacity: 1,
                         duration: 0.5,
                         ease: "power2.out",
-                        onComplete: () => {
+                        onEnter: () => {
                             // 페이드인 완료 후 기존 요소 제거
                             if (oldImgBx) {
                                 oldImgBx.remove();
                             }
-                        }
+                        },
+                        // onComplete: () => {
+                        // 페이드인 완료 후 기존 요소 제거
+                        //     if (oldImgBx) {
+                        //         oldImgBx.remove();
+                        //     }
+                        // }
                     });
-                    
+
                 } catch (error) {
                     console.error('Error copying imgBx:', error);
                 }
             },
-
-            // afterSlideChangeStart: function () {}
         },
         breakpoints: {
             769: {
@@ -444,16 +447,16 @@ if (soundSwiper) {
             const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
             const activeImgBx = activeSlide.querySelector('.sound-imgbx');
             const activeContainer = document.querySelector('.sound-img-active');
-            
+
             if (activeImgBx && activeContainer) {
                 // 기존 요소 저장
                 const oldImgBx = activeContainer.querySelector('.sound-imgbx');
-                
+
                 // 새로운 요소 생성 및 추가
                 const clonedImgBx = activeImgBx.cloneNode(true);
                 clonedImgBx.style.opacity = '0';
                 activeContainer.appendChild(clonedImgBx);
-                
+
                 // 새로 들어온 요소에 페이드인 효과 적용
                 gsap.to(clonedImgBx, {
                     opacity: 1,
@@ -477,7 +480,6 @@ if (soundSwiper) {
 
     window.addEventListener('resize', debounce(handleSwiperResize, 250)); // 디바운스 시간을 250ms로 증가
 }
-
 
 
 // 리사이즈 함수
