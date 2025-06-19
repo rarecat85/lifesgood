@@ -783,7 +783,7 @@
               <button type="button" class="stop-btn"></button>
               <button type="button" class="next-btn"></button>
             </div>
-            <a href="https://radiooptimism.lg.com/en-us" class="banner-main-area-startbtn">
+            <a href="https://radiooptimism.lg.com" class="banner-main-area-startbtn">
               <p>قم بإنشاء أغنيتك الآن</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
