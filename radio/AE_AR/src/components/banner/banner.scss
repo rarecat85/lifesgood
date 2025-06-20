@@ -127,7 +127,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 100%;
 
         &-imgbx {
             width: rem(255);
@@ -151,25 +150,44 @@
         }
 
         &-title {
+            width: fit-content;
             padding-bottom: rem(16);
             margin: 0 auto;
-            text-align: center;
-            min-width: 100%;
 
             @include tablet {
+                max-width: rem(187);
                 padding-bottom: rem(8);
             }
 
             @include desktop {
+                max-width: rem(227);
                 padding-bottom: rem(16);
             }
 
             .top {
                 width: 100%;
+                text-align: center;
 
                 p {
                     @include font(20, 120%, 550);
 
+                    @include tablet {
+                        @include font(16, 125%, 550);
+                    }
+
+                    @include desktop {
+                        @include font(20, 120%, 550);
+                    }
+                }
+            }
+
+            .bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    @include font(20, 120%, 550);
 
                     @include tablet {
                         @include font(16, 125%, 550);
