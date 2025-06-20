@@ -713,7 +713,7 @@
                 <div class="sound-txtbx-title-wrapper heading"> Loving Life with my Beautiful Wife
                 </div>
               </h3>
-              <p>By Devan</p>
+              <p>By Devon</p>
             </div>
           </div>
           <div class="swiper-slide">
