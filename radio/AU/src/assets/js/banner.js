@@ -56,4 +56,10 @@ function initBanner() {
     window.addEventListener('resize', debounce(handleResize));
 }
 
-initBanner();
+// 페이지 로드가 완전히 끝난 후에 초기화
+window.addEventListener('load', function() {
+  // 추가로 약간의 지연을 두어 모든 리소스가 완전히 렌더링된 후 실행
+  setTimeout(() => {
+      initBanner();
+  }, 100);
+});
