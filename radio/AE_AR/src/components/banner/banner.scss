@@ -205,7 +205,7 @@
                 width: rem(32);
                 height: rem(32);
                 aspect-ratio: 1/1;
-                background: url('/src/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-arrow-icon.svg') no-repeat center;
+                background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-arrow-icon.svg') no-repeat center;
                 background-size: contain;
 
                 [dir="rtl"] & {
@@ -226,7 +226,7 @@
             .stop-btn {
                 width: rem(32);
                 height: rem(32);
-                background: url('/src/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-stop-icon.svg') no-repeat center;
+                background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-stop-icon.svg') no-repeat center;
                 background-size: contain;
 
                 @include tablet {
@@ -244,7 +244,7 @@
                 width: rem(32);
                 height: rem(32);
                 aspect-ratio: 1/1;
-                background: url('/src/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-arrow-icon.svg') no-repeat center;
+                background: url('../../assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-arrow-icon.svg') no-repeat center;
                 background-size: contain;
                 transform: rotate(180deg);
 
