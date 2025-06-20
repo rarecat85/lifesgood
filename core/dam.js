@@ -187,8 +187,8 @@ async function processDam(folderName) {
         const sourceDir = path.join(currentDir, folderName);
         const countryCode = folderName.toLowerCase();
         
-        // dam.txt 파일에서 경로 읽기
-        const damPath = path.join(currentDir, 'radio', 'dam.txt');
+        // dam.txt 파일에서 경로 읽기 (현재 실행 디렉토리에서 찾기)
+        const damPath = path.join(currentDir, 'dam.txt');
         let damContent = await readFile(damPath, 'utf8');
         damContent = damContent.trim(); // 앞뒤 공백 제거
         
