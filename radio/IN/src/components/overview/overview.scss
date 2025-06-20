@@ -20,7 +20,7 @@
     &-title {
       max-width: rem(1240);
       margin: 0 auto;
-      @include font(28,114%,400,$black);
+      @include font(24,114%,400,$black);
       text-align: center;
       margin-bottom: rem(32);
       span {
