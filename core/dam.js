@@ -186,7 +186,14 @@ async function processDam(folderName) {
         const currentDir = process.cwd(); // 현재 실행 디렉토리
         const sourceDir = path.join(currentDir, folderName);
         const countryCode = folderName.toLowerCase();
-        const newAssetPath = `/content/dam/channel/wcms/${countryCode}/lifes-good-campaign/2025/radio-optimism/lg-com-test/`;
+        
+        // dam.txt 파일에서 경로 읽기
+        const damPath = path.join(currentDir, 'radio', 'dam.txt');
+        let damContent = await readFile(damPath, 'utf8');
+        damContent = damContent.trim(); // 앞뒤 공백 제거
+        
+        // {국가코드}를 실제 국가코드로 대체하고 끝에 / 추가
+        const newAssetPath = damContent.replace(/{국가코드}/g, countryCode) + '/';
 
         // HTML 파일 처리
         const htmlPath = path.join(sourceDir, 'src', 'radio.html');
