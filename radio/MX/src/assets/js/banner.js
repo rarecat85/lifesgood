@@ -52,13 +52,8 @@ function debounce(func, delay = 500) {
 // 배너 init 함수
 function initBanner() {
     bannerFlolatingAnimation();
-    // bannerMusicControlAnimation();
 
     window.addEventListener('resize', debounce(handleResize));
-
-    window.addEventListener('load', () => {
-        document.querySelector('body').classList.remove('noscroll');
-    })
 }
 
 initBanner();
