@@ -167,9 +167,9 @@
 
             .top {
                 width: 100%;
-
                 p {
-                    @include font(20, 120%, 550);
+                  text-align: center;
+                  @include font(20, 120%, 550);
 
                     @include tablet {
                         @include font(16, 125%, 550);
