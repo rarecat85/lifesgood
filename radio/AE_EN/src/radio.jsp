@@ -11,7 +11,7 @@
     <meta name="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation">
     <meta name="Description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station.">
     <meta property="og:title" content="Life's Good | Radio Optimism | LG UAE"/>
-    <meta property="og:url" content="https://www.lg.com/UAE/lifesgood/">
+    <meta property="og:url" content="https://www.lg.com/ae/lifesgood/">
     <meta property="og:description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
     <meta property="og:image" content="">
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
@@ -823,7 +823,7 @@
         <h2 class="stories-title heading">Learn about Life's Good</h2>
       </div>
       <div class="stories-slide-bx">
-        <div class="swiper" role="region" aria-label="stories slide carousel">
+        <div class="swiper" role="region">
           <div class="swiper-wrapper">
             <div class="swiper-slide" role="group" aria-roledescription="stories slide">
               <div class="img-bx">
