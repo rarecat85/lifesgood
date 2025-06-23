@@ -39,6 +39,10 @@ body {
       @include desktop {
          @include font(56, 60px, 550);
       }
+
+      [dir='rtl'] & {
+         text-align: right;
+      }
    }
 
    &-slide-bx {
@@ -54,7 +58,8 @@ body {
 
       .swiper {
          padding: 0 rem(16) rem($mo_padding);
-         max-width: $inner;;
+         max-width: $inner;
+         ;
 
          @include tablet {
             padding: 0 rem(24) rem($tab_padding);

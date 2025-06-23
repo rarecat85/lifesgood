@@ -26,6 +26,10 @@
             display: flex;
             flex-direction: column;
 
+            [dir='rtl'] & {
+                text-align: right;
+            }
+
             .banner-disclaimer-wrapper-item {
                 font-family: 'LGEI Text';
                 @include font(12, 116%, 400);
