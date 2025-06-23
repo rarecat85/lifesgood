@@ -293,7 +293,9 @@
           <div class="swiper-wrapper">
             <!-- S : slide item 01-->
             <div class="swiper-slide">
-              <div class="how-to-video-bx">
+              <div class="how-to-video-bx responsive-video" 
+                   data-desktop-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
+                   data-mobile-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
                 <video muted plays inline aria-label="فيديو الخطوة الأولى من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
                   <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01.mp4"
                     type="video/mp4">
@@ -321,7 +323,9 @@
             <!-- E : slide item 01-->
             <!-- S : slide item 02-->
             <div class="swiper-slide">
-              <div class="how-to-video-bx">
+              <div class="how-to-video-bx responsive-video"
+                   data-desktop-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
+                   data-mobile-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
                 <video muted playsinline aria-label="فيديو الخطوة الثانية من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
                   <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02.mp4"
                     type="video/mp4">
@@ -351,7 +355,9 @@
             <!-- E : slide item 02-->
             <!-- S : slide item 03-->
             <div class="swiper-slide">
-              <div class="how-to-video-bx">
+              <div class="how-to-video-bx responsive-video"
+                   data-desktop-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
+                   data-mobile-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
                 <video muted playsinline aria-label="فيديو الخطوة الثالثة من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
                   <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03.mp4"
                     type="video/mp4">
@@ -381,7 +387,9 @@
             <!-- E : slide item 03-->
             <!-- S : slide item 04-->
             <div class="swiper-slide">
-              <div class="how-to-video-bx">
+              <div class="how-to-video-bx responsive-video"
+                   data-desktop-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
+                   data-mobile-video-src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
                 <video muted playsinline aria-label="فيديو الخطوة الرابعة من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
                   <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04.mp4"
                     type="video/mp4">
