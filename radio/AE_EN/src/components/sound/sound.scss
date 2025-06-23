@@ -142,14 +142,16 @@
       gap: rem(16);
       width: calc(100% - rem(32));
       position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
+      transform: translateX(-50%);
+      top: 48vw;
       left: 50%;
       z-index: 2;
       pointer-events: none;
 
       @include tablet {
-        width: calc(100% - rem(96));
+        top: rem(296);
+        width: calc(100% - rem(48));
+        max-width: calc(rem(1200) - rem(48));
       }
 
       button {
@@ -191,19 +193,27 @@
         }
 
         &:hover {
-          background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%), rgba(217, 211, 200, 0.75);
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
         }
 
         &.swiper-button-prev {
           &::after {
             background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
             transform: translate(-50%, -50%) rotate(180deg);
+
+            [dir="rtl"] & {
+               transform: translate(-50%, -50%) rotate(0);
+            }
           }
         }
 
         &.swiper-button-next {
           &::after {
             background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+          
+            [dir="rtl"] & {
+              transform: translate(-50%, -50%) rotate(180deg);
+            }
           }
         }
       }

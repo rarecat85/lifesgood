@@ -3,6 +3,46 @@ function howTo() {
   const videos = document.querySelectorAll('.how-to-video-bx video');
   const controlBtns = document.querySelectorAll('.how-to-video-control-btn');
   
+  // 반응형 비디오 처리 함수
+  function handleResponsiveVideo() {
+    const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+    
+    videos.forEach((video, index) => {
+      const videoContainer = video.closest('.responsive-video');
+      if (!videoContainer) return;
+      
+      const desktopVideoSrc = videoContainer.dataset.desktopVideoSrc;
+      const mobileVideoSrc = videoContainer.dataset.mobileVideoSrc;
+      
+      if (!desktopVideoSrc || !mobileVideoSrc) return;
+      
+      // source 태그 찾기
+      const sourceElement = video.querySelector('source');
+      if (!sourceElement) return;
+      
+      const currentSrc = sourceElement.src;
+      const newSrc = mobileMediaQuery.matches ? mobileVideoSrc : desktopVideoSrc;
+      
+      // 소스가 변경된 경우에만 업데이트
+      if (currentSrc !== newSrc) {
+        const wasPlaying = !video.paused;
+        const currentTime = video.currentTime;
+        
+        // source 태그의 src 속성 업데이트
+        sourceElement.src = newSrc;
+        video.load();
+        
+        // 이전 재생 상태 복원
+        if (wasPlaying) {
+          video.currentTime = currentTime;
+          video.play().catch(err => {
+            console.error('비디오 재생 오류:', err);
+          });
+        }
+      }
+    });
+  }
+  
   // 유틸리티 함수들
   const progressUtils = {
     reset: (progressCircle) => {
@@ -66,11 +106,7 @@ function howTo() {
       prevEl: ".how-to-video-slide .swiper-button-prev",
     },
     breakpoints: {
-      1441: {
-        slidesPerView: "auto",
-        spaceBetween: 24,
-      },
-      1921: {
+      1201: {
         slidesPerView: "auto",
         spaceBetween: 24,
       }
@@ -181,6 +217,20 @@ function howTo() {
       buttonUtils.setState(btn, 'restart', 'restart');
       progressUtils.complete(progressCircle);
     });
+  });
+
+  // 반응형 비디오 초기 설정
+  handleResponsiveVideo();
+  
+  // 미디어 쿼리 변경 감지 및 반응형 비디오 처리
+  const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+  mobileMediaQuery.addEventListener('change', handleResponsiveVideo);
+  
+  // 리사이즈 이벤트에 대한 디바운스 처리
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResponsiveVideo, 150);
   });
 }
 
