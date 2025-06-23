@@ -289,6 +289,10 @@
     &-txt {
       @include font(16, 125%, 400, $warmGray);
 
+      [dir='rtl'] & {
+        text-align: right;
+      }
+
       span {
         font-weight: 600;
       }
