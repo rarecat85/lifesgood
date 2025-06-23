@@ -866,7 +866,7 @@
               <div class="txt-bx">
                 <h3>انشر التفاؤل في موجزك</h3>
                 <p>أعد الابتسامة إلى حساباتك على التواصل الاجتماعي.</p>
-                <a href="https://www.lg.com/global/lifes-good-in-action/optimism-your-feed/" class="white-btn">تعرف أكثر</a>
+                <a href="https://www.lg.com/ae_ar/lifesgood/optimism-your-feed" class="white-btn">تعرف أكثر</a>
               </div>
             </div>
             <div class="swiper-slide" role="group" aria-roledescription="stories slide">
@@ -887,7 +887,7 @@
               <div class="txt-bx">
                 <h3>نحن لا نجعل الحياة جميلة... أنت من يفعل ذلك</h3>
                 <p>عِش لحظات Life’s Good.</p>
-                <a href="https://www.lg.com/global/lifes-good-in-action/product-story-washtower/"
+                <a href="https://www.lg.com/ae_ar/lifesgood/product-story-washtower"
                   class="white-btn">تعرف أكثر</a>
               </div>
             </div>

@@ -829,28 +829,6 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-desktop.png"
-                    media="(min-width: 769px)">
-                  <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
-                    media="(max-width: 768px)">
-                  <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
-                    alt="A scene where the camera captures a man and a woman lying together on the living room sofa from a distance."
-                    loading="lazy">
-                </picture>
-              </div>
-              <div class="txt-bx">
-                <h3>Less artificial, more human</h3>
-                <p>LG Affectionate Intelligence.</p>
-                <a href="https://www.lg.com/global/lifes-good-in-action/less-artificial-more-human/"
-                  class="white-btn">Learn More</a>
-              </div>
-            </div>
-            <div class="swiper-slide" role="group" aria-roledescription="stories slide">
-              <div class="img-bx">
-                <picture>
-                  <source
                     srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
                     media="(min-width: 769px)">
                   <source
@@ -864,7 +842,7 @@
               <div class="txt-bx">
                 <h3>Optimism your feed</h3>
                 <p>Bring a smile back to your social media.</p>
-                <a href="https://www.lg.com/global/lifes-good-in-action/optimism-your-feed/" class="white-btn">Learn
+                <a href="https://www.lg.com/ae/lifesgood/optimism-your-feed" class="white-btn">Learn
                   More</a>
               </div>
             </div>
@@ -886,7 +864,7 @@
               <div class="txt-bx">
                 <h3>We don’t make life good, you do</h3>
                 <p>Embrace Life’s Good moment.</p>
-                <a href="https://www.lg.com/global/lifes-good-in-action/product-story-washtower/"
+                <a href="https://www.lg.com/ae/lifesgood/product-story-washtower"
                   class="white-btn">Learn More</a>
               </div>
             </div>
