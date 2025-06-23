@@ -549,6 +549,10 @@
           @include desktop {
             @include font(24, 116%, 400);
           }
+
+          [dir="rtl"] & {
+            text-align: right;
+          }
         }
       }
     }
