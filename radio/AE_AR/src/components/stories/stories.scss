@@ -104,6 +104,10 @@ body {
                h3 {
                   @include font(24, 28px, 400);
 
+                  [dir='rtl'] & {
+                     text-align: right;
+                  }
+
                   @include tablet {
                      @include font(32, 36px, 300);
                   }
@@ -116,6 +120,10 @@ body {
                p {
                   padding-bottom: rem(20);
                   @include font(16, 20px, 400, $warmGray);
+
+                  [dir='rtl'] & {
+                     text-align: right;
+                  }
 
                   @include tablet {
                      @include font(16, 20px, 400);
