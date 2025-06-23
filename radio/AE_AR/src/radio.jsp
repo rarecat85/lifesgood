@@ -7,12 +7,12 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title><!--타이틀--></title>
-    <meta name="Keywords" content="">
-    <meta name="Description" content="">
-    <meta property="og:title" content=""/>
-    <meta property="og:url" content="">
-    <meta property="og:description" content=""/>
+    <title>Life's Good | Radio Optimism | LG الإمارات</title>
+    <meta name="Keywords" content="استمتع بـ LG Radio Optimism ضمن Life’s Good music campaign في إطار LG campaign 2025، وابتكر موسيقاك الخاصة باستخدام AI music generator وAI music maker وAI song creator، وتعلّم كيف يمكنك create music with AI بمساعدة AI music composer وتقنيات AI music creation.">
+    <meta name="Description" content="أنشئ أغنيتك الخاصة لشخص مميز. اختر الأجواء التي تناسبك، وشارك قصتك، ودع LG Radio Optimism يحولها إلى موسيقى. انضم إلى محطة الإهداءات 24/7.">
+    <meta property="og:title" content="Life's Good | Radio Optimism | LG الإمارات"/>
+    <meta property="og:url" content="https://www.lg.com/ae_ar/lifesgood/">
+    <meta property="og:description" content="أنشئ أغنيتك الخاصة لشخص مميز. اختر الأجواء التي تناسبك، وشارك قصتك، ودع LG Radio Optimism يحولها إلى موسيقى. انضم إلى محطة الإهداءات 24/7."/>
     <meta property="og:image" content="">
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
@@ -21,24 +21,24 @@
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
     <!-- your -->
-    <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="../common/css/font.css" rel="stylesheet" type="text/css" />
-<link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-<link href="./assets/css/radio.css" rel="stylesheet" type="text/css" />
+    <link href="/ae_ar/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/ae_ar/lifesgood/common/css/font.css" rel="stylesheet" type="text/css" />
+<link href="/ae_ar/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+<link href="/ae_ar/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css" />
 
-    <script src="../common/js/gsap.min.js"></script>
-<script src="../common/js/ScrollTrigger.min.js"></script>
-<script src="../common/js/SplitText.min.js"></script>
-<script src="../common/js/swiper-bundle.min.js"></script>
-<script src="./assets/js/radio.js" defer></script>
-<script src="./assets/js/overview.js" defer></script>
-<script src="./assets/js/sound.js" defer></script>
-<script src="./assets/js/banner.js" defer></script>
-<script src="./assets/js/stories.js" defer></script>
-<script src="./assets/js/how-to.js" defer></script>
-<script src="./assets/js/influence.js" defer></script>
-<script src="./assets/js/main-video.js" defer></script>
-<script src="./assets/js/parallax.js" defer></script>
+    <script src="/ae_ar/lifesgood/common/js/gsap.min.js"></script>
+<script src="/ae_ar/lifesgood/common/js/ScrollTrigger.min.js"></script>
+<script src="/ae_ar/lifesgood/common/js/SplitText.min.js"></script>
+<script src="/ae_ar/lifesgood/common/js/swiper-bundle.min.js"></script>
+<script src="/ae_ar/lifesgood/assets/js/radio.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/overview.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/sound.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/banner.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/stories.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/how-to.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/influence.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/main-video.js" defer></script>
+<script src="/ae_ar/lifesgood/assets/js/parallax.js" defer></script>
 
     <script>
         function GA_Event(category,action,label) {
@@ -60,8 +60,8 @@
     <meta itemprop="name" content="{Browser Title}"/>
     <meta itemprop="image" content="{Share Image}"/>
     <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
-    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+    <meta itemprop="description" content="أنشئ أغنيتك الخاصة لشخص مميز. اختر الأجواء التي تناسبك، وشارك قصتك، ودع LG Radio Optimism يحولها إلى موسيقى. انضم إلى محطة الإهداءات 24/7."/>
+    <meta itemprop="Keywords" content="استمتع بـ LG Radio Optimism ضمن Life’s Good music campaign في إطار LG campaign 2025، وابتكر موسيقاك الخاصة باستخدام AI music generator وAI music maker وAI song creator، وتعلّم كيف يمكنك create music with AI بمساعدة AI music composer وتقنيات AI music creation."/>
 </div>
 <c:set var='bizType' value='${$bizType }'/>
 <c:set var='siteType' value='MKT'/>
@@ -87,24 +87,24 @@
           <div class="parallax-txt-bx-logo-txt">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
+                srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
                 media="(min-width: 1024px)">
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+                srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 media="(max-width: 1023px)">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 alt="RADIO OPTIMISM">
             </picture>
           </div>
           <div class="parallax-txt-bx-logo-sticker">
             <div class="parallax-txt-bx-logo-sticker-radio">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
+                src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
                 alt="RADIO OPTIMISM radio sticker">
             </div>
             <div class="parallax-txt-bx-logo-sticker-logo">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
+                src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
                 alt="RADIO OPTIMISM logo sticker">
             </div>
           </div>
@@ -116,7 +116,7 @@
           <span class="parallax-txt-bx-radio-controls-line"></span>
         </div>
         <div class="parallax-txt-bx-btns">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
+          <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
             alt="Radio buttons">
         </div>
       </div>
@@ -125,47 +125,47 @@
         <div class="parallax-bg">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <source srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               alt="parallax-bg">
           </picture>
         </div>
         <div class="parallax-item parallax-item-01">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+            <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               alt="Parallax decorative element 1">
           </picture>
         </div>
         <div class="parallax-item parallax-item-02">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+            <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               alt="Parallax decorative element 2">
           </picture>
         </div>
         <div class="parallax-item parallax-item-03">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+            <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               alt="Parallax decorative element 3">
           </picture>
         </div>
@@ -205,27 +205,27 @@
             aria-label="امرأة شابة ترتدي سترة بيضاء وجينز مستلقية على أريكة، تعجب بمنشور صديقتها على وسائل التواصل الاجتماعي باستخدام هاتفها.">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 media="(max-width: 768px)" />
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
+                srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
                 media="(min-width: 769px)" />
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 alt="" />
             </picture>
             <div class="overview-heading-motion-imgs">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
                 alt="" class="motion-icon heart-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
                 alt="" class="motion-icon smile-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
                 alt="" class="motion-icon img-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon01" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon02" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon03" />
             </div>
           </div>
@@ -235,13 +235,13 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
+                  srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
                   media="(max-width: 768px)" />
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
+                  srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
                   media="(min-width: 769px)" />
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
                   alt="شاب وفتاة يجلسان على مكتب، يستمتعان بحملة راديو التفاؤل على جهاز لابتوب." />
               </picture>
             </div>
@@ -259,16 +259,16 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
+                  srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
                   media="(max-width: 768px)" />
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
+                  srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
                   media="(min-width: 769px)" />
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
                   alt="overview-img" />
               </picture>
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
                 alt="امرأة تبتسم بابتسامة مشرقة وهي تنظر إلى جهاز اللابتوب الخاص بها في غرفة واسعة."
                 class="overview-heart-tower-img" />
             </div>
@@ -278,7 +278,7 @@
               عندها فقط نشعر حقًا بجمال الحياة.
             </p>
             <!-- <div class="overview-cont-lifesgood-logo">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-lifesgood-logo.svg" alt="lifesgood-logo" />
+          <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-lifesgood-logo.svg" alt="lifesgood-logo" />
         </div> -->
           </div>
         </div>
@@ -295,7 +295,7 @@
             <div class="swiper-slide">
               <div class="how-to-video-bx">
                 <video muted plays inline aria-label="فيديو الخطوة الأولى من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01.mp4"
+                  <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -309,7 +309,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg"
+                      src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg"
                       alt="الخطوة 1">
                   </span>
                   انضم إلى Radio Optimism
@@ -323,7 +323,7 @@
             <div class="swiper-slide">
               <div class="how-to-video-bx">
                 <video muted playsinline aria-label="فيديو الخطوة الثانية من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02.mp4"
+                  <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -337,7 +337,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg"
+                      src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg"
                       alt="الخطوة 2">
                   </span>
                   احكِ قصتك
@@ -353,7 +353,7 @@
             <div class="swiper-slide">
               <div class="how-to-video-bx">
                 <video muted playsinline aria-label="فيديو الخطوة الثالثة من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03.mp4"
+                  <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -367,7 +367,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg"
+                      src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg"
                       alt="الخطوة 3">
                   </span>
                   اختر إحساس الأغنية
@@ -383,7 +383,7 @@
             <div class="swiper-slide">
               <div class="how-to-video-bx">
                 <video muted playsinline aria-label="فيديو الخطوة الرابعة من سلسلة &quot;كيفية صنع أغنيتك&quot;.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04.mp4"
+                  <source src="/ae_ar/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -397,7 +397,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg"
+                      src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg"
                       alt="الخطوة 4">
                   </span>
                   أغنيتك جاهزة!
@@ -437,12 +437,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
                   alt="غلاف الألبوم Beam of Positivity، من إنتاج LG باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
                   alt="صورة LP لألبوم Beam of Positivity، من إنتاج LG باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -453,12 +453,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
                   alt="غلاف الألبوم Keep Swimming، من إنتاج Mom باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
                   alt="صورة LP لألبوم Keep Swimming، من إنتاج Mom باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -469,12 +469,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
                   alt="غلاف الألبوم The Tale of Optimistic Toby، من إنتاج Kyle باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
                   alt="صورة LP لألبوم The Tale of Optimistic Toby، من إنتاج Kyle باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -485,12 +485,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
                   alt="غلاف الألبوم My Dad, My Hero، من إنتاج Cam باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
                   alt="صورة LP لألبوم My Dad, My Hero، من إنتاج Cam باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -501,12 +501,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
                   alt="غلاف الألبوم Carpool Hero، من إنتاج Tina باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
                   alt="صورة LP لألبوم Carpool Hero، من إنتاج Tina باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -517,12 +517,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
                   alt="غلاف الألبوم Loving Life with my Beautiful Wife، من إنتاج Devon باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
                   alt="صورة LP لألبوم Loving Life with my Beautiful Wife، من إنتاج Devon باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -533,12 +533,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
                   alt="غلاف الألبوم Spreading Joy, Spreading Light، من إنتاج LG باستخدام الذكاء الاصطناعي.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
+                  src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
                   alt="صورة LP لألبوم Spreading Joy, Spreading Light، من إنتاج LG باستخدام الذكاء الاصطناعي.">
               </div>
             </div>
@@ -564,7 +564,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player:Beam of Positivity">
                 <audio id="audio-1" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
                     type="audio/mpeg">
                   مسار الصوت Beam of Positivity، من إنتاج LG باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -591,7 +591,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Keep Swimming">
                 <audio id="audio-2" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
                     type="audio/mpeg">
                   مسار الصوت Keep Swimming، من إنتاج Mom باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -618,7 +618,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: The Tale of Optimistic Toby">
                 <audio id="audio-3" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
                     type="audio/mpeg">
                   مسار الصوت The Tale of Optimistic Toby، من إنتاج Kyle باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -645,7 +645,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: My Dad, My Hero">
                 <audio id="audio-4" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
                     type="audio/mpeg">
                   مسار الصوت My Dad, My Hero، من إنتاج Cam باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -673,7 +673,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Carpool Hero">
                 <audio id="audio-5" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
                     type="audio/mpeg">
                   المسار الصوتي Carpool Hero، من إنتاج Tina باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -701,7 +701,7 @@
                 title="Audio player: Loving Life with my Beautiful Wife">
                 <audio id="audio-6" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
                     type="audio/mpeg">
                   المسار الصوتي Loving Life with my Beautiful Wife، من إنتاج Devon باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -728,7 +728,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Spreading Joy, Spreading Light">
                 <audio id="audio-7" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
+                    src="/ae_ar/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
                     type="audio/mpeg">
                   المسار الصوتي Spreading Joy, Spreading Light، من إنتاج LG باستخدام الذكاء الاصطناعي.
                 </audio>
@@ -762,14 +762,14 @@
     <section class="banner">
       <div class="banner-wrapper">
         <div class="banner-imgbx-1">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
+          <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
             alt="على الجانب الأيسر من الشعار، توجد أيقونات مختلفة مرتبطة براديو التفاؤل وLife's Good."
             loading="lazy">
         </div>
         <div class="inner">
           <div class="banner-main-area">
             <div class="banner-main-area-imgbx">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
+              <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
                 alt="شعار حملة راديو التفاؤل." loading="lazy">
             </div>
             <h2 class="banner-main-area-title heading">
@@ -796,11 +796,11 @@
         <div class="banner-imgbx-2">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
+              srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <source srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <img src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               alt="على الجانب الأيمن من الشعار، توجد أيقونات متنوعة مرتبطة براديو التفاؤل وLife's Good."
               loading="lazy">
           </picture>
@@ -831,13 +831,13 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-desktop.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
+                    src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-01-mobile.png"
                     alt="مشهد تلتقط فيه الكاميرا رجلًا وامرأة مستلقيين معًا على أريكة غرفة المعيشة من بعيد."
                     loading="lazy">
                 </picture>
@@ -853,13 +853,13 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     alt="أشخاص يستمتعون بالتخييم بابتسامة، يحتضنون قوة التفاؤل." loading="lazy">
                 </picture>
               </div>
@@ -873,13 +873,13 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    srcset="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    src="/ae_ar/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     alt="وجه الطفل واضح أمام كعكة مضاءة بالشموع، وثلاجة LG InstaView تظهر بخفوت في الخلفية. "
                     loading="lazy">
                 </picture>
