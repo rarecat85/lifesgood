@@ -102,6 +102,7 @@
       width: rem(431);
     }
     @include desktop {
+      top: rem(120);
       width: rem(680);
     }
     @media (min-width: 1921px) {
@@ -195,6 +196,7 @@
       font-size: rem(17);
       font-weight: 700;
       line-height: 1.07;
+      text-wrap: balance;
       letter-spacing: 0;
       margin-top: rem(40);
       opacity: 0;
@@ -202,7 +204,7 @@
         font-size: rem(26);
       }
       @include desktop {
-        font-size: rem(37);
+        font-size: rem(34);
       }
     }
     &-radio-controls {
