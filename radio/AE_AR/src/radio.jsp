@@ -782,7 +782,7 @@
             </div>
             <h2 class="banner-main-area-title heading">
               <div class="top">
-                <p class="heading">محطة الإهداء أربعة وعشرون سبعة</p>
+                  <p class="heading">محطة الاهداء, على مدار <br>الساعة طوال أيام الأسبوع</p>
               </div>
             </h2>
             <div class="banner-main-area-controls" aria-hidden="true">
