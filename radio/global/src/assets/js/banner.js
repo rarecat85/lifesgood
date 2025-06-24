@@ -31,7 +31,7 @@ function bannerFlolatingAnimation() {
         scrollTrigger: {
             trigger: startElement,
             start: 'bottom 90%',
-            end: `+=${distance} 90.1%`,
+            end: `+=${distance} 88%`,
             scrub: 0.3,
         }
     })
