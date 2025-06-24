@@ -100,7 +100,6 @@
     @include tablet {
       top: 12vw;
       width: rem(431);
-      text-wrap: balance;
     }
     @include desktop {
       width: rem(680);
