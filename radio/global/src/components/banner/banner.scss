@@ -159,17 +159,18 @@
             margin: 0 auto;
 
             @include tablet {
-                max-width: rem(187);
+                max-width: none;
                 padding-bottom: rem(8);
             }
 
             @include desktop {
-                max-width: rem(227);
+                max-width: none;
                 padding-bottom: rem(16);
             }
 
             .top {
                 width: 100%;
+                text-align: center;
 
                 p {
                     @include font(20, 120%, 550);
