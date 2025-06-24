@@ -21,24 +21,24 @@
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
     <!-- your -->
-    <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="../common/css/font.css" rel="stylesheet" type="text/css" />
-<link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-<link href="./assets/css/radio.css" rel="stylesheet" type="text/css" />
+    <link href="/ae/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/ae/lifesgood/common/css/font.css" rel="stylesheet" type="text/css" />
+<link href="/ae/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+<link href="/ae/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css" />
 
-    <script src="../common/js/gsap.min.js"></script>
-<script src="../common/js/ScrollTrigger.min.js"></script>
-<script src="../common/js/SplitText.min.js"></script>
-<script src="../common/js/swiper-bundle.min.js"></script>
-<script src="./assets/js/radio.js" defer></script>
-<script src="./assets/js/overview.js" defer></script>
-<script src="./assets/js/sound.js" defer></script>
-<script src="./assets/js/banner.js" defer></script>
-<script src="./assets/js/stories.js" defer></script>
-<script src="./assets/js/how-to.js" defer></script>
-<script src="./assets/js/influence.js" defer></script>
-<script src="./assets/js/main-video.js" defer></script>
-<script src="./assets/js/parallax.js" defer></script>
+    <script src="/ae/lifesgood/common/js/gsap.min.js"></script>
+<script src="/ae/lifesgood/common/js/ScrollTrigger.min.js"></script>
+<script src="/ae/lifesgood/common/js/SplitText.min.js"></script>
+<script src="/ae/lifesgood/common/js/swiper-bundle.min.js"></script>
+<script src="/ae/lifesgood/assets/js/radio.js" defer></script>
+<script src="/ae/lifesgood/assets/js/overview.js" defer></script>
+<script src="/ae/lifesgood/assets/js/sound.js" defer></script>
+<script src="/ae/lifesgood/assets/js/banner.js" defer></script>
+<script src="/ae/lifesgood/assets/js/stories.js" defer></script>
+<script src="/ae/lifesgood/assets/js/how-to.js" defer></script>
+<script src="/ae/lifesgood/assets/js/influence.js" defer></script>
+<script src="/ae/lifesgood/assets/js/main-video.js" defer></script>
+<script src="/ae/lifesgood/assets/js/parallax.js" defer></script>
 
     <script>
         function GA_Event(category,action,label) {
@@ -87,24 +87,24 @@
           <div class="parallax-txt-bx-logo-txt">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
+                srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
                 media="(min-width: 1024px)">
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+                srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 media="(max-width: 1023px)">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 alt="RADIO OPTIMISM">
             </picture>
           </div>
           <div class="parallax-txt-bx-logo-sticker">
             <div class="parallax-txt-bx-logo-sticker-radio">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
                 alt="RADIO OPTIMISM radio sticker">
             </div>
             <div class="parallax-txt-bx-logo-sticker-logo">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
                 alt="RADIO OPTIMISM logo sticker">
             </div>
           </div>
@@ -116,7 +116,7 @@
           <span class="parallax-txt-bx-radio-controls-line"></span>
         </div>
         <div class="parallax-txt-bx-btns">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
+          <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
             alt="Radio buttons">
         </div>
       </div>
@@ -125,47 +125,47 @@
         <div class="parallax-bg">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <source srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               alt="parallax-bg">
           </picture>
         </div>
         <div class="parallax-item parallax-item-01">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               alt="Parallax decorative element 1">
           </picture>
         </div>
         <div class="parallax-item parallax-item-02">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               alt="Parallax decorative element 2">
           </picture>
         </div>
         <div class="parallax-item parallax-item-03">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               alt="Parallax decorative element 3">
           </picture>
         </div>
@@ -205,27 +205,27 @@
             aria-label="A young woman wearing a white sweater and jeans is lying on a sofa, liking her friend's post on social media with her phone.">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 media="(max-width: 768px)" />
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
+                srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
                 media="(min-width: 769px)" />
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 alt="" />
             </picture>
             <div class="overview-heading-motion-imgs">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
                 alt="" class="motion-icon heart-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
                 alt="" class="motion-icon smile-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
                 alt="" class="motion-icon img-icon" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon01" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon02" />
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon03" />
             </div>
           </div>
@@ -235,13 +235,13 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
+                  srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
                   media="(max-width: 768px)" />
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
+                  srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
                   media="(min-width: 769px)" />
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
                   alt="A young man and woman are sitting at a desk, enjoying the Radio Optimism campaign on a laptop." />
               </picture>
             </div>
@@ -256,16 +256,16 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
+                  srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
                   media="(max-width: 768px)" />
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
+                  srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
                   media="(min-width: 769px)" />
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
                   alt="overview-img" />
               </picture>
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
                 alt="A woman smiles brightly as she looks at her laptop in a spacious room."
                 class="overview-heart-tower-img" />
             </div>
@@ -275,7 +275,7 @@
               Life's Good.
             </p>
             <!-- <div class="overview-cont-lifesgood-logo">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-lifesgood-logo.svg" alt="lifesgood-logo" />
+          <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-lifesgood-logo.svg" alt="lifesgood-logo" />
         </div> -->
           </div>
         </div>
@@ -291,10 +291,10 @@
             <!-- S : slide item 01-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video" 
-                   data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
-                   data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
+                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
+                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
                 <video muted playsinline aria-label="Step 1 video from the How to make your song.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4" type="video/mp4">
+                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4" type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
@@ -305,7 +305,7 @@
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg" alt="1">
+                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg" alt="1">
                   </span>
                   Step into Radio Optimism.
                 </h3>
@@ -316,10 +316,10 @@
             <!-- S : slide item 02-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
-                   data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
+                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
+                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
                 <video muted playsinline aria-label="Step 2 video from the How to make your song.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4" type="video/mp4">
+                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4" type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
@@ -330,7 +330,7 @@
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg" alt="2">
+                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg" alt="2">
                   </span>
                   Tell your story.
                 </h3>
@@ -342,10 +342,10 @@
             <!-- S : slide item 03-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
-                   data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
+                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
+                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
                 <video muted playsinline aria-label="Step 3 video from the How to make your song.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4" type="video/mp4">
+                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4" type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
@@ -356,7 +356,7 @@
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg" alt="3">
+                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg" alt="3">
                   </span>
                   Pick your vibe.
                 </h3>
@@ -367,10 +367,10 @@
             <!-- S : slide item 04-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
-                   data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
+                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
+                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
                 <video muted playsinline aria-label="Step 4 video from the How to make your song.">
-                  <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4" type="video/mp4">
+                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4" type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
@@ -381,7 +381,7 @@
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg" alt="4">
+                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg" alt="4">
                   </span>
                   Your track is ready!
                 </h3>
@@ -419,12 +419,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
                   alt="The album cover of Beam of Positivity, created by LG through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
                   alt="The LP image of Beam of Positivity, created by LG through AI.">
               </div>
             </div>
@@ -435,12 +435,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
                   alt="The album cover of Keep Swimming, created by Mom through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
                   alt="The LP image of Keep Swimming, created by Mom through AI.">
               </div>
             </div>
@@ -451,12 +451,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
                   alt="The album cover of The Tale of Optimistic Toby, created by Kyle through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
                   alt="The LP image of The Tale of Optimistic Toby, created by Kyle through AI.">
               </div>
             </div>
@@ -467,12 +467,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
                   alt="The album cover of My Dad, My Hero, created by Cam through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
                   alt="The LP image of My Dad, My Hero, created by Cam through AI.">
               </div>
             </div>
@@ -483,12 +483,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
                   alt="The album cover of Carpool Hero, created by Tina through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
                   alt="The LP image of Carpool Hero, created by Tina through AI.">
               </div>
             </div>
@@ -499,12 +499,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
                   alt="The album cover of Loving Life with my Beautiful Wife, created by Devon through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
                   alt="The LP image of Loving Life with my Beautiful Wife, created by Devon through AI.">
               </div>
             </div>
@@ -515,12 +515,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
                   alt="The album cover of Spreading Joy, Spreading Light, created by LG through AI.">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
+                  src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
                   alt="The LP image of Spreading Joy, Spreading Light, created by LG through AI.">
               </div>
             </div>
@@ -546,7 +546,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player:Beam of Positivity">
                 <audio id="audio-1" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
                     type="audio/mpeg">
                   The audio track Beam of Positivity, created by LG through AI.
                 </audio>
@@ -573,7 +573,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Keep Swimming">
                 <audio id="audio-2" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
                     type="audio/mpeg">
                   The audio track Keep Swimming, created by Mom through AI.
                 </audio>
@@ -600,7 +600,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: The Tale of Optimistic Toby">
                 <audio id="audio-3" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
                     type="audio/mpeg">
                   The audio track The Tale of Optimistic Toby, created by Kyle through AI.
                 </audio>
@@ -627,7 +627,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: My Dad, My Hero">
                 <audio id="audio-4" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
                     type="audio/mpeg">
                   The audio track My Dad, My Hero, created by Cam through AI.
                 </audio>
@@ -655,7 +655,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Carpool Hero">
                 <audio id="audio-5" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
                     type="audio/mpeg">
                   The audio track Carpool Hero, created by Tina through AI.
                 </audio>
@@ -683,7 +683,7 @@
                 title="Audio player: Loving Life with my Beautiful Wife">
                 <audio id="audio-6" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
                     type="audio/mpeg">
                   The audio track Loving Life with my Beautiful Wife, created by Devon through AI.
                 </audio>
@@ -710,7 +710,7 @@
               <div class="sound-txtbx-controllers" role="group" title="Audio player: Spreading Joy, Spreading Light">
                 <audio id="audio-7" preload="metadata">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
+                    src="/ae/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
                     type="audio/mpeg">
                   The audio track Spreading Joy, Spreading Light, created by LG through AI.
                 </audio>
@@ -744,14 +744,14 @@
     <section class="banner">
       <div class="banner-wrapper">
         <div class="banner-imgbx-1">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
+          <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
             alt="On the left side of the banner, there are various icons related to Radio Optimism and Life's Good."
             loading="lazy">
         </div>
         <div class="inner">
           <div class="banner-main-area">
             <div class="banner-main-area-imgbx">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
+              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
                 alt="Radio optimism campaign logo" loading="lazy">
             </div>
             <h2 class="banner-main-area-title heading">
@@ -782,11 +782,11 @@
         <div class="banner-imgbx-2">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <source srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               alt="On the right side of the banner, there are various icons related to Radio Optimism and Life's Good."
               loading="lazy">
           </picture>
@@ -818,13 +818,13 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
+                    srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     alt="People enjoying camping with smiles, embracing the power of optimism." loading="lazy">
                 </picture>
               </div>
@@ -839,13 +839,13 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
+                    srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     alt="The child's face is clearly visible in front of the candlelit cake, and the LG InstaView refrigerator is faintly visible in the background. "
                     loading="lazy">
                 </picture>
