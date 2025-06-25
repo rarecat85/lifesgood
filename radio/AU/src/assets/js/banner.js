@@ -1,4 +1,3 @@
-let isMobile = false;
 let bannerScrollTrigger = null;
 
 // 배너 플로팅 함수
@@ -30,18 +29,15 @@ function bannerFlolatingAnimation() {
         scrollTrigger: {
             trigger: startElement,
             start: 'bottom 90%',
-            end: `+=${distance} 88%`,
-            scrub: 0.3,
+            end: `+=${distance} 90.1%`,
+            scrub: true,
         }
     })
 }
 
 // 리사이즈 함수 
 function handleResize() {
-    // 모바일에서 리사이즈 이벤트 무시
-    if (!isMobile) {
-        bannerFlolatingAnimation();
-    }
+    bannerFlolatingAnimation();
 }
 
 // 디바운스 함수
@@ -61,11 +57,9 @@ function initBanner() {
 }
 
 // 페이지 로드가 완전히 끝난 후에 초기화
-window.addEventListener('load', function () {
-    isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-    // 추가로 약간의 지연을 두어 모든 리소스가 완전히 렌더링된 후 실행
-    setTimeout(() => {
-        initBanner();
-    }, 100);
+window.addEventListener('load', function() {
+  // 추가로 약간의 지연을 두어 모든 리소스가 완전히 렌더링된 후 실행
+  setTimeout(() => {
+      initBanner();
+  }, 100);
 });
