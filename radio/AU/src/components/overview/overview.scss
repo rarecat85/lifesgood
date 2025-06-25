@@ -240,6 +240,7 @@
     }
     &-txt {
       @include font(16,125%,400,$warmGray);
+      letter-spacing: -0.025em;
       span {
         font-weight:600;
       }
