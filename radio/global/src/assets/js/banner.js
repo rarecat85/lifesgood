@@ -1,5 +1,6 @@
 // 수정 미반영분(scrub : 0.3 만 변경)
 
+let isMobile = false;
 let bannerScrollTrigger = null;
 
 // 배너 플로팅 함수
@@ -39,7 +40,10 @@ function bannerFlolatingAnimation() {
 
 // 리사이즈 함수 
 function handleResize() {
-    bannerFlolatingAnimation();
+    // 모바일에서 리사이즈 이벤트 무시
+    if (!isMobile) {
+        bannerFlolatingAnimation();
+    }
 }
 
 // 디바운스 함수
@@ -59,11 +63,13 @@ function initBanner() {
 }
 
 // 페이지 로드가 완전히 끝난 후에 초기화
-window.addEventListener('load', function() {
-  // 추가로 약간의 지연을 두어 모든 리소스가 완전히 렌더링된 후 실행
-  setTimeout(() => {
-      initBanner();
-  }, 100);
+window.addEventListener('load', function () {
+    isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    // 추가로 약간의 지연을 두어 모든 리소스가 완전히 렌더링된 후 실행
+    setTimeout(() => {
+        initBanner();
+    }, 100);
 });
 
 // 수정(플로팅 버튼 시작 지점 변경 / 모바일 기기 하단 주소창 고려 / scrub : 0.3 / 모바일 리사이즈 이벤트 제외)
