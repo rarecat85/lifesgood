@@ -306,7 +306,6 @@
 
             @include desktop {
                 padding: 0 rem(12);
-
             }
 
             &:hover {
@@ -337,7 +336,10 @@
                     margin: rem(10) rem(16);
                     padding: rem(8) 0;
                     @include font(24, 120%, 600);
+                }
 
+                [dir="rtl"] & {
+                    text-align: right;
                 }
             }
 
