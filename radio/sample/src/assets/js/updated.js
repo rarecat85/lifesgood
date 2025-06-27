@@ -1,4 +1,4 @@
-// 일괄 주석 처리 : 배너 업데이트 반영분(250626)
+// 일괄 주석 처리 : 배너 업데이트 반영분(250627) - 플로팅 버튼 동작 방식 변경 / 플로팅 버튼 시작 위치 변경
 
 // let isMobile = false;
 // let bannerScrollTrigger = null;
@@ -7,7 +7,7 @@
 // function bannerFlolatingAnimation() {
 //     const radioContainer = document.querySelector('.radio-container');
 //     const floatingBtn = document.querySelector('.banner-main-area-startbtn-fixed');
-//     const overviewContainer = document.querySelector('.overview');
+//     const overviewContainer = document.querySelector('.overview-heading');
 //     const bannerBtn = document.querySelector('.banner-main-area-startbtn');
 
 //     // 애니메이션 초기화 
@@ -30,25 +30,25 @@
 //                 const bannerBtnRect = bannerBtn.getBoundingClientRect();
 
 //                 // 오버뷰 섹션 바텀 위치가 플로팅 바텀 위치보다 아래에 있을 때, 플로팅 버튼 숨김 처리
-//                 if (floatingBtnRect.bottom < overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
+//                 if (floatingBtnRect.top < overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
 //                     bannerBtn.style.opacity = 1;
 //                     floatingBtn.style.visibility = 'hidden';
 //                 }
 
 //                 // 오버뷰 섹션 바텀 위치가 플로팅 바텀 위치보다 위에 있을 때, 플로팅 버튼 등장 처리
-//                 if (floatingBtnRect.bottom > overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
+//                 if (floatingBtnRect.top > overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
 //                     bannerBtn.style.opacity = 0;
 //                     floatingBtn.style.visibility = 'visible';
 //                 }
 
 //                 // 플로팅 버튼이 베너 버튼보다 위에 있을 때, 플로팅 버튼 등장 처리
-//                 if (floatingBtnRect.bottom > overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
+//                 if (floatingBtnRect.top > overviewRect.bottom && floatingBtnRect.bottom < bannerBtnRect.top) {
 //                     bannerBtn.style.opacity = 0;
 //                     floatingBtn.style.visibility = 'visible';
 //                 }
 
 //                 // 플로팅 버튼이 베너 버튼보다 아래에 있을 때, 플로팅 버튼 숨김 처리
-//                 if (floatingBtnRect.bottom > overviewRect.bottom && floatingBtnRect.bottom > bannerBtnRect.top) {
+//                 if (floatingBtnRect.top > overviewRect.top && floatingBtnRect.bottom > bannerBtnRect.top) {
 //                     bannerBtn.style.opacity = 1;
 //                     floatingBtn.style.visibility = 'hidden';
 //                 }
