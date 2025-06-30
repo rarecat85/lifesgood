@@ -206,7 +206,7 @@
                   <li class="product-item">
                     <a href="https://www.lg.com/ae/washing-machines/washtower">
                       <div class="img-bx">
-                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG Washing Machine AI product front view" loading="lazy">
+                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI product front view" loading="lazy">
                       </div>
                       <span class="link-btn">Learn More</span>
                     </a>
@@ -214,20 +214,20 @@
                   <li class="product-item">
                     <a href="https://www.lg.com/ae/washing-machines">
                       <div class="img-bx">
-                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG InstaView AI product front view" loading="lazy">
-                      </div>
-                      <span class="link-btn">Learn More</span>
-                    </a>
-                  </li>
-                  <!-- <li class="product-item">
-                    <a href="https://www.lg.com/ae/dryers">
-                      <div class="img-bx">
-                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="LG gramPro AI product front view" loading="lazy">
+                        <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG Washing Machine AI product front view" loading="lazy">
                       </div>
                       <span class="link-btn">Learn More</span>
                     </a>
                   </li>
                   <li class="product-item">
+                    <a href="https://www.lg.com/ae/refrigerators/lg-gr-x267cqew-uae">
+                      <div class="img-bx">
+                        <img src="./assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView AI product front view" loading="lazy">
+                      </div>
+                      <span class="link-btn">Learn More</span>
+                    </a>
+                  </li>
+                  <!-- <li class="product-item">
                     <a href="javascript:void(0)">
                       <div class="img-bx">
                         <img src="/ae/lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG gramPro AI product front view" loading="lazy">
