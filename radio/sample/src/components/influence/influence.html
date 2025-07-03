@@ -9,14 +9,8 @@
     <div class="swiper-wrapper">
       <!-- S : slide item 01-->
       <div class="swiper-slide">
-        <div class="influence-video-bx">
-          <video muted loop playsinline poster="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-01.jpg">
-            <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4" type="video/mp4">
-            <p>이 동영상은 새로운 제품의 기능을 설명하는 영상입니다.</p>
-          </video>
-          <button class="influence-video-bx-btn" aria-label="pause video">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg" alt="pause video">
-          </button>
+        <div class="influence-content-bx">
+          <img class="influence-content-bx-thumbnail" src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-01.jpg" alt="Optimism life with LG">
         </div>
         <div class="influence-txt-bx">
           <h3 class="influence-txt-bx-title">
@@ -29,11 +23,11 @@
       <!-- E : slide item 01-->
       <!-- S : slide item 02-->
       <div class="swiper-slide">
-        <div class="influence-video-bx">
+        <div class="influence-content-bx">
           <video muted loop playsinline poster="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-02.jpg">
             <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4" type="video/mp4">
           </video>
-          <button class="influence-video-bx-btn" aria-label="pause video">
+          <button class="influence-content-bx-btn" aria-label="pause video">
             <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg" alt="pause video">
           </button>
         </div>
@@ -48,11 +42,11 @@
       <!-- E : slide item 02-->
       <!-- S : slide item 03-->
       <div class="swiper-slide">
-        <div class="influence-video-bx">
+        <div class="influence-content-bx">
           <video muted loop playsinline poster="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-03.jpg">
             <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4" type="video/mp4">
           </video>
-          <button class="influence-video-bx-btn" aria-label="pause video">
+          <button class="influence-content-bx-btn" aria-label="pause video">
             <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg" alt="pause video">
           </button>
         </div>
@@ -67,11 +61,11 @@
       <!-- E : slide item 03-->
       <!-- S : slide item 04-->
       <div class="swiper-slide">
-        <div class="influence-video-bx">
+        <div class="influence-content-bx">
           <video muted loop playsinline poster="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-04.jpg">
             <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4" type="video/mp4">
           </video>
-          <button class="influence-video-bx-btn" aria-label="pause video">
+          <button class="influence-content-bx-btn" aria-label="pause video">
             <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg" alt="pause video">
           </button>
         </div>
@@ -86,11 +80,11 @@
       <!-- E : slide item 04-->
       <!-- S : slide item 05-->
       <div class="swiper-slide">
-        <div class="influence-video-bx">
+        <div class="influence-content-bx">
           <video muted loop playsinline poster="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-05.jpg">
             <source src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4" type="video/mp4">
           </video>
-          <button class="influence-video-bx-btn" aria-label="pause video">
+          <button class="influence-content-bx-btn" aria-label="pause video">
             <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg" alt="pause video">
           </button>
         </div>
@@ -104,11 +98,19 @@
       </div>
       <!-- E : slide item 05-->
     </div>
-    <div class="influence-slide-controller">
-      <button type="button" class="influence-slide-controller-btn swiper-button-prev"></button>
-      <div class="swiper-pagination"></div>
-      <button type="button" class="influence-slide-controller-btn swiper-button-next"></button>
+    <!-- S : swiper-navigation-->
+    <div class="influence-slide-navigation swiper-navigation">
+      <button class="swiper-button-prev">
+        <p class="sr-only">Previous</p>
+      </button>
+      <button class="swiper-button-next">
+        <p class="sr-only">Next</p>
+      </button>
     </div>
+    <!-- E : swiper-navigation-->
+    <!-- S : swiper-pagination-->
+    <div class="influence-slide-pagination swiper-pagination"></div>
+    <!-- E : swiper-pagination-->
   </div>
 </section>
 <!-- E : influence -->

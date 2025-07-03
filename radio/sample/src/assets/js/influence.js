@@ -33,17 +33,17 @@ function influence() {
     
     const activeIndex = influenceSlide.activeIndex;
     
-    // 모든 video-bx의 bottom 값 초기화
-    document.querySelectorAll('.influence-video-bx').forEach(videoBx => {
-      videoBx.style.bottom = '0';
+    // 모든 content-bx의 bottom 값 초기화
+    document.querySelectorAll('.influence-content-bx').forEach(contentBx => {
+      contentBx.style.bottom = '0';
     });
     
-    const activeVideoBx = document.querySelectorAll('.influence-video-bx')[activeIndex];
+    const activeContentBx = document.querySelectorAll('.influence-content-bx')[activeIndex];
     const activeTxtBx = document.querySelectorAll('.influence-txt-bx')[activeIndex];
     
-    if (activeVideoBx && activeTxtBx) {
-      // 활성화된 슬라이드의 video-bx에 txt-bx 높이 + 추가 간격만큼 bottom 값 적용
-      activeVideoBx.style.bottom = `${(activeTxtBx.clientHeight + extraPadding) / 16}rem`;
+    if (activeContentBx && activeTxtBx) {
+      // 활성화된 슬라이드의 content-bx에 txt-bx 높이 + 추가 간격만큼 bottom 값 적용
+      activeContentBx.style.bottom = `${(activeTxtBx.clientHeight + extraPadding) / 16}rem`;
     }
   }
   
@@ -80,7 +80,8 @@ function influence() {
       init: function() {
         // 초기 로드 시 활성화된 슬라이드의 비디오 재생
         const activeIndex = this.activeIndex;
-        const activeVideo = document.querySelectorAll('.influence-video-bx video')[activeIndex];
+        const activeContentBx = document.querySelectorAll('.influence-content-bx')[activeIndex];
+        const activeVideo = activeContentBx ? activeContentBx.querySelector('video') : null;
         
         // 활성화된 슬라이드의 bottom 값 설정
         updateActiveSlideBottom();
@@ -93,7 +94,8 @@ function influence() {
       slideChange: function() {
         // 활성화된 슬라이드 인덱스
         const activeIndex = this.activeIndex;
-        const newActiveVideo = document.querySelectorAll('.influence-video-bx video')[activeIndex];
+        const newActiveContentBx = document.querySelectorAll('.influence-content-bx')[activeIndex];
+        const newActiveVideo = newActiveContentBx ? newActiveContentBx.querySelector('video') : null;
         
         // 활성화된 슬라이드의 bottom 값 업데이트
         updateActiveSlideBottom();
@@ -127,29 +129,29 @@ function influence() {
 
   function toggleVideo(video) {
     // 반복되는 DOM 요소 선택을 변수로 저장
-    const videoBox = video.closest('.influence-video-bx');
-    const button = videoBox.querySelector('.influence-video-bx-btn');
+    const videoBox = video.closest('.influence-content-bx');
+    const button = videoBox.querySelector('.influence-content-bx-btn');
     const buttonImg = button.querySelector('img');
     
     if (video.paused) {
       video.play();
       // 버튼 이미지를 일시정지 아이콘으로 변경
-      buttonImg.src = './assets/images/influence-slide-pause.svg';
+      buttonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg';
       buttonImg.setAttribute('alt', 'pause video');
       button.setAttribute('aria-label', 'pause video');
     } else {
       video.pause();
       // 버튼 이미지를 재생 아이콘으로 변경
-      buttonImg.src = './assets/images/influence-slide-play.svg';
+      buttonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-play.svg';
       buttonImg.setAttribute('alt', 'play video');
       button.setAttribute('aria-label', 'play video');
     }
   }
 
   // 비디오 재생/일시정지 버튼에 이벤트 리스너 추가
-  document.querySelectorAll('.influence-video-bx-btn').forEach(button => {
+  document.querySelectorAll('.influence-content-bx-btn').forEach(button => {
     button.addEventListener('click', function() {
-      const video = this.closest('.influence-video-bx').querySelector('video');
+      const video = this.closest('.influence-content-bx').querySelector('video');
       toggleVideo(video);
     });
   });

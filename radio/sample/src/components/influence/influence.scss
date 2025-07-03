@@ -27,7 +27,7 @@
       margin-bottom: rem(136);
     }
   }
-  &-video-bx {
+  &-content-bx {
     width: 100%;
     height: 100%;
     border-radius: rem(28);
@@ -35,7 +35,8 @@
     overflow: hidden;
     cursor: pointer;
     transition: bottom 0.5s;
-    video {
+    video,
+    &-thumbnail {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -92,13 +93,13 @@
     overflow: visible;
     .swiper-slide {
       opacity: 0.4;
-      .influence-video-bx-btn {
+      .influence-content-bx-btn {
         opacity: 0;
         visibility: hidden;
       }
       &-active {
         opacity: 1;
-        .influence-video-bx {
+        .influence-content-bx {
           cursor: default;
           &-btn {
             opacity: 1;
@@ -142,21 +143,140 @@
         }
       }
     }
-    .swiper-pagination {
-      width: auto;
-      height: rem(8);
-      position: static;
+  }
+  &-slide-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: rem(16);
+    width: calc(100% - rem(32));
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    pointer-events: none;
+
+    @include tablet {
+      width: calc(100% - rem(48));
+      max-width: calc(rem(1200) - rem(48));
+    }
+
+    button {
+      width: rem(32);
+      height: rem(32);
+      border-radius: 50%;
+      background: rgba(217, 211, 200, 0.75);
+      backdrop-filter: blur(20px);
       margin-top: 0;
-      .swiper-pagination-bullet {
-        width: rem(8);
-        height: rem(8);
-        background-color: #B8B4AB;
-        opacity: 1;
-        transition: all 0.3s;
-        &.swiper-pagination-bullet-active {
+      position: static;
+      bottom: rem(24);
+      right: rem(24);
+      cursor: pointer;
+      transition: all 0.3s linear;
+      pointer-events: auto;
+
+      @include tablet {
+        width: rem(48);
+        height: rem(48);
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        font-size: 0;
+        width: rem(16);
+        height: rem(16);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+
+        @include tablet {
           width: rem(24);
-          background-color: #000;
-          border-radius: rem(4);
+          height: rem(24);
+        }
+      }
+
+      &:hover {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+      }
+
+      &.swiper-button-prev {
+        &::after {
+          background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+          transform: translate(-50%, -50%) rotate(180deg);
+
+          [dir="rtl"] & {
+            transform: translate(-50%, -50%) rotate(0);
+          }
+        }
+      }
+
+      &.swiper-button-next {
+        &::after {
+          background-image: url("../images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-next-icon.svg");
+        
+          [dir="rtl"] & {
+            transform: translate(-50%, -50%) rotate(180deg);
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      width: rem(calc(1200 - 48));
+    }
+  }
+  &-slide-pagination {
+    width: auto;
+    position: static;
+    margin-top: rem(40);
+
+    @include tablet {
+      height: rem(12);
+      margin-top: rem(32);
+    }
+
+    @include desktop {
+      height: rem(12);
+      margin-top: rem(48);
+    }
+
+    .swiper-pagination-bullet {
+      width: rem(8);
+      margin: 0 rem(5);
+      background: #b8b4ab;
+      opacity: 1;
+      overflow: hidden;
+      transition: all 0.3s linear;
+
+      @include tablet {
+        width: rem(12);
+        height: rem(12);
+        margin: 0 rem(6);
+      }
+
+      @include desktop {
+        width: rem(12);
+        height: rem(12);
+        margin: 0 rem(6);
+      }
+
+      &.swiper-pagination-bullet-active {
+        width: rem(20);
+        border-radius: rem(12);
+        background: #000000;
+
+        @include tablet {
+          width: rem(32);
+        }
+
+        @include desktop {
+          width: rem(32);
         }
       }
     }
