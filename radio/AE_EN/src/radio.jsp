@@ -1,85 +1,92 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+
 <head>
-    <!-- default code -->
-    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
-    <!-- sns tag -->
-    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
-    <!-- chrome audits -->
-    <meta name="theme-color" content="#a50034"/>
-    <title>Life's Good | Radio Optimism | LG UAE</title>
-    <meta name="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation">
-    <meta name="Description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station.">
-    <meta property="og:title" content="Life's Good | Radio Optimism | LG UAE"/>
-    <meta property="og:url" content="https://www.lg.com/ae/lifesgood/">
-    <meta property="og:description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
-    <meta property="og:image" content="">
-    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
-    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
-    <!-- // default code -->
-    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
-    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
+  <!-- default code -->
+  <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+  <!-- sns tag -->
+  <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+  <!-- chrome audits -->
+  <meta name="theme-color" content="#a50034" />
+  <title>Life's Good | Radio Optimism | LG UAE</title>
+  <meta name="Keywords"
+    content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation">
+  <meta name="Description"
+    content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station.">
+  <meta property="og:title" content="Life's Good | Radio Optimism | LG UAE" />
+  <meta property="og:url" content="https://www.lg.com/ae/lifesgood/">
+  <meta property="og:description"
+    content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station." />
+  <meta property="og:image" content="">
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp" />
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp" />
+  <!-- // default code -->
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp" />
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp" />
 
-    <!-- your -->
-    <link href="/ae/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="/ae/lifesgood/common/css/font.css" rel="stylesheet" type="text/css" />
-<link href="/ae/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-<link href="/ae/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css" />
+  <!-- your -->
+  <link href="/ae/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="/ae/lifesgood/common/css/font.css" rel="stylesheet" type="text/css" />
+  <link href="/ae/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+  <link href="/ae/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css" />
 
-    <script src="/ae/lifesgood/common/js/gsap.min.js"></script>
-<script src="/ae/lifesgood/common/js/ScrollTrigger.min.js"></script>
-<script src="/ae/lifesgood/common/js/SplitText.min.js"></script>
-<script src="/ae/lifesgood/common/js/swiper-bundle.min.js"></script>
-<script src="/ae/lifesgood/assets/js/radio.js" defer></script>
-<script src="/ae/lifesgood/assets/js/overview.js" defer></script>
-<script src="/ae/lifesgood/assets/js/sound.js" defer></script>
-<script src="/ae/lifesgood/assets/js/banner.js" defer></script>
-<script src="/ae/lifesgood/assets/js/stories.js" defer></script>
-<script src="/ae/lifesgood/assets/js/how-to.js" defer></script>
-<script src="/ae/lifesgood/assets/js/influence.js" defer></script>
-<script src="/ae/lifesgood/assets/js/main-video.js" defer></script>
-<script src="/ae/lifesgood/assets/js/parallax.js" defer></script>
+  <script src="/ae/lifesgood/common/js/gsap.min.js"></script>
+  <script src="/ae/lifesgood/common/js/ScrollTrigger.min.js"></script>
+  <script src="/ae/lifesgood/common/js/SplitText.min.js"></script>
+  <script src="/ae/lifesgood/common/js/swiper-bundle.min.js"></script>
+  <script src="/ae/lifesgood/assets/js/radio.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/overview.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/sound.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/banner.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/stories.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/how-to.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/influence.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/main-video.js" defer></script>
+  <script src="/ae/lifesgood/assets/js/parallax.js" defer></script>
 
-    <script>
-        function GA_Event(category,action,label) {
-            dataLayer.push({
-                'event' : 'ga_event', 
-                'category' : category, 
-                'action' : action,
-                'label' : label,
-            });
-        }
-        </script>
-    <!-- //your -->
+  <script>
+    function GA_Event(category, action, label) {
+      dataLayer.push({
+        'event': 'ga_event',
+        'category': category,
+        'action': action,
+        'label': label,
+      });
+    }
+  </script>
+  <!-- //your -->
 </head>
-<body>
-<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
-<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
-<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
-<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
-    <meta itemprop="name" content="{Browser Title}"/>
-    <meta itemprop="image" content="{Share Image}"/>
-    <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station."/>
-    <meta itemprop="Keywords" content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation"/>
-</div>
-<c:set var='bizType' value='${$bizType }'/>
-<c:set var='siteType' value='MKT'/>
-<!-- component (navigation) -->
-<c:import url="/${localeCd }/gnb">
-    <c:param name="bizType" value="${bizType}"/>
-    <c:param name="siteType" value="${siteType}"/>
-    <c:param name="isMobile" value="${isMobile}"/>
-</c:import>
-<!-- // component (navigation) -->
-<!-- breadcrumb -->
-<c:import url="/${localeCd }/breadCrumb">
-    <c:param name="bizType" value="${bizType}"/>
-</c:import>
-<!-- // breadcrumb -->
 
-<!-- Enter Code Here -->
-<div class="radio-container">
+<body>
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp" />
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp" />
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp" />
+  <div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}" />
+    <meta itemprop="image" content="{Share Image}" />
+    <meta itemprop="url" content="{Cannonical URL}" />
+    <meta itemprop="description"
+      content="Make your own song for someone special. Pick your vibe, share your story, and let LG Radio Optimism turn it into music. Join the 24/7 Dedication Station." />
+    <meta itemprop="Keywords"
+      content="LG Radio Optimism, Life’s Good music campaign, LG campaign 2025, AI music generator, ai music maker, AI song creator, create music with AI, AI music composer, how to create music with ai, AI music creation" />
+  </div>
+  <c:set var='bizType' value='${$bizType }' />
+  <c:set var='siteType' value='MKT' />
+  <!-- component (navigation) -->
+  <c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}" />
+    <c:param name="siteType" value="${siteType}" />
+    <c:param name="isMobile" value="${isMobile}" />
+  </c:import>
+  <!-- // component (navigation) -->
+  <!-- breadcrumb -->
+  <c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}" />
+  </c:import>
+  <!-- // breadcrumb -->
+
+  <!-- Enter Code Here -->
+  <div class="radio-container">
     <!-- S : parallax -->
     <section class="parallax-container">
       <div class="parallax-txt-bx">
@@ -92,7 +99,8 @@
               <source
                 srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 media="(max-width: 1023px)">
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 alt="RADIO OPTIMISM">
             </picture>
           </div>
@@ -127,9 +135,11 @@
             <source
               srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
               media="(min-width: 769px)">
-            <source srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <source
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               media="(max-width: 768px)">
-            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <img
+              src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               alt="parallax-bg">
           </picture>
         </div>
@@ -141,7 +151,8 @@
             <source
               srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               media="(max-width: 768px)">
-            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+            <img
+              src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               alt="Parallax decorative element 1">
           </picture>
         </div>
@@ -153,7 +164,8 @@
             <source
               srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               media="(max-width: 768px)">
-            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+            <img
+              src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               alt="Parallax decorative element 2">
           </picture>
         </div>
@@ -165,7 +177,8 @@
             <source
               srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               media="(max-width: 768px)">
-            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+            <img
+              src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               alt="Parallax decorative element 3">
           </picture>
         </div>
@@ -215,17 +228,23 @@
                 alt="" />
             </picture>
             <div class="overview-heading-motion-imgs">
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
                 alt="" class="motion-icon heart-icon" />
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
                 alt="" class="motion-icon smile-icon" />
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
                 alt="" class="motion-icon img-icon" />
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon01" />
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon02" />
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon03" />
             </div>
           </div>
@@ -265,7 +284,8 @@
                   src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
                   alt="overview-img" />
               </picture>
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
                 alt="A woman smiles brightly as she looks at her laptop in a spacious room."
                 class="overview-heart-tower-img" />
             </div>
@@ -290,98 +310,121 @@
           <div class="swiper-wrapper">
             <!-- S : slide item 01-->
             <div class="swiper-slide">
-              <div class="how-to-video-bx responsive-video" 
-                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
-                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
+              <div class="how-to-video-bx responsive-video"
+                data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
+                data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
                 <video muted playsinline aria-label="Step 1 video from the How to make your song.">
-                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4" type="video/mp4">
+                  <source
+                    src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4"
+                    type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
-                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-linecap="round"/>
+                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000"
+                      stroke-linecap="round" />
                   </svg>
                 </button>
               </div>
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg" alt="1">
+                    <img
+                      src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg"
+                      alt="1">
                   </span>
                   Step into Radio Optimism.
                 </h3>
-                <p class="how-to-txt-bx-txt">Tap 'Let's Make a Hit' to join and begin your story. <br>Choose your preferred language to get started.</p>
+                <p class="how-to-txt-bx-txt">Tap 'Let's Make a Hit' to join and begin your story. <br>Choose your
+                  preferred language to get started.</p>
               </div>
             </div>
             <!-- E : slide item 01-->
             <!-- S : slide item 02-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
-                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
+                data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
+                data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
                 <video muted playsinline aria-label="Step 2 video from the How to make your song.">
-                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4" type="video/mp4">
+                  <source
+                    src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4"
+                    type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
-                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-linecap="round"/>
+                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000"
+                      stroke-linecap="round" />
                   </svg>
                 </button>
               </div>
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg" alt="2">
+                    <img
+                      src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg"
+                      alt="2">
                   </span>
                   Tell your story.
                 </h3>
                 <p class="how-to-txt-bx-txt">Who are you, and who's this track for? <br>
-                  The more you share — a memory, a moment, or something only you two know — <br> the better your lyrics will be. Once you're done, we'll turn it into a track and custom cover art.</p>
+                  The more you share — a memory, a moment, or something only you two know — <br> the better your lyrics
+                  will be. Once you're done, we'll turn it into a track and custom cover art.</p>
               </div>
             </div>
             <!-- E : slide item 02-->
             <!-- S : slide item 03-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
-                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
+                data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
+                data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
                 <video muted playsinline aria-label="Step 3 video from the How to make your song.">
-                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4" type="video/mp4">
+                  <source
+                    src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4"
+                    type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
-                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-linecap="round"/>
+                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000"
+                      stroke-linecap="round" />
                   </svg>
                 </button>
               </div>
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg" alt="3">
+                    <img
+                      src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg"
+                      alt="3">
                   </span>
                   Pick your vibe.
                 </h3>
-                <p class="how-to-txt-bx-txt">Time to shape the sound. Choose a genre — from hip-hop to K-pop — <br>and pick a vibe that matches your story.</p>
+                <p class="how-to-txt-bx-txt">Time to shape the sound. Choose a genre — from hip-hop to K-pop — <br>and
+                  pick a vibe that matches your story.</p>
               </div>
             </div>
             <!-- E : slide item 03-->
             <!-- S : slide item 04-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                   data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
-                   data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
+                data-desktop-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
+                data-mobile-video-src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
                 <video muted playsinline aria-label="Step 4 video from the How to make your song.">
-                  <source src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4" type="video/mp4">
+                  <source
+                    src="/ae/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4"
+                    type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
                   <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
-                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-linecap="round"/>
+                    <circle class="progress-circle-fill" cx="50" cy="50" r="48" fill="none" stroke="#000000"
+                      stroke-linecap="round" />
                   </svg>
                 </button>
               </div>
               <div class="how-to-txt-bx">
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
-                    <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg" alt="4">
+                    <img
+                      src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg"
+                      alt="4">
                   </span>
                   Your track is ready!
                 </h3>
@@ -744,14 +787,16 @@
     <section class="banner">
       <div class="banner-wrapper">
         <div class="banner-imgbx-1">
-          <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
+          <img
+            src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
             alt="On the left side of the banner, there are various icons related to Radio Optimism and Life's Good."
             loading="lazy">
         </div>
         <div class="inner">
           <div class="banner-main-area">
             <div class="banner-main-area-imgbx">
-              <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
+              <img
+                src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
                 alt="Radio optimism campaign logo" loading="lazy">
             </div>
             <h2 class="banner-main-area-title heading">
@@ -768,7 +813,8 @@
               <button type="button" class="stop-btn"></button>
               <button type="button" class="next-btn"></button>
             </div>
-            <a href="https://radiooptimism.lg.com/en" class="banner-main-area-startbtn">
+            <a href="https://radiooptimism.lg.com/en?referrer_locale=ae&referrer_site=lifesgood"
+              class="banner-main-area-startbtn">
               <p>Make your song now</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
@@ -784,9 +830,11 @@
             <source
               srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
               media="(min-width: 769px)">
-            <source srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <source
+              srcset="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               media="(max-width: 768px)">
-            <img src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <img
+              src="/ae/lifesgood/assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               alt="On the right side of the banner, there are various icons related to Radio Optimism and Life's Good."
               loading="lazy">
           </picture>
@@ -853,8 +901,7 @@
               <div class="txt-bx">
                 <h3>We don’t make life good, you do</h3>
                 <p>Embrace Life’s Good moment.</p>
-                <a href="https://www.lg.com/ae/lifesgood/product-story-washtower"
-                  class="white-btn">Learn More</a>
+                <a href="https://www.lg.com/ae/lifesgood/product-story-washtower" class="white-btn">Learn More</a>
               </div>
             </div>
           </div>
@@ -868,63 +915,67 @@
     </section>
     <!-- E : stories -->
   </div>
-<!-- // Enter Code Here -->
+  <!-- // Enter Code Here -->
 
-<!-- top button -->
-<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
-<!-- // top button -->
+  <!-- top button -->
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp" />
+  <!-- // top button -->
 
-<!-- footer seo copy -->
-<c:import url="/${localeCd }/footerSeoCopy"/>
-<!-- footer seo copy -->
+  <!-- footer seo copy -->
+  <c:import url="/${localeCd }/footerSeoCopy" />
+  <!-- footer seo copy -->
 
-<!-- footer main contents -->
-<c:import url="/${localeCd }/footer">
-    <c:param name="bizType" value="${bizType}"/>
-    <c:param name="siteType" value="${siteType}"/>
-</c:import>
-<!--// footer main contents -->
+  <!-- footer main contents -->
+  <c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}" />
+    <c:param name="siteType" value="${siteType}" />
+  </c:import>
+  <!--// footer main contents -->
 
-<script>
+  <script>
     var standardData = {};
     standardData = {
-        "siteType": "B2C",
-        "pageType": "MICROSITE",
-        "pdpStatus": "",
-        "level1": "",
-        "level2": "",
-        "level3": ""
+      "siteType": "B2C",
+      "pageType": "MICROSITE",
+      "pdpStatus": "",
+      "level1": "",
+      "level2": "",
+      "level3": ""
     };
     _dl = {
-        "page_name": {
-            "super_category": "",
-            "bu": "ha",
-            "sub_category_list": "",
-            "sub_category": "",
-            "page_purpose": "",
-            "category": "",
-            "microsite_name": ""
-        },
-        "country_code": "",
-        "language_code": "",
-        "appliance_name": ""
+      "page_name": {
+        "super_category": "",
+        "bu": "ha",
+        "sub_category_list": "",
+        "sub_category": "",
+        "page_purpose": "",
+        "category": "",
+        "microsite_name": ""
+      },
+      "country_code": "",
+      "language_code": "",
+      "appliance_name": ""
     };
-</script>
+  </script>
 
-<!-- default code -->
-<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
-<!-- // default code -->
+  <!-- default code -->
+  <jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp" />
+  <!-- // default code -->
 
-<script type="text/javascript">
-(function(w, d, a){
-    w.__beusablerumclient__ = {
-        load : function(src){
-            var b = d.createElement("script");
-            b.src = src; b.async=true; b.type = "text/javascript";
-            d.getElementsByTagName("head")[0].appendChild(b);
+  <script type="text/javascript">
+    (function (w, d, a) {
+      w.__beusablerumclient__ = {
+        load: function (src) {
+          var b = d.createElement("script");
+          b.src = src;
+          b.async = true;
+          b.type = "text/javascript";
+          d.getElementsByTagName("head")[0].appendChild(b);
         }
-    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
-})(window, document, "//rum.beusable.net/load/b210329e143851u463");
-</script>
+      };
+      w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+    })(window, document, "//rum.beusable.net/load/b210329e143851u463");
+  </script>
 </body>
+
 </html>
