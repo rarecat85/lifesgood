@@ -290,9 +290,7 @@
             }
         }
 
-        &-startbtn {
-            position: static;
-            z-index: 99;
+        &-startbtn-base {
             width: fit-content;
             padding: 0 rem(10) 0 rem(8);
             margin: 0 auto;
@@ -337,7 +335,6 @@
                     margin: rem(10) rem(16);
                     padding: rem(8) 0;
                     @include font(24, 120%, 600);
-
                 }
             }
 
@@ -466,6 +463,19 @@
                     animation: blend4Animation 1s ease infinite;
                 }
             }
+        }
+
+        &-startbtn-fixed {
+            visibility: hidden;
+            position: fixed;
+            bottom: rem(10);
+            z-index: 99;
+
+        }
+
+        &-startbtn {
+            position: static;
+            opacity: 0;
         }
     }
 }
