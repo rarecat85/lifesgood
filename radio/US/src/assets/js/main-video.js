@@ -1,8 +1,10 @@
 gsap.registerPlugin(ScrollTrigger);
-const { toArray } = gsap.utils;
+const {
+  toArray
+} = gsap.utils;
 
 // 유튜브 비디오 ID (실제 사용할 비디오 ID로 변경하세요)
-const YOUTUBE_VIDEO_ID = 'keOxJ1vlc5E'; // 예시 ID
+const YOUTUBE_VIDEO_ID = 'sCJMXweGFVs'; // 예시 ID
 
 let player;
 let isPlayerReady = false;
@@ -27,18 +29,18 @@ function init() {
       width: '100%',
       height: '100%',
       playerVars: {
-        autoplay: 0,        // 자동재생 비활성화 (스크롤 트리거로 제어)
-        controls: 1,        // 컨트롤 표시
-        mute: 1,           // 음소거 상태로 시작
-        loop: 1,           // 반복재생
+        autoplay: 0, // 자동재생 비활성화 (스크롤 트리거로 제어)
+        controls: 1, // 컨트롤 표시
+        mute: 1, // 음소거 상태로 시작
+        loop: 1, // 반복재생
         playlist: YOUTUBE_VIDEO_ID, // 루프를 위한 플레이리스트
-        modestbranding: 1,  // YouTube 브랜딩 최소화
-        rel: 0,            // 관련 동영상 표시 안함
+        modestbranding: 1, // YouTube 브랜딩 최소화
+        rel: 0, // 관련 동영상 표시 안함
         iv_load_policy: 3, // 주석 표시 안함
-        fs: 1,             // 전체화면 버튼 표시
+        fs: 1, // 전체화면 버튼 표시
         cc_load_policy: 0, // 자막 비활성화
-        disablekb: 0,      // 키보드 컨트롤 활성화
-        enablejsapi: 1,    // JavaScript API 활성화
+        disablekb: 0, // 키보드 컨트롤 활성화
+        enablejsapi: 1, // JavaScript API 활성화
         origin: window.location.origin
       },
       events: {
@@ -95,12 +97,16 @@ function init() {
   createYouTubePlayer();
 
   // GSAP 애니메이션 설정
-  const animationProps = { width: '100%', duration: 1, ease: 'power2.out' };
-  
+  const animationProps = {
+    width: '100%',
+    duration: 1,
+    ease: 'power2.out'
+  };
+
   const mainVideoTl = gsap.timeline({
-    onComplete: playVideo, 
-    onReverseComplete: stopAndResetVideo 
-  })
+      onComplete: playVideo,
+      onReverseComplete: stopAndResetVideo
+    })
     .to(playerWrapper, animationProps)
 
   const mainVideoTrigger = ScrollTrigger.create({
