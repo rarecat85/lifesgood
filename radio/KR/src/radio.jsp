@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="ko">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LG Radio Optimism</title>
+  <link href="/kr/campaign/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/kr/campaign/lifesgood/common/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/kr/campaign/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+  <link href="/kr/campaign/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css">
+  <script src="/kr/campaign/lifesgood/common/js/gsap.min.js"></script>
+  <script src="/kr/campaign/lifesgood/common/js/ScrollTrigger.min.js"></script>
+  <script src="/kr/campaign/lifesgood/common/js/SplitText.min.js"></script>
+  <script src="/kr/campaign/lifesgood/common/js/swiper-bundle.min.js"></script>
+  <script src="/kr/campaign/lifesgood/assets/js/overview.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
 
-  <link href="../common/css/reset.css" rel="stylesheet" type="text/css">
-  <link href="../common/css/font.css" rel="stylesheet" type="text/css">
-  <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
-  <link href="./assets/css/radio.css" rel="stylesheet" type="text/css">
 
-  <script src="../common/js/gsap.min.js"></script>
-  <script src="../common/js/ScrollTrigger.min.js"></script>
-  <script src="../common/js/SplitText.min.js"></script>
-  <script src="../common/js/swiper-bundle.min.js"></script>
-  <script src="./assets/js/radio.js" defer=""></script>
-  <script src="./assets/js/overview.js" defer=""></script>
-  <script src="./assets/js/sound.js" defer=""></script>
-  <script src="./assets/js/banner.js" defer=""></script>
-  <script src="./assets/js/stories.js" defer=""></script>
-
-  <script src="./assets/js/how-to.js" defer=""></script>
-  <script src="./assets/js/influence.js" defer=""></script>
-  <script src="./assets/js/main-video.js" defer=""></script>
-  <script src="./assets/js/parallax.js" defer=""></script>
-</head>
-
-<body>
+  <!-- lifesgood contents -->
   <div class="radio-container">
     <!-- S : parallax -->
     <section class="parallax-container">
@@ -36,24 +26,24 @@
           <div class="parallax-txt-bx-logo-txt">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
+                srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-desktop.png"
                 media="(min-width: 1024px)">
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+                srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 media="(max-width: 1023px)">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-mobile.png"
                 alt="RADIO OPTIMISM">
             </picture>
           </div>
           <div class="parallax-txt-bx-logo-sticker">
             <div class="parallax-txt-bx-logo-sticker-radio">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
+                src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-radio.png"
                 alt="RADIO OPTIMISM radio sticker">
             </div>
             <div class="parallax-txt-bx-logo-sticker-logo">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
+                src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-logo-sticker-logo.png"
                 alt="RADIO OPTIMISM logo sticker">
             </div>
           </div>
@@ -65,7 +55,7 @@
           <span class="parallax-txt-bx-radio-controls-line"></span>
         </div>
         <div class="parallax-txt-bx-btns">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
+          <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-btns.svg"
             alt="Radio buttons">
         </div>
       </div>
@@ -74,47 +64,47 @@
         <div class="parallax-bg">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-desktop.jpg"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <source srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
+            <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-bg-mobile.jpg"
               alt="parallax-bg">
           </picture>
         </div>
         <div class="parallax-item parallax-item-01">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
+            <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-01-mobile.png"
               alt="Parallax decorative element 1">
           </picture>
         </div>
         <div class="parallax-item parallax-item-02">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
+            <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-02-mobile.png"
               alt="Parallax decorative element 2">
           </picture>
         </div>
         <div class="parallax-item parallax-item-03">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-desktop.png"
               media="(min-width: 769px)">
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
+            <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-parallax-item-03-mobile.png"
               alt="Parallax decorative element 3">
           </picture>
         </div>
@@ -151,27 +141,27 @@
             aria-label="흰색 스웨터와 청바지를 입은 젊은 여성이 소파에 누워서, 휴대전화로 소셜 미디어에서 친구의 게시물에 '좋아요'를 누르고 있습니다." data-tp="label">
             <picture>
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 media="(max-width: 768px)">
               <source
-                srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
+                srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-desktop.jpg"
                 media="(min-width: 769px)">
               <img
-                src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
+                src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image01-mobile.jpg"
                 alt="">
             </picture>
             <div class="overview-heading-motion-imgs">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-icon.png"
                 alt="" class="motion-icon heart-icon">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-smile-icon.png"
                 alt="" class="motion-icon smile-icon">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-img-icon.png"
                 alt="" class="motion-icon img-icon">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon01">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon02">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-like-icon.png"
                 alt="" class="motion-icon like-icon03">
             </div>
           </div>
@@ -181,13 +171,13 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
+                  srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-mobile.png"
                   media="(max-width: 768px)">
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
+                  srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image02-desktop.png"
                   media="(min-width: 769px)">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image02-mobile.png"
                   alt="젊은 남자와 여자가 ​​책상에 앉아 노트북으로 라디오 옵티미즘 캠페인을 즐기고 있습니다." data-tp="alt">
               </picture>
             </div>
@@ -202,16 +192,16 @@
             <div class="overview-cont-img">
               <picture>
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
+                  srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-mobile.png"
                   media="(max-width: 768px)">
                 <source
-                  srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
+                  srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-image03-desktop.png"
                   media="(min-width: 769px)">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-cont-image03-mobile.png"
                   alt="한 여성이 넓은 방에서 노트북을 보며 밝게 미소 짓고 있다." data-tp="alt">
               </picture>
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
                 alt="" class="overview-heart-tower-img" aria-hidden="true">
             </div>
             <p class="overview-cont-txt" data-tp="copy">누군가를 위한 마음을 담아 노래를 만드는 순간, <br>
@@ -249,7 +239,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg"
+                      src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-01.svg"
                       alt="1">
                   </span>
                   <span data-tp="copy">Radio Optimism에 들어오세요.</span>
@@ -279,7 +269,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg"
+                      src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-02.svg"
                       alt="2">
                   </span>
                   <span data-tp="copy">당신의 이야기를 들려주세요.</span>
@@ -310,7 +300,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg"
+                      src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-03.svg"
                       alt="3">
                   </span>
                   <span data-tp="copy">노래의 분위기를 골라보세요.</span>
@@ -340,7 +330,7 @@
                 <h3 class="how-to-txt-bx-title heading">
                   <span class="how-to-txt-bx-title-num">
                     <img
-                      src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg"
+                      src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-how-to-step-num-04.svg"
                       alt="4">
                   </span>
                   <span data-tp="copy">나만의 특별한 노래가 완성되었습니다.</span>
@@ -379,12 +369,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
                   alt="LG가 AI를 통해 제작한 Beam of Positivity 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
                   alt="LG가 AI를 통해 제작한 Beam of Positivity LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -395,12 +385,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
                   alt="Mom이 AI를 통해 제작한 Keep Swimming 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
                   alt="Mom이 AI를 통해 제작한 Keep Swimming LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -411,12 +401,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
                   alt="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
                   alt="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -427,12 +417,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
                   alt="Cam이 AI를 통해 제작한 My Dad, My Hero 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
                   alt="Cam이 AI를 통해 제작한 My Dad, My Hero LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -443,12 +433,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
                   alt="Tina가 AI를 통해 제작한 Carpool Hero 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
                   alt="Tina가 AI를 통해 제작한 Carpool Hero LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -459,12 +449,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
                   alt="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
                   alt="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -475,12 +465,12 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
                   alt="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
                   alt="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light LP 이미지" data-tp="alt">
               </div>
             </div>
@@ -702,13 +692,13 @@
     <section class="banner">
       <div class="banner-wrapper">
         <div class="banner-imgbx-1">
-          <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
+          <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-left-desktop.png"
             alt="배너 왼쪽 공간에 Radio optimism과 Life's Good. 관련 여러 아이콘이 있습니다." loading="lazy" data-tp="alt">
         </div>
         <div class="inner">
           <div class="banner-main-area">
             <div class="banner-main-area-imgbx">
-              <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
+              <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-optimism-logo.gif"
                 alt="라디오 옵티미즘 캠페인 로고" loading="lazy" data-tp="alt">
             </div>
             <h2 class="banner-main-area-title heading">
@@ -721,7 +711,7 @@
               <button type="button" class="stop-btn"></button>
               <button type="button" class="next-btn"></button>
             </div>
-            <a href="[object Object]" class="banner-main-area-startbtn-fixed banner-main-area-startbtn-base"
+            <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn-fixed banner-main-area-startbtn-base"
               data-tp="link">
               <p data-tp="copy">지금 바로 노래 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
@@ -731,7 +721,7 @@
                 <div class="blendbx-blend-4 blend"></div>
               </div>
             </a>
-            <a href="[object Object]" class="banner-main-area-startbtn banner-main-area-startbtn-base" data-tp="link">
+            <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn banner-main-area-startbtn-base" data-tp="link">
               <p data-tp="copy">지금 바로 노래 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
@@ -745,11 +735,11 @@
         <div class="banner-imgbx-2">
           <picture>
             <source
-              srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
+              srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-right-desktop.png"
               media="(min-width: 769px)">
-            <source srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <source srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               media="(max-width: 768px)">
-            <img src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
+            <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-banner-mobile.png"
               alt="배너 오른쪽 공간에 Radio optimism과 Life's Good. 관련 여러 아이콘이 있습니다." loading="lazy" data-tp="alt">
           </picture>
         </div>
@@ -775,40 +765,40 @@
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
+                    srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
+                    src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-02-mobile.png"
                     alt="사람들이 낙관의 힘을 즐기며 미소를 띤 채 캠핑을 즐기는 모습." loading="lazy" data-tp="alt">
                 </picture>
               </div>
               <div class="txt-bx">
                 <h3 data-tp="copy">Optimism your feed</h3>
                 <p data-tp="copy">소셜 미디어, 미소로 채우다.</p>
-                <a href="[object Object]" class="white-btn" data-tp="link copy">더 알아보기</a>
+                <a href="https://www.lge.co.kr/lifesgood/optimism-your-feed" class="white-btn" data-tp="link copy">더 알아보기</a>
               </div>
             </div>
             <div class="swiper-slide" role="group" aria-roledescription="stories slide">
               <div class="img-bx">
                 <picture>
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
+                    srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-desktop.png"
                     media="(min-width: 769px)">
                   <source
-                    srcset="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    srcset="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     media="(max-width: 768px)">
                   <img
-                    src="./assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
+                    src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-learn-about-03-mobile.png"
                     alt="촛불이 켜진 케이크 앞 아이의 모습이 선명하게 보이고, 뒤쪽에 LG 인스타뷰 냉장고가 희미하게 보입니다. " data-tp="alt" loading="lazy">
                 </picture>
               </div>
               <div class="txt-bx">
                 <h3 data-tp="copy">좋은 삶을 만드는 건, 바로 당신입니다.</h3>
                 <p data-tp="copy">LG는 당신이 해낼 수 있도록 돕는 제품을 만듭니다.</p>
-                <a href="[object Object]" class="white-btn" data-tp="link copy">더 알아보기</a>
+                <a href="https://www.lge.co.kr/lifesgood/" class="white-btn" data-tp="link copy">더 알아보기</a>
               </div>
             </div>
           </div>
@@ -823,6 +813,4 @@
     <!-- E : stories -->
   </div>
 
-</body>
-
-</html>
+  <!-- //lifesgood contents -->
