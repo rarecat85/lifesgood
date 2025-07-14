@@ -204,9 +204,7 @@
               <img src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-overview-heart-tower.png"
                 alt="" class="overview-heart-tower-img" aria-hidden="true">
             </div>
-            <p class="overview-cont-txt" data-tp="copy">누군가를 위한 마음을 담아 노래를 만드는 순간, <br>
-              누군가로부터 마음이 담긴 노래를 선물 받는 순간, <br>
-              우리는 서로 깊이 연결되며 진정한 Life’s Good 을 경험할 수 있습니다. </p>
+            <p class="overview-cont-txt" data-tp="copy">누군가를 위한 마음을 담아 노래를 만드는 순간, 누군가로부터 마음이 담긴 노래를 선물 받는 순간, 우리는 서로 깊이 연결되며 진정한 Life’s Good 을 경험할 수 있습니다. </p>
           </div>
         </div>
       </div>
@@ -221,11 +219,11 @@
             <!-- S : slide item 01-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
-                data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
+                data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
+                data-mobile-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4">
                 <video muted="" playsinline="" aria-label="나만의 노래 만드는 방법 1단계 영상" data-tp="label">
                   <source
-                    src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4"
+                    src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-mobile.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -251,11 +249,11 @@
             <!-- S : slide item 02-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
-                data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
+                data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
+                data-mobile-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4">
                 <video muted="" playsinline="" aria-label="나만의 노래 만드는 방법 2단계 영상" data-tp="label">
                   <source
-                    src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4"
+                    src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-mobile.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -282,11 +280,11 @@
             <!-- S : slide item 03-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
-                data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
+                data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
+                data-mobile-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4">
                 <video muted="" playsinline="" aria-label="나만의 노래 만드는 방법 3단계 영상" data-tp="label">
                   <source
-                    src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4"
+                    src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-mobile.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -312,11 +310,11 @@
             <!-- S : slide item 04-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
-                data-desktop-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
-                data-mobile-video-src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
+                data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
+                data-mobile-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4">
                 <video muted="" playsinline="" aria-label="나만의 노래 만드는 방법 4단계 영상" data-tp="label">
                   <source
-                    src="./assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4"
+                    src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-mobile.mp4"
                     type="video/mp4">
                 </video>
                 <button class="how-to-video-control-btn pause" aria-label="pause" aria-live="polite">
@@ -498,7 +496,7 @@
                 <audio id="audio-1" preload="metadata" aria-label="LG가 AI를 통해 제작한 Beam of Positivity 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-1" aria-label="play"
@@ -525,7 +523,7 @@
                 <audio id="audio-2" preload="metadata" aria-label="Mom이 AI를 통해 제작한 Keep Swimming 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-2" aria-label="play"
@@ -552,7 +550,7 @@
                 <audio id="audio-3" preload="metadata" aria-label="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-3" aria-label="play"
@@ -579,7 +577,7 @@
                 <audio id="audio-4" preload="metadata" aria-label="Cam이 AI를 통해 제작한 My Dad, My Hero 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-4" aria-label="play"
@@ -606,7 +604,7 @@
                 <audio id="audio-5" preload="metadata" aria-label="Tina가 AI를 통해 제작한 Carpool Hero 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-5" aria-label="play"
@@ -633,7 +631,7 @@
                 <audio id="audio-6" preload="metadata"
                   aria-label="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife 오디오 트랙" data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-6" aria-label="play"
@@ -660,7 +658,7 @@
                 <audio id="audio-7" preload="metadata" aria-label="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="./assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-7" aria-label="play"
@@ -713,7 +711,7 @@
             </div>
             <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn-fixed banner-main-area-startbtn-base"
               data-tp="link">
-              <p data-tp="copy">지금 바로 노래 만들어보세요</p>
+              <p data-tp="copy">지금 바로 노래를 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
                 <div class="blendbx-blend-2 blend"></div>
@@ -722,7 +720,7 @@
               </div>
             </a>
             <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn banner-main-area-startbtn-base" data-tp="link">
-              <p data-tp="copy">지금 바로 노래 만들어보세요</p>
+              <p data-tp="copy">지금 바로 노래를 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
                 <div class="blendbx-blend-2 blend"></div>
