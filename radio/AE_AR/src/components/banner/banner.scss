@@ -325,8 +325,8 @@
             }
 
             p {
-                min-width: rem(181);
-                margin: rem(10) 0 rem(10) rem(16);
+                text-wrap: nowrap;
+                margin: rem(10) rem(16);
                 padding: rem(6) 0;
                 @include font(18, 120%, 600, $white);
 
