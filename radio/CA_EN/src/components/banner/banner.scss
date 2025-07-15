@@ -27,7 +27,7 @@
             flex-direction: column;
 
             .banner-disclaimer-wrapper-item {
-                font-family: 'LGEI Text';
+                // font-family: 'LGEI Text';
                 @include font(12, 116%, 400);
                 color: #4A4946;
 
@@ -297,8 +297,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: rem(16);
             will-change: transform;
-            transform: translateZ(0);
             background: $red;
             border-radius: rem(32);
 
@@ -325,15 +325,12 @@
             }
 
             p {
-                text-wrap: nowrap;
-                margin: rem(10) rem(16);
-                padding: rem(6) 0;
+                margin: rem(16) 0 rem(16) rem(16);
                 @include font(18, 120%, 600, $white);
+                text-wrap: nowrap;
 
                 @include desktop {
-                    min-width: rem(217);
-                    margin: rem(10) rem(16);
-                    padding: rem(8) 0;
+                    margin: rem(18) 0 rem(18) rem(16);
                     @include font(24, 120%, 600);
                 }
             }
@@ -469,8 +466,7 @@
             visibility: hidden;
             position: fixed;
             bottom: rem(10);
-            z-index: 99;
-
+            z-index: 97;
         }
 
         &-startbtn {
