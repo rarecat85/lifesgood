@@ -331,10 +331,11 @@
                 text-wrap: nowrap;
 
                 @include desktop {
-                  margin: rem(10) 0 rem(10) rem(16);
-                  padding: rem(8) 0;
-                  @include font(24, 120%, 600);
-              }
+                    min-width: rem(217);
+                    margin: rem(10) rem(16);
+                    padding: rem(8) 0;
+                    @include font(24, 120%, 600);
+                }
             }
 
             .blendbx {
