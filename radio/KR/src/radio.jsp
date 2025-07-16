@@ -181,8 +181,7 @@
                   alt="젊은 남자와 여자가 ​​책상에 앉아 노트북으로 라디오 옵티미즘 캠페인을 즐기고 있습니다." data-tp="alt">
               </picture>
             </div>
-            <p class="overview-cont-txt" data-tp="copy">그래서 이번에 LG전자는 마음의 언어인 음악으로 <br>
-              Life’s Good 메시지를 전하려고 합니다. <br><br>
+            <p class="overview-cont-txt" data-tp="copy">그래서 이번에 LG전자는 마음의 언어인 음악으로 Life’s Good 메시지를 전하려고 합니다. <br><br>
               LG Radio Optimism에서 소중한 사람을 위한 노래를 만들어 보세요. <br>
               방법은 간단해요. 그 사람을 생각하면 떠오르는 단어들을 입력하면 <br>
               세상 하나뿐인 멋진 노래가 완성됩니다.<br>
@@ -701,7 +700,7 @@
             </div>
             <h2 class="banner-main-area-title heading">
               <div class="top">
-                <p class="heading" data-tp="copy">연중무휴 24시간 서비스</p>
+                <p class="heading" data-tp="copy">글로벌 뮤직 스테이션</p>
               </div>
             </h2>
             <div class="banner-main-area-controls" aria-hidden="true">
