@@ -391,7 +391,7 @@ body {
       width: calc(100% - rem(40));
       max-width: 1440px;
       margin: 0 auto;
-      padding: rem(60) 0;
+      // padding: rem(60) 0;
       .thinq-section-title {
         font-weight: 600;
         font-size: rem(56);
@@ -750,7 +750,7 @@ body {
     .thinq-section {
       .inner {
         width: 100%;
-        padding: rem(32) 0;
+        // padding: rem(32) 0;
         .thinq-section-title,
         .thinq-section-text {
           width: calc(100% - rem(32));
