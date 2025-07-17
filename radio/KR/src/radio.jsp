@@ -1,20 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
   <link href="/kr/campaign/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css">
-  <link href="/kr/campaign/lifesgood/common/css/font.css" rel="stylesheet" type="text/css">
-  <link href="/kr/campaign/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
-  <link href="/kr/campaign/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css">
+<link href="/kr/campaign/lifesgood/common/css/font.css" rel="stylesheet" type="text/css">
+<link href="/kr/campaign/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+<link href="/kr/campaign/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css">
   <script src="/kr/campaign/lifesgood/common/js/gsap.min.js"></script>
-  <script src="/kr/campaign/lifesgood/common/js/ScrollTrigger.min.js"></script>
-  <script src="/kr/campaign/lifesgood/common/js/SplitText.min.js"></script>
-  <script src="/kr/campaign/lifesgood/common/js/swiper-bundle.min.js"></script>
-  <script src="/kr/campaign/lifesgood/assets/js/overview.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/common/js/ScrollTrigger.min.js"></script>
+<script src="/kr/campaign/lifesgood/common/js/SplitText.min.js"></script>
+<script src="/kr/campaign/lifesgood/common/js/swiper-bundle.min.js"></script>
+<script src="/kr/campaign/lifesgood/assets/js/radio.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/overview.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/influence.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
+<script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
 
 
   <!-- lifesgood contents -->
@@ -181,7 +182,8 @@
                   alt="젊은 남자와 여자가 ​​책상에 앉아 노트북으로 라디오 옵티미즘 캠페인을 즐기고 있습니다." data-tp="alt">
               </picture>
             </div>
-            <p class="overview-cont-txt" data-tp="copy">그래서 이번에 LG전자는 마음의 언어인 음악으로 Life’s Good 메시지를 전하려고 합니다. <br><br>
+            <p class="overview-cont-txt" data-tp="copy">그래서 이번에 LG전자는 마음의 언어인 음악으로
+              Life’s Good 메시지를 전하려고 합니다. <br><br>
               LG Radio Optimism에서 소중한 사람을 위한 노래를 만들어 보세요. <br>
               방법은 간단해요. 그 사람을 생각하면 떠오르는 단어들을 입력하면 <br>
               세상 하나뿐인 멋진 노래가 완성됩니다.<br>
@@ -366,13 +368,13 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-beam-of-positivity.png"
-                  alt="LG가 AI를 통해 제작한 Beam of Positivity 앨범 커버" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-01.png"
+                  alt="쌀리가 AI를 통해 제작한 웃음 속의 행복 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-beam-of-positivity.png"
-                  alt="LG가 AI를 통해 제작한 Beam of Positivity LP 이미지" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-01.png"
+                  alt="쌀리가 AI를 통해 제작한 웃음 속의 행복 LP 이미지" data-tp="alt">
               </div>
             </div>
           </div>
@@ -382,13 +384,13 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-keep-swimming.png"
-                  alt="Mom이 AI를 통해 제작한 Keep Swimming 앨범 커버" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-02.png"
+                  alt="하준이 AI를 통해 제작한 따뜻한 저녁의 미소 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-keep-swimming.png"
-                  alt="Mom이 AI를 통해 제작한 Keep Swimming LP 이미지" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-02.png"
+                  alt="하준이 AI를 통해 제작한 따뜻한 저녁의 미소 LP 이미지" data-tp="alt">
               </div>
             </div>
           </div>
@@ -398,13 +400,13 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-the-tale-of-optimistic-toby.png"
-                  alt="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby 앨범 커버" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-03.png"
+                  alt="Rush 17이 AI를 통해 제작한 Rush와 함께한 순간들 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-the-tale-of-optimistic-toby.png"
-                  alt="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby LP 이미지" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-03.png"
+                  alt="Rush 17이 AI를 통해 제작한 Rush와 함께한 순간들 LP 이미지" data-tp="alt">
               </div>
             </div>
           </div>
@@ -414,13 +416,13 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-my-dad-my-hero.png"
-                  alt="Cam이 AI를 통해 제작한 My Dad, My Hero 앨범 커버" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-04.png"
+                  alt="하음이 AI를 통해 제작한 마음을 담아, 마마 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-my-dad-my-hero.png"
-                  alt="Cam이 AI를 통해 제작한 My Dad, My Hero LP 이미지" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-04.png"
+                  alt="하음이 AI를 통해 제작한 마음을 담아, 마마 LP 이미지" data-tp="alt">
               </div>
             </div>
           </div>
@@ -430,49 +432,17 @@
             <div class="sound-imgbx">
               <div class="sound-imgbx-album">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-carpool-hero.png"
-                  alt="Tina가 AI를 통해 제작한 Carpool Hero 앨범 커버" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-05.png"
+                  alt="시우가 AI를 통해 제작한 금요일의 축제 앨범 커버" data-tp="alt">
               </div>
               <div class="sound-imgbx-track">
                 <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-carpool-hero.png"
-                  alt="Tina가 AI를 통해 제작한 Carpool Hero LP 이미지" data-tp="alt">
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-05.png"
+                  alt="시우가 AI를 통해 제작한 금요일의 축제 LP 이미지" data-tp="alt">
               </div>
             </div>
           </div>
           <!-- E : slide item 05 -->
-          <!-- S : slide item 06 -->
-          <div class="swiper-slide">
-            <div class="sound-imgbx">
-              <div class="sound-imgbx-album">
-                <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-loving-life-with-my-beautiful-wife.png"
-                  alt="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife 앨범 커버" data-tp="alt">
-              </div>
-              <div class="sound-imgbx-track">
-                <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-loving-life-with-my-beautiful-wife.png"
-                  alt="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife LP 이미지" data-tp="alt">
-              </div>
-            </div>
-          </div>
-          <!-- E : slide item 06 -->
-          <!-- S : slide item 07 -->
-          <div class="swiper-slide">
-            <div class="sound-imgbx">
-              <div class="sound-imgbx-album">
-                <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-album-spreading-joy-spreading-light.png"
-                  alt="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light 앨범 커버" data-tp="alt">
-              </div>
-              <div class="sound-imgbx-track">
-                <img
-                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-sound-track-spreading-joy-spreading-light.png"
-                  alt="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light LP 이미지" data-tp="alt">
-              </div>
-            </div>
-          </div>
-          <!-- E : slide item 07 -->
         </div>
 
         <!-- S : swiper-navigation-->
@@ -490,12 +460,12 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player:Beam of Positivity"
+              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player:웃음 속의 행복"
                 data-tp="label">
-                <audio id="audio-1" preload="metadata" aria-label="LG가 AI를 통해 제작한 Beam of Positivity 오디오 트랙"
+                <audio id="audio-1" preload="metadata" aria-label="쌀리가 AI를 통해 제작한 웃음 속의 행복 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-beam-of-positivity.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2034-radio-optimism-lgcom-audios-sound-01.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-1" aria-label="play"
@@ -510,19 +480,19 @@
                 <button class="volume-btn" aria-controls="audio-1" aria-label="unmute" aria-pressed="false"></button>
               </div>
               <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Beam of Positivity</div>
+                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">웃음 속의 행복</div>
               </h3>
-              <p data-tp="copy">By LG</p>
+              <p data-tp="copy">쌀리</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: Keep Swimming"
+              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: 따뜻한 저녁의 미소"
                 data-tp="label">
-                <audio id="audio-2" preload="metadata" aria-label="Mom이 AI를 통해 제작한 Keep Swimming 오디오 트랙"
+                <audio id="audio-2" preload="metadata" aria-label="하준이 AI를 통해 제작한 따뜻한 저녁의 미소 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-keep-swimming.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-02.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-2" aria-label="play"
@@ -537,19 +507,19 @@
                 <button class="volume-btn" aria-controls="audio-2" aria-label="unmute" aria-pressed="false"></button>
               </div>
               <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Keep Swimming</div>
+                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">따뜻한 저녁의 미소</div>
               </h3>
-              <p data-tp="copy">By Mom</p>
+              <p data-tp="copy">하준</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: The Tale of Optimistic Toby"
+              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: Rush와 함께한 순간들"
                 data-tp="label">
-                <audio id="audio-3" preload="metadata" aria-label="Kyle이 AI를 통해 제작한 The Tale of Optimistic Toby 오디오 트랙"
+                <audio id="audio-3" preload="metadata" aria-label="Rush 17이 AI를 통해 제작한 Rush와 함께한 순간들 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-the-tale-of-optimistic-toby.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-03.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-3" aria-label="play"
@@ -564,19 +534,19 @@
                 <button class="volume-btn" aria-controls="audio-3" aria-label="unmute" aria-pressed="false"></button>
               </div>
               <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">The Tale of Optimistic Toby</div>
+                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Rush와 함께한 순간들</div>
               </h3>
-              <p data-tp="copy">By Kyle</p>
+              <p data-tp="copy">Rush 17</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: My Dad, My Hero"
+              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: 마음을 담아, 마마"
                 data-tp="label">
-                <audio id="audio-4" preload="metadata" aria-label="Cam이 AI를 통해 제작한 My Dad, My Hero 오디오 트랙"
+                <audio id="audio-4" preload="metadata" aria-label="하음이 AI를 통해 제작한 마음을 담아, 마마 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-my-dad-my-hero.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-04.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-4" aria-label="play"
@@ -591,19 +561,19 @@
                 <button class="volume-btn" aria-controls="audio-4" aria-label="unmute" aria-pressed="false"></button>
               </div>
               <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">My Dad, My Hero</div>
+                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">마음을 담아, 마마</div>
               </h3>
-              <p data-tp="copy">By Cam</p>
+              <p data-tp="copy">하음</p>
             </div>
 
           </div>
           <div class="swiper-slide">
             <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: Carpool Hero" data-tp="label">
-                <audio id="audio-5" preload="metadata" aria-label="Tina가 AI를 통해 제작한 Carpool Hero 오디오 트랙"
+              <div class="sound-txtbx-controllers" role="group" aria-label="Audio player: 금요일의 축제" data-tp="label">
+                <audio id="audio-5" preload="metadata" aria-label="시우가 AI를 통해 제작한 금요일의 축제 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-carpool-hero.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-05.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-5" aria-label="play"
@@ -618,63 +588,9 @@
                 <button class="volume-btn" aria-controls="audio-5" aria-label="unmute" aria-pressed="false"></button>
               </div>
               <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Carpool Hero</div>
+                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">금요일의 축제</div>
               </h3>
-              <p data-tp="copy">By Tina</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group"
-                aria-label="Audio player: Loving Life with my Beautiful Wife" data-tp="label">
-                <audio id="audio-6" preload="metadata"
-                  aria-label="Devon이 AI를 통해 제작한 Loving Life with my Beautiful Wife 오디오 트랙" data-tp="label">
-                  <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-loving-life-with-my-beautiful-wife.mp3"
-                    type="audio/mpeg">
-                </audio>
-                <button class="sound-txtbx-controllers-btn" aria-controls="audio-6" aria-label="play"
-                  aria-pressed="false"></button>
-                <div class="progress-container" aria-controls="audio-6" aria-label="audio progress">
-                  <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                    <div class="progress-circle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
-                      aria-valuetext="0%"></div>
-                  </div>
-                </div>
-                <button class="volume-btn" aria-controls="audio-6" aria-label="unmute" aria-pressed="false"></button>
-              </div>
-              <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Loving Life with my Beautiful Wife</div>
-              </h3>
-              <p data-tp="copy">By Devon</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="sound-txtbx">
-              <div class="sound-txtbx-controllers" role="group"
-                aria-label="Audio player: Spreading Joy, Spreading Light" data-tp="label">
-                <audio id="audio-7" preload="metadata" aria-label="LG가 AI를 통해 제작한 Spreading Joy, Spreading Light 오디오 트랙"
-                  data-tp="label">
-                  <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-spreading-joy-spreading-light.mp3"
-                    type="audio/mpeg">
-                </audio>
-                <button class="sound-txtbx-controllers-btn" aria-controls="audio-7" aria-label="play"
-                  aria-pressed="false"></button>
-                <div class="progress-container" aria-controls="audio-7" aria-label="audio progress">
-                  <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                    <div class="progress-circle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
-                      aria-valuetext="0%"></div>
-                  </div>
-                </div>
-                <button class="volume-btn" aria-controls="audio-7" aria-label="unmute" aria-pressed="false"></button>
-              </div>
-              <h3 class="sound-txtbx-title">
-                <div class="sound-txtbx-title-wrapper heading" data-tp="copy">Spreading Joy, Spreading Light</div>
-              </h3>
-              <p data-tp="copy">By LG</p>
+              <p data-tp="copy">시우</p>
             </div>
           </div>
         </div>
@@ -708,7 +624,7 @@
               <button type="button" class="stop-btn"></button>
               <button type="button" class="next-btn"></button>
             </div>
-            <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn-fixed banner-main-area-startbtn-base"
+            <a href="https://radiooptimism.lg.com/ko?referrer_locale=ko&referrer_site=lifesgood" class="banner-main-area-startbtn-fixed banner-main-area-startbtn-base"
               data-tp="link">
               <p data-tp="copy">지금 바로 노래를 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
@@ -718,7 +634,7 @@
                 <div class="blendbx-blend-4 blend"></div>
               </div>
             </a>
-            <a href="https://radiooptimism.lg.com/ko" class="banner-main-area-startbtn banner-main-area-startbtn-base" data-tp="link">
+            <a href="https://radiooptimism.lg.com/ko?referrer_locale=ko&referrer_site=lifesgood" class="banner-main-area-startbtn banner-main-area-startbtn-base" data-tp="link">
               <p data-tp="copy">지금 바로 노래를 만들어보세요</p>
               <div class="blendbx" aria-hidden="true">
                 <div class="blendbx-blend-1 blend"></div>
@@ -753,7 +669,7 @@
     <section class="stories">
       <!-- <div class="inner"> -->
       <div class="inner">
-        <h2 class="stories-title heading" data-tp="copy">Lfie's Good에 대해 더 알아보기</h2>
+        <h2 class="stories-title heading" data-tp="copy">Life's Good에 대해 더 알아보기</h2>
       </div>
       <div class="stories-slide-bx">
         <div class="swiper" role="region">
