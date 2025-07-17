@@ -235,7 +235,7 @@
                   <li class="product-item">
                     <a href="https://www.lg.com/ae_ar/instaview-door-in-door-refrigerators">
                       <div class="img-bx">
-                        <img src="./assets/image/ai-gate-image-benefit02-products04.png" alt="عرض أمامي لمنتج LG InstaView AI" loading="lazy">
+                        <img src="/ae_ar/lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="عرض أمامي لمنتج LG InstaView AI" loading="lazy">
                       </div>
                       <span class="link-btn">تعرف على المزيد</span>
                     </a>
