@@ -265,6 +265,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.swiper-slide-active {
+          z-index: 3;
+        }
       }
 
       .sound-txtbx {
@@ -572,6 +576,7 @@
       .swiper-pagination-bullet {
         width: rem(8);
         height: rem(8);
+        margin: 0 rem(5);
         background-color: #b8b4ab;
         opacity: 1;
         transition: all 0.3s;

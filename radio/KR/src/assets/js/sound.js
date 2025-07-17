@@ -46,8 +46,15 @@ if (soundSwiper) {
 
         // 타임라인 초기화 
         Object.values(trackTimelines).forEach(tl => {
-            tl.pause();
-            tl.timeScale(0);
+            if (tl) {
+                tl.kill();
+            }
+        });
+        Object.keys(trackTimelines).forEach(key => {
+            delete trackTimelines[key];
+        });
+        Object.keys(trackStarted).forEach(key => {
+            trackStarted[key] = false;
         });
 
         // 컨트롤러 초기화 
@@ -172,6 +179,12 @@ if (soundSwiper) {
         const activeContainer = document.querySelector('.sound-img-active');
         const track = activeContainer.querySelector('.sound-imgbx-track');
 
+        // track 요소가 없으면 함수 종료
+        if (!track) {
+            console.warn('Track element not found for index:', index);
+            return;
+        }
+
         // 현재 슬라이드 타임라인 
         if (!trackTimelines[index]) {
             const tl = gsap.timeline({
@@ -287,6 +300,21 @@ if (soundSwiper) {
 
         const navigationPosition = (album.getBoundingClientRect().top - soundSwiper.getBoundingClientRect().top) + (album.getBoundingClientRect().height / 2);
         swiperNavigation.style.top = `${navigationPosition}px `;
+    }
+
+    // 슬라이드 변경 시 타임라인 초기화 함수
+    function resetTrackTimelines() {
+        Object.values(trackTimelines).forEach(tl => {
+            if (tl) {
+                tl.kill();
+            }
+        });
+        Object.keys(trackTimelines).forEach(key => {
+            delete trackTimelines[key];
+        });
+        Object.keys(trackStarted).forEach(key => {
+            trackStarted[key] = false;
+        });
     }
 
     const soundTexts = document.querySelectorAll(".sound .swiper-slide .sound-txtbx");
@@ -419,12 +447,13 @@ if (soundSwiper) {
                     control: swiperInstance
                 },
                 on: {
-                    slideChange() {
-                        resetAll();
-                        soundTitleAnimation(this.realIndex, true);
-                        swiperInstance.slideTo(this.realIndex);
-                        moveCenterNavigation();
-                    }
+                                slideChange() {
+                resetAll();
+                resetTrackTimelines(); // 타임라인 완전 초기화
+                soundTitleAnimation(this.realIndex, true);
+                swiperInstance.slideTo(this.realIndex);
+                moveCenterNavigation();
+            }
                 }
             });
 
@@ -437,6 +466,9 @@ if (soundSwiper) {
     function handleSwiperResize() {
         if (swiperInstance.realIndex >= 1) {
             soundTexts.forEach(el => el.classList.remove("active"));
+
+            // 타임라인 초기화
+            resetTrackTimelines();
 
             swiperInstance.destroy(true, true);
             swiperInstance = new Swiper(soundSwiper, swiperOptions);

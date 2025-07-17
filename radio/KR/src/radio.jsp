@@ -1,21 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <link href="/kr/campaign/lifesgood/common/css/reset.css" rel="stylesheet" type="text/css">
-<link href="/kr/campaign/lifesgood/common/css/font.css" rel="stylesheet" type="text/css">
-<link href="/kr/campaign/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
-<link href="/kr/campaign/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css">
+  <link href="/kr/campaign/lifesgood/common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+  <link href="/kr/campaign/lifesgood/assets/css/radio.css" rel="stylesheet" type="text/css">
   <script src="/kr/campaign/lifesgood/common/js/gsap.min.js"></script>
-<script src="/kr/campaign/lifesgood/common/js/ScrollTrigger.min.js"></script>
-<script src="/kr/campaign/lifesgood/common/js/SplitText.min.js"></script>
-<script src="/kr/campaign/lifesgood/common/js/swiper-bundle.min.js"></script>
-<script src="/kr/campaign/lifesgood/assets/js/radio.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/overview.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/influence.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
-<script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/common/js/ScrollTrigger.min.js"></script>
+  <script src="/kr/campaign/lifesgood/common/js/SplitText.min.js"></script>
+  <script src="/kr/campaign/lifesgood/common/js/swiper-bundle.min.js"></script>
+  <script src="/kr/campaign/lifesgood/assets/js/overview.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
 
 
   <!-- lifesgood contents -->
@@ -465,7 +462,7 @@
                 <audio id="audio-1" preload="metadata" aria-label="쌀리가 AI를 통해 제작한 웃음 속의 행복 오디오 트랙"
                   data-tp="label">
                   <source
-                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2034-radio-optimism-lgcom-audios-sound-01.mp3"
+                    src="/kr/campaign/lifesgood/assets/audios/lifes-good-campaign-2025-radio-optimism-lgcom-audios-sound-01.mp3"
                     type="audio/mpeg">
                 </audio>
                 <button class="sound-txtbx-controllers-btn" aria-controls="audio-1" aria-label="play"
