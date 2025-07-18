@@ -10,7 +10,7 @@
   <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
-  <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
+  <!-- <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script> -->
   <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
 
@@ -207,14 +207,12 @@
         </div>
       </div>
     </section>
-    <section class="how-to">
+    <!-- <section class="how-to">
       <div class="how-to-container">
         <h2 class="how-to-title heading" data-tp="copy">나만의 노래 만드는 방법</h2>
         <p class="how-to-subtitle" data-tp="copy">지금 시작해 보세요 ㅡ 몇 번의 탭으로 쉽게 만들 수 있어요</p>
-        <!-- S : how-to-video-slide-->
         <div class="how-to-video-slide swiper">
           <div class="swiper-wrapper">
-            <!-- S : slide item 01-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
                 data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step01-desktop.mp4"
@@ -243,8 +241,6 @@
                 <p class="how-to-txt-bx-txt" data-tp="copy">원하는 언어를 선택하고 나만의 노래를 만들기를 시작해 보세요.</p>
               </div>
             </div>
-            <!-- E : slide item 01-->
-            <!-- S : slide item 02-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
                 data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step02-desktop.mp4"
@@ -274,8 +270,6 @@
                   둘만 아는 추억, 순간을 적을수록 더 특별한 가사가 완성돼요.<br> 작성이 완료되면 그 이야기를 노래와 앨범 이미지로 만들어 드릴게요.</p>
               </div>
             </div>
-            <!-- E : slide item 02-->
-            <!-- S : slide item 03-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
                 data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step03-desktop.mp4"
@@ -304,8 +298,6 @@
                 <p class="how-to-txt-bx-txt" data-tp="copy">원하는 장르와 분위기를 선택하세요.</p>
               </div>
             </div>
-            <!-- E : slide item 03-->
-            <!-- S : slide item 04-->
             <div class="swiper-slide">
               <div class="how-to-video-bx responsive-video"
                 data-desktop-video-src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-how-to-step04-desktop.mp4"
@@ -334,9 +326,7 @@
                 <p class="how-to-txt-bx-txt" data-tp="copy">소중한 사람에게 노래를 보내보세요. 그리고 Radio Optimism에서 함께 들어보세요.</p>
               </div>
             </div>
-            <!-- E : slide item 04-->
           </div>
-          <!-- S : swiper-navigation-->
           <div class="swiper-navigation">
             <button class="swiper-button-prev">
               <p class="sr-only">Previous</p>
@@ -345,14 +335,10 @@
               <p class="sr-only">Next</p>
             </button>
           </div>
-          <!-- E : swiper-navigation-->
-          <!-- S : swiper-pagination-->
           <div class="swiper-pagination"></div>
-          <!-- E : swiper-pagination-->
         </div>
-        <!-- E : how-to-video-slide-->
       </div>
-    </section>
+    </section> -->
     <!-- S : sound -->
     <section class="sound">
       <h2 class="sound-title heading" data-tp="copy">당신을 위한 노래</h2>
