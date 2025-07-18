@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
 // 유튜브 비디오 ID (실제 사용할 비디오 ID로 변경하세요)
-const YOUTUBE_VIDEO_ID = '1y2SWAntro8'; // 예시 ID
+const YOUTUBE_VIDEO_ID = 'j9zSaqOWtTQ'; // 예시 ID
 
 let player;
 let isPlayerReady = false;
