@@ -172,7 +172,7 @@ if (soundSwiper) {
         const activeContainer = document.querySelector('.sound-img-active');
         const track = activeContainer.querySelector('.sound-imgbx-track');
 
-        // 현재 슬라이드 타임라인 
+        // 현재 슬라이드 타임라인 (슬라이드 넘길때마다 생성되는 타임라인)
         if (!trackTimelines[index]) {
             const tl = gsap.timeline({
                     paused: true,
@@ -186,6 +186,7 @@ if (soundSwiper) {
             tl.timeScale(0);
             trackTimelines[index] = tl;
         }
+
         const tl = trackTimelines[index];
 
         // 오디오 길이 계산
@@ -200,7 +201,7 @@ if (soundSwiper) {
         if (!isStopped) {
             if (!trackStarted[index]) {
                 trackStarted[index] = true;
-
+                
                 tl.play();
 
                 gsap.to(tl, {
@@ -214,14 +215,16 @@ if (soundSwiper) {
                     duration: accel,
                     delay: delay,
                     ease: "power2.out",
-                    onComplete: () => tl.pause()
+                    onComplete: () => tl.pause(),
                 });
+
             } else {
-                tl.play();
+                tl.pause();
             }
             // 정지 버튼을 눌렀다면
         } else {
             tl.pause();
+            trackStarted[index] = false;
         }
     }
 
@@ -341,11 +344,26 @@ if (soundSwiper) {
 
                 const index_currentSlide = this.realIndex;
                 const currentSlide = this.slides[index_currentSlide];
+                
+                // 현재 슬라이드가 아닌 슬라이드들의 trackTimelines 정리
+                Object.keys(trackTimelines).forEach(key => {
+                    const keyIndex = parseInt(key);
+                    if (keyIndex !== index_currentSlide) {
+
+                        // 트랙(soundAnimatonTrack) 타임라인 완전히 제거
+                        if (trackTimelines[keyIndex]) {
+                            trackTimelines[keyIndex].pause();
+                            trackTimelines[keyIndex].kill();
+                            delete trackTimelines[keyIndex];
+                        }
+
+                        // trackStarted 상태도 초기화
+                        trackStarted[keyIndex] = false;
+                    }
+                });
             },
 
             activeIndexChange: function () {
-                console.log('activeIndexChange triggered');
-
                 // 현재 활성화된 슬라이드 찾기
                 const activeSlide = this.slides[this.activeIndex];
 
@@ -353,7 +371,6 @@ if (soundSwiper) {
                     console.log('No active slide found');
                     return;
                 }
-
                 // sound-imgbx 찾기
                 const activeImgBx = activeSlide.querySelector('.sound-imgbx');
 

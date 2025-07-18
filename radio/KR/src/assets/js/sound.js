@@ -46,15 +46,8 @@ if (soundSwiper) {
 
         // 타임라인 초기화 
         Object.values(trackTimelines).forEach(tl => {
-            if (tl) {
-                tl.kill();
-            }
-        });
-        Object.keys(trackTimelines).forEach(key => {
-            delete trackTimelines[key];
-        });
-        Object.keys(trackStarted).forEach(key => {
-            trackStarted[key] = false;
+            tl.pause();
+            tl.timeScale(0);
         });
 
         // 컨트롤러 초기화 
@@ -179,13 +172,7 @@ if (soundSwiper) {
         const activeContainer = document.querySelector('.sound-img-active');
         const track = activeContainer.querySelector('.sound-imgbx-track');
 
-        // track 요소가 없으면 함수 종료
-        if (!track) {
-            console.warn('Track element not found for index:', index);
-            return;
-        }
-
-        // 현재 슬라이드 타임라인 
+        // 현재 슬라이드 타임라인 (슬라이드 넘길때마다 생성되는 타임라인)
         if (!trackTimelines[index]) {
             const tl = gsap.timeline({
                     paused: true,
@@ -199,6 +186,7 @@ if (soundSwiper) {
             tl.timeScale(0);
             trackTimelines[index] = tl;
         }
+
         const tl = trackTimelines[index];
 
         // 오디오 길이 계산
@@ -213,7 +201,7 @@ if (soundSwiper) {
         if (!isStopped) {
             if (!trackStarted[index]) {
                 trackStarted[index] = true;
-
+                
                 tl.play();
 
                 gsap.to(tl, {
@@ -227,14 +215,16 @@ if (soundSwiper) {
                     duration: accel,
                     delay: delay,
                     ease: "power2.out",
-                    onComplete: () => tl.pause()
+                    onComplete: () => tl.pause(),
                 });
+
             } else {
-                tl.play();
+                tl.pause();
             }
             // 정지 버튼을 눌렀다면
         } else {
             tl.pause();
+            trackStarted[index] = false;
         }
     }
 
@@ -302,21 +292,6 @@ if (soundSwiper) {
         swiperNavigation.style.top = `${navigationPosition}px `;
     }
 
-    // 슬라이드 변경 시 타임라인 초기화 함수
-    function resetTrackTimelines() {
-        Object.values(trackTimelines).forEach(tl => {
-            if (tl) {
-                tl.kill();
-            }
-        });
-        Object.keys(trackTimelines).forEach(key => {
-            delete trackTimelines[key];
-        });
-        Object.keys(trackStarted).forEach(key => {
-            trackStarted[key] = false;
-        });
-    }
-
     const soundTexts = document.querySelectorAll(".sound .swiper-slide .sound-txtbx");
 
     // Sound Swiper 초기화 및 설정
@@ -369,11 +344,26 @@ if (soundSwiper) {
 
                 const index_currentSlide = this.realIndex;
                 const currentSlide = this.slides[index_currentSlide];
+                
+                // 현재 슬라이드가 아닌 슬라이드들의 trackTimelines 정리
+                Object.keys(trackTimelines).forEach(key => {
+                    const keyIndex = parseInt(key);
+                    if (keyIndex !== index_currentSlide) {
+
+                        // 트랙(soundAnimatonTrack) 타임라인 완전히 제거
+                        if (trackTimelines[keyIndex]) {
+                            trackTimelines[keyIndex].pause();
+                            trackTimelines[keyIndex].kill();
+                            delete trackTimelines[keyIndex];
+                        }
+
+                        // trackStarted 상태도 초기화
+                        trackStarted[keyIndex] = false;
+                    }
+                });
             },
 
             activeIndexChange: function () {
-                console.log('activeIndexChange triggered');
-
                 // 현재 활성화된 슬라이드 찾기
                 const activeSlide = this.slides[this.activeIndex];
 
@@ -381,7 +371,6 @@ if (soundSwiper) {
                     console.log('No active slide found');
                     return;
                 }
-
                 // sound-imgbx 찾기
                 const activeImgBx = activeSlide.querySelector('.sound-imgbx');
 
@@ -447,13 +436,12 @@ if (soundSwiper) {
                     control: swiperInstance
                 },
                 on: {
-                                slideChange() {
-                resetAll();
-                resetTrackTimelines(); // 타임라인 완전 초기화
-                soundTitleAnimation(this.realIndex, true);
-                swiperInstance.slideTo(this.realIndex);
-                moveCenterNavigation();
-            }
+                    slideChange() {
+                        resetAll();
+                        soundTitleAnimation(this.realIndex, true);
+                        swiperInstance.slideTo(this.realIndex);
+                        moveCenterNavigation();
+                    }
                 }
             });
 
@@ -466,9 +454,6 @@ if (soundSwiper) {
     function handleSwiperResize() {
         if (swiperInstance.realIndex >= 1) {
             soundTexts.forEach(el => el.classList.remove("active"));
-
-            // 타임라인 초기화
-            resetTrackTimelines();
 
             swiperInstance.destroy(true, true);
             swiperInstance = new Swiper(soundSwiper, swiperOptions);
