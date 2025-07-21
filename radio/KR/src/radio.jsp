@@ -10,7 +10,7 @@
   <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
-  <!-- <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script> -->
+  <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
 
@@ -207,7 +207,7 @@
         </div>
       </div>
     </section>
-    <!-- <section class="how-to">
+    <section class="how-to">
       <div class="how-to-container">
         <h2 class="how-to-title heading" data-tp="copy">나만의 노래 만드는 방법</h2>
         <p class="how-to-subtitle" data-tp="copy">지금 시작해 보세요 ㅡ 몇 번의 탭으로 쉽게 만들 수 있어요</p>
@@ -238,7 +238,7 @@
                   </span>
                   <span data-tp="copy">Radio Optimism에 들어오세요.</span>
                 </h3>
-                <p class="how-to-txt-bx-txt" data-tp="copy">원하는 언어를 선택하고 나만의 노래를 만들기를 시작해 보세요.</p>
+                <p class="how-to-txt-bx-txt" data-tp="copy">원하는 언어를 선택하고 나만의 노래 만들기를 시작해 보세요.</p>
               </div>
             </div>
             <div class="swiper-slide">
@@ -338,7 +338,7 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section> -->
+    </section>
     <!-- S : sound -->
     <section class="sound">
       <h2 class="sound-title heading" data-tp="copy">당신을 위한 노래</h2>
