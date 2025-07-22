@@ -50,11 +50,13 @@ function influence() {
   // Swiper 초기화
   influenceSlide = new Swiper(".influence-slide", {
     slidesPerView: 1.4,
+    slidesPerGroup: 1,
     spaceBetween: 16,
     speed: 700,
     slideToClickedSlide: true,
     centeredSlides: true,
-    initialSlide: 2,
+    loop: true,
+    loopedSlides: 5,
     mousewheel: {
       forceToAxis: true, // 이 옵션이 핵심입니다.
     },
@@ -87,8 +89,20 @@ function influence() {
         updateActiveSlideBottom();
 
         if (activeVideo) {
+          activeVideo.muted = true; // 기본값으로 mute 설정
           activeVideo.play();
           currentPlayingVideo = activeVideo;
+          
+          // 초기 활성화 슬라이드의 사운드 버튼 상태를 mute 상태로 업데이트
+          const activeSoundBtn = activeContentBx.querySelector('.influence-content-bx-sound-btn');
+          const activeSoundBtnImg = activeSoundBtn.querySelector('img');
+          
+          if (activeSoundBtn && activeSoundBtnImg) {
+            activeSoundBtnImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg';
+            activeSoundBtnImg.setAttribute('alt', 'sound on');
+            activeSoundBtn.setAttribute('aria-label', 'sound on');
+            activeSoundBtn.setAttribute('aria-pressed', 'false');
+          }
         }
       },
       slideChange: function() {
@@ -106,10 +120,22 @@ function influence() {
           currentPlayingVideo.currentTime = 0;
         }
         
-        // 새로운 활성화 비디오 재생
+        // 새로운 활성화 비디오 재생 및 mute 상태로 설정
         if (newActiveVideo) {
+          newActiveVideo.muted = true; // 기본값으로 mute 설정
           newActiveVideo.play();
           currentPlayingVideo = newActiveVideo;
+          
+          // 새로운 활성화 슬라이드의 사운드 버튼 상태를 mute 상태로 업데이트
+          const newActiveSoundBtn = newActiveContentBx.querySelector('.influence-content-bx-sound-btn');
+          const newActiveSoundBtnImg = newActiveSoundBtn.querySelector('img');
+          
+          if (newActiveSoundBtn && newActiveSoundBtnImg) {
+            newActiveSoundBtnImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg';
+            newActiveSoundBtnImg.setAttribute('alt', 'sound on');
+            newActiveSoundBtn.setAttribute('aria-label', 'sound on');
+            newActiveSoundBtn.setAttribute('aria-pressed', 'false');
+          }
         }
       },
       resize: function() {
@@ -130,7 +156,7 @@ function influence() {
   function toggleVideo(video) {
     // 반복되는 DOM 요소 선택을 변수로 저장
     const videoBox = video.closest('.influence-content-bx');
-    const button = videoBox.querySelector('.influence-content-bx-btn');
+    const button = videoBox.querySelector('.influence-content-bx-play-btn');
     const buttonImg = button.querySelector('img');
     
     if (video.paused) {
@@ -139,20 +165,54 @@ function influence() {
       buttonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg';
       buttonImg.setAttribute('alt', 'pause video');
       button.setAttribute('aria-label', 'pause video');
+      button.setAttribute('aria-pressed', 'true');
+      button.classList.remove('is-pause');
     } else {
       video.pause();
       // 버튼 이미지를 재생 아이콘으로 변경
       buttonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-play.svg';
       buttonImg.setAttribute('alt', 'play video');
       button.setAttribute('aria-label', 'play video');
+      button.setAttribute('aria-pressed', 'false');
+      button.classList.add('is-pause');
+    }
+  }
+
+  function toggleSound(video) {
+    const videoBox = video.closest('.influence-content-bx');
+    const soundButton = videoBox.querySelector('.influence-content-bx-sound-btn');
+    const soundButtonImg = soundButton.querySelector('img');
+    
+    if (video.muted) {
+      video.muted = false;
+      // 사운드 켜기 상태로 변경
+      soundButtonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-mute-icon.svg';
+      soundButtonImg.setAttribute('alt', 'sound on');
+      soundButton.setAttribute('aria-label', 'sound on');
+      soundButton.setAttribute('aria-pressed', 'true');
+    } else {
+      video.muted = true;
+      // 사운드 끄기 상태로 변경
+      soundButtonImg.src = './assets/images/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg';
+      soundButtonImg.setAttribute('alt', 'sound off');
+      soundButton.setAttribute('aria-label', 'sound off');
+      soundButton.setAttribute('aria-pressed', 'false');
     }
   }
 
   // 비디오 재생/일시정지 버튼에 이벤트 리스너 추가
-  document.querySelectorAll('.influence-content-bx-btn').forEach(button => {
+  document.querySelectorAll('.influence-content-bx-play-btn').forEach(button => {
     button.addEventListener('click', function() {
       const video = this.closest('.influence-content-bx').querySelector('video');
       toggleVideo(video);
+    });
+  });
+
+  // 사운드 버튼에 이벤트 리스너 추가
+  document.querySelectorAll('.influence-content-bx-sound-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const video = this.closest('.influence-content-bx').querySelector('video');
+      toggleSound(video);
     });
   });
 }
