@@ -93,6 +93,11 @@ function influence() {
           activeVideo.play();
           currentPlayingVideo = activeVideo;
           
+          // 비디오 종료 시 다음 슬라이드로 이동하는 이벤트 리스너 추가
+          activeVideo.addEventListener('ended', () => {
+            influenceSlide.slideNext();
+          });
+          
           // 초기 활성화 슬라이드의 사운드 버튼 상태를 mute 상태로 업데이트
           const activeSoundBtn = activeContentBx.querySelector('.influence-content-bx-sound-btn');
           const activeSoundBtnImg = activeSoundBtn.querySelector('img');
@@ -125,6 +130,11 @@ function influence() {
           newActiveVideo.muted = true; // 기본값으로 mute 설정
           newActiveVideo.play();
           currentPlayingVideo = newActiveVideo;
+          
+          // 비디오 종료 시 다음 슬라이드로 이동하는 이벤트 리스너 추가
+          newActiveVideo.addEventListener('ended', () => {
+            influenceSlide.slideNext();
+          });
           
           // 새로운 활성화 슬라이드의 사운드 버튼 상태를 mute 상태로 업데이트
           const newActiveSoundBtn = newActiveContentBx.querySelector('.influence-content-bx-sound-btn');

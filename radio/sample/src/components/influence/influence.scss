@@ -18,6 +18,7 @@
     font-size: rem(28);
     text-align: center;
     margin-bottom: rem(70);
+    text-wrap: balance;
     @include tablet {
       font-size: rem(44);
       margin-bottom: rem(87.84);
