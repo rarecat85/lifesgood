@@ -30,7 +30,6 @@ function init() {
         autoplay: 0,        // 자동재생 비활성화 (스크롤 트리거로 제어)
         controls: 1,        // 컨트롤 표시
         mute: 1,           // 음소거 상태로 시작
-        loop: 1,           // 반복재생
         playlist: YOUTUBE_VIDEO_ID, // 루프를 위한 플레이리스트
         modestbranding: 1,  // YouTube 브랜딩 최소화
         rel: 0,            // 관련 동영상 표시 안함
@@ -59,6 +58,7 @@ function init() {
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
       // 비디오 종료 시 반복재생
+      // setTimeout(playVideo, 6000);
       playVideo();
     }
   }
