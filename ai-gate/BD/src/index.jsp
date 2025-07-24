@@ -7,12 +7,12 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG Affectionate Intelligence | LG Bangladesh</title>
-    <meta name="Keywords" content="">
-    <meta name="Description" content="">
-    <meta property="og:title" content=""/>
-    <meta property="og:url" content="">
-    <meta property="og:description" content=""/>
+    <title>LG Affectionate Intelligence | LG BD</title>
+    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions">
+    <meta name="Description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care.">
+    <meta property="og:title" content="LG Affectionate Intelligence | LG BD"/>
+    <meta property="og:url" content="https://www.lg.com/bd/lg-ai">
+    <meta property="og:description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care."/>
     <meta property="og:image" content="">
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
@@ -22,13 +22,13 @@
 
     <!-- your -->
     <link href="./lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css" />
-<link href="./lg-ai/common/css/ai-gate-font.css" rel="stylesheet" type="text/css" />
-<link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-<link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
+    <link href="./lg-ai/common/css/ai-gate-font.css" rel="stylesheet" type="text/css" />
+    <link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
 
     <script src="./lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
-<script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer></script>
-<script src="./lg-ai/assets/js/ai-gate-js-common.js" defer></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-common.js" defer></script>
 
     <script>
         function GA_Event(category,action,label) {
@@ -50,8 +50,8 @@
     <meta itemprop="name" content="{Browser Title}"/>
     <meta itemprop="image" content="{Share Image}"/>
     <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
-    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+    <meta itemprop="description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care."/>
+    <meta itemprop="Keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions"/>
 </div>
 <c:set var='bizType' value='${$bizType }'/>
 <c:set var='siteType' value='MKT'/>
@@ -98,9 +98,9 @@
               <span class="gradient-text">Affectionate Intelligence</span> for YOU
             </h2>
             <p class="text">
-              At LG, we've been asking ourselves: what should AI exist for? <br>
-              After much reflection, we've found our answer. <br><br>
-              For us, AI goes beyond Artificial Intelligence—it's Affectionate Intelligence. <br><br>
+              At LG, we’ve been asking ourselves: what should AI exist for? <br>
+              After much reflection, we’ve found our answer. <br><br>
+              For us, AI goes beyond Artificial Intelligence—it’s Affectionate Intelligence. <br><br>
               As AI becomes a part of our daily lives, <br>
               it should help create the better life we all deserve. <br><br>
               That's why LG AI starts with YOU affectionately through <br>
@@ -144,15 +144,7 @@
                     <!-- S : product-list -->
                     <ul class="product-list">
                       <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products01.png" alt="LG OLED evo AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
+                        <a href="https://www.lg.com/bd/oled-tvs">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI product front view" loading="lazy">
                           </div>
@@ -160,7 +152,7 @@
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
+                        <a href="https://www.lg.com/bd/qned-tvs">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI product front view" loading="lazy">
                           </div>
@@ -168,17 +160,9 @@
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
+                        <a href="https://www.lg.com/bd/nanocell-tvs">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG Ultra HD AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products05.png" alt="LG xboom AI product front view" loading="lazy">
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -206,7 +190,7 @@
                     <!-- S : product-list -->
                     <ul class="product-list">
                       <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
+                        <a href="https://www.lg.com/bd/washing-machines/lg-wt1410nheg">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI product front view" loading="lazy">
                           </div>
@@ -214,33 +198,9 @@
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
+                        <a href="https://www.lg.com/bd/washing-machines/lg-fv1410h3ba">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG Washing Machine AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="LG Dryer AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products05.png" alt="LG gramPro AI product front view" loading="lazy">
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -267,14 +227,6 @@
                     <!-- E : video-bx -->
                     <!-- S : product-list -->
                     <ul class="product-list">
-                      <li class="product-item">
-                        <a href=""> <!-- https://www.lg.com/global/lg-ai/common/ -->
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI product front view" loading="lazy">
-                          </div>
-                          <span class="link-btn">Learn More</span>
-                        </a>
-                      </li>
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision">
                           <div class="img-bx">
@@ -309,10 +261,8 @@
               <!-- S : tab-list -->
               <div class="tab-list">
                 <button class="tab active" role="tab" aria-selected="true" aria-controls="feature-panel-1" id="feature-tab-1">TV</button>
-                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-2" id="feature-tab-2">Audio</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-3" id="feature-tab-3">Appliances</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-4" id="feature-tab-4">Air Conditioning</button>
-                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-5" id="feature-tab-5">Computing</button>
               </div>
               <!-- E : tab-list -->
               <!-- S : panel-container -->
@@ -343,7 +293,7 @@
                           Meet the next generation of<br>
                           LG AI TV
                         </h3>
-                        <a href="javascript:void(0)" class="white-btn layer-open layer-tv">Learn More</a>
+                        <a href="https://www.lg.com/bd/tvs-soundbars/ai-tv" class="white-btn">Learn More</a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -405,75 +355,6 @@
                   </div>
                 </div>
                 <!-- E : panel tab-1 -->
-                <!-- S : panel tab-2 -->
-                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-2" id="feature-panel-2">
-                  <div class="tab-panel-inner">
-                    <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title">
-                      <img src="./lg-ai/assets/image/ai-product-category-audio-eyebrow-logo-desktop.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
-                      Sounds uniquely right
-                    </h2>
-                    <!-- E : tab-panel-title -->
-                    <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text">
-                      LG xboom AI analyzes and adjusts sound to suit the genre and space. With AI lighting that enhances the ambiance and harmonizes with your music, you can enjoy sound and vibe uniquely right.
-                    </p>
-                    <!-- E : tab-panel-text -->
-                    <!-- S : tab-panel-banner -->
-                    <div class="tab-panel-banner">
-                      <picture>
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="A woman and a man embrace in the living room, with the LG xboom speaker turned on beside them." loading="lazy">
-                      </picture>
-                      <div class="text-bx">
-                        <h3 class="title">
-                          Enjoy a new sound experience <br>
-                          with LG xboom AI
-                        </h3>
-                        <a href="javascript:void(0)" class="white-btn layer-open layer-audio">Learn More</a>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-banner -->
-                    <!-- S : tab-panel-slide -->
-                    <div class="tab-panel-slide">
-                      <div class="swiper products-textbx-thumbbx">
-                        <div class="slide-controller">
-                          <div class="swiper-pagination"></div>
-                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
-                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
-                        </div>
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="AI perfects sound for every genre" data-desc="Choose manually from rhythm, melody, or voice-oriented modes based on your preference, or let AI set the most optimal mode for you. AI analyzes audio and adjusts the sound to suit the genre." data-alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard">
-                            </div>
-                            <p class="slide-title">AI Sound</p>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="AI lighting that syncs with sound" data-desc="AI detects genre of your music and delivers the optimal the lighting that syncs with sound. Choose from Ambient, Party, Voice mode to set the mood. Check the informative lighting for speaker's status." data-alt="LG xboom speaker with AI Lighting that adapts to voice, ambient, and party modes">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG xboom speaker with AI Lighting that adapts to voice, ambient, and party modes">
-                            </div>
-                            <p class="slide-title">AI Lighting</p>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="AI calibration for space-filling sound" data-desc="AI calibrates audio based on the size and shape of the space you're in. Delivers full, undistorted sound whether in a spacious area or a small room." data-alt="LG xboom speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG xboom speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture">
-                            </div>
-                            <p class="slide-title">AI Calibration</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-slide -->
-                    <!-- S : tab-panel-disclaimer -->
-                    <ul class="tab-panel-disclaimer">
-                      <li>*This product is not available yet.</li>
-                    </ul>
-                    <!-- E : tab-panel-disclaimer -->
-                  </div>
-                </div>
-                <!-- E : panel tab-2 -->
                 <!-- S : panel tab-3 -->
                 <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-3" id="feature-panel-3">
                   <div class="tab-panel-inner">
@@ -500,7 +381,7 @@
                           Discover a new way of life <br>
                           with LG AI Core Tech
                         </h3>
-                        <a href="https://www.lg.com/global/lg-ai-core-tech/washing-machine-dryer/" class="white-btn layer-open layer-appliances">Learn More</a>
+                        <a href="https://www.lg.com/bd/washing-machines/lg-wt1410nheg" class="white-btn">Learn More</a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -565,7 +446,7 @@
                           Experience optimized comfort <br>
                           with LG AI Air
                         </h3>
-                        <a href="javascript:void(0)" class="white-btn layer-open layer-conditioning">Learn More</a>
+                        <a href="https://www.lg.com/bd/home-air-conditioners" class="white-btn">Learn More</a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -607,70 +488,6 @@
                   </div>
                 </div>
                 <!-- E : panel tab-4 -->
-                <!-- S : panel tab-5 -->
-                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-5" id="feature-panel-5">
-                  <div class="tab-panel-inner">
-                    <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title">
-                      <img src="./lg-ai/assets/image/ai-product-category-computing-eyebrow-logo-desktop.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">  
-                      Powers everything you do
-                    </h2>
-                    <!-- E : tab-panel-title -->
-                    <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text">
-                      LG gram AI empowers your work both online and offline. Securely find and summarize files offline with gram chat on-device, and boost your productivity online with GPT-4o-powered gram chat cloud.
-                    </p>
-                    <!-- E : tab-panel-text -->
-                    <!-- S : tab-panel-banner -->
-                    <div class="tab-panel-banner">
-                      <picture>
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="A woman uses an LG gram laptop with a dual screen setup for video conferencing and multitasking in her home office." loading="lazy">
-                      </picture>
-                      <div class="text-bx">
-                        <h3 class="title text-black">
-                          Unleash your new abilities <br>
-                          without limits with LG gram AI
-                        </h3>
-                        <a href="javascript:void(0)" class="white-btn layer-open layer-computing">Learn More</a>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-banner -->
-                    <!-- S : tab-panel-slide -->
-                    <div class="tab-panel-slide">
-                      <div class="swiper products-textbx-thumbbx">
-                        <div class="slide-controller">
-                          <div class="swiper-pagination"></div>
-                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
-                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
-                        </div>
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="gram Chat On-Device" data-desc="gram Chat On-Device offers secure, offline AI assistance for file organization, search, and content summarization directly on your laptop." data-alt="LG gram laptop featuring On-Device AI with smart assistant interface on screen">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="LG gram laptop featuring On-Device AI with smart assistant interface on screen">
-                            </div>
-                            <p class="slide-title">gram Chat On-Device</p>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="gram Chat Cloud" data-desc="gram Chat Cloud leverages powerful cloud-based AI to enhance productivity with advanced content creation, research, and analysis capabilities." data-alt="LG gram laptop with Cloud AI displaying smart assistant interface for online support and productivity">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="LG gram laptop with Cloud AI displaying smart assistant interface for online support and productivity">
-                            </div>
-                            <p class="slide-title">gram Chat Cloud</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-slide -->
-                    <!-- S : tab-panel-disclaimer -->
-                    <ul class="tab-panel-disclaimer">
-                      <li>*In the initial stages of using the product, some features may not function smoothly. This is due to the nature of on-device AI, which requires time for pre-training to adapt to the user.</li>
-                      <li>*gram Chat On-Device requires indexing tasks to locate content on your PC by combining words with data, which may take some time to yield the desired results.</li>
-                    </ul>
-                    <!-- E : tab-panel-disclaimer -->
-                  </div>
-                </div>
-                <!-- E : panel tab-5 -->
               </div>
             </div>
           </div>
@@ -732,7 +549,7 @@
           <div class="inner">
             <h2 class="thinq-section-title">ThinQ® helps make life happen</h2>
             <p class="thinq-section-text">A platform for your smart LG appliances and devices, ThinQ puts control and convenience at your fingertips, to help <br>you simplify life and enjoy the comforts of home.</p>
-            <a href="javascript:void(0)" class="white-btn">Learn More</a>
+            <a href="https://www.lg.com/bd/appliances/thinq" class="white-btn">Learn More</a>
             <div class="banner">
               <picture> 
                 <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
