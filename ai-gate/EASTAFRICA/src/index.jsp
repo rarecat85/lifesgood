@@ -75,10 +75,10 @@
           <div class="inner">
             <div
               class="video-bx responsive-video"
-              data-desktop-video-src="./assets/video/ai-gate-video-kv-desktop.mp4"
-              data-mobile-video-src="./assets/video/ai-gate-video-kv-mobile.mp4"
-              data-desktop-poster-src="./assets/image/ai-gate-image-kv-desktop.png"
-              data-mobile-poster-src="./assets/image/ai-gate-image-kv-mobile.png"
+              data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-kv-desktop.mp4"
+              data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-kv-mobile.mp4"
+              data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-kv-desktop.png"
+              data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-kv-mobile.png"
               aria-labelledby="kv-video-description">
               <h1 id="kv-video-description" class="a11y-text">
                 A woman walks by as the light turns on automatically. The phrase "Sensing wisely" appears on screen. A man and woman embrace as the XBOOM speaker activates, accompanied by the phrase "Understanding deeply." A man sits sadly in the
@@ -96,9 +96,9 @@
         <section class="overview-section">
           <div class="inner">
             <picture>
-              <source media="(min-width: 768px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-desktop.svg" />
-              <source media="(max-width: 767px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg" />
-              <img src="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI" class="ai-logo" />
+              <source media="(min-width: 768px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-desktop.svg" />
+              <source media="(max-width: 767px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" />
+              <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI" class="ai-logo" />
             </picture>
             <h2 class="title"><span class="gradient-text">Affectionate Intelligence</span> for YOU</h2>
             <p class="text">
@@ -111,7 +111,7 @@
               sensing and understanding, further caring for your life.
               <strong>Discover how Life's Good with LG AI</strong>
             </p>
-            <img src="./assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Scroll down icon" class="scroll-down-icon" />
+            <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Scroll down icon" class="scroll-down-icon" />
           </div>
         </section>
         <!-- E : overview-section -->
@@ -136,10 +136,10 @@
                     <!-- S : video-bx -->
                     <div
                       class="video-bx responsive-video"
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4"
-                      data-mobile-video-src="./assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit01-banner-desktop.png"
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit01-banner-mobile.png"
+                      data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4"
+                      data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4"
+                      data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png"
+                      data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png"
                       aria-labelledby="benefit01-banner-video-description">
                       <span id="benefit01-banner-video-description" class="a11y-text"
                         >A man and a woman are on the sofa, watching a soccer broadcast on an LG TV in the living room. The scene transitions, and the man and woman are hugging. The camera focuses on the LG XBOOM next to them.</span
@@ -153,7 +153,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/eastafrica/oled-tv">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI product front view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI product front view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -161,7 +161,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/eastafrica/qned-tvs">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI product front view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI product front view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -169,7 +169,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/eastafrica/nanocell-tv">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products04.png" alt="LG Ultra HD AI product front view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG Ultra HD AI product front view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -186,10 +186,10 @@
                     <!-- S : video-bx -->
                     <div
                       class="video-bx responsive-video"
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4"
-                      data-mobile-video-src="./assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit02-banner-desktop.png"
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit02-banner-mobile.png"
+                      data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4"
+                      data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4"
+                      data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png"
+                      data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png"
                       aria-labelledby="benefit02-banner-video-description">
                       <span id="benefit02-banner-video-description" class="a11y-text">A mother and son use an LG AI washing machine together, turning the dial to activate AI Wash. A man using the LG gram laptop appears in the same sequence.</span>
                       <h3 class="video-title">For your effortless life</h3>
@@ -201,7 +201,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/eastafrica/washing-machines/lg-wt1311pb">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI product front view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI product front view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -209,7 +209,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/eastafrica/refrigerators/lg-gc-x257cqes">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView AI product front view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView AI product front view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -226,10 +226,10 @@
                     <!-- S : video-bx -->
                     <div
                       class="video-bx responsive-video"
-                      data-desktop-video-src="./assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4"
-                      data-mobile-video-src="./assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4"
-                      data-desktop-poster-src="./assets/image/ai-gate-image-benefit03-banner-desktop.png"
-                      data-mobile-poster-src="./assets/image/ai-gate-image-benefit03-banner-mobile.png"
+                      data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4"
+                      data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4"
+                      data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png"
+                      data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png"
                       aria-labelledby="benefit03-banner-video-description">
                       <span id="benefit03-banner-video-description" class="a11y-text"
                         >A man walks into the office holding a dog leash. A man in the driver's seat looks sad as LG AI shows him a family photo. The car display is shown in a close-up as LG AI pulls up a map and revisits a memory.</span
@@ -243,7 +243,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS vision system product side view" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS vision system product side view" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -251,7 +251,7 @@
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products03.png" alt="User interacting with touchscreen interface powered by multimodal AI HMI solution, selecting coffee menu with AI assistant prompt" loading="lazy" />
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products03.png" alt="User interacting with touchscreen interface powered by multimodal AI HMI solution, selecting coffee menu with AI assistant prompt" loading="lazy" />
                           </div>
                           <span class="link-btn">Learn More</span>
                         </a>
@@ -286,7 +286,7 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-product-category-tv-eyebrow-logo-desktop.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy" />
+                      <img src="./lg-ai/assets/image/ai-product-category-tv-eyebrow-logo-desktop.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy" />
                       Evolves to satisfy your every entertainment need
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -296,10 +296,10 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)" />
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)" />
                         <img
-                          src="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png"
+                          src="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png"
                           alt="Above the LG Magic Remote, features such as AI Voice ID, AI Search, AI Chatbot, AI Concierge, AI Picture Wizard, and AI Sound Wizard are displayed."
                           loading="lazy" />
                       </picture>
@@ -328,7 +328,7 @@
                               data-desc="LG AI Voice ID knows each user's unique voice signature and offers personalized recommendations the moment you turn it on and speak."
                               data-alt="On an LG OLED TV screen is the webOS 25 home page filled with apps and entertainment content. By the TV is the LG AI Magic Remote, the AI button is highlighted as if activated by the user's voice. A speech bubble is beside it, 'suggest a movie I'll like'">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-tv-feature01.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png"
                                 alt="On an LG OLED TV screen is the webOS 25 home page filled with apps and entertainment content. By the TV is the LG AI Magic Remote, the AI button is highlighted as if activated by the user's voice. A speech bubble is beside it, 'suggest a movie I'll like'" />
                             </div>
                             <p class="slide-title">AI Voice ID</p>
@@ -340,7 +340,7 @@
                               data-desc="Voice-activated intelligence powered by built-in AI understands your inquiries. Ask questions and get tailored recommendations that meet your needs. You can also get additional results and solutions with Microsoft Copilot."
                               data-alt="LG OLED TV screen showing how AI Search works. A small chat window is open showing how the user asked for what sports games are available. AI search responded via chat and by showing thumbnails of different available content. There is also a prompt to ask Microsoft Copilot.">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-tv-feature02.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png"
                                 alt="LG OLED TV screen showing how AI Search works. A small chat window is open showing how the user asked for what sports games are available. AI search responded via chat and by showing thumbnails of different available content. There is also a prompt to ask Microsoft Copilot." />
                             </div>
                             <p class="slide-title">AI Search</p>
@@ -352,7 +352,7 @@
                               data-desc="One short press on the AI button on your remote opens up your AI Concierge which provides customized keywords and recommendations based on your search and watching history."
                               data-alt="The LG AI Magic Remote in use. Shortly pressing the AI button activates the AI Assistant on the OLED TV screen, which then suggests keywords.">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-tv-feature03.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png"
                                 alt="The LG AI Magic Remote in use. Shortly pressing the AI button activates the AI Assistant on the OLED TV screen, which then suggests keywords." />
                             </div>
                             <p class="slide-title">AI Concierge</p>
@@ -364,7 +364,7 @@
                               data-desc="Have your own AI Chatbot actively resolve and help you with your requests. Simply speak to your TV as it can classify your intentions and respond accordingly."
                               data-alt="Sci-fi content is playing on an LG OLED TV screen. On the left side of the screen is the AI Chatbot interface. The user messages the chatbot that the screen is too dark and the chatbot offers solutions to the request.">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-tv-feature04.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png"
                                 alt="Sci-fi content is playing on an LG OLED TV screen. On the left side of the screen is the AI Chatbot interface. The user messages the chatbot that the screen is too dark and the chatbot offers solutions to the request." />
                             </div>
                             <p class="slide-title">AI Chatbot</p>
@@ -375,7 +375,7 @@
                               data-title="Complete your AI experience with AI Magic Remote featuring a dedicated AI button. "
                               data-desc="Control your TV easily with AI magic remote - no extra device needed! Simple but powerful click, drag and drop functions make using webOS intuitive and easy to operate."
                               data-alt="Woman singing into microphone with headphones, highlighted by LG α11 AI Processor sound enhancement">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Woman singing into microphone with headphones, highlighted by LG α11 AI Processor sound enhancement" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Woman singing into microphone with headphones, highlighted by LG α11 AI Processor sound enhancement" />
                             </div>
                             <p class="slide-title">AI Picture/Sound Wizard</p>
                           </div>
@@ -386,7 +386,7 @@
                               data-desc="Control your TV easily with AI magic remote - no extra device needed! Simple but powerful click, drag and drop functions make using webOS intuitive and easy to operate."
                               data-alt="Two connected scenes with LG AI Magic Remote in front of a TV—first showing a sci-fi scene, second showing a home screen with personalized content">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-tv-feature06.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png"
                                 alt="Two connected scenes with LG AI Magic Remote in front of a TV—first showing a sci-fi scene, second showing a home screen with personalized content" />
                             </div>
                             <p class="slide-title">AI Magic Remote</p>
@@ -409,7 +409,7 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-product-category-audio-eyebrow-logo-desktop.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy" />
+                      <img src="./lg-ai/assets/image/ai-product-category-audio-eyebrow-logo-desktop.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy" />
                       Sounds uniquely right
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -419,9 +419,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)" />
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)" />
-                        <img src="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="A woman and a man embrace in the living room, with the LG xboom speaker turned on beside them." loading="lazy" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)" />
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="A woman and a man embrace in the living room, with the LG xboom speaker turned on beside them." loading="lazy" />
                       </picture>
                       <div class="text-bx">
                         <h3 class="title">
@@ -447,7 +447,7 @@
                               data-title="AI perfects sound for every genre"
                               data-desc="Choose manually from rhythm, melody, or voice-oriented modes based on your preference, or let AI set the most optimal mode for you. AI analyzes audio and adjusts the sound to suit the genre."
                               data-alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard" />
                             </div>
                             <p class="slide-title">AI Sound</p>
                           </div>
@@ -457,7 +457,7 @@
                               data-title="AI lighting that syncs with sound"
                               data-desc="AI detects genre of your music and delivers the optimal the lighting that syncs with sound. Choose from Ambient, Party, Voice mode to set the mood. Check the informative lighting for speaker's status."
                               data-alt="LG xboom speaker with AI Lighting that adapts to voice, ambient, and party modes">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG xboom speaker with AI Lighting that adapts to voice, ambient, and party modes" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG xboom speaker with AI Lighting that adapts to voice, ambient, and party modes" />
                             </div>
                             <p class="slide-title">AI Lighting</p>
                           </div>
@@ -467,7 +467,7 @@
                               data-title="AI calibration for space-filling sound"
                               data-desc="AI calibrates audio based on the size and shape of the space you're in. Delivers full, undistorted sound whether in a spacious area or a small room."
                               data-alt="LG xboom speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG xboom speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG xboom speaker placed on a table in a red-toned room with grid-patterned walls and modern furniture" />
                             </div>
                             <p class="slide-title">AI Calibration</p>
                           </div>
@@ -488,7 +488,7 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy" />
+                      <img src="./lg-ai/assets/image/ai-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy" />
                       Lighten your every load
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -498,9 +498,9 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)" />
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)" />
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="LG built-in stacked washer and dryer in a modern laundry room with wood cabinetry and bench seating" loading="lazy" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)" />
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="LG built-in stacked washer and dryer in a modern laundry room with wood cabinetry and bench seating" loading="lazy" />
                       </picture>
                       <div class="text-bx">
                         <h3 class="title">
@@ -526,7 +526,7 @@
                               data-title="AI Wash"
                               data-desc="AI Wash optimizes washing motions based on the laundry type. It can help achieve improved fabric care and energy savings with soft fabrics."
                               data-alt="Hand adjusting AI Wash cycle on LG washing machine using smart control dial">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Hand adjusting AI Wash cycle on LG washing machine using smart control dial" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Hand adjusting AI Wash cycle on LG washing machine using smart control dial" />
                             </div>
                             <p class="slide-title">AI Wash</p>
                           </div>
@@ -536,7 +536,7 @@
                               data-title="AI Dry"
                               data-desc="For 26 years, LG's washing machines have pushed the boundaries of innovation. Experience the future of laundry, where AI reaches the very core of home appliances. AI to the Core, Easy Laundry."
                               data-alt="User selecting AI Dry cycle on LG dryer using digital control dial">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="User selecting AI Dry cycle on LG dryer using digital control dial" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="User selecting AI Dry cycle on LG dryer using digital control dial" />
                             </div>
                             <p class="slide-title">AI Dry</p>
                           </div>
@@ -560,7 +560,7 @@
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title">
-                      <img src="./assets/image/ai-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy" />
+                      <img src="./lg-ai/assets/image/ai-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy" />
                       Comforts with perfectly tuned cooling
                     </h2>
                     <!-- E : tab-panel-title -->
@@ -570,10 +570,10 @@
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)" />
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)" />
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)" />
                         <img
-                          src="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png"
+                          src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png"
                           alt="The LG DUAL Inverter air conditioner cools a modern living room, where a woman is sitting on the sofa, powered by ThinQ AI technology."
                           loading="lazy" />
                       </picture>
@@ -601,7 +601,7 @@
                               data-title="AI Air"
                               data-desc="AI Air monitors indoor temperature, humidity, and occupancy patterns to automatically adjust airflow and cooling for optimal comfort."
                               data-alt="Woman relaxing in a smart living room while LG AI Air conditioner automatically adjusts temperature, airflow, and humidity">
-                              <img src="./assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Woman relaxing in a smart living room while LG AI Air conditioner automatically adjusts temperature, airflow, and humidity" />
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Woman relaxing in a smart living room while LG AI Air conditioner automatically adjusts temperature, airflow, and humidity" />
                             </div>
                             <p class="slide-title">AI Air</p>
                           </div>
@@ -612,7 +612,7 @@
                               data-desc="AI kW Manager intelligently monitors and controls electricity consumption to optimize energy efficiency and reduce utility costs."
                               data-alt="Smartphone interface showing energy consumption graph in front of LG air conditioner, highlighting AI kW Manager for efficient power monitoring">
                               <img
-                                src="./assets/image/ai-gate-image-product-category-air-conditioning-feature02.png"
+                                src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png"
                                 alt="Smartphone interface showing energy consumption graph in front of LG air conditioner, highlighting AI kW Manager for efficient power monitoring" />
                             </div>
                             <p class="slide-title">AI kW Manager</p>
@@ -645,10 +645,10 @@
             <h2 class="thinq-section-title">Always ON for a better home</h2>
             <div class="banner">
               <div class="video-bx responsive-video" 
-                  data-desktop-video-src="./assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
-                  data-mobile-video-src="./assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
-                  data-desktop-poster-src="./assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
-                  data-mobile-poster-src="./assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
+                  data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
+                  data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
+                  data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
+                  data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
                   aria-labelledby="thinq-on-banner-video-description">
                   <span id="thinq-on-banner-video-description" class="a11y-text">In a dark living room, the Stanby Me TV turns on with a "Good Morning" message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically.</span>
                   <a href="javascript:void(0)" class="white-btn">Learn More</a>
@@ -659,7 +659,7 @@
             <div class="flex-bx">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
                   <figcaption>
                     * This product is not availble yet.
                   </figcaption>
@@ -675,7 +675,7 @@
             <div class="flex-bx reverse">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
                   <figcaption>
                     * This product is not availble yet.
                   </figcaption>
@@ -698,9 +698,9 @@
             <a href="https://www.lg.com/eastafrica/lg-thinq" class="white-btn">Learn More</a>
             <div class="banner">
               <picture>
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)" />
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)" />
-                <img src="./assets/image/ai-gate-image-thinq-banner-mobile.png" alt="A person holds a smartphone with the LG ThinQ app open, managing smart home devices while drinking coffee." loading="lazy" />
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)" />
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)" />
+                <img src="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" alt="A person holds a smartphone with the LG ThinQ app open, managing smart home devices while drinking coffee." loading="lazy" />
               </picture>
             </div>
             <!-- S : youtube-video-list -->
@@ -710,35 +710,35 @@
                   <!-- S : swiper-slide01 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="TvFhuqvQLYI" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb01.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb01.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
                     </button>
                   </div>
                   <!-- E : swiper-slide01 -->
                   <!-- S : swiper-slide02 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="iQyFMATSUDU" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb02.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb02.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
                     </button>
                   </div>
                   <!-- E : swiper-slide02 -->
                   <!-- S : swiper-slide03 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="W6pXClCE3P4" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb03.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb03.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
                     </button>
                   </div>
                   <!-- E : swiper-slide03 -->
                   <!-- S : swiper-slide04 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="oEuZqLxQrUY" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb04.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb04.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
                     </button>
                   </div>
                   <!-- E : swiper-slide04 -->
                   <!-- S : swiper-slide05 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="UFRyOs-6h5s" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb05.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb05.jpg" alt="LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." />
                     </button>
                   </div>
                   <!-- E : swiper-slide05 -->
@@ -751,7 +751,7 @@
             <div class="flex-bx">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-feature01.png" alt="In a modern smart kitchen, a woman uses a voice command to start the washer with LG ThinQ AI, while a man reads on the sofa in the background." loading="lazy" />
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature01.png" alt="In a modern smart kitchen, a woman uses a voice command to start the washer with LG ThinQ AI, while a man reads on the sofa in the background." loading="lazy" />
                 </figure>
               </div>
               <div class="text-bx">
@@ -764,7 +764,7 @@
             <div class="flex-bx reverse">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-feature02.png" alt="A smartphone displays the LG ThinQ app controlling the LG InstaView Slide-In Range oven, enabling efficient product maintenance in the kitchen." loading="lazy" />
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature02.png" alt="A smartphone displays the LG ThinQ app controlling the LG InstaView Slide-In Range oven, enabling efficient product maintenance in the kitchen." loading="lazy" />
                 </figure>
               </div>
               <div class="text-bx">
@@ -785,9 +785,9 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                     <picture>
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)" />
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)" />
-                      <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="LG Electronics executive holding certificate of accreditation for cybersecurity, with digital security graphic in background" loading="lazy" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)" />
+                      <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="LG Electronics executive holding certificate of accreditation for cybersecurity, with digital security graphic in background" loading="lazy" />
                     </picture>
                     <div class="txt-bx">
                       <p>LG Strengthens Cybersecurity Leadership With KOLAS IoT Cybersecurity Testing Accreditation</p>
@@ -796,9 +796,9 @@
                   </div>
                   <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                     <picture>
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)" />
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)" />
-                      <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Visitors viewing LG curved LED display showcasing 'Life's Good 24/7' slogan at tech exhibition" loading="lazy" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)" />
+                      <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Visitors viewing LG curved LED display showcasing 'Life's Good 24/7' slogan at tech exhibition" loading="lazy" />
                     </picture>
                     <div class="txt-bx">
                       <p>LG Presents Its Latest Innovations Powered by "Affectionate Intelligence" at CES 2025</p>
@@ -807,9 +807,9 @@
                   </div>
                   <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                     <picture>
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)" />
-                      <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)" />
-                      <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="Speaker presenting AI-powered B2B solutions on stage at LG event" loading="lazy" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)" />
+                      <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)" />
+                      <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="Speaker presenting AI-powered B2B solutions on stage at LG event" loading="lazy" />
                     </picture>
                     <div class="txt-bx">
                       <p>LG Unveils a Day in a Life With "Affectionate Intelligence" at LG World Premiere</p>

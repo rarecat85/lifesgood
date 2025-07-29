@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ../core/dev.js",
     "build": "node ../core/build.js",
-    "export": "node ../core/export.js"
+    "export": "node ../core/export.js",
+    "copy": "node ../core/copy.js",
+    "change": "node ../core/change.js"
   },
   "keywords": [],
   "author": "",
