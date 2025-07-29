@@ -257,7 +257,11 @@
               <div class="tab-panel-inner">
                 <!-- S : tab-panel-title -->
                 <h2 class="tab-panel-title">
-                  <img src="./lg-ai/assets/image/ai-product-category-tv-eyebrow-logo-desktop.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                  <picture>
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                    <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                  </picture>
                   Evolves to satisfy your every entertainment need 
                 </h2>
                 <!-- E : tab-panel-title -->
@@ -344,7 +348,11 @@
               <div class="tab-panel-inner">
                 <!-- S : tab-panel-title -->
                 <h2 class="tab-panel-title">
-                  <img src="./lg-ai/assets/image/ai-product-category-audio-eyebrow-logo-desktop.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                  <picture>
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                    <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                  </picture>
                   Sounds uniquely right
                 </h2>
                 <!-- E : tab-panel-title -->
@@ -412,7 +420,11 @@
               <div class="tab-panel-inner">
                 <!-- S : tab-panel-title -->
                 <h2 class="tab-panel-title">
-                  <img src="./lg-ai/assets/image/ai-product-category-appliances-eyebrow-logo-desktop.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                  <picture>
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                    <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                    <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                  </picture>
                   Lighten your every load
                 </h2>
                 <!-- E : tab-panel-title -->  
