@@ -23,7 +23,7 @@
     <!-- your -->
     <link href="./lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css">
     <link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css">
-    <link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/assets/css/ai-gate-css.css?ver250729" rel="stylesheet" type="text/css">
 
     <script src="./lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
     <script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer=""></script>
@@ -277,7 +277,6 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-2" id="feature-tab-2" data-tp="copy">Audio</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-3" id="feature-tab-3" data-tp="copy">Appareils électroménagers</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-4" id="feature-tab-4" data-tp="copy">Climatisation</button>
-                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-5" id="feature-tab-5" data-tp="copy"></button>
               </div>
               <!-- E : tab-list -->
               <!-- S : panel-container -->
@@ -286,7 +285,12 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                 <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-1" id="feature-panel-1">
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title" data-tp="copy"><img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" alt="TV" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                    <h2 class="tab-panel-title" data-tp="copy">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="TV" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                      </picture>
                       Évolue pour satisfaire tous vos besoins de divertissement</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
@@ -368,7 +372,12 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                 <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-2" id="feature-panel-2">
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title" data-tp="copy"><img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" alt="Audio" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                    <h2 class="tab-panel-title" data-tp="copy">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="Audio" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                      </picture>
                       Cela semble particulièrement juste</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
@@ -430,7 +439,12 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                 <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-3" id="feature-panel-3">
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title" data-tp="copy"><img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" alt="Appareils électroménagers" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                    <h2 class="tab-panel-title" data-tp="copy">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="Appareils électroménagers" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                      </picture>
                       Allégez toutes vos charges</h2>
                     <!-- E : tab-panel-title -->  
                     <!-- S : tab-panel-text -->
@@ -489,7 +503,12 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                 <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-4" id="feature-panel-4">
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title" data-tp="copy"><img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="Climatisation" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                    <h2 class="tab-panel-title" data-tp="copy">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="Climatisation" class="eyebrow-logo" loading="lazy" data-tp="alt">
+                      </picture>
                       Confort avec un refroidissement parfaitement réglé</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
@@ -547,62 +566,6 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                   </div>
                 </div>
                 <!-- E : panel tab-4 -->
-                <!-- S : panel tab-5 -->
-                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-5" id="feature-panel-5">
-                  <div class="tab-panel-inner">
-                    <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title" data-tp="copy"></h2>
-                    <!-- E : tab-panel-title -->
-                    <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text" data-tp="copy"></p>
-                    <!-- E : tab-panel-text -->
-                    <!-- S : tab-panel-banner -->
-                    <div class="tab-panel-banner">
-                      <picture>
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="" loading="lazy" data-tp="alt">
-                      </picture>
-                      <div class="text-bx">
-                        <h3 class="title text-black" data-tp="copy"></h3>
-                        <a href="" class="white-btn" data-tp="copy link"></a>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-banner -->
-                    <!-- S : tab-panel-slide -->
-                    <div class="tab-panel-slide">
-                      <div class="swiper products-textbx-thumbbx">
-                        <div class="slide-controller">
-                          <div class="swiper-pagination"></div>
-                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
-                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
-                        </div>
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <div class="img-bx">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="" data-tp="alt">
-                            </div>
-                            <p class="slide-title" data-tp="copy"></p>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="img-bx">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="" data-tp="alt">
-                            </div>
-                            <p class="slide-title" data-tp="copy"></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-slide -->
-                    <!-- S : tab-panel-disclaimer -->
-                    <ul class="tab-panel-disclaimer">
-                      <li data-tp="copy"></li>
-                      <li data-tp="copy"></li>
-                    </ul>
-                    <!-- E : tab-panel-disclaimer -->
-                  </div>
-                </div>
-                <!-- E : panel tab-5 -->
               </div>
             </div>
           </div>
