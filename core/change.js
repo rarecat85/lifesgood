@@ -27,9 +27,26 @@ async function readExcelData(excelPath, sheetName) {
                 
                 // type이 있으면 value가 비어있어도 추가
                 if (type) {
+                    // value가 객체인 경우 문자열로 변환
+                    let stringValue = '';
+                    if (value) {
+                        if (typeof value === 'object') {
+                            // ExcelJS의 RichText 객체나 다른 객체인 경우
+                            if (value.richText) {
+                                stringValue = value.richText.map(rt => rt.text).join('');
+                            } else if (value.text) {
+                                stringValue = value.text;
+                            } else {
+                                stringValue = JSON.stringify(value);
+                            }
+                        } else {
+                            stringValue = value.toString();
+                        }
+                    }
+                    
                     data.push({ 
                         type, 
-                        value: value ? value.toString() : '',
+                        value: stringValue,
                         rowNumber: rowNumber
                     });
                     rowNumber++;
@@ -88,12 +105,13 @@ function updateHTMLWithDataTp(htmlContent, excelData) {
                         console.log(`[${updateCount}] alt 업데이트: ${excelRow.value}`);
                         break;
                         
-                    case 'link':
-                        // href 속성 업데이트
-                        element.setAttribute('href', excelRow.value);
-                        updateCount++;
-                        console.log(`[${updateCount}] link 업데이트: ${excelRow.value}`);
-                        break;
+                                            case 'link':
+                            // href 속성 업데이트
+                            const linkValue = typeof excelRow.value === 'string' ? excelRow.value : String(excelRow.value);
+                            element.setAttribute('href', linkValue);
+                            updateCount++;
+                            console.log(`[${updateCount}] link 업데이트: ${linkValue}`);
+                            break;
                 }
             }
         });
@@ -149,9 +167,10 @@ function updateHTMLWithDataTpSequential(htmlContent, excelData) {
                             
                         case 'link':
                             // href 속성 업데이트
-                            element.setAttribute('href', excelRow.value);
+                            const linkValue = typeof excelRow.value === 'string' ? excelRow.value : String(excelRow.value);
+                            element.setAttribute('href', linkValue);
                             updateCount++;
-                            console.log(`[${updateCount}] link 업데이트: ${excelRow.value}`);
+                            console.log(`[${updateCount}] link 업데이트: ${linkValue}`);
                             break;
                     }
                     dataIndex++;
