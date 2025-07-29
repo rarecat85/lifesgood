@@ -262,7 +262,6 @@
               <div class="tab-list">
                 <button class="tab active" role="tab" aria-selected="true" aria-controls="feature-panel-1" id="feature-tab-1">TV</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-3" id="feature-tab-3">Appliances</button>
-                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-4" id="feature-tab-4">Air Conditioning</button>
               </div>
               <!-- E : tab-list -->
               <!-- S : panel-container -->
@@ -421,73 +420,6 @@
                   </div>
                 </div>
                 <!-- E : panel tab-3 -->
-                <!-- S : panel tab-4 -->
-                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-4" id="feature-panel-4">
-                  <div class="tab-panel-inner">
-                    <!-- S : tab-panel-title -->
-                    <h2 class="tab-panel-title">
-                      <img src="./lg-ai/assets/image/ai-product-category-air-conditioning-eyebrow-logo-desktop.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
-                      Comforts with perfectly tuned cooling
-                    </h2>
-                    <!-- E : tab-panel-title -->
-                    <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text">
-                      LG DUALCOOL AI cares for optimal air, keeping you comfortable while optimizing energy efficiency to help save costs. With LG AI Air, experience perfectly tuned cooling for your comfort.</p>
-                    <!-- E : tab-panel-text -->
-                    <!-- S : tab-panel-banner -->
-                    <div class="tab-panel-banner">
-                      <picture>
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="The LG DUAL Inverter air conditioner cools a modern living room, where a woman is sitting on the sofa, powered by ThinQ AI technology." loading="lazy">
-                      </picture>
-                      <div class="text-bx">
-                        <h3 class="title text-black">
-                          Experience optimized comfort <br>
-                          with LG AI Air
-                        </h3>
-                        <a href="https://www.lg.com/bd/home-air-conditioners" class="white-btn">Learn More</a>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-banner -->
-                    <!-- S : tab-panel-slide -->
-                    <div class="tab-panel-slide">
-                      <div class="swiper products-textbx-thumbbx">
-                        <div class="slide-controller">
-                          <div class="swiper-pagination"></div>
-                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
-                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
-                        </div>
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="AI Air" data-desc="AI Air monitors indoor temperature, humidity, and occupancy patterns to automatically adjust airflow and cooling for optimal comfort." data-alt="Woman relaxing in a smart living room while LG AI Air conditioner automatically adjusts temperature, airflow, and humidity">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Woman relaxing in a smart living room while LG AI Air conditioner automatically adjusts temperature, airflow, and humidity">
-                            </div>
-                            <p class="slide-title">AI Air</p>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="img-bx" data-title="AI kW Manager" data-desc="AI kW Manager intelligently monitors and controls electricity consumption to optimize energy efficiency and reduce utility costs." data-alt="Smartphone interface showing energy consumption graph in front of LG air conditioner, highlighting AI kW Manager for efficient power monitoring">
-                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Smartphone interface showing energy consumption graph in front of LG air conditioner, highlighting AI kW Manager for efficient power monitoring">
-                            </div>
-                            <p class="slide-title">AI kW Manager</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- E : tab-panel-slide -->
-                    <!-- S : tab-panel-disclaimer -->
-                    <ul class="tab-panel-disclaimer">
-                      <li>*The AI Air can be operated via remote control and ThinQ.</li>
-                      <li>**The AI Air is available in both cooling and heating modes.</li>
-                      <li>***While using AI Air, the air volume and wind direction are automatically adjusted according to the situation, and AI Air is turned off when the wind direction is changed.</li>
-                      <li>****When AI Air is activated, the radar sensor detects the location of the occupant and automatically activates the direct/indirect wind.</li>
-                      <li>*****The sensing distance of the radar sensor is up to 5m, and there may be differences in the sensing distance depending on the installation and usage environment of the product.</li>
-                      <li>******This function works only with models that have radar sensors.</li>
-                    </ul>
-                    <!-- E : tab-panel-disclaimer -->
-                  </div>
-                </div>
-                <!-- E : panel tab-4 -->
               </div>
             </div>
           </div>
