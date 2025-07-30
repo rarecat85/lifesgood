@@ -227,14 +227,14 @@
                 <!-- E : video-bx -->
                 <!-- S : product-list -->
                 <ul class="product-list">
-                  <li class="product-item">
+                  <!-- <li class="product-item">
                     <a href="https://www.lg.com/np/home-air-conditioners/lg-s3-w12ja3da"> 
                       <div class="img-bx">
                         <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI product front view" loading="lazy">
                       </div>
                       <span class="link-btn">Learn More</span>
                     </a>
-                  </li>
+                  </li> -->
                   <li class="product-item">
                     <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision">
                       <div class="img-bx">
