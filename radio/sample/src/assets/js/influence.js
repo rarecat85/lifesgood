@@ -47,16 +47,17 @@ function influence() {
     }
   }
   
-  // Swiper 초기화
-  influenceSlide = new Swiper(".influence-slide", {
+  // 슬라이드 개수 확인
+  const slideCount = document.querySelectorAll('.influence-slide .swiper-slide').length;
+  
+  // 기본 Swiper 옵션
+  const swiperOptions = {
     slidesPerView: 1.4,
     slidesPerGroup: 1,
     spaceBetween: 16,
     speed: 700,
     slideToClickedSlide: true,
     centeredSlides: true,
-    loop: true,
-    loopedSlides: 5,
     mousewheel: {
       forceToAxis: true, // 이 옵션이 핵심입니다.
     },
@@ -153,7 +154,16 @@ function influence() {
         updateActiveSlideBottom();
       }
     }
-  });
+  };
+  
+  // 슬라이드가 7개 이상일 때만 loop 옵션 추가
+  if (slideCount >= 7) {
+    swiperOptions.loop = true;
+    swiperOptions.loopedSlides = 5;
+  }
+  
+  // Swiper 초기화
+  influenceSlide = new Swiper(".influence-slide", swiperOptions);
   
   // 미디어 쿼리 변경 리스너 등록 - Swiper 초기화 후에 실행
   Object.values(mediaQueries).forEach(query => {
