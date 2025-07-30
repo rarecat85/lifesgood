@@ -367,6 +367,14 @@ var storiesSlide = new Swiper(".stories-section .swiper", {
 var youtubeVideoSlide = new Swiper(".youtube-video-list .swiper", {
   slidesPerView: 1,
   spaceBetween: 10,
+  navigation: {
+    prevEl: ".youtube-video-list .swiper-button-prev",
+    nextEl: ".youtube-video-list .swiper-button-next",
+  },
+  pagination: {
+    el: ".youtube-video-list .swiper-pagination",
+    type: "fraction",
+  },
   breakpoints: {
     768: {
       slidesPerView: 3,
