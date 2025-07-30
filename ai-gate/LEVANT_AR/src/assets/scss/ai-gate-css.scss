@@ -898,9 +898,6 @@ body {
                 .swiper-wrapper {
                   flex-wrap: wrap;
                   gap: rem(20) rem(10);
-                  &.swiper-no-swiping {
-                    margin-top: rem(20);
-                  }
                 }
                 .swiper-slide {
                   width: calc(50% - rem(5)); 
