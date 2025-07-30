@@ -675,7 +675,11 @@ Plan final : un fond blanc avec le logo LG AI et la phrase ''Votre Allié Intell
                   </div>
                   <!-- E : swiper-slide05 -->
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-controller">
+                  <div class="swiper-button-prev slide-btn"></div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-next slide-btn"></div>
+                </div>
               </div>
             </div>
             <!-- E : youtube-video-list -->
