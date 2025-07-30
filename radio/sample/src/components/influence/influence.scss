@@ -56,18 +56,17 @@
       width: rem(32);
       height: rem(32);
       position: absolute;
-      bottom: rem(20);
-      right: rem(20);
-      background: rgba(217, 211, 200, 0.75);
-      backdrop-filter: blur(10px);
+      bottom: rem(16);
+      right: rem(16);
       border-radius: 50%;
       cursor: pointer;
-      transition: all 0.3s;
-      &:hover {
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+      @include tablet {
+        bottom: rem(20);
+        right: rem(20);
       }
-      img {
-        width: rem(20);
+      @include desktop {
+        bottom: rem(24);
+        right: rem(24);
       }
     }
   }
