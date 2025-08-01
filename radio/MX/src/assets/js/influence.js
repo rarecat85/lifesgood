@@ -63,7 +63,6 @@ function influence() {
     slidesPerGroup: 1,
     spaceBetween: 16,
     speed: 700,
-    slideToClickedSlide: true,
     centeredSlides: true,
     mousewheel: {
       forceToAxis: true, // 이 옵션이 핵심입니다.
