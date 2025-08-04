@@ -14,6 +14,8 @@
    - `build.js`: 프로젝트 폴더를 복사하여 여러 환경을 설정하는 스크립트.
    - `component-dev.js`: 컴포넌트 기반 개발 환경을 제공하는 스크립트.
    - `component-build.js`: 컴포넌트를 통합하여 빌드하는 스크립트.
+   - `copy.js`: HTML 파일에서 data-tp 속성을 추출하여 엑셀 파일로 생성하는 스크립트.
+   - `change.js`: 엑셀 파일의 데이터를 기반으로 HTML 파일의 data-tp 속성을 업데이트하는 스크립트.
    - **`package.json`**: Core 디렉토리에서 사용되는 `npm` 패키지 관리 파일.
 
 2. **`template/`**:
@@ -65,15 +67,16 @@ project/
    
 ## core폴더에는 아래 패키지를 필수로 설치하여야 합니다.   
    
-`sass`, `clean-css`, `live-server`   
+`sass`, `clean-css`, `live-server`, `jsdom`, `exceljs`   
 ```
-npm install sass clean-css live-server   
+npm install sass clean-css live-server jsdom exceljs   
 ```   
-
 **패키지 설명:**
 - **sass**: SCSS 파일을 CSS로 컴파일합니다.
 - **clean-css**: CSS 파일을 최소화(minify)합니다.
 - **live-server**: 실시간 변경감지 기능이 있는 로컬 개발 서버를 제공합니다.
+- **jsdom**: HTML 파일을 파싱하고 조작하기 위한 라이브러리입니다.
+- **exceljs**: Excel 파일을 읽고 쓰기 위한 라이브러리입니다.
 
 
 ---
@@ -91,7 +94,9 @@ npm install sass clean-css live-server
     "build": "node ../core/build.js",
     "export": "node ../core/export.js",
     "component-dev": "node ../core/component-dev.js",
-    "component-build": "node ../core/component-build.js"
+    "component-build": "node ../core/component-build.js",
+    "copy": "node ../core/copy.js",
+    "change": "node ../core/change.js"
   },
   "keywords": [],
   "author": "",
@@ -182,6 +187,31 @@ cd <프로젝트명>
     * 실행 결과: 프로젝트 폴더 내에 KR, UK, US 폴더가 생성됩니다.
     * 생성된 폴더에서도 `npm run component-dev -- KR`과 같이 개발 서버를 실행할 수 있습니다.
 
+6. copy (데이터 추출)
+    ```
+    npm run copy -- <폴더명>
+    ```
+    * HTML 파일에서 `data-tp` 속성을 가진 요소들을 추출하여 엑셀 파일로 생성합니다.
+    * 지원하는 data-tp 타입: `label`, `copy`, `alt`, `link`
+    * 추출된 데이터는 `copy.xlsx` 파일로 저장됩니다.
+    * 예시 실행:
+    ```
+    npm run copy -- sample
+    ```
+    * 실행 결과: 프로젝트 루트에 `copy.xlsx` 파일이 생성됩니다.
+
+7. change (데이터 적용)
+    ```
+    npm run change -- <폴더명>
+    ```
+    * `copy.xlsx` 파일의 데이터를 기반으로 HTML 파일의 `data-tp` 속성을 업데이트합니다.
+    * 원본 파일은 `.backup` 확장자로 백업됩니다.
+    * 예시 실행:
+    ```
+    npm run change -- MX
+    ```
+    * 실행 결과: 해당 폴더의 `src/index.html` 파일이 업데이트되고 백업 파일이 생성됩니다.
+
 ---
 
 ## 컴포넌트 기반 개발 주의사항
@@ -207,3 +237,28 @@ cd <프로젝트명>
    - 모든 작업이 완료되면 export.js를 실행하여 템플릿에 적용합니다. (`npm run export -- KR KR`)
    - export.js는 컴포넌트 기반으로 통합된 HTML을 템플릿에 삽입하여 최종 결과물을 생성합니다.
    - 컴포넌트 개발 → 빌드 → 커스터마이징 → 템플릿 적용의 전체 워크플로우를 지원합니다.
+
+## 데이터 관리 기능 주의사항
+
+1. **data-tp 속성 사용**: HTML 요소에 `data-tp` 속성을 추가하여 추출할 데이터를 지정합니다.
+   - `data-tp="label"`: aria-label 속성 값을 추출/업데이트
+   - `data-tp="copy"`: 요소의 텍스트 내용을 추출/업데이트
+   - `data-tp="alt"`: alt 속성 값을 추출/업데이트
+   - `data-tp="link"`: href 속성 값을 추출/업데이트
+
+2. **copy 명령어 사용**: 
+   - `npm run copy -- <폴더명>`으로 HTML에서 데이터를 추출합니다.
+   - `src/main.html` 파일의 `data-tp` 속성을 가진 요소들을 찾아 엑셀 파일로 생성합니다.
+   - 생성된 `copy.xlsx` 파일을 편집하여 번역이나 수정 작업을 진행합니다.
+
+3. **change 명령어 사용**:
+   - `npm run change -- <폴더명>`으로 엑셀 파일의 데이터를 HTML에 적용합니다.
+   - `src/index.html` 파일의 `data-tp` 속성을 가진 요소들을 순서대로 업데이트합니다.
+   - 원본 파일은 자동으로 `.backup` 확장자로 백업됩니다.
+
+4. **작업 순서**:
+   - HTML 파일에 `data-tp` 속성을 추가합니다.
+   - `npm run copy -- sample`로 데이터를 추출합니다.
+   - `copy.xlsx` 파일을 편집하여 번역이나 수정을 진행합니다.
+   - `npm run change -- sample`로 수정된 데이터를 HTML에 적용합니다.
+   - 필요시 다른 국가 폴더에도 동일한 과정을 적용합니다.
