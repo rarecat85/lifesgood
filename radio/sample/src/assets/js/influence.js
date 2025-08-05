@@ -130,6 +130,7 @@ function influence() {
         if (currentPlayingVideo && currentPlayingVideo !== newActiveVideo) {
           currentPlayingVideo.pause();
           currentPlayingVideo.currentTime = 0;
+          currentPlayingVideo.load();
         }
         
         // 새로운 활성화 비디오 재생 및 mute 상태로 설정
