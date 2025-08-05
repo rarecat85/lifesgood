@@ -7,10 +7,10 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>الذكاء العاطفي من إل جي | إل جي المشرق العربي</title>
+    <title>إل جي الذكاء العاطفي | إل جي المشرق العربي</title>
     <meta name="Keywords" content="الذكاء الإصطناعي إل جي, ذكاء عاطفي, ذكاء إصطناعي ذو طابع إنساني, منصة الحياة الذكية, حلول تكنولوجية متقدمة ">
     <meta name="Description" content='تسعى تقنية الذكاء الاصطناعي من إل جي جاهدةً لحياةٍ هانئةٍ ومريحةٍ ومُعتنى بها جيدًا من خلال "الاستشعار والفهم العميق". استمتع بجودة حياةٍ أفضل مع تقنية الذكاء الاصطناعي من إل جي، حيث يتجاوز الذكاء الاصطناعي التوقعات ليقدم عناية تركّز على نمط حياتك.'>
-    <meta property="og:title" content="الذكاء العاطفي من إل جي | إل جي المشرق العربي"/>
+    <meta property="og:title" content="إل جي الذكاء العاطفي | إل جي المشرق العربي"/>
     <meta property="og:url" content="https://www.lg.com/levant_ar/lg-ai">
     <meta property="og:description" content='تسعى تقنية الذكاء الاصطناعي من إل جي جاهدةً لحياةٍ هانئةٍ ومريحةٍ ومُعتنى بها جيدًا من خلال "الاستشعار والفهم العميق". استمتع بجودة حياةٍ أفضل مع تقنية الذكاء الاصطناعي من إل جي، حيث يتجاوز الذكاء الاصطناعي التوقعات ليقدم عناية تركّز على نمط حياتك.'/>
     <meta property="og:image" content="">
@@ -173,7 +173,7 @@
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png" aria-labelledby="benefit02-banner-video-description">
                       <span id="benefit02-banner-video-description" class="a11y-text" data-tp="copy">تستخدم الأم وإبنها غسالة إل جي بالذكاء الإصطناعي معًا، ويديران القرص لتنشيط دورة الغسيل الذكية. </span>
-                      <h3 class="video-title" data-tp="copy">لياة أسهل</h3>
+                      <h3 class="video-title" data-tp="copy">لحياة أسهل</h3>
                       <button type="button" class="play-btn" aria-label="Play video"></button>
                     </div>
                     <!-- E : video-bx -->
@@ -321,7 +321,7 @@
                     <!-- S : tab-panel-disclaimer -->
                     <ul class="tab-panel-disclaimer">
                       <li data-tp="copy">*تستخدم ميزات الذكاء الاصطناعي من إل جي خوارزميات مُدرَّبة قائمة على التعلم العميق لتحسين جودة الصورة ومزج الصوت في الوقت الفعلي</li>
-                      <li data-tp="copy">.**تتميز جميع أجهزة تلفزيون LG webOS 24 بتخصيص الذكاء الاصطناعي، باستثناء تلك التي لا تحتوي على مستشعرات ضوء.</li>
+                      <li data-tp="copy">.**تتميز جميع أجهزة تلفزيون LG webOS 25 بتخصيص الذكاء الاصطناعي، باستثناء تلك التي لا تحتوي على مستشعرات ضوء.</li>
                     </ul>
                     <!-- E : tab-panel-disclaimer -->
                   </div>
