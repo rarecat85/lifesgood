@@ -7,10 +7,10 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG Affectionate Intelligence | LG LEVANT_EN</title>
+    <title>LG Affectionate Intelligence | LG LEVANT</title>
     <meta name="Keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions">
     <meta name="Description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care.">
-    <meta property="og:title" content="LG Affectionate Intelligence | LG LEVANT_EN"/>
+    <meta property="og:title" content="LG Affectionate Intelligence | LG LEVANT"/>
     <meta property="og:url" content="https://www.lg.com/levant_en/lg-ai">
     <meta property="og:description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care."/>
     <meta property="og:image" content="">
