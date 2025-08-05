@@ -190,7 +190,7 @@
                     <!-- S : product-list -->
                     <ul class="product-list">
                       <li class="product-item">
-                        <a href="https://www.lg.com/lk/washing-machines/lg-f2515rtgv">
+                        <a href="https://www.lg.com/lk/washing-machines">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG Washing Machine AI product front view" loading="lazy">
                           </div>
