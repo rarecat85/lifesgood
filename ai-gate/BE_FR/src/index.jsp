@@ -7,13 +7,13 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title><!--타이틀--></title>
-    <meta name="Keywords" content="">
-    <meta name="Description" content="">
-    <meta property="og:title" content=""/>
-    <meta property="og:url" content="">
-    <meta property="og:description" content=""/>
-    <meta property="og:image" content="">
+    <title>LG Affectionate Intelligence | LG BE</title>
+    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Centré sur l'humain, Smart Living Platform, Solutions technologiques, L'intelligence bienveillante">
+    <meta name="Description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain.">
+    <meta property="og:title" content="LG Affectionate Intelligence | LG BE"/>
+    <meta property="og:url" content="https://www.lg.com/be_fr/lg-ai"/>
+    <meta property="og:description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain."/>
+    <meta property="og:image" content=""/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
     <!-- // default code -->
@@ -50,8 +50,8 @@
     <meta itemprop="name" content="{Browser Title}"/>
     <meta itemprop="image" content="{Share Image}"/>
     <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="Join LG's Life's Good 2024 campaign, 'Optimism Your Feed'. Take charge of your social media and turn it into a source of positivity, smiles, and joy."/>
-    <meta itemprop="Keywords" content="Life's Good, optimism, Optimism your feed, LG, smile, Challenge, TikTok, lifesgood, Challenge, Opportunity, Change, Goal, Innovation"/>
+    <meta itemprop="description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain."/>
+    <meta itemprop="Keywords" content="LG AI, Affectionate Intelligence, Centré sur l'humain, Smart Living Platform, Solutions technologiques, L'intelligence bienveillante"/>
 </div>
 <c:set var='bizType' value='${$bizType }'/>
 <c:set var='siteType' value='MKT'/>
