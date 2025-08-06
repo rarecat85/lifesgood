@@ -271,7 +271,7 @@
                       <picture>
                         <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                        <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy" data-tp="alt">
                       </picture>
                       Evolves to satisfy your every entertainment need 
                     </h2>
@@ -363,7 +363,7 @@
                       <picture>
                         <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                        <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy" data-tp="alt">
                       </picture>
                       Sounds uniquely right
                     </h2>
@@ -436,7 +436,7 @@
                       <picture>
                         <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy">
+                        <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Appliances" class="eyebrow-logo" loading="lazy" data-tp="alt">
                       </picture>
                       Lighten your every load
                     </h2>
@@ -506,7 +506,7 @@
                       <picture>
                         <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy" data-tp="alt">
                       </picture>
                       Comforts with perfectly tuned cooling
                     </h2>
@@ -577,7 +577,7 @@
                       <picture>
                         <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy">  
+                        <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Computing" class="eyebrow-logo" loading="lazy" data-tp="alt">  
                       </picture>
                       Powers everything you do
                     </h2>
