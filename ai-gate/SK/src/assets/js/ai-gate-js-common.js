@@ -325,8 +325,8 @@ document.querySelectorAll(".tab-panel-slide .swiper").forEach(function(swiperEle
           observer: true,
           observeParents: true,
           navigation: {
-            prevEl: ".tab-panel-slide .swiper-button-next",
-            nextEl: ".tab-panel-slide .swiper-button-prev",
+            prevEl: ".tab-panel-slide .swiper-button-prev",
+            nextEl: ".tab-panel-slide .swiper-button-next",
           },
           pagination: {
             el: ".tab-panel-slide .swiper-pagination",
