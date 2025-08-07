@@ -7,7 +7,7 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG Intelligence Affectueuse</title>
+    <title>LG Intelligence Affectueuse | LG TN</title>
     <meta name="Keywords" content="LG AI, Intelligence Affective, IA Centrée sur l'Humain, Plateforme Smart Life, Solutions Technologiques de Pointe">
     <meta name="Description" content="LG AI s'efforce de vous offrir une vie agréable, sans effort et soignée grâce à « une perception judicieuse, une compréhension profonde et une attention chaleureuse ». Bénéficiez d'une qualité de vie supérieure grâce à LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain.">
     <meta property="og:title" content="LG Intelligence Affectueuse"/>
