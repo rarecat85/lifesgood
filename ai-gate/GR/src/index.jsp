@@ -220,7 +220,7 @@
                           <span class="link-btn" data-tp="copy">Μάθετε Περισσότερα</span>
                         </a>
                       </li>
-                      <li class="product-item">
+                      <!-- <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="Μπροστινή όψη του LG Washing Machine AI" loading="lazy" data-tp="alt">
@@ -235,7 +235,7 @@
                           </div>
                           <span class="link-btn" data-tp="copy">Μάθετε Περισσότερα</span>
                         </a>
-                      </li>
+                      </li> -->
                       <li class="product-item">
                         <a href="https://www.lg.com/gr/psigeia/lg-gsgv80pyll" data-tp="link">
                           <div class="img-bx">
