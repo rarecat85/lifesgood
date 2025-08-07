@@ -372,8 +372,7 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
                         <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="Žena a muž sa objímajú v obývačke a vedľa nich je zapnutý reproduktor XBOOM." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
-                        <h3 class="title" data-tp="copy">Užite si nový zvukový zážitok s technológiou <br>
-                          LG xboom AI</h3>
+                        <h3 class="title" data-tp="copy">Užite si nový zvukový zážitok <br> s technológiou LG xboom AI</h3>
                         <a href="https://www.lg.com/sk/audio-systemy" class="white-btn" data-tp="copy link">Zistite viac</a>
                       </div>
                     </div>
@@ -411,7 +410,7 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
                     <!-- E : tab-panel-slide -->
                     <!-- S : tab-panel-disclaimer -->
                     <ul class="tab-panel-disclaimer">
-                      <li data-tp="copy"></li>
+                      <li data-tp="copy">*Tento produkt ešte nie je k dispozícii.</li>
                     </ul>
                     <!-- E : tab-panel-disclaimer -->
                   </div>
