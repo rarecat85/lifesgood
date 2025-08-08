@@ -166,7 +166,7 @@
       width: rem(32);
       height: rem(32);
       border-radius: 50%;
-      background: rgba(217, 211, 200, 0.75);
+      background: rgba(250, 250, 250, 0.80);
       backdrop-filter: blur(20px);
       margin-top: 0;
       position: static;
@@ -175,7 +175,6 @@
       cursor: pointer;
       transition: all 0.3s linear;
       pointer-events: auto;
-
       @include tablet {
         width: rem(48);
         height: rem(48);
@@ -194,6 +193,7 @@
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
+        transition: all 0.3s linear;
 
         @include tablet {
           width: rem(24);
@@ -202,7 +202,7 @@
       }
 
       &:hover {
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), rgba(217, 211, 200, 0.75);
+        background: #FAFAFA;
       }
 
       &.swiper-button-prev {
@@ -223,6 +223,14 @@
           [dir="rtl"] & {
             transform: translate(-50%, -50%) rotate(180deg);
           }
+        }
+      }
+
+      &.swiper-button-disabled {
+        background: rgba(217, 211, 200, 0.30);
+        opacity: 1;
+        &::after {
+          opacity: 0.2;
         }
       }
     }
