@@ -108,7 +108,7 @@
             <div class="tab-container" role="tablist">
               <!-- S : tab-list -->
               <div class="tab-list">
-                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">ugodan život</button>
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">Ugodan život</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-2" id="product-tab-2" data-tp="copy">Život bez napora</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-3" id="product-tab-3" data-tp="copy">Ušuškan život</button>
               </div>
