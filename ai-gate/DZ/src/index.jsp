@@ -117,8 +117,8 @@ Plan final : un fond blanc avec le logo LG AI et la phrase "Une intelligence bie
             <div class="tab-container" role="tablist">
               <!-- S : tab-list -->
               <div class="tab-list">
-                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">La vie, en mieux.</button>
-                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-2" id="product-tab-2" data-tp="copy">Votre quotidien, en toute simplicité.</button>
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">La vie, en mieux</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-2" id="product-tab-2" data-tp="copy">Votre quotidien, en toute simplicité</button>
                 <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-3" id="product-tab-3" data-tp="copy">Un quotidien soigné</button>
               </div>
               <!-- E : tab-list -->
