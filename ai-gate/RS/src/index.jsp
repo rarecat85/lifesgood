@@ -333,7 +333,6 @@
                     <!-- S : tab-panel-disclaimer -->
                     <ul class="tab-panel-disclaimer">
                       <li data-tp="copy">*LG AI funkcije koriste algoritme zasnovane na učenju za poboljšanje slike u realnom vremenu i prostorno širenje zvuka </li>
-                      <li data-tp="copy">**삭제</li>
                     </ul>
                     <!-- E : tab-panel-disclaimer -->
                   </div>
