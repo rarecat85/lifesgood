@@ -1,0 +1,910 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+<head>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title>LG Affectionate Intelligence | LG NO</title>
+    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Menneskesentrert AI, Smart livsplattform, Teknologifremmende løsninger">
+    <meta name="Description" content="LG AI jobber for ditt gledelige, enkle og godt ivaretatte liv gjennom «Å sanse klokt, forstå dypt, og bry seg varmt.» Opplev en høyere livskvalitet med LG Affectionate Intelligence, der AI går utover kunstig intelligens for å gi varm, menneskesentrert omsorg.">
+    <meta property="og:title" content="LG Affectionate Intelligence | LG NO"/>
+    <meta property="og:url" content="https://www.lg.com/no/lg-ai">
+    <meta property="og:description" content="LG AI jobber for ditt gledelige, enkle og godt ivaretatte liv gjennom «Å sanse klokt, forstå dypt, og bry seg varmt.» Opplev en høyere livskvalitet med LG Affectionate Intelligence, der AI går utover kunstig intelligens for å gi varm, menneskesentrert omsorg."/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
+
+    <!-- your -->
+    <link href="./lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-font.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css">
+
+    <script src="./lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer=""></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-common.js" defer=""></script>
+
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
+<body>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="LG AI jobber for ditt gledelige, enkle og godt ivaretatte liv gjennom «Å sanse klokt, forstå dypt, og bry seg varmt.» Opplev en høyere livskvalitet med LG Affectionate Intelligence, der AI går utover kunstig intelligens for å gi varm, menneskesentrert omsorg."/>
+    <meta itemprop="Keywords" content="LG AI, Affectionate Intelligence, Menneskesentrert AI, Smart livsplattform, Teknologifremmende løsninger"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<main>
+      <div class="gate-container">
+        <!-- S : kv-section -->
+        <section class="kv-section">
+          <div class="inner">
+            <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-kv-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-kv-mobile.png" aria-labelledby="kv-video-description">
+            <h1 id="kv-video-description" class="a11y-text" data-tp="copy">En kvinne går forbi mens lyset skrus på automatisk. Teksten «Sensing wisely» vises på skjermen.
+En mann og kvinne omfavner hverandre mens XBOOM-høyttaleren aktiveres, ledsaget av teksten «Understanding deeply.»
+En mann sitter trist i førersetet. LG AI-logoen vises sammen med teksten «Caring warmly.»
+En fotballkamp vises på TV-en. LG AI svarer med stemmeinteraksjon. Teksten «For your delightful life» vises under.
+XBOOM, TV-en og en familie som sitter i sofaen med hunden sin vises i ett bilde.
+En mor og sønn bruker vaskemaskinen sammen. Teksten «For your effortless life» vises.
+Scener med mor og sønn, nærbilde av AI Wash-dreiebenken og en mann som bruker LG gram-bærbar PC flettes sammen i ett klipp med teksten «For your effortless life.»
+En mann og kvinne sitter i forsetene i en bil. LG AI-logoen vises mellom dem sammen med teksten «For your well cared life.»
+En person går inn på et kontor med hunden sin. Luftrenseren slår seg på som respons.
+Siste bilde: hvit bakgrunn med LG AI-logoen og teksten «Affectionate Intelligence for YOU.</h1>
+            <button type="button" class="play-btn" aria-label="Play video"></button>
+            </div>
+          </div>
+        </section>
+        <!-- E : kv-section -->
+        <!-- S : overview-section -->
+        <section class="overview-section">
+          <div class="inner">
+            <picture>
+              <source media="(min-width: 768px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
+              <source media="(max-width: 767px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
+              <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logga" class="ai-logo" data-tp="alt">
+            </picture>
+            <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">Affectionate Intelligence</span> for YOU</h2>
+            <p class="text" data-tp="copy">Hos LG har vi spurt oss selv: hva skal AI egentlig eksistere for? <br>
+              Etter mye refleksjon har vi funnet vårt svar. <br><br>
+              For oss handler AI om mer enn kunstig intelligens — det er Affectionate Intelligence. <br><br>
+              Når AI blir en del av hverdagen vår, <br>
+              skal det hjelpe til med å skape det bedre livet vi alle fortjener. <br><br>
+              Derfor begynner LG AI med DEG — med omsorg, gjennom <br>
+              å sanse og forstå, og videre å ta vare på livet ditt.
+              <strong>Oppdag hvordan Life’s Good er med LG AI</strong></p>
+            <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Rull ned-ikon" class="scroll-down-icon" data-tp="alt">
+          </div>
+        </section>
+        <!-- E : overview-section -->
+        <!-- S : product-section -->
+        <section class="product-section">
+          <div class="inner">
+            <div class="tab-container" role="tablist">
+              <!-- S : tab-list -->
+              <div class="tab-list">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">Et gledelig liv</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-2" id="product-tab-2" data-tp="copy">Enkelt liv</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-3" id="product-tab-3" data-tp="copy">Godt ivaretatt liv</button>
+              </div>
+              <!-- E : tab-list -->
+              
+              <!-- S : panel-container -->
+              <div class="panel-container">
+                <!-- S : tab-panel tab-1 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-1" id="product-panel-1">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI forstår livet ditt og forbedrer opplevelsene for å fylle livet ditt med gledelige øyeblikk.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png" aria-labelledby="benefit01-banner-video-description">
+                      <span id="benefit01-banner-video-description" class="a11y-text" data-tp="copy">En mann og en kvinne sitter i sofaen og ser på en fotballkamp på en LG-TV i stua. Scenen skifter, og mannen og kvinnen omfavner hverandre. Kameraet fokuserer på LG XBOOM-høyttaleren ved siden av dem.</span>
+                      <h3 class="video-title" data-tp="copy">For ditt gledelige liv</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/oled-evo" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products01.png" alt="LG OLED evo AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/oled-tv" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/qned-tv" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/nanocell-tv" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG NanoCell AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-1 -->
+                <!-- S : tab-panel tab-2 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-2" id="product-panel-2" hidden="">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI oppfatter dine behov og tilbyr løsninger som får livet ditt til å flyte enkelt i ditt eget tempo.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png" aria-labelledby="benefit02-banner-video-description">
+                      <span id="benefit02-banner-video-description" class="a11y-text" data-tp="copy">En mor og sønn bruker en LG AI-vaskemaskin sammen, og de vrir på bryteren for å aktivere AI Wash. En mann som bruker en LG gram-bærbar PC vises i samme sekvens.</span>
+                      <h3 class="video-title" data-tp="copy">For ditt enkle liv</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/kombinert-vask-tork/lg-wt1210bbf" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <div class="img-bx">
+                          <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG Washing Machine AI-produkt forfra" loading="lazy" data-tp="alt">
+                        </div>
+                      </li>
+                      <li class="product-item">
+                        <div class="img-bx">
+                          <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="LG Dryer AI-produkt forfra" loading="lazy" data-tp="alt">
+                        </div>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/no/kjol-frys/lg-gmg960evje" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView AI-produkt forfra" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-2 -->
+                <!-- S : tab-panel tab-3 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-3" id="product-panel-3" hidden="">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI bryr seg om deg, ditt rom og planeten for å gjøre livet ditt godt ivaretatt, akkurat slik du ønsker.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png" aria-labelledby="benefit03-banner-video-description">
+                      <span id="benefit03-banner-video-description" class="a11y-text" data-tp="copy">En mann går inn på kontoret med en hundebånd i hånden. En mann i førersetet ser trist ut mens LG AI viser ham et familieportrett. En nærbilde av bilens skjerm vises, hvor LG AI åpner et kart og gjenopplever et minne.</span>
+                      <h3 class="video-title" data-tp="copy">For ditt godt ivaretatte liv</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <div class="img-bx">
+                          <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI-produkt forfra" loading="lazy" data-tp="alt">
+                        </div>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS-visjonssystem produkt sidevisning" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products03.png" alt="Bruker som interagerer med en berøringsskjerm drevet av multimodal AI HMI-løsning, og velger kaffemeny med AI-assistentens forslag." loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lær mer</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-3 -->
+              </div>
+              <!-- E : panel-container -->
+            </div> 
+          </div>
+        </section>
+        <!-- E : product-section -->
+        <!-- S : feature-section -->
+        <section class="feature-section">
+          <div class="inner">
+            <div class="tab-container" role="tablist">
+              <!-- S : tab-list -->
+              <div class="tab-list">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="feature-panel-1" id="feature-tab-1" data-tp="copy">TV</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-2" id="feature-tab-2" data-tp="copy">Lyd</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-3" id="feature-tab-3" data-tp="copy">Hvitevarer</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-4" id="feature-tab-4" data-tp="copy">Klimaanlegg</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-5" id="feature-tab-5" data-tp="copy">Databehandling</button>
+              </div>
+              <!-- E : tab-list -->
+              <!-- S : panel-container -->
+              <div class="panel-container">
+                <!-- S : tab-panel tab-1 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-1" id="feature-panel-1">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI TV" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Utvikler seg for å tilfredsstille alle dine underholdningsbehov</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG AI TV lærer dine seervaner og forstår livsstilen din for å optimalisere alle aspekter av TV-opplevelsen, og skaper ideell, personlig underholdning kun for deg.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="Over LG Magic Remote vises funksjoner som AI Voice ID, AI Search, AI Chatbot, AI Concierge, AI Picture Wizard og AI Sound Wizard." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Møt neste generasjon av <br>
+                          LG AI TV</h3>
+                        <a href="https://www.lg.com/no/tv/ai-tv" class="white-btn" data-tp="copy link">Lær mer</a>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png" alt="På en LG OLED TV-skjerm vises webOS 25-hjemmesiden fylt med apper og underholdningsinnhold. Ved siden av TV-en ligger LG AI Magic Remote, der AI-knappen er uthevet som om den er aktivert av brukerens stemme. En snakkeboble ved siden av sier: «foreslå en film jeg vil like»." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Voice ID</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png" alt="LG OLED TV-skjerm viser hvordan AI Search fungerer. Et lite chattevindu er åpent, og brukeren har spurt hvilke sportsbegivenheter som er tilgjengelige. AI Search svarte via chat og viste miniatyrbilder av forskjellige tilgjengelige innhold. Det finnes også en oppfordring til å spørre Microsoft Copilot." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Search</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png" alt="LG AI Magic Remote i bruk. Et kort trykk på AI-knappen aktiverer AI-assistenten på OLED TV-skjermen, som deretter foreslår søkeord." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Concierge</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png" alt="Sci-fi-innhold vises på LG OLED TV-skjermen. På venstre side av skjermen er AI Chatbot-grensesnittet. Brukeren sender melding til chatboten om at skjermen er for mørk, og chatboten tilbyr løsninger på forespørselen." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Chatbot</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="En kvinne synger i mikrofon med hodetelefoner, fremhevet av LG α11 AI Processor sin lydforbedring." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Picture/Sound Wizard</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png" alt="To sammenkoblede scener med LG AI Magic Remote foran en TV – først en sci-fi-scene, deretter en startskjerm med personlig innhold." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Magic Remote</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*LG AI-funksjonene bruker dype læringsbaserte algoritmer for sanntids oppskalering av bilde og lydmiksing.</li>
+                      <li data-tp="copy">**Alle LG webOS 24-TV-er har AI Customization, unntatt de uten lyssensorer.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-1 -->
+                <!-- S : panel tab-2 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-2" id="feature-panel-2">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Lyd" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Lyd som er unikt riktig</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG xboom AI analyserer og justerer lyden for å passe til sjanger og rom. Med AI-lyssetting som forsterker stemningen og harmonerer med musikken din, kan du nyte en lyd og atmosfære som er unikt riktig.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="En kvinne og en mann omfavner hverandre i stuen, med XBOOM-høyttaleren slått på ved siden av dem." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Opplev en ny lydopplevelse <br>
+                          med LG xboom AI</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG XBOOM-høyttaler med AI lydmoduser som Bass Boost, Voice Enhance og Standard." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Lyd</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG XBOOM-høyttaler med AI-lys som tilpasser seg stemme, omgivelses- og festmodus." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Lyssetting</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG XBOOM-høyttaler plassert på et bord i et rom med rødtone, rutemønstrede vegger og moderne møbler." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Kalibrering</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*Dette produktet er ikke tilgjengelig ennå.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-2 -->
+                <!-- S : panel tab-3 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-3" id="feature-panel-3">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Hvitevarer" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Lett opp hver vask</h2>
+                    <!-- E : tab-panel-title -->  
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG WashTower AI registrerer hva du vasker for å tilby en optimalisert vask som skåner sarte tekstiler, og sørger for at hver vask blir perfekt uten anstrengelse, hver gang.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="LG innebygd stablet vaskemaskin og tørketrommel i et moderne vaskerom med trekabinett og benk." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Oppdag en ny livsstil <br>
+                          med LG AI Core Tech</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Håndjustering av AI Wash-program på LG vaskemaskin med smart kontrollratt." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Wash</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="Bruker velger AI Dry-program på LG tørketrommel med digitalt kontrollhjul." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Dry</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*Dette produktet vil lanseres gradvis i utvalgte land.</li>
+                      <li data-tp="copy">**AI-sensing aktiveres når vasken er under 6 kg.</li>
+                      <li data-tp="copy">***AI Wash bør kun brukes med like tekstiltyper [ikke alle tekstiler blir oppdaget] og egnet vaskemiddel.</li>
+                      <li data-tp="copy">****AI Dry er kun tilgjengelig for vask under 5 kg med tekstiler som har samme fuktighetsabsorpsjonsnivå.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-3 -->
+                <!-- S : panel tab-4 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-4" id="feature-panel-4">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Klimaanlegg" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Komfort med perfekt tilpasset kjøling</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG DUALCOOL AI sørger for optimal luft, holder deg komfortabel samtidig som den optimaliserer energieffektiviteten for å bidra til kostnadsbesparelser. Med LG AI Air får du en perfekt tilpasset kjøling for din komfort.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="LG DUAL Inverter klimaanlegg kjøler et moderne oppholdsrom, hvor en kvinne sitter i sofaen, drevet av ThinQ AI-teknologi." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title text-black" data-tp="copy">Opplev optimal komfort <br>
+                          med LG AI Air</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Kvinne slapper av i et smart oppholdsrom mens LG AI Air klimaanlegg automatisk justerer temperatur, luftstrøm og fuktighet." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Air</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Smarttelefongrensesnitt som viser energiforbruksgraf foran LG klimaanlegg, med fokus på AI kW Manager for effektiv energiovervåking" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI kW Manager</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*AI Air kan styres via fjernkontroll og ThinQ.</li>
+                      <li data-tp="copy">**AI Air er tilgjengelig i både kjøle- og varmemodus.</li>
+                      <li data-tp="copy">***Når AI Air er i bruk, justeres luftmengde og vindretning automatisk etter situasjonen, og AI Air slås av når vindretningen endres manuelt.</li>
+                      <li data-tp="copy">****Når AI Air aktiveres, oppdager radarsensoren plasseringen til brukeren og aktiverer automatisk direkte eller indirekte luftstrøm.</li>
+                      <li data-tp="copy">*****Radarsensorens registreringsavstand er opptil 5 meter, og denne kan variere avhengig av produktets installasjon og bruksforhold.</li>
+                      <li data-tp="copy">******Denne funksjonen fungerer kun med modeller som har radarsensor.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-4 -->
+                <!-- S : panel tab-5 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-5" id="feature-panel-5">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Databehandling" class="eyebrow-logo" loading="lazy">  
+                      </picture>
+                     Driver alt du gjør</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">G gram AI styrker arbeidet ditt både online og offline. Finn og oppsummer filer sikkert offline med gram chat på enheten, og øk produktiviteten online med GPT-4o-drevet gram chat i skyen.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="En kvinne bruker en LG gram bærbar PC med dobbel skjermoppsett for videokonferanse og multitasking i hjemmekontoret sitt." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title text-black" data-tp="copy">Frigjør dine nye evner uten <br>
+                          begrensninger med LG gram AI</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="LG gram bærbar PC med On-Device AI og smart assistentgrensesnitt på skjermen." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">gram Chat On-Device</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="LG gram bærbar PC med Cloud AI som viser smart assistentgrensesnitt for nettbasert støtte og produktivitet." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">gram Chat Cloud</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*I produktets tidlige brukstrinn kan noen funksjoner fungere ujevnt. Dette skyldes at AI på enheten krever tid for forhåndstrening for å tilpasse seg brukeren.</li>
+                      <li data-tp="copy">*gram Chat On-Device krever indekseringsoppgaver for å lokalisere innhold på PC-en ved å kombinere ord og data, noe som kan ta tid før ønskede resultater oppnås.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-5 -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- E : feature-section -->
+        <!-- S : thinq-section (글로벌 사이트 / KR)-->
+        <!-- <section class="thinq-section">
+          <div class="inner">
+            <h2 class="thinq-section-title">Always ON for a better home</h2>
+            <div class="banner">
+              <div class="video-bx responsive-video" 
+                  data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
+                  data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
+                  data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
+                  data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
+                  aria-labelledby="thinq-on-banner-video-description">
+                  <span id="thinq-on-banner-video-description" class="a11y-text">In a dark living room, the Stanby Me TV turns on with a "Good Morning" message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically.</span>
+                  <a href="javascript:void(0)" class="white-btn">Learn More</a>
+                  <button type="button" class="play-btn" aria-label="Play video"></button>
+                </div>
+            </div>
+            !-- S : thinq-flex-bx --
+            <div class="flex-bx">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
+                  <figcaption>
+                    * This product is not availble yet.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">LG AI Voice Assistant</h3>
+                <p class="text">Easy voice control for your devices, daily assistance, and mood setting.</p>
+              </div>
+            </div>
+            !-- E : thinq-flex-bx --
+            !-- S : thinq-flex-bx --
+            <div class="flex-bx reverse">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
+                  <figcaption>
+                    * This product is not availble yet.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">Smart Living with LG AI</h3>
+                <p class="text">Optimal connections and upgrades for the devices in your space for smart life care</p>
+              </div>
+            </div>
+            !-- E : thinq-flex-bx --
+          </div>
+        </section> -->
+        <!-- E : thinq-section (글로벌 사이트 / KR)-->
+        <!-- S : thinq-section (Local)-->
+        <section class="thinq-section">
+          <div class="inner">
+            <h2 class="thinq-section-title" data-tp="copy">ThinQ® hjelper deg i hverdagen</h2>
+            <p class="thinq-section-text" data-tp="copy">En plattform for dine smarte LG-apparater og enheter. ThinQ gir deg kontroll og bekvemmelighet rett ved fingertuppene, for å gjøre livet enklere og la deg nyte hjemmets komfort.</p>
+            
+            <div class="banner">
+              <picture> 
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
+                <img src="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" alt="En person holder en smarttelefon med LG ThinQ-appen åpen, styrer smarte hjemmenheter mens hen drikker kaffe." loading="lazy" data-tp="alt">  
+              </picture>
+            </div>
+            <!-- S : youtube-video-list -->
+            <div class="youtube-video-list">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <!-- S : swiper-slide01 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="TvFhuqvQLYI" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb01.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide01 -->
+                  <!-- S : swiper-slide02 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="iQyFMATSUDU" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb02.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide02 -->
+                  <!-- S : swiper-slide03 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="W6pXClCE3P4" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb03.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide03 -->
+                  <!-- S : swiper-slide04 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="oEuZqLxQrUY" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb04.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide04 -->
+                  <!-- S : swiper-slide05 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="UFRyOs-6h5s" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb05.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide05 -->
+                </div>
+                <div class="swiper-controller">
+                  <div class="swiper-button-prev slide-btn"></div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-next slide-btn"></div>
+                </div>
+              </div>
+            </div>
+            <!-- E : youtube-video-list -->
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature01.png" alt="I et moderne smart kjøkken bruker en kvinne en stemmekommando for å starte vaskemaskinen med LG ThinQ AI, mens en mann leser i sofaen i bakgrunnen." loading="lazy" data-tp="alt">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title" data-tp="copy">Enkel kontroll med stemmeassistent</h3>
+                <p class="text" data-tp="copy">Fortell LG-kodinkonet ditt nøyaktig hva du trenger ved å si det høyt, og AI-høyttaleren vil lytte og sjekke programmet for å gi deg beskjed.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx reverse">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature02.png" alt="En smarttelefon viser LG ThinQ-appen som styrer LG InstaView Slide-In Range-ovnen, noe som muliggjør effektiv produktvedlikehold på kjøkkenet." loading="lazy" data-tp="alt">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title" data-tp="copy">Effektiv produktvedlikehold</h3>
+                <p class="text" data-tp="copy">Gjennom LG ThinQ-appen kan du sjekke status på LG-kodinkonet ditt, laste ned nye programmer, overvåke programbruk og mye mer.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+          </div>
+        </section>
+        <!-- E : thinq-section (Local)-->
+        <!-- S : stories-section -->
+        <section class="stories-section">
+          <div class="inner">
+              <h2 class="title" data-tp="copy">Mer om LG Affectionate Intelligence</h2>
+              <div class="slide-bx">
+                  <div class="swiper" role="region" aria-label="스토리 슬라이드쇼">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="En leder i LG Electronics holder et akkrediteringssertifikat for cybersikkerhet, med et digitalt sikkerhetsgrafikk i bakgrunnen." loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG styrker sin ledelse innen cybersikkerhet med KOLAS IoT-akkreditering for cybersikkerhetstesting.</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-strengthens-cybersecurity-leadership-with-kolas-iot-cybersecurity-testing-accreditation/" class="white-btn" data-tp="copy link">Lær mer</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Besøkende ser på LGs buede LED-skjerm som viser slagordet «Life’s Good 24/7» på en teknologimesse." loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG presenterer sine nyeste innovasjoner drevet av “Affectionate Intelligence” på CES 2025</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-presents-its-latest-innovations-powered-by-affectionate-intelligence-at-ces-2025/" class="white-btn" data-tp="copy link">Lær mer</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="En foredragsholder presenterer AI-drevne B2B-løsninger på scenen under et LG-arrangement." loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG avslører en dag i livet med “Affectionate Intelligence” på LG World Premiere</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-unveils-a-day-in-a-life-with-affectionate-intelligence-at-lg-world-premiere/" class="white-btn" data-tp="copy link">Lær mer</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+        <!-- E : stories-section -->
+        <!-- S : layer-popup -->
+        <!-- <div class="products-layer" role="dialog" aria-hidden="true" aria-modal="true" tabindex="-1">
+          <div class="products-layer-conbx">
+            <div class="products-layer-header">
+              <div class="products-layer-header-title-bx">
+                <h2 class="products-layer-header-title-bx-title heading"></h2>
+              </div>
+              <a href="javascript:void(0)" class="products-layer-header-close" role="button" aria-label="colse">close</a>
+            </div>
+            <div class="products-layer-content">
+              <div class="products-layer-content-txtwrap">
+                <div class="products-layer-content-txtwrap-txtbx">
+                  <h3 class="products-layer-content-txtwrap-txtbx-title heading"></h3>
+                  <p class="products-layer-content-txtwrap-txtbx-desc"></p>
+                </div>
+              </div>
+              <div class="products-layer-content-swiper swiper">
+                <div class="products-layer-content-swiper-wrapper swiper-wrapper"></div>
+              </div>
+              <div class="products-layer-content-thumbbx">
+                <div class="products-layer-content-thumb-swiper-btn-prev"></div>
+                <div class="products-layer-content-thumb-swiper swiper">
+                  <div class="products-layer-content-thumb-swiper-wrapper swiper-wrapper"></div>
+                </div>
+                <div class="products-layer-content-thumb-swiper-btn-next"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- E : layer-popup -->
+      </div>
+    </main>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
+</body>
+</html>
