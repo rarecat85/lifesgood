@@ -196,7 +196,7 @@ Siste bilde: hvit bakgrunn med LG AI-logoen og teksten «Affectionate Intelligen
                           <span class="link-btn" data-tp="copy">Lær mer</span>
                         </a>
                       </li>
-                      <li class="product-item">
+                      <!-- <li class="product-item">
                         <div class="img-bx">
                           <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="LG Washing Machine AI-produkt forfra" loading="lazy" data-tp="alt">
                         </div>
@@ -205,7 +205,7 @@ Siste bilde: hvit bakgrunn med LG AI-logoen og teksten «Affectionate Intelligen
                         <div class="img-bx">
                           <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="LG Dryer AI-produkt forfra" loading="lazy" data-tp="alt">
                         </div>
-                      </li>
+                      </li> -->
                       <li class="product-item">
                         <a href="https://www.lg.com/no/kjol-frys/lg-gmg960evje" data-tp="link">
                           <div class="img-bx">
@@ -232,11 +232,11 @@ Siste bilde: hvit bakgrunn med LG AI-logoen og teksten «Affectionate Intelligen
                     <!-- E : video-bx -->
                     <!-- S : product-list -->
                     <ul class="product-list">
-                      <li class="product-item">
+                      <!-- <li class="product-item">
                         <div class="img-bx">
                           <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="LG DUALCOOL AI-produkt forfra" loading="lazy" data-tp="alt">
                         </div>
-                      </li>
+                      </li> -->
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision" data-tp="link">
                           <div class="img-bx">
