@@ -8,7 +8,7 @@
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
     <title>LG Affectionate Intelligence | LG RU</title>
-    <meta name="Keywords" content=" LG AI, Affectionate Intelligence, Человеко-ориентированный ИИ, Платформа для умной жизни, Передовые технологические решения">
+    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Человеко-ориентированный ИИ, Платформа для умной жизни, Передовые технологические решения">
     <meta name="Description" content="LG AI стремится к тому, чтобы ваша жизнь была приятнее, без усилий и заботы, благодаря «разумному восприятию, глубокому пониманию, теплой заботе». Ощутите более высокое качество жизни с LG Affectionate Intelligence, где искусственный интеллект выходит за рамки обычного искусственного интеллекта и обеспечивает теплую заботу, ориентированную на человека.">
     <meta property="og:title" content="LG Affectionate Intelligence | LG RU"/>
     <meta property="og:url" content="https://www.lg.com/ru/lg-ai">
@@ -102,8 +102,8 @@ XBOOM, телевизор и семья, сидящая на диване с с�
               Для нас  AI — это больше, чем  искусственный интеллект. Это Заботливый интеллект. <br><br>
               Когда технологии становятся частью нашей жизни, <br>
               они должны помогать делать её лучше. <br><br>
-              Именно поэтому  LG AI  начинается с вас, чутко распознавая, <br>
-              понимая и заботясь о вашем комфорте.
+              Именно поэтому  LG AI  начинается с вас, чутко <br>
+              распознавая, понимая и заботясь о вашем комфорте.
               <strong>Узнайте, как жизнь становится лучше с LG AI</strong></p>
             <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Иконка прокрутки вниз" class="scroll-down-icon" data-tp="alt">
           </div>
@@ -195,12 +195,15 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                         </div>
                       </li>
                       <li class="product-item">
-                        <div class="img-bx">
-                          <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="Холодильник LG InstaView AI, вид спереди" loading="lazy" data-tp="alt">
-                        </div>
+                        <a href="https://www.lg.com/ru/refrigerators/lg-gc-x24ffcbb" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="Холодильник LG InstaView AI, вид спереди" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Узнать больше</span>
+                        </a>
                       </li>
                       <li class="product-item">
-                        <div class="img-bx">
+                        <<div class="img-bx">
                           <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products05.png" alt="Ноутбук LG gramPro AI вид спереди" loading="lazy" data-tp="alt">
                         </div>
                       </li>
@@ -278,7 +281,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
                         <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="Телевизоры LG AI" class="eyebrow-logo" loading="lazy">
                       </picture>
-                      Развиваются, чтобы соответствовать вашим запросам</h2>
+                     Развиваются, чтобы соответствовать вашим запросам</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
                     <p class="tab-panel-text" data-tp="copy">Телевизоры LG AI изучают ваши предпочтения и стиль жизни, чтобы сделать просмотр ТВ максимально комфортным и персонализированным.</p>
@@ -374,12 +377,12 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                       <picture>
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="A woman and a man embrace in the living room, with the LG xboom speaker turned on beside them." loading="lazy" data-tp="alt">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="Мужчина и женщина обнимаются в гостиной, рядом с ними стоит включенная колонка XBOOM." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">Наслаждайтесь новым звуком <br>
                           с LG XBOOM AI</h3>
-                        
+                        <a href="" class="white-btn" data-tp="copy link"></a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -431,7 +434,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
                         <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="Бытовая техника LG AI" class="eyebrow-logo" loading="lazy">
                       </picture>
-                      Облегчает ваши заботы</h2>
+                     Облегчает ваши заботы</h2>
                     <!-- E : tab-panel-title -->  
                     <!-- S : tab-panel-text -->
                     <p class="tab-panel-text" data-tp="copy">LG WashTower AI определяет тип загруженного белья и подбирает оптимальный режим стирки, обеспечивая бережный уход за тканями. Каждая стирка становится проще и эффективнее.</p>
@@ -510,7 +513,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                       <div class="text-bx">
                         <h3 class="title text-black" data-tp="copy">Ощутите оптимальный комфорт <br>
                           с LG AI Air</h3>
-                        
+                        <a href="" class="white-btn" data-tp="copy link"></a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -574,9 +577,9 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                         <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="Женщина использует ноутбук LG gram с двумя экранами для видеоконференций и выполнения нескольких задач одновременно в своем домашнем офисе." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
-                        <h3 class="title text-black" data-tp="copy">Откройте свои безграничные <br>
-                           возможности с LG gram AI</h3>
-                        
+                        <h3 class="title text-black" data-tp="copy">Откройте свои безграничные  <br>
+                          возможности с LG gram AI</h3>
+                        <a href="" class="white-btn" data-tp="copy link"></a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
