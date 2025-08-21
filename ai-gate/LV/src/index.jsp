@@ -21,14 +21,14 @@
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
     <!-- your -->
-    <link href="../common/css/ai-gate-reset.css" rel="stylesheet" type="text/css">
-    <link href="../common/css/ai-gate-font.css" rel="stylesheet" type="text/css">
-    <link href="../common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css">
-    <link href="./assets/css/ai-gate-css.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-font.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css">
 
-    <script src="../common/js/ai-gate-swiper-bundle.min.js"></script>
-    <script src="./assets/js/ai-gate-js-layer.js" defer=""></script>
-    <script src="./assets/js/ai-gate-js-common.js" defer=""></script>
+    <script src="./lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer=""></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-common.js" defer=""></script>
 
     <script>
         function GA_Event(category,action,label) {
@@ -74,7 +74,7 @@
         <!-- S : kv-section -->
         <section class="kv-section">
           <div class="inner">
-            <div class="video-bx responsive-video" data-desktop-video-src="./assets/video/ai-gate-video-kv-video-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-kv-video-mobile.mp4" data-desktop-poster-src="./assets/image/ai-gate-image-kv-desktop.png" data-mobile-poster-src="./assets/image/ai-gate-image-kv-mobile.png" aria-labelledby="kv-video-description">
+            <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-kv-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-kv-mobile.png" aria-labelledby="kv-video-description">
             <h1 id="kv-video-description" class="a11y-text" data-tp="copy">Garām paiet sieviete, kad gaisma automātiski ieslēdzas. Ekrānā parādās frāze "Sensing wisely" (gudri uztverot).
 Vīrietis un sieviete apskaujas, kad aktivizējas XBOOM skaļrunis, ko pavada frāze "Understanding deeply" (dziļi izprotot).
 Vadītāja sēdeklī skumji sēž vīrietis. Parādās LG AI logotips kopā ar frāzi "Caring warmly" (sirmi rūpējoties).
@@ -94,9 +94,9 @@ Pēdējais attēls: balts fons ar LG mākslīgā intelekta logotipu un frāzi "S
         <section class="overview-section">
           <div class="inner">
             <picture>
-              <source media="(min-width: 768px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
-              <source media="(max-width: 767px)" srcset="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
-              <img src="./assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logo" class="ai-logo" data-tp="alt">
+              <source media="(min-width: 768px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
+              <source media="(max-width: 767px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
+              <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logo" class="ai-logo" data-tp="alt">
             </picture>
             <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">Sirsnīgs intelekts</span> JUMS</h2>
             <p class="text" data-tp="copy">Uzņēmumā LG mēs sev esam uzdevuši jautājumu: kāpēc mākslīgajam intelektam vajadzētu pastāvēt? <br>
@@ -107,7 +107,7 @@ Pēdējais attēls: balts fons ar LG mākslīgā intelekta logotipu un frāzi "S
               Tāpēc LG mākslīgais intelekts sākas ar JUMS sirsnīgi, caur <br>
               sajūtu un izpratni, tālāk rūpējoties par jūsu dzīvi.
               <strong>Atklājiet, kā dzīve ir labāka ar LG mākslīgo intelektu</strong></p>
-            <img src="./assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Ritiniet ikonu uz leju" class="scroll-down-icon" data-tp="alt">
+            <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Ritiniet ikonu uz leju" class="scroll-down-icon" data-tp="alt">
           </div>
         </section>
         <!-- E : overview-section -->
@@ -130,7 +130,7 @@ Pēdējais attēls: balts fons ar LG mākslīgā intelekta logotipu un frāzi "S
                   <div class="tab-panel-inner">
                     <h2 class="tab-panel-title text-center" data-tp="copy">LG AI understands your life and upgrades experiences to make your life filled with delightful moments.</h2>
                     <!-- S : video-bx -->
-                    <div class="video-bx responsive-video" data-desktop-video-src="./assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4" data-desktop-poster-src="./assets/image/ai-gate-image-benefit01-banner-desktop.png" data-mobile-poster-src="./assets/image/ai-gate-image-benefit01-banner-mobile.png" aria-labelledby="benefit01-banner-video-description">
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png" aria-labelledby="benefit01-banner-video-description">
                       <span id="benefit01-banner-video-description" class="a11y-text" data-tp="copy">Vīrietis un sieviete sēž uz dīvāna un skatās futbola pārraidi LG televizorā viesistabā. Aina mainās, un vīrietis un sieviete apskaujas.
 Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <h3 class="video-title" data-tp="copy">Tavai apburošajai dzīvei</h3>
@@ -142,7 +142,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/oled-evo" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products01.png" alt="LG OLED evo AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products01.png" alt="LG OLED evo AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -150,7 +150,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/oled-televizori" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -158,7 +158,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/qned-tv" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -166,7 +166,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/nanocell-televizori" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products04.png" alt="LG NanoCell AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG NanoCell AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -174,7 +174,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <!-- <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit01-products05.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products05.png" alt="" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy"></span>
                         </a>
@@ -189,7 +189,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <h2 class="tab-panel-title text-center" data-tp="copy">LG mākslīgais intelekts uztver jūsu vajadzības un piedāvā risinājumus, lai jūsu dzīve ritētu bez piepūles jūsu ritmā.</h2>
                     <!-- S : video-bx -->
-                    <div class="video-bx responsive-video" data-desktop-video-src="./assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4" data-desktop-poster-src="./assets/image/ai-gate-image-benefit02-banner-desktop.png" data-mobile-poster-src="./assets/image/ai-gate-image-benefit02-banner-mobile.png" aria-labelledby="benefit02-banner-video-description">
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png" aria-labelledby="benefit02-banner-video-description">
                       <span id="benefit02-banner-video-description" class="a11y-text" data-tp="copy">Māte un dēls kopā lieto LG mākslīgā intelekta veļas mašīnu, pagriežot slēdzi, lai aktivizētu AI Wash. Tajā pašā secībā parādās vīrietis, kurš lieto LG Gram klēpjdatoru.</span>
                       <h3 class="video-title" data-tp="copy">Jūsu bezrūpīgai dzīvei</h3>
                       <button type="button" class="play-btn" aria-label="Play video"></button>
@@ -200,7 +200,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/washtower" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashTower AI produkta priekšpuses skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -208,7 +208,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <!-- <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products02.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy"></span>
                         </a>
@@ -216,7 +216,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products03.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products03.png" alt="" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy"></span>
                         </a>
@@ -224,7 +224,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/lv/ledusskapji/lg-gsgv81pyll" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products04.png" alt="LG InsaView AI produkta priekšējais skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG InsaView AI produkta priekšējais skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -232,7 +232,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <!-- <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit02-products05.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products05.png" alt="" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy"></span>
                         </a>
@@ -247,7 +247,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <h2 class="tab-panel-title text-center" data-tp="copy">LG mākslīgais intelekts rūpējas par jums, jūsu telpu un planētu, lai jūsu dzīve būtu labi aprūpēta, tieši tāda, kādu vēlaties.</h2>
                     <!-- S : video-bx -->
-                    <div class="video-bx responsive-video" data-desktop-video-src="./assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4" data-mobile-video-src="./assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4" data-desktop-poster-src="./assets/image/ai-gate-image-benefit03-banner-desktop.png" data-mobile-poster-src="./assets/image/ai-gate-image-benefit03-banner-mobile.png" aria-labelledby="benefit03-banner-video-description">
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png" aria-labelledby="benefit03-banner-video-description">
                       <span id="benefit03-banner-video-description" class="a11y-text" data-tp="copy">Vīrietis ienāk birojā, turot rokās suņa pavadu. Vīrietis vadītāja sēdeklī izskatās skumjš, kad LG AI viņam rāda ģimenes fotoattēlu. Automašīnas displejs tiek parādīts tuvplānā, kamēr LG AI atver karti un atgriežas atmiņā.</span>
                       <h3 class="video-title" data-tp="copy">Jūsu labi aprūpētai dzīvei</h3>
                       <button type="button" class="play-btn" aria-label="Play video"></button>
@@ -258,7 +258,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <!-- <li class="product-item">
                         <a href="" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products01.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products01.png" alt="" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy"></span>
                         </a>
@@ -266,7 +266,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS vision system produkta priekšējais skats" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS vision system produkta priekšējais skats" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -274,7 +274,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <li class="product-item">
                         <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma" data-tp="link">
                           <div class="img-bx">
-                            <img src="./assets/image/ai-gate-image-benefit03-products03.png" alt="Lietotājs mijiedarbojas ar skārienjutīgu saskarni, ko nodrošina multimodāls mākslīgā intelekta HMI risinājums, atlasot kafijas ēdienkarti ar mākslīgā intelekta palīga uzvedni" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products03.png" alt="Lietotājs mijiedarbojas ar skārienjutīgu saskarni, ko nodrošina multimodāls mākslīgā intelekta HMI risinājums, atlasot kafijas ēdienkarti ar mākslīgā intelekta palīga uzvedni" loading="lazy" data-tp="alt">
                           </div>
                           <span class="link-btn" data-tp="copy">Uzzināt vairāk</span>
                         </a>
@@ -310,9 +310,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI televizors" class="eyebrow-logo" loading="lazy">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI televizors" class="eyebrow-logo" loading="lazy">
                       </picture>
                       Attīstās, lai apmierinātu visas jūsu izklaides vajadzības</h2>
                     <!-- E : tab-panel-title -->
@@ -322,9 +322,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="Virs LG Magic Remote tiek parādītas tādas funkcijas kā AI balss ID, AI meklēšana, AI tērzēšanas robots, AI konsjeržs, AI attēlu vednis un AI skaņas vednis." loading="lazy" data-tp="alt">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="Virs LG Magic Remote tiek parādītas tādas funkcijas kā AI balss ID, AI meklēšana, AI tērzēšanas robots, AI konsjeržs, AI attēlu vednis un AI skaņas vednis." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">Iepazīstieties ar nākamās paaudzes<br>
@@ -344,37 +344,37 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature01.png" alt="LG OLED televizora ekrānā ir redzama webOS 25 sākumlapa, kas ir pilna ar lietotnēm un izklaides saturu. Blakus televizoram atrodas LG AI Magic Remote tālvadības pults, kuras AI poga ir iezīmēta, it kā to aktivizētu lietotāja balss. Blakus tai ir runas burbulis ar uzrakstu &quot;iesakiet filmu, kas man patiktu&quot;." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png" alt="LG OLED televizora ekrānā ir redzama webOS 25 sākumlapa, kas ir pilna ar lietotnēm un izklaides saturu. Blakus televizoram atrodas LG AI Magic Remote tālvadības pults, kuras AI poga ir iezīmēta, it kā to aktivizētu lietotāja balss. Blakus tai ir runas burbulis ar uzrakstu &quot;iesakiet filmu, kas man patiktu&quot;." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Voice ID</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature02.png" alt="LG OLED televizora ekrānā redzams, kā darbojas mākslīgā intelekta meklēšana. Atvērts neliels tērzēšanas logs, kurā redzams, kā lietotājs vaicāja, kādas sporta spēles ir pieejamas. Mākslīgā intelekta meklēšana atbildēja, izmantojot tērzēšanu un parādot dažāda pieejamā satura sīktēlus. Ir arī aicinājums uzdot jautājumu Microsoft Copilot." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png" alt="LG OLED televizora ekrānā redzams, kā darbojas mākslīgā intelekta meklēšana. Atvērts neliels tērzēšanas logs, kurā redzams, kā lietotājs vaicāja, kādas sporta spēles ir pieejamas. Mākslīgā intelekta meklēšana atbildēja, izmantojot tērzēšanu un parādot dažāda pieejamā satura sīktēlus. Ir arī aicinājums uzdot jautājumu Microsoft Copilot." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Search</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature03.png" alt="LG AI Magic Remote lietošanas laikā. Īsi nospiežot AI pogu, OLED televizora ekrānā tiek aktivizēts AI palīgs, kas pēc tam iesaka atslēgvārdus." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png" alt="LG AI Magic Remote lietošanas laikā. Īsi nospiežot AI pogu, OLED televizora ekrānā tiek aktivizēts AI palīgs, kas pēc tam iesaka atslēgvārdus." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Concierge</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature04.png" alt="LG OLED televizora ekrānā tiek atskaņots zinātniskās fantastikas saturs. Ekrāna kreisajā pusē ir mākslīgā intelekta tērzēšanas robota saskarne. Lietotājs paziņo tērzēšanas robotam, ka ekrāns ir pārāk tumšs, un tērzēšanas robots piedāvā risinājumus pieprasījumam." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png" alt="LG OLED televizora ekrānā tiek atskaņots zinātniskās fantastikas saturs. Ekrāna kreisajā pusē ir mākslīgā intelekta tērzēšanas robota saskarne. Lietotājs paziņo tērzēšanas robotam, ka ekrāns ir pārāk tumšs, un tērzēšanas robots piedāvā risinājumus pieprasījumam." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Chatbot</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Sieviete, kas dzied mikrofonā ar austiņām, ko izceļ LG α11 mākslīgā intelekta procesora skaņas uzlabošanas funkcija" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Sieviete, kas dzied mikrofonā ar austiņām, ko izceļ LG α11 mākslīgā intelekta procesora skaņas uzlabošanas funkcija" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Picture/Sound Wizard</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-tv-feature06.png" alt="Divas savienotas ainas ar LG AI Magic Remote televizora priekšā — pirmajā tiek rādīta zinātniskās fantastikas aina, otrajā — sākuma ekrāns ar personalizētu saturu" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png" alt="Divas savienotas ainas ar LG AI Magic Remote televizora priekšā — pirmajā tiek rādīta zinātniskās fantastikas aina, otrajā — sākuma ekrāns ar personalizētu saturu" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Magic Remote</p>
                           </div>
@@ -396,9 +396,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
                       </picture>
                       Izklausās unikāli pareizi</h2>
                     <!-- E : tab-panel-title -->
@@ -408,9 +408,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="Sieviete un vīrietis apskaujas viesistabā, blakus viņiem ieslēgts XBOOM skaļrunis." loading="lazy" data-tp="alt">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="Sieviete un vīrietis apskaujas viesistabā, blakus viņiem ieslēgts XBOOM skaļrunis." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">Izbaudiet jaunu skaņas pieredzi <br>
@@ -430,19 +430,19 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG xboom speaker with AI sound modes including Bass Boost, Voice Enhance, and Standard" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Sound</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG XBOOM skaļrunis ar mākslīgā intelekta apgaismojumu, kas pielāgojas balss, apkārtējās vides un ballītes režīmiem" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG XBOOM skaļrunis ar mākslīgā intelekta apgaismojumu, kas pielāgojas balss, apkārtējās vides un ballītes režīmiem" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Lighting</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG XBOOM skaļrunis novietots uz galda sarkantona telpā ar režģa raksta sienām un modernām mēbelēm." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG XBOOM skaļrunis novietots uz galda sarkantona telpā ar režģa raksta sienām un modernām mēbelēm." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Calibration</p>
                           </div>
@@ -463,9 +463,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Sadzīves tehnika" class="eyebrow-logo" loading="lazy">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Sadzīves tehnika" class="eyebrow-logo" loading="lazy">
                       </picture>
                       Padari katru dienu vieglāku</h2>
                     <!-- E : tab-panel-title -->  
@@ -475,9 +475,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="Iebūvēta LG veļas mašīna un žāvētājs modernā veļas telpā ar koka skapjiem un soliņiem" loading="lazy" data-tp="alt">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="Iebūvēta LG veļas mašīna un žāvētājs modernā veļas telpā ar koka skapjiem un soliņiem" loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">Atklājiet jaunu dzīvesveidu <br>
@@ -497,13 +497,13 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Manuāla AI mazgāšanas cikla regulēšana LG veļas mašīnā, izmantojot viedās vadības ritenīti" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Manuāla AI mazgāšanas cikla regulēšana LG veļas mašīnā, izmantojot viedās vadības ritenīti" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Wash</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="Lietotājs izvēlas AI žāvēšanas ciklu LG žāvētājā, izmantojot digitālo vadības ritenīti" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="Lietotājs izvēlas AI žāvēšanas ciklu LG žāvētājā, izmantojot digitālo vadības ritenīti" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Dry</p>
                           </div>
@@ -527,9 +527,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
                       </picture>
                       Komforts ar perfekti noregulētu dzesēšanu</h2>
                     <!-- E : tab-panel-title -->
@@ -539,9 +539,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="LG DUAL Inverter gaisa kondicionieris, ko darbina ThinQ AI tehnoloģija, atdzesē modernu viesistabu, kur sieviete sēž uz dīvāna." loading="lazy" data-tp="alt">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="LG DUAL Inverter gaisa kondicionieris, ko darbina ThinQ AI tehnoloģija, atdzesē modernu viesistabu, kur sieviete sēž uz dīvāna." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title text-black" data-tp="copy">Izbaudiet optimizētu komfortu <br>
@@ -561,13 +561,13 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Sieviete atpūšas viedajā viesistabā, kamēr LG AI gaisa kondicionieris automātiski regulē temperatūru, gaisa plūsmu un mitrumu." data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Sieviete atpūšas viedajā viesistabā, kamēr LG AI gaisa kondicionieris automātiski regulē temperatūru, gaisa plūsmu un mitrumu." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">Mākslīgā intelekta gaiss</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Viedtālruņa saskarne, kurā LG gaisa kondicioniera priekšpusē ir redzams enerģijas patēriņa grafiks, izceļot AI kW pārvaldnieku efektīvai enerģijas patēriņa uzraudzībai" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Viedtālruņa saskarne, kurā LG gaisa kondicioniera priekšpusē ir redzams enerģijas patēriņa grafiks, izceļot AI kW pārvaldnieku efektīvai enerģijas patēriņa uzraudzībai" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI kW pārvaldnieks</p>
                           </div>
@@ -593,9 +593,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <div class="tab-panel-inner">
                     <!-- S : tab-panel-title -->
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Datorika" class="eyebrow-logo" loading="lazy">  
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Datorika" class="eyebrow-logo" loading="lazy">  
                       </picture>
                       Sniedz spēku visam, ko darāt</h2>
                     <!-- E : tab-panel-title -->
@@ -605,9 +605,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
                       <picture>
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
-                        <source srcset="./assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
-                        <img src="./assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="Sieviete savā mājas birojā izmanto LG Gram klēpjdatoru ar divu ekrānu iestatījumu videokonferencēm un vairākuzdevumu veikšanai." loading="lazy" data-tp="alt">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="Sieviete savā mājas birojā izmanto LG Gram klēpjdatoru ar divu ekrānu iestatījumu videokonferencēm un vairākuzdevumu veikšanai." loading="lazy" data-tp="alt">
                       </picture>
                       <div class="text-bx">
                         <h3 class="title text-black" data-tp="copy">Atklājiet savas jaunās spējas bez ierobežojumiem <br>
@@ -627,13 +627,13 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-computing-feature01.png" alt="LG Gram klēpjdators ar iebūvētu mākslīgo intelektu un viedā palīga saskarni ekrānā" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="LG Gram klēpjdators ar iebūvētu mākslīgo intelektu un viedā palīga saskarni ekrānā" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">gram Chat On-Device</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
-                              <img src="./assets/image/ai-gate-image-product-category-computing-feature02.png" alt="LG Gram klēpjdators ar mākoņa mākslīgo intelektu, kas attēlo viedā palīga saskarni tiešsaistes atbalstam un produktivitātei" data-tp="alt">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="LG Gram klēpjdators ar mākoņa mākslīgo intelektu, kas attēlo viedā palīga saskarni tiešsaistes atbalstam un produktivitātei" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">gram Chat Cloud</p>
                           </div>
@@ -661,10 +661,10 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <h2 class="thinq-section-title">Always ON for a better home</h2>
             <div class="banner">
               <div class="video-bx responsive-video" 
-                  data-desktop-video-src="./assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
-                  data-mobile-video-src="./assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
-                  data-desktop-poster-src="./assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
-                  data-mobile-poster-src="./assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
+                  data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
+                  data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
+                  data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
+                  data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
                   aria-labelledby="thinq-on-banner-video-description">
                   <span id="thinq-on-banner-video-description" class="a11y-text">In a dark living room, the Stanby Me TV turns on with a "Good Morning" message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically.</span>
                   <a href="javascript:void(0)" class="white-btn">Learn More</a>
@@ -675,7 +675,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <div class="flex-bx">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
                   <figcaption>
                     * This product is not availble yet.
                   </figcaption>
@@ -691,7 +691,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <div class="flex-bx reverse">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
                   <figcaption>
                     * This product is not availble yet.
                   </figcaption>
@@ -714,9 +714,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <a href="https://www.lg.com/lv/sadzives-tehnika/thinq" class="white-btn" data-tp="copy link">Uzzināt vairāk</a>
             <div class="banner">
               <picture> 
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
-                <source srcset="./assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
-                <img src="./assets/image/ai-gate-image-thinq-banner-mobile.png" alt="Cilvēks tur rokās viedtālruni ar atvērtu LG ThinQ lietotni, pārvaldot viedās mājas ierīces, vienlaikus dzerot kafiju." loading="lazy" data-tp="alt">  
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
+                <img src="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" alt="Cilvēks tur rokās viedtālruni ar atvērtu LG ThinQ lietotni, pārvaldot viedās mājas ierīces, vienlaikus dzerot kafiju." loading="lazy" data-tp="alt">  
               </picture>
             </div>
             <!-- S : youtube-video-list -->
@@ -726,35 +726,35 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                   <!-- S : swiper-slide01 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="TvFhuqvQLYI" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb01.jpg" alt="" aria-hidden="true">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb01.jpg" alt="" aria-hidden="true">
                     </button>
                   </div>
                   <!-- E : swiper-slide01 -->
                   <!-- S : swiper-slide02 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="iQyFMATSUDU" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb02.jpg" alt="" aria-hidden="true">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb02.jpg" alt="" aria-hidden="true">
                     </button>
                   </div>
                   <!-- E : swiper-slide02 -->
                   <!-- S : swiper-slide03 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="W6pXClCE3P4" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb03.jpg" alt="" aria-hidden="true">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb03.jpg" alt="" aria-hidden="true">
                     </button>
                   </div>
                   <!-- E : swiper-slide03 -->
                   <!-- S : swiper-slide04 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="oEuZqLxQrUY" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb04.jpg" alt="" aria-hidden="true">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb04.jpg" alt="" aria-hidden="true">
                     </button>
                   </div>
                   <!-- E : swiper-slide04 -->
                   <!-- S : swiper-slide05 -->
                   <div class="swiper-slide">
                     <button class="video-btn" type="button" data-src="UFRyOs-6h5s" aria-label="Play video">
-                      <img src="./assets/image/ai-gate-image-youtube-thumb05.jpg" alt="" aria-hidden="true">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb05.jpg" alt="" aria-hidden="true">
                     </button>
                   </div>
                   <!-- E : swiper-slide05 -->
@@ -771,7 +771,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <div class="flex-bx">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-feature01.png" alt="Mūsdienīgā viedajā virtuvē sieviete izmanto balss komandu, lai iedarbinātu veļas mazgājamo mašīnu ar LG ThinQ mākslīgo intelektu, kamēr vīrietis fonā lasa uz dīvāna." loading="lazy" data-tp="alt">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature01.png" alt="Mūsdienīgā viedajā virtuvē sieviete izmanto balss komandu, lai iedarbinātu veļas mazgājamo mašīnu ar LG ThinQ mākslīgo intelektu, kamēr vīrietis fonā lasa uz dīvāna." loading="lazy" data-tp="alt">
                 </figure>
               </div>
               <div class="text-bx">
@@ -784,7 +784,7 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
             <div class="flex-bx reverse">
               <div class="img-bx">
                 <figure>
-                  <img src="./assets/image/ai-gate-image-thinq-feature02.png" alt="Viedtālrunī ir redzama LG ThinQ lietotne, kas kontrolē LG InstaView izvelkamo cepeškrāsni, nodrošinot efektīvu produktu apkopi virtuvē." loading="lazy" data-tp="alt">
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature02.png" alt="Viedtālrunī ir redzama LG ThinQ lietotne, kas kontrolē LG InstaView izvelkamo cepeškrāsni, nodrošinot efektīvu produktu apkopi virtuvē." loading="lazy" data-tp="alt">
                 </figure>
               </div>
               <div class="text-bx">
@@ -805,9 +805,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                       <div class="swiper-wrapper">
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="LG Electronics vadītājs tur kiberdrošības akreditācijas sertifikātu ar digitālās drošības grafiku fonā" loading="lazy" data-tp="alt">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="LG Electronics vadītājs tur kiberdrošības akreditācijas sertifikātu ar digitālās drošības grafiku fonā" loading="lazy" data-tp="alt">
                               </picture>
                               <div class="txt-bx">
                                   <p data-tp="copy">LG stiprina kiberdrošības līderību ar KOLAS lietu interneta kiberdrošības testēšanas akreditāciju</p>
@@ -816,9 +816,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                           </div>
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Apmeklētāji tehnoloģiju izstādē aplūko LG izliekto LED displeju ar saukli “Life's Good 24/7”." loading="lazy" data-tp="alt">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Apmeklētāji tehnoloģiju izstādē aplūko LG izliekto LED displeju ar saukli “Life's Good 24/7”." loading="lazy" data-tp="alt">
                               </picture>
                               <div class="txt-bx">
                                   <p data-tp="copy">LG CES 2025 izstādē prezentē jaunākās inovācijas, ko nodrošina “Affectionate Intelligence” tehnoloģija</p>
@@ -827,9 +827,9 @@ Kamera fokusējas uz blakus esošo LG XBOOM skaļruni.</span>
                           </div>
                           <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
                               <picture>
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
-                                <source srcset="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
-                                <img src="./assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="Runātājs LG pasākumā uz skatuves prezentē mākslīgā intelekta darbinātus B2B risinājumus" loading="lazy" data-tp="alt">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="Runātājs LG pasākumā uz skatuves prezentē mākslīgā intelekta darbinātus B2B risinājumus" loading="lazy" data-tp="alt">
                               </picture>
                               <div class="txt-bx">
                                   <p data-tp="copy">LG pasaules pirmizrādē atklāj dienu dzīvē ar “mīļo intelektu”</p>
