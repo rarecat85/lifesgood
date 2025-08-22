@@ -338,7 +338,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">Наслаждайтесь новым звуком <br>
                           с LG XBOOM AI</h3>
-                        <a href="" class="white-btn" data-tp="copy link"></a>
+                        <!-- <a href="" class="white-btn" data-tp="copy link"></a> -->    
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -469,7 +469,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                       <div class="text-bx">
                         <h3 class="title text-black" data-tp="copy">Ощутите оптимальный комфорт <br>
                           с LG AI Air</h3>
-                        <a href="" class="white-btn" data-tp="copy link"></a>
+                        <!-- <a href="" class="white-btn" data-tp="copy link"></a> -->
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
@@ -535,7 +535,7 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                       <div class="text-bx">
                         <h3 class="title text-black" data-tp="copy">Откройте свои безграничные  <br>
                           возможности с LG gram AI</h3>
-                        <a href="" class="white-btn" data-tp="copy link"></a>
+                        <!-- <a href="" class="white-btn" data-tp="copy link"></a> -->
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
