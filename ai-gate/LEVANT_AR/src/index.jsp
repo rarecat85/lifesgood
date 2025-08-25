@@ -420,6 +420,7 @@
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">اكتشف أسلوب حياة جديد مع <br>
                           تقنية LG AI Core Tech</h3>
+                          <a href="https://www.lg.com/levant_ar/lg-ai-core-tech/washing-machine-dryer" class="white-btn">إعرف المزيد</a>
                       </div>
                     </div>
                     <!-- E : tab-panel-banner -->
