@@ -1,0 +1,895 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+<head>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title>LG intelligentsus | LG EE</title>
+    <meta name="Keywords" content="LG tehisintellekt, hell intelligentsus, inimkeskne tehisintellekt, nutika elu platvorm, tehnoloogiapõhised lahendused">
+    <meta name="Description" content="LG AI püüdleb teie rõõmsa, pingutuseta ja hoolitsetud elu poole läbi „targalt tajumise, sügava mõistmise ja hoolimise“. Kogege kõrgemat elukvaliteeti LG Afectionate Intelligence'iga, kus tehisintellekt läheb tehisintellektist kaugemale, pakkudes inimkeskset hoolitsust.">
+    <meta property="og:title" content="LG intelligentsus | LG EE"/>
+    <meta property="og:url" content="https://www.lg.com/ee/lg-ai">
+    <meta property="og:description" content="LG AI püüdleb teie rõõmsa, pingutuseta ja hoolitsetud elu poole läbi „targalt tajumise, sügava mõistmise ja hoolimise“. Kogege kõrgemat elukvaliteeti LG Afectionate Intelligence'iga, kus tehisintellekt läheb tehisintellektist kaugemale, pakkudes inimkeskset hoolitsust."/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
+
+    <!-- your -->
+    <link href="./lg-ai/common/css/ai-gate-reset.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-font.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css">
+    <link href="./lg-ai/assets/css/ai-gate-css.css" rel="stylesheet" type="text/css">
+
+    <script src="./lg-ai/common/js/ai-gate-swiper-bundle.min.js"></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-layer.js" defer=""></script>
+    <script src="./lg-ai/assets/js/ai-gate-js-common.js" defer=""></script>
+
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
+<body>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="LG AI püüdleb teie rõõmsa, pingutuseta ja hoolitsetud elu poole läbi „targalt tajumise, sügava mõistmise ja hoolimise“. Kogege kõrgemat elukvaliteeti LG Afectionate Intelligence'iga, kus tehisintellekt läheb tehisintellektist kaugemale, pakkudes inimkeskset hoolitsust."/>
+    <meta itemprop="Keywords" content="LG tehisintellekt, hell intelligentsus, inimkeskne tehisintellekt, nutika elu platvorm, tehnoloogiapõhised lahendused"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<main>
+      <div class="gate-container">
+        <!-- S : kv-section -->
+        <section class="kv-section">
+          <div class="inner">
+            <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-kv-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-kv-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-kv-mobile.png" aria-labelledby="kv-video-description">
+            <h1 id="kv-video-description" class="a11y-text" data-tp="copy">Naine kõnnib mööda, kui tuli automaatselt süttib. Ekraanile ilmub fraas "Sensing wisely" (Tajudes targalt).
+Mees ja naine embavad teineteist, kui XBOOM kõlar aktiveerub koos fraasiga "Understanding deeply" (Mõistame sügavalt).
+Mees istub kurvalt juhiistmel. Kuvatakse LG AI logo koos fraasiga "Caring warmly" (Hoolitseme soojalt).
+Televiisoris näidatakse jalgpallimatši. LG AI vastab häälega. Allpool on fraas "For Your Delightful Life" (Teie meeldiva elu nimel).
+XBOOM, teler ja diivanil istuv perekond koos koeraga on kuvatud ühes kaadris.
+Ema ja poeg kasutavad koos pesumasinat. Kuvatakse fraas "For Your Enhancement Life" (Teie pingutuseta elu nimel).
+Stseenid emast ja pojast, lähivõte AI Wash nupust ja mehest, kes kasutab LG Gram sülearvutit, on paigutatud ühte kaadrisse koos fraasiga "For Your Enhancement Life" (Teie pingutuseta elu nimel).
+Mees ja naine istuvad auto esiistmetel. Nende vahel kuvatakse LG AI logo koos fraasiga "For Your well cared life" (Teie hästi hooldatud elu nimel).
+Inimene siseneb kontorisse koos oma koeraga. Õhupuhasti lülitub vastuseks sisse.
+Viimane pilt: valge taust LG tehisintellekti logo ja fraasiga „Helluslik intelligentsus SINU jaoks“.</h1>
+            <button type="button" class="play-btn" aria-label="Play video"></button>
+            </div>
+          </div>
+        </section>
+        <!-- E : kv-section -->
+        <!-- S : overview-section -->
+        <section class="overview-section">
+          <div class="inner">
+            <picture>
+              <source media="(min-width: 768px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-desktop.svg">
+              <source media="(max-width: 767px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
+              <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logo" class="ai-logo" data-tp="alt">
+            </picture>
+            <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">hell intelligentsus</span> SINU jaoks</h2>
+            <p class="text" data-tp="copy">LG-s oleme endalt küsinud: milleks peaks tehisintellekt olemas olema? <br>
+              Pärast pikka mõtlemist oleme leidnud vastuse. <br><br>
+              Meie jaoks on tehisintellekt enamat kui lihtsalt kunstlik intelligentsus – see on hell intelligentsus. <br><br>
+              Kui tehisintellekt saab osaks meie igapäevaelust, <br>
+              peaks see aitama luua paremat elu, mida me kõik väärime. <br><br>
+              Seepärast mõistab LG tehisintellekt läbi helluse, <br>
+              tunnetuse ja mõistmise, hoolitsedes sinu elu eest.
+              <strong>Avasta, kui hea elu LG tehisintellektiga on</strong></p>
+            <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Keri alla" class="scroll-down-icon" data-tp="alt">
+          </div>
+        </section>
+        <!-- E : overview-section -->
+        <!-- S : product-section -->
+        <section class="product-section">
+          <div class="inner">
+            <div class="tab-container" role="tablist">
+              <!-- S : tab-list -->
+              <div class="tab-list">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="product-panel-1" id="product-tab-1" data-tp="copy">Meeldiv elu</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-2" id="product-tab-2" data-tp="copy">Vaevatu elu</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="product-panel-3" id="product-tab-3" data-tp="copy">Hästi hooldatud elu</button>
+              </div>
+              <!-- E : tab-list -->
+              
+              <!-- S : panel-container -->
+              <div class="panel-container">
+                <!-- S : tab-panel tab-1 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-1" id="product-panel-1">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG tehisintellekt mõistab teie elu ja täiustab kogemusi, et muuta teie elu täis meeldivaid hetki.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png" aria-labelledby="benefit01-banner-video-description">
+                      <span id="benefit01-banner-video-description" class="a11y-text" data-tp="copy">Mees ja naine istuvad diivanil ja vaatavad elutoas LG telerist jalgpalliülekannet. Stseen vahetub ning mees ja naine kallistavad. Kaamera teravustab nende kõrval asuvale LG XBOOM-ile.</span>
+                      <h3 class="video-title" data-tp="copy">Sinu rõõmsa elu nimel</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/oled-evo" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products01.png" alt="LG OLED evo AI toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/oled-telerid" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="LG OLED tehisintellektiga toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/qned-tv" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="LG QNED tehisintellektiga toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/nanocell-telerid" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="LG NanoCell tehisintellektiga toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-1 -->
+                <!-- S : tab-panel tab-2 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-2" id="product-panel-2" hidden="">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG tehisintellekt tunnetab teie vajadusi ja pakub lahendusi, et teie elu kulgeks pingutuseta teie rütmis.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit02-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit02-banner-mobile.png" aria-labelledby="benefit02-banner-video-description">
+                      <span id="benefit02-banner-video-description" class="a11y-text" data-tp="copy">Ema ja poeg kasutavad koos LG tehisintellektiga pesumasinat ja keeravad nuppu, et aktiveerida tehisintellektiga pesu. Samas järjestuses ilmub ka LG grammi sülearvutit kasutav mees.</span>
+                      <h3 class="video-title" data-tp="copy">Sinu pingutuseta elu jaoks</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/pesumasinad/lg-wt1210bbf" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products01.png" alt="LG WashToweri tehisintellektiga toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ee/kulmikud/lg-gmg960evje" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="LG InstaView tehisintellektiga toote esivaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-2 -->
+                <!-- S : tab-panel tab-3 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-3" id="product-panel-3" hidden="">
+                  <div class="tab-panel-inner">
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG tehisintellekt hoolib sinust, sinu ruumist ja planeedist, et muuta sinu elu hoolitsetuks just nii, nagu sa soovid.</h2>
+                    <!-- S : video-bx -->
+                    <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png" aria-labelledby="benefit03-banner-video-description">
+                      <span id="benefit03-banner-video-description" class="a11y-text" data-tp="copy">Mees astub kontorisse koerarihm käes. Juhiistmel olev mees näeb kurb välja, kui LG AI talle perepilti näitab. Autoekraani näidatakse lähivõttes, samal ajal kui LG AI avab kaardi ja meenutab üht mälestust.</span>
+                      <h3 class="video-title" data-tp="copy">Teie hoolitsetud elu nimel</h3>
+                      <button type="button" class="play-btn" aria-label="Play video"></button>
+                    </div>
+                    <!-- E : video-bx -->
+                    <!-- S : product-list -->
+                    <ul class="product-list">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/global/mobility/mobility-labworks-series/adas-solutions/in-cabin-vision" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products02.png" alt="ADAS-i nägemissüsteemi toote külgvaade" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://www.lg.com/global/mobility/mobility-labworks-series/digital-cockpit-solutions/digital-cockpit-gamma" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit03-products03.png" alt="Kasutaja suhtleb multimodaalse tehisintellektiga HMI-lahendusega puutetundliku liidesega, valides kohvimenüüd tehisintellektiga assistendi viiba abil" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">Lisateave</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- E : product-list -->
+                  </div>
+                </div>
+                <!-- E : tab-panel tab-3 -->
+              </div>
+              <!-- E : panel-container -->
+            </div> 
+          </div>
+        </section>
+        <!-- E : product-section -->
+        <!-- S : feature-section -->
+        <section class="feature-section">
+          <div class="inner">
+            <div class="tab-container" role="tablist">
+              <!-- S : tab-list -->
+              <div class="tab-list">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="feature-panel-1" id="feature-tab-1" data-tp="copy">TV</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-2" id="feature-tab-2" data-tp="copy">Audio</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-3" id="feature-tab-3" data-tp="copy">Kodumasinad</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-4" id="feature-tab-4" data-tp="copy">Konditsioneer</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="feature-panel-5" id="feature-tab-5" data-tp="copy">Arvutiteadus</button>
+              </div>
+              <!-- E : tab-list -->
+              <!-- S : panel-container -->
+              <div class="panel-container">
+                <!-- S : tab-panel tab-1 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-1" id="feature-panel-1">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="LG AI-teleri" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Areneb, et lahendada kõik teie meelelahutusvajadused</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG tehisintellektiga teler õpib tundma teie vaatamiseelistusi ja elustiili, et optimeerida teie telerikogemuse iga aspekti, luues ideaalse isikupärastatud meelelahutuse just teile.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-banner-mobile.png" alt="LG Magic Remote'i kohal kuvatakse selliseid funktsioone nagu tehisintellektiga hääletuvastus, tehisintellektiga otsing, tehisintellektiga vestlusrobot, tehisintellektiga concierge, tehisintellektiga pildiviisard ja tehisintellektiga heliviisard." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Tutvuge LG AI-teleri<br>
+                          järgmise põlvkonnaga</h3>
+                        <a href="https://www.lg.com/ee/telerid/ai-tv" class="white-btn" data-tp="copy link">Lisateave</a>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png" alt="LG OLED-teleri ekraanil on webOS 25 avaleht, mis on täis rakendusi ja meelelahutuslikku sisu. Teleri kõrval on LG tehisintellektiga maagiline kaugjuhtimispult, mille tehisintellekti nupp on esile tõstetud, justkui aktiveeriks seda kasutaja hääl. Selle kõrval on jutumull kirjaga „Soovita filmi, mis mulle meeldiks“." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Voice ID</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png" alt="LG OLED-teleri ekraan, mis näitab, kuidas tehisintellektiga otsing töötab. Avatud on väike vestlusaken, mis näitab, kuidas kasutaja küsis saadaolevate spordimängude kohta. Tehisintellektiga otsing vastas vestluse teel ja kuvades erineva saadaoleva sisu pisipilte. Samuti kuvatakse viip, kus saab küsida Microsoft Copilotilt." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">Tehisintellekti otsing</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png" alt="LG tehisintellektiga maagiline kaugjuhtimispult kasutusel. Tehisintellekti nupu lühike vajutus aktiveerib OLED-teleri ekraanil tehisintellektiga assistendi, mis seejärel märksõnu soovitab." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Concierge</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png" alt="LG OLED-teleri ekraanil kuvatakse ulmesisu. Ekraani vasakul küljel on tehisintellektiga vestlusroboti liides. Kasutaja saadab vestlusrobotile teate, et ekraan on liiga tume, ja vestlusrobot pakub päringule lahendusi." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">Tehisintellektiga vestlusrobot</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Naine, kes laulab kõrvaklappidega mikrofoni, esile tõstetud LG α11 tehisintellekti protsessori helitäiustustehnoloogiaga" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">Tehisintellektiga pildi/heli viisard</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png" alt="Kaks omavahel ühendatud stseeni LG tehisintellektiga maagilise kaugjuhtimispuldiga teleri ees – esimene näitab ulmestseeni, teine isikupärastatud sisuga avakuva" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Magic Remote</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*LG tehisintellekti funktsioonid kasutavad reaalajas pildi ja heli suurendamiseks süvaõppel põhinevaid treenitud algoritme.</li>
+                      <li data-tp="copy">**Kõikidel LG webOS 24 teleritel on tehisintellekti kohandamise funktsioon, välja arvatud neil, millel pole valgussensoreid.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-1 -->
+                <!-- S : panel tab-2 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-2" id="feature-panel-2">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-eyebrow-logo-mobile.svg" alt="LG AI Audio" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Kõlab õigesti</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG xboom AI analüüsib ja kohandab heli vastavalt žanrile ja ruumile. Tehisintellektil põhinev valgustus, mis täiustab meeleolu ja harmoneerub teie muusikaga, võimaldab teil nautida ainulaadselt õiget heli ja atmosfääri.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-banner-mobile.png" alt="Naine ja mees embavad elutoas, nende kõrval on sisse lülitatud XBOOM kõlar." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Nautige uut helikogemust <br>
+                          LG xboom AI-ga</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="LG XBOOM kõlar tehisintellekti helirežiimidega, sh bassivõimendus, hääle võimendus ja standardne" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Sound</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="LG XBOOM kõlar tehisintellektiga valgustusega, mis kohandub hääle, ümbritseva heli ja peorežiimidega" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Lighting</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="LG XBOOM kõlar laual punases toonis toas, kus on ruudustikuga seinad ja moodne mööbel." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Calibration</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*See toode pole veel saadaval.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-2 -->
+                <!-- S : panel tab-3 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-3" id="feature-panel-3">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-eyebrow-logo-mobile.svg" alt="LG AI Kodumasinad" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Kergenda oma iga koormat</h2>
+                    <!-- E : tab-panel-title -->  
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG WashToweri tehisintellekt tuvastab teie pesu, et pakkuda õrnade kangaste jaoks optimaalset pesu, tagades teile iga pesukorra pingutuseta täiuslikkuse.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-banner-mobile.png" alt="LG sisseehitatud pesumasin ja kuivati moodsas pesuruumis, kus on puitkapid ja pink-istmed" loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title" data-tp="copy">Avasta uus eluviis <br>
+                          LG AI Core Techiga</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="LG pesumasina tehisintellektiga pesutsükli käsitsi reguleerimine nutika juhtnupu abil" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Wash</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="User selecting AI Dry cycle on LG dryer using digital control dial" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Dry</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*See toode tuleb valitud riikides turule järk-järgult.</li>
+                      <li data-tp="copy">**AI-tuvastus aktiveerub, kui pesukogus on alla 6 kg.</li>
+                      <li data-tp="copy">***AI-pesurežiimi tuleks kasutada ainult sarnaste kangatüüpidega [kõiki kangaid ei tuvastata] ja sobiva pesuvahendiga.</li>
+                      <li data-tp="copy">****AI-kuivatusrežiimi saab kasutada ainult alla 5 kg pesukoguste puhul, millel on sama niiskuseimavuse tase.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-3 -->
+                <!-- S : panel tab-4 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-4" id="feature-panel-4">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Konditsioneer" class="eyebrow-logo" loading="lazy">
+                      </picture>
+                      Mugavus ideaalselt häälestatud jahutusega</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG DUALCOOL AI hoolitseb optimaalse õhu eest, hoides teie mugavust ja optimeerides samal ajal energiatõhusust, et aidata kulusid kokku hoida. LG AI Airiga kogege ideaalselt häälestatud jahutust teie mugavuse tagamiseks.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-banner-mobile.png" alt="LG DUAL Inverter kliimaseade jahutab ThinQ tehisintellekti tehnoloogia abil moodsat elutuba, kus naine istub diivanil." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title text-black" data-tp="copy">Kogege optimeeritud mugavust <br>
+                           LG AI Airiga</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Naine lõõgastub nutikas elutoas, samal ajal kui LG tehisintellektiga konditsioneer reguleerib automaatselt temperatuuri, õhuvoolu ja niiskust." data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI Air</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Nutitelefoni liides, mis kuvab LG kliimaseadme ees energiatarbimise graafikut, esile tõstes tehisintellektiga kW Manageri tõhusa energiatarbimise jälgimiseks" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">AI kW Manager</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*AI Airi saab juhtida kaugjuhtimispuldi ja ThinQ abil.</li>
+                      <li data-tp="copy">**AI Air on saadaval nii jahutus- kui ka kütterežiimis.</li>
+                      <li data-tp="copy">***AI Airi kasutamise ajal reguleeritakse õhuhulka ja tuule suunda automaatselt vastavalt olukorrale ning AI Air lülitatakse välja, kui tuule suund muutub.</li>
+                      <li data-tp="copy">****Kui AI Air on aktiveeritud, tuvastab radarandur viibija asukoha ja aktiveerib automaatselt otsese/kaudse tuule.</li>
+                      <li data-tp="copy">*****Radaranduri tuvastuskaugus on kuni 5 m ja see võib toote paigaldus- ja kasutuskeskkonnast olenevalt erineda.</li>
+                      <li data-tp="copy">******See funktsioon töötab ainult radaranduritega mudelitel.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-4 -->
+                <!-- S : panel tab-5 -->
+                <div class="tab-panel" role="tabpanel" aria-labelledby="feature-tab-5" id="feature-panel-5">
+                  <div class="tab-panel-inner">
+                    <!-- S : tab-panel-title -->
+                    <h2 class="tab-panel-title" data-tp="copy"><picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-eyebrow-logo-mobile.svg" alt="LG AI Arvutiteadus" class="eyebrow-logo" loading="lazy">  
+                      </picture>
+                      Annab jõudu kõigele, mida teed</h2>
+                    <!-- E : tab-panel-title -->
+                    <!-- S : tab-panel-text -->
+                    <p class="tab-panel-text" data-tp="copy">LG Gram AI annab sulle nii võrgus kui ka võrguühenduseta tööks võimaluse. Leia ja summeeri faile turvaliselt võrguühenduseta seadmes oleva Gram Chati abil ning suurenda oma tootlikkust võrgus GPT-4o-toega Gram Chat pilve abil.</p>
+                    <!-- E : tab-panel-text -->
+                    <!-- S : tab-panel-banner -->
+                    <div class="tab-panel-banner">
+                      <picture>
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-desktop.png" media="(min-width: 769px)">
+                        <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" media="(max-width: 768px)">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-banner-mobile.png" alt="Naine kasutab kodukontoris videokonverentsideks ja mitme ülesande täitmiseks kahe ekraaniga LG Gram sülearvutit." loading="lazy" data-tp="alt">
+                      </picture>
+                      <div class="text-bx">
+                        <h3 class="title text-black" data-tp="copy">Ava oma uued võimed piiranguteta <br>
+                          LG grammi tehisintellektiga</h3>
+                        
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-banner -->
+                    <!-- S : tab-panel-slide -->
+                    <div class="tab-panel-slide">
+                      <div class="swiper products-textbx-thumbbx">
+                        <div class="slide-controller">
+                          <div class="swiper-pagination"></div>
+                          <button class="swiper-button-prev slide-btn" aria-label="Previous slide"></button>
+                          <button class="swiper-button-next slide-btn" aria-label="Next slide"></button>
+                        </div>
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature01.png" alt="LG Gram sülearvuti, millel on seadmesisene tehisintellekt ja ekraanil kuvatav nutikas assistendi liides" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">gram Chat On-Device</p>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="img-bx">
+                              <img src="./lg-ai/assets/image/ai-gate-image-product-category-computing-feature02.png" alt="LG Gram sülearvuti pilvepõhise tehisintellektiga, mis kuvab nutika abilise liidese veebipõhise toe ja tootlikkuse tagamiseks" data-tp="alt">
+                            </div>
+                            <p class="slide-title" data-tp="copy">gram Chat Cloud</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- E : tab-panel-slide -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*Toote kasutamise algstaadiumis ei pruugi mõned funktsioonid sujuvalt töötada. See on tingitud seadmesisese tehisintellekti olemusest, mille kasutajaga kohanemiseks on vaja aega eelkoolituseks.</li>
+                      <li data-tp="copy">*Gram Chat On-Device vajab arvutis sisu leidmiseks indekseerimisülesandeid, kombineerides sõnu andmetega, mis võib soovitud tulemuste saavutamiseks aega võtta.</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
+                  </div>
+                </div>
+                <!-- E : panel tab-5 -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- E : feature-section -->
+        <!-- S : thinq-section (글로벌 사이트 / KR)-->
+        <!-- <section class="thinq-section">
+          <div class="inner">
+            <h2 class="thinq-section-title">Always ON for a better home</h2>
+            <div class="banner">
+              <div class="video-bx responsive-video" 
+                  data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-desktop.mp4" 
+                  data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-thinq-on-banner-mobile.mp4"
+                  data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-desktop.png" 
+                  data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-thinq-on-banner-mobile.png" 
+                  aria-labelledby="thinq-on-banner-video-description">
+                  <span id="thinq-on-banner-video-description" class="a11y-text">In a dark living room, the Stanby Me TV turns on with a "Good Morning" message. A puppy walks by as the TV displays the weather and time. The room brightens as curtains open automatically, and a man and woman rise from bed. A mother and her child rush out the door while LG ThinQ ON AI adjusts the home environment—turning off lights, lowering the temperature, and locking the doors automatically.</span>
+                  <a href="javascript:void(0)" class="white-btn">Learn More</a>
+                  <button type="button" class="play-btn" aria-label="Play video"></button>
+                </div>
+            </div>
+            !-- S : thinq-flex-bx --
+            <div class="flex-bx">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature01.png" alt="The LG ThinQ ON AI voice assistant device sits on a coffee table in a smart living room, with a glowing LED ring." loading="lazy">
+                  <figcaption>
+                    * This product is not availble yet.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">LG AI Voice Assistant</h3>
+                <p class="text">Easy voice control for your devices, daily assistance, and mood setting.</p>
+              </div>
+            </div>
+            !-- E : thinq-flex-bx --
+            !-- S : thinq-flex-bx --
+            <div class="flex-bx reverse">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-on-feature02.png" alt="Smart living room powered by LG AI with animated LG AI logo and ThinQ ON AI device managing lighting, temperature, and connected devices" loading="lazy">
+                  <figcaption>
+                    * This product is not availble yet.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title">Smart Living with LG AI</h3>
+                <p class="text">Optimal connections and upgrades for the devices in your space for smart life care</p>
+              </div>
+            </div>
+            !-- E : thinq-flex-bx --
+          </div>
+        </section> -->
+        <!-- E : thinq-section (글로벌 사이트 / KR)-->
+        <!-- S : thinq-section (Local)-->
+        <section class="thinq-section">
+          <div class="inner">
+            <h2 class="thinq-section-title" data-tp="copy">ThinQ® teeb elu lihtsamaks</h2>
+            <p class="thinq-section-text" data-tp="copy">ThinQ on platvorm teie nutikatele LG kodumasinatele ja -seadmetele, mis annab kontrolli ja mugavuse teie käeulatusse, et aidata teil elu lihtsustada ja kodust mugavust nautida.</p>
+            
+            <div class="banner">
+              <picture> 
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
+                <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" media="(max-width: 768px)">
+                <img src="./lg-ai/assets/image/ai-gate-image-thinq-banner-mobile.png" alt="Inimene hoiab käes nutitelefoni, millel on avatud LG ThinQ rakendus, haldab nutika kodu seadmeid ja joob kohvi." loading="lazy" data-tp="alt">  
+              </picture>
+            </div>
+            <!-- S : youtube-video-list -->
+            <div class="youtube-video-list">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <!-- S : swiper-slide01 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="TvFhuqvQLYI" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb01.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide01 -->
+                  <!-- S : swiper-slide02 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="iQyFMATSUDU" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb02.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide02 -->
+                  <!-- S : swiper-slide03 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="W6pXClCE3P4" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb03.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide03 -->
+                  <!-- S : swiper-slide04 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="oEuZqLxQrUY" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb04.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide04 -->
+                  <!-- S : swiper-slide05 -->
+                  <div class="swiper-slide">
+                    <button class="video-btn" type="button" data-src="UFRyOs-6h5s" aria-label="Play video">
+                      <img src="./lg-ai/assets/image/ai-gate-image-youtube-thumb05.jpg" alt="" aria-hidden="true">
+                    </button>
+                  </div>
+                  <!-- E : swiper-slide05 -->
+                </div>
+                <div class="swiper-controller">
+                  <div class="swiper-button-prev slide-btn"></div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-next slide-btn"></div>
+                </div>
+              </div>
+            </div>
+            <!-- E : youtube-video-list -->
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature01.png" alt="Moodsas nutiköögis kasutab naine LG ThinQ tehisintellektiga pesumasina käivitamiseks häälkäsklust, samal ajal kui mees taustal diivanil loeb." loading="lazy" data-tp="alt">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title" data-tp="copy">Lihtne juhtimine häälassistendiga</h3>
+                <p class="text" data-tp="copy">Öelge oma LG kodumasinale täpselt, mida vajate, lihtsalt öeldes seda ja tehisintellektiga kõlar kuulab ning kontrollib tsüklit.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+            <!-- S : thinq-flex-bx -->
+            <div class="flex-bx reverse">
+              <div class="img-bx">
+                <figure>
+                  <img src="./lg-ai/assets/image/ai-gate-image-thinq-feature02.png" alt="Nutitelefonil kuvatakse LG ThinQ rakendus, mis juhib LG InstaView Slide-In ahju, võimaldades köögis toodete tõhusat hooldust." loading="lazy" data-tp="alt">
+                </figure>
+              </div>
+              <div class="text-bx">
+                <h3 class="title" data-tp="copy">Tõhus tootehooldus</h3>
+                <p class="text" data-tp="copy">LG ThinQ rakenduse kaudu saate kontrollida oma LG kodumasinat, laadida alla uusi tsükleid, jälgida tsüklite kasutamist ja palju muud.</p>
+              </div>
+            </div>
+            <!-- E : thinq-flex-bx -->
+          </div>
+        </section>
+        <!-- E : thinq-section (Local)-->
+        <!-- S : stories-section -->
+        <section class="stories-section">
+          <div class="inner">
+              <h2 class="title" data-tp="copy">Lisateavet LG hellitusintelligentsuse kohta</h2>
+              <div class="slide-bx">
+                  <div class="swiper" role="region" aria-label="스토리 슬라이드쇼">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner01-mobile.png" alt="LG Electronicsi juht hoiab käes küberturvalisuse akrediteerimistunnistust, taustal digitaalse turvalisuse graafika" loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG tugevdab küberturvalisuse juhtpositsiooni KOLAS IoT küberturvalisuse testimise akrediteeringuga</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-strengthens-cybersecurity-leadership-with-kolas-iot-cybersecurity-testing-accreditation/" class="white-btn" data-tp="copy link">Lisateave</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner02-mobile.png" alt="Külastajad vaatavad tehnoloogianäitusel LG kumerat LED-ekraani, millel on loosung „Elu on hea 24/7“." loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG esitleb CES 2025-l oma uusimaid uuendusi, mis põhinevad „armastusintellektil“.</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-presents-its-latest-innovations-powered-by-affectionate-intelligence-at-ces-2025/" class="white-btn" data-tp="copy link">Lisateave</a>
+                              </div>
+                          </div>
+                          <div class="swiper-slide" role="group" aria-roledescription="슬라이드">
+                              <picture>
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-desktop.png" media="(min-width: 769px)">
+                                <source srcset="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" media="(max-width: 768px)">
+                                <img src="./lg-ai/assets/image/ai-gate-image-more-about-lg-ai-banner03-mobile.png" alt="Esineja esitleb LG üritusel laval tehisintellektil põhinevaid B2B-lahendusi" loading="lazy" data-tp="alt">
+                              </picture>
+                              <div class="txt-bx">
+                                  <p data-tp="copy">LG esitleb LG maailmaesiettekandel päeva elust, mis on inspireeritud hellitavast intelligentsusest.</p>
+                                  <a href="https://www.lgnewsroom.com/2025/01/lg-unveils-a-day-in-a-life-with-affectionate-intelligence-at-lg-world-premiere/" class="white-btn" data-tp="copy link">Lisateave</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+        <!-- E : stories-section -->
+        <!-- S : layer-popup -->
+        <!-- <div class="products-layer" role="dialog" aria-hidden="true" aria-modal="true" tabindex="-1">
+          <div class="products-layer-conbx">
+            <div class="products-layer-header">
+              <div class="products-layer-header-title-bx">
+                <h2 class="products-layer-header-title-bx-title heading"></h2>
+              </div>
+              <a href="javascript:void(0)" class="products-layer-header-close" role="button" aria-label="colse">close</a>
+            </div>
+            <div class="products-layer-content">
+              <div class="products-layer-content-txtwrap">
+                <div class="products-layer-content-txtwrap-txtbx">
+                  <h3 class="products-layer-content-txtwrap-txtbx-title heading"></h3>
+                  <p class="products-layer-content-txtwrap-txtbx-desc"></p>
+                </div>
+              </div>
+              <div class="products-layer-content-swiper swiper">
+                <div class="products-layer-content-swiper-wrapper swiper-wrapper"></div>
+              </div>
+              <div class="products-layer-content-thumbbx">
+                <div class="products-layer-content-thumb-swiper-btn-prev"></div>
+                <div class="products-layer-content-thumb-swiper swiper">
+                  <div class="products-layer-content-thumb-swiper-wrapper swiper-wrapper"></div>
+                </div>
+                <div class="products-layer-content-thumb-swiper-btn-next"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- E : layer-popup -->
+      </div>
+    </main>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
+</body>
+</html>
