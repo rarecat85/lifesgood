@@ -10,6 +10,7 @@
   <script src="/kr/campaign/lifesgood/assets/js/sound.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/banner.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/stories.js" defer=""></script>
+  <script src="/kr/campaign/lifesgood/assets/js/influence.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/how-to.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/main-video.js" defer=""></script>
   <script src="/kr/campaign/lifesgood/assets/js/parallax.js" defer=""></script>
@@ -207,6 +208,222 @@
         </div>
       </div>
     </section>
+    <!-- S : influence -->
+    <section class="influence-container">
+      <h2 class="influence-title heading" data-tp="copy">
+        마음과 마음을 연결하는 이야기
+      </h2>
+      <div class="influence-slide swiper">
+        <div class="swiper-wrapper">
+          <!-- S : slide item 01-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-01" muted playsinline preload="metadata"
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-01.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-01.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-01"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-01"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">박제니</strong>
+                <span data-tp="copy">@__jennypark__</span>
+              </h3>
+              <a href="https://www.instagram.com/reel/DNE7-vKzHY9/"
+                class="influence-txt-bx-btn" data-tp="link copy">더 알아보기</a>
+            </div>
+          </div>
+          <!-- E : slide item 01-->
+          <!-- S : slide item 02-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-02" muted playsinline
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-02.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-02.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-02"
+                aria-pressed="true">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-02"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">엔조이커플</strong>
+                <span data-tp="copy">@enjoycouple</span>
+              </h3>
+              <a href="https://www.youtube.com/shorts/Qu_qqJcjvlk" class="influence-txt-bx-btn"
+                data-tp="link copy">더 알아보기</a>
+            </div>
+          </div>
+          <!-- E : slide item 02-->
+          <!-- S : slide item 03-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-03" muted playsinline
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-03.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-03.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-03"
+                aria-pressed="true">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-03"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">빠더너스</strong>
+                <span data-tp="copy">@bdns</span>
+              </h3>
+              <a href="https://www.youtube.com/watch?v=IFF3y9CGknM&t=39s"
+                class="influence-txt-bx-btn" data-tp="link copy">Learn more</a>
+            </div>
+          </div>
+          <!-- E : slide item 03-->
+          <!-- S : slide item 04-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-04" muted playsinline
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-04.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-04.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-04"
+                aria-pressed="true">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-04"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">미선짱</strong>
+                <span data-tp="copy">@sunn416</span>
+              </h3>
+              <a href="https://www.instagram.com/p/DNQWcytJxGA/"
+                class="influence-txt-bx-btn" data-tp="link copy">더 알아보기</a>
+            </div>
+          </div>
+          <!-- E : slide item 04-->
+          <!-- S : slide item 05-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-05" muted playsinline
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-05.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-05.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-05"
+                aria-pressed="true">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-05"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">룰루보이</strong>
+                <span data-tp="copy">@iamluluboi</span>
+              </h3>
+              <a href="https://www.instagram.com/p/DNYSsDOJNgf/" class="influence-txt-bx-btn"
+                data-tp="link copy">더 알아보기</a>
+            </div>
+          </div>
+          <!-- E : slide item 05-->
+          <!-- S : slide item 06-->
+          <div class="swiper-slide">
+            <div class="influence-content-bx">
+              <video id="influence-video-06" muted playsinline
+                poster="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-thumb-06.jpg"
+                aria-label="Optimism life with LG campaign video">
+                <source src="/kr/campaign/lifesgood/assets/videos/lifes-good-campaign-2025-radio-optimism-lgcom-videos-influence-06.mp4"
+                  type="video/mp4">
+              </video>
+              <button class="influence-content-bx-play-btn" aria-label="pause video" aria-controls="influence-video-06"
+                aria-pressed="true">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-slide-pause.svg"
+                  alt="pause video">
+              </button>
+              <button class="influence-content-bx-sound-btn" aria-label="sound on" aria-controls="influence-video-06"
+                aria-pressed="false">
+                <img
+                  src="/kr/campaign/lifesgood/assets/images/radio/lifes-good-campaign-2025-radio-optimism-lgcom-images-influence-unmute-icon.svg"
+                  alt="sound on">
+              </button>
+            </div>
+            <div class="influence-txt-bx">
+              <h3 class="influence-txt-bx-title">
+                <strong data-tp="copy">채림처럼</strong>
+                <span data-tp="copy">@cher.ixi</span>
+              </h3>
+              <a href="https://www.instagram.com/p/DNhpHK1voQr/"
+                class="influence-txt-bx-btn" data-tp="link copy">더 알아보기</a>
+            </div>
+          </div>
+          <!-- E : slide item 06-->
+        </div>
+        <!-- S : swiper-navigation-->
+        <div class="influence-slide-navigation swiper-navigation">
+          <button class="swiper-button-prev">
+            <p class="sr-only">Previous</p>
+          </button>
+          <button class="swiper-button-next">
+            <p class="sr-only">Next</p>
+          </button>
+        </div>
+        <!-- E : swiper-navigation-->
+        <!-- S : swiper-pagination-->
+        <div class="influence-slide-pagination swiper-pagination"></div>
+        <!-- E : swiper-pagination-->
+      </div>
+    </section>
+    <!-- E : influence -->
     <section class="how-to">
       <div class="how-to-container">
         <h2 class="how-to-title heading" data-tp="copy">나만의 노래 만드는 방법</h2>
