@@ -234,4 +234,6 @@ function howTo() {
   });
 }
 
-howTo();
+window.addEventListener("load", () => {
+  howTo();
+});
