@@ -164,7 +164,7 @@ function influence() {
   };
   
   // 슬라이드가 7개 이상일 때만 loop 옵션 추가
-  if (slideCount >= 7) {
+  if (slideCount >= 6) {
     swiperOptions.loop = true;
     swiperOptions.loopedSlides = 5;
   }
