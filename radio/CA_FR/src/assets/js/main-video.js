@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 const { toArray } = gsap.utils;
 
 // 유튜브 비디오 ID (실제 사용할 비디오 ID로 변경하세요)
-const YOUTUBE_VIDEO_ID = 'j9zSaqOWtTQ'; // 예시 ID
+const YOUTUBE_VIDEO_ID = '2T-Ao5uIRb4'; // 예시 ID
 
 let player;
 let isPlayerReady = false;
@@ -112,6 +112,8 @@ function init() {
 }
 
 // YouTube API가 이미 로드되어 있는 경우를 위한 체크
-if (window.YT && window.YT.Player) {
-  init();
-}
+window.addEventListener('load', () => {
+  if (window.YT && window.YT.Player) {
+    init();
+  }
+});

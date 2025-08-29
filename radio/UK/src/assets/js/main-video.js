@@ -112,6 +112,8 @@ function init() {
 }
 
 // YouTube API가 이미 로드되어 있는 경우를 위한 체크
-if (window.YT && window.YT.Player) {
-  init();
-}
+window.addEventListener('load', () => {
+  if (window.YT && window.YT.Player) {
+    init();
+  }
+});
