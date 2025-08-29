@@ -130,7 +130,6 @@ function influence() {
         if (currentPlayingVideo && currentPlayingVideo !== newActiveVideo) {
           currentPlayingVideo.pause();
           currentPlayingVideo.currentTime = 0;
-          currentPlayingVideo.load();
         }
         
         // 새로운 활성화 비디오 재생 및 mute 상태로 설정
@@ -164,7 +163,7 @@ function influence() {
   };
   
   // 슬라이드가 7개 이상일 때만 loop 옵션 추가
-  if (slideCount >= 6) {
+  if (slideCount >= 7) {
     swiperOptions.loop = true;
     swiperOptions.loopedSlides = 5;
   }
@@ -244,4 +243,6 @@ function influence() {
   });
 }
 
-influence()
+window.addEventListener("load", () => {
+  influence();
+});
