@@ -379,6 +379,6 @@ function parallax() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   parallax();
 });
