@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   const heroVideoBx = document.querySelector(".hero-visual .video-bx");
   const heroToggleBtn = document.querySelector(".play-btn");
   let currentVideoSrc = "";
