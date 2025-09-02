@@ -98,10 +98,10 @@ Viimane pilt: valge taust LG tehisintellekti logo ja fraasiga „Helluslik intel
               <source media="(max-width: 767px)" srcset="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg">
               <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logo" class="ai-logo" data-tp="alt">
             </picture>
-            <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">hell intelligentsus</span> SINU jaoks</h2>
+            <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">Arukas intelligentsus</span> SINU jaoks</h2>
             <p class="text" data-tp="copy">LG-s oleme endalt küsinud: milleks peaks tehisintellekt olemas olema? <br>
               Pärast pikka mõtlemist oleme leidnud vastuse. <br><br>
-              Meie jaoks on tehisintellekt enamat kui lihtsalt kunstlik intelligentsus – see on hell intelligentsus. <br><br>
+              Meie jaoks on tehisintellekt enamat kui lihtsalt kunstlik intelligentsus – see on Arukas intelligentsus. <br><br>
               Kui tehisintellekt saab osaks meie igapäevaelust, <br>
               peaks see aitama luua paremat elu, mida me kõik väärime. <br><br>
               Seepärast mõistab LG tehisintellekt läbi helluse, <br>
@@ -628,7 +628,7 @@ Viimane pilt: valge taust LG tehisintellekti logo ja fraasiga „Helluslik intel
         <!-- S : stories-section -->
         <section class="stories-section">
           <div class="inner">
-              <h2 class="title" data-tp="copy">Lisateavet LG hellitusintelligentsuse kohta</h2>
+              <h2 class="title" data-tp="copy">Lisateavet LG aruka intelligentsi kohta</h2>
               <div class="slide-bx">
                   <div class="swiper" role="region" aria-label="스토리 슬라이드쇼">
                       <div class="swiper-wrapper">
