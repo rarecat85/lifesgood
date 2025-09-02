@@ -521,6 +521,7 @@
           <div class="inner">
             <h2 class="thinq-section-title" data-tp="copy">تطبيق ThinQ®  يسهل حياتك</h2>
             <p class="thinq-section-text" data-tp="copy">توفر لك منصة ThinQ، المخصصة لأجهزة إل جي الذكية، التحكم والراحة في متناول يدك، لتساعدك على تبسيط الحياة والاستمتاع براحة منزلك.</p>
+            <a href="https://www.lg.com/levant_ar/lg-thinq" class="white-btn">إعرف المزيد</a>
             <div class="banner">
               <picture> 
                 <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">

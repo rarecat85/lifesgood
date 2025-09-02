@@ -547,7 +547,7 @@
       <div class="inner">
         <h2 class="thinq-section-title">ThinQ® helps make life happen</h2>
         <p class="thinq-section-text">A platform for your smart LG appliances and devices, ThinQ puts control and convenience at your fingertips, to help <br>you simplify life and enjoy the comforts of home.</p>
-        <!-- <a href="javascript:void(0)" class="white-btn">Learn More</a> -->
+        <a href="https://www.lg.com/levant_en/lg-thinq" class="white-btn">Learn More</a>
         <div class="banner">
           <picture> 
             <source srcset="./lg-ai/assets/image/ai-gate-image-thinq-banner-desktop.png" media="(min-width: 769px)">
