@@ -7,10 +7,10 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG intelligentsus | LG EE</title>
+    <title>LG Arukas intelligentsus | LG EE</title>
     <meta name="Keywords" content="LG tehisintellekt, hell intelligentsus, inimkeskne tehisintellekt, nutika elu platvorm, tehnoloogiapõhised lahendused">
     <meta name="Description" content="LG AI püüdleb teie rõõmsa, pingutuseta ja hoolitsetud elu poole läbi „targalt tajumise, sügava mõistmise ja hoolimise“. Kogege kõrgemat elukvaliteeti LG Afectionate Intelligence'iga, kus tehisintellekt läheb tehisintellektist kaugemale, pakkudes inimkeskset hoolitsust.">
-    <meta property="og:title" content="LG intelligentsus | LG EE"/>
+    <meta property="og:title" content="LG Arukas intelligentsus | LG EE"/>
     <meta property="og:url" content="https://www.lg.com/ee/lg-ai">
     <meta property="og:description" content="LG AI püüdleb teie rõõmsa, pingutuseta ja hoolitsetud elu poole läbi „targalt tajumise, sügava mõistmise ja hoolimise“. Kogege kõrgemat elukvaliteeti LG Afectionate Intelligence'iga, kus tehisintellekt läheb tehisintellektist kaugemale, pakkudes inimkeskset hoolitsust."/>
     <meta property="og:image" content="">
