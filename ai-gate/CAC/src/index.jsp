@@ -106,7 +106,7 @@ Toma final: un fondo blanco con el logo de LG AI y la frase "Inteligencia Afecti
               debería contribuir a crear la vida mejor que todos merecemos. <br><br>
               Por eso, LG AI comienza CONTIGO, de manera afectuosa, <br>
               a través de la percepción y comprensión, y cuidando aún más de tu vida.
-              <strong>Descubre cómo Life’s Good con LG AI</strong></p>
+              <strong>Descubre Life’s Good con LG AI</strong></p>
             <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Icono de desplazamiento hacia abajo" class="scroll-down-icon" data-tp="alt">
           </div>
         </section>
@@ -229,7 +229,7 @@ La cámara se centra en el LG XBOOM junto a ellos."</span>
                 <!-- S : tab-panel tab-3 -->
                 <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-3" id="product-panel-3" hidden="">
                   <div class="tab-panel-inner">
-                    <h2 class="tab-panel-title text-center" data-tp="copy">G AI cuida de ti, de tu espacio y del planeta, para que vivas como deseas, bien atendido.</h2>
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI cuida de ti, de tu espacio y del planeta, para que vivas como deseas, bien atendido.</h2>
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit03-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit03-banner-mobile.png" aria-labelledby="benefit03-banner-video-description">
                       <span id="benefit03-banner-video-description" class="a11y-text" data-tp="copy">Un hombre entra a la oficina sosteniendo una correa de perro. Un hombre en el asiento del conductor se ve triste cuando LG AI le muestra una foto familiar. La pantalla del coche se muestra en un primer plano cuando LG AI saca un mapa y vuelve a visitar una memoria.</span>
@@ -759,7 +759,7 @@ La cámara se centra en el LG XBOOM junto a ellos."</span>
                 </figure>
               </div>
               <div class="text-bx">
-                <h3 class="title" data-tp="copy">Simple Control with Voice Assistant</h3>
+                <h3 class="title" data-tp="copy">Control sencillo con Asistente de voz</h3>
                 <p class="text" data-tp="copy">Diga a su electrodoméstico LG exactamente lo que necesita simplemente diciéndolo, y el altavoz de IA escuchará y comprobará el ciclo para hacerle saber.</p>
               </div>
             </div>
