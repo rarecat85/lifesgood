@@ -255,6 +255,11 @@
                       </li> -->
                     </ul>
                     <!-- E : product-list -->
+                    <!-- S : tab-panel-disclaimer -->
+                    <ul class="tab-panel-disclaimer">
+                      <li data-tp="copy">*המוצרים להמחשה בלבד</li>
+                    </ul>
+                    <!-- E : tab-panel-disclaimer -->
                   </div>
                 </div>
                 <!-- E : tab-panel tab-2 -->
