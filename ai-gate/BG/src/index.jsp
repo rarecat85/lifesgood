@@ -291,7 +291,7 @@ XBOOM, телевизорът и семейство, седнало на див�
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
                         <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-eyebrow-logo-mobile.svg" alt="ТВ" class="eyebrow-logo" loading="lazy">
                       </picture>
-                      Evolves to satisfy your every entertainment need</h2>
+                      Развива се, за да задоволи вашите предпочитания за забавление</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
                     <p class="tab-panel-text" data-tp="copy">Телевизорът с изкуствен интелект на LG научава предпочитанията ви за гледане и разбира начина ви на живот, за да оптимизира всеки аспект на телевизионното ви изживяване, създавайки идеално персонализирано забавление точно за вас.</p>
@@ -663,7 +663,7 @@ XBOOM, телевизорът и семейство, седнало на див�
         <section class="thinq-section">
           <div class="inner">
             <h2 class="thinq-section-title" data-tp="copy">ThinQ® прави управлението да се случва лесно</h2>
-            <p class="thinq-section-text" data-tp="copy">Приложение а за вашите интелигентни уреди и устройства, LG ThinQ предоставя контрол и удобство на ръка разстояние, за да ви помогне да опростите живота си и да се наслаждавате на домашния уют.</p>
+            <p class="thinq-section-text" data-tp="copy">Приложение за вашите интелигентни уреди и устройства, LG ThinQ предоставя контрол и удобство на ръка разстояние, за да ви помогне да опростите живота си и да се наслаждавате на домашния уют.</p>
             <a href="https://www.lg.com/bg/elektrodomakinski-uredi/thinq" class="white-btn" data-tp="copy link">Научете повече</a>
             <div class="banner">
               <picture> 
