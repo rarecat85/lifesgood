@@ -533,7 +533,7 @@
                     <h2 class="tab-panel-title" data-tp="copy"><picture>
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-desktop.svg" media="(min-width: 769px)">
                         <source srcset="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" media="(max-width: 768px)">
-                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Air Conditioning" class="eyebrow-logo" loading="lazy">
+                        <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-eyebrow-logo-mobile.svg" alt="LG AI Κλιματισμός" class="eyebrow-logo" loading="lazy">
                       </picture>
                       Άνεση με τέλεια ρυθμισμένη ψύξη</h2>
                     <!-- E : tab-panel-title -->
