@@ -1,3 +1,5 @@
+document.querySelector('body').classList.add('noscroll');
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
@@ -9,16 +11,11 @@ let kvScrollTriggerInstance;
 
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
-  if (!kvSection) {
-    kvScrollTriggerInstance = null;
-    return;
-  }
-  
   const kvVideoBx = document.querySelector('.kv-conbx-video');
   const kvVideo = document.querySelector('.kv-conbx-video iframe');
   const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
   const kvDesc = document.querySelector('.kv-conbx-desc');
-  const videoSrc = kvVideo ? kvVideo.getAttribute('src') : '';
+  const videoSrc = kvVideo.getAttribute('src');
   let kvAnimationTl;
   let scrollTriggerInstance;
 
@@ -37,7 +34,7 @@ function kvAnimation() {
         animation: kvAnimationTl,
         once: true
       });
-
+      
       kvScrollTriggerInstance = scrollTriggerInstance;
   }else {
     if (kvAnimationTl) {
@@ -181,7 +178,19 @@ function prodAnimation() {
     }
   });
 
-  // 플로팅 배너 표시/숨김 제어를 위한 ScrollTrigger 생성
+  // window.addEventListener('resize', () => {
+  //   prodSections.forEach(section => {
+  //     const prodVideo = section.querySelector('video');
+  //     const prodVideoBtn = section.querySelector('.products-video-btn');
+  //     const prodImgBx = section.querySelector('.products-video').classList.contains('img-type');
+
+  //     if(!prodImgBx) {
+  //       resetVideoControls(prodVideo, prodVideoBtn);
+  //     }
+  //   });
+
+  //   prodAnimation();
+  // });
   setupFloatingBannerWithScrollTrigger();
 }
 
@@ -742,9 +751,8 @@ function adjustScrollPosition(targetElem) {
   });
 }
 
-
 function init() {
-  document.querySelector('body').classList.add('noscroll');
+  
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
@@ -773,7 +781,6 @@ function init() {
   window.addEventListener('resize', debounce(handleResize));
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
     
     const url = new URL(window.location.href);
     const sectionParam = url.searchParams.get("section");
@@ -799,7 +806,7 @@ function init() {
                   adjustScrollPosition(targetElem);
                 }
               }, 100);
-
+              
               setTimeout(() => {
                 clearInterval(checkInterval);
                 adjustScrollPosition(targetElem);
@@ -812,4 +819,8 @@ function init() {
   });
 }
 
-init();
+
+window.addEventListener("load", function () {
+  init();  
+  document.querySelector('body').classList.remove('noscroll');
+});

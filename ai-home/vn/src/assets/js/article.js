@@ -489,9 +489,8 @@ function init() {
   // 리사이즈 이벤트 처리
   window.addEventListener('resize', debounce(handleResize));
   // 페이지 로드 완료 시 noscroll 클래스 제거
-  window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
-  });
+  document.querySelector('body').classList.remove('noscroll');
 }
 
-init();
+// window.load 이벤트 후에 스크립트 실행
+window.addEventListener('load', init);

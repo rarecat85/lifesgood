@@ -1,3 +1,5 @@
+document.querySelector('body').classList.add('noscroll');
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
@@ -5,44 +7,48 @@ const { toArray } = gsap.utils;
 const isPC = () => window.matchMedia('(min-width: 769px)').matches;
 let isMobile;
 let prevWidth = window.innerWidth;
+let kvScrollTriggerInstance;
 
-// function kvAnimation() {
-//   const kvSection = document.querySelector('.kv');
-//   const kvVideoBx = document.querySelector('.kv-conbx-video');
-//   const kvVideo = document.querySelector('.kv-conbx-video iframe');
-//   const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
-//   const kvDesc = document.querySelector('.kv-conbx-desc');
-//   const videoSrc = kvVideo.getAttribute('src');
-//   let kvAnimationTl;
-//   let scrollTriggerInstance;
+function kvAnimation() {
+  const kvSection = document.querySelector('.kv');
+  const kvVideoBx = document.querySelector('.kv-conbx-video');
+  const kvVideo = document.querySelector('.kv-conbx-video iframe');
+  const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
+  const kvDesc = document.querySelector('.kv-conbx-desc');
+  const videoSrc = kvVideo.getAttribute('src');
+  let kvAnimationTl;
+  let scrollTriggerInstance;
 
-//   if(isPC()) {
-//     kvAnimationTl = gsap.timeline({
-//     })
-//       .to(kvDesc, {width:'100%'})
-//       .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
-//       .to(kvVideoThumb, { autoAlpha: 0 }, '<')
+  if(isPC()) {
+    kvAnimationTl = gsap.timeline({
+    })
+      .to(kvDesc, {width:'100%'})
+      .to(kvVideoBx,{width:'100%', maxWidth:'unset'},'<')
+      .to(kvVideoThumb, { autoAlpha: 0 }, '<')
 
-//       scrollTriggerInstance = ScrollTrigger.create({
-//         trigger: kvSection,
-//         start: 'top',
-//         end: 'center end',
-//         scrub:true,
-//         animation: kvAnimationTl,
-//         once: true
-//       });
-//   }else {
-//     if (kvAnimationTl) {
-//       kvAnimationTl.kill();
-//       kvAnimationTl = null;
-//     }
-//     if (scrollTriggerInstance) {
-//       scrollTriggerInstance.kill();
-//       scrollTriggerInstance = null;
-//     }
-//     gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
-//   }
-// }
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: kvSection,
+        start: 'top',
+        end: 'center end',
+        scrub:true,
+        animation: kvAnimationTl,
+        once: true
+      });
+      
+      kvScrollTriggerInstance = scrollTriggerInstance;
+  }else {
+    if (kvAnimationTl) {
+      kvAnimationTl.kill();
+      kvAnimationTl = null;
+    }
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+      scrollTriggerInstance = null;
+    }
+    kvScrollTriggerInstance = null;
+    gsap.set([kvDesc, kvVideoBx, kvVideoThumb], { clearProps: 'all' });
+  }
+}
 
 function overviewAnimation() {
   const overviewSection = document.querySelector('.overview');
@@ -185,7 +191,6 @@ function prodAnimation() {
 
   //   prodAnimation();
   // });
-  // 플로팅 배너 표시/숨김 제어를 위한 ScrollTrigger 생성
   setupFloatingBannerWithScrollTrigger();
 }
 
@@ -335,7 +340,6 @@ function setupFloatingBannerWithScrollTrigger() {
   updateFloatingBanner();
 }
 
-
 function tabAnimation() {
   const tabList = toArray('.thinQ-tabs-imgbx-fixedimg-tablist li');
   const tabBg = toArray('.thinQ-tabs-imgbx-bgwrap-bgimg');
@@ -428,12 +432,8 @@ function stories() {
       },
       breakpoints: {
         768: {
-          slidesPerView: 2,
-          spaceBetween: 16
-        },
-        1441: {
-            slidesPerView: 3,
-            spaceBetween: 24
+            slidesPerView: 2,
+            spaceBetween: 16
         }
       },
     };
@@ -720,7 +720,7 @@ function handleResize() {
 
     if (newIsMobile !== isMobile) {
       isMobile = newIsMobile;
-      // kvAnimation(); 
+      kvAnimation(); 
       prodAnimation(); 
       ScrollTrigger.refresh();
     }
@@ -735,14 +735,30 @@ function debounce(func, delay=500) {
   };
 }
 
+function isKvAnimationComplete() {
+  if (!document.querySelector('.kv') || !isPC() || !kvScrollTriggerInstance) {
+    return true;
+  }
+  
+  return kvScrollTriggerInstance.progress >= 1;
+}
+
+function adjustScrollPosition(targetElem) {
+  const targetPosition = targetElem.getBoundingClientRect().top + window.scrollY - 50;
+  window.scrollTo({
+    top: targetPosition,
+    behavior: 'smooth'
+  });
+}
+
 function init() {
-  document.querySelector('body').classList.add('noscroll');
+  
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
-  // if (sections.includes('kv')) {
-  //   kvAnimation();
-  // }
+  if (sections.includes('kv')) {
+    kvAnimation();
+  }
   if (sections.includes('products')) {
     prodAnimation();
     productsSwiper();
@@ -765,8 +781,7 @@ function init() {
   window.addEventListener('resize', debounce(handleResize));
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
-
+    
     const url = new URL(window.location.href);
     const sectionParam = url.searchParams.get("section");
   
@@ -781,10 +796,31 @@ function init() {
           },
           duration: 1,
           ease: "power2.out",
+          onComplete: () => {
+            if (isKvAnimationComplete()) {
+              adjustScrollPosition(targetElem);
+            } else {
+              const checkInterval = setInterval(() => {
+                if (isKvAnimationComplete()) {
+                  clearInterval(checkInterval);
+                  adjustScrollPosition(targetElem);
+                }
+              }, 100);
+              
+              setTimeout(() => {
+                clearInterval(checkInterval);
+                adjustScrollPosition(targetElem);
+              }, 5000);
+            }
+          }
         });
       }
     }
   });
 }
 
-init();
+
+window.addEventListener("load", function () {
+  init();  
+  document.querySelector('body').classList.remove('noscroll');
+});

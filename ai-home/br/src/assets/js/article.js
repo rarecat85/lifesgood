@@ -1,3 +1,5 @@
+document.querySelector('body').classList.add('noscroll');
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
@@ -9,16 +11,11 @@ let kvScrollTriggerInstance;
 
 function kvAnimation() {
   const kvSection = document.querySelector('.kv');
-  if (!kvSection) {
-    kvScrollTriggerInstance = null;
-    return;
-  }
-  
   const kvVideoBx = document.querySelector('.kv-conbx-video');
   const kvVideo = document.querySelector('.kv-conbx-video iframe');
   const kvVideoThumb = document.querySelector('.kv-conbx-video-thumb');
   const kvDesc = document.querySelector('.kv-conbx-desc');
-  const videoSrc = kvVideo ? kvVideo.getAttribute('src') : '';
+  const videoSrc = kvVideo.getAttribute('src');
   let kvAnimationTl;
   let scrollTriggerInstance;
 
@@ -415,7 +412,34 @@ function tabAnimation() {
         });
     });
   });
+}
 
+function stories() {
+  const storiesSwiper = document.querySelector('.stories-conbx');
+
+  if (storiesSwiper) {
+    const storiesSwiperOptions = {
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.stories-swiper-button-next',
+        prevEl: '.stories-swiper-button-prev',
+      },
+      pagination: {
+        el: '.stories-swiper-pagination',
+        type: 'fraction',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 16
+        }
+      },
+    };
+    
+    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
+  }
 }
 
 function productsSwiper() {
@@ -687,21 +711,6 @@ function disclaimerAction() {
   });
 }
 
-function isKvAnimationComplete() {
-  if (!document.querySelector('.kv') || !isPC() || !kvScrollTriggerInstance) {
-    return true;
-  }
-  
-  return kvScrollTriggerInstance.progress >= 1;
-}
-
-function adjustScrollPosition(targetElem) {
-  const targetPosition = targetElem.getBoundingClientRect().top + window.scrollY - 50;
-  window.scrollTo({
-    top: targetPosition,
-    behavior: 'smooth'
-  });
-}
 
 function handleResize() {
   const currentWidth = window.innerWidth;
@@ -726,8 +735,24 @@ function debounce(func, delay=500) {
   };
 }
 
+function isKvAnimationComplete() {
+  if (!document.querySelector('.kv') || !isPC() || !kvScrollTriggerInstance) {
+    return true;
+  }
+  
+  return kvScrollTriggerInstance.progress >= 1;
+}
+
+function adjustScrollPosition(targetElem) {
+  const targetPosition = targetElem.getBoundingClientRect().top + window.scrollY - 50;
+  window.scrollTo({
+    top: targetPosition,
+    behavior: 'smooth'
+  });
+}
+
 function init() {
-  document.querySelector('body').classList.add('noscroll');
+  
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
@@ -745,6 +770,9 @@ function init() {
     tabAnimation();
   }
 
+  if(sections.includes('stories')) {
+    stories();
+  }
   if(document.querySelector('.disclaimer')) {
     disclaimerAction();
   }
@@ -753,7 +781,6 @@ function init() {
   window.addEventListener('resize', debounce(handleResize));
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
     
     const url = new URL(window.location.href);
     const sectionParam = url.searchParams.get("section");
@@ -779,7 +806,7 @@ function init() {
                   adjustScrollPosition(targetElem);
                 }
               }, 100);
-
+              
               setTimeout(() => {
                 clearInterval(checkInterval);
                 adjustScrollPosition(targetElem);
@@ -792,4 +819,8 @@ function init() {
   });
 }
 
-init();
+
+window.addEventListener("load", function () {
+  init();  
+  document.querySelector('body').classList.remove('noscroll');
+});
