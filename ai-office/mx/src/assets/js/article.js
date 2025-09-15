@@ -1,3 +1,5 @@
+document.body.classList.add('noscroll');
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
@@ -187,7 +189,6 @@ function prodAnimation() {
 
     prodAnimation();
   });
-  // 플로팅 배너 표시/숨김 제어를 위한 ScrollTrigger 생성
   setupFloatingBannerWithScrollTrigger();
 }
 
@@ -468,7 +469,6 @@ function productsSwiper() {
     // 레이어 표시 및 스크롤 비활성화
     layer.setAttribute('aria-hidden', 'false');
     layer.style.display = 'block';
-    document.body.classList.add('noscroll');
   
     // Swiper 초기화 및 활성 슬라이드 이동
     setTimeout(() => {
@@ -651,7 +651,6 @@ function init() {
 
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
     
     const url = new URL(window.location.href);
     const sectionParam = url.searchParams.get("section");
@@ -690,6 +689,8 @@ function init() {
   });
 }
 
-init();
 
-
+window.addEventListener('load', () => {
+  init();
+  document.querySelector('body').classList.remove('noscroll');
+});

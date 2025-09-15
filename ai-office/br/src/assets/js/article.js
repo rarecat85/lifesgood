@@ -627,7 +627,6 @@ function debounce(func, delay=500) {
 }
 
 function init() {
-  document.querySelector('body').classList.add('noscroll');
   const sections = Array.from(toArray('section'), section => section.className);
   isMobile = !isPC();
 
@@ -648,47 +647,43 @@ function init() {
   // 리사이즈 이벤트 처리
   window.addEventListener('resize', debounce(handleResize));
 
-  // 페이지 로드 완료 시 noscroll 클래스 제거
-  window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
-    
-    const url = new URL(window.location.href);
-    const sectionParam = url.searchParams.get("section");
+  // noscroll 클래스 제거
+  document.querySelector('body').classList.remove('noscroll');
   
-    if (sectionParam) {
-      const targetElem = document.querySelector(`[data-section="${sectionParam}"]`);
-      
-      if (targetElem) {
-        gsap.to(window, {
-          scrollTo: {
-            y: targetElem,
-            offsetY: 50
-          },
-          duration: 1,
-          ease: "power2.out",
-          onComplete: () => {
-            if (isKvAnimationComplete()) {
-              adjustScrollPosition(targetElem);
-            } else {
-              const checkInterval = setInterval(() => {
-                if (isKvAnimationComplete()) {
-                  clearInterval(checkInterval);
-                  adjustScrollPosition(targetElem);
-                }
-              }, 100);
+  const url = new URL(window.location.href);
+  const sectionParam = url.searchParams.get("section");
 
-              setTimeout(() => {
+  if (sectionParam) {
+    const targetElem = document.querySelector(`[data-section="${sectionParam}"]`);
+    
+    if (targetElem) {
+      gsap.to(window, {
+        scrollTo: {
+          y: targetElem,
+          offsetY: 50
+        },
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          if (isKvAnimationComplete()) {
+            adjustScrollPosition(targetElem);
+          } else {
+            const checkInterval = setInterval(() => {
+              if (isKvAnimationComplete()) {
                 clearInterval(checkInterval);
                 adjustScrollPosition(targetElem);
-              }, 5000);
-            }
+              }
+            }, 100);
+
+            setTimeout(() => {
+              clearInterval(checkInterval);
+              adjustScrollPosition(targetElem);
+            }, 5000);
           }
-        });
-      }
+        }
+      });
     }
-  });
+  }
 }
 
-init();
-
-
+window.addEventListener('load', init);

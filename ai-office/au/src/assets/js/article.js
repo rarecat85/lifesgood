@@ -1,3 +1,5 @@
+document.body.classList.add('noscroll');
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 const { toArray } = gsap.utils;
@@ -321,38 +323,6 @@ function setupFloatingBannerWithScrollTrigger() {
   updateFloatingBanner();
 }
 
-function stories() {
-  const storiesSwiper = document.querySelector('.stories-conbx');
-
-  if (storiesSwiper) {
-    const storiesSwiperOptions = {
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.stories-swiper-button-next',
-        prevEl: '.stories-swiper-button-prev',
-      },
-      pagination: {
-        el: '.stories-swiper-pagination',
-        type: 'fraction',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 16
-        },
-        1441: {
-            slidesPerView: 3,
-            spaceBetween: 24
-        }
-      },
-    };
-    
-    const storiesSwiperInstance = new Swiper(storiesSwiper, storiesSwiperOptions);
-  }
-}
-
 function productsSwiper() {
   function initializeProductsSwipers() {
     const productsSwipers = document.querySelectorAll('.products-textbx-thumbbx');
@@ -499,7 +469,6 @@ function productsSwiper() {
     // 레이어 표시 및 스크롤 비활성화
     layer.setAttribute('aria-hidden', 'false');
     layer.style.display = 'block';
-    document.body.classList.add('noscroll');
   
     // Swiper 초기화 및 활성 슬라이드 이동
     setTimeout(() => {
@@ -674,10 +643,6 @@ function init() {
     productsSwiper();
   }
 
-  if(sections.includes('stories')) {
-    stories();
-  }
-
   if(document.querySelector('.disclaimer')) {
     disclaimerAction();
   }
@@ -686,7 +651,6 @@ function init() {
 
   // 페이지 로드 완료 시 noscroll 클래스 제거
   window.addEventListener('load', () => {
-    document.querySelector('body').classList.remove('noscroll');
     
     const url = new URL(window.location.href);
     const sectionParam = url.searchParams.get("section");
@@ -725,6 +689,8 @@ function init() {
   });
 }
 
-init();
 
-
+window.addEventListener('load', () => {
+  init();
+  document.querySelector('body').classList.remove('noscroll');
+});
