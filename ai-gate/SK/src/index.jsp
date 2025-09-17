@@ -103,8 +103,8 @@ Záverečný záber: biele pozadie s logom LG AI a frázou „Láskavá intelige
               Pre nás AI presahuje rámec umelej inteligencie - je to láskavá inteligencia. <br><br>
               Ako sa AI stáva súčasťou nášho každodenného života, <br>
               mala by pomôcť vytvoriť lepší život, ktorý si všetci zaslúžime. <br><br>
-              Preto LG AI začína s Vami láskyplne, prostredníctvomvnímania <br>
-              a porozumenia a ďalej sa stará o Váš život.
+              LG AI začína s Vami láskyplne, cez vnímanie a porozumenie, <br>
+              a pokračuje starostlivosťou o Váš život.
               <strong>Zistite, ako je Life's Good s umelou inteligenciou LG</strong></p>
             <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Ikona posúvania nadol" class="scroll-down-icon" data-tp="alt">
           </div>
@@ -361,7 +361,7 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
                       Znie to jedinečne</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text" data-tp="copy">LG XBOOM AI analyzuje a prispôsobuje zvuk tak, aby dokonale vyhovoval žánru aj priestoru.Vďaka AI osvetleniu, ktoré podčiarkuje atmosféru a ladí s hudbou, si môžete vychutnať zvuk aj náladu naozaj jedinečným spôsobom.</p>
+                    <p class="tab-panel-text" data-tp="copy">LG XBOOM AI analyzuje a prispôsobuje zvuk tak, aby dokonale vyhovoval žánru aj priestoru.Vďaka AI osvetleniu, ktoré podčiarkuje atmosféru a ladí s hudbou, si môžete vychutnať zvuk naozaj jedinečným spôsobom.</p>
                     <!-- E : tab-panel-text -->
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
@@ -491,7 +491,7 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
                       Pohodlie s dokonale vyladeným chladením</h2>
                     <!-- E : tab-panel-title -->
                     <!-- S : tab-panel-text -->
-                    <p class="tab-panel-text" data-tp="copy">LG DUALCOOL AI sa stará o optimálnu teplotu, udržiava komfort a zároveň optimalizuje spotrebu energie, čím pomáha šetriť vaše náklady. lepší život, ktorý si všetci zaslúžime. S LG AI Air zažijete chladenie presne prispôsobené vašim potrebám.</p>
+                    <p class="tab-panel-text" data-tp="copy">LG DUALCOOL AI sa stará o optimálnu teplotu, udržiava komfort a zároveň optimalizuje spotrebu energie, čím pomáha šetriť vaše náklady. S LG AI Air zažijete chladenie presne prispôsobené vašim potrebám.</p>
                     <!-- E : tab-panel-text -->
                     <!-- S : tab-panel-banner -->
                     <div class="tab-panel-banner">
@@ -604,8 +604,8 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
         <!-- S : thinq-section (Local)-->
         <section class="thinq-section">
           <div class="inner">
-            <h2 class="thinq-section-title" data-tp="copy">ThinQ® – inteligentný život na dosah ruky</h2>
-            <p class="thinq-section-text" data-tp="copy">Platforma LG ThinQ pre inteligentné spotrebiče a zariadenia vám umožňuje mať pohodlie doslova na dosah ruky. Pomáha zjednodušiť každodenné úkony, aby vám pomohla zjednodušiť život a užívať si pohodlie domova.</p>
+            <h2 class="thinq-section-title" data-tp="copy">ThinQ<span>&reg;</span> – inteligentný život na dosah ruky</h2>
+            <p class="thinq-section-text" data-tp="copy">Platforma LG ThinQ pre inteligentné spotrebiče a zariadenia prináša pohodlie na dosah ruky. Uľahčuje každodenné úkony a umožňuje naplno si vychutnať komfort domova.</p>
             <a href="https://www.lg.com/sk/domace-spotrebice/thinq" class="white-btn" data-tp="copy link">Zistite viac</a>
             <div class="banner">
               <picture> 
