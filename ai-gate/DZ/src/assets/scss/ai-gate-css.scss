@@ -396,6 +396,9 @@ body {
         font-size: rem(56);
         line-height: 1.07;
         margin-bottom: rem(20);
+        sup {
+          font-size: rem(30);
+        }
       }
       .thinq-section-text {
         font-size: rem(24);
@@ -792,6 +795,9 @@ body {
         }
         .thinq-section-title {
           font-size: rem(28);
+          sup {
+            font-size: rem(16);
+          }
         }
         .thinq-section-text {
           font-size: rem(16);
