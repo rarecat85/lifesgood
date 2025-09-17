@@ -604,7 +604,7 @@ Kamera sa zameria na LG XBOOM vedľa nich.</span>
         <!-- S : thinq-section (Local)-->
         <section class="thinq-section">
           <div class="inner">
-            <h2 class="thinq-section-title" data-tp="copy">ThinQ<span>&reg;</span> – inteligentný život na dosah ruky</h2>
+            <h2 class="thinq-section-title" data-tp="copy">ThinQ<sup>&reg;</sup> – inteligentný život na dosah ruky</h2>
             <p class="thinq-section-text" data-tp="copy">Platforma LG ThinQ pre inteligentné spotrebiče a zariadenia prináša pohodlie na dosah ruky. Uľahčuje každodenné úkony a umožňuje naplno si vychutnať komfort domova.</p>
             <a href="https://www.lg.com/sk/domace-spotrebice/thinq" class="white-btn" data-tp="copy link">Zistite viac</a>
             <div class="banner">
