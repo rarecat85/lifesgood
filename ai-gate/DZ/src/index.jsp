@@ -139,6 +139,14 @@ Plan final : un fond blanc avec le logo LG AI et la phrase "Une intelligence bie
                     <!-- S : product-list -->
                     <ul class="product-list">
                       <li class="product-item">
+                        <a href="https://www.lg.com/dz/oled-tvs" data-tp="link">
+                          <div class="img-bx">
+                            <img src="./assets/image/ai-gate-image-benefit01-products02.png" alt="Téléviseur LG OLED avec Intelligence Artificielle - Vue de face" loading="lazy" data-tp="alt">
+                          </div>
+                          <span class="link-btn" data-tp="copy">En savoir plus</span>
+                        </a>
+                      </li>
+                      <li class="product-item">
                         <a href="https://www.lg.com/dz/qned-tvs" data-tp="link">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="Vue avant du téléviseur LG QNED IA" loading="lazy" data-tp="alt">
