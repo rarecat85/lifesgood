@@ -91,13 +91,12 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
               <img src="./lg-ai/assets/image/ai-gate-image-overview-ai-logo-mobile.svg" alt="LG AI logo" class="ai-logo" data-tp="alt">
             </picture>
             <h2 class="title" data-tp="copy"><span class="gradient-text" data-tp="copy">Affectionate Intelligence</span> for YOU</h2>
-            <p class="text" data-tp="copy">LG’da biz o‘zimizga savol berdik: sun’iy intellekt nima uchun kerak? <br>
-              Ko‘p o‘ylab, biz javob topdik. <br><br>
-              Biz uchun AI — bu shunchaki sun’iy emas, balki samimiy intellekt. <br><br>
+            <p class="text" data-tp="copy">Biz LG'da o'zimizga savol berdik: sun'iy intellekt nima uchun kerak? Ko'p o'ylab, javob topdik. <br><br>
+              Biz uchun AI shunchaki sun'iy intellekt emas, balki samimiy intellektdir. <br><br>
               AI hayotimizning bir qismiga aylanar ekan, <br><br>
-              u hammamiz munosib bo‘lgan yaxshiroq hayotni yaratishga xizmat qilishi kerak. <br>
-              Shu bois, LG AI SIZdan boshlanadi — sezadi, tushunadi va mehr bilan g‘amxo‘rlik qiladi.
-              <strong>LG AI bilan hayot naqadar go‘zal</strong></p>
+              u barchamiz uchun munosib bo'lgan yaxshiroq hayotni yaratishga xizmat qilishi lozim. <br><br>
+              Shu bois, LG AI SIZdan boshlanadi. U sezadi, tushunadi va mehr bilan g'amxo'rlik qiladi.
+              <strong>LG AI bilan hayot naqadar go'zal!</strong></p>
             <img src="./lg-ai/assets/image/ai-gate-image-overview-scroll-down-icon-desktop.svg" alt="Pastga belgi" class="scroll-down-icon" data-tp="alt">
           </div>
         </section>
@@ -119,7 +118,7 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
                 <!-- S : tab-panel tab-1 -->
                 <div class="tab-panel" role="tabpanel" aria-labelledby="product-tab-1" id="product-panel-1">
                   <div class="tab-panel-inner">
-                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI hayotingizni tushunadi va uni quvonchli lahzalar bilan to‘ldirish uchun tajribani oshiradi.</h2>
+                    <h2 class="tab-panel-title text-center" data-tp="copy">LG AI hayotingizni his qiladi va uni unutilmas, quvonchli onlarga to'ldiradi.</h2>
                     <!-- S : video-bx -->
                     <div class="video-bx responsive-video" data-desktop-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-desktop.mp4" data-mobile-video-src="./lg-ai/assets/video/ai-gate-video-benefit01-banner-video-mobile.mp4" data-desktop-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-desktop.png" data-mobile-poster-src="./lg-ai/assets/image/ai-gate-image-benefit01-banner-mobile.png" aria-labelledby="benefit01-banner-video-description">
                       <span id="benefit01-banner-video-description" class="a11y-text" data-tp="copy">Erkak va ayol mehmonxonada divanda o‘tirib, LG televizorida futbol tomosha qilmoqda. Sahnada o‘zgarish bo‘ladi: ular quchoqlashadi. Kamera yonlaridagi LG XBOOM karnayiga e’tibor qaratadi.</span>
@@ -288,7 +287,7 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
                       </picture>
                       <div class="text-bx">
                         <h3 class="title" data-tp="copy">LG AI TV <br>
-                         avlodi bilan tanishing</h3>
+                          yangi turkumi bilan tanishing</h3>
                         <a href="https://www.lg.com/uz/televisions/ai-tv" class="white-btn" data-tp="copy link">Batafsil</a>
                       </div>
                     </div>
@@ -670,7 +669,7 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
         <section class="thinq-section">
           <div class="inner">
             <h2 class="thinq-section-title" data-tp="copy">ThinQ® helps make life happen</h2>
-            <p class="thinq-section-text" data-tp="copy">LG aqlli qurilmalaringiz uchun platforma, ThinQ boshqaruv va qulaylikni barmoqlaringizga olib keladi, hayotingizni soddalashtiradi.</p>
+            <p class="thinq-section-text" data-tp="copy">LG aqlli qurilmalari uchun yagona platforma bo‘lib, u boshqaruv va qulaylikni kaftingizdagidek oson qiladi hamda hayotingizni soddalashtiradi.</p>
             
             <div class="banner">
               <picture> 
@@ -736,7 +735,7 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
               </div>
               <div class="text-bx">
                 <h3 class="title" data-tp="copy">Simple Control with Voice Assistant</h3>
-                <p class="text" data-tp="copy">LG qurilmangizga kerakli narsani ayting, AI dinamik eshiting, siklni tekshirib, natijani xabar beradi.</p>
+                <p class="text" data-tp="copy">Shunchaki LG qurilmangizga buyruq bering. AI ovozingizni eshitadi, kerakli dasturni tekshiradi va natija haqida xabar beradi.</p>
               </div>
             </div>
             <!-- E : thinq-flex-bx -->
@@ -749,7 +748,7 @@ XBOOM, televizor va it bilan birga divanda o‘tirgan oila — bir kadrda uyg‘
               </div>
               <div class="text-bx">
                 <h3 class="title" data-tp="copy">Efficient Product Maintenance</h3>
-                <p class="text" data-tp="copy">LG ThinQ orqali qurilmangizni tekshirib, sikllarni yuklab oling, foydalanishni kuzating va boshqalar.</p>
+                <p class="text" data-tp="copy">LG ThinQ orqali qurilmangizga o‘z vaqtida texnik xizmat ko‘rsating: uning holatini diagnostika qiling, yangi dasturlarni yuklab oling va ish faoliyatini kuzatib boring.</p>
               </div>
             </div>
             <!-- E : thinq-flex-bx -->
