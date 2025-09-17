@@ -7,10 +7,10 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG veštačka inteligencija</title>
+    <title>LG Privržena inteligencija</title>
     <meta name="Keywords" content="LG veštačka inteligencija, inteligencija sa pažnjom, orjentisana na ljude, platforma za pametan život, pruža tehnološki napredna rešenja">
     <meta name="Description" content="LG veštačka inteligencija za Vaš ugodan, bezbrižan i ušuškan život kroz opažanje, razumevanje i bezbrižnost. Iskusite viši nivo života uz LG Privrženu inteligenciju, gde AI prevazilazi granice veštačke inteligencije i pruža bezbrižnost orjentisanu ka ljudima">
-    <meta property="og:title" content="LG veštačka inteligencija"/>
+    <meta property="og:title" content="LG Privržena inteligencija"/>
     <meta property="og:url" content="https://www.lg.com/rs/lg-ai">
     <meta property="og:description" content="LG veštačka inteligencija za Vaš ugodan, bezbrižan i ušuškan život kroz opažanje, razumevanje i bezbrižnost. Iskusite viši nivo života uz LG Privrženu inteligenciju, gde AI prevazilazi granice veštačke inteligencije i pruža bezbrižnost orjentisanu ka ljudima"/>
     <meta property="og:image" content="">
