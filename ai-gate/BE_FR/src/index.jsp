@@ -7,12 +7,14 @@
     <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
     <!-- chrome audits -->
     <meta name="theme-color" content="#a50034"/>
-    <title>LG Affectionate Intelligence | LG BE</title>
-    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Centré sur l'humain, Smart Living Platform, Solutions technologiques, L'intelligence bienveillante">
-    <meta name="Description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain.">
-    <meta property="og:title" content="LG Affectionate Intelligence | LG BE"/>
+    <title>LG AI Votre Allié Intelligent | LG BE</title>
+    <meta name="Keywords" content="LG AI, votre Allié Intelligent, IA centrée sur l’humain, Plateforme de vie intelligente, Solutions technologiques avancées">
+    <meta name="Description" content="LG AI s'efforce de vous offrir une vie toujours plus agréable
+    Faites l’expérience d’une vie de meilleure qualité avec votre Allié Intelligent LG AI, où l’IA va au-delà de l’intelligence artificielle pour vous accompagner toujours mieux">
+    <meta property="og:title" content="LG AI Votre Allié Intelligent | LG BE"/>
     <meta property="og:url" content="https://www.lg.com/be_fr/lg-ai"/>
-    <meta property="og:description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain."/>
+    <meta property="og:description" content="LG AI s'efforce de vous offrir une vie toujours plus agréable
+    Faites l’expérience d’une vie de meilleure qualité avec votre Allié Intelligent LG AI, où l’IA va au-delà de l’intelligence artificielle pour vous accompagner toujours mieux"/>
     <meta property="og:image" content=""/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
     <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
@@ -50,8 +52,9 @@
     <meta itemprop="name" content="{Browser Title}"/>
     <meta itemprop="image" content="{Share Image}"/>
     <meta itemprop="url" content="{Cannonical URL}"/>
-    <meta itemprop="description" content="LG AI vise à rendre la vie agréable, sans effort et à prendre soin de vous grâce à 'La perception avisée, La compréhension profonde, L'attention chaleureuse'. Faites l'expérience d'une meilleure qualité de vie avec LG Affectionate Intelligence, où l'IA va au-delà de l'intelligence artificielle pour fournir des soins chaleureux et centrés sur l'humain."/>
-    <meta itemprop="Keywords" content="LG AI, Affectionate Intelligence, Centré sur l'humain, Smart Living Platform, Solutions technologiques, L'intelligence bienveillante"/>
+    <meta itemprop="description" content="LG AI s'efforce de vous offrir une vie toujours plus agréable
+    Faites l’expérience d’une vie de meilleure qualité avec votre Allié Intelligent LG AI, où l’IA va au-delà de l’intelligence artificielle pour vous accompagner toujours mieux"/>
+    <meta itemprop="Keywords" content="LG AI, votre Allié Intelligent, IA centrée sur l’humain, Plateforme de vie intelligente, Solutions technologiques avancées"/>
 </div>
 <c:set var='bizType' value='${$bizType }'/>
 <c:set var='siteType' value='MKT'/>
