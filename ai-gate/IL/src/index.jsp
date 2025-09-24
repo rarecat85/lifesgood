@@ -222,7 +222,7 @@
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href="https://www.lg.com/il/washer" data-tp="link">
+                        <a href="https://www.lg.com/il/washing-machines/lg-wf13314wbc" data-tp="link">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products02.png" alt="תצוגה קדמית של מכונת הכביסה LG  AI" loading="lazy" data-tp="alt">
                           </div>
@@ -238,7 +238,7 @@
                         </a>
                       </li> -->
                       <li class="product-item">
-                        <a href="https://www.lg.com/il/refrigerators/lg-gr-930bins" data-tp="link">
+                        <a href="https://www.lg.com/il/refrigerators/lg-r-2b394bins" data-tp="link">
                           <div class="img-bx">
                             <img src="./lg-ai/assets/image/ai-gate-image-benefit02-products04.png" alt="תצוגה קדמית של מקרר LG InstaView AI" loading="lazy" data-tp="alt">
                           </div>
