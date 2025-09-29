@@ -416,7 +416,7 @@
         </section>
         <!-- E : thinq-section (Local)-->
         <!-- S : stories-section -->
-        <section class="stories-section">
+        <!-- <section class="stories-section">
           <div class="inner">
               <h2 class="title" data-tp="copy">了解更多LG情感智能</h2>
               <div class="slide-bx">
@@ -459,7 +459,7 @@
                   </div>
               </div>
           </div>
-        </section>
+        </section> -->
         <!-- E : stories-section -->
         <!-- S : layer-popup -->
         <!-- <div class="products-layer" role="dialog" aria-hidden="true" aria-modal="true" tabindex="-1">
