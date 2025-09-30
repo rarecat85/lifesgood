@@ -229,6 +229,13 @@ body {
                   color: $black;
                   margin-top: rem(20);
                 }
+                .slide-desc {
+                  font-weight: 400;
+                  font-size: rem(24);
+                  line-height: 1.16;
+                  color: $black;
+                  margin-top: rem(20);
+                }
                 .products-slide-btn {
                   display: block;
                   cursor: pointer;
@@ -392,6 +399,7 @@ body {
       margin: 0 auto;
       padding: rem(60) 0;
       .thinq-section-title {
+        font-family: "LGEI Headline";
         font-weight: 600;
         font-size: rem(56);
         line-height: 1.07;
@@ -682,6 +690,10 @@ body {
                     font-size: rem(24);
                     margin-top: rem(12);
                     text-wrap: balance;
+                  }
+                  .slide-desc {
+                    font-size: rem(16);
+                    margin-top: rem(12);
                   }
                 }
               }

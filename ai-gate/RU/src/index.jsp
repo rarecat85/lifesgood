@@ -344,36 +344,42 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature01.png" alt="На экране телевизора LG OLED отображается главная страница webOS 25, заполненная приложениями и развлекательным контентом. Рядом с телевизором находится пульт LG AI Magic Remote, кнопка AI подсвечена так, как будто она активирована голосом пользователя. Рядом появляется облачко с текстом: «предложи фильм, который мне понравится»." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Распознавание речи</p>
+                            <p class="slide-desc">Распознает голос конкретного пользователя и подстраивается под его предпочтения и настройки.</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature02.png" alt="Экран LG OLED TV показывает, как работает AI Search. Открыто небольшое окно чата, где пользователь спрашивает, какие спортивные игры доступны. AI-поиск отвечает через чат и отображает миниатюры доступного контента. Также появляется предложение задать вопрос Microsoft Copilot." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Поиск</p>
+                            <p class="slide-desc">Ищет контент по смыслу запроса, понимает формулировки пользователя и подбирает релевантные результаты из доступных источников.</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature03.png" alt="Пульт LG AI Magic Remote в использовании. Краткое нажатие кнопки AI активирует AI-ассистента на экране OLED TV, который затем предлагает ключевые слова." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Консьерж</p>
+                            <p class="slide-desc">Предлагает персонализированные рекомендации по контенту и настройкам на основе предпочтений пользователя.</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature04.png" alt="На экране LG OLED воспроизводится научно-фантастический контент. Слева отображается интерфейс AI-чата. Пользователь пишет в чат, что экран слишком тёмный, и чат-бот предлагает решения по запросу." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Чат-бот</p>
+                            <p class="slide-desc">помогает с настройками и функциями ТВ, отвечает на простые вопросы***</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature05.png" alt="Женщина поёт в микрофон в наушниках, а улучшение звука с помощью AI-процессора LG α11 подчёркивает её голос." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Мастер звука и изображения</p>
+                            <p class="slide-desc">помогает настроить звук и изображение под индивидуальное восприятие пользователя</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-tv-feature06.png" alt="Две связанные сцены с LG AI Magic Remote перед телевизором — сначала показан фрагмент научной фантастики и экран с персонализированным контентом." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Пульт Magic Remote</p>
+                            <p class="slide-desc">Позволяет управлять ТВ с помощью голоса и курсора-указки, обеспечивая быстрый и интуитивный доступ к смарт приложениям , функциям и настройкам ТВ.</p>
                           </div>
                         </div>
                       </div>
@@ -432,18 +438,21 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature01.png" alt="Акустическая система LG XBOOM с режимами звука на базе ИИ, включая Bass Boost, Voice Enhance и Standard." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Звук</p>
+                            <p class="slide-desc">Автоматически подстраивает звучание под тип контента —делает басы глубже и добавляет объём</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature02.png" alt="Акустическая система LG XBOOM с AI-подсветкой, которая адаптируется под голос, окружение и режим вечеринки." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Подсветка</p>
+                            <p class="slide-desc">Световые полоски динамично реагируют на музыку, синхронизируясь с её ритмом и создавая атмосферу. </p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-audio-feature03.png" alt="Акустическая система LG XBOOM размещена на столе в комнате с красным оттенком, стенами с сетчатым узором и современной мебелью." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">AI Калибровка</p>
+                            <p class="slide-desc">Калибрует звук в зависимости от размера и формы пространства. Обеспечивает полноценное и чистое звучание без искажений</p>
                           </div>
                         </div>
                       </div>
@@ -499,12 +508,14 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature01.png" alt="Рука включает программу стирки с использованием ИИ на стиральной машине LG" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">Интеллектуальная стирка AI Wash™</p>
+                            <p class="slide-desc">Оптимизирует процесс стирки в зависимости от типа ткани</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-appliances-feature02.png" alt="Пользователь выбирает программу сушки AI Dry на сушильной машине LG" data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">Интеллектуальная сушка AI Dry™</p>
+                            <p class="slide-desc">Оптимизирует процесс сушки в зависимости от типа ткани</p>
                           </div>
                         </div>
                       </div>
@@ -563,12 +574,14 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature01.png" alt="Женщина отдыхает в умной гостиной, пока кондиционер LG AI автоматически регулирует температуру, воздушный поток и влажность." data-tp="alt">
                             </div>
                             <p class="slide-title" data-tp="copy">Управление воздухом AI Air</p>
+                            <p class="slide-desc">Настраивает прямой или непрямой воздушный поток при обнаружении человека.</p>
                           </div>
                           <div class="swiper-slide">
                             <div class="img-bx">
                               <img src="./lg-ai/assets/image/ai-gate-image-product-category-air-conditioning-feature02.png" alt="Интерфейс смартфона с графиком энергопотребления на фоне кондиционера LG, демонстрирующий функцию «AI-менеджер кВт» для эффективного контроля мощности." data-tp="alt">
                             </div>
-                            <p class="slide-title" data-tp="copy">AI Менеджер энергопотребления </p>
+                            <p class="slide-title" data-tp="copy">AI Менеджер энергопотребления</p>
+                            <p class="slide-desc">Отслеживает потребление электроэнергии и активирует сберегающий режим при необходимости.</p>
                           </div>
                         </div>
                       </div>
