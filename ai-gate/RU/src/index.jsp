@@ -144,38 +144,30 @@ XBOOM, телевизор и семья, сидящая на диване с с�
                           <span class="link-btn" data-tp="copy">Узнать больше</span>
                         </a>
                       </li>
-                      <!-- <li class="product-item">
-                        <a href="" data-tp="link">
+                      <li class="product-item">
+                        <a href="https://www.lg.com/ru/oled-televisions" data-tp="link">
                           <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products02.png" alt="Телевизор LG OLED evo AI вид спереди" loading="lazy" data-tp="alt">
                           </div>
-                          <span class="link-btn" data-tp="copy"></span>
+                          <span class="link-btn" data-tp="copy">Узнать больше</span>
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href="" data-tp="link">
+                        <a href="https://www.lg.com/ru/qned-tvs" data-tp="link">
                           <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products03.png" alt="Телевизор LG QNED AI вид спереди" loading="lazy" data-tp="alt">
                           </div>
-                          <span class="link-btn" data-tp="copy"></span>
+                          <span class="link-btn" data-tp="copy">Узнать больше</span>
                         </a>
                       </li>
                       <li class="product-item">
-                        <a href="" data-tp="link">
+                        <a href="https://www.lg.com/ru/super-uhd-4k-televisions" data-tp="link">
                           <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="" loading="lazy" data-tp="alt">
+                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products04.png" alt="https://www.lg.com/ru/super-uhd-4k-televisions" loading="lazy" data-tp="alt">
                           </div>
-                          <span class="link-btn" data-tp="copy"></span>
+                          <span class="link-btn" data-tp="copy">Узнать больше</span>
                         </a>
                       </li>
-                      <li class="product-item">
-                        <a href="" data-tp="link">
-                          <div class="img-bx">
-                            <img src="./lg-ai/assets/image/ai-gate-image-benefit01-products05.png" alt="" loading="lazy" data-tp="alt">
-                          </div>
-                          <span class="link-btn" data-tp="copy"></span>
-                        </a>
-                      </li> -->
                     </ul>
                     <!-- E : product-list -->
                   </div>
