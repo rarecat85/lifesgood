@@ -1,0 +1,7 @@
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
+.overview {
+  background-color: $black;
+  color: $white;  
+}

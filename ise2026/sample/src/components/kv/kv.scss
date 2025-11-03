@@ -1,0 +1,139 @@
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
+.kv {
+  background-color: $black;
+  color: $white;  
+  .inner {
+    position: relative;
+    .text-bx {
+      text-align: center;
+      h1 {
+        @include font(32,110%,700);
+        margin-bottom: rem(19.6);
+        strong {
+          @include font(63,110%,700);
+        }
+      }
+      .info {
+        .text {
+          @include font(18,140%,550);
+          &:not(:last-child)::after {
+            content: '';
+            display: inline-block;
+            width: rem(1);
+            height: rem(12);
+            background-color: #6A6A6A;
+            margin: 0 rem(7);
+          }
+          &.date,
+          &.location {
+            &::before {
+              content: '';
+              display: inline-block;
+              margin-right: rem(5);
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+          &.date {
+            &::before {
+              background-image: url('../../assets/images/ic_calendar.svg');
+              width: rem(10);
+              height: rem(11);
+            }
+          }
+          &.location {
+            &::before {
+              background-image: url('../../assets/images/ic_location.svg');
+              width: rem(8);
+              height: rem(10);
+            }
+          }
+        }
+      }
+    }
+    .video-bx {
+      width: 100%;
+      height: 100%;
+      margin: rem(68) auto rem(63);
+      position: relative;
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+    .countdown {
+      width: rem(333);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(26);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        gap: rem(4);
+        img {
+          display: block;
+          width: 100%;
+          height: rem(30);
+          object-fit: contain;
+        }
+      }
+    }
+    .btn-link-bx {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(2);
+      .btn {
+        @include btn($white, true);
+        margin-right: rem(5);
+      }
+      .sns-btn {
+        display: block;
+        width: rem(40);
+        height: rem(40);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        transition: all 0.3s;
+        $sns-list: linkedin, instagram, facebook, youtube;
+        @each $sns in $sns-list {
+          &.#{$sns} {
+            background-image: url('../../assets/images/ic_share_#{$sns}.svg');
+          }
+        }
+        &:hover {
+          @each $sns in $sns-list {
+            &.#{$sns} {
+              background-image: url('../../assets/images/ic_share_#{$sns}_active.svg');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.layer-popup {
+  width: rem(458);
+  // opacity: 0;
+  // visibility: hidden;
+  padding: rem(20);
+  border-radius: rem(10);
+  background-color: $white;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: rem(83);
+  left: 50%;
+  z-index: 100;
+}

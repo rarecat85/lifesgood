@@ -1,0 +1,52 @@
+@use './variable' as *;
+@use './mixin' as *;
+
+.ise-container {
+  width:100%;
+  margin:0 auto;
+  section {
+    min-height: 100vh;
+    padding: rem(100) 0 rem(132);
+  }
+  .inner {
+    width:100%;
+    max-width: $inner;
+    margin:0 auto;
+    padding:0 1rem;
+    @include tablet {
+      padding:0;
+    }
+  }
+  .heading {
+    font-family: 'LGEI Headline', sans-serif;
+  }
+
+  .a11y-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  /* fade-up animation */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+}
