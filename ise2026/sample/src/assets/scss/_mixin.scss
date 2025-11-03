@@ -136,9 +136,9 @@
   }
   
   @include desktop{
-    min-width: rem(115);
+    min-width: rem(70);
     font-size:rem(16);
     height:rem(40);
-    padding: rem(9);
+    padding: rem(9) rem(37);
   }
 }

@@ -3,5 +3,45 @@
 
 .overview {
   background-color: $black;
+  text-align: center;
   color: $white;  
+  .countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(80);
+    margin-bottom: rem(75);
+    p {
+      display: flex;
+      position: relative;
+      padding-top: rem(32);
+      .text {
+        @include font(14,100%,400);
+        color: rgba(255,255,255,0.5);
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+    img {
+      height: rem(90);
+      object-fit: contain;
+      & + img {
+        margin-left: rem(8);
+      }
+    }
+  }
+  .title {
+    @include font(40,140%,550);
+    margin-bottom: rem(40)
+  }
+  .text {
+    @include font(22,140%,400);
+    color: #AFAFAF;
+    max-width: rem(1006);
+    margin: 0 auto;
+    strong {
+      font-weight: 700;
+    }
+  }
 }

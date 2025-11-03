@@ -108,134 +108,146 @@ function initCountdown() {
   // 필요시 이 변수만 수정하면 됨
   const eventDate = new Date('2026-02-03T00:00:00');
   
-  const countdownElement = document.querySelector('.countdown');
-  if (!countdownElement) return;
+  const countdownElements = document.querySelectorAll('.countdown');
+  if (countdownElements.length === 0) return;
   
-  // countdown 요소에 white 또는 red 클래스 확인
-  const imageColor = countdownElement.classList.contains('white') ? 'white' : 'red';
-  const imagePrefix = `num_${imageColor}`;
-  
-  const dayElement = countdownElement.querySelector('.day');
-  const hourElement = countdownElement.querySelector('.hour');
-  const minuteElement = countdownElement.querySelector('.minute');
-  const secondElement = countdownElement.querySelector('.second');
-  
-  // 이미지 요소를 미리 생성하고 재사용
-  const imageElements = {
-    day: null,
-    hour: null,
-    minute: null,
-    second: null
-  };
-  
-  // 현재 표시된 값 저장 (깜빡임 방지를 위해 변경된 경우만 업데이트)
-  let currentValues = {
-    days: null,
-    hours: null,
-    minutes: null,
-    seconds: null
-  };
+  // 각 countdown 요소마다 개별적으로 초기화
+  countdownElements.forEach((countdownElement) => {
+    initSingleCountdown(countdownElement, eventDate);
+  });
   
   /**
-   * 숫자를 두 자리 문자열로 변환 (한 자리면 앞에 0 추가)
+   * 단일 countdown 요소 초기화
+   * @param {HTMLElement} countdownElement - countdown 컨테이너 요소
+   * @param {Date} eventDate - 이벤트 날짜
    */
-  function formatNumber(num) {
-    return num.toString().padStart(2, '0');
-  }
-  
-  /**
-   * 이미지 경로 생성
-   * @param {string} digit - 한 자리 숫자 (0-9)
-   * @returns {string} 이미지 경로
-   */
-  function getImagePath(digit) {
-    return `./assets/images/${imagePrefix}_${digit}.svg`;
-  }
-  
-  /**
-   * 요소에 이미지 요소를 초기화 (한 번만 실행)
-   * @param {HTMLElement} container - 이미지를 표시할 컨테이너 요소
-   * @param {string} key - imageElements 객체의 키
-   */
-  function initializeImages(container, key) {
-    if (imageElements[key]) return; // 이미 초기화됨
+  function initSingleCountdown(countdownElement, eventDate) {
+    // countdown 요소에 white 또는 red 클래스 확인
+    const imageColor = countdownElement.classList.contains('white') ? 'white' : 'red';
+    const imagePrefix = `num_${imageColor}`;
     
-    // 두 개의 이미지 요소를 미리 생성
-    const img1 = document.createElement('img');
-    img1.alt = '0';
-    img1.loading = 'eager';
+    const dayElement = countdownElement.querySelector('.day');
+    const hourElement = countdownElement.querySelector('.hour');
+    const minuteElement = countdownElement.querySelector('.minute');
+    const secondElement = countdownElement.querySelector('.second');
     
-    const img2 = document.createElement('img');
-    img2.alt = '0';
-    img2.loading = 'eager';
+    // 이미지 요소를 미리 생성하고 재사용
+    const imageElements = {
+      day: null,
+      hour: null,
+      minute: null,
+      second: null
+    };
     
-    container.appendChild(img1);
-    container.appendChild(img2);
+    // 현재 표시된 값 저장 (깜빡임 방지를 위해 변경된 경우만 업데이트)
+    let currentValues = {
+      days: null,
+      hours: null,
+      minutes: null,
+      seconds: null
+    };
     
-    imageElements[key] = [img1, img2];
-  }
-  
-  /**
-   * 요소의 값을 업데이트 (변경된 경우만, 이미지 src만 변경)
-   * @param {HTMLElement} element - 업데이트할 요소
-   * @param {string} newValue - 새로운 두 자리 숫자 문자열
-   * @param {string} valueKey - currentValues 객체의 키
-   */
-  function updateElementIfChanged(element, newValue, valueKey) {
-    if (currentValues[valueKey] === newValue) return; // 변경되지 않음
-    
-    // 이미지 요소 초기화 (최초 한 번만)
-    if (!imageElements[valueKey]) {
-      initializeImages(element, valueKey);
+    /**
+     * 숫자를 두 자리 문자열로 변환 (한 자리면 앞에 0 추가)
+     */
+    function formatNumber(num) {
+      return num.toString().padStart(2, '0');
     }
     
-    // 각 자릿수의 이미지 src만 변경
-    const [img1, img2] = imageElements[valueKey];
-    const [digit1, digit2] = newValue.split('');
-    
-    img1.src = getImagePath(digit1);
-    img1.alt = digit1;
-    
-    img2.src = getImagePath(digit2);
-    img2.alt = digit2;
-    
-    currentValues[valueKey] = newValue;
-  }
-  
-  /**
-   * 카운트다운 업데이트
-   */
-  function updateCountdown() {
-    const now = new Date();
-    const timeDiff = eventDate.getTime() - now.getTime();
-    
-    // 이벤트 시간이 지났으면 모든 값을 00으로 표시
-    if (timeDiff <= 0) {
-      updateElementIfChanged(dayElement, '00', 'days');
-      updateElementIfChanged(hourElement, '00', 'hours');
-      updateElementIfChanged(minuteElement, '00', 'minutes');
-      updateElementIfChanged(secondElement, '00', 'seconds');
-      return;
+    /**
+     * 이미지 경로 생성
+     * @param {string} digit - 한 자리 숫자 (0-9)
+     * @returns {string} 이미지 경로
+     */
+    function getImagePath(digit) {
+      return `./assets/images/${imagePrefix}_${digit}.svg`;
     }
     
-    // 남은 시간 계산
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    /**
+     * 요소에 이미지 요소를 초기화 (한 번만 실행)
+     * @param {HTMLElement} container - 이미지를 표시할 컨테이너 요소
+     * @param {string} key - imageElements 객체의 키
+     */
+    function initializeImages(container, key) {
+      if (imageElements[key]) return; // 이미 초기화됨
+      
+      // 두 개의 이미지 요소를 미리 생성
+      const img1 = document.createElement('img');
+      img1.alt = '0';
+      img1.loading = 'eager';
+      
+      const img2 = document.createElement('img');
+      img2.alt = '0';
+      img2.loading = 'eager';
+      
+      container.appendChild(img1);
+      container.appendChild(img2);
+      
+      imageElements[key] = [img1, img2];
+    }
     
-    // 변경된 경우만 업데이트 (깜빡임 방지)
-    updateElementIfChanged(dayElement, formatNumber(days), 'days');
-    updateElementIfChanged(hourElement, formatNumber(hours), 'hours');
-    updateElementIfChanged(minuteElement, formatNumber(minutes), 'minutes');
-    updateElementIfChanged(secondElement, formatNumber(seconds), 'seconds');
+    /**
+     * 요소의 값을 업데이트 (변경된 경우만, 이미지 src만 변경)
+     * @param {HTMLElement} element - 업데이트할 요소
+     * @param {string} newValue - 새로운 두 자리 숫자 문자열
+     * @param {string} valueKey - currentValues 객체의 키
+     */
+    function updateElementIfChanged(element, newValue, valueKey) {
+      if (currentValues[valueKey] === newValue) return; // 변경되지 않음
+      
+      // 이미지 요소 초기화 (최초 한 번만)
+      if (!imageElements[valueKey]) {
+        initializeImages(element, valueKey);
+      }
+      
+      // 각 자릿수의 이미지 src만 변경
+      const [img1, img2] = imageElements[valueKey];
+      const [digit1, digit2] = newValue.split('');
+      
+      img1.src = getImagePath(digit1);
+      img1.alt = digit1;
+      
+      img2.src = getImagePath(digit2);
+      img2.alt = digit2;
+      
+      currentValues[valueKey] = newValue;
+    }
+    
+    /**
+     * 카운트다운 업데이트
+     */
+    function updateCountdown() {
+      const now = new Date();
+      const timeDiff = eventDate.getTime() - now.getTime();
+      
+      // 이벤트 시간이 지났으면 모든 값을 00으로 표시
+      if (timeDiff <= 0) {
+        updateElementIfChanged(dayElement, '00', 'days');
+        updateElementIfChanged(hourElement, '00', 'hours');
+        updateElementIfChanged(minuteElement, '00', 'minutes');
+        updateElementIfChanged(secondElement, '00', 'seconds');
+        return;
+      }
+      
+      // 남은 시간 계산
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      
+      // 변경된 경우만 업데이트 (깜빡임 방지)
+      updateElementIfChanged(dayElement, formatNumber(days), 'days');
+      updateElementIfChanged(hourElement, formatNumber(hours), 'hours');
+      updateElementIfChanged(minuteElement, formatNumber(minutes), 'minutes');
+      updateElementIfChanged(secondElement, formatNumber(seconds), 'seconds');
+    }
+    
+    // 초기 업데이트
+    updateCountdown();
+    
+    // 1초마다 업데이트
+    setInterval(updateCountdown, 1000);
   }
-  
-  // 초기 업데이트
-  updateCountdown();
-  
-  // 1초마다 업데이트
-  setInterval(updateCountdown, 1000);
 }
 
 // DOM 로드 후 초기화

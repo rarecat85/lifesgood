@@ -126,14 +126,96 @@
 
 .layer-popup {
   width: rem(458);
-  // opacity: 0;
-  // visibility: hidden;
+  color: $black;
+  opacity: 0;
+  visibility: hidden;
   padding: rem(20);
   border-radius: rem(10);
   background-color: $white;
   position: absolute;
   transform: translateX(-50%);
-  bottom: rem(83);
+  bottom: rem(63);
   left: 50%;
   z-index: 100;
+  transition: all 0.3s;
+  .inner {
+    position: relative;
+    .title {
+      @include font(15,100%,550);
+      margin-bottom: rem(8);
+    }
+    .sns-list {
+      display: flex;
+      align-items: center;
+      gap: rem(10);
+      margin-bottom: rem(12);
+      .sns-item {
+        .sns-btn {
+          display: block;
+          width: rem(45);
+          height: rem(45);
+          background-size: contain;
+          background-repeat: no-repeat;
+          transition: all 0.3s;
+          $sns-list: linkedin, instagram, facebook, youtube;
+          @each $sns in $sns-list {
+            &.#{$sns} {
+              background-image: url('../../assets/images/ic_popup_#{$sns}.svg');
+            }
+          }
+          // &:hover {
+          //   @each $sns in $sns-list {
+          //     &.#{$sns} {
+          //       background-image: url('../../assets/images/ic_popup_#{$sns}_active.svg');
+          //     }
+          //   }
+          // }
+        }
+      }
+    }
+    .copy-link-bx {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #EDEDED;
+      border-radius: rem(73.68);
+      padding: rem(4);
+      &::before {
+        content: '';
+        display: block;
+        width: rem(20);
+        height: rem(20);
+        background-image: url('../../assets/images/ic_clipboard.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        margin: 0 rem(20) 0 rem(13);
+      }
+      .copy-link-text {
+        @include font(14,140%,400);
+        color: $black;
+        width: 100%;
+      }
+      .copy-link-btn {
+        @include btn($primary);
+      }
+    }
+    .close-btn {
+      width: rem(28);
+      height: rem(28);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url('../../assets/images/ic_close.svg');
+      cursor: pointer;
+    }
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    bottom: rem(83);
+  }
 }
