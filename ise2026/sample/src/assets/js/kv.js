@@ -213,6 +213,28 @@
     });
   }
 
+  /* scroll down button click event */
+  function handleScrollDownBtnClick() {
+    const scrollDownBtn = document.querySelector('.kv .scroll-down-btn');
+    if (!scrollDownBtn) return;
+    
+    scrollDownBtn.addEventListener('click', () => {
+      // 다음 섹션(overview) 찾기
+      const kvSection = document.querySelector('.kv');
+      if (!kvSection) return;
+      
+      // 다음 형제 섹션 찾기
+      const nextSection = kvSection.nextElementSibling;
+      if (!nextSection) return;
+      
+      // 부드러운 스크롤
+      nextSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  }
+
   // DOMContentLoaded 또는 초기화
   function init() {
     initKVVideo();
@@ -220,6 +242,7 @@
     handleCloseBtnClick();
     handleEscapeKey();
     handleCopyLinkBtnClick();
+    handleScrollDownBtnClick();
   }
 
   if (document.readyState === 'loading') {
