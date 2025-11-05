@@ -560,6 +560,24 @@ function handleFlipCard() {
   });
 }
 
+function handleInspirationSlide() {
+  const inspirationSlide = document.querySelector('.inspiration .slide-bx');
+  const inspirationSlideSwiper = new Swiper(inspirationSlide, {
+    slidesPerView: "auto",
+    centeredSlides: true,
+    loop:true,
+    speed: 1000,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.inspiration .slide-bx .slide-pagination',
+      type: 'fraction',
+    },
+  });
+}
+
 /**
  * 모든 기능 초기화
  */
@@ -574,6 +592,7 @@ function init() {
   handleScrollDownBtnClick();
   handleCodeButtonClick();
   handleFlipCard();
+  handleInspirationSlide();
 }
 
 // DOM 로드 후 초기화

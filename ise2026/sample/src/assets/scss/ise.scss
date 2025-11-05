@@ -17,6 +17,15 @@
       padding:0;
     }
   }
+  .section-title-bx {
+    .title {
+      @include font(50,110%,700);
+      margin-bottom: rem(40);
+    }
+    .text {
+      @include font(22,140%,400);
+    }
+  }
   .heading {
     font-family: 'LGEI Headline', sans-serif;
   }
