@@ -105,7 +105,6 @@
     
     @if $co == $white {
       // 흰색 배경일 경우
-      border: 1px solid $midGray;
       color: $black;
       &:hover,
       &:active {
@@ -126,7 +125,6 @@
           color: $white;
         } @else {
           // 기본 hover: 흰색 배경으로 변경
-          border: 1px solid $midGray;
           background: $white;
           color: $black;
         }

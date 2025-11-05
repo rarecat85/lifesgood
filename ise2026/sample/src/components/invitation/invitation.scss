@@ -9,20 +9,37 @@
   color: $white;
   text-align: center;
   .flip-btn {
+    width: rem(50);
+    height: rem(50);
     @include font(14,100%,400);
     color: $white;
+    white-space: nowrap;
+    text-align: center;
     position: absolute;
     transform: translateY(-50%);
-    top:50%;
+    top: calc(50% + rem(6));
+    transition: all 0.3s;
     &::after {
       content: '';
       display: block;
       width: rem(18);      
       height: rem(12);
+      background-image: url('../../assets/images/ic_arrow.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: rem(7) auto 0;
+      transition: all 0.3s;
+    }
+    &:hover {
+      color: $black;
+      &::after {
+        background-image: url('../../assets/images/ic_arrow_active.svg');
+      }
     }
   }
   .text-bx {
-    margin-bottom: rem(92);
+    margin-bottom: rem(46);
     .title {
       @include font(50,100%,700);
       margin-bottom: rem(40);
@@ -38,13 +55,36 @@
   }
   .card-bx {
     max-width: rem(849);
+    height: rem(348);
     margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    
+    &.flipped {
+      transform: rotateY(180deg);
+    }
+    
+    .card-front,
+    .card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
     .card-front {
       display: flex;  
       background-position: top right;
       background-repeat: no-repeat;
       border-radius: rem(20);
       position: relative;
+      transform: rotateY(0deg);
+      z-index: 2;
       &::after {
         content: '';
         display: block;
@@ -53,14 +93,24 @@
         background-image: url('../../assets/images/invitation_pattern.png');
         background-size: cover;
         background-position: right center;
+        border-radius: 0 rem(20) rem(20) 0;
       }
+      
       .card-front-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: calc(100% - rem(116));
         background-color: $black;
-        padding: rem(72) rem(50) rem(17);
+        padding: rem(36) rem(50) rem(17);
         border-radius: rem(20) 0 0 rem(20);
         position: relative;
+        background-image: url('../../assets/images/invitation_barcode.svg');
+        background-size: rem(52) rem(32);
+        background-position: rem(50) rem(36.68);
+        background-repeat: no-repeat;
         .text-bx {
+          margin-top: rem(36);
           .sub-title {
             @include font(30,140%,250);
           }
@@ -148,9 +198,33 @@
         right: rem(-30);
       }
     }
+    
+    .card-back {
+      transform: rotateY(180deg);
+      z-index: 1;
+      height: auto;
+      
+      .card-back-inner {
+        width: 100%;
+        border-radius: rem(20);
+        position: relative;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .flip-btn {
+        left: rem(-30);
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
   .btn-bx {
-    margin-top: rem(92);
+    margin-top: rem(42);
     .btn {
       @include btn($black);
       margin: 0 auto;

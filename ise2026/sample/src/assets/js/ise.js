@@ -543,6 +543,24 @@ function handleCodeButtonClick() {
 }
 
 /**
+ * 초대장 카드 flip 기능 초기화
+ * 버튼 클릭 시 card-front에서 card-back으로 전환되도록 flip 모션 적용
+ */
+function handleFlipCard() {
+  const cardBx = document.querySelector('.invitation .card-bx');
+  const flipBtns = document.querySelectorAll('.invitation .flip-btn');
+  
+  if (!cardBx || !flipBtns || flipBtns.length === 0) return;
+  
+  // flip 버튼 클릭 이벤트 (모든 flip-btn에 적용)
+  flipBtns.forEach(function(flipBtn) {
+    flipBtn.addEventListener('click', function() {
+      cardBx.classList.toggle('flipped');
+    });
+  });
+}
+
+/**
  * 모든 기능 초기화
  */
 function init() {
@@ -555,6 +573,7 @@ function init() {
   handleCopyLinkBtnClick();
   handleScrollDownBtnClick();
   handleCodeButtonClick();
+  handleFlipCard();
 }
 
 // DOM 로드 후 초기화
