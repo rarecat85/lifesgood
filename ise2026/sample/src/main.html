@@ -14,8 +14,7 @@
     <script src="../common/js/ScrollTrigger.min.js"></script>
     <script src="../common/js/SplitText.min.js"></script>
     <script src="../common/js/swiper-bundle.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/kv.js"></script>
+    <script src="./assets/js/ise.js"></script>
   </head>
   <body>
     <div class="ise-container">
@@ -24,7 +23,7 @@
   <div class="inner">
     <div class="text-bx heading">
       <h1 class="title fade-in-up">
-        Life's good <br>
+        Life's good<br> 
         <strong>Solution beyond displays</strong>
       </h1>
       <p class="info fade-in-up" data-delay="0.2">
@@ -34,6 +33,7 @@
       </p>
     </div>
     <div class="video-bx">
+      <div class="video-title heading fade-in" data-delay="7">ISE</div>
       <video playsinline muted loop autoplay preload="auto">
         <source src="./assets/videos/kv_intro.mp4" type="video/mp4">
       </video>
@@ -43,6 +43,7 @@
         <p class="minute"></p>
         <p class="second"></p>
       </div>
+      <div class="video-date heading fade-in" data-delay="7">2026</div>
     </div>
     <div class="btn-link-bx fade-in">
       <button type="button" class="btn share-btn">
@@ -61,7 +62,11 @@
         <span class="a11y-hidden">share on youtube</span>
       </a>
     </div>
-    
+    <div class="scroll-down-btn-bx">
+      <button class="scroll-down-btn" type="button">
+        <img src="./assets/images/ic_scroll.svg" alt="scroll down button">
+      </button>
+    </div>
     <!-- layer-popup -->
     <div class="layer-popup" role="dialog" aria-hidden="true">
       <div class="inner">
@@ -108,7 +113,20 @@
 </section>
 <!-- E : kv -->
       <section class="overview">
+  <div class="video-bx">
+    <video playsinline muted loop autoplay preload="auto" aria-label="bg line video">
+      <source src="./assets/videos/overview.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="inner">
+    <figure class="logo-bx">
+      <picture>
+        <source srcset="./assets/images/overview_logo_m.png" media="(max-width: 768px)">
+        <source srcset="./assets/images/overview_logo_t.png" media="(min-width: 769px) and (max-width: 1440px)">
+        <source srcset="./assets/images/overview_logo.png" media="(min-width: 1441px)">
+        <img src="./assets/images/overview_logo.png" alt="overview image" loading="lazy">
+      </picture>
+    </figure>
     <div class="countdown">
       <p class="day fade-in-up">
         <span class="text">DAYS</span>
@@ -123,12 +141,57 @@
         <span class="text">SECONDS</span>
       </p>
     </div>
-    <h2 class="title heading fade-in-up">
-      Mark the moment innovation comes alive
-    </h2>
-    <p class="text fade-in-up">
-      Experience how LG transforms <strong>solutions to your vision</strong>, bringing impactful experiences to life through collaborations with various partners at ISE 2026. Our solutions evolve into a vibrant circle, symbolizing the harmony of hardware, software, and innovative technologies, including the latest LED advancements.
-    </p>
+    <div class="text-bx">
+      <h2 class="title heading fade-in-up">
+        Mark the moment innovation comes alive
+      </h2>
+      <p class="text fade-in-up">
+        Experience how LG transforms <strong>solutions to your vision</strong> through collaborations with various partners at ISE 2026. Our solutions evolve into a vibrant circle, symbolizing the harmony of hardware and software, including the latest LED advancements.
+      </p>
+    </div>
+    <div class="btn-bx fade-in-up" data-delay="1.2">
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=LG ISE 2025 : Synergy towards Growth&dates=20260203T000000/20260206T000000&details=Countdown to ISE2025! Visit LG’s booth with me and experience the latest in tech. Don’t forget to register!​&location=Fira de Barcelona, Gran Via, Spain" class="add-to-calendar-btn" target="_blank" rel="noopener noreferrer" >
+        Add to Calendar
+      </a>
+    </div>
+  </div>
+</section>
+      <section class="invitation">
+  <div class="inner">
+    <div class="text-bx">
+      <h2 class="title heading">
+        <img src="./assets/images/ic_lg_white.svg" alt="LG"> <br>
+        Your free entry to ISE 2026
+      </h2>
+      <p class="text">
+        Join us at ISE 2026 (Feb 3-6) and register for free entry with your invitation code. Experience how LG solutions bring every vision to life, beyond displays.
+      </p>
+    </div>
+    <div class="card-bx">
+      <div class="card-front">
+        <div class="card-front-inner">
+          <div class="text-bx">
+            <p class="sub-title">Invitation code</p>
+            <button type="button" class="code heading">ISE260710</button>
+          </div>
+          <div class="info">
+            <p class="text">3K 100</p>
+            <p class="text">Fira de Barcelona, Gran Via, Spain</p>
+          </div>
+          <div class="toast-popup">
+            <div class="inner">
+              <p class="text">Your <span>invitation code</span> has been copied.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="flip-btn">
+          Booth<br>location<br>
+        </button>
+      </div>
+    </div>
+    <div class="btn-bx">
+      <a href="https://register.visitcloud.com/survey/0hztq4lbmv5rp?actioncode=ISE260710" target="_blank" rel="noopener noreferrer" class="btn">Register now</a>
+    </div>
   </div>
 </section>
     </div>

@@ -2,9 +2,45 @@
 @use "../../assets/scss/variable"as *;
 
 .overview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: $black;
   text-align: center;
   color: $white;  
+  position: relative;
+  overflow: hidden;
+  .logo-bx {
+    margin-bottom: rem(180);
+  }
+  .video-bx {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 62%, rgba(0, 0, 0, 0.78) 80%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .inner {
+    position: relative;
+    z-index: 2;
+  }
   .countdown {
     display: flex;
     align-items: center;
@@ -31,17 +67,24 @@
       }
     }
   }
-  .title {
-    @include font(40,140%,550);
-    margin-bottom: rem(40)
-  }
-  .text {
-    @include font(22,140%,400);
-    color: #AFAFAF;
-    max-width: rem(1006);
-    margin: 0 auto;
-    strong {
-      font-weight: 700;
+  .text-bx {
+    margin-bottom: rem(124);
+    .title {
+      @include font(40,140%,550);
+      margin-bottom: rem(40)
     }
+    .text {
+      @include font(22,140%,400);
+      color: #AFAFAF;
+      max-width: rem(885);
+      margin: 0 auto;
+      strong {
+        font-weight: 700;
+      }
+    }
+  }
+  .add-to-calendar-btn {
+    @include btn($white, true);
+    margin: 0 auto;
   }
 }

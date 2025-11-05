@@ -1,0 +1,159 @@
+@use "../../assets/scss/variable"as *;
+@use "../../assets/scss/mixin"as *;
+
+.invitation {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  color: $white;
+  text-align: center;
+  .flip-btn {
+    @include font(14,100%,400);
+    color: $white;
+    position: absolute;
+    transform: translateY(-50%);
+    top:50%;
+    &::after {
+      content: '';
+      display: block;
+      width: rem(18);      
+      height: rem(12);
+    }
+  }
+  .text-bx {
+    margin-bottom: rem(92);
+    .title {
+      @include font(50,100%,700);
+      margin-bottom: rem(40);
+      img {
+        margin-bottom: rem(1);
+      }
+    }
+    .text {
+      @include font(22,140%,400);
+      max-width: rem(800);
+      margin: 0 auto;
+    }
+  }
+  .card-bx {
+    max-width: rem(849);
+    margin: 0 auto;
+    .card-front {
+      display: flex;  
+      background-position: top right;
+      background-repeat: no-repeat;
+      border-radius: rem(20);
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        width: rem(116);
+        align-self: stretch;
+        background-image: url('../../assets/images/invitation_pattern.png');
+        background-size: cover;
+        background-position: right center;
+      }
+      .card-front-inner {
+        width: calc(100% - rem(116));
+        background-color: $black;
+        padding: rem(72) rem(50) rem(17);
+        border-radius: rem(20) 0 0 rem(20);
+        position: relative;
+        .text-bx {
+          .sub-title {
+            @include font(30,140%,250);
+          }
+          .code {
+            @include font(110,100%,700);
+            color: $white;
+            cursor: pointer;
+            &::after {
+              content: '';
+              display: inline-block;
+              width: rem(38);
+              height: rem(38);
+              vertical-align: rem(2);
+              background-image: url('../../assets/images/ic_copy.svg');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              margin-left: rem(10);
+              transition: all 0.3s;
+            }
+            &:hover {
+              &::after {
+                background-image: url('../../assets/images/ic_copy_active.svg');
+              }
+            }
+          }
+        }
+        .info {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top: 1px solid $white;
+          padding-top: rem(14);
+          .text {
+            @include font(18,140%,400);
+            & + .text {
+              &::before {
+                content: '';
+                display: inline-block;
+                width: rem(1);
+                height: rem(12);
+                background-color: $white;
+                margin: 0 rem(31) 0 rem(20);
+              }
+            }
+          }
+        }
+        .toast-popup {
+          background-color: #DADADA;
+          padding: rem(10) rem(40) rem(10) rem(40);
+          border-radius: rem(10);
+          position: absolute;
+          transform: translate(-50% ,50%);  
+          bottom: 50%;
+          left: 50%;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s;
+          .inner {
+            display: flex;
+            align-items: center;
+            gap: rem(10);
+            &::before {
+              content: '';
+              display: inline-block;
+              display: block;
+              width: rem(22);
+              height: rem(22);
+              background-image: url('../../assets/images/ic_copy_popup.svg');
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .text {
+              color: $black;
+              @include font(17,100%,400);
+              white-space: nowrap;
+              span {
+                color: $primary;
+              }
+            }
+          }
+        }
+      }
+      .flip-btn {
+        right: rem(-30);
+      }
+    }
+  }
+  .btn-bx {
+    margin-top: rem(92);
+    .btn {
+      @include btn($black);
+      margin: 0 auto;
+    }
+  }
+}
