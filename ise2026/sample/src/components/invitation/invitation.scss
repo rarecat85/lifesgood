@@ -39,7 +39,6 @@
     }
   }
   .text-bx {
-    margin-bottom: rem(46);
     .title {
       @include font(50,100%,700);
       margin-bottom: rem(40);
@@ -49,14 +48,14 @@
     }
     .text {
       @include font(22,140%,400);
-      max-width: rem(800);
+      max-width: rem(434);
       margin: 0 auto;
     }
   }
   .card-bx {
     max-width: rem(849);
     height: rem(348);
-    margin: 0 auto;
+    margin: rem(92) auto;
     position: relative;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -115,7 +114,7 @@
             @include font(30,140%,250);
           }
           .code {
-            @include font(110,100%,700);
+            @include font(110,100%,550);
             color: $white;
             cursor: pointer;
             &::after {
@@ -224,7 +223,6 @@
     }
   }
   .btn-bx {
-    margin-top: rem(42);
     .btn {
       @include btn($black);
       margin: 0 auto;
