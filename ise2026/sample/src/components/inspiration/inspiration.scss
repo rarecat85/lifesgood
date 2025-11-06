@@ -4,11 +4,13 @@
 .inspiration {
   background-color: $bg;
   .inner {
-    max-width: rem(1138);
+    max-width: rem(1268);
   }
   .inspiration-title-bx {
     display: flex;
     justify-content: space-between;
+    gap: rem(10);
+    max-width: rem(1026);
     margin-bottom: rem(99);
     .btn {
       align-self: flex-end;

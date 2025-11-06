@@ -128,7 +128,10 @@
       align-items: center;
       justify-content: center;
       gap: rem(2);
-      margin-bottom: rem(70);
+      margin-bottom: rem(16);
+      @include desktop {
+        margin-bottom: rem(70);
+      }
       .btn {
         @include btn($white, true);
         margin-right: rem(5);
