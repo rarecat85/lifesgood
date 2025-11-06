@@ -2,10 +2,6 @@
 @use "../../assets/scss/mixin"as *;
 
 .inspiration {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: $bg;
   .inner {
     max-width: rem(1138);

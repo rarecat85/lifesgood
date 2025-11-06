@@ -579,6 +579,111 @@ function handleInspirationSlide() {
 }
 
 /**
+ * FAQ 아코디언 기능 초기화
+ * faq-question 버튼 클릭 시 해당 faq-answer를 부드럽게 토글
+ * 웹 접근성: ARIA 속성 및 키보드 접근성 지원
+ * 반응형: PC(768px 이상)는 첫 번째 항목 활성화, 모바일(767px 이하)은 닫힘
+ */
+function handleFaqAccordion() {
+  const faqQuestions = document.querySelectorAll('.faq .faq-question');
+  
+  if (faqQuestions.length === 0) return;
+  
+  // 반응형 기준점 (768px)
+  const DESKTOP_BREAKPOINT = 768;
+  
+  // 화면 크기 확인 함수
+  const isDesktop = () => window.innerWidth >= DESKTOP_BREAKPOINT;
+  
+  faqQuestions.forEach((questionBtn, index) => {
+    const faqItem = questionBtn.closest('.faq-item');
+    if (!faqItem) return;
+    
+    const faqAnswer = faqItem.querySelector('.faq-answer');
+    if (!faqAnswer) return;
+    
+    // 고유 ID 생성 (없는 경우에만)
+    const answerId = faqAnswer.id || `faq-answer-${index}`;
+    faqAnswer.id = answerId;
+    
+    // 버튼 ID가 없으면 생성
+    const questionId = questionBtn.id || `faq-question-${index}`;
+    questionBtn.id = questionId;
+    
+    // ARIA 속성 초기 설정 (HTML에 없으면 추가)
+    if (!questionBtn.hasAttribute('aria-expanded')) {
+      questionBtn.setAttribute('aria-expanded', 'false');
+    }
+    if (!questionBtn.hasAttribute('aria-controls')) {
+      questionBtn.setAttribute('aria-controls', answerId);
+    }
+    if (!faqAnswer.hasAttribute('role')) {
+      faqAnswer.setAttribute('role', 'region');
+    }
+    if (!faqAnswer.hasAttribute('aria-labelledby')) {
+      faqAnswer.setAttribute('aria-labelledby', questionId);
+    }
+    
+    /**
+     * 아코디언 토글 함수
+     */
+    const toggleAccordion = () => {
+      // 현재 열려있는지 확인
+      const isActive = faqItem.classList.contains('active');
+      
+      // 모든 faq-item에서 active 클래스 제거 (하나만 열리도록)
+      document.querySelectorAll('.faq .faq-item').forEach((item) => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          const otherAnswer = item.querySelector('.faq-answer');
+          const otherButton = item.querySelector('.faq-question');
+          if (otherAnswer && otherButton) {
+            otherButton.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+      
+      // 클릭된 항목 토글
+      if (isActive) {
+        faqItem.classList.remove('active');
+        questionBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        faqItem.classList.add('active');
+        questionBtn.setAttribute('aria-expanded', 'true');
+      }
+    };
+    
+    // 클릭 이벤트
+    questionBtn.addEventListener('click', toggleAccordion);
+    
+    // 키보드 접근성: Space와 Enter 키 지원
+    questionBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); // Space 키의 기본 스크롤 동작 방지
+        toggleAccordion();
+      }
+    });
+  });
+  
+  // 초기 로드 시 화면 크기에 따라 첫 번째 항목 활성화/비활성화
+  const firstItem = document.querySelector('.faq .faq-item:first-child');
+  const firstButton = firstItem?.querySelector('.faq-question');
+  const firstAnswer = firstItem?.querySelector('.faq-answer');
+  
+  if (firstItem && firstButton && firstAnswer) {
+    if (isDesktop()) {
+      // PC: 첫 번째 항목 활성화
+      firstItem.classList.add('active');
+      firstButton.setAttribute('aria-expanded', 'true');
+    } else {
+      // 모바일: 모든 항목 닫힘
+      firstItem.classList.remove('active');
+      firstButton.setAttribute('aria-expanded', 'false');
+    }
+  }
+}
+
+/**
  * 모든 기능 초기화
  */
 function init() {
@@ -593,6 +698,7 @@ function init() {
   handleCodeButtonClick();
   handleFlipCard();
   handleInspirationSlide();
+  handleFaqAccordion();
 }
 
 // DOM 로드 후 초기화

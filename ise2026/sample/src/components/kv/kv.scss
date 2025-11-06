@@ -192,6 +192,7 @@
   transition: all 0.3s;
   .inner {
     position: relative;
+    padding: 0;
     .title {
       @include font(15,100%,550);
       margin-bottom: rem(8);
