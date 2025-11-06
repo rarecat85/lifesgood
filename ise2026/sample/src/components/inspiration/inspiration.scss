@@ -20,7 +20,13 @@
   .slide-bx {
     width: 100%;
     .swiper-slide {
-      width: rem(1033);
+      width: 100%;
+      @include tablet {
+        max-width: rem(880);
+      }
+      @include desktop {
+        max-width: rem(1033);
+      }
       &::after {
         content: '';
         position: absolute;

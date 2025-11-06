@@ -442,6 +442,7 @@ function handleEscapeKey() {
 function handleCopyLinkBtnClick() {
   const copyLinkBtn = document.querySelector('.copy-link-btn');
   const copyLinkText = document.querySelector('.copy-link-text');
+  const toastPopup = document.querySelector('.layer-popup .toast-popup');
   
   if (!copyLinkBtn || !copyLinkText) return;
   
@@ -463,6 +464,18 @@ function handleCopyLinkBtnClick() {
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
+      }
+      
+      // 토스트 팝업 표시
+      if (toastPopup) {
+        toastPopup.style.opacity = '1';
+        toastPopup.style.visibility = 'visible';
+
+        // 4초 후 토스트 팝업 숨김
+        setTimeout(() => {
+          toastPopup.style.opacity = '0';
+          toastPopup.style.visibility = 'hidden';
+        }, 4000);
       }
     } catch (err) {
       console.error('링크 복사 실패:', err);

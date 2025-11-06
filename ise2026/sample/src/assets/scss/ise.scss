@@ -4,6 +4,7 @@
 .ise-container {
   width:100%;
   margin:0 auto;
+  
   section {
     padding: rem(47) 0 rem(44);
     @include desktop {
@@ -18,12 +19,50 @@
       }
     }
   }
+  
   .inner {
     width:100%;
     max-width: $inner;
     margin:0 auto;
     padding:0 rem(34);
   }
+  
+  .toast-popup {
+    background-color: #DADADA;
+    padding: rem(10) rem(40) rem(10) rem(40);
+    border-radius: rem(10);
+    position: absolute;
+    transform: translate(-50% ,50%);  
+    bottom: 50%;
+    left: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    .inner {
+      display: flex;
+      align-items: center;
+      gap: rem(10);
+      &::before {
+        content: '';
+        display: inline-block;
+        display: block;
+        width: rem(22);
+        height: rem(22);
+        background-image: url('../../assets/images/ic_copy_popup.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      .text {
+        color: $black;
+        @include font(17,100%,400);
+        white-space: nowrap;
+        span {
+          color: $primary;
+        }
+      }
+    }
+  }
+
   .section-title-bx {
     .title {
       @include font(50,110%,700);
@@ -33,6 +72,7 @@
       @include font(22,140%,400);
     }
   }
+
   .heading {
     font-family: 'LGEI Headline', sans-serif;
   }
