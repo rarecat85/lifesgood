@@ -33,7 +33,11 @@
         </div>
         <div class="card-back">
           <div class="card-back-inner">
-            <img src="./assets/images/invitation_card_back.png" alt="Find out where to visit the LG booth">
+            <picture>
+              <source srcset="./assets/images/invitation_card_back.png" media="(min-width: 768px)">
+              <source srcset="./assets/images/invitation_card_back_m.png" media="(max-width: 767px)">
+              <img src="./assets/images/invitation_card_back_m.png" alt="Find out where to visit the LG booth">
+            </picture>
           </div>
           <button type="button" class="flip-btn">
             Invitation<br>code

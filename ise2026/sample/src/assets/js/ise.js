@@ -578,8 +578,9 @@ function handleFlipCard() {
 function handleInspirationSlide() {
   const inspirationSlide = document.querySelector('.inspiration .slide-bx');
   const inspirationSlideSwiper = new Swiper(inspirationSlide, {
-    slidesPerView: "auto",
-    centeredSlides: true,
+    slidesPerView: 1.2,
+    centeredSlides: false,
+    spaceBetween: 8,
     loop:true,
     speed: 1000,
     autoplay: {
@@ -589,6 +590,13 @@ function handleInspirationSlide() {
     pagination: {
       el: '.inspiration .slide-bx .slide-pagination',
       type: 'fraction',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: "auto",
+        spaceBetween: 0,
+        centeredSlides: true,
+      },
     },
   });
 }

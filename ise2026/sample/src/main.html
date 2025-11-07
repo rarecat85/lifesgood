@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>LG ISE 2026</title>
+    <meta name="description" content="Experience how LG’s vision transforms into solutions at ISE 2026. Discover next-generation technologies and innovations that go beyond displays." />
 
+    
     <link href="../common/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../common/css/font.css" rel="stylesheet" type="text/css" />
     <link href="../common/css/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
@@ -24,7 +26,7 @@
     <div class="text-bx heading">
       <h1 class="title fade-in-up">
         Life's good<br> 
-        <strong>Solution beyond displays</strong>
+        <strong>Solutions beyond displays</strong>
       </h1>
       <p class="info fade-in-up" data-delay="0.2">
         <span class="text date">February 3–6</span>
@@ -34,7 +36,7 @@
     </div>
     <div class="video-bx">
       <div class="video-title heading fade-in" data-delay="7">ISE</div>
-      <video playsinline muted loop autoplay preload="auto">
+      <video playsinline muted loop autoplay preload="auto" poster="./assets/images/kv_poster.jpg">
         <source src="./assets/videos/kv_intro.mp4" type="video/mp4">
       </video>
       <div class="countdown white">
@@ -119,7 +121,7 @@
 <!-- E : kv -->
       <section class="overview">
   <div class="video-bx">
-    <video playsinline muted loop autoplay preload="auto" aria-label="bg line video">
+    <video playsinline muted loop autoplay preload="auto" poster="./assets/images/overview_poster.jpg" aria-label="bg line video">
       <source src="./assets/videos/overview.mp4" type="video/mp4">
     </video>
   </div>
@@ -194,7 +196,11 @@
         </div>
         <div class="card-back">
           <div class="card-back-inner">
-            <img src="./assets/images/invitation_card_back.png" alt="Find out where to visit the LG booth">
+            <picture>
+              <source srcset="./assets/images/invitation_card_back.png" media="(min-width: 768px)">
+              <source srcset="./assets/images/invitation_card_back_m.png" media="(max-width: 767px)">
+              <img src="./assets/images/invitation_card_back_m.png" alt="Find out where to visit the LG booth">
+            </picture>
           </div>
           <button type="button" class="flip-btn">
             Invitation<br>code
@@ -222,9 +228,11 @@
           See how last year's inspiration set the stage for what's next.
         </p>
       </div>
-      <a href="https://www.lg-informationdisplay.com/ise2025" class="btn fade-in-up">
-        Go to LG ISE 2025
-      </a>
+      <div class="btn-bx fade-in-up">
+        <a href="https://www.lg-informationdisplay.com/ise2025" class="btn">
+          Go to LG ISE 2025
+        </a>
+      </div>
     </div>
   </div>
   <div class="slide-bx swiper fade-in-up">

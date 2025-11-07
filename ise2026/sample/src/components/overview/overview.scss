@@ -8,7 +8,13 @@
   position: relative;
   overflow: hidden;
   .logo-bx {
-    margin-bottom: rem(180);
+    margin-bottom: rem(85);
+    @include tablet {
+      margin-bottom: rem(87);
+    }
+    @include desktop {
+      margin-bottom: rem(180);
+    }
   }
   .video-bx {
     width: 100%;
@@ -30,7 +36,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: rem(80);
+    gap: rem(12);
+    width: 100%;
     margin-bottom: rem(75);
     p {
       display: flex;
@@ -45,10 +52,22 @@
       }
     }
     img {
-      height: rem(90);
+      max-width: 100%;
+      height: min(rem(31.23), 8vw);
       object-fit: contain;
-      & + img {
-        margin-left: rem(8);
+    }
+    @include tablet {
+      gap: rem(66);
+      margin-bottom: rem(54);
+      img {
+        height: min(rem(80), 8vw);
+      }
+    }
+    @include desktop {
+      gap: rem(80);
+      margin-bottom: rem(75);
+      img {
+        height: rem(90);
       }
     }
   }
@@ -56,7 +75,7 @@
     margin-bottom: rem(124);
     .title {
       @include font(40,140%,550);
-      margin-bottom: rem(40)
+      margin-bottom: rem(16);
     }
     .text {
       @include font(22,140%,400);
@@ -65,6 +84,18 @@
       margin: 0 auto;
       strong {
         font-weight: 700;
+      }
+    }
+    @include tablet {
+      margin-bottom: rem(54);
+      .title {
+        margin-bottom: rem(17)
+      }
+    }
+    @include desktop {
+      margin-bottom: rem(124);
+      .title {
+        margin-bottom: rem(40)
       }
     }
   }
