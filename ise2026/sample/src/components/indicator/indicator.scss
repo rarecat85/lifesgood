@@ -37,16 +37,16 @@
       }
     } 
   }
-  // &.dark-mode {
-  //   .indicator-item {
-  //     button {
-  //       background-color: rgba(#7E7C77, 0.5);
-  //     }
-  //     &.active {
-  //       button {
-  //         background-color: #7E7C77;
-  //       }
-  //     }
-  //   }
-  // }
+  &.dark-mode {
+    .indicator-item {
+      button {
+        background-color: rgba(#7E7C77, 0.5);
+      }
+      &.active {
+        button {
+          background-color: #7E7C77;
+        }
+      }
+    }
+  }
 }
