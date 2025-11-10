@@ -6,7 +6,7 @@
   margin:0 auto;
   
   section {
-    padding: rem(47) 0 rem(44);
+    
     @include tablet {
       padding: rem(100) 0 rem(132);
       display: flex;

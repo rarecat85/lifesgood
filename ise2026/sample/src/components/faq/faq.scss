@@ -3,6 +3,7 @@
 
 .faq {
   background-color: $bg;
+  padding: rem(77) 0 rem(122);
   .inner {
     @include tablet {
       max-width: rem(851);
@@ -24,9 +25,9 @@
   }
   .faq-list-bx {
     width: 100%;
-    margin-top: rem(57);
     @include desktop {
       width: rem(557);
+      margin-top: rem(77);
     }
     .faq-list {
       .faq-item {
@@ -104,8 +105,11 @@
           max-height: 0;
           overflow: hidden;
           opacity: 0;
-          padding: 0 rem(40);
+          padding: 0 rem(20);
           transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out;
+          @include tablet {
+            padding: 0 rem(40);
+          }
           &::before {
             content: 'answer';
             display: inline-block;
@@ -118,6 +122,12 @@
           }
           .text {
             @include font(16,140%,250);
+            br {
+              display: none;
+              @include tablet {
+                display: block;
+              }
+            }
             strong {
               font-weight: 700;
             }

@@ -4,17 +4,20 @@
 .invitation {
   background-color: $primary;
   color: $white;
-  text-align: center;
+  padding: rem(78) 0 rem(106);
+  @include tablet {
+    text-align: center;
+  }
   .flip-btn {
     width: rem(50);
     height: rem(50);
-    @include font(14,100%,400);
+    @include font(12,100%,400);
     color: $white;
     white-space: nowrap;
     text-align: center;
     position: absolute;
     transform: translateX(-50%);
-    top: rem(-10);
+    top: rem(-28);
     left: 50%;
     transition: all 0.3s;
     &::after {
@@ -36,6 +39,7 @@
       }
     }
     @include tablet {
+      font-size: rem(14);
       transform: translateY(-50%);
       top: calc(50% + rem(6));
       left: unset;
@@ -43,23 +47,27 @@
   }
   .text-bx {
     .title {
-      @include font(50,100%,700);
+      @include font(30,100%,700);
       margin-bottom: rem(10);
       img {
         margin-bottom: rem(20);
       }
     }
     .text {
-      @include font(22,140%,400);
+      @include font(14,140%,400);
       max-width: rem(434);
       margin: 0 auto;
     }
     @include tablet {
       .title {
+        font-size: rem(50);
         margin-bottom: rem(14);
         img {
           margin-bottom: rem(2);
         }
+      }
+      .text {
+        font-size: rem(22);
       }
     }
     @include desktop {
@@ -72,13 +80,14 @@
     }
   }
   .card-bx {
-    max-width: rem(849);
+    max-width: rem(250);
     margin: rem(57) auto rem(30);
     position: relative;
     perspective: 1000px;
     transform-style: preserve-3d;
     transition: transform 0.6s;
     @include tablet {
+      max-width: rem(849);
       margin: rem(24) auto rem(20);
     }
     @include desktop {
@@ -97,8 +106,7 @@
     }
     
     .card-front {
-      display: flex;  
-      border-radius: rem(20);
+      border-radius: rem(16);
       position: relative;
       transform: rotateY(0deg);
       z-index: 2;
@@ -108,24 +116,40 @@
       position: absolute;
       top: 0;
       left: 0;
-      
+      text-align: center;
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: rem(67);
+        background-image: url('../../assets/images/invitation_pattern_m.png');
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 0 0 rem(16) rem(16);
+      }
       @include tablet {
+        display: flex;  
+        border-radius: rem(20);
         background-image: none;
         &::after {
           display: none;
           content: '';
           display: block;
           width: rem(116);
+          height: 100%;
           align-self: stretch;
           background-image: url('../../assets/images/invitation_pattern.png');
           background-size: cover;
           background-position: right center;
           border-radius: 0 rem(20) rem(20) 0;
+          position: static;
         }
       }
       .card-front-inner {
         width: 100%;
-        padding: 24.2vw rem(20) rem(17);
+        padding:rem(88) rem(20) rem(67);
         border-radius: rem(20) 0 0 rem(20);
         position: relative;
         background-repeat: no-repeat;
@@ -158,8 +182,8 @@
             &::after {
               content: '';
               display: inline-block;
-              width: rem(38);
-              height: rem(38);
+              width: rem(22.59);
+              height: rem(22.59);
               vertical-align: rem(2);
               background-image: url('../../assets/images/ic_copy.svg');
               background-size: contain;
@@ -167,6 +191,10 @@
               background-repeat: no-repeat;
               margin-left: rem(10);
               transition: all 0.3s;
+              @include tablet {
+                width: rem(38);
+                height: rem(38);
+              }
             }
             &:hover {
               &::after {
@@ -201,7 +229,7 @@
           border-top: 1px solid $white;
           padding-top: rem(14);
           .text {
-            @include font(18,140%,400);
+            @include font(11,140%,400);
             & + .text {
               &::before {
                 content: '';
@@ -209,7 +237,19 @@
                 width: rem(1);
                 height: rem(12);
                 background-color: $white;
-                margin: 0 rem(31) 0 rem(20);
+                width: rem(1);
+                height: rem(8);
+                margin: 0 rem(5);
+              }
+            }
+            @include tablet {
+              font-size: rem(18);
+              & + .text {
+                &::before {
+                  width: rem(1);
+                  height: rem(12);
+                  margin: 0 rem(31) 0 rem(20);
+                }
               }
             }
           }
