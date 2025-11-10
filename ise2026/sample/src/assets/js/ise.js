@@ -707,6 +707,219 @@ function handleFaqAccordion() {
 }
 
 /**
+ * 인디케이터 기능 초기화
+ * 스크롤 시 현재 보이는 섹션에 해당하는 인디케이터에 active 클래스 추가
+ * 인디케이터 클릭 시 해당 섹션으로 부드럽게 스크롤
+ * 768px 이상(데스크톱)에서만 작동
+ */
+const INDICATOR_BREAKPOINT = 768; // 모바일 기준점 (px)
+let indicatorObserver = null;
+let indicatorUpdateTimer = null;
+let indicatorResizeTimer = null;
+let indicatorClickHandler = null;
+
+/**
+ * 현재 화면 크기가 데스크톱인지 확인
+ */
+function isDesktopForIndicator() {
+  return window.innerWidth >= INDICATOR_BREAKPOINT;
+}
+
+/**
+ * 인디케이터 기능 정리 (observer disconnect 및 타이머 정리)
+ */
+function cleanupIndicator() {
+  if (indicatorObserver) {
+    indicatorObserver.disconnect();
+    indicatorObserver = null;
+  }
+  if (indicatorUpdateTimer) {
+    clearTimeout(indicatorUpdateTimer);
+    indicatorUpdateTimer = null;
+  }
+  // 클릭 이벤트 리스너 제거
+  const indicatorList = document.querySelector('.indicator-list');
+  if (indicatorList && indicatorClickHandler) {
+    indicatorList.removeEventListener('click', indicatorClickHandler);
+    indicatorClickHandler = null;
+  }
+}
+
+function handleIndicator() {
+  const indicatorItems = document.querySelectorAll('.indicator-item');
+  const indicatorList = document.querySelector('.indicator-list');
+  const sections = document.querySelectorAll('.kv, .overview, .inspiration, .invitation, .faq');
+  
+  if (indicatorItems.length === 0 || sections.length === 0) return;
+  
+  // 768px 미만이면 초기화하지 않음
+  if (!isDesktopForIndicator()) {
+    cleanupIndicator();
+    return;
+  }
+  
+  // 섹션과 인디케이터 매핑
+  const sectionMap = new Map();
+  sections.forEach((section) => {
+    const sectionClass = section.className.split(' ').find(cls => 
+      ['kv', 'overview', 'inspiration', 'invitation', 'faq'].includes(cls)
+    );
+    if (sectionClass) {
+      sectionMap.set(sectionClass, section);
+    }
+  });
+  
+  // dark-mode가 필요한 섹션 목록
+  const darkModeSections = ['inspiration', 'faq'];
+  
+  // 현재 활성화된 섹션 추적
+  let currentActiveSection = null;
+  // 섹션별 intersectionRatio 저장
+  const sectionRatios = new Map();
+  
+  /**
+   * 인디케이터 active 상태 업데이트
+   * @param {string} sectionClass - 활성화할 섹션 클래스명
+   */
+  function updateActiveIndicator(sectionClass) {
+    if (currentActiveSection === sectionClass) return;
+    
+    // 모든 인디케이터에서 active 클래스 제거
+    indicatorItems.forEach((item) => {
+      item.classList.remove('active');
+    });
+    
+    // 해당 섹션에 맞는 인디케이터 찾아서 active 클래스 추가
+    indicatorItems.forEach((item) => {
+      const button = item.querySelector('button[data-section]');
+      if (button && button.getAttribute('data-section') === sectionClass) {
+        item.classList.add('active');
+        currentActiveSection = sectionClass;
+      }
+    });
+    
+    // dark-mode 클래스 업데이트
+    if (indicatorList) {
+      if (darkModeSections.includes(sectionClass)) {
+        indicatorList.classList.add('dark-mode');
+      } else {
+        indicatorList.classList.remove('dark-mode');
+      }
+    }
+  }
+  
+  /**
+   * Intersection Observer로 섹션 감지
+   */
+  const observerOptions = {
+    root: null,
+    rootMargin: '-30% 0px -30% 0px', // 화면 중앙 40% 영역에서 감지 (더 엄격하게)
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] // 더 세밀한 감지
+  };
+  
+  // 기존 observer가 있으면 정리
+  cleanupIndicator();
+  
+  indicatorObserver = new IntersectionObserver((entries) => {
+    // 각 섹션의 intersectionRatio 업데이트
+    entries.forEach((entry) => {
+      const sectionClass = entry.target.className.split(' ').find(cls => 
+        ['kv', 'overview', 'invitation', 'inspiration',  'faq'].includes(cls)
+      );
+      if (sectionClass) {
+        sectionRatios.set(sectionClass, entry.isIntersecting ? entry.intersectionRatio : 0);
+      }
+    });
+    
+    // 디바운싱 적용 (100ms 지연)
+    clearTimeout(indicatorUpdateTimer);
+    indicatorUpdateTimer = setTimeout(() => {
+      // 현재 활성 섹션의 비율
+      const currentRatio = currentActiveSection ? (sectionRatios.get(currentActiveSection) || 0) : 0;
+      
+      // 가장 많이 보이는 섹션 찾기
+      let maxIntersection = 0;
+      let mostVisibleSection = null;
+      
+      sectionRatios.forEach((ratio, sectionClass) => {
+        if (ratio > maxIntersection) {
+          maxIntersection = ratio;
+          mostVisibleSection = sectionClass;
+        }
+      });
+      
+      // 히스테리시스 적용: 현재 활성 섹션이 0.2 이상 보이면 유지
+      // 또는 다른 섹션이 현재 섹션보다 0.15 이상 더 많이 보일 때만 전환
+      if (mostVisibleSection) {
+        const shouldSwitch = 
+          currentRatio < 0.2 || // 현재 섹션이 거의 안 보임
+          (maxIntersection - currentRatio > 0.15); // 다른 섹션이 훨씬 더 많이 보임
+        
+        if (shouldSwitch && mostVisibleSection !== currentActiveSection) {
+          updateActiveIndicator(mostVisibleSection);
+        }
+      }
+    }, 100); // 100ms 디바운스
+  }, observerOptions);
+  
+  // 모든 섹션 관찰 시작
+  sections.forEach((section) => {
+    indicatorObserver.observe(section);
+  });
+  
+  /**
+   * 인디케이터 클릭 이벤트 (이벤트 위임 사용)
+   * 클릭 시 해당 섹션으로 부드럽게 스크롤
+   */
+  if (indicatorList) {
+    // 기존 이벤트 리스너가 있으면 제거 (중복 방지)
+    if (indicatorClickHandler) {
+      indicatorList.removeEventListener('click', indicatorClickHandler);
+    }
+    
+    // 클릭 이벤트 핸들러 생성
+    indicatorClickHandler = (e) => {
+      const button = e.target.closest('button[data-section]');
+      if (!button) return;
+      
+      const sectionClass = button.getAttribute('data-section');
+      const targetSection = sectionMap.get(sectionClass);
+      
+      if (targetSection) {
+        // 부드러운 스크롤
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    };
+    
+    // 이벤트 리스너 등록
+    indicatorList.addEventListener('click', indicatorClickHandler);
+  }
+  
+  // 초기 로드 시 첫 번째 섹션(kv) 활성화
+  updateActiveIndicator('kv');
+}
+
+/**
+ * 인디케이터 리사이즈 핸들러
+ * 화면 크기 변경 시 768px 기준으로 초기화 또는 정리
+ */
+function handleIndicatorResize() {
+  clearTimeout(indicatorResizeTimer);
+  indicatorResizeTimer = setTimeout(() => {
+    if (isDesktopForIndicator()) {
+      // 768px 이상이면 초기화
+      handleIndicator();
+    } else {
+      // 768px 미만이면 정리
+      cleanupIndicator();
+    }
+  }, 250); // 250ms 디바운스
+}
+
+/**
  * 모든 기능 초기화
  */
 function init() {
@@ -722,6 +935,10 @@ function init() {
   handleFlipCard();
   handleInspirationSlide();
   handleFaqAccordion();
+  handleIndicator();
+  
+  // 인디케이터 리사이즈 이벤트 리스너 등록
+  window.addEventListener('resize', handleIndicatorResize);
 }
 
 // DOM 로드 후 초기화

@@ -1,0 +1,52 @@
+@use "../../assets/scss/variable" as *;
+@use "../../assets/scss/mixin" as *;
+
+.indicator-list {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  transform: translateY(-50%);
+  top: 50%;
+  right: rem(40);
+  z-index: 100;
+  @include tablet {
+    display: flex;
+  }
+  .indicator-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(18);
+    height: rem(18);
+    button {
+      width: rem(6);
+      height: rem(6);
+      border-radius: 50%;
+      background-color: rgba($white, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    &.active {
+      margin: rem(6) 0;
+      button {
+        width: rem(18);
+        height: rem(18);
+        background-color: $white;
+      }
+    } 
+  }
+  // &.dark-mode {
+  //   .indicator-item {
+  //     button {
+  //       background-color: rgba(#7E7C77, 0.5);
+  //     }
+  //     &.active {
+  //       button {
+  //         background-color: #7E7C77;
+  //       }
+  //     }
+  //   }
+  // }
+}
