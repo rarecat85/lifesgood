@@ -73,29 +73,60 @@ function initFadeUp() {
     // 그룹의 트리거 요소 결정 (첫 번째 요소)
     const firstElement = sortedElements[0].element;
     
-    // 그룹별 Intersection Observer 생성
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15 // 요소의 15%가 보이면 트리거
-    };
+    // 요소가 뷰포트에 이미 보이거나 지나갔는지 확인하는 함수
+    function shouldTriggerAnimation(element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+      
+      // 요소가 뷰포트 위쪽으로 지나갔는지 확인 (이미 스크롤을 지나간 경우)
+      // rect.top < 0: 요소의 상단이 이미 뷰포트 위로 올라갔음을 의미
+      if (rect.top < windowHeight && rect.top < 0) {
+        return true; // 요소의 상단이 이미 뷰포트 위로 올라갔으므로 지나간 것으로 간주
+      }
+      
+      // 요소가 뷰포트에 보이는지 확인 (15% 이상 보이는지)
+      const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+      const visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0);
+      const visibleArea = Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
+      const elementArea = rect.height * rect.width;
+      
+      return elementArea > 0 && (visibleArea / elementArea) >= 0.15;
+    }
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // 같은 그룹의 모든 요소에 is-visible 클래스 추가
-          sortedElements.forEach(item => {
-            item.element.classList.add('is-visible');
-          });
-          // 한 번만 실행되도록 observe 해제
-          observer.disconnect();
-        }
+    // 페이지 로드 시 이미 뷰포트에 보이거나 지나갔는지 확인
+    const shouldTrigger = shouldTriggerAnimation(firstElement);
+    
+    if (shouldTrigger) {
+      // 이미 보이거나 지나갔으면 즉시 애니메이션 트리거
+      sortedElements.forEach(item => {
+        item.element.classList.add('is-visible');
       });
-    }, observerOptions);
-    
-    // 그룹의 첫 번째 요소를 관찰 시작
-    observer.observe(firstElement);
-    groupObservers.set(groupKey, observer);
+    } else {
+      // 보이지 않으면 Intersection Observer로 감지
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // 요소의 15%가 보이면 트리거
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 같은 그룹의 모든 요소에 is-visible 클래스 추가
+            sortedElements.forEach(item => {
+              item.element.classList.add('is-visible');
+            });
+            // 한 번만 실행되도록 observe 해제
+            observer.disconnect();
+          }
+        });
+      }, observerOptions);
+      
+      // 그룹의 첫 번째 요소를 관찰 시작
+      observer.observe(firstElement);
+      groupObservers.set(groupKey, observer);
+    }
   });
 }
 
@@ -920,6 +951,45 @@ function handleIndicatorResize() {
 }
 
 /**
+ * footer 네비게이션 버튼 클릭 이벤트
+ * 버튼 클릭 시 해당 섹션으로 부드럽게 스크롤
+ */
+function handleFooterNavClick() {
+  const footerNavLinks = document.querySelectorAll('.ise-footer .nav-link[data-section]');
+  
+  if (footerNavLinks.length === 0) return;
+  
+  // 섹션 매핑
+  const sectionMap = new Map();
+  const sections = document.querySelectorAll('.kv, .overview, .inspiration, .invitation, .faq');
+  
+  sections.forEach((section) => {
+    const sectionClass = section.className.split(' ').find(cls => 
+      ['kv', 'overview', 'inspiration', 'invitation', 'faq'].includes(cls)
+    );
+    if (sectionClass) {
+      sectionMap.set(sectionClass, section);
+    }
+  });
+  
+  // 각 버튼에 클릭 이벤트 리스너 추가
+  footerNavLinks.forEach((button) => {
+    button.addEventListener('click', () => {
+      const sectionClass = button.getAttribute('data-section');
+      const targetSection = sectionMap.get(sectionClass);
+      
+      if (targetSection) {
+        // 부드러운 스크롤
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
+/**
  * 모든 기능 초기화
  */
 function init() {
@@ -936,6 +1006,7 @@ function init() {
   handleInspirationSlide();
   handleFaqAccordion();
   handleIndicator();
+  handleFooterNavClick();
   
   // 인디케이터 리사이즈 이벤트 리스너 등록
   window.addEventListener('resize', handleIndicatorResize);

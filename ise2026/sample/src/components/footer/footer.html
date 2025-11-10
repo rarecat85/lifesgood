@@ -1,0 +1,241 @@
+<footer class="ise-footer">
+  <div class="inner">
+    <div class="ise-footer-content-bx">
+      <div class="sns-bx">
+        <p class="sns-title">Follow us</p>
+        <ul class="sns-list">
+          <li class="sns-item">
+            <a href="https://bit.ly/LGID_Youtube" target="_blank" rel="noopener noreferrer" class="sns-btn youtube">
+              <span class="a11y-hidden">youtube</span>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.instagram.com/lg_informationdisplay/" target="_blank" rel="noopener noreferrer"
+              class="sns-btn instagram">
+              <span class="a11y-hidden">instagram</span>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.facebook.com/LGInformationDisplay" target="_blank" rel="noopener noreferrer"
+              class="sns-btn facebook">
+              <span class="a11y-hidden">facebook</span>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.linkedin.com/company/lginformationdisplay" target="_blank" rel="noopener noreferrer"
+              class="sns-btn linkedin">
+              <span class="a11y-hidden">linkedin</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="form-bx">
+        <form id="newsletterForm" name="newsletterForm" action="#" method="post" class="form">
+          <fieldset>
+            <legend class="form-title">Get on our list</legend>
+            <div class="newsletter">
+              <select id="itx_Newsletter_Region" name="Newsletter_Region"
+                onchange="javascript:changeNewsletterRegion(this.value,'')" >
+                <option value="">Region</option>
+                <option value="Asia">Asia</option>
+                <option value="CIS">CIS</option>
+                <option value="Europe">Europe</option>
+                <option value="Latin America and the Caribbean">Latin America and the Caribbean</option>
+                <option value="Middle East &amp; Africa">Middle East &amp; Africa</option>
+                <option value="North America">North America</option>
+              </select>
+            </div>
+            <div id="newsletter_country" class="newsletter dimm">
+              <select id="itx_Newsletter_Country" name="Newsletter_Country" onchange="javascript:changeNewsletterCountry(this.value)">
+                <option value="">Country</option>
+              </select>
+            </div>
+            <div id="newsletter_state" class="newsletter dimm hidden">
+              <select id="itx_Newsletter_State" name="Newsletter_State">
+                <option value="">Select one</option>
+              </select>
+            </div>
+            <div class="newsletter">
+              <input type="email" id="itx_Newsletter_Email" name="Newsletter_Email" placeholder="Email" required />
+            </div>
+            <div id="newsLetterPrivacyPolicyGlobal" class="privacy-policy">
+              <label>
+                <input type="checkbox" id="itx_Newsletter_PrivacyCheck" name="Newsletter_PrivacyCheck" />
+                <span>I agree to the <a href="#" target="_blank">Privacy Policy</a></span>
+              </label>
+            </div>
+            <div id="newsLetterPrivacyPolicyEurope" class="privacy-policy hidden">
+              <label>
+                <input type="checkbox" name="Newsletter_PrivacyCheck_Europe" />
+                <span>I agree to the <a href="#" target="_blank">Privacy Policy (Europe)</a></span>
+              </label>
+            </div>
+            <button type="submit" class="submit-btn">Get the newsletter</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <nav class="ise-footer-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <button type="button" class="nav-link" data-section="overview">ABOUT LG @ISE 2026</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" data-section="invitation">Invitation Code</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" data-section="inspiration">ISE 2025 Review</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" data-section="faq">FAQ</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Newsletter 
+  function changeNewsletterRegion(region, itx_countryId) {
+    const countrySelect = document.getElementById('itx_Newsletter_Country');
+    const countryWrapper = document.getElementById('newsletter_country');
+    const stateWrapper = document.getElementById('newsletter_state');
+    const privacyEurope = document.getElementById('newsLetterPrivacyPolicyEurope');
+    const privacyGlobal = document.getElementById('newsLetterPrivacyPolicyGlobal');
+    const privacyCheck = document.getElementById('itx_Newsletter_PrivacyCheck');
+    
+    if(region == "") {
+      // Reset country select
+      countrySelect.innerHTML = '<option value="">Country</option>';
+      countryWrapper.classList.add('dimm');
+      stateWrapper.classList.add('hidden');
+      if(privacyEurope) privacyEurope.classList.add('hidden');
+      if(privacyGlobal) privacyGlobal.classList.remove('hidden');
+    } else {
+      // Fetch countries for selected region
+      fetch(`/comm/country/${region}/pardotList.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        countrySelect.innerHTML = '<option value="">Country</option>';
+        
+        if(data.countryList && data.countryList.length > 0) {
+          data.countryList.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.type;
+            option.textContent = country.friendlyType;
+            countrySelect.appendChild(option);
+          });
+          
+          countryWrapper.classList.remove('dimm');
+          
+          if(itx_countryId) {
+            countrySelect.value = itx_countryId.replace('/', '');
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching countries:', error);
+        // Fallback: Enable country select anyway
+        countryWrapper.classList.remove('dimm');
+      });
+      
+      // Region specific privacy policy
+      if (region == "Europe") {
+        if(privacyEurope) privacyEurope.classList.remove('hidden');
+        if(privacyGlobal) privacyGlobal.classList.add('hidden');
+        if(privacyCheck) privacyCheck.checked = false;
+      } else {
+        if(privacyEurope) {
+          privacyEurope.classList.add('hidden');
+          const europeCheckbox = privacyEurope.querySelector('input[type=checkbox]');
+          if(europeCheckbox) europeCheckbox.checked = false;
+        }
+        if(privacyGlobal) privacyGlobal.classList.remove('hidden');
+      }
+      
+      // Show/hide state select for North America
+      if(region == "North America") {
+        stateWrapper.classList.remove('hidden');
+        if(itx_countryId) {
+          changeNewsletterCountry(itx_countryId);
+        }
+      } else {
+        stateWrapper.classList.add('hidden');
+      }
+    }
+  }
+  
+  function changeNewsletterCountry(country) {
+    const stateSelect = document.getElementById('itx_Newsletter_State');
+    const stateWrapper = document.getElementById('newsletter_state');
+    
+    if(country == 'United States') {
+      createNewsletterState();
+      stateWrapper.classList.remove('dimm');
+      stateWrapper.classList.remove('hidden');
+      stateSelect.value = '';
+    } else {
+      stateSelect.innerHTML = '<option value="">Select one</option>';
+      stateWrapper.classList.add('dimm');
+      stateSelect.value = '';
+    }
+  }
+  
+  function createNewsletterState() {
+    const stateArr = ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+    const stateSelect = document.getElementById('itx_Newsletter_State');
+    
+    stateSelect.innerHTML = '<option value="">Select one</option>';
+    stateArr.forEach(state => {
+      const option = document.createElement('option');
+      option.value = state;
+      option.textContent = state;
+      stateSelect.appendChild(option);
+    });
+  }
+
+  // Form submission handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletterForm');
+    if(newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(newsletterForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Validate required fields
+        if(!data.Newsletter_Region) {
+          alert('Please select a region');
+          return;
+        }
+        if(!data.Newsletter_Country) {
+          alert('Please select a country');
+          return;
+        }
+        if(!data.Newsletter_Email) {
+          alert('Please enter your email');
+          return;
+        }
+        if(!data.Newsletter_PrivacyCheck && !data.Newsletter_PrivacyCheck_Europe) {
+          alert('Please agree to the privacy policy');
+          return;
+        }
+        
+        // Submit form (replace with actual endpoint)
+        console.log('Newsletter subscription:', data);
+        alert('Thank you for subscribing!');
+        newsletterForm.reset();
+        
+        // Reset form UI
+        document.getElementById('newsletter_country').classList.add('dimm');
+        document.getElementById('newsletter_state').classList.add('hidden');
+      });
+    }
+  });
+</script>

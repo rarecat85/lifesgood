@@ -1,0 +1,177 @@
+@use '../../assets/scss/variable' as *;
+@use '../../assets/scss/mixin' as *;
+
+// 공통 footer 가리기
+.footer {
+  display: none;
+}
+
+.ise-footer {
+  background-color: #1A1A1A;
+  padding: rem(100) 0;
+  
+  .inner {
+    max-width: rem(1268);
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .ise-footer-nav {
+    .nav-list {
+      .nav-item {
+        &:not(:first-child) {
+          margin-top: rem(28);
+        }
+        .nav-link {
+          @include font(18, 140%, 700);
+          color: $white;
+        }
+      }
+    }
+  }
+  .ise-footer-content-bx {
+    width: min(rem(728), 100%);
+    .sns-bx {
+      display: flex;
+      align-items: center;
+      gap: rem(46);
+      margin-bottom: rem(24);
+      .sns-title {
+        @include font(18, 140%, 700);
+        color: $white;
+        @include tablet {
+          font-size: rem(28);
+        }
+      }
+      .sns-list {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+        .sns-item {
+          .sns-btn {
+            display: block;
+            width: rem(40);
+            height: rem(40);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: all 0.3s;
+            color: $white;
+            $sns-list: linkedin, instagram, facebook, youtube;
+            @each $sns in $sns-list {
+              &.#{$sns} {
+                background-image: url('../../assets/images/ic_footer_#{$sns}.svg');
+              }
+            }
+            &:hover {
+              @each $sns in $sns-list {
+                &.#{$sns} {
+                  background-image: url('../../assets/images/ic_footer_#{$sns}_active.svg');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .form-bx {
+      .form-title {
+        @include font(18, 140%, 700);
+        color: $white;
+        margin-bottom: rem(20);
+        @include tablet {
+          font-size: rem(28);
+        }
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+        
+        .newsletter {
+          width: 100%;
+          
+          &.dimm {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+          
+          &.hidden {
+            display: none;
+          }
+          
+          select, input[type="email"] {
+            width: 100%;
+            padding: rem(12) rem(16);
+            background-color: #2A2A2A;
+            color: $white;
+            border: 1px solid #3A3A3A;
+            border-radius: rem(4);
+            @include font(14, 140%, 400);
+            outline: none;
+            transition: all 0.3s;
+            
+            &:focus {
+              border-color: #A50034;
+            }
+            
+            &::placeholder {
+              color: #999;
+            }
+          }
+          
+          select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right rem(16) center;
+            padding-right: rem(40);
+            cursor: pointer;
+          }
+        }
+        
+        .privacy-policy {
+          margin-top: rem(8);
+          
+          &.hidden {
+            display: none;
+          }
+          
+          label {
+            display: flex;
+            align-items: flex-start;
+            gap: rem(8);
+            cursor: pointer;
+            
+            input[type="checkbox"] {
+              margin-top: rem(2);
+              width: rem(18);
+              height: rem(18);
+              flex-shrink: 0;
+              cursor: pointer;
+            }
+            
+            span {
+              @include font(12, 140%, 400);
+              color: #CCC;
+              
+              a {
+                color: #A50034;
+                text-decoration: underline;
+                
+                &:hover {
+                  color: #d6003f;
+                }
+              }
+            }
+          }
+        }
+        
+        .submit-btn {
+          @include btn($primary);
+        }
+      }
+    }
+  }
+}
