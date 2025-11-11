@@ -29,7 +29,7 @@
   
   .toast-popup {
     background-color: #DADADA;
-    padding: rem(10) rem(40) rem(10) rem(40);
+    padding: rem(4) rem(10) rem(4) rem(10);
     border-radius: rem(10);
     position: absolute;
     transform: translate(-50% ,50%);  
@@ -38,6 +38,9 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s;
+    @include tablet {
+      padding: rem(10) rem(40) rem(10) rem(40);
+    }
     .inner {
       display: flex;
       align-items: center;
@@ -54,8 +57,11 @@
       }
       .text {
         color: $black;
-        @include font(17,100%,400);
+        @include font(14,100%,400);
         white-space: nowrap;
+        @include tablet {
+          font-size: rem(17);
+        }
         span {
           color: $primary;
         }

@@ -1,0 +1,13 @@
+{
+  "countryList": [
+    {
+      "type": "Canada",
+      "friendlyType": "Canada"
+    },
+    {
+      "type": "United States",
+      "friendlyType": "United States"
+    }
+  ]
+}
+
