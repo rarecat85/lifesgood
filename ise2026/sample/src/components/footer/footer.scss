@@ -56,7 +56,8 @@
       @include tablet {
         display: flex;
         margin: 0;
-        border: 0
+        border: 0;
+        padding: 0 0 rem(27) 0;
       }
       .sns-title {
         @include font(18, 140%, 700);
@@ -206,6 +207,7 @@
           @include font(11, 140%, 400);
           color: $white;
           flex-shrink: 0;
+          margin-bottom: rem(8)
         }
         .privacy-notice {
           @include font(9, 140%, 400);
@@ -220,8 +222,7 @@
           flex-direction: column;
           gap: rem(16);
           @include tablet {
-            flex-direction: row;
-            align-items: center;
+            display: block;
           }
         }
         
@@ -237,7 +238,7 @@
             align-items: center;
             gap: rem(8);
             cursor: pointer;
-            @include font(9, 140%, 250);
+            @include font(12, 140%, 250);
             color: $white;
             input[type="checkbox"] {
               appearance: none;
@@ -284,12 +285,12 @@
           display: flex;
           align-items: center;
           white-space: nowrap;
-          
+          margin-top: rem(8);
           @include tablet {
             margin-left: auto;
           }
           a {
-            @include font(8, 140%, 250);
+            @include font(12, 140%, 250);
             color: #44C1FF;
             text-decoration: none;
             
@@ -352,6 +353,7 @@
         justify-content: flex-start;
         padding-bottom: 0;
         margin-bottom: 0;
+        border: 0;
       }
       li {
         & + li {
@@ -362,10 +364,11 @@
             height: rem(12);
             background-color: #7E7C77;
             margin: 0 rem(8);
+            vertical-align: rem(-4);
           }
         }
         a {
-          @include font(11, 140%, 550);
+          @include font(16, 140%, 550);
         }
       }
     }

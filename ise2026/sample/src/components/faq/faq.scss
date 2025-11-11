@@ -13,12 +13,17 @@
     }
   }
   .faq-content-bx {
+    align-items: flex-start;
     @include desktop {
       display: flex;
       justify-content: space-between;
     }
   }
   .faq-title-bx {
+    @include tablet {
+      position: sticky;
+      top: 5%;
+    }
     .logo-bx {
       margin-bottom: rem(30);
     }

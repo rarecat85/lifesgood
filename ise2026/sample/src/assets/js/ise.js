@@ -622,6 +622,10 @@ function handleInspirationSlide() {
       el: '.inspiration .slide-bx .slide-pagination',
       type: 'fraction',
     },
+    navigation: {
+      nextEl: '.inspiration .slide-bx .slide-btn-next',
+      prevEl: '.inspiration .slide-bx .slide-btn-prev',
+    },
     breakpoints: {
       768: {
         slidesPerView: "auto",

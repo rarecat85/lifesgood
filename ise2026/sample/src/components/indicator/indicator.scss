@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: rem(6);
   position: fixed;
   transform: translateY(-50%);
   top: 50%;
@@ -18,11 +19,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: rem(18);
-    height: rem(18);
+    width: rem(20);
+    height: rem(20);
     button {
-      width: rem(6);
-      height: rem(6);
+      width: rem(10);
+      height: rem(10);
       border-radius: 50%;
       background-color: rgba($white, 0.5);
       cursor: pointer;

@@ -362,6 +362,10 @@
       background-position: center center;
       background-image: url('../../assets/images/ic_close.svg');
       cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-image: url('../../assets/images/ic_close_active.svg');
+      }
     }
   }
   &.active {
