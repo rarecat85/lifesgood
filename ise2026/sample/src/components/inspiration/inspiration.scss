@@ -14,6 +14,9 @@
       @include tablet {
         margin-bottom: 0;
       }
+      @include desktop {
+        margin-right: rem(135);
+      }
       img {
         width: rem(28);
         height: rem(28);
@@ -41,6 +44,7 @@
       margin: 0 auto rem(24);
     }
     @include desktop {
+      max-width: rem(1268);
       margin-bottom: rem(99);
     }
   }

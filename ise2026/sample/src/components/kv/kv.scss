@@ -280,17 +280,24 @@
     .sns-list {
       display: flex;
       align-items: center;
-      gap: rem(10);
+      gap: rem(8.95);
       margin-bottom: rem(12);
+      @include tablet {
+        gap: rem(10);
+      }
       .sns-item {
         .sns-btn {
           display: block;
-          width: rem(45);
-          height: rem(45);
-          background-size: contain;
+          width: rem(40);
+          height: rem(40);
+          background-size: cover;
           background-repeat: no-repeat;
           transition: all 0.3s;
           $sns-list: linkedin, instagram, facebook, youtube;
+          @include tablet {
+            width: rem(45);
+            height: rem(45);
+          }
           @each $sns in $sns-list {
             &.#{$sns} {
               background-image: url('../../assets/images/ic_popup_#{$sns}.svg');
@@ -332,7 +339,7 @@
       .copy-link-text {
         @include font(12,140%,400);
         color: $black;
-        width: 60%;
+        width: calc(100% - rem(110));
         white-space: nowrap;
         overflow: hidden;
         @include tablet {

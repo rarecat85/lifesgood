@@ -29,7 +29,7 @@
   
   .toast-popup {
     background-color: #DADADA;
-    padding: rem(10);
+    padding: rem(8) rem(40);
     border-radius: rem(10);
     position: absolute;
     transform: translate(-50% ,50%);  
@@ -39,18 +39,21 @@
     visibility: hidden;
     transition: all 0.3s;
     @include tablet {
-      padding: rem(10) rem(40) rem(10) rem(40);
+      padding: rem(10) rem(40);
     }
     .toast-popup-inner {
       display: flex;
       align-items: center;
-      gap: rem(10);
+      gap: rem(8);
+      @include tablet {
+        gap: rem(10);
+      }
       &::before {
         content: '';
         display: inline-block;
         display: block;
-        width: rem(12);
-        height: rem(12);
+        width: rem(15);
+        height: rem(15);
         background-image: url('../../assets/images/ic_copy_popup.svg');
         background-size: contain;
         background-repeat: no-repeat;
@@ -61,7 +64,7 @@
       }
       .toast-popup-text {
         color: $black;
-        @include font(14,100%,400);
+        @include font(12,100%,400);
         white-space: nowrap;
         @include tablet {
           font-size: rem(17);

@@ -70,40 +70,25 @@ function initFadeUp() {
       element.dataset.fadeGroupKey = groupKey.toString();
     });
     
-    // 그룹의 트리거 요소 결정 (첫 번째 요소)
-    const firstElement = sortedElements[0].element;
-    
-    // 요소가 뷰포트에 이미 보이거나 지나갔는지 확인하는 함수
-    function shouldTriggerAnimation(element) {
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+    // 페이지 로드 시 각 요소의 위치를 개별적으로 확인
+    // 뷰포트 위로 완전히 지나간 요소는 즉시 활성화
+    sortedElements.forEach(item => {
+      const rect = item.element.getBoundingClientRect();
       
-      // 요소가 뷰포트 위쪽으로 지나갔는지 확인 (이미 스크롤을 지나간 경우)
-      // rect.top < 0: 요소의 상단이 이미 뷰포트 위로 올라갔음을 의미
-      if (rect.top < windowHeight && rect.top < 0) {
-        return true; // 요소의 상단이 이미 뷰포트 위로 올라갔으므로 지나간 것으로 간주
-      }
-      
-      // 요소가 뷰포트에 보이는지 확인 (15% 이상 보이는지)
-      const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
-      const visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0);
-      const visibleArea = Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
-      const elementArea = rect.height * rect.width;
-      
-      return elementArea > 0 && (visibleArea / elementArea) >= 0.15;
-    }
-    
-    // 페이지 로드 시 이미 뷰포트에 보이거나 지나갔는지 확인
-    const shouldTrigger = shouldTriggerAnimation(firstElement);
-    
-    if (shouldTrigger) {
-      // 이미 보이거나 지나갔으면 즉시 애니메이션 트리거
-      sortedElements.forEach(item => {
+      // 요소가 뷰포트 위로 완전히 지나갔으면 즉시 활성화
+      if (rect.bottom < 0) {
         item.element.classList.add('is-visible');
-      });
-    } else {
-      // 보이지 않으면 Intersection Observer로 감지
+        item.isPastViewport = true;
+      } else {
+        item.isPastViewport = false;
+      }
+    });
+    
+    // 아직 안 보이는 요소들만 필터링
+    const elementsToObserve = sortedElements.filter(item => !item.isPastViewport);
+    
+    // 관찰할 요소가 있는 경우에만 Intersection Observer 설정
+    if (elementsToObserve.length > 0) {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -113,18 +98,19 @@ function initFadeUp() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // 같은 그룹의 모든 요소에 is-visible 클래스 추가
-            sortedElements.forEach(item => {
-              item.element.classList.add('is-visible');
-            });
-            // 한 번만 실행되도록 observe 해제
-            observer.disconnect();
+            // 해당 요소에 is-visible 클래스 추가
+            entry.target.classList.add('is-visible');
+            // 해당 요소는 더 이상 관찰하지 않음
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
       
-      // 그룹의 첫 번째 요소를 관찰 시작
-      observer.observe(firstElement);
+      // 아직 안 보이는 요소들을 개별적으로 관찰
+      elementsToObserve.forEach(item => {
+        observer.observe(item.element);
+      });
+      
       groupObservers.set(groupKey, observer);
     }
   });
