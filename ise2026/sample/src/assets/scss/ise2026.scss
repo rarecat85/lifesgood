@@ -84,7 +84,7 @@
     .text {
       @include font(14,140%,400);
       margin-top: rem(10);
-      @include tablet {
+      @include desktop {
         margin-top: rem(40);
       }
     }

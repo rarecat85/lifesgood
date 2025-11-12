@@ -41,6 +41,9 @@
   }
   .faq-list-bx {
     width: 100%;
+    @include tablet {
+      margin-top: rem(45);
+    }
     @include desktop {
       width: rem(557);
       margin-top: rem(77);

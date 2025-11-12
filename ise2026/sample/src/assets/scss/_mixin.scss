@@ -134,8 +134,8 @@
     }
   }
   @include tablet {
-    font-size:rem(16);
-    padding: rem(9) rem(37);
+    font-size:rem(14);
+    padding: rem(9) rem(30);
   }
   @include desktop{
     min-width: rem(70);
