@@ -20,12 +20,23 @@
     }
   }
   .faq-title-bx {
-    @include tablet {
+    @include desktop {
       position: sticky;
       top: 5%;
     }
     .logo-bx {
-      margin-bottom: rem(30);
+      margin-bottom: rem(20);
+      @include tablet {
+        margin-bottom: rem(30);
+      }
+      img {
+        width: rem(28);
+        height: rem(28);
+        @include tablet {
+          width: rem(40);
+          height: rem(40);
+        }
+      }
     }
   }
   .faq-list-bx {
@@ -48,7 +59,7 @@
           background-image: url('../../assets/images/ic_q.svg');
           background-size: rem(13) rem(18);
           background-repeat: no-repeat;
-          background-position: left rem(9);
+          background-position: left rem(4);
           position: relative;
           @include tablet {
             padding: 0 rem(40);
@@ -73,8 +84,8 @@
             &::before {
               content: '';
               display: block;
-              width: rem(25);
-              height: rem(25);
+              width: rem(16);
+              height: rem(16);
               background-image: url('../../assets/images/ic_plus.svg');
               background-size: contain;
               background-repeat: no-repeat;
@@ -83,6 +94,10 @@
               top: rem(9);
               right: rem(10);
               transition: all 0.3s;
+              @include tablet {
+                width: rem(25);
+                height: rem(25);
+              }
             }
             br {
               display: none;
@@ -133,8 +148,9 @@
                 display: block;
               }
             }
-            strong {
-              font-weight: 700;
+            .faq-link {
+              color:#FD312E;
+              text-decoration: underline;
             }
           }
         }
