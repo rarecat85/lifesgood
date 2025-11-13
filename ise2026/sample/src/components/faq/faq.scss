@@ -45,7 +45,7 @@
       margin-top: rem(45);
     }
     @include desktop {
-      width: rem(557);
+      width: rem(593);
       margin-top: rem(77);
     }
     .faq-list {
@@ -135,7 +135,7 @@
             padding: 0 rem(40);
           }
           &::before {
-            content: 'answer';
+            content: 'Answer';
             display: inline-block;
             font-family: "LGEI Headline";
             @include font(13,140%,550);
@@ -146,6 +146,8 @@
           }
           .text {
             @include font(16,140%,250);
+            letter-spacing: -0.005em;
+            margin-bottom: rem(22);
             br {
               display: none;
               @include tablet {

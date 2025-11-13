@@ -86,6 +86,7 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
+            will-change: opacity;
             transition: all 0.3s;
             $sns-list: linkedin, instagram, facebook, youtube;
             @each $sns in $sns-list {
