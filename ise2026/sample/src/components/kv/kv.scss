@@ -65,20 +65,32 @@
               margin-right: rem(5);
               background-size: contain;
               background-repeat: no-repeat;
+              transform: translateY(rem(1));
+              @include tablet {
+                transform: translateY(rem(3));
+              }
             }
           }
           &.date {
             &::before {
-              background-image: url('../../assets/images/ic_calendar.svg');
-              width: rem(10);
-              height: rem(11);
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_calendar.svg');
+              width: rem(12);
+              height: rem(12);
+              @include tablet {
+                width: rem(20);
+                height: rem(20);
+              }
             }
           }
           &.location {
             &::before {
-              background-image: url('../../assets/images/ic_location.svg');
-              width: rem(8);
-              height: rem(10);
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_location.svg');
+              width: rem(12);
+              height: rem(12);
+              @include tablet {
+                width: rem(20);
+                height: rem(20);
+              }
             }
           }
           &:last-child {
@@ -95,7 +107,7 @@
       margin: rem(38.69) auto rem(93.94);
       position: relative;
       @include tablet {
-        height: 43dvh;
+        height: 50dvh;
         margin: rem(68) auto rem(63);
       }
       .video-title {
@@ -104,7 +116,7 @@
         justify-content: center;
         width: rem(33);
         height: rem(33);
-        background-image: url('../../assets/images/ise_round_m.svg');
+        background-image: url('/theme/rbFront/img/m/ise/ise2026/ise_round_m.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
@@ -113,9 +125,10 @@
         transform: translateY(-50%);
         top: 50%;
         left: rem(-12);
+        z-index: 2;
         @include tablet {
           font-size: rem(10);
-          background-image: url('../../assets/images/ise_round.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ise_round.svg');
           width: rem(84.6);
           height: rem(84.6);
           left: rem(-47);
@@ -138,6 +151,7 @@
         transform: translateY(-50%);
         top: 50%;
         right: rem(-12);
+        z-index: 2;
         @include tablet {
           font-size: rem(10);
           width: rem(55);
@@ -169,6 +183,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
+      z-index: 2;
       @include tablet {
         width: min(rem(333), 80vw);
         gap: rem(26);
@@ -188,7 +203,7 @@
           height: rem(20);
           object-fit: contain;
           @include tablet {
-            height: rem(30);
+            height: min(rem(30), 5vw);
           }
         }
       }
@@ -220,13 +235,13 @@
         }
         @each $sns in $sns-list {
           &.#{$sns} {
-            background-image: url('../../assets/images/ic_share_#{$sns}.svg');
+            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_share_#{$sns}.svg');
           }
         }
         &:hover {
           @each $sns in $sns-list {
             &.#{$sns} {
-              background-image: url('../../assets/images/ic_share_#{$sns}_active.svg');
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_share_#{$sns}_active.svg');
             }
           }
         }
@@ -300,13 +315,13 @@
           }
           @each $sns in $sns-list {
             &.#{$sns} {
-              background-image: url('../../assets/images/ic_popup_#{$sns}.svg');
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_popup_#{$sns}.svg');
             }
           }
           &:hover {
             @each $sns in $sns-list {
               &.#{$sns} {
-                background-image: url('../../assets/images/ic_popup_#{$sns}_active.svg');
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_popup_#{$sns}_active.svg');
               }
             }
           }
@@ -325,7 +340,7 @@
         display: block;
         width: rem(18);
         height: rem(18);
-        background-image: url('../../assets/images/ic_clipboard.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_clipboard.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
@@ -367,11 +382,11 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
-      background-image: url('../../assets/images/ic_close.svg');
+      background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_close.svg');
       cursor: pointer;
       transition: all 0.3s;
       &:hover {
-        background-image: url('../../assets/images/ic_close_active.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_close_active.svg');
       }
     }
   }

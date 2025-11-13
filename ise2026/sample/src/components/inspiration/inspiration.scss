@@ -51,8 +51,21 @@
   .slide-bx {
     width: 100%;
     position: relative;
+    @include tablet {
+      &::before {
+        content: '';
+        width: 100%;
+        height: calc(100% - rem(44));
+        background-color: $black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
     .swiper-slide {
       width: 100%;
+      background-color: $black;
       @include tablet {
         max-width: rem(880);
         &::after {
@@ -117,7 +130,7 @@
       .slide-btn {
         width: rem(34);
         height: rem(45);
-        background-image: url('../../assets/images/ic_slide_arrow.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_slide_arrow.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
@@ -128,7 +141,7 @@
           height: rem(54);
         }
         &:hover {
-          background-image: url('../../assets/images/ic_slide_arrow_active.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_slide_arrow_active.svg');
         }
         &.slide-btn-next {
           transform: rotate(180deg);

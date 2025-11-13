@@ -59,7 +59,7 @@
           width: 100%;
           padding: 0 rem(20);
           text-align: left;
-          background-image: url('../../assets/images/ic_q.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_q.svg');
           background-size: rem(13) rem(18);
           background-repeat: no-repeat;
           background-position: left rem(4);
@@ -84,12 +84,13 @@
             display: block;
             max-width: rem(214);
             @include font(20,110%,400);
+            color: $black;
             &::before {
               content: '';
               display: block;
               width: rem(16);
               height: rem(16);
-              background-image: url('../../assets/images/ic_plus.svg');
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_plus.svg');
               background-size: contain;
               background-repeat: no-repeat;
               background-position: center;
@@ -118,7 +119,7 @@
           .faq-question {
             .text {
               &::before {
-                background-image: url('../../assets/images/ic_minus.svg');
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_minus.svg');
                 transform: rotate(180deg);
               }
             }

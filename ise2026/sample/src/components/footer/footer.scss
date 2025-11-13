@@ -3,7 +3,7 @@
 
 // 공통 footer 가리기
 .footer {
-  display: none;
+  display: none !important;
 }
 
 .ise-footer {
@@ -90,13 +90,13 @@
             $sns-list: linkedin, instagram, facebook, youtube;
             @each $sns in $sns-list {
               &.#{$sns} {
-                background-image: url('../../assets/images/ic_footer_#{$sns}.svg');
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_footer_#{$sns}.svg');
               }
             }
             &:hover {
               @each $sns in $sns-list {
                 &.#{$sns} {
-                  background-image: url('../../assets/images/ic_footer_#{$sns}_active.svg');
+                  background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_footer_#{$sns}_active.svg');
                 }
               }
             }
@@ -123,13 +123,16 @@
       
       select {
         appearance: none;
-        background-image: url('../../assets/images/ic_select_arrow.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_select_arrow.svg');
         background-size: rem(12) rem(7);
         background-repeat: no-repeat;
         background-position: right rem(18) center;
         padding-right: rem(40);
         cursor: pointer;
         transition: all 0.3s;
+        option {
+          font-size: rem(16)
+        }
       }
 
       .validation-message {
@@ -142,7 +145,7 @@
           display: inline-block;
           width: rem(10);
           height: rem(10);
-          background-image: url('../../assets/images/ic_warn.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_warn.svg');
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center center;
@@ -191,7 +194,7 @@
           select {
             color: #5A5855;
             pointer-events: none;
-            background-image: url('../../assets/images/ic_select_arrow_disabled.svg');
+            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_select_arrow_disabled.svg');
           }
         }
         
@@ -240,7 +243,7 @@
               height: rem(12);
               cursor: pointer;
               position: relative;
-              margin: 0;
+              margin-top: rem(2);
               flex-shrink: 0;
               
               &::before {
@@ -250,7 +253,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%; 
-                background-image: url('../../assets/images/ic_check.svg');
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_check.svg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -259,7 +262,7 @@
               
               &:checked {
                 &::before {
-                  background-image: url('../../assets/images/ic_checked.svg');
+                  background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_checked.svg');
                   background-repeat: no-repeat;
                   background-position: center;
                 }

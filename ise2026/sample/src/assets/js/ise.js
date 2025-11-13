@@ -605,7 +605,7 @@ function handleInspirationSlide() {
       disableOnInteraction: false,
     },
     pagination: {
-      el: '.inspiration .slide-bx .slide-pagination',
+      el: '.inspiration .slide-pagination',
       type: 'fraction',
     },
     navigation: {

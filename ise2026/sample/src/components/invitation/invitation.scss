@@ -25,7 +25,7 @@
       display: block;
       width: rem(18);      
       height: rem(12);
-      background-image: url('../../assets/images/ic_arrow.svg');
+      background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_arrow.svg');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -35,7 +35,7 @@
     &:hover {
       color: $black;
       &::after {
-        background-image: url('../../assets/images/ic_arrow_active.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_arrow_active.svg');
       }
     }
     @include tablet {
@@ -48,7 +48,12 @@
   .text-bx {
     .title {
       @include font(30,100%,700);
+      text-wrap: balance;
       margin-bottom: rem(10);
+      max-width: rem(220);
+      @include tablet {
+        max-width: none;
+      }
       img {
         margin-bottom: rem(20);
       }
@@ -57,6 +62,7 @@
       @include font(14,140%,400);
       max-width: rem(434);
       margin: 0 auto;
+      text-wrap: balance;
     }
     @include tablet {
       .title {
@@ -110,7 +116,7 @@
       position: relative;
       transform: rotateY(0deg);
       z-index: 2;
-      background-image: url('../../assets/images/invitation_card_front_m.png');
+      background-image: url('/theme/rbFront/img/m/ise/ise2026/invitation_card_front_m.png');
       background-repeat: no-repeat;
       background-size: cover;
       position: absolute;
@@ -122,7 +128,7 @@
         display: block;
         width: 100%;
         height: rem(67);
-        background-image: url('../../assets/images/invitation_pattern_m.png');
+        background-image: url('/theme/rbFront/img/m/ise/ise2026/invitation_pattern_m.png');
         background-size: cover;
         position: absolute;
         bottom: 0;
@@ -140,7 +146,7 @@
           width: rem(116);
           height: 100%;
           align-self: stretch;
-          background-image: url('../../assets/images/invitation_pattern.png');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/invitation_pattern.png');
           background-size: cover;
           background-position: right center;
           border-radius: 0 rem(20) rem(20) 0;
@@ -160,7 +166,7 @@
           justify-content: space-between;
           width: calc(100% - rem(116));
           background-color: $black;
-          background-image: url('../../assets/images/invitation_barcode.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/invitation_barcode.svg');
           background-size: rem(46.19) rem(26.79);
           background-position: rem(45) rem(33);
           padding: rem(33) rem(45) rem(16);
@@ -176,6 +182,8 @@
             @include font(16,140%,250);
           }
           .code {
+            display: flex;
+            align-items: center;
             @include font(39,100%,550);
             color: $white;
             cursor: pointer;
@@ -185,7 +193,7 @@
               width: rem(22.59);
               height: rem(22.59);
               vertical-align: rem(2);
-              background-image: url('../../assets/images/ic_copy.svg');
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_copy.svg');
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -198,22 +206,23 @@
             }
             &:hover {
               &::after {
-                background-image: url('../../assets/images/ic_copy_active.svg');
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_copy_active.svg');
               }
             }
           }
           @include tablet {
-            margin-top: rem(30);
+            margin-top: rem(44);
             margin-bottom: 0;
             .sub-title {
               @include font(27,140%,250);
             }
             .code {
+              display: inline-block;
               @include font(99,100%,550);
             }
           }
           @include desktop {
-            margin-top: rem(36);
+            margin-top: rem(46);
             .sub-title {
               @include font(30,140%,250);
             }

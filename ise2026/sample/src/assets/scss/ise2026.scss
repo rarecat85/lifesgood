@@ -16,6 +16,7 @@
       min-height: 100dvh;
       &.faq {
         justify-content: flex-start;
+        padding: rem(100) 0 rem(250);
       }
     }
   }
@@ -54,7 +55,7 @@
         display: block;
         width: rem(15);
         height: rem(15);
-        background-image: url('../../assets/images/ic_copy_popup.svg');
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_copy_popup.svg');
         background-size: contain;
         background-repeat: no-repeat;
         @include tablet {
@@ -87,6 +88,7 @@
     .text {
       @include font(14,140%,400);
       margin-top: rem(10);
+      text-wrap: balance;
       @include desktop {
         margin-top: rem(40);
       }
