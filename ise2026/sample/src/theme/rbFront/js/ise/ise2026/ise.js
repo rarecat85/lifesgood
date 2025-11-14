@@ -299,86 +299,46 @@ function getVideoPath(type) {
 }
 
 /**
- * 영상 소스 변경 (더블 버퍼링 기법으로 깜빡임 방지)
+ * 영상 소스 변경 (단순 소스 교체 방식)
  * @param {string} videoPath - 변경할 영상 파일 경로
  * @param {boolean} shouldLoop - 반복 재생 여부
  */
 function changeVideoSource(videoPath, shouldLoop) {
   if (!kvVideo) return;
 
-  const videoBx = document.querySelector('.kv .video-bx');
-  if (!videoBx) return;
+  // 기존 이벤트 리스너 제거
+  kvVideo.removeEventListener('ended', handleIntroComplete);
 
-  // 새로운 비디오 엘리먼트를 미리 생성
-  const newVideo = document.createElement('video');
-  newVideo.src = videoPath;
-  newVideo.loop = shouldLoop;
-  newVideo.muted = true;
-  newVideo.playsInline = true;
-  newVideo.preload = 'auto';
-  
-  // 기존 비디오 위에 겹치도록 absolute 포지셔닝
-  newVideo.style.position = 'absolute';
-  newVideo.style.top = '0';
-  newVideo.style.left = '0';
-  newVideo.style.width = '100%';
-  newVideo.style.height = '100%';
-  newVideo.style.objectFit = 'contain';
-  newVideo.style.opacity = '0';
-  newVideo.style.transition = 'opacity 0.3s ease-in-out';
-  newVideo.style.zIndex = '2';
+  // 비디오 일시정지
+  kvVideo.pause();
 
-  // 새 영상이 충분히 로드되면 전환
+  // 소스 변경
+  kvVideo.src = videoPath;
+  kvVideo.loop = shouldLoop;
+
+  // 새 영상이 로드되면 재생
   const handleCanPlay = () => {
-    newVideo.play().then(() => {
-      // 페이드 인 효과
-      requestAnimationFrame(() => {
-        newVideo.style.opacity = '1';
-      });
-
-      // 기존 비디오 페이드 아웃 후 제거
-      const oldVideo = kvVideo;
-      
-      setTimeout(() => {
-        // 이벤트 리스너를 새 비디오로 이전
-        if (!isKVIntroComplete) {
-          newVideo.addEventListener('ended', handleIntroComplete, { once: false });
-        }
-        
-        // 기존 비디오 제거
-        if (oldVideo.parentNode) {
-          oldVideo.removeEventListener('ended', handleIntroComplete);
-          oldVideo.pause();
-          oldVideo.src = '';
-          oldVideo.remove();
-        }
-
-        // 새 비디오를 원래 스타일로 복구 (레이아웃 유지)
-        newVideo.style.position = 'relative';
-        newVideo.style.zIndex = '1';
-
-        // 전역 참조 업데이트
-        kvVideo = newVideo;
-      }, 300);
-    }).catch(err => {
+    kvVideo.play().catch(err => {
       console.warn('Video play failed:', err);
-      // 실패 시 새 비디오 제거
-      newVideo.remove();
     });
   };
 
   // 에러 처리
   const handleError = () => {
     console.warn('Video load failed:', videoPath);
-    newVideo.remove();
   };
 
-  newVideo.addEventListener('canplaythrough', handleCanPlay, { once: true });
-  newVideo.addEventListener('error', handleError, { once: true });
+  // 이벤트 리스너 등록
+  kvVideo.addEventListener('canplaythrough', handleCanPlay, { once: true });
+  kvVideo.addEventListener('error', handleError, { once: true });
 
-  // DOM에 추가하여 로드 시작
-  videoBx.appendChild(newVideo);
-  newVideo.load();
+  // intro 영상인 경우 ended 이벤트 리스너 추가
+  if (!isKVIntroComplete) {
+    kvVideo.addEventListener('ended', handleIntroComplete, { once: false });
+  }
+
+  // 비디오 로드 시작
+  kvVideo.load();
 }
 
 /**

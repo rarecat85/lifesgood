@@ -1,0 +1,65 @@
+{
+  "countryList": [
+    {
+      "type": "Brazil",
+      "friendlyType": "Brazil"
+    },
+    {
+      "type": "Mexico",
+      "friendlyType": "Mexico"
+    },
+    {
+      "type": "Argentina",
+      "friendlyType": "Argentina"
+    },
+    {
+      "type": "Colombia",
+      "friendlyType": "Colombia"
+    },
+    {
+      "type": "Chile",
+      "friendlyType": "Chile"
+    },
+    {
+      "type": "Peru",
+      "friendlyType": "Peru"
+    },
+    {
+      "type": "Venezuela",
+      "friendlyType": "Venezuela"
+    },
+    {
+      "type": "Ecuador",
+      "friendlyType": "Ecuador"
+    },
+    {
+      "type": "Guatemala",
+      "friendlyType": "Guatemala"
+    },
+    {
+      "type": "Cuba",
+      "friendlyType": "Cuba"
+    },
+    {
+      "type": "Dominican Republic",
+      "friendlyType": "Dominican Republic"
+    },
+    {
+      "type": "Costa Rica",
+      "friendlyType": "Costa Rica"
+    },
+    {
+      "type": "Panama",
+      "friendlyType": "Panama"
+    },
+    {
+      "type": "Uruguay",
+      "friendlyType": "Uruguay"
+    },
+    {
+      "type": "Jamaica",
+      "friendlyType": "Jamaica"
+    }
+  ]
+}
+

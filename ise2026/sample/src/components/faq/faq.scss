@@ -137,7 +137,6 @@
           &::before {
             content: 'Answer';
             display: inline-block;
-            font-family: "LGEI Headline";
             @include font(13,140%,550);
             border: rem(0.5) solid $black;
             margin: rem(12) 0;
