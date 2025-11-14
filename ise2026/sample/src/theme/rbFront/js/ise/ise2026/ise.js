@@ -121,11 +121,11 @@ function initFadeUp() {
  * 이벤트 날짜까지의 남은 시간을 계산하여 이미지로 표시
  */
 function initCountdown() {
-  // 이벤트 날짜 설정 (2026년 2월 3일 오전 10시, 스페인 시간대)
-  // 스페인은 UTC+1 (CET, 중부유럽 표준시) 또는 UTC+2 (CEST, 중부유럽 일광절약시간) 사용
-  // 2월은 일광절약시간이 아니므로 UTC+1 적용
-  // 필요시 이 변수만 수정하면 됨
-  const eventDate = new Date('2026-02-03T10:00:00+01:00');
+  // 이벤트 날짜 설정 (2026년 2월 3일 오전 10시, 각 지역의 로컬 시간 기준)
+  // 타임존 정보 없이 날짜를 지정하면 사용자의 브라우저 로컬 시간대로 해석됨
+  // 각 지역에서 동일한 로컬 시각(10:00)까지의 카운트다운이 표시됨
+  // 예: 한국에서는 "2월 3일 10:00 KST", 미국에서는 "2월 3일 10:00 EST"까지 카운트다운
+  const eventDate = new Date('2026-02-03T10:00:00');
   
   const countdownElements = document.querySelectorAll('.countdown');
   if (countdownElements.length === 0) return;
