@@ -1090,14 +1090,6 @@ window.reinitFadeUp = initFadeUp;
 
 // SNS 공유 기능 초기화
 function initSnsShare() {
-  // 공유할 정보 정의 (메타 태그 또는 직접 정의)
-  const shareInfo = {
-    url: 'https://www.lg-informationdisplay.com/ise2026',
-    title: 'LG ISE 2026',
-    description: "Save the date for solutions to your vision! I'll be visiting LG's booth at ISE 2026—come explore cutting-edge innovation. Please register today!",
-    image: '/theme/rbFront/img/w/ise/ise2026/thumbnail.jpg'
-  };
-
   // meta 태그에서 OG 정보 가져오기 (fallback)
   const getMetaContent = (property) => {
     const metaTag = document.querySelector(`meta[property="${property}"]`);
@@ -1105,20 +1097,13 @@ function initSnsShare() {
   };
 
   // 최종 공유 정보 (메타 태그 우선, 없으면 정의된 정보 사용)
-  const finalShareUrl = getMetaContent('og:url') || shareInfo.url || window.location.href;
-  const finalShareTitle = getMetaContent('og:title') || shareInfo.title || document.title;
-  const finalShareDescription = getMetaContent('og:description') || shareInfo.description;
+  const finalShareUrl = getMetaContent('og:url') || window.location.href;
+  const finalShareTitle = getMetaContent('og:title') || document.title;
+  const finalShareDescription = getMetaContent('og:description');
   
   const encodedUrl = encodeURIComponent(finalShareUrl);
   const encodedTitle = encodeURIComponent(finalShareTitle);
   const encodedDescription = encodeURIComponent(finalShareDescription);
-
-  // 공유 정보 디버깅 (개발 중 확인용)
-  console.log('📤 SNS 공유 정보:', {
-    url: finalShareUrl,
-    title: finalShareTitle,
-    description: finalShareDescription
-  });
 
   // layer-popup 내의 LinkedIn 공유 버튼들
   const linkedinBtns = document.querySelectorAll('.layer-popup .linkedin');

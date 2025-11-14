@@ -174,7 +174,7 @@
       }
     }
     .countdown {
-      width: min(rem(205), 80vw);
+      // width: min(rem(205), 80vw);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -185,7 +185,7 @@
       left: 50%;
       z-index: 2;
       @include tablet {
-        width: min(rem(333), 80vw);
+        // width: min(rem(333), 80vw);
         gap: rem(26);
       }
       p {
@@ -199,11 +199,14 @@
         }
         img {
           display: block;
-          width: 100%;
+          // width: 100%;
           height: rem(20);
           object-fit: contain;
           @include tablet {
-            height: min(rem(30), 5vw);
+            height: rem(30);
+          }
+          @media all and (min-width: 1921px) {
+            height: clamp(rem(30), 2.5vw, rem(70));
           }
         }
       }
@@ -359,7 +362,7 @@
         overflow: hidden;
         @include tablet {
           font-size: rem(14);
-          width: 100%;
+          width: auto;
         }
       }
       .copy-link-btn {
