@@ -203,10 +203,10 @@
           height: rem(20);
           object-fit: contain;
           @include tablet {
-            height: rem(30);
+            height: rem(27);
           }
-          @media all and (min-width: 1921px) {
-            height: clamp(rem(30), 2.5vw, rem(70));
+          @include desktop {
+            height: max(rem(30), vw(30));
           }
         }
       }
@@ -216,10 +216,6 @@
       align-items: center;
       justify-content: center;
       gap: rem(2);
-      margin-bottom: rem(16);
-      @include desktop {
-        margin-bottom: rem(70);
-      }
       .btn {
         @include btn($white, true);
         margin-right: rem(5);
@@ -279,29 +275,43 @@
   color: $black;
   opacity: 0;
   visibility: hidden;
-  padding: rem(20);
+  padding: rem(18);
   border-radius: rem(10);
   background-color: $white;
   position: absolute;
   transform: translateX(-50%);
-  bottom: rem(60);
+  bottom: rem(35);
   left: 50%;
   z-index: 100;
   transition: all 0.3s;
-  .inner {
+  .layer-popup-inner {
     position: relative;
-    padding: 0;
+    @include tablet {
+      display: flex;
+      gap: rem(9);
+    }
     .title {
       @include font(15,100%,550);
-      margin-bottom: rem(8);
+      margin-bottom: rem(14);
+    }
+    .sns-bx {
+      display: flex;
+      gap: rem(23);
+      @include tablet {
+        display: block;
+      }
+      .title {
+        margin-bottom: rem(8);
+      }
     }
     .sns-list {
       display: flex;
       align-items: center;
-      gap: rem(8.95);
-      margin-bottom: rem(12);
+      gap: rem(9);
+      margin-bottom: rem(10.43);
       @include tablet {
-        gap: rem(10);
+        gap: rem(2);
+        margin-bottom: 0;
       }
       .sns-item {
         .sns-btn {
@@ -331,6 +341,11 @@
         }
       }
     }
+    .copy-link-wrap {
+      @include tablet {
+        width: calc(100% - rem(101));
+      }
+    }
     .copy-link-bx {
       display: flex;
       align-items: center;
@@ -349,9 +364,9 @@
         background-position: center center;
         margin: 0 rem(10);
         @include tablet {
-          width: rem(20);
-          height: rem(20);
-          margin: 0 rem(20) 0 rem(13);
+          width: rem(16);
+          height: rem(16);
+          margin: 0 rem(6.6) 0 rem(6);
         }
       }
       .copy-link-text {
@@ -361,7 +376,7 @@
         white-space: nowrap;
         overflow: hidden;
         @include tablet {
-          font-size: rem(14);
+          font-size: rem(13);
           width: auto;
         }
       }
@@ -372,13 +387,16 @@
         padding: rem(7.46) rem(18.9);
         margin-left: auto;
         @include tablet {
-          height: rem(42);
+          font-size: rem(12);
+          min-width: rem(70);
+          height: rem(30);
+          padding: rem(8.6) rem(10);
         }
       }
     }
     .close-btn {
-      width: rem(28);
-      height: rem(28);
+      width: rem(25);
+      height: rem(25);
       position: absolute;
       top: 0;
       right: 0;
@@ -391,17 +409,24 @@
       &:hover {
         background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_close_active.svg');
       }
+      @include tablet {
+        width: rem(28);
+        height: rem(28);
+        top: rem(-13);
+        right: rem(-13);
+      }
     }
   }
   &.active {
     opacity: 1;
     visibility: visible;
-    bottom: rem(80);
+    bottom: rem(55);
   }
   @include tablet {
-    bottom: rem(173);
+    padding: rem(28) rem(23);
+    bottom: rem(40);
     &.active {
-      bottom: rem(193);
+      bottom: rem(60);
     }
   }
 }
