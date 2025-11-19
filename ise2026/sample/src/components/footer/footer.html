@@ -53,7 +53,7 @@
               <legend class="form-title">Get on our list</legend>
               <!-- S : Region and Country -->
               <div class="select-bx flex-bx">
-                <div id="ise_newsletter_region" class="newsletter">
+                <div id="ise_newsletter_region" class="form-cont">
                   <select id="iseRegion" name="ise_Newsletter_Region"
                     onchange="javascript:changeNewsletterRegion(this.value,'')" >
                     <option value="">Region</option>
@@ -68,12 +68,12 @@
                 </div>
                 <!-- S : Country Option Bx -->
                 <div class="country-option-bx">
-                  <div id="ise_newsletter_country" class="newsletter dimm">
+                  <div id="ise_newsletter_country" class="form-cont dimm">
                     <select id="iseCountry" name="ise_Newsletter_Country" onchange="javascript:changeNewsletterCountry(this.value)">
                       <option value="">Country</option>
                     </select>
                   </div>
-                  <div id="ise_newsletter_state" class="newsletter dimm hidden">
+                  <div id="ise_newsletter_state" class="form-cont dimm hidden">
                     <select id="iseState" name="ise_Newsletter_State">
                       <option value="">Select one</option>
                     </select>
@@ -84,12 +84,13 @@
               <!-- E : Region and Country -->
               <!-- S : Name -->
               <div class="name-bx flex-bx">
-                <div class="newsletter-name">
+                <div class="form-cont-name">
                   <input type="text" id="iseLastName" name="ise_Newsletter_LastName" placeholder="Last Name" autocomplete="family-name">
                   <p class="validation-message">Enter more than two letters.</p>
                 </div>
-                <div class="newsletter-name">
+                <div class="form-cont-name">
                   <input type="text" id="iseFirstName" name="ise_Newsletter_FirstName" placeholder="First Name" autocomplete="given-name">
+                  <p class="validation-message">Enter more than two letters.</p>
                 </div>
               </div>
               <!-- E : Name -->
@@ -389,11 +390,22 @@
         const lastNameTrimmed = data.ise_Newsletter_LastName ? data.ise_Newsletter_LastName.trim() : '';
         const firstNameTrimmed = data.ise_Newsletter_FirstName ? data.ise_Newsletter_FirstName.trim() : '';
         
-        if(!lastNameTrimmed || !firstNameTrimmed) {
+        // Check Last Name
+        if(!lastNameTrimmed) {
           const lastNameInput = document.getElementById('iseLastName');
           const lastNameValidation = lastNameInput.parentElement.querySelector('.validation-message');
           if(lastNameValidation) {
             lastNameValidation.classList.add('show');
+          }
+          isValid = false;
+        }
+        
+        // Check First Name
+        if(!firstNameTrimmed) {
+          const firstNameInput = document.getElementById('iseFirstName');
+          const firstNameValidation = firstNameInput.parentElement.querySelector('.validation-message');
+          if(firstNameValidation) {
+            firstNameValidation.classList.add('show');
           }
           isValid = false;
         }

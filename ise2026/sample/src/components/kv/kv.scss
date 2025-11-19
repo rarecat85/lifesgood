@@ -5,7 +5,7 @@
   background-color: $black;
   color: $white;  
   position: relative;
-  padding: rem(61) 0 rem(53);
+  padding: rem(115) 0 rem(53);
   .inner {
     position: relative;
     padding: 0 rem(30);
@@ -107,7 +107,7 @@
       margin: rem(38.69) auto rem(93.94);
       position: relative;
       @include tablet {
-        height: 50dvh;
+        height: 42dvh;
         margin: rem(68) auto rem(63);
       }
       .video-title {

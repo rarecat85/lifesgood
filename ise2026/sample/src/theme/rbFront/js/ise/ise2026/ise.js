@@ -295,7 +295,7 @@ function getVideoPath(type) {
   const isMob = isMobile();
   const prefix = isMob ? 'kv_' + type + '_m' : 'kv_' + type;
   const devicePath = isMob ? 'm' : 'w';
-  return `/theme/rbFront/video/${devicePath}/ise/ise2026/${prefix}.mp4`;
+  return `/theme/rbFront/img/${devicePath}/ise/ise2026/${prefix}.mp4`;
 }
 
 /**

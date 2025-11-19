@@ -188,7 +188,7 @@
         }
       }
 
-      .newsletter {
+      .form-cont {
         width: 100%;
         
         &.dimm {
@@ -237,16 +237,16 @@
             align-items: flex-start;
             gap: rem(8);
             cursor: pointer;
-            @include font(12, 140%, 250);
+            
             input[type="checkbox"] {
               appearance: none;
               width: rem(12);
               height: rem(12);
               cursor: pointer;
               position: relative;
-              margin-top: rem(2);
+              margin: rem(2) 0 0;
               flex-shrink: 0;
-              
+              opacity: 1;
               &::before {
                 content: '';
                 position: absolute;
@@ -268,6 +268,19 @@
                   background-position: center;
                 }
               }
+              & + label {
+                padding: 0;
+                line-height: 100%;
+                font-size: inherit;
+                margin: 0;
+                &::before {
+                  display: none;
+                }
+              }
+            }
+            span {
+              @include font(12, 140%, 250);
+              color: #cbc8c2;
             }
           }
         }
@@ -392,6 +405,9 @@
         }
         a {
           @include font(12, 140%, 550);
+          &:hover {
+            color: #cbc8c2;
+          }
         }
       }
     }

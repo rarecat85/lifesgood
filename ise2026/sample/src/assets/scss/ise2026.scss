@@ -6,7 +6,6 @@
   margin:0 auto;
   
   section {
-    
     @include tablet {
       padding: rem(100) 0 rem(132);
       display: flex;
@@ -14,6 +13,9 @@
       align-items: center;
       justify-content: center;
       min-height: 100dvh;
+      &.kv {
+        padding: rem(140) 0 rem(132);
+      }
       &.faq {
         justify-content: flex-start;
         padding: rem(100) 0 rem(250);
@@ -101,10 +103,6 @@
         font-size: rem(22);
       }
     }
-  }
-
-  .heading {
-    font-family: 'LGEI Headline', sans-serif;
   }
 
   .a11y-hidden {
