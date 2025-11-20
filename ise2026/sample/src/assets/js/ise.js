@@ -121,11 +121,11 @@ function initFadeUp() {
  * 이벤트 날짜까지의 남은 시간을 계산하여 이미지로 표시
  */
 function initCountdown() {
-  // 이벤트 날짜 설정 (2026년 2월 3일 오전 10시, 스페인 시간대)
-  // 스페인은 UTC+1 (CET, 중부유럽 표준시) 또는 UTC+2 (CEST, 중부유럽 일광절약시간) 사용
-  // 2월은 일광절약시간이 아니므로 UTC+1 적용
-  // 필요시 이 변수만 수정하면 됨
-  const eventDate = new Date('2026-02-03T10:00:00+01:00');
+  // 이벤트 날짜 설정 (2026년 2월 3일 오전 10시, 각 지역의 로컬 시간 기준)
+  // 타임존 정보 없이 날짜를 지정하면 사용자의 브라우저 로컬 시간대로 해석됨
+  // 각 지역에서 동일한 로컬 시각(10:00)까지의 카운트다운이 표시됨
+  // 예: 한국에서는 "2월 3일 10:00 KST", 미국에서는 "2월 3일 10:00 EST"까지 카운트다운
+  const eventDate = new Date('2026-02-03T10:00:00');
   
   const countdownElements = document.querySelectorAll('.countdown');
   if (countdownElements.length === 0) return;
@@ -179,7 +179,7 @@ function initCountdown() {
      * @returns {string} 이미지 경로
      */
     function getImagePath(digit) {
-      return `./assets/images/${imagePrefix}_${digit}.svg`;
+      return `/theme/rbFront/img/w/ise/ise2026/${imagePrefix}_${digit}.svg`;
     }
     
     /**
@@ -294,23 +294,51 @@ function isMobile() {
 function getVideoPath(type) {
   const isMob = isMobile();
   const prefix = isMob ? 'kv_' + type + '_m' : 'kv_' + type;
-  return `./assets/videos/${prefix}.mp4`;
+  const devicePath = isMob ? 'm' : 'w';
+  return `/theme/rbFront/img/${devicePath}/ise/ise2026/${prefix}.mp4`;
 }
 
 /**
- * 영상 소스 변경
+ * 영상 소스 변경 (단순 소스 교체 방식)
  * @param {string} videoPath - 변경할 영상 파일 경로
  * @param {boolean} shouldLoop - 반복 재생 여부
  */
 function changeVideoSource(videoPath, shouldLoop) {
   if (!kvVideo) return;
 
+  // 기존 이벤트 리스너 제거
+  kvVideo.removeEventListener('ended', handleIntroComplete);
+
+  // 비디오 일시정지
+  kvVideo.pause();
+
+  // 소스 변경
   kvVideo.src = videoPath;
   kvVideo.loop = shouldLoop;
-  kvVideo.load(); // 새 소스 로드
-  kvVideo.play().catch(err => {
-    console.warn('Video autoplay failed:', err);
-  });
+
+  // 새 영상이 로드되면 재생
+  const handleCanPlay = () => {
+    kvVideo.play().catch(err => {
+      console.warn('Video play failed:', err);
+    });
+  };
+
+  // 에러 처리
+  const handleError = () => {
+    console.warn('Video load failed:', videoPath);
+  };
+
+  // 이벤트 리스너 등록
+  kvVideo.addEventListener('canplaythrough', handleCanPlay, { once: true });
+  kvVideo.addEventListener('error', handleError, { once: true });
+
+  // intro 영상인 경우 ended 이벤트 리스너 추가
+  if (!isKVIntroComplete) {
+    kvVideo.addEventListener('ended', handleIntroComplete, { once: false });
+  }
+
+  // 비디오 로드 시작
+  kvVideo.load();
 }
 
 /**
@@ -372,6 +400,15 @@ function initKVVideo() {
   kvVideo.playsInline = true;
   kvVideo.autoplay = true;
   kvVideo.preload = 'auto';
+
+  // CSS transition을 위한 스타일 설정 (레이아웃 유지를 위해 relative 사용)
+  kvVideo.style.position = 'relative';
+  kvVideo.style.transition = 'opacity 0.3s ease-in-out';
+  kvVideo.style.display = 'block';
+  kvVideo.style.width = '100%';
+  kvVideo.style.height = '100%';
+  kvVideo.style.objectFit = 'contain';
+  kvVideo.style.zIndex = '1';
 
   // intro 영상 재생 완료 이벤트 리스너
   kvVideo.addEventListener('ended', handleIntroComplete, { once: false });
@@ -605,7 +642,7 @@ function handleInspirationSlide() {
       disableOnInteraction: false,
     },
     pagination: {
-      el: '.inspiration .slide-pagination',
+      el: '.inspiration .slide-bx .slide-pagination',
       type: 'fraction',
     },
     navigation: {
@@ -978,7 +1015,6 @@ function handleFooterNavClick() {
     });
   });
 }
-
 /**
  * 모든 기능 초기화
  */
@@ -1011,3 +1047,62 @@ if (document.readyState === 'loading') {
 
 // 동적으로 추가된 요소를 위해 재실행 가능하도록 함수 export (필요시)
 window.reinitFadeUp = initFadeUp;
+
+// SNS 공유 기능 초기화
+function initSnsShare() {
+  // meta 태그에서 OG 정보 가져오기 (fallback)
+  const getMetaContent = (property) => {
+    const metaTag = document.querySelector(`meta[property="${property}"]`);
+    return metaTag ? metaTag.getAttribute('content') : '';
+  };
+
+  // 최종 공유 정보 (메타 태그 우선, 없으면 정의된 정보 사용)
+  const finalShareUrl = getMetaContent('og:url') || window.location.href;
+  const finalShareTitle = getMetaContent('og:title') || document.title;
+  const finalShareDescription = getMetaContent('og:description');
+  
+  const encodedUrl = encodeURIComponent(finalShareUrl);
+  const encodedTitle = encodeURIComponent(finalShareTitle);
+  const encodedDescription = encodeURIComponent(finalShareDescription);
+
+  // layer-popup 내의 LinkedIn 공유 버튼들
+  const linkedinBtns = document.querySelectorAll('.layer-popup .linkedin');
+  linkedinBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // LinkedIn은 URL의 og 메타 태그를 자동으로 읽어갑니다
+      // title, summary 파라미터는 더 이상 지원되지 않음
+      window.open(
+        `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+        '_blank',
+        'width=600,height=500,scrollbars=yes,resizable=yes'
+      );
+    });
+  });
+
+  // layer-popup 내의 Facebook 공유 버튼들
+  const facebookBtns = document.querySelectorAll('.layer-popup .facebook');
+  facebookBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Facebook은 URL의 og 메타 태그를 자동으로 읽어갑니다
+      // title, description, picture 파라미터는 2017년 이후 지원 중단
+      // 대신 서버의 og 메타 태그를 사용합니다
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+        '_blank',
+        'width=600,height=400,scrollbars=yes,resizable=yes'
+      );
+    });
+  });
+}
+
+// DOM 로드 후 실행
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSnsShare);
+} else {
+  initSnsShare();
+}
+
+// 동적으로 추가된 요소를 위해 재실행 가능하도록 export
+window.reinitSnsShare = initSnsShare;

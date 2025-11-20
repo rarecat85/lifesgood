@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe,
+div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -11,6 +11,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {margin:0; padding:0; border:0; font-size:inherit; font:inherit; font-style:normal; text-decoration:none; vertical-align:top;}
+html, body {margin:0; padding:0; border:0; }
 ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
@@ -18,7 +19,7 @@ table {table-layout:fixed; border-collapse:collapse; border-spacing:0;}
 * {word-wrap:break-word; word-break:keep-all; box-sizing:border-box;}
 button {background:none;border:0; padding:0; cursor: pointer;}
 
-body {position:relative;font-weight:400; line-height:1; color:#000; font-family: 'LGEI Text', sans-serif;}
+body {position:relative;font-weight:400; line-height:1; color:#000;}
 
 a {color:inherit;}
 

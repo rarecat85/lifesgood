@@ -67,7 +67,7 @@
         padding: 0 0 rem(27) 0;
       }
       .sns-title {
-        @include font(14, 140%, 700);
+        @include font(14, 140%, 550);
         margin-bottom: rem(12.25);
         @include tablet {
           font-size: rem(28);
@@ -180,7 +180,7 @@
       }
 
       .form-title {
-        @include font(14, 140%, 700);
+        @include font(14, 140%, 550);
         margin-bottom: rem(13.41);
         @include tablet {
           font-size: rem(28);

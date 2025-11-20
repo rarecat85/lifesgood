@@ -4,7 +4,10 @@
 .ise-container {
   width:100%;
   margin:0 auto;
-  
+  font-family: 'LGEI Text', sans-serif;
+  * {
+    font-family: 'LGEI Text', sans-serif;
+  }
   section {
     @include tablet {
       padding: rem(100) 0 rem(132);
