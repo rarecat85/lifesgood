@@ -16,7 +16,7 @@ ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
 table {table-layout:fixed; border-collapse:collapse; border-spacing:0;}
-* {word-wrap:break-word; word-break:keep-all; box-sizing:border-box;}
+
 button {background:none;border:0; padding:0; cursor: pointer;}
 
 body {position:relative;font-weight:400; line-height:1; color:#000;}

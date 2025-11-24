@@ -4,10 +4,22 @@
 .ise-container {
   width:100%;
   margin:0 auto;
-  font-family: 'LGEI Text', sans-serif;
+  font-family: "LG EI Headline", sans-serif;
+
   * {
-    font-family: 'LGEI Text', sans-serif;
+    font-family: "LG EI Headline", sans-serif;
+    word-wrap: break-word; 
+    word-break: keep-all;
+    box-sizing: border-box;
   }
+
+  a {
+    color:inherit;
+    &:active, &:focus, &:hover {
+      text-decoration: none;
+    }
+  }
+
   section {
     @include tablet {
       padding: rem(100) 0 rem(132);
@@ -88,6 +100,7 @@
       margin-bottom: 0
     }
     .title {
+      font-family: "LG EI Headline";
       @include font(30,110%,700);
     }
     .text {

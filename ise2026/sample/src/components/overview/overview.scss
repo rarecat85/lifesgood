@@ -85,13 +85,14 @@
   .text-bx {
     margin-bottom: rem(56);
     .title {
+      font-family: "LG EI Headline";
       @include font(16,140%,550);
       margin-bottom: rem(16);
     }
     .text {
-      @include font(12,140%,400);
+      @include font(12,140%,250);
       color: #AFAFAF;
-      max-width: rem(920);
+      max-width: rem(870);
       margin: 0 auto;
       strong {
         font-weight: 700;

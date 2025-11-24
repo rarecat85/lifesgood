@@ -15,6 +15,7 @@
     .text-bx {
       text-align: center;
       h1 {
+        font-family: "LG EI Headline";
         @include font(20,110%,700);
         strong {
           @include font(41,110%,700);

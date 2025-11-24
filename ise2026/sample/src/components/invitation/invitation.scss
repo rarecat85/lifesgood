@@ -47,6 +47,7 @@
   }
   .text-bx {
     .title {
+      font-family: "LG EI Headline";
       @include font(30,100%,700);
       text-wrap: balance;
       margin-bottom: rem(10);
@@ -179,11 +180,13 @@
         .text-bx {
           margin-bottom: rem(42);
           .sub-title {
+            font-family: "LG EI Headline";
             @include font(16,140%,250);
           }
           .code {
             display: flex;
             align-items: center;
+            font-family: "LG EI Headline";
             @include font(39,100%,550);
             color: $white;
             cursor: pointer;
