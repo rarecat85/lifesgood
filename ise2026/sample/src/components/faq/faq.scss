@@ -136,7 +136,10 @@
           padding: 0 rem(20);
           transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out;
           @include tablet {
-            padding: 0 rem(43) 0 rem(53);
+            padding: 0 rem(40);
+          }
+          @include desktop {
+            padding: 0 0 0 rem(53);
           }
           &::before {
             content: 'Answer';
@@ -152,7 +155,7 @@
             margin-bottom: rem(22);
             br {
               display: none;
-              @include tablet {
+              @include desktop {
                 display: block;
               }
             }

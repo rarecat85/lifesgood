@@ -1,6 +1,6 @@
 @font-face {
   font-display: swap;
-  font-family: "LGEI Headline";
+  font-family: "LG EI Headline";
   font-style: normal;
   font-weight: 700;
   src: local("LGEI Headline Bold"),local("LGEIHeadline-Bold"),url(/theme/rbFront/font/LGEIHeadline-Bold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Bold.woff) format("woff")
@@ -8,7 +8,7 @@
 
 @font-face {
   font-display: swap;
-  font-family: "LGEI Headline";
+  font-family: "LG EI Headline";
   font-style: normal;
   font-weight: 300;
   src: local("LGEI Headline Light"),local("LGEIHeadline-Light"),url(/theme/rbFront/font/LGEIHeadline-Light.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Light.woff) format("woff")
@@ -16,7 +16,7 @@
 
 @font-face {
   font-display: swap;
-  font-family: "LGEI Headline";
+  font-family: "LG EI Headline";
   font-style: normal;
   font-weight: 400;
   src: local("LGEI Headline Regular"),local("LGEIHeadline-Regular"),url(/theme/rbFront/font/LGEIHeadline-Regular.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Regular.woff) format("woff")
@@ -24,7 +24,7 @@
 
 @font-face {
   font-display: swap;
-  font-family: "LGEI Headline";
+  font-family: "LG EI Headline";
   font-style: normal;
   font-weight: 600;
   src: local("LGEI Headline Semibold"),local("LGEIHeadline-Semibold"),url(/theme/rbFront/font/LGEIHeadline-Semibold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Semibold.woff) format("woff")
@@ -32,7 +32,7 @@
 
 @font-face {
   font-display: swap;
-  font-family: "LGEI Headline";
+  font-family: "LG EI Headline";
   font-style: normal;
   font-weight: 100;
   src: local("LGEI Headline Thin"),local("LGEIHeadline-Thin"),url(/theme/rbFront/font/LGEIHeadline-Thin.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Thin.woff) format("woff")
