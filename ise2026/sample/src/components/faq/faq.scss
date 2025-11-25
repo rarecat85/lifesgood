@@ -62,11 +62,14 @@
           background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_q.svg');
           background-size: rem(13) rem(18);
           background-repeat: no-repeat;
-          background-position: left rem(4);
           position: relative;
+          background-position: rem(2) rem(4);
           @include tablet {
-            padding: 0 rem(40);
+            padding: 0 rem(43) 0 rem(53);
             background-size: rem(17) rem(23);
+          }
+          @include desktop {
+            background-position: rem(10) rem(4);
           }
           // 웹 접근성: 포커스 스타일 추가
           &:focus {
@@ -95,12 +98,13 @@
               background-repeat: no-repeat;
               background-position: center;
               position: absolute;
-              top: rem(9);
+              top: rem(14);
               right: rem(10);
               transition: all 0.3s;
               @include tablet {
                 width: rem(25);
                 height: rem(25);
+                top: rem(9);
               }
             }
             br {
@@ -132,7 +136,7 @@
           padding: 0 rem(20);
           transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out;
           @include tablet {
-            padding: 0 rem(40);
+            padding: 0 rem(43) 0 rem(53);
           }
           &::before {
             content: 'Answer';
@@ -145,7 +149,6 @@
           }
           .text {
             @include font(16,140%,250);
-            letter-spacing: -0.005em;
             margin-bottom: rem(22);
             br {
               display: none;
@@ -154,8 +157,10 @@
               }
             }
             .faq-link {
+              display: inline-block;
               color:#FD312E;
               text-decoration: underline;
+              word-break: keep-all;
             }
           }
         }
