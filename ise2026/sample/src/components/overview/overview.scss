@@ -94,8 +94,12 @@
       color: #AFAFAF;
       max-width: rem(820);
       margin: 0 auto;
+      text-wrap: balance;
       strong {
         font-weight: 700;
+      }
+      br {
+        display: none;
       }
     }
     @include tablet {
@@ -106,6 +110,9 @@
       }
       .text {
         font-size: rem(22);
+        br {
+          display: block;
+        }
       }
     }
     @include desktop {
