@@ -85,9 +85,10 @@
           }
           .text {
             display: block;
-            max-width: rem(214);
+            max-width: rem(220);
             @include font(20,110%,400);
             color: $black;
+            text-wrap: balance;
             &::before {
               content: '';
               display: block;
@@ -113,6 +114,8 @@
             @include tablet {
               font-size: rem(30);
               max-width: 100%;
+            }
+            @include desktop {
               br {
                 display: block;
               }
