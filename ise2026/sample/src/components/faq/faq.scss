@@ -156,7 +156,10 @@
           .text {
             @include font(16,140%,250);
             margin-bottom: rem(22);
-            br {
+            strong {
+              font-weight: 700;
+            }
+            .br-pc {
               display: none;
               @include desktop {
                 display: block;

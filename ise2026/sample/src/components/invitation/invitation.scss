@@ -62,8 +62,10 @@
     .text {
       @include font(14,140%,400);
       max-width: rem(434);
-      margin: 0 auto;
       text-wrap: balance;
+      br {
+        display: none;
+      }
     }
     @include tablet {
       .title {
@@ -75,6 +77,10 @@
       }
       .text {
         font-size: rem(22);
+        margin: 0 auto;
+        br {
+          display: block;
+        }
       }
     }
     @include desktop {
@@ -172,7 +178,7 @@
           height: 100%;
           align-self: stretch;
           background-image: url('/theme/rbFront/img/w/ise/ise2026/invitation_pattern.png');
-          background-size: cover;
+          background-size: 100% 100%;
           background-position: right center;
           border-radius: 0;
           position: static;
@@ -255,7 +261,7 @@
             }
             .code {
               display: inline-block;
-              @include font(99,100%,550);
+              font-size: min(rem(99), 10vw);
             }
           }
           @include desktop {
@@ -264,7 +270,7 @@
               @include font(30,140%,250);
             }
             .code {
-              @include font(110,100%,550);
+              font-size: rem(110);
             }
           }
         }
@@ -297,7 +303,7 @@
                 &::before {
                   width: rem(1);
                   height: rem(12);
-                  margin: 0 rem(31) 0 rem(20);
+                  margin: 0 rem(25);
                 }
               }
             }
