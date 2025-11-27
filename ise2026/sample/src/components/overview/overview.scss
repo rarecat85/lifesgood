@@ -92,7 +92,6 @@
     .text {
       @include font(12,140%,250);
       color: #AFAFAF;
-      max-width: rem(820);
       margin: 0 auto;
       text-wrap: balance;
       strong {
