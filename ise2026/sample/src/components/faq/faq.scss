@@ -101,7 +101,7 @@
               position: absolute;
               top: rem(14);
               right: rem(10);
-              transition: all 0.3s;
+              transition: transform 0.3s;
               @include tablet {
                 width: rem(25);
                 height: rem(25);
