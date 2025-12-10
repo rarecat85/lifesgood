@@ -1,0 +1,20 @@
+{
+  "name": "radio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ../core/dev.js",
+    "cmp-dev": "node ../core/component-dev-ise.js sample",
+    "build": "node ../core/build.js",
+    "cmp-build": "node ../core/component-build.js",
+    "export": "node ../core/export.js",
+    "dam": "node ../core/dam.js",
+    "copy": "node ../core/copy.js",
+    "change": "node ../core/change.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

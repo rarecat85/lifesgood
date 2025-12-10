@@ -1,0 +1,19 @@
+/* color set */
+$white : #fff;
+$black : #000;
+$red : #EA1917;
+$primary : #FD312E;
+$midGray : #AFAFAF;
+$darkGray : rgba(0,0,0,0.8);
+$bg : #F6F3EB;
+
+/* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1440부터 pc */
+$tab : 768px;
+$pc : 1441px;
+
+$inner : 1440px; /* PC 기준 inner 사이즈 */
+
+/* device별 기준 section 상하 padding값, rem mixin에 넣어서 사용 */
+$mo_padding : 56; 
+$tab_padding: 72;
+$pc_padding : 100;

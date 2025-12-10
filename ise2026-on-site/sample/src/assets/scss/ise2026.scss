@@ -1,0 +1,136 @@
+@use './variable' as *;
+@use './mixin' as *;
+
+.ise-container {
+  width:100%;
+  margin:0 auto;
+  font-family: "LG EI Headline", sans-serif;
+
+  * {
+    font-family: "LG EI Headline", sans-serif;
+    word-wrap: break-word; 
+    word-break: keep-all;
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    &:active, &:focus, &:hover {
+      text-decoration: none;
+      font-weight: inherit;
+    }
+  }
+
+  .inner {
+    width:100%;
+    max-width: $inner;
+    margin:0 auto;
+    padding:0 rem(34);
+    overflow: hidden;
+  }
+  
+  .toast-popup {
+    background-color: #DADADA;
+    padding: rem(8) rem(40);
+    border-radius: rem(10);
+    position: absolute;
+    transform: translate(-50% ,50%);  
+    bottom: 50%;
+    left: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    @include tablet {
+      padding: rem(10) rem(40);
+    }
+    .toast-popup-inner {
+      display: flex;
+      align-items: center;
+      gap: rem(8);
+      @include tablet {
+        gap: rem(10);
+      }
+      &::before {
+        content: '';
+        display: inline-block;
+        display: block;
+        width: rem(15);
+        height: rem(15);
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_copy_popup.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        @include tablet {
+          width: rem(22);
+          height: rem(22);
+        }
+      }
+      .toast-popup-text {
+        color: $black;
+        @include font(12,100%,400);
+        white-space: nowrap;
+        @include tablet {
+          font-size: rem(17);
+        }
+        span {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .section-title-bx {
+    margin-bottom: rem(40);
+    @include tablet {
+      margin-bottom: 0
+    }
+    .title {
+      font-family: "LG EI Headline";
+      @include font(30,110%,700);
+    }
+    .text {
+      @include font(14,140%,400);
+      margin-top: rem(10);
+      text-wrap: balance;
+      @include desktop {
+        margin-top: rem(40);
+      }
+    }
+    @include tablet {
+      .title {
+        font-size: rem(50);
+      }
+      .text {
+        font-size: rem(22);
+      }
+    }
+  }
+
+  .a11y-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  /* fade-up animation */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+}
