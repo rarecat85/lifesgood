@@ -4,10 +4,10 @@
 .ise-container {
   width:100%;
   margin:0 auto;
-  font-family: "LG EI Headline", sans-serif;
+  font-family: $font-text;
 
   * {
-    font-family: "LG EI Headline", sans-serif;
+    font-family: $font-text;
     word-wrap: break-word; 
     word-break: keep-all;
     box-sizing: border-box;
@@ -78,22 +78,20 @@
     }
   }
 
-  .section-title-bx {
+  .section-tit-bx {
+    text-align: center;
     margin-bottom: rem(40);
     @include tablet {
-      margin-bottom: 0
+      margin-bottom: rem(20);
     }
     .title {
       font-family: "LG EI Headline";
       @include font(30,110%,700);
+      margin-bottom: rem(20)
     }
     .text {
       @include font(14,140%,400);
-      margin-top: rem(10);
       text-wrap: balance;
-      @include desktop {
-        margin-top: rem(40);
-      }
     }
     @include tablet {
       .title {

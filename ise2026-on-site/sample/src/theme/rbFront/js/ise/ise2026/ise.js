@@ -322,6 +322,31 @@ function initKVVideo() {
   });
 }
 
+/* Booth 이미지 슬라이드 자동 전환 */
+let boothSlideInterval = null;
+let currentBoothIndex = 0;
+
+function initBoothSlide() {
+  const boothSlides = document.querySelectorAll('.booth-map .img-list li');
+  
+  if (boothSlides.length === 0) return;
+  
+  // 자동 슬라이드 전환 함수
+  function nextSlide() {
+    // 현재 활성화된 슬라이드의 active 클래스 제거
+    boothSlides[currentBoothIndex].classList.remove('active');
+    
+    // 다음 인덱스 계산
+    currentBoothIndex = (currentBoothIndex + 1) % boothSlides.length;
+    
+    // 다음 슬라이드에 active 클래스 추가
+    boothSlides[currentBoothIndex].classList.add('active');
+  }
+  
+  // 3초마다 자동 전환
+  boothSlideInterval = setInterval(nextSlide, 3000);
+}
+
 /* footer 네비게이션 버튼 클릭 이벤트 */
 function handleFooterNavClick() {
   const footerNavLinks = document.querySelectorAll('.ise-footer .nav-link[data-section]');
@@ -361,6 +386,7 @@ function handleFooterNavClick() {
 function init() {
   initFadeUp();
   initKVVideo();
+  initBoothSlide();
   handleFooterNavClick();
 
   new fullpage('.ise-container', {

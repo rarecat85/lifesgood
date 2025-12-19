@@ -7,6 +7,10 @@ $midGray : #AFAFAF;
 $darkGray : rgba(0,0,0,0.8);
 $bg : #F6F3EB;
 
+/* font family */
+$font-headline : "LG EI Headline", sans-serif;
+$font-text : "LG EI Text", sans-serif;
+
 /* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1440부터 pc */
 $tab : 768px;
 $pc : 1441px;

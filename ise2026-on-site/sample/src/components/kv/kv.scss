@@ -1,6 +1,14 @@
 @use "../../assets/scss/mixin"as *;
 @use "../../assets/scss/variable"as *;
 
+header {
+  position: fixed;
+  width: 100%;
+  height: rem(88);
+  background: #fff;
+  z-index: 1000;
+}
+
 .kv {
   background-color: $black;
   color: $white;  
@@ -8,21 +16,22 @@
   .inner {
     position: relative;
     padding: 0 rem(30);
-    @include tablet {
+    @include desktop {
       padding: 0 rem(80);
     }
-    .text-bx {
-      max-width: rem(900);
+    .txt-bx {
       margin: 0 auto;
       text-align: center;
       text-wrap: balance;
       .title {
-        @include font(32,110%,700);
+        font-family: $font-headline;
+        @include font(32,110%,550);
         .highlight-text {
+          font-family: $font-headline;
           @include font(63,110%,700);
         }
       }
-      @include tablet {
+      @include desktop {
         h1 {
           font-size: rem(32);
           margin-bottom: rem(19.6);
@@ -109,18 +118,19 @@
       }
       .sub-title {
         display: block;
-        @include font(16,140%,550);
+        font-family: $font-headline;
+        @include font(16,140%,400);
         margin-bottom: rem(8);
         color: $white;
-        @include tablet {
-          font-size: rem(16);
+        @include desktop {
+          font-size: rem(22);
         }
       }
       .des {
-        @include font(14,140%,250);
-        color: $midGray;
-        @include tablet {
-          font-size: rem(16);
+        @include font(14,140%,400);
+        color: #7E7C77;
+        @include desktop {
+          font-size: rem(20);
         }
       }
     }
@@ -191,6 +201,12 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
+        img {
+          width: rem(189);
+          @include tablet {
+            width: auto;
+          }
+        }
       }
       video {
         width: 100%;
@@ -201,6 +217,9 @@
       @media all and (min-width: 1921px) {
         height: 100%;
       }
+    }
+    .logo-bx {
+      margin-bottom: rem(15);
     }
   }
 }
