@@ -57,12 +57,13 @@
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  @include font(14,140%,400);
+  font-family: $font-headline;
+  @include font(14,140%,550);
   width: fit-content;
   white-space: nowrap;
-  height:rem(40);
+  height:rem(32);
   border-radius:rem(100);
-  padding: rem(13) rem(30);
+  padding: rem(8) rem(22);
   cursor: pointer;
   transition: all 0.3s;
   
@@ -133,12 +134,7 @@
       }
     }
   }
-  @include tablet {
-    font-size:rem(14);
-    padding: rem(9) rem(30);
-  }
   @include desktop{
-    min-width: rem(70);
-    font-size:rem(16);
+    min-width: rem(113);
   }
 }

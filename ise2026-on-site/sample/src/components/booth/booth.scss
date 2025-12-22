@@ -1,41 +1,172 @@
-@import "../../assets/scss/variable.scss";
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
 .booth-map {
   background-color: #FD312E;
+
+  .section-tit-bx {
+    color: $white;
+  }
+
   .slide-bx {
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  .img-list {
-    position: relative;
-    width: 100%;
-    .item {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .img-list {
+      position: relative;
       width: 100%;
-      opacity: 0;
-      z-index: 1;
-      transition: opacity 0.6s ease-in-out;
-      pointer-events: none;
-      
-      &:first-child {
-        position: relative;
-        opacity: 1;
-        pointer-events: auto;
-      }
-      
-      &.active {
-        opacity: 1;
-        z-index: 2;
-        pointer-events: auto;
-      }
-
-      picture, img {
+      .item {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: auto;
-        display: block;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 0.6s ease-in-out;
+        pointer-events: none;
+        
+        &:first-child {
+          position: relative;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        
+        &.active {
+          opacity: 1;
+          z-index: 2;
+          pointer-events: auto;
+        }
+  
+        picture, img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
       }
+    }
+    .booth-bx {
+      display: flex;
+      justify-content: space-between;
+      gap: rem(10);
+      width: 100%;
+      height: 100%;
+      padding-right: rem(50);
+      background-color: $black;
+      border-radius: rem(30);
+      overflow: hidden;
+      .booth-thumb {
+        max-width: rem(542);
+        position: relative;
+        .booth-num {
+          font-family: $font-headline;
+          @include font(167,100%,550,$white);
+          position: absolute;
+          top: rem(51.3);
+          right: rem(6);
+        }
+      }
+      .booth-info {
+        max-width: rem(275);
+        padding-top: rem(100);
+        .booth-name {
+          font-family: $font-headline;
+          @include font(46,100%,550);
+          color: $white;
+          margin-bottom: rem(20);
+          span {
+            display: block;
+            font-family: $font-headline;
+            @include font(32,100%,550);
+            margin-top: rem(8);
+          }
+        }
+        .booth-desc {
+          font-family: $font-headline;
+          @include font(15,1.2,250);
+          color: $white;
+        }
+      }
+      .booth-location {
+        padding-top: rem(100);
+      }
+    }
+    .swiper-pagination {
+      display: flex;
+      align-items: center;
+      gap: rem(44);
+      width: fit-content;
+      position: relative;
+      margin: rem(82) auto 0;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: $white;
+        position: absolute;
+        bottom: rem(14);
+        left: 0;
+        z-index: -1;
+      }
+      &.swiper-pagination-bullets-dynamic {
+        font-size: inherit;
+        transform: translateX(0);
+        overflow: unset;
+      }
+      .swiper-pagination-bullet {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        border-radius: 0;
+        opacity: 1;
+        margin: 0;
+        transform: scale(1);
+
+        .bullet-wrap {
+          position: relative;
+        }
+        .bullet-num {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include font(15,1.2,550);
+          width: rem(28);
+          height: rem(28);
+          border-radius: 50%;
+          background-color: $white;
+          transition: all 0.4s;
+          &:hover {
+            background-color: $black;
+            color: $white;
+          }
+        }
+        .bullet-text {
+          @include font(14,1,550);
+          position: absolute;
+          bottom: rem(34);
+          transform: translateX(-50%) translateY(5px);
+          font-family: $font-headline;
+          color: $white;
+          white-space: nowrap;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.4s;
+        }
+        &.swiper-pagination-bullet-active {
+          .bullet-num {
+            background-color: $black;
+            color: $white;
+          }
+          .bullet-text {
+            color: $black;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0px);
+          }
+        }
+      }
+    }
+    .btn {
+      @include btn($white, false, $primary);
+      margin-top: rem(81);
     }
   }
 }

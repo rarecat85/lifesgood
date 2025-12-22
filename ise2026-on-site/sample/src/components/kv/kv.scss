@@ -17,7 +17,7 @@ header {
     position: relative;
     padding: 0 rem(30);
     @include desktop {
-      padding: 0 rem(80);
+      padding: rem(190) rem(80) rem(90);
     }
     .txt-bx {
       margin: 0 auto;
@@ -140,7 +140,7 @@ header {
       position: relative;
       @include tablet {
         height: 42dvh;
-        margin: rem(68) auto rem(63);
+        margin: rem(53.8) auto rem(56.68);
       }
       .video-title {
         display: inline-flex;

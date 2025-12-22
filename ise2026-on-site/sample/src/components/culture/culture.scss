@@ -1,0 +1,30 @@
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
+.culture {
+  background-color: #F0ECE4;
+  .slide-bx {
+    max-width: 1200px;
+    margin: 0 auto;
+    .culture-btn {
+      overflow: hidden;
+      position: relative;
+      &-img {
+        &-active {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          transform: translateY(-4px);
+          transition: all 0.4s;
+        }
+      }
+      &:hover {
+        .culture-btn-img-active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

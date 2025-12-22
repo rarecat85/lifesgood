@@ -21,6 +21,21 @@
     }
   }
 
+  br {
+    &.pc-only {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+    &.mo-only {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+  
   .inner {
     width:100%;
     max-width: $inner;
@@ -82,7 +97,7 @@
     text-align: center;
     margin-bottom: rem(40);
     @include tablet {
-      margin-bottom: rem(20);
+      margin-bottom: rem(60);
     }
     .title {
       font-family: "LG EI Headline";

@@ -163,10 +163,14 @@ html.fp-enabled {
     width: 5px;
     border: 0;
     background: #FFFFFF;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#fp-nav.black ul li a span,
+.fp-slidesNav.black ul li a span {
+  background-color: #000;
 }
 #fp-nav ul li:hover a span,
 .fp-slidesNav ul li:hover a span {
@@ -186,7 +190,13 @@ html.fp-enabled {
     opacity: 0;
     width: 0;
     cursor: pointer;
+    transition: color 0.3s;
 }
+
+#fp-nav.black ul li .fp-tooltip {
+  color: #000;
+}
+
 #fp-nav ul li:hover .fp-tooltip,
 #fp-nav.fp-show-active a.active + .fp-tooltip {
     -webkit-transition: opacity 0.2s ease-in;
