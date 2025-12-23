@@ -584,11 +584,8 @@ function handleCultureSlide() {
   const contentSwiper = new Swiper(contentSlide, {
     slidesPerView: 1,
     spaceBetween: 0,
-    // effectrk fade로 슬라이드에 페이드 효과 적용
     effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
+    speed: 500,
     thumbs: {
       swiper: btnSwiper,
     },
