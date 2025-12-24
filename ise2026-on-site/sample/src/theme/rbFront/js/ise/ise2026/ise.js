@@ -353,7 +353,7 @@ function initBoothSlide() {
   }
 
   // 3초마다 자동 전환
-  boothSlideInterval = setInterval(nextSlide, 3000);
+  boothSlideInterval = setInterval(nextSlide, 1500);
 }
 
 /* footer 네비게이션 버튼 클릭 이벤트 */
@@ -409,6 +409,7 @@ function handleBoothSlide() {
     spaceBetween: 20,
     loop: true,
     speed: 1000,
+    effect: "fade",
     pagination: {
       el: ".booth-map .slide-bx .swiper-pagination",
       type: "bullets",
@@ -592,6 +593,86 @@ function handleCultureSlide() {
   });
 }
 
+function handleTechzoneSlide(){
+  const techMainSlide = document.querySelector(".techzone .slide-bx");
+  const techMainSwiper = new Swiper(techMainSlide, {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    effect: "fade",
+    speed: 500,
+    on: {
+      slideChange: function() {
+        // 현재 활성화된 슬라이드 정보 가져오기
+        const activeIndex = this.activeIndex;
+        const activeSlide = this.slides[activeIndex];
+        
+        // 활성화된 슬라이드에서 실행할 효과 함수 호출
+        handleActiveSlideEffect(activeSlide, activeIndex);
+      }
+    },
+    pagination: {
+      el: ".techzone .slide-bx .swiper-pagination",
+      type: "bullets",
+      clickable: true,
+      renderBullet: function (index, className) {
+        const labels = ['LG MAGNIT', 'Virtual production', 'Indoor LED', 'Outdoor LED'];
+        return '<span class="' + className + '">' +
+               '<span class="pagination-number">' + (index + 1) + '</span>' +
+               '<span class="pagination-label">' + labels[index] + '</span>' +
+               '</span>';
+      },
+    },
+  });
+  
+  // 초기 로드 시 첫 번째 슬라이드 효과 실행
+  if (techMainSwiper.slides && techMainSwiper.slides.length > 0) {
+    handleActiveSlideEffect(techMainSwiper.slides[0], 0);
+  }
+};
+
+gsap.registerPlugin(DrawSVGPlugin);
+
+
+// 활성화된 슬라이드에서 실행할 효과 함수
+function handleActiveSlideEffect(slideElement, slideIndex) {
+  const maskedGroup = slideElement.querySelector(".masked-group");
+  if (!maskedGroup) return;
+  
+  const maskUrl = maskedGroup.getAttribute("mask");
+  if (!maskUrl) return;
+  
+  const maskIdMatch = maskUrl.match(/#(\w+)/);
+  if (!maskIdMatch) return;
+  
+  const maskId = maskIdMatch[1];
+  const maskElement = slideElement.querySelector(`#${maskId}`);
+  if (!maskElement) return;
+  
+  // mask 내부 초기화
+  maskElement.innerHTML = '';
+  
+  // 점선 path 복제 및 mask에 추가
+  const paths = maskedGroup.querySelectorAll(".draw-path");
+  if (!paths || paths.length === 0) return;
+  
+  paths.forEach((path) => {
+    let clone = path.cloneNode(true);
+    clone.removeAttribute("stroke-dasharray");
+    clone.setAttribute("stroke", "white");
+    clone.setAttribute("stroke-opacity", "1");
+    gsap.set(clone, { drawSVG: "0%" });
+    maskElement.appendChild(clone);
+  });
+  
+  // 애니메이션
+  gsap.to(`#${maskId} path`, {
+    drawSVG: "100%",
+    duration: 1.45,
+    ease: "none",
+    stagger: 0.1
+  });
+}
+
 /* 모든 기능 초기화 */
 function init() {
   initFadeUp();
@@ -600,6 +681,7 @@ function init() {
   handleFooterNavClick();
   handleBoothSlide();
   handleCultureSlide();
+  handleTechzoneSlide();
 
   new fullpage(".ise-container", {
     licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
@@ -618,6 +700,14 @@ function init() {
     scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화
     normalScrollElements: ".layer-popup, .layer-popup *, .globe, .slide-bx",
     onLeave: function(origin, destination, direction) {
+      
+      // direction 값을 활용할 수 있습니다
+      if (direction === 'down') {
+        console.log('아래로 스크롤 중');
+      } else if (direction === 'up') {
+        console.log('위로 스크롤 중');
+      }
+
       const nav = document.querySelector('#fp-nav');
       
       // 다음 섹션이 3번 또는 4번이면 black 클래스 추가

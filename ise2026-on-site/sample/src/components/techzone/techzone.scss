@@ -1,0 +1,109 @@
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
+.techzone {
+  background-color: #F0ECE4;
+  .slide-bx {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-image: url("/theme/rbFront/img/w/ise/ise2026/techzone_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: rem(30);
+    position: relative;
+    .slide-item {
+      width: 100%;
+      height: 100%;
+      
+      // 모바일: JPG 이미지 표시, SVG 숨김
+      .mobile-img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .desktop-svg {
+        display: none;
+      }
+      
+      // 태블릿/데스크톱 (768px 이상): SVG 표시, JPG 숨김
+      @media (min-width: 768px) {
+        .mobile-img {
+          display: none;
+        }
+        .desktop-svg {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .swiper-slide {
+      .slide-item {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      &-active {
+        .slide-item {
+          opacity: 1;
+        }
+      }
+    }
+    .slide-controller {
+      text-align: center;
+      position: absolute;
+      transform: translateX(-50%);
+      bottom: rem(33);
+      left: 50%;
+      z-index: 2;
+      .title {
+        font-family: $font-headline;
+        @include font(46,1,550, $white);
+        margin-bottom: rem(20);
+      }
+    }
+    .swiper-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(14);
+      position: static;
+      .swiper-pagination-bullet {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        border: rem(1) solid $white;
+        border-radius: rem(25);
+        padding: rem(10) rem(30);
+        opacity: 1;
+        margin: 0;
+        transition: all 0.3s;
+        .pagination-label,
+        .pagination-number  {
+          font-family: $font-headline;
+          @include font(18,1.2,550);
+          white-space: nowrap;
+          color: $white;
+          transition: all 0.3s;
+        }
+        .pagination-number {
+          @include tablet {
+            display: none;
+          }
+        }
+        &-active {
+          background-color: $white;
+          .pagination-label,
+          .pagination-number {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
