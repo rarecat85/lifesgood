@@ -20,7 +20,7 @@ $font-text : "LG EI Text", sans-serif;
 $tab : 768px;
 $pc : 1441px;
 
-$inner : 1440px; /* PC 기준 inner 사이즈 */
+$inner : 1260px; /* PC 기준 inner 사이즈 */
 
 /* device별 기준 section 상하 padding값, rem mixin에 넣어서 사용 */
 $mo_padding : 56; 

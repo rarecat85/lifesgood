@@ -9,7 +9,8 @@
   }
 
   .slide-bx {
-    max-width: 1200px;
+    max-width: rem(1260);
+    padding: 0 rem(30);
     margin: 0 auto;
     .img-list {
       position: relative;

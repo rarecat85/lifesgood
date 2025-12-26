@@ -673,6 +673,25 @@ function handleActiveSlideEffect(slideElement, slideIndex) {
   });
 }
 
+function handleTechzoneNewsSlide(){
+  const techzoneNewsSlide = document.querySelector(".techzone-list .news-slide");
+  const techzoneNewsSwiper = new Swiper(techzoneNewsSlide, {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 500,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 13,
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 12,
+      },
+    },
+  });
+}
+
 /* 모든 기능 초기화 */
 function init() {
   initFadeUp();
@@ -682,6 +701,8 @@ function init() {
   handleBoothSlide();
   handleCultureSlide();
   handleTechzoneSlide();
+  handleTechzoneNewsSlide();
+
 
   new fullpage(".ise-container", {
     licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",

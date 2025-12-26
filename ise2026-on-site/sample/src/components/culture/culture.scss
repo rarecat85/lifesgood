@@ -4,7 +4,8 @@
 .culture {
   background-color: #F0ECE4;
   .slide-bx {
-    max-width: 1200px;
+    max-width: rem(1260);
+    padding: 0 rem(30);
     margin: 0 auto;
     .btn-slide {
       margin-bottom: rem(8);
@@ -12,6 +13,10 @@
     .culture-btn {
       overflow: hidden;
       position: relative;
+      img {
+        display: block;
+        max-width: 100%;
+      }
       &-img {
         &-active {
           position: absolute;
