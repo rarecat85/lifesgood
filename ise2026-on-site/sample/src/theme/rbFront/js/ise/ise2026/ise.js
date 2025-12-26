@@ -364,20 +364,20 @@ function handleFooterNavClick() {
 
   if (footerNavLinks.length === 0) return;
 
-  // 섹션 매핑
+  // 실제 섹션 매핑
   const sectionMap = new Map();
   const sections = document.querySelectorAll(
-    ".kv, .overview, .inspiration, .invitation, .faq"
+    ".kv, .wallgraphic, .booth-map, .culture, .techzone, .highlights"
   );
 
-  sections.forEach((section) => {
+  sections.forEach((section, index) => {
     const sectionClass = section.className
       .split(" ")
       .find((cls) =>
-        ["kv", "overview", "inspiration", "invitation", "faq"].includes(cls)
+        ["kv", "wallgraphic", "booth-map", "culture", "techzone", "highlights"].includes(cls)
       );
     if (sectionClass) {
-      sectionMap.set(sectionClass, section);
+      sectionMap.set(sectionClass, { element: section, index: index + 1 });
     }
   });
 
@@ -388,11 +388,16 @@ function handleFooterNavClick() {
       const targetSection = sectionMap.get(sectionClass);
 
       if (targetSection) {
-        // 부드러운 스크롤
-        targetSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        // fullpage API가 존재하고 반응형 모드가 아닐 때
+        if (typeof fullpage_api !== 'undefined' && !fullpage_api.test.isResponsive) {
+          fullpage_api.moveTo(targetSection.index);
+        } else {
+          // 일반 스크롤
+          targetSection.element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
       }
     });
   });
@@ -692,6 +697,31 @@ function handleTechzoneNewsSlide(){
   });
 }
 
+function handleHighlightsSlide(){
+  const highlightsMainSlide = document.querySelector(".highlights .main-slide");
+  const highlightsSubSlide = document.querySelector(".highlights .sub-slide");
+  
+  const highlightsMainSwiper = new Swiper(highlightsMainSlide, {
+    loop:true,
+    spaceBetween: 20,
+    speed: 1000,
+    navigation: {
+      nextEl: ".highlights .main-slide .slide-next",
+      prevEl: ".highlights .main-slide .slide-prev",
+    },
+  });
+  
+  const highlightsSubSwiper = new Swiper(highlightsSubSlide, {
+    loop:true,
+    spaceBetween: 20,
+    speed: 1000,
+    navigation: {
+      nextEl: ".highlights .sub-slide .slide-next",
+      prevEl: ".highlights .sub-slide .slide-prev",
+    },
+  });
+}
+
 /* 모든 기능 초기화 */
 function init() {
   initFadeUp();
@@ -702,7 +732,7 @@ function init() {
   handleCultureSlide();
   handleTechzoneSlide();
   handleTechzoneNewsSlide();
-
+  handleHighlightsSlide();
 
   new fullpage(".ise-container", {
     licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
@@ -720,6 +750,7 @@ function init() {
     showActiveTooltip: true,
     scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화
     normalScrollElements: ".layer-popup, .layer-popup *, .globe, .slide-bx",
+    responsiveWidth: 1025, // 1024px 이하에서 fullpage 해제
     onLeave: function(origin, destination, direction) {
       
       // direction 값을 활용할 수 있습니다

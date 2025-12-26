@@ -131,6 +131,10 @@ html.fp-enabled {
     margin: 20px 0;
     position: relative;
 }
+#fp-nav ul li:last-child {
+  display: none;
+}
+
 .fp-slidesNav ul li {
     display: inline-block;
 }
