@@ -66,24 +66,30 @@
         }
       }
       .booth-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         max-width: rem(275);
-        padding-top: rem(100);
-        .booth-name {
-          font-family: $font-headline;
-          @include font(46,100%,550);
-          color: $white;
-          margin-bottom: rem(20);
-          span {
-            display: block;
+        height: rem(274);
+        margin-top: rem(100);
+        .booth-txt-bx {
+          .booth-name {
             font-family: $font-headline;
-            @include font(32,100%,550);
-            margin-top: rem(8);
+            @include font(46,100%,550);
+            color: $white;
+            margin-bottom: rem(20);
+            span {
+              display: block;
+              font-family: $font-headline;
+              @include font(32,100%,550);
+              margin-top: rem(8);
+            }
           }
-        }
-        .booth-desc {
-          font-family: $font-headline;
-          @include font(15,1.2,250);
-          color: $white;
+          .booth-desc {
+            font-family: $font-headline;
+            @include font(15,1.2,250);
+            color: $white;
+          }
         }
       }
       .booth-location {
@@ -167,7 +173,6 @@
     }
     .btn {
       @include btn($white, false, $primary);
-      margin-top: rem(81);
     }
   }
 }

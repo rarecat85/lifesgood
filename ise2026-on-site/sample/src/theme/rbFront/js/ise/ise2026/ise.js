@@ -709,6 +709,10 @@ function handleHighlightsSlide(){
       nextEl: ".highlights .main-slide .slide-next",
       prevEl: ".highlights .main-slide .slide-prev",
     },
+    pagination: {
+      el: ".highlights .main-slide .swiper-pagination",
+      type: "fraction",
+    }
   });
   
   const highlightsSubSwiper = new Swiper(highlightsSubSlide, {
@@ -719,6 +723,10 @@ function handleHighlightsSlide(){
       nextEl: ".highlights .sub-slide .slide-next",
       prevEl: ".highlights .sub-slide .slide-prev",
     },
+    pagination: {
+      el: ".highlights .sub-slide .swiper-pagination",
+      type: "fraction",
+    }
   });
 }
 
@@ -749,7 +757,7 @@ function init() {
     ],
     showActiveTooltip: true,
     scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화
-    normalScrollElements: ".layer-popup, .layer-popup *, .globe, .slide-bx",
+    normalScrollElements: ".layer-popup, .layer-popup *",
     responsiveWidth: 1025, // 1024px 이하에서 fullpage 해제
     onLeave: function(origin, destination, direction) {
       
