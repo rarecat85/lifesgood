@@ -5,6 +5,15 @@
   width:100%;
   margin:0 auto;
   font-family: $font-text;
+
+  @media screen and (max-width: $pc) {
+    .fp-is-overflow {
+      min-height: auto !important;
+    }
+    .fp-overflow {
+      overflow-y: unset;
+    }
+  }
   * {
     font-family: $font-text;
     word-wrap: break-word; 
@@ -37,10 +46,15 @@
   
   .inner {
     width:100%;
-    max-width: $inner;
+    max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
     margin:0 auto;
     padding:0 rem(30);
-    overflow: hidden;
+    @include tablet {
+      max-width: calc($inner_tab + rem(60));
+    }
+    @include desktop {
+      max-width: calc($inner + rem(60));
+    }
   }
   
   .toast-popup {
@@ -94,20 +108,33 @@
 
   .section-tit-bx {
     text-align: center;
-    margin-bottom: rem(40);
-    @include tablet {
-      margin-bottom: rem(60);
-    }
     .title {
       font-family: "LG EI Headline";
       @include font(30,110%,700);
-      margin-bottom: rem(20)
+      margin-bottom: rem(20);
+      text-wrap: balance;
     }
     .text {
       @include font(14,140%,400);
       text-wrap: balance;
+      br {
+        @include tablet {
+          display: none;
+        }
+        @include desktop {
+          display: block;
+        }
+      }
     }
     @include tablet {
+      .title {
+        font-size: rem(36);
+      }
+      .text {
+        font-size: rem(16);
+      }
+    }
+    @include desktop {
       .title {
         font-size: rem(50);
       }

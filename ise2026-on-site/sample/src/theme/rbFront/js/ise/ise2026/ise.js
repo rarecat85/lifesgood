@@ -683,17 +683,22 @@ function handleTechzoneNewsSlide(){
   const techzoneNewsSwiper = new Swiper(techzoneNewsSlide, {
     slidesPerView: 1,
     spaceBetween: 0,
-    speed: 500,
+    speed: 1000,
+    loop:true,
     breakpoints: {
-      768: {
+      769: {
         slidesPerView: 2,
         spaceBetween: 13,
       },
-      1200: {
+      1281: {
         slidesPerView: 3,
         spaceBetween: 12,
       },
     },
+    navigation: {
+      nextEl: ".techzone-list .news-slide .slide-next",
+      prevEl: ".techzone-list .news-slide .slide-prev",
+    }
   });
 }
 
@@ -758,7 +763,7 @@ function init() {
     showActiveTooltip: true,
     scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화
     normalScrollElements: ".layer-popup, .layer-popup *",
-    responsiveWidth: 1025, // 1024px 이하에서 fullpage 해제
+    responsiveWidth: 1281, // 1081px 이하에서 fullpage 해제
     onLeave: function(origin, destination, direction) {
       
       // direction 값을 활용할 수 있습니다

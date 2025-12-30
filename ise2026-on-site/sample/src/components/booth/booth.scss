@@ -3,9 +3,18 @@
 
 .booth-map {
   background-color: #FD312E;
-
+  @include tablet {
+    padding: rem(50) 0 rem(80);
+  }
+  @include desktop {
+    padding: 0;
+  }
   .section-tit-bx {
     color: $white;
+    margin-bottom: rem(20);
+    @include tablet {
+      margin-bottom: rem(60);
+    }
   }
 
   .slide-bx {

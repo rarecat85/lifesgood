@@ -13,11 +13,18 @@ header {
   background-color: $black;
   color: $white;  
   position: relative;
+
+  @include tablet {
+    padding: rem(124) 0 rem(47);
+  }
+  @include desktop {
+    padding: 0;
+  }
+  
   .inner {
     position: relative;
-    padding: 0 rem(30);
     @include desktop {
-      padding: rem(190) rem(80) rem(90);
+      padding: rem(178) rem(30) rem(90);
     }
     .txt-bx {
       margin: 0 auto;
