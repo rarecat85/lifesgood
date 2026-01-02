@@ -21,10 +21,12 @@
     }
   }
   .slide-wrap {
-    background-image: url("/theme/rbFront/img/w/ise/ise2026/highlights_bg.png");
-    background-size: auto;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include desktop {
+      background-image: url("/theme/rbFront/img/w/ise/ise2026/highlights_bg.png");
+      background-size: auto;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     .inner {
       @include tablet {
         display: flex;
@@ -35,11 +37,14 @@
       }
     }
     .main-slide {
-      width: min(100%, rem(795));
       position: relative;
       margin-bottom: rem(10);
       @include tablet {
+        width: min(65%, rem(495));
         margin-bottom: 0;
+      }
+      @include desktop {
+        width: min(100%, rem(795));
       }
       .slide-item {
         height: 100%;

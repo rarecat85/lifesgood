@@ -410,21 +410,31 @@ function handleBoothSlide() {
   const boothSlideTexts = ["Hall", "Key<br>attractor", "LG Business<br>solutions", "K-Culture<br>shop", "Drive-<br class='pc-only'>thru", "Meeting<br>room", "Control<br>room", "E-Paper<br>display", "Learning<br>zone", "Hotel", "LED tech<br>zone"];
 
   const boothSlideSwiper = new Swiper(boothSlide, {
-    slidesPerView: 1,
+    slidesPerView: 3,
     spaceBetween: 30,
     loop: true,
     speed: 500,
     grabCursor: true,
-      effect: "creative",
-      creativeEffect: {
-        prev: {
-          shadow: true,
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ["100%", 0, 0],
-        },
+    
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 8,
       },
+      1281: {
+        slidesPerView: 1,
+        effect: "creative",
+        creativeEffect: {
+          prev: {
+            shadow: true,
+            translate: [0, 0, -400],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        },
+      }
+    },
     pagination: {
       el: ".booth-map .slide-bx .swiper-pagination",
       type: "bullets",

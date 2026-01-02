@@ -23,25 +23,35 @@
   }
 
   .slide-bx {
-    max-width: rem(1200);
     width: calc(100% - rem(60));
     margin: 0 auto;
+    @include tablet {
+      width: calc(100% - rem(96));
+      max-width: rem(664);
+    }
     @include desktop {
+      max-width: rem(1200);
       padding-bottom: rem(150);
+    }
+    .swiper-slide {
+      height: auto;
     }
     .img-list {
       position: relative;
       width: 100%;
+      height: 100%;
       .item {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        height: 100%;
         opacity: 0;
         z-index: 1;
         transition: opacity 0.6s ease-in-out;
         pointer-events: none;
-        
+        border-radius: rem(20);
+        overflow: hidden;
         &:first-child {
           position: relative;
           opacity: 1;
@@ -56,61 +66,140 @@
   
         picture, img {
           width: 100%;
-          height: auto;
+          height: 100%;
           display: block;
+          object-fit: cover;
         }
       }
     }
     .booth-bx {
-      display: flex;
-      justify-content: space-between;
-      gap: rem(10);
       width: 100%;
       height: 100%;
-      padding-right: rem(50);
       background-color: $black;
       border-radius: rem(30);
       overflow: hidden;
+      position: relative;
+      @include desktop {
+        display: flex;
+        justify-content: space-between;
+        gap: rem(10);
+        padding-right: rem(50);
+      }
       .booth-thumb {
         max-width: rem(542);
+        width: 100%;
         position: relative;
+        img {
+          aspect-ratio: 216/147;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+          clip-path: polygon(100% 0,100% 100%,57% 100%,0 73%,0 0);
+          @include desktop {
+            aspect-ratio: 542/438;
+            clip-path: none;
+          }
+        }
         .booth-num {
           font-family: $font-headline;
           @include font(167,100%,550,$white);
           position: absolute;
-          top: rem(51.3);
-          right: rem(6);
+          
+          @include tablet {
+            font-size: rem(40);
+            left: rem(16);
+            bottom: 0;
+            transform: translateY(rem(8));
+          }
+          @include desktop {
+            font-size: rem(167);
+            top: rem(51.3);
+            right: rem(6);
+          }
+        }
+        picture {
+          display: block;
         }
       }
       .booth-info {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        max-width: rem(275);
-        height: rem(274);
-        margin-top: rem(100);
+        @include tablet {
+          height: calc(100% - rem(147));
+          margin-top: rem(8);
+          padding-bottom: rem(20);
+        }
+        @include desktop {
+          max-width: rem(275);
+          height: rem(274);
+          margin-top: rem(100);
+          padding-bottom: 0;
+        }
         .booth-txt-bx {
+          @include tablet {
+            padding-left: rem(16);
+          }
+          @include desktop {
+            padding-left: 0;
+            padding-right: 0;
+          }
           .booth-name {
             font-family: $font-headline;
             @include font(46,100%,550);
             color: $white;
-            margin-bottom: rem(20);
             span {
-              display: block;
+              display: none;
               font-family: $font-headline;
               @include font(32,100%,550);
               margin-top: rem(8);
+            }
+            @include tablet {
+              max-width: rem(125);
+              font-size: rem(16);
+              margin-bottom: rem(8);
+            }
+            @include desktop {
+              max-width: unset;
+              font-size: rem(46);
+              margin-bottom: rem(20);
+              span {
+                display: block;
+              }
             }
           }
           .booth-desc {
             font-family: $font-headline;
             @include font(15,1.2,250);
             color: $white;
+            @include tablet {
+              font-size: rem(9);
+              max-width: rem(97);
+            }
+            @include desktop {
+              font-size: rem(15);
+              max-width: unset;
+            }
           }
         }
       }
       .booth-location {
-        padding-top: rem(100);
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include tablet {
+          img {
+            max-width: rem(80);
+          }
+        }
+        @include desktop {
+          position: static;
+          padding-top: rem(100);
+          img {
+            max-width: 100%;
+          }
+        }
       }
     }
     .swiper-pagination {
@@ -190,6 +279,10 @@
     }
     .btn {
       @include btn($white, false, $primary);
+      margin: rem(16) auto 0;
+      @include desktop {
+        margin: unset;
+      }
     }
   }
 }
