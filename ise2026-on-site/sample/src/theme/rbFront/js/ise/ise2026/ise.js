@@ -411,10 +411,20 @@ function handleBoothSlide() {
 
   const boothSlideSwiper = new Swiper(boothSlide, {
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 30,
     loop: true,
-    speed: 1000,
-    effect: "fade",
+    speed: 500,
+    grabCursor: true,
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: [0, 0, -400],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      },
     pagination: {
       el: ".booth-map .slide-bx .swiper-pagination",
       type: "bullets",
@@ -604,7 +614,7 @@ function handleTechzoneSlide(){
     slidesPerView: 1,
     spaceBetween: 0,
     effect: "fade",
-    speed: 500,
+    speed: 1000,
     on: {
       slideChange: function() {
         // 현재 활성화된 슬라이드 정보 가져오기
@@ -622,9 +632,9 @@ function handleTechzoneSlide(){
       renderBullet: function (index, className) {
         const labels = ['LG MAGNIT', 'Virtual production', 'Indoor LED', 'Outdoor LED'];
         return '<span class="' + className + '">' +
-               '<span class="pagination-number">' + (index + 1) + '</span>' +
-               '<span class="pagination-label">' + labels[index] + '</span>' +
-               '</span>';
+                '<span class="pagination-number">' + (index + 1) + '</span>' +
+                '<span class="pagination-label">' + labels[index] + '</span>' +
+                '</span>';
       },
     },
   });
@@ -679,10 +689,10 @@ function handleActiveSlideEffect(slideElement, slideIndex) {
 }
 
 function handleTechzoneNewsSlide(){
-  const techzoneNewsSlide = document.querySelector(".techzone-list .news-slide");
+  const techzoneNewsSlide = document.querySelector(".techzone-list .news-slide .swiper");
   const techzoneNewsSwiper = new Swiper(techzoneNewsSlide, {
     slidesPerView: 1,
-    spaceBetween: 0,
+    spaceBetween: 10,
     speed: 1000,
     loop:true,
     breakpoints: {
@@ -698,14 +708,23 @@ function handleTechzoneNewsSlide(){
     navigation: {
       nextEl: ".techzone-list .news-slide .slide-next",
       prevEl: ".techzone-list .news-slide .slide-prev",
+    },
+    pagination: {
+      el: ".techzone-list .news-slide .swiper-pagination",
+      type: "fraction",
     }
   });
 }
 
+// Highlights Sub Swiper 인스턴스 및 상태 관리
+let highlightsSubSwiper = null;
+let highlightsBreakpointState = null; // 'mobile' or 'desktop'
+
 function handleHighlightsSlide(){
-  const highlightsMainSlide = document.querySelector(".highlights .main-slide");
+  const highlightsMainSlide = document.querySelector(".highlights .main-slide .swiper");
   const highlightsSubSlide = document.querySelector(".highlights .sub-slide");
   
+  // Main Swiper는 항상 초기화
   const highlightsMainSwiper = new Swiper(highlightsMainSlide, {
     loop:true,
     spaceBetween: 20,
@@ -720,19 +739,68 @@ function handleHighlightsSlide(){
     }
   });
   
-  const highlightsSubSwiper = new Swiper(highlightsSubSlide, {
-    loop:true,
-    spaceBetween: 20,
-    speed: 1000,
-    navigation: {
-      nextEl: ".highlights .sub-slide .slide-next",
-      prevEl: ".highlights .sub-slide .slide-prev",
-    },
-    pagination: {
-      el: ".highlights .sub-slide .swiper-pagination",
-      type: "fraction",
+  // Sub Swiper 초기화 함수
+  function initSubSwiper() {
+    if (window.innerWidth > 768) {
+      // 데스크톱: Sub Swiper 생성
+      if (!highlightsSubSwiper) {
+        highlightsSubSwiper = new Swiper(highlightsSubSlide, {
+          loop:true,
+          spaceBetween: 20,
+          speed: 1000,
+          navigation: {
+            nextEl: ".highlights .sub-slide .slide-next",
+            prevEl: ".highlights .sub-slide .slide-prev",
+          },
+          pagination: {
+            el: ".highlights .sub-slide .swiper-pagination",
+            type: "fraction",
+          }
+        });
+      }
+      highlightsBreakpointState = 'desktop';
+    } else {
+      // 모바일: Sub Swiper destroy
+      highlightsBreakpointState = 'mobile';
     }
-  });
+  }
+  
+  // Resize 이벤트에서 breakpoint 변경 감지
+  function handleResize() {
+    const isDesktop = window.innerWidth > 768;
+    const newState = isDesktop ? 'desktop' : 'mobile';
+    
+    // 상태가 변경되었을 때만 처리
+    if (newState !== highlightsBreakpointState) {
+      if (newState === 'mobile' && highlightsSubSwiper) {
+        // 데스크톱 → 모바일: Sub Swiper destroy
+        highlightsSubSwiper.destroy(true, true);
+        highlightsSubSwiper = null;
+      } else if (newState === 'desktop' && !highlightsSubSwiper) {
+        // 모바일 → 데스크톱: Sub Swiper 재생성
+        highlightsSubSwiper = new Swiper(highlightsSubSlide, {
+          loop:true,
+          spaceBetween: 20,
+          speed: 1000,
+          navigation: {
+            nextEl: ".highlights .sub-slide .slide-next",
+            prevEl: ".highlights .sub-slide .slide-prev",
+          },
+          pagination: {
+            el: ".highlights .sub-slide .swiper-pagination",
+            type: "fraction",
+          }
+        });
+      }
+      highlightsBreakpointState = newState;
+    }
+  }
+  
+  // Resize 이벤트 리스너 등록
+  window.addEventListener('resize', handleResize);
+  
+  // 초기화 실행
+  initSubSwiper();
 }
 
 /* 모든 기능 초기화 */

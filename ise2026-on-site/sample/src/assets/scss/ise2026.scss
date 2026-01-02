@@ -12,6 +12,7 @@
     }
     .fp-overflow {
       overflow-y: unset;
+      max-height: inherit;
     }
   }
   * {
@@ -46,7 +47,7 @@
   
   .inner {
     width:100%;
-    max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
+    // max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
     margin:0 auto;
     padding:0 rem(30);
     @include tablet {
@@ -107,7 +108,12 @@
   }
 
   .section-tit-bx {
-    text-align: center;
+    .logo-img {
+      margin-bottom: rem(14);
+      @include tablet {
+        margin-bottom: rem(2);
+      }
+    }
     .title {
       font-family: "LG EI Headline";
       @include font(30,110%,700);
@@ -118,15 +124,14 @@
       @include font(14,140%,400);
       text-wrap: balance;
       br {
-        @include tablet {
-          display: none;
-        }
+        display: none;
         @include desktop {
           display: block;
         }
       }
     }
     @include tablet {
+      text-align: center;
       .title {
         font-size: rem(36);
       }

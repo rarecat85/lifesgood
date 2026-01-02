@@ -23,8 +23,8 @@
   }
 
   .slide-bx {
-    max-width: rem(1260);
-    padding: 0 rem(30);
+    max-width: rem(1200);
+    width: calc(100% - rem(60));
     margin: 0 auto;
     @include desktop {
       padding-bottom: rem(150);
