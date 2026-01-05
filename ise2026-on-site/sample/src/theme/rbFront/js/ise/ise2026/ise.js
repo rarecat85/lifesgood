@@ -970,6 +970,12 @@ const layerPopupData = [
     productList: [
       { name: "Indoor LED", code: "LSCC012", link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012", image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png" },
       { name: "Transparent Mesh LED", code: "LTPA062", link: "/products/fine-pitch-led", image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png', title: 'Key Attractor Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -994,6 +1000,12 @@ const layerPopupData = [
         { name: "All-In-One LED", code: "AIO-001", link: "/products/all-in-one-led", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" }
       ]}
     ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png', title: 'LG Business Cloud Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab1.png', title: 'Gallery Image 3' }
+    ]
   },
   {
     title: "K-Culture shop",
@@ -1021,7 +1033,14 @@ const layerPopupData = [
         { type: "product", name: "K-Culture All-In-One LED", code: "KC-AIO-001", link: "/products/k-culture-aio", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
       ]}
     ],
-    productList: []
+    productList: [],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png', title: 'K-Culture Overview Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png', title: 'Gallery Image 3' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png', title: 'Gallery Image 4' }
+    ]
   },
   {
     title: "Drive-thru",
@@ -1034,6 +1053,12 @@ const layerPopupData = [
     ],
     productList: [
       { type: "product", name: "Drive-thru Display", code: "DT-001", link: "/products/drive-thru", image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png', title: 'Drive-thru Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab1.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab2.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1048,6 +1073,12 @@ const layerPopupData = [
     productList: [
       { type: "product", name: "Meeting Display", code: "MD-001", link: "/products/meeting-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png" },
       { type: "product", name: "Interactive Board", code: "IB-001", link: "/products/interactive-board", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png', title: 'Meeting Room Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab1.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1061,6 +1092,12 @@ const layerPopupData = [
     ],
     productList: [
       { name: "Control Display", code: "CD-001", link: "/products/control-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png', title: 'Control Room Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab1.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab2.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1074,6 +1111,12 @@ const layerPopupData = [
     ],
     productList: [
       { name: "E-Paper Display", code: "EP-001", link: "/products/e-paper", image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png', title: 'E-Paper Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab1.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab2.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1088,6 +1131,12 @@ const layerPopupData = [
     productList: [
       { name: "Learning Display", code: "LD-001", link: "/products/learning-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_1.png" },
       { name: "Interactive Whiteboard", code: "IW-001", link: "/products/interactive-whiteboard", image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png', title: 'Learning Zone Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_8_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8_tab1.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1101,6 +1150,12 @@ const layerPopupData = [
     ],
     productList: [
       { name: "Hotel Display", code: "HD-001", link: "/products/hotel-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png', title: 'Hotel Zone Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab1.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab2.png', title: 'Gallery Image 3' }
     ]
   },
   {
@@ -1116,6 +1171,12 @@ const layerPopupData = [
     productList: [
       { name: "LED Display Pro", code: "LED-PRO-001", link: "/products/led-pro", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1.png" },
       { name: "LED Display Ultra", code: "LED-ULTRA-001", link: "/products/led-ultra", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2.png" }
+    ],
+    mediaGallery: [
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png', title: 'LED Tech Zone Video' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_10_1.png', title: 'Gallery Image 1' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_10_2.png', title: 'Gallery Image 2' },
+      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab1.png', title: 'Gallery Image 3' }
     ]
   }
 ];
@@ -1281,8 +1342,16 @@ function renderLayerContent(index) {
     </div>
   `;
   
-  // innerHTML 먼저 설정
+  // video-layer 보존하기 위해 임시 저장
+  const videoLayer = layerContent.querySelector('.video-layer');
+  
+  // innerHTML 설정
   layerContent.innerHTML = contentHTML;
+  
+  // video-layer가 있었다면 다시 추가
+  if (videoLayer) {
+    layerContent.appendChild(videoLayer);
+  }
   
   // innerHTML 설정 후 배경 이미지 설정 (defaultBg)
   layerContent.style.backgroundImage = `url('${data.defaultBg}')`;
@@ -1336,6 +1405,9 @@ function closeLayerPopup() {
   
   if (!layerPop) return;
   
+  // video-layer도 함께 닫기
+  closeVideoLayer();
+  
   // 레이어 팝업 비활성화
   layerPop.classList.remove("active");
   
@@ -1346,13 +1418,124 @@ function closeLayerPopup() {
   document.body.style.overflow = "";
 }
 
+/* Video Layer (Photos Gallery) 관리 */
+let mainGallerySwiper = null;
+let thumbGallerySwiper = null;
+
+/* Video Layer 열기 */
+function openVideoLayer(index) {
+  const videoLayer = document.querySelector(".video-layer");
+  const data = layerPopupData[index];
+  
+  if (!videoLayer || !data.mediaGallery) return;
+  
+  // 갤러리 렌더링
+  renderMediaGallery(data.mediaGallery);
+  
+  // 오버레이 표시
+  videoLayer.classList.add("active");
+  
+  // Swiper Thumbs 초기화
+  setTimeout(() => {
+    initMediaGallerySwiper();
+  }, 100);
+}
+
+/* Video Layer 닫기 */
+function closeVideoLayer() {
+  const videoLayer = document.querySelector(".video-layer");
+  if (!videoLayer) return;
+  
+  videoLayer.classList.remove("active");
+  
+  // Swiper 인스턴스 제거
+  if (mainGallerySwiper) {
+    mainGallerySwiper.destroy();
+    mainGallerySwiper = null;
+  }
+  if (thumbGallerySwiper) {
+    thumbGallerySwiper.destroy();
+    thumbGallerySwiper = null;
+  }
+}
+
+/* 미디어 갤러리 렌더링 */
+function renderMediaGallery(mediaGallery) {
+  const mainWrapper = document.querySelector(".main-gallery-swiper .swiper-wrapper");
+  const thumbWrapper = document.querySelector(".thumb-gallery-swiper .swiper-wrapper");
+  
+  if (!mainWrapper || !thumbWrapper) return;
+  
+  // 메인 슬라이드 생성
+  const mainSlides = mediaGallery.map((item) => {
+    if (item.type === 'youtube') {
+      return `
+        <div class="swiper-slide">
+          <a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+            <img src="${item.thumbnail}" alt="${item.title}">
+            <div class="play-icon"></div>
+          </a>
+        </div>
+      `;
+    } else {
+      return `
+        <div class="swiper-slide">
+          <img src="${item.imageUrl}" alt="${item.title}">
+        </div>
+      `;
+    }
+  }).join('');
+  
+  // 썸네일 슬라이드 생성
+  const thumbSlides = mediaGallery.map((item) => {
+    const thumbUrl = item.type === 'youtube' ? item.thumbnail : item.imageUrl;
+    const iconClass = item.type === 'youtube' ? 'has-play-icon' : '';
+    return `
+      <div class="swiper-slide ${iconClass}">
+        <img src="${thumbUrl}" alt="${item.title}">
+      </div>
+    `;
+  }).join('');
+  
+  mainWrapper.innerHTML = mainSlides;
+  thumbWrapper.innerHTML = thumbSlides;
+}
+
+/* 미디어 갤러리 Swiper 초기화 */
+function initMediaGallerySwiper() {
+  // 기존 인스턴스 제거
+  if (mainGallerySwiper) mainGallerySwiper.destroy();
+  if (thumbGallerySwiper) thumbGallerySwiper.destroy();
+  
+  // Thumbs Swiper 먼저 초기화
+  thumbGallerySwiper = new Swiper(".thumb-gallery-swiper", {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    watchSlidesProgress: true,
+    direction: 'vertical',
+    navigation: {
+      nextEl: ".thumb-slide-next",
+      prevEl: ".thumb-slide-prev",
+    },
+  });
+  
+  // Main Swiper 초기화 (thumbs 연결)
+  mainGallerySwiper = new Swiper(".main-gallery-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    thumbs: {
+      swiper: thumbGallerySwiper,
+    },
+  });
+}
+
 /* Product Swiper 인스턴스 관리 */
 let productSwiperInstances = new Map();
 
 /* Product Swiper 초기화 */
 function initProductSwiper() {
   const productSliders = document.querySelectorAll(".layer-product-list .product-slider .swiper");
-  
+
   productSliders.forEach((slider) => {
     // 이미 초기화된 경우 건너뛰기
     if (productSwiperInstances.has(slider)) return;
@@ -1368,7 +1551,7 @@ function initProductSwiper() {
     const swiper = new Swiper(slider, {
       slidesPerView: 1,
       spaceBetween: 16,
-      loop:true,
+      loop: slideCount > 3,
       navigation: {
         nextEl: nextBtn,
         prevEl: prevBtn,
@@ -1444,6 +1627,34 @@ function handleLayerPopup() {
     closeBtn.addEventListener("click", closeLayerPopup);
   }
   
+  // 2-1. Photos 버튼 클릭 이벤트 (토글)
+  const photoBtn = document.querySelector(".layer-tab .photo-btn");
+  if (photoBtn) {
+    photoBtn.addEventListener("click", () => {
+      const videoLayer = document.querySelector(".video-layer");
+      
+      // video-layer가 이미 열려있으면 닫기
+      if (videoLayer && videoLayer.classList.contains("active")) {
+        closeVideoLayer();
+      } else {
+        // 닫혀있으면 열기
+        const layerTabItems = document.querySelectorAll(".layer-tab-item");
+        const activeTabItem = document.querySelector(".layer-tab-item.active");
+        const activeIndex = Array.from(layerTabItems).indexOf(activeTabItem);
+        
+        if (activeIndex >= 0 && activeIndex < layerPopupData.length) {
+          openVideoLayer(activeIndex);
+        }
+      }
+    });
+  }
+  
+  // 2-2. Video Layer 닫기 버튼 클릭 이벤트
+  const videoCloseBtn = document.querySelector(".video-close-btn");
+  if (videoCloseBtn) {
+    videoCloseBtn.addEventListener("click", closeVideoLayer);
+  }
+  
   // 3. 레이어 탭 버튼 클릭 이벤트 (외부 탭: layer-tab-item)
   const layerTabButtons = document.querySelectorAll(".layer-nav-tabs .layer-tab-btn");
   
@@ -1451,6 +1662,9 @@ function handleLayerPopup() {
     button.addEventListener("click", () => {
       const layerTabItems = document.querySelectorAll(".layer-tab-item");
       const layerContent = document.querySelector(".layer-content");
+      
+      // 탭 변경 시 video-layer 닫기
+      closeVideoLayer();
       
       // 모든 탭의 active 클래스 제거
       layerTabItems.forEach(item => item.classList.remove("active"));
