@@ -978,13 +978,22 @@ const layerPopupData = [
     description: "Experience customized cloud solutions designed for every business area!",
     defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
     tablist: [
-      { name: "Overview", id: "tab-2-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab1.png", title: "Cloud Solutions Overview", description: "Comprehensive cloud solutions tailored for your business needs" },
-      { name: "Solutions", id: "tab-2-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Our Cloud Solutions", description: "Discover our range of cloud-based services and platforms" }
+      { name: "LG Connected Care", id: "tab-2-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab1.png", title: "Display remote management solution", description: "It is important to have a device control solution that manages signage across multiple stores.", productList: [
+        { name: "Connected Care Display", code: "CC-001", link: "/products/connected-care", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" }
+      ]},
+      { name: "LG SuperSign Cloud", id: "tab-2-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Cloud-Based Content Management Solution", description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.", productList: [
+        { name: "SuperSign Cloud", code: "SSC-001", link: "/products/supersign-cloud", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png" }
+      ]},
+      { name: "LG DOOH Ads", id: "tab-2-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Signage Display Advertising Platform", description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.", productList: [
+        { name: "DOOH Ads Platform", code: "DA-001", link: "/products/dooh-ads", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" }
+      ]},
+      { name: "LG SoundCast", id: "tab-2-4", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Signage Display Advertising Platform", description: "We need a solution that would allow us to control the multiple in-store screens across our global retail locations so customers could enjoy the cute Palm Pals video content exactly the way we envision it.", productList: [
+        { name: "SoundCast System", code: "SC-001", link: "/products/soundcast", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png" }
+      ]},
+      { name: "LG All-In-One LED", id: "tab-2-5", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Experience the convenience of LG's LED All-in-One LAPA series", description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.", productList: [
+        { name: "All-In-One LED", code: "AIO-001", link: "/products/all-in-one-led", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" }
+      ]}
     ],
-    productList: [
-      { name: "Cloud Solution A", code: "CS-A-001", link: "/products/cloud-a", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" },
-      { name: "Cloud Solution B", code: "CS-B-001", link: "/products/cloud-b", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png" }
-    ]
   },
   {
     title: "K-Culture shop",
@@ -992,12 +1001,27 @@ const layerPopupData = [
     description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
     defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
     tablist: [
-      { name: "Overview", id: "tab-3-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab1.png", title: "K-Culture Shop Overview", description: "Explore the fusion of Korean culture and display technology" },
-      { name: "Products", id: "tab-3-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Featured Products", description: "Browse our K-Culture inspired display solutions" }
+      { name: "LG Connected Care", id: "tab-3-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab1.png", title: "Display remote management solution", description: "It is important to have a device control solution that manages signage across multiple stores.", productList: [
+        { type: "solution", name: "LG ConnectedCare (Display remote solution)", bgClass: "bg-light-blue", link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png" },
+        { type: "product", name: "K-Culture Connected Care", code: "KC-CC-001", link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png" }
+      ]},
+      { name: "LG SuperSign Cloud", id: "tab-3-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Cloud-Based Content Management Solution", description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.", productList: [
+        { type: "solution", name: "LG SuperSign Cloud (Signage content solution)", bgClass: "bg-light-blue", link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-supersign-cloud", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png" },
+        { type: "product", name: "4K UHD Signage", code: "65UH5Q-E", link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png" },
+        { type: "product", name: "Stretch Signage", code: "37BH7N", link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_3.png" },
+        { type: "product", name: "Transparent OLED Signage", code: "55EW5P-M", link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_4.png" }
+      ]},
+      { name: "LG DOOH Ads", id: "tab-3-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Signage Display Advertising Platform", description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.", productList: [
+        { type: "product", name: "K-Culture DOOH", code: "KC-DA-001", link: "/products/k-culture-dooh", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
+      ]},
+      { name: "LG SoundCast", id: "tab-3-4", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Signage Display Advertising Platform", description: "We need a solution that would allow us to control the multiple in-store screens across our global retail locations so customers could enjoy the cute Palm Pals video content exactly the way we envision it.", productList: [
+        { type: "product", name: "K-Culture SoundCast", code: "KC-SC-001", link: "/products/k-culture-sc", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
+      ]},
+      { name: "LG All-In-One LED", id: "tab-3-5", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Experience the convenience of LG's LED All-in-One LAPA series", description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.", productList: [
+        { type: "product", name: "K-Culture All-In-One LED", code: "KC-AIO-001", link: "/products/k-culture-aio", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
+      ]}
     ],
-    productList: [
-      { name: "K-Culture Display", code: "KC-001", link: "/products/k-culture-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
-    ]
+    productList: []
   },
   {
     title: "Drive-thru",
@@ -1009,7 +1033,7 @@ const layerPopupData = [
       { name: "Technology", id: "tab-4-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab2.png", title: "Advanced Technology", description: "Cutting-edge technology powering drive-thru displays" }
     ],
     productList: [
-      { name: "Drive-thru Display", code: "DT-001", link: "/products/drive-thru", image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png" }
+      { type: "product", name: "Drive-thru Display", code: "DT-001", link: "/products/drive-thru", image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png" }
     ]
   },
   {
@@ -1022,8 +1046,8 @@ const layerPopupData = [
       { name: "Features", id: "tab-5-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab2.png", title: "Key Features", description: "Explore collaboration features for modern meeting rooms" }
     ],
     productList: [
-      { name: "Meeting Display", code: "MD-001", link: "/products/meeting-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png" },
-      { name: "Interactive Board", code: "IB-001", link: "/products/interactive-board", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png" }
+      { type: "product", name: "Meeting Display", code: "MD-001", link: "/products/meeting-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png" },
+      { type: "product", name: "Interactive Board", code: "IB-001", link: "/products/interactive-board", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png" }
     ]
   },
   {
@@ -1123,8 +1147,10 @@ function renderLayerContent(index) {
             ${tab.name}
           </button>
           <div class="tab-detail">
-            <span class="tab-detail-subtitle">${tab.name}</span>
-            <h4 class="tab-detail-title">${tab.title || ''}</h4>
+            <div class="tab-detail-title-wrap">
+              <span class="tab-detail-subtitle">${tab.name}</span>
+              <h4 class="tab-detail-title">${tab.title || ''}</h4>
+            </div>
             <p class="tab-detail-desc">${tab.description || ''}</p>
           </div>
         </li>
@@ -1143,43 +1169,112 @@ function renderLayerContent(index) {
   }
   
   // Product List HTML 생성
-  const productListHTML = data.productList && data.productList.length > 0 ? `
-    <div class="layer-product-list">
-      <h4 class="product-list-title">Products</h4>
-      <div class="product-slider swiper">
-        <div class="swiper-wrapper">
-          ${data.productList.map(product => `
-            <div class="swiper-slide product-item">
-              <div class="product-accordion-header">
-                ${product.image ? `<img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">` : ''}
-                <div class="product-info">
-                  <span class="product-name">${product.name}</span>
-                  <span class="product-code">${product.code}</span>
-                </div>
-                <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
-                  <span class="icon"></span>
-                </button>
-              </div>
-              <div class="product-accordion-content">
-                <a href="${product.link}" class="product-link">View Details</a>
+  let productListHTML = '';
+  
+  if (hasTablist && data.tablist) {
+    // tablist가 있을 때: 탭별로 개별 생성
+    productListHTML = data.tablist.map((tab, tabIdx) => {
+      if (!tab.productList || tab.productList.length === 0) return '';
+      
+      return `
+        <div class="layer-product-list has-tabs closed" data-tab-id="${tab.id}">
+          <button type="button" class="close-product-btn">menu</button>
+          <h4 class="product-list-title">${tab.name}</h4>
+          <div class="product-slider">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                ${tab.productList.map((product, idx) => {
+                  const isSolution = product.type === 'solution';
+                  const isProduct = product.type === 'product';
+                  
+                  // product 유형만 필터링하여 인덱스 계산
+                  const productItems = tab.productList.filter(p => p.type === 'product');
+                  const productIndex = productItems.indexOf(product);
+                  const label = isProduct && productIndex >= 0 ? String.fromCharCode(97 + productIndex) : '';
+                  const bgClass = isSolution && product.bgClass ? product.bgClass : '';
+                  
+                  return `
+                    <div class="swiper-slide">
+                      <a href="${product.link}" class="product-item ${bgClass}" target="_blank" rel="noopener noreferrer">
+                        ${product.image ? `
+                          <div class="product-img-wrapper">
+                            <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
+                            ${isProduct && label ? `<span class="product-label">${label}</span>` : ''}
+                          </div>
+                        ` : ''}
+                        <div class="product-info">
+                          <span class="product-name">${product.name}</span>
+                          ${product.code ? `<span class="product-code">${product.code}</span>` : ''}
+                        </div>
+                        <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
+                          <span class="icon"></span>
+                        </button>
+                      </a>
+                    </div>
+                  `;
+                }).join('')}
               </div>
             </div>
-          `).join('')}
+            <div class="slide-prev"></div>
+            <div class="slide-next"></div>
+          </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+      `;
+    }).join('');
+  } else if (data.productList && data.productList.length > 0) {
+    // tablist가 없을 때: 최상위 productList 사용
+    productListHTML = `
+      <div class="layer-product-list no-tabs">
+        <div class="product-slider">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              ${data.productList.map((product, idx) => {
+                const isSolution = product.type === 'solution';
+                const isProduct = product.type === 'product';
+                
+                // product 유형만 필터링하여 인덱스 계산
+                const productItems = data.productList.filter(p => p.type === 'product');
+                const productIndex = productItems.indexOf(product);
+                const label = isProduct && productIndex >= 0 ? String.fromCharCode(97 + productIndex) : '';
+                const bgClass = isSolution && product.bgClass ? product.bgClass : '';
+                
+                return `
+                  <div class="swiper-slide">
+                    <a href="${product.link}" class="product-item ${bgClass}" target="_blank" rel="noopener noreferrer">
+                      ${product.image ? `
+                        <div class="product-img-wrapper">
+                          <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
+                          ${isProduct && label ? `<span class="product-label">${label}</span>` : ''}
+                        </div>
+                      ` : ''}
+                      <div class="product-info">
+                        <span class="product-name">${product.name}</span>
+                        ${product.code ? `<span class="product-code">${product.code}</span>` : ''}
+                      </div>
+                      <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
+                        <span class="icon"></span>
+                      </button>
+                    </a>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+          <div class="slide-prev"></div>
+          <div class="slide-next"></div>
+        </div>
       </div>
-    </div>
-  ` : '';
+    `;
+  }
   
   // 컨텐츠 HTML 생성
   const contentHTML = `
     <div class="layer-content-inner">
       <div class="layer-content-title-wrap">
         <h3 class="layer-content-title">
-          <span>${index + 1}.</span> ${data.title} <button type="button" class="home-btn">Home</button>
+          <span>${index + 1}.&nbsp;</span>${data.title}<button type="button" class="home-btn">Home</button>
         </h3>
-        <img src="/theme/rbFront/img/w/ise/ise2026/ic_lg_white.svg" alt="LG logo" class="logo">
+        <img src="/theme/rbFront/img/m/ise/ise2026/booth_location_${index + 1}.png" alt="${data.title} location" class="booth-location">
       </div>
       ${tablistHTML}
       ${productListHTML}
@@ -1256,28 +1351,43 @@ let productSwiperInstances = new Map();
 
 /* Product Swiper 초기화 */
 function initProductSwiper() {
-  const productSliders = document.querySelectorAll(".layer-product-list .product-slider");
+  const productSliders = document.querySelectorAll(".layer-product-list .product-slider .swiper");
   
   productSliders.forEach((slider) => {
     // 이미 초기화된 경우 건너뛰기
     if (productSwiperInstances.has(slider)) return;
     
+    // 슬라이드 개수 확인
+    const slideCount = slider.querySelectorAll(".swiper-slide").length;
+    
+    // 현재 슬라이더의 부모에서 버튼 찾기
+    const container = slider.parentElement;
+    const nextBtn = container.querySelector(".slide-next");
+    const prevBtn = container.querySelector(".slide-prev");
+    
     const swiper = new Swiper(slider, {
       slidesPerView: 1,
       spaceBetween: 16,
+      loop:true,
       navigation: {
-        nextEl: slider.querySelector(".swiper-button-next"),
-        prevEl: slider.querySelector(".swiper-button-prev"),
+        nextEl: nextBtn,
+        prevEl: prevBtn,
       },
       breakpoints: {
         768: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 8,
         }
       }
     });
     
     productSwiperInstances.set(slider, swiper);
+    
+    // PC에서 슬라이드가 3개 이하면 네비게이션 버튼 숨김
+    if (slideCount <= 3) {
+      if (nextBtn) nextBtn.style.display = 'none';
+      if (prevBtn) prevBtn.style.display = 'none';
+    }
   });
 }
 
@@ -1403,15 +1513,45 @@ function handleLayerPopup() {
           layerContent.style.backgroundImage = `url('${defaultBg}')`;
         }
         
+        // 모든 product-list 숨김
+        const allProductLists = layerContent.querySelectorAll(".layer-product-list");
+        allProductLists.forEach(list => list.classList.add('closed'));
+        
+        // layer-content-title에서 active 클래스 제거
+        const contentTitle = layerContent.querySelector(".layer-content-title");
+        if (contentTitle) {
+          contentTitle.classList.remove("active");
+        }
+        
         // home-btn 숨김
         layerContent.classList.remove("has-active-subtab");
         layerContent.classList.remove("active");
         return;
       }
       
+      // close-product-btn 클릭 처리
+      const closeProductBtn = e.target.closest(".close-product-btn");
+      if (closeProductBtn) {
+        const productList = closeProductBtn.closest(".layer-product-list");
+        if (productList) {
+          productList.classList.add("closed");
+        }
+        
+        // layer-content-title에서 active 클래스 제거
+        const contentTitle = layerContent.querySelector(".layer-content-title");
+        if (contentTitle) {
+          contentTitle.classList.remove("active");
+        }
+        
+        return;
+      }
+      
       // 클릭한 요소가 layer-sub-tabs 내부의 탭 버튼인지 확인
       const clickedTab = e.target.closest(".layer-sub-tabs .layer-tab-btn");
       if (!clickedTab) return;
+      
+      // 이미 활성화된 탭이면 아무 작업도 하지 않음
+      if (clickedTab.classList.contains("active")) return;
       
       // 같은 tablist 내의 모든 탭 찾기
       const tablist = clickedTab.closest(".layer-sub-tabs");
@@ -1445,10 +1585,31 @@ function handleLayerPopup() {
       // home-btn 표시를 위한 클래스 추가
       layerContent.classList.add("has-active-subtab");
       
+      // layer-content-title에 active 클래스 추가
+      const contentTitle = layerContent.querySelector(".layer-content-title");
+      if (contentTitle) {
+        contentTitle.classList.add("active");
+      }
+      
       // 배경 이미지를 탭의 bg로 즉시 변경 (fade 효과 없음)
       const tabBg = clickedTab.getAttribute("data-bg");
       if (tabBg) {
         layerContent.style.backgroundImage = `url('${tabBg}')`;
+      }
+      
+      // 모든 product-list 숨김
+      const allProductLists = layerContent.querySelectorAll(".layer-product-list");
+      allProductLists.forEach(list => list.classList.add('closed'));
+      
+      // 클릭한 탭의 product-list 표시
+      const targetProductList = layerContent.querySelector(`[data-tab-id="${clickedTab.id}"]`);
+      if (targetProductList) {
+        targetProductList.classList.remove('closed');
+        
+        // Swiper 재초기화
+        setTimeout(() => {
+          initProductSwiper();
+        }, 100);
       }
     });
   }
