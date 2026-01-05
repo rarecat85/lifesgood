@@ -1687,6 +1687,12 @@ function handleLayerPopup() {
           // home-btn 숨김 (renderLayerContent에서도 제거하지만 명시적으로 추가)
           layerContent.classList.remove('has-active-subtab');
           
+          // photo-btn 표시
+          const photoBtn = document.querySelector(".layer-tab .photo-btn");
+          if (photoBtn) {
+            photoBtn.classList.remove("is-hidden");
+          }
+          
           // 컨텐츠 렌더링 후 Swiper 재초기화
           setTimeout(() => {
             initProductSwiper();
@@ -1740,6 +1746,13 @@ function handleLayerPopup() {
         // home-btn 숨김
         layerContent.classList.remove("has-active-subtab");
         layerContent.classList.remove("active");
+        
+        // photo-btn 표시
+        const photoBtn = document.querySelector(".layer-tab .photo-btn");
+        if (photoBtn) {
+          photoBtn.classList.remove("is-hidden");
+        }
+        
         return;
       }
       
@@ -1798,6 +1811,12 @@ function handleLayerPopup() {
       
       // home-btn 표시를 위한 클래스 추가
       layerContent.classList.add("has-active-subtab");
+      
+      // photo-btn 숨김
+      const photoBtn = document.querySelector(".layer-tab .photo-btn");
+      if (photoBtn) {
+        photoBtn.classList.add("is-hidden");
+      }
       
       // layer-content-title에 active 클래스 추가
       const contentTitle = layerContent.querySelector(".layer-content-title");

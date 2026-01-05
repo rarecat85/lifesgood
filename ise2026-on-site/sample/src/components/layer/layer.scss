@@ -112,6 +112,7 @@
         top: rem(120);
         right: rem(36);
         z-index: 10;
+        transition: all 0.3s;
         &::before {
           content: "";
           display: inline-block;
@@ -120,6 +121,10 @@
           background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
           background-repeat: no-repeat;
           background-position: center center;
+        }
+        &.is-hidden {
+          opacity: 0;
+          visibility: hidden;
         }
       }
     }
