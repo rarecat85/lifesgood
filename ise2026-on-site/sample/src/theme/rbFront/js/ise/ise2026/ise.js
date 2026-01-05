@@ -403,91 +403,264 @@ function handleFooterNavClick() {
   });
 }
 
+// Booth Swiper 인스턴스 및 상태 관리
+let boothSlideSwiper = null;
+let boothBreakpointState = null; // 'mobile', 'tablet', 'desktop'
+
 function handleBoothSlide() {
   const boothSlide = document.querySelector(".booth-map .slide-bx");
+  if (!boothSlide) return;
 
   // 각 슬라이드에 표시할 커스텀 텍스트 배열 (사용자가 원하는 대로 수정 가능)
   const boothSlideTexts = ["Hall", "Key<br>attractor", "LG Business<br>solutions", "K-Culture<br>shop", "Drive-<br class='pc-only'>thru", "Meeting<br>room", "Control<br>room", "E-Paper<br>display", "Learning<br>zone", "Hotel", "LED tech<br>zone"];
 
-  const boothSlideSwiper = new Swiper(boothSlide, {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    speed: 500,
-    grabCursor: true,
+  // Swiper 초기화 함수
+  function initBoothSwiper() {
+    const currentWidth = window.innerWidth;
+    let currentState = 'mobile';
     
-    breakpoints: {
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 8,
-      },
-      1281: {
-        slidesPerView: 1,
-        effect: "creative",
-        creativeEffect: {
-          prev: {
-            shadow: true,
-            translate: [0, 0, -400],
-          },
-          next: {
-            translate: ["100%", 0, 0],
-          },
-        },
-      }
-    },
-    pagination: {
-      el: ".booth-map .slide-bx .swiper-pagination",
-      type: "bullets",
-      clickable: true,
-      renderBullet: function (index, className) {
-        // 번호: 첫 번째는 'H', 나머지는 모바일에서는 '1', '2', '3', 데스크탑에서는 '01', '02', '03' 형식
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
-        const bulletNum = index === 0 ? "H" : (isMobile ? String(index) : String(index).padStart(2, "0"));
-        // 커스텀 텍스트
-        const bulletText = boothSlideTexts[index] || "";
-        // 스크린 리더를 위한 plain text 버전 (HTML 태그 제거)
-        const bulletTextPlain = bulletText.replace(/<br\s*\/?>/gi, " ");
-        // ARIA label 생성
-        const ariaLabel = bulletTextPlain + "로 이동";
+    // 현재 화면 크기에 따른 상태 결정 (1281px 분기점만 체크)
+    if (currentWidth >= 1281) {
+      currentState = 'desktop';
+    }
+    
+    // 상태가 변경되지 않았으면 재생성하지 않음
+    if (boothBreakpointState === currentState && boothSlideSwiper) {
+      // 페이드 인 (이미 페이드 아웃된 경우를 위해)
+      boothSlide.classList.remove('is-transitioning');
+      isTransitioning = false;
+      return;
+    }
+    
+    // 기존 Swiper가 있으면 재생성
+    if (boothSlideSwiper) {
+      const currentSlideIndex = boothSlideSwiper.realIndex;
+      
+      // transitionend 이벤트로 페이드 아웃 완료를 감지
+      const handleTransitionEnd = (e) => {
+        // opacity transition만 감지 (다른 transition 무시)
+        if (e.propertyName !== 'opacity') return;
         
-        // 접근성을 고려한 마크업 반환
-        return (
-          '<span class="' +
-          className +
-          '" role="button" aria-label="' +
-          ariaLabel +
-          '" tabindex="0">' +
-          '<span class="bullet-wrap" aria-hidden="true">' +
-          '<span class="bullet-text">' +
-          bulletText +
-          "</span>" +
-          '<span class="bullet-num">' +
-          bulletNum +
-          "</span>" +
-          "</span>" +
-          "</span>"
-        );
+        // 이벤트 리스너 제거 (한 번만 실행)
+        boothSlide.removeEventListener('transitionend', handleTransitionEnd);
+        
+        // 페이드 아웃 완료 후 Swiper destroy
+        boothSlideSwiper.destroy(true, true);
+        boothSlideSwiper = null;
+        
+        // DOM 정리 후 새 Swiper 생성
+        setTimeout(() => {
+          createSwiper(currentState, currentSlideIndex);
+          
+          // Swiper 생성 완료 후 페이드 인
+          requestAnimationFrame(() => {
+            boothSlide.classList.remove('is-transitioning');
+            isTransitioning = false; // 전환 완료
+          });
+        }, 50);
+      };
+      
+      // transitionend 이벤트 리스너 등록
+      boothSlide.addEventListener('transitionend', handleTransitionEnd);
+      
+      // 만약 이미 페이드 아웃 상태가 아니라면 페이드 아웃 시작
+      if (!boothSlide.classList.contains('is-transitioning')) {
+        boothSlide.classList.add('is-transitioning');
+        isTransitioning = true;
+      }
+    } else {
+      // 초기 생성 시에는 바로 생성
+      createSwiper(currentState, 0);
+      isTransitioning = false;
+    }
+    
+    boothBreakpointState = currentState;
+  }
+  
+  // Swiper 생성 함수
+  function createSwiper(state, initialSlide = 0) {
+    let swiperConfig = {
+      loop: true,
+      speed: 500,
+      initialSlide: initialSlide,
+      pagination: {
+        el: ".booth-map .slide-bx .swiper-pagination",
+        type: "bullets",
+        clickable: true,
+        renderBullet: function (index, className) {
+          // 번호: 첫 번째는 'H', 나머지는 모바일에서는 '1', '2', '3', 데스크탑에서는 '01', '02', '03' 형식
+          const isMobile = window.matchMedia('(max-width: 767px)').matches;
+          const bulletNum = index === 0 ? "H" : (isMobile ? String(index) : String(index).padStart(2, "0"));
+          // 커스텀 텍스트
+          const bulletText = boothSlideTexts[index] || "";
+          // 스크린 리더를 위한 plain text 버전 (HTML 태그 제거)
+          const bulletTextPlain = bulletText.replace(/<br\s*\/?>/gi, " ");
+          // ARIA label 생성
+          const ariaLabel = bulletTextPlain + "로 이동";
+          
+          // 접근성을 고려한 마크업 반환
+          return (
+            '<span class="' +
+            className +
+            '" role="button" aria-label="' +
+            ariaLabel +
+            '" tabindex="0">' +
+            '<span class="bullet-wrap" aria-hidden="true">' +
+            '<span class="bullet-text">' +
+            bulletText +
+            "</span>" +
+            '<span class="bullet-num">' +
+            bulletNum +
+            "</span>" +
+            "</span>" +
+            "</span>"
+          );
+        },
       },
-    },
-    on: {
-      init: function() {
-        if (this.pagination && this.pagination.el) {
-          this.pagination.el.style.width = '';
+      on: {
+        init: function() {
+          if (this.pagination && this.pagination.el) {
+            this.pagination.el.style.width = '';
+          }
+          // 초기 로드 시에도 첫 번째 bullet에 aria-current 설정
+          setTimeout(() => {
+            const initialActiveBullet = document.querySelector(
+              ".booth-map .slide-bx .swiper-pagination-bullet-active"
+            );
+            if (initialActiveBullet) {
+              initialActiveBullet.setAttribute("aria-current", "true");
+            }
+          }, 0);
+        },
+        slideChange: function() {
+          if (this.pagination && this.pagination.el) {
+            this.pagination.el.style.width = '';
+          }
+          // 슬라이드 변경 시 aria-current 속성 업데이트
+          const allBullets = document.querySelectorAll(
+            ".booth-map .slide-bx .swiper-pagination-bullet"
+          );
+          allBullets.forEach((bullet) => {
+            bullet.removeAttribute("aria-current");
+          });
+          
+          const activeBullet = document.querySelector(
+            ".booth-map .slide-bx .swiper-pagination-bullet-active"
+          );
+          if (activeBullet) {
+            activeBullet.setAttribute("aria-current", "true");
+          }
+        },
+        resize: function() {
+          if (this.pagination && this.pagination.el) {
+            this.pagination.el.style.width = '';
+          }
         }
-      },
-      slideChange: function() {
-        if (this.pagination && this.pagination.el) {
-          this.pagination.el.style.width = '';
+      }
+    };
+    
+    // 화면 크기에 따라 다른 설정 적용
+    if (state === 'desktop') {
+      // 1281px 이상: creative effect
+      swiperConfig.slidesPerView = 1;
+      swiperConfig.spaceBetween = 30;
+      swiperConfig.effect = "creative";
+      swiperConfig.grabCursor = true;
+      swiperConfig.creativeEffect = {
+        prev: {
+          shadow: true,
+          translate: [0, 0, -400],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      };
+    } else {
+      // 1281px 미만: 일반 슬라이드 (breakpoints로 768px 전환 처리)
+      swiperConfig.slidesPerView = 3;
+      swiperConfig.spaceBetween = 30;
+      swiperConfig.breakpoints = {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 8,
         }
-      },
-      resize: function() {
-        if (this.pagination && this.pagination.el) {
-          this.pagination.el.style.width = '';
-        }
+      };
+    }
+    
+    boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
+  }
+  
+  // 디바운스 함수
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // 분기점 체크 변수
+  let lastCheckedState = null;
+  let isTransitioning = false; // 전환 중 플래그
+  
+  // 리사이즈 핸들러 (디바운스 적용)
+  const handleResizeDebounced = debounce(() => {
+    initBoothSwiper();
+    
+    // pagination 재렌더링 (모바일/데스크탑 번호 형식 전환)
+    if (boothSlideSwiper && boothSlideSwiper.pagination) {
+      boothSlideSwiper.pagination.render();
+      boothSlideSwiper.pagination.init();
+      
+      // aria-current 속성 재설정
+      const activeBullet = document.querySelector(
+        ".booth-map .slide-bx .swiper-pagination-bullet-active"
+      );
+      if (activeBullet) {
+        activeBullet.setAttribute("aria-current", "true");
       }
     }
-  });
-
+  }, 350); // 350ms 디바운스 (페이드 아웃 시간 고려)
+  
+  // 리사이즈 이벤트 핸들러 (즉시 페이드 아웃 + 디바운스된 재생성)
+  const handleResize = () => {
+    const currentWidth = window.innerWidth;
+    let currentState = 'mobile';
+    
+    // 현재 화면 크기에 따른 상태 결정 (1281px 분기점만 체크)
+    if (currentWidth >= 1281) {
+      currentState = 'desktop';
+    }
+    
+    // 상태가 변경되었을 때만 페이드 아웃 즉시 실행 (1281px 분기점에서만)
+    if (lastCheckedState !== null && lastCheckedState !== currentState && !isTransitioning) {
+      // 1281px 분기점을 넘어갈 때 즉시 페이드 아웃하여 일그러진 모습 숨김
+      boothSlide.classList.add('is-transitioning');
+      isTransitioning = true;
+    }
+    
+    lastCheckedState = currentState;
+    
+    // 디바운스된 실제 재생성 함수 호출
+    handleResizeDebounced();
+  };
+  
+  // 초기화
+  const initialWidth = window.innerWidth;
+  if (initialWidth >= 1281) {
+    lastCheckedState = 'desktop';
+  } else {
+    lastCheckedState = 'mobile';
+  }
+  initBoothSwiper();
+  
+  // 리사이즈 이벤트 리스너 등록
+  window.addEventListener('resize', handleResize);
+  
   // 화면 크기 변경 시 pagination 재렌더링 (모바일/데스크탑 번호 형식 전환)
   const mediaQuery = window.matchMedia('(max-width: 767px)');
   const handleMediaChange = () => {
@@ -511,33 +684,6 @@ function handleBoothSlide() {
   } else {
     // 구형 브라우저 지원
     mediaQuery.addListener(handleMediaChange);
-  }
-
-  // 슬라이드 변경 시 aria-current 속성 업데이트 (접근성)
-  boothSlideSwiper.on("slideChange", function () {
-    // 모든 bullet에서 aria-current 제거
-    const allBullets = document.querySelectorAll(
-      ".booth-map .slide-bx .swiper-pagination-bullet"
-    );
-    allBullets.forEach((bullet) => {
-      bullet.removeAttribute("aria-current");
-    });
-
-    // 활성 bullet에 aria-current="true" 추가
-    const activeBullet = document.querySelector(
-      ".booth-map .slide-bx .swiper-pagination-bullet-active"
-    );
-    if (activeBullet) {
-      activeBullet.setAttribute("aria-current", "true");
-    }
-  });
-
-  // 초기 로드 시에도 첫 번째 bullet에 aria-current 설정
-  const initialActiveBullet = document.querySelector(
-    ".booth-map .slide-bx .swiper-pagination-bullet-active"
-  );
-  if (initialActiveBullet) {
-    initialActiveBullet.setAttribute("aria-current", "true");
   }
 
   // 키보드 네비게이션 (화살표 키로 bullet 간 이동)
@@ -624,6 +770,7 @@ function handleTechzoneSlide(){
     slidesPerView: 1,
     spaceBetween: 0,
     effect: "fade",
+    autoplay:true,
     speed: 1000,
     on: {
       slideChange: function() {
@@ -813,6 +960,515 @@ function handleHighlightsSlide(){
   initSubSwiper();
 }
 
+/* Layer Popup 데이터 구조 */
+const layerPopupData = [
+  {
+    title: "Key Attractor",
+    subtitle: "(Brand Facade)",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png",
+    productList: [
+      { name: "Indoor LED", code: "LSCC012", link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012", image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png" },
+      { name: "Transparent Mesh LED", code: "LTPA062", link: "/products/fine-pitch-led", image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png" }
+    ]
+  },
+  {
+    title: "LG Business cloud & solutions",
+    subtitle: "",
+    description: "Experience customized cloud solutions designed for every business area!",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
+    tablist: [
+      { name: "Overview", id: "tab-2-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab1.png", title: "Cloud Solutions Overview", description: "Comprehensive cloud solutions tailored for your business needs" },
+      { name: "Solutions", id: "tab-2-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab2.png", title: "Our Cloud Solutions", description: "Discover our range of cloud-based services and platforms" }
+    ],
+    productList: [
+      { name: "Cloud Solution A", code: "CS-A-001", link: "/products/cloud-a", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png" },
+      { name: "Cloud Solution B", code: "CS-B-001", link: "/products/cloud-b", image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png" }
+    ]
+  },
+  {
+    title: "K-Culture shop",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
+    tablist: [
+      { name: "Overview", id: "tab-3-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab1.png", title: "K-Culture Shop Overview", description: "Explore the fusion of Korean culture and display technology" },
+      { name: "Products", id: "tab-3-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Featured Products", description: "Browse our K-Culture inspired display solutions" }
+    ],
+    productList: [
+      { name: "K-Culture Display", code: "KC-001", link: "/products/k-culture-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
+    ]
+  },
+  {
+    title: "Drive-thru",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png",
+    tablist: [
+      { name: "Overview", id: "tab-4-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab1.png", title: "Drive-thru Solutions", description: "Innovative display solutions for drive-thru experiences" },
+      { name: "Technology", id: "tab-4-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab2.png", title: "Advanced Technology", description: "Cutting-edge technology powering drive-thru displays" }
+    ],
+    productList: [
+      { name: "Drive-thru Display", code: "DT-001", link: "/products/drive-thru", image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png" }
+    ]
+  },
+  {
+    title: "Meeting room",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png",
+    tablist: [
+      { name: "Overview", id: "tab-5-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab1.png", title: "Meeting Room Solutions", description: "Transform your meeting spaces with intelligent displays" },
+      { name: "Features", id: "tab-5-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab2.png", title: "Key Features", description: "Explore collaboration features for modern meeting rooms" }
+    ],
+    productList: [
+      { name: "Meeting Display", code: "MD-001", link: "/products/meeting-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png" },
+      { name: "Interactive Board", code: "IB-001", link: "/products/interactive-board", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png" }
+    ]
+  },
+  {
+    title: "Control room",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png",
+    tablist: [
+      { name: "Overview", id: "tab-6-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab1.png", title: "Control Room Solutions", description: "Professional displays for mission-critical environments" },
+      { name: "Solutions", id: "tab-6-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab2.png", title: "Integrated Solutions", description: "Complete control room display management systems" }
+    ],
+    productList: [
+      { name: "Control Display", code: "CD-001", link: "/products/control-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png" }
+    ]
+  },
+  {
+    title: "E-Paper display",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png",
+    tablist: [
+      { name: "Overview", id: "tab-7-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab1.png", title: "E-Paper Display", description: "Energy-efficient digital signage solutions" },
+      { name: "Technology", id: "tab-7-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab2.png", title: "E-Paper Technology", description: "Advanced e-paper technology for sustainable displays" }
+    ],
+    productList: [
+      { name: "E-Paper Display", code: "EP-001", link: "/products/e-paper", image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png" }
+    ]
+  },
+  {
+    title: "Learning zone",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png",
+    tablist: [
+      { name: "Overview", id: "tab-8-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8_tab1.png", title: "Learning Zone Overview", description: "Interactive displays for modern education environments" },
+      { name: "Educational Solutions", id: "tab-8-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8_tab2.png", title: "Educational Solutions", description: "Comprehensive solutions for smart classrooms" }
+    ],
+    productList: [
+      { name: "Learning Display", code: "LD-001", link: "/products/learning-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_1.png" },
+      { name: "Interactive Whiteboard", code: "IW-001", link: "/products/interactive-whiteboard", image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png" }
+    ]
+  },
+  {
+    title: "Hotel zone",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png",
+    tablist: [
+      { name: "Overview", id: "tab-9-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab1.png", title: "Hotel Zone Overview", description: "Premium display solutions for hospitality industry" },
+      { name: "Hospitality Solutions", id: "tab-9-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab2.png", title: "Hospitality Solutions", description: "Tailored displays for hotels and guest experiences" }
+    ],
+    productList: [
+      { name: "Hotel Display", code: "HD-001", link: "/products/hotel-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png" }
+    ]
+  },
+  {
+    title: "LED tech zone",
+    subtitle: "",
+    description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+    defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png",
+    tablist: [
+      { name: "Overview", id: "tab-10-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab1.png", title: "LED Tech Zone", description: "Next-generation LED display technology showcase" },
+      { name: "LED Technology", id: "tab-10-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab2.png", title: "LED Technology", description: "Innovative LED solutions for various applications" },
+      { name: "Applications", id: "tab-10-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab3.png", title: "Applications", description: "Real-world applications of LED display technology" }
+    ],
+    productList: [
+      { name: "LED Display Pro", code: "LED-PRO-001", link: "/products/led-pro", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1.png" },
+      { name: "LED Display Ultra", code: "LED-ULTRA-001", link: "/products/led-ultra", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2.png" }
+    ]
+  }
+];
+
+/* Layer Popup 컨텐츠 렌더링 */
+function renderLayerContent(index) {
+  const layerContent = document.querySelector(".layer-content");
+  if (!layerContent || index < 0 || index >= layerPopupData.length) return;
+  
+  const data = layerPopupData[index];
+  
+  // tablist 유무 확인
+  const hasTablist = data.tablist && data.tablist.length > 0;
+  
+  // Tablist HTML 생성 (모든 탭 비활성 상태로 시작)
+  const tablistHTML = hasTablist ? `
+    <ul class="layer-sub-tabs" role="tablist">
+      ${data.tablist.map((tab, idx) => `
+        <li role="presentation">
+          <button 
+            role="tab" 
+            id="${tab.id}" 
+            aria-selected="false"
+            class="layer-tab-btn"
+            data-bg="${tab.bg || ''}"
+            data-title="${tab.title || ''}"
+            data-description="${tab.description || ''}"
+          >
+            ${tab.name}
+          </button>
+          <div class="tab-detail">
+            <span class="tab-detail-subtitle">${tab.name}</span>
+            <h4 class="tab-detail-title">${tab.title || ''}</h4>
+            <p class="tab-detail-desc">${tab.description || ''}</p>
+          </div>
+        </li>
+      `).join('')}
+    </ul>
+  ` : '';
+  
+  // 탭의 배경 이미지들을 미리 로드 (깜빡임 방지)
+  if (hasTablist) {
+    data.tablist.forEach(tab => {
+      if (tab.bg) {
+        const img = new Image();
+        img.src = tab.bg;
+      }
+    });
+  }
+  
+  // Product List HTML 생성
+  const productListHTML = data.productList && data.productList.length > 0 ? `
+    <div class="layer-product-list">
+      <h4 class="product-list-title">Products</h4>
+      <div class="product-slider swiper">
+        <div class="swiper-wrapper">
+          ${data.productList.map(product => `
+            <div class="swiper-slide product-item">
+              <div class="product-accordion-header">
+                ${product.image ? `<img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">` : ''}
+                <div class="product-info">
+                  <span class="product-name">${product.name}</span>
+                  <span class="product-code">${product.code}</span>
+                </div>
+                <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
+                  <span class="icon"></span>
+                </button>
+              </div>
+              <div class="product-accordion-content">
+                <a href="${product.link}" class="product-link">View Details</a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  ` : '';
+  
+  // 컨텐츠 HTML 생성
+  const contentHTML = `
+    <div class="layer-content-inner">
+      <div class="layer-content-title-wrap">
+        <h3 class="layer-content-title">
+          <span>${index + 1}.</span> ${data.title} <button type="button" class="home-btn">Home</button>
+        </h3>
+        <img src="/theme/rbFront/img/w/ise/ise2026/ic_lg_white.svg" alt="LG logo" class="logo">
+      </div>
+      ${tablistHTML}
+      ${productListHTML}
+    </div>
+  `;
+  
+  // innerHTML 먼저 설정
+  layerContent.innerHTML = contentHTML;
+  
+  // innerHTML 설정 후 배경 이미지 설정 (defaultBg)
+  layerContent.style.backgroundImage = `url('${data.defaultBg}')`;
+  layerContent.setAttribute('data-default-bg', data.defaultBg); // defaultBg 저장 (home-btn 클릭 시 복원용)
+  layerContent.classList.remove('active'); // 초기 상태: 비활성화
+  layerContent.classList.remove('has-active-subtab'); // 초기 상태에서는 home-btn 숨김
+  
+  // tablist 유무에 따라 조건부 클래스 추가
+  layerContent.classList.remove('has-tablist', 'no-tablist');
+  if (hasTablist) {
+    layerContent.classList.add('has-tablist');
+  } else {
+    layerContent.classList.add('no-tablist');
+  }
+}
+
+/* Layer Popup 열기 */
+function openLayerPopup(index) {
+  const layerPop = document.querySelector(".layer-pop");
+  const layerTabItems = document.querySelectorAll(".layer-tab-item");
+  
+  if (!layerPop) return;
+  
+  // 레이어 팝업 활성화
+  layerPop.classList.add("active");
+  
+  // 모든 탭의 active 클래스 제거
+  layerTabItems.forEach(item => item.classList.remove("active"));
+  
+  // 해당 index의 탭 활성화
+  if (layerTabItems[index]) {
+    layerTabItems[index].classList.add("active");
+  }
+  
+  // 컨텐츠 렌더링
+  renderLayerContent(index);
+  
+  // 컨텐츠 렌더링 후 Swiper 초기화
+  setTimeout(() => {
+    initProductSwiper();
+  }, 100);
+  
+  // body scroll 방지 (선택사항)
+  document.body.style.overflow = "hidden";
+}
+
+/* Layer Popup 닫기 */
+function closeLayerPopup() {
+  const layerPop = document.querySelector(".layer-pop");
+  const layerTabItems = document.querySelectorAll(".layer-tab-item");
+  
+  if (!layerPop) return;
+  
+  // 레이어 팝업 비활성화
+  layerPop.classList.remove("active");
+  
+  // 모든 탭의 active 클래스 제거
+  layerTabItems.forEach(item => item.classList.remove("active"));
+  
+  // body scroll 복원
+  document.body.style.overflow = "";
+}
+
+/* Product Swiper 인스턴스 관리 */
+let productSwiperInstances = new Map();
+
+/* Product Swiper 초기화 */
+function initProductSwiper() {
+  const productSliders = document.querySelectorAll(".layer-product-list .product-slider");
+  
+  productSliders.forEach((slider) => {
+    // 이미 초기화된 경우 건너뛰기
+    if (productSwiperInstances.has(slider)) return;
+    
+    const swiper = new Swiper(slider, {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: slider.querySelector(".swiper-button-next"),
+        prevEl: slider.querySelector(".swiper-button-prev"),
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        }
+      }
+    });
+    
+    productSwiperInstances.set(slider, swiper);
+  });
+}
+
+/* Product 아코디언 토글 처리 */
+function initProductAccordion() {
+  const layerContent = document.querySelector(".layer-content");
+  if (!layerContent) return;
+  
+  layerContent.addEventListener("click", (e) => {
+    const toggle = e.target.closest(".accordion-toggle");
+    if (!toggle) return;
+    
+    // 모바일에서만 동작
+    if (window.innerWidth >= 768) return;
+    
+    const item = toggle.closest(".product-item");
+    if (!item) return;
+    
+    // 토글
+    const isActive = item.classList.toggle("active");
+    toggle.setAttribute("aria-expanded", isActive);
+  });
+}
+
+/* Layer Popup 이벤트 핸들러 초기화 */
+function handleLayerPopup() {
+  // 1. Learn more 버튼 클릭 이벤트
+  const learnMoreButtons = document.querySelectorAll(".booth-map .booth-bx .btn");
+  
+  learnMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // 부모 슬라이드의 index 찾기
+      const swiperSlide = button.closest(".swiper-slide");
+      if (!swiperSlide) return;
+      
+      // boothSlideSwiper가 있으면 realIndex 사용
+      if (boothSlideSwiper) {
+        const slides = Array.from(boothSlideSwiper.slides);
+        const slideIndex = slides.indexOf(swiperSlide);
+        
+        // slideIndex가 1~10이므로 0~9로 변환 (0번 슬라이드는 Hall 맵이므로 제외)
+        const layerIndex = slideIndex - 1;
+        
+        if (layerIndex >= 0 && layerIndex < 10) {
+          openLayerPopup(layerIndex);
+        }
+      }
+    });
+  });
+  
+  // 2. 닫기 버튼 클릭 이벤트
+  const closeBtn = document.querySelector(".layer-pop .close-btn");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeLayerPopup);
+  }
+  
+  // 3. 레이어 탭 버튼 클릭 이벤트 (외부 탭: layer-tab-item)
+  const layerTabButtons = document.querySelectorAll(".layer-nav-tabs .layer-tab-btn");
+  
+  layerTabButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const layerTabItems = document.querySelectorAll(".layer-tab-item");
+      const layerContent = document.querySelector(".layer-content");
+      
+      // 모든 탭의 active 클래스 제거
+      layerTabItems.forEach(item => item.classList.remove("active"));
+      
+      // 클릭한 탭 활성화
+      if (layerTabItems[index]) {
+        layerTabItems[index].classList.add("active");
+      }
+      
+      // fade 효과와 함께 컨텐츠 렌더링
+      if (layerContent) {
+        layerContent.style.opacity = '0';
+        layerContent.style.transform = 'translateY(-10px)';
+        
+        setTimeout(() => {
+          renderLayerContent(index);
+          layerContent.style.opacity = '1';
+          layerContent.style.transform = 'translateY(0)';
+          
+          // home-btn 숨김 (renderLayerContent에서도 제거하지만 명시적으로 추가)
+          layerContent.classList.remove('has-active-subtab');
+          
+          // 컨텐츠 렌더링 후 Swiper 재초기화
+          setTimeout(() => {
+            initProductSwiper();
+          }, 100);
+        }, 300);
+      } else {
+        renderLayerContent(index);
+        // 컨텐츠 렌더링 후 Swiper 재초기화
+        setTimeout(() => {
+          initProductSwiper();
+        }, 100);
+      }
+    });
+  });
+  
+  // 4. 컨텐츠 내부 tablist 탭 클릭 이벤트 및 home-btn 클릭 이벤트
+  // 이벤트 위임 방식 사용 (동적으로 생성되는 요소이므로)
+  const layerContent = document.querySelector(".layer-content");
+  if (layerContent) {
+    layerContent.addEventListener("click", (e) => {
+      // home-btn 클릭 처리
+      const homeBtn = e.target.closest(".home-btn");
+      if (homeBtn) {
+        // 모든 내부 탭 비활성화
+        const allSubTabs = layerContent.querySelectorAll(".layer-sub-tabs .layer-tab-btn");
+        allSubTabs.forEach(tab => {
+          tab.classList.remove("active");
+          tab.setAttribute("aria-selected", "false");
+        });
+        
+        // 모든 tab-detail 숨기기
+        const allTabDetails = layerContent.querySelectorAll(".tab-detail");
+        allTabDetails.forEach(detail => detail.classList.remove("active"));
+        
+        // 배경 이미지를 defaultBg로 복원
+        const defaultBg = layerContent.getAttribute("data-default-bg");
+        if (defaultBg) {
+          layerContent.style.backgroundImage = `url('${defaultBg}')`;
+        }
+        
+        // home-btn 숨김
+        layerContent.classList.remove("has-active-subtab");
+        layerContent.classList.remove("active");
+        return;
+      }
+      
+      // 클릭한 요소가 layer-sub-tabs 내부의 탭 버튼인지 확인
+      const clickedTab = e.target.closest(".layer-sub-tabs .layer-tab-btn");
+      if (!clickedTab) return;
+      
+      // 같은 tablist 내의 모든 탭 찾기
+      const tablist = clickedTab.closest(".layer-sub-tabs");
+      if (!tablist) return;
+      
+      const allTabs = tablist.querySelectorAll(".layer-tab-btn");
+      
+      // 모든 탭의 active 상태 제거
+      allTabs.forEach(tab => {
+        tab.classList.remove("active");
+        tab.setAttribute("aria-selected", "false");
+      });
+      
+      // 클릭한 탭 활성화
+      clickedTab.classList.add("active");
+      clickedTab.setAttribute("aria-selected", "true");
+      
+      // 모든 tab-detail 숨기기
+      const allTabDetails = tablist.querySelectorAll(".tab-detail");
+      allTabDetails.forEach(detail => detail.classList.remove("active"));
+      
+      // 클릭한 탭의 tab-detail 표시
+      const clickedTabDetail = clickedTab.parentElement.querySelector(".tab-detail");
+      if (clickedTabDetail) {
+        clickedTabDetail.classList.add("active");
+      }
+      
+      // layer-content에 active 클래스 추가
+      layerContent.classList.add("active");
+      
+      // home-btn 표시를 위한 클래스 추가
+      layerContent.classList.add("has-active-subtab");
+      
+      // 배경 이미지를 탭의 bg로 즉시 변경 (fade 효과 없음)
+      const tabBg = clickedTab.getAttribute("data-bg");
+      if (tabBg) {
+        layerContent.style.backgroundImage = `url('${tabBg}')`;
+      }
+    });
+  }
+  
+  // 5. 레이어 팝업 바깥 영역 클릭 시 닫기 (선택사항)
+  const layerPop = document.querySelector(".layer-pop");
+  if (layerPop) {
+    layerPop.addEventListener("click", (e) => {
+      // layer-pop-inner 바깥을 클릭한 경우에만 닫기
+      if (e.target === layerPop) {
+        closeLayerPopup();
+      }
+    });
+  }
+  
+  // 6. 제품 리스트 초기화
+  initProductSwiper();
+  initProductAccordion();
+}
+
 /* 모든 기능 초기화 */
 function init() {
   initFadeUp();
@@ -824,6 +1480,7 @@ function init() {
   handleTechzoneSlide();
   handleTechzoneNewsSlide();
   handleHighlightsSlide();
+  handleLayerPopup();
 
   new fullpage(".ise-container", {
     licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
@@ -840,7 +1497,7 @@ function init() {
     ],
     showActiveTooltip: true,
     scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화
-    normalScrollElements: ".layer-popup, .layer-popup *",
+    normalScrollElements: ".layer-pop, .layer-pop *",
     responsiveWidth: 1281, // 1081px 이하에서 fullpage 해제
     onLeave: function(origin, destination, direction) {
       

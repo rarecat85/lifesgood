@@ -1,0 +1,452 @@
+@use "../../assets/scss/mixin"as *;
+@use "../../assets/scss/variable"as *;
+
+.layer-pop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  box-sizing: border-box;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .layer-pop-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, rem(1260));
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 rem(30);
+
+    .layer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      flex-shrink: 0;
+      @include desktop {
+        width: auto;
+        position: absolute;
+        top: rem(64);
+        right: rem(80);
+      }
+      .logo {
+        width: rem(28);      
+        @include desktop {
+          opacity: 0;
+          visibility: visible;
+        }
+      }
+      .close-btn {
+        width: rem(20);
+        height: rem(20);
+        background: url('/theme/rbFront/img/w/ise/ise2026/ic_close.svg') no-repeat center center / contain;
+        border: none;
+        cursor: pointer;
+      }
+    }
+    
+    .layer-tab {
+      width: 100%;
+      flex-shrink: 0;
+      padding: rem(17.5) 0;
+      margin-bottom: rem(20);
+      .layer-nav-tabs {
+        display: flex;
+        .layer-tab-item {
+          padding: 0 rem(18);
+          position: relative;
+          &:not(:last-child) {
+            &::after {
+              content: "";
+              width: rem(1);
+              height: rem(18);
+              background-color: #303030;
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+            }
+          }
+          .layer-tab-btn {
+            @include font(18,1,550,$white);
+            padding: rem(4.5) 0;
+            border-bottom: rem(2) solid transparent;
+            white-space: nowrap;
+            transition: all 0.3s;
+          }
+          &.active {
+            .layer-tab-btn {
+              color: $primary;
+              border-color: $primary;
+            }
+          }
+          
+        }
+      }
+    }
+    
+    .layer-content {
+      width: 100%;
+      flex: 1;
+      max-height: rem(610);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      opacity: 1;
+      
+      .layer-content-inner {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .layer-content-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: rem(20);
+      }
+      
+      // tablist가 있을 때의 스타일
+      &.has-tablist {
+        .layer-content-text {
+          gap: rem(16);
+        }
+        
+        .layer-product-list {
+          margin-top: rem(16);
+        }
+      }
+      
+      // tablist가 없을 때의 스타일
+      &.no-tablist {
+        .layer-content-text {
+          gap: rem(24);
+        }
+        
+        .layer-product-list {
+          margin-top: rem(24);
+          
+          .product-items {
+            gap: rem(14);
+          }
+          
+          .product-link {
+            padding: rem(16) rem(20);
+          }
+        }
+      }
+      
+      // 내부 서브탭이 활성화되었을 때 home-btn 표시
+      &.has-active-subtab {
+        .layer-content-title .home-btn {
+          display: inline-block;
+        }
+      }
+      
+      .layer-content-title {
+        font-size: rem(24);
+        font-weight: 700;
+        color: $white;
+        line-height: 1.3;
+        
+        span {
+          display: block;
+          font-size: rem(16);
+          font-weight: 400;
+          margin-top: rem(8);
+          opacity: 0.8;
+        }
+        
+        .home-btn {
+          display: none; // 기본적으로 숨김
+          margin-left: rem(12);
+          padding: rem(6) rem(16);
+          background: rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: rem(4);
+          color: $white;
+          font-size: rem(14);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+      
+      .layer-content-desc {
+        font-size: rem(14);
+        color: $white;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      
+      // Tablist 스타일
+      .layer-sub-tabs {
+        display: flex;
+        gap: rem(10);
+        list-style: none;
+        margin: rem(20) 0;
+        flex-wrap: wrap;
+        
+        li {
+          list-style: none;
+        }
+        
+        .layer-tab-btn {
+          padding: rem(10) rem(20);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          background-color: transparent;
+          color: $white;
+          font-size: rem(14);
+          cursor: pointer;
+          border-radius: rem(4);
+          transition: all 0.3s ease;
+          
+          &:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+          
+          &.active {
+            border-color: $white;
+            background-color: $white;
+            color: $black;
+            font-weight: 600;
+          }
+        }
+        
+        .tab-detail {
+          display: none;
+          margin-top: rem(16);
+          padding: rem(16);
+          background-color: rgba(255, 255, 255, 0.05);
+          border-radius: rem(4);
+          
+          &.active {
+            display: block;
+          }
+          
+          .tab-detail-subtitle {
+            font-size: rem(12);
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: rem(1);
+          }
+          
+          .tab-detail-title {
+            font-size: rem(18);
+            font-weight: 600;
+            color: $white;
+            margin-top: rem(8);
+            line-height: 1.4;
+          }
+          
+          .tab-detail-desc {
+            font-size: rem(14);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-top: rem(8);
+          }
+        }
+      }
+      
+      // Product List 스타일
+      .layer-product-list {
+        display: none;
+        margin-top: rem(20);
+        
+        .product-list-title {
+          font-size: rem(16);
+          font-weight: 600;
+          color: $white;
+          margin-bottom: rem(16);
+        }
+        
+        .product-slider {
+          position: relative;
+          overflow: hidden;
+          
+          .swiper-wrapper {
+            display: flex;
+            
+            @media (max-width: 767px) {
+              display: block;
+            }
+          }
+          
+          .product-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: rem(8);
+            overflow: hidden;
+            height: auto;
+            
+            .product-accordion-header {
+              display: flex;
+              align-items: center;
+              gap: rem(12);
+              padding: rem(16);
+              cursor: default;
+              
+              @media (max-width: 767px) {
+                cursor: pointer;
+              }
+              
+              .product-img {
+                width: rem(60);
+                height: rem(60);
+                object-fit: cover;
+                border-radius: rem(4);
+                flex-shrink: 0;
+              }
+              
+              .product-info {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: rem(4);
+                
+                .product-name {
+                  display: block;
+                  color: $white;
+                  font-weight: 500;
+                  font-size: rem(14);
+                }
+                
+                .product-code {
+                  display: block;
+                  color: rgba(255, 255, 255, 0.7);
+                  font-size: rem(12);
+                  font-family: monospace;
+                }
+              }
+              
+              .accordion-toggle {
+                width: rem(24);
+                height: rem(24);
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                flex-shrink: 0;
+                display: none;
+                
+                @media (max-width: 767px) {
+                  display: block;
+                }
+                
+                .icon {
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  position: relative;
+                  
+                  &::before,
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    background: $white;
+                  }
+                  
+                  &::before {
+                    width: 100%;
+                    height: 2px;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                  }
+                  
+                  &::after {
+                    width: 2px;
+                    height: 100%;
+                    left: 50%;
+                    top: 0;
+                    transform: translateX(-50%);
+                    transition: transform 0.3s ease;
+                  }
+                }
+              }
+            }
+            
+            .product-accordion-content {
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.3s ease, padding 0.3s ease;
+              padding: 0 rem(16);
+              
+              @media (min-width: 768px) {
+                max-height: none;
+                padding: 0 rem(16) rem(16);
+              }
+              
+              .product-link {
+                display: inline-block;
+                padding: rem(10) rem(20);
+                background: rgba(255, 255, 255, 0.2);
+                color: $white;
+                text-decoration: none;
+                border-radius: rem(4);
+                font-size: rem(14);
+                font-weight: 500;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                  background: rgba(255, 255, 255, 0.3);
+                }
+              }
+            }
+            
+            &.active {
+              @media (max-width: 767px) {
+                .accordion-toggle .icon::after {
+                  transform: translateX(-50%) rotate(90deg);
+                }
+                
+                .product-accordion-content {
+                  max-height: rem(200);
+                  padding: rem(16);
+                }
+              }
+            }
+          }
+          
+          .swiper-button-prev,
+          .swiper-button-next {
+            display: none;
+            
+            @media (min-width: 768px) {
+              display: flex;
+              color: $white;
+              width: rem(40);
+              height: rem(40);
+              
+              &::after {
+                font-size: rem(18);
+              }
+              
+              &.swiper-button-disabled {
+                opacity: 0.3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

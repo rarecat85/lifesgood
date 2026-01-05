@@ -414,6 +414,9 @@
             @include tablet {
               aspect-ratio: 238 / 70;
             }
+            @include desktop {
+              aspect-ratio: 292 / 115;
+            }
           }
         }
       }
