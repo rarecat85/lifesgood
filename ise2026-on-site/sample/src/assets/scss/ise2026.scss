@@ -1,10 +1,29 @@
 @use './variable' as *;
 @use './mixin' as *;
 
+.a11y-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
 .ise-container {
   width:100%;
   margin:0 auto;
   font-family: $font-text;
+  
+  @media screen and (max-width: $pc) {
+    .fp-is-overflow {
+      min-height: auto !important;
+    }
+    .fp-overflow {
+      overflow-y: unset;
+      max-height: inherit;
+    }
+  }
   * {
     font-family: $font-text;
     word-wrap: break-word; 
@@ -27,6 +46,15 @@
         display: block;
       }
     }
+    &.tab-only {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+      @include desktop {
+        display: none;
+      }
+    }
     &.mo-only {
       display: block;
       @include desktop {
@@ -37,77 +65,50 @@
   
   .inner {
     width:100%;
-    max-width: $inner;
+    // max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
     margin:0 auto;
     padding:0 rem(30);
-    overflow: hidden;
+    @include tablet {
+      max-width: calc($inner_tab + rem(60));
+    }
+    @include desktop {
+      max-width: calc($inner + rem(60));
+    }
   }
   
-  .toast-popup {
-    background-color: #DADADA;
-    padding: rem(8) rem(40);
-    border-radius: rem(10);
-    position: absolute;
-    transform: translate(-50% ,50%);  
-    bottom: 50%;
-    left: 50%;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    @include tablet {
-      padding: rem(10) rem(40);
-    }
-    .toast-popup-inner {
-      display: flex;
-      align-items: center;
-      gap: rem(8);
-      @include tablet {
-        gap: rem(10);
-      }
-      &::before {
-        content: '';
-        display: inline-block;
-        display: block;
-        width: rem(15);
-        height: rem(15);
-        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_copy_popup.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        @include tablet {
-          width: rem(22);
-          height: rem(22);
-        }
-      }
-      .toast-popup-text {
-        color: $black;
-        @include font(12,100%,400);
-        white-space: nowrap;
-        @include tablet {
-          font-size: rem(17);
-        }
-        span {
-          color: $primary;
-        }
-      }
-    }
-  }
-
   .section-tit-bx {
-    text-align: center;
-    margin-bottom: rem(40);
-    @include tablet {
-      margin-bottom: rem(60);
+    .logo-img {
+      margin-bottom: rem(14);
+      @include tablet {
+        margin-bottom: rem(2);
+      }
     }
     .title {
       font-family: "LG EI Headline";
       @include font(30,110%,700);
-      margin-bottom: rem(20)
+      margin-bottom: rem(20);
+      text-wrap: balance;
     }
     .text {
       @include font(14,140%,400);
       text-wrap: balance;
+      br {
+        display: none;
+        @include desktop {
+          display: block;
+        }
+      }
     }
     @include tablet {
+      text-align: center;
+      .title {
+        font-size: rem(36);
+      }
+      .text {
+        font-size: rem(16);
+      }
+    }
+    @include desktop {
       .title {
         font-size: rem(50);
       }
@@ -117,14 +118,6 @@
     }
   }
 
-  .a11y-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: polygon(0 0, 0 0, 0 0);
-  }
   /* fade-up animation */
   .fade-in-up {
     opacity: 0;

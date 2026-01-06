@@ -16,11 +16,13 @@ $boksoondoga : #BCAE98;
 $font-headline : "LG EI Headline", sans-serif;
 $font-text : "LG EI Text", sans-serif;
 
-/* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1440부터 pc */
-$tab : 768px;
-$pc : 1441px;
+/* breakpoint - mobile first 로, 기본 mobile scss 작성 후 768부터 tab, 1280부터 pc */
+$tab : 769px;
+$pc : 1281px;
 
-$inner : 1260px; /* PC 기준 inner 사이즈 */
+$inner : 1200px; /* PC 기준 inner 사이즈 */
+$inner_tab : 740px; /* tab 기준 inner 사이즈 */
+$inner_mo : 360px; /* mo 기준 inner 사이즈 */
 
 /* device별 기준 section 상하 padding값, rem mixin에 넣어서 사용 */
 $mo_padding : 56; 

@@ -3,6 +3,26 @@
 
 .culture {
   background-color: #F0ECE4;
+  @include tablet {
+    padding: rem(50) 0 rem(61.58);
+  }
+  @include desktop {
+    padding: 0;
+  }
+  .inner {
+    @include desktop {
+      padding-top: rem(188);
+    }
+  }
+  .section-tit-bx {
+    margin-bottom: rem(20);
+    @include tablet {
+      margin-bottom: rem(45);
+    }
+    @include desktop {
+      margin-bottom: rem(60);
+    }
+  }
   .slide-bx {
     max-width: rem(1260);
     padding: 0 rem(30);
