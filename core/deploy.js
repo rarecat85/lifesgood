@@ -463,9 +463,20 @@ function deploy(projectName, subFolder) {
     console.log('\n5️⃣  파일 복사...');
     
     // HTML 복사 (main.html 또는 index.html → docs/index.html)
+    // 절대 경로를 상대 경로로 변환 (/theme/ → ./theme/, /assets/ → ./assets/)
     const targetIndexPath = path.join(docsDir, 'index.html');
-    fs.copyFileSync(sourceHtmlPath, targetIndexPath);
-    console.log(`   ✅ ${path.basename(sourceHtmlPath)} → index.html`);
+    let htmlContent = fs.readFileSync(sourceHtmlPath, 'utf8');
+    
+    // 경로 변환: /theme/ → ./theme/, /assets/ → ./assets/
+    htmlContent = htmlContent.replace(/href=["']\/theme\//g, 'href="./theme/');
+    htmlContent = htmlContent.replace(/src=["']\/theme\//g, 'src="./theme/');
+    htmlContent = htmlContent.replace(/href=["']\/assets\//g, 'href="./assets/');
+    htmlContent = htmlContent.replace(/src=["']\/assets\//g, 'src="./assets/');
+    htmlContent = htmlContent.replace(/url\(["']?\/theme\//g, 'url("./theme/');
+    htmlContent = htmlContent.replace(/url\(["']?\/assets\//g, 'url("./assets/');
+    
+    fs.writeFileSync(targetIndexPath, htmlContent, 'utf8');
+    console.log(`   ✅ ${path.basename(sourceHtmlPath)} → index.html (경로 변환 완료)`);
     
     // assets 폴더 복사 (scss 제외)
     const assetsSource = path.join(srcPath, 'assets');
