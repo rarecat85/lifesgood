@@ -1041,6 +1041,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_img_1-1.jpg'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1121,6 +1122,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1293,6 +1295,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1360,6 +1363,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1420,6 +1424,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1468,6 +1473,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1514,6 +1520,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1567,6 +1574,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1635,6 +1643,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -1887,6 +1896,7 @@ const layerPopupData = [
       {
         type: 'youtube',
         youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: "Overview",
         thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png'
       }
       // 이미지는 자동으로 감지되어 추가됩니다
@@ -2269,6 +2279,16 @@ function initMediaGallerySwiper() {
       nextEl: ".thumb-slide-next",
       prevEl: ".thumb-slide-prev",
     },
+    breakpoints: {
+      768: {
+        slidesPerView: 5,
+        spaceBetween: 9,
+      },
+      1280: {
+        slidesPerView: 5,
+        spaceBetween: 14,
+      }
+    }
   });
   
   // Main Swiper 초기화 (thumbs 연결)
@@ -2278,6 +2298,10 @@ function initMediaGallerySwiper() {
     effect: 'fade',
     thumbs: {
       swiper: thumbGallerySwiper,
+    },
+    pagination: {
+      el: ".main-swiper-container .swiper-pagination",
+      type: "fraction",
     },
   });
 }
@@ -2311,6 +2335,10 @@ function initProductSwiper() {
       },
       breakpoints: {
         768: {
+          slidesPerView: 3,
+          spaceBetween: 5,
+        },
+        1280: {
           slidesPerView: 3,
           spaceBetween: 8,
         }
