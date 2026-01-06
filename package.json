@@ -1,0 +1,11 @@
+{
+  "name": "lifesgood",
+  "version": "1.0.0",
+  "description": "LG Life's Good Projects",
+  "scripts": {
+    "deploy": "node core/deploy.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
