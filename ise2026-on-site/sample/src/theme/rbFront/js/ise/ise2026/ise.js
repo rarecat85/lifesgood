@@ -408,7 +408,7 @@ let boothSlideSwiper = null;
 let boothBreakpointState = null; // 'mobile', 'tablet', 'desktop'
 
 function handleBoothSlide() {
-  const boothSlide = document.querySelector(".booth-map .slide-bx");
+  const boothSlide = document.querySelector(".booth-map .slide-bx .swiper");
   if (!boothSlide) return;
 
   // 각 슬라이드에 표시할 커스텀 텍스트 배열 (사용자가 원하는 대로 수정 가능)
