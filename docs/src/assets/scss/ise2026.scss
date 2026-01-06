@@ -1,0 +1,141 @@
+@use './variable' as *;
+@use './mixin' as *;
+
+.a11y-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.ise-container {
+  width:100%;
+  margin:0 auto;
+  font-family: $font-text;
+  
+  @media screen and (max-width: $pc) {
+    .fp-is-overflow {
+      min-height: auto !important;
+    }
+    .fp-overflow {
+      overflow-y: unset;
+      max-height: inherit;
+    }
+  }
+  * {
+    font-family: $font-text;
+    word-wrap: break-word; 
+    word-break: keep-all;
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    &:active, &:focus, &:hover {
+      text-decoration: none;
+      font-weight: inherit;
+    }
+  }
+
+  br {
+    &.pc-only {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+    &.tab-only {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+      @include desktop {
+        display: none;
+      }
+    }
+    &.mo-only {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+  
+  .inner {
+    width:100%;
+    // max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
+    margin:0 auto;
+    padding:0 rem(30);
+    @include tablet {
+      max-width: calc($inner_tab + rem(60));
+    }
+    @include desktop {
+      max-width: calc($inner + rem(60));
+    }
+  }
+  
+  .section-tit-bx {
+    .logo-img {
+      margin-bottom: rem(14);
+      @include tablet {
+        margin-bottom: rem(2);
+      }
+    }
+    .title {
+      font-family: "LG EI Headline";
+      @include font(30,110%,700);
+      margin-bottom: rem(20);
+      text-wrap: balance;
+    }
+    .text {
+      @include font(14,140%,400);
+      text-wrap: balance;
+      br {
+        display: none;
+        @include desktop {
+          display: block;
+        }
+      }
+    }
+    @include tablet {
+      text-align: center;
+      .title {
+        font-size: rem(36);
+      }
+      .text {
+        font-size: rem(16);
+      }
+    }
+    @include desktop {
+      .title {
+        font-size: rem(50);
+      }
+      .text {
+        font-size: rem(22);
+      }
+    }
+  }
+
+  /* fade-up animation */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+}

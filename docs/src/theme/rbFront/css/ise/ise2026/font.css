@@ -1,0 +1,71 @@
+@font-face {
+  font-display: swap;
+  font-family: "LG EI Headline";
+  font-style: normal;
+  font-weight: 700;
+  src: local("LGEI Headline Bold"),local("LGEIHeadline-Bold"),url(/theme/rbFront/font/LGEIHeadline-Bold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Bold.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LG EI Headline";
+  font-style: normal;
+  font-weight: 300;
+  src: local("LGEI Headline Light"),local("LGEIHeadline-Light"),url(/theme/rbFront/font/LGEIHeadline-Light.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Light.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LG EI Headline";
+  font-style: normal;
+  font-weight: 400;
+  src: local("LGEI Headline Regular"),local("LGEIHeadline-Regular"),url(/theme/rbFront/font/LGEIHeadline-Regular.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Regular.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LG EI Headline";
+  font-style: normal;
+  font-weight: 600;
+  src: local("LGEI Headline Semibold"),local("LGEIHeadline-Semibold"),url(/theme/rbFront/font/LGEIHeadline-Semibold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Semibold.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LG EI Headline";
+  font-style: normal;
+  font-weight: 100;
+  src: local("LGEI Headline Thin"),local("LGEIHeadline-Thin"),url(/theme/rbFront/font/LGEIHeadline-Thin.woff2) format("woff2"),url(/theme/rbFront/font/LGEIHeadline-Thin.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LGEI Text";
+  font-style: normal;
+  font-weight: 700;
+  src: local("LGEI Text Bold"),local("LGEIText-Bold"),url(/theme/rbFront/font/LGEIText-Bold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIText-Bold.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LGEI Text";
+  font-style: normal;
+  font-weight: 300;
+  src: local("LGEI Text Light"),local("LGEIText-Light"),url(/theme/rbFront/font/LGEIText-Light.woff2) format("woff2"),url(/theme/rbFront/font/LGEIText-Light.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LGEI Text";
+  font-style: normal;
+  font-weight: 400;
+  src: local("LGEI Text Regular"),local("LGEIText-Regular"),url(/theme/rbFront/font/LGEIText-Regular.woff2) format("woff2"),url(/theme/rbFront/font/LGEIText-Regular.woff) format("woff")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "LGEI Text";
+  font-style: normal;
+  font-weight: 600;
+  src: local("LGEI Text Semibold"),local("LGEIText-Semibold"),url(/theme/rbFront/font/LGEIText-SemiBold.woff2) format("woff2"),url(/theme/rbFront/font/LGEIText-SemiBold.woff) format("woff")
+}
