@@ -10,6 +10,11 @@
   @include desktop {
     padding: 0;
   }
+  .inner {
+    @include desktop {
+      padding-top: rem(158);
+    }
+  }
   .section-tit-bx {
     color: $white;
     margin-bottom: rem(19);
@@ -26,6 +31,7 @@
       background-size: auto;
       background-position: center;
       background-repeat: no-repeat;
+      margin-bottom: rem(126);
     }
     .inner {
       @include tablet {
@@ -34,6 +40,7 @@
       }
       @include desktop {
         gap: rem(20);
+        padding-top: 0;
       }
     }
     .main-slide {

@@ -58,10 +58,10 @@
   justify-content:center;
   text-decoration:none;
   font-family: $font-headline;
-  @include font(14,140%,550);
+  @include font(12,1.16,400);
   width: fit-content;
   white-space: nowrap;
-  height:rem(32);
+  height:rem(26);
   border-radius:rem(100);
   padding: rem(8) rem(22);
   cursor: pointer;
@@ -135,6 +135,6 @@
     }
   }
   @include desktop{
-    min-width: rem(113);
+    min-width: rem(102);
   }
 }

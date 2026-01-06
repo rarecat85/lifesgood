@@ -35,6 +35,9 @@
       max-width: rem(1200);
       padding-bottom: rem(150);
     }
+    .swiper-slide {
+      height: auto;
+    }
     &.is-transitioning {
       opacity: 0;
     }
@@ -71,6 +74,7 @@
           height: 100%;
           display: block;
           object-fit: cover;
+          border-radius: rem(20);
         }
       }
     }
@@ -78,21 +82,25 @@
       width: 100%;
       height: 100%;
       background-color: $black;
-      border-radius: rem(30);
+      border-radius: rem(20);
       overflow: hidden;
       position: relative;
+      @include tablet {
+        border-radius: rem(20);
+      }
       @include desktop {
         display: flex;
         justify-content: space-between;
         gap: rem(10);
         padding-right: rem(50);
+        border-radius: rem(30);
       }
       .booth-thumb {
         max-width: rem(542);
         width: 100%;
         position: relative;
         img {
-          aspect-ratio: 216/147;
+          aspect-ratio: 216/146;
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -129,14 +137,17 @@
       .booth-info {
         display: flex;
         gap: rem(40);
+        position: relative;
         @include tablet {
-          height: calc(100% - rem(147));
+          height: calc(100% - rem(146));
+          min-height: rem(146);
           margin-top: rem(8);
           padding-bottom: rem(20);
         }
         @include desktop {
           width: calc(100% - rem(612));
           height: rem(274);
+          min-height: auto;
           margin-top: rem(100);
           padding-bottom: 0;
         }
@@ -144,6 +155,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          width: 100%;
         }
         .booth-txt-bx {
           @include tablet {
@@ -165,8 +177,8 @@
             }
             @include tablet {
               max-width: rem(125);
-              font-size: rem(16);
-              margin-bottom: rem(8);
+              font-size: rem(15);
+              margin-bottom: rem(4);
             }
             @include desktop {
               max-width: unset;
@@ -195,17 +207,21 @@
       .booth-location {
         flex-shrink: 0;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: rem(23);
+        right: rem(16);
         @include tablet {
           img {
-            max-width: rem(80);
+            width: rem(80);
+            height: rem(70);
+            object-fit: cover;
           }
         }
         @include desktop {
           position: static;
           img {
             max-width: 100%;
+            width: auto;
+            height: auto;
           }
         }
       }
@@ -288,6 +304,9 @@
     .btn {
       @include btn($white, false, $primary);
       margin: rem(16) auto 0;
+      @include tablet {
+        margin-top: 0;
+      }
       @include desktop {
         margin: unset;
       }

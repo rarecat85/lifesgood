@@ -960,6 +960,59 @@ function handleHighlightsSlide(){
   initSubSwiper();
 }
 
+/* 이미지 존재 여부 확인 함수 */
+function checkImageExists(imageUrl) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = imageUrl;
+  });
+}
+
+/* 부스별 이미지 자동 감지 함수 */
+async function detectBoothImages(boothNumber) {
+  const basePath = '/theme/rbFront/img/w/ise/ise2026/';
+  const images = [];
+  let imageIndex = 1;
+  
+  // 순차적으로 이미지 존재 여부 확인
+  while (true) {
+    const imageUrl = `${basePath}booth_img_${boothNumber}-${imageIndex}.jpg`;
+    const exists = await checkImageExists(imageUrl);
+    
+    if (!exists) {
+      // 이미지가 없으면 중단
+      break;
+    }
+    
+    // 이미지가 있으면 배열에 추가
+    images.push({
+      type: 'image',
+      imageUrl: imageUrl
+    });
+    
+    imageIndex++;
+  }
+  
+  return images;
+}
+
+/* 모든 부스의 미디어 갤러리 초기화 */
+async function initBoothMediaGalleries() {
+  // 모든 부스 (1-10)에 대해 이미지 자동 감지
+  for (let i = 0; i < layerPopupData.length; i++) {
+    const boothNumber = i + 1;
+    const detectedImages = await detectBoothImages(boothNumber);
+    
+    // 기존 mediaGallery에 감지된 이미지들을 추가
+    // 유튜브 영상은 이미 있으므로, 이미지만 추가
+    if (detectedImages.length > 0) {
+      layerPopupData[i].mediaGallery.push(...detectedImages);
+    }
+  }
+}
+
 /* Layer Popup 데이터 구조 */
 const layerPopupData = [
   {
@@ -972,10 +1025,8 @@ const layerPopupData = [
       { name: "Transparent Mesh LED", code: "LTPA062", link: "/products/fine-pitch-led", image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png', title: 'Key Attractor Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_img_1-1.jpg' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1001,10 +1052,8 @@ const layerPopupData = [
       ]}
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png', title: 'LG Business Cloud Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2_tab1.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1013,33 +1062,30 @@ const layerPopupData = [
     description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
     defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
     tablist: [
-      { name: "LG Connected Care", id: "tab-3-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab1.png", title: "Display remote management solution", description: "It is important to have a device control solution that manages signage across multiple stores.", productList: [
+      { name: "LG Connected Care", id: "tab-3-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_1.png", title: "Display remote management solution", description: "It is important to have a device control solution that manages signage across multiple stores.", productList: [
         { type: "solution", name: "LG ConnectedCare (Display remote solution)", bgClass: "bg-light-blue", link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png" },
         { type: "product", name: "K-Culture Connected Care", code: "KC-CC-001", link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png" }
       ]},
-      { name: "LG SuperSign Cloud", id: "tab-3-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Cloud-Based Content Management Solution", description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.", productList: [
+      { name: "LG SuperSign Cloud", id: "tab-3-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_2.png", title: "Cloud-Based Content Management Solution", description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.", productList: [
         { type: "solution", name: "LG SuperSign Cloud (Signage content solution)", bgClass: "bg-light-blue", link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-supersign-cloud", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png" },
         { type: "product", name: "4K UHD Signage", code: "65UH5Q-E", link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png" },
         { type: "product", name: "Stretch Signage", code: "37BH7N", link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_3.png" },
         { type: "product", name: "Transparent OLED Signage", code: "55EW5P-M", link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_4.png" }
       ]},
-      { name: "LG DOOH Ads", id: "tab-3-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Signage Display Advertising Platform", description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.", productList: [
+      { name: "LG DOOH Ads", id: "tab-3-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_3.png", title: "Signage Display Advertising Platform", description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.", productList: [
         { type: "product", name: "K-Culture DOOH", code: "KC-DA-001", link: "/products/k-culture-dooh", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
       ]},
-      { name: "LG SoundCast", id: "tab-3-4", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Signage Display Advertising Platform", description: "We need a solution that would allow us to control the multiple in-store screens across our global retail locations so customers could enjoy the cute Palm Pals video content exactly the way we envision it.", productList: [
+      { name: "LG SoundCast", id: "tab-3-4", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_4.png", title: "Signage Display Advertising Platform", description: "We need a solution that would allow us to control the multiple in-store screens across our global retail locations so customers could enjoy the cute Palm Pals video content exactly the way we envision it.", productList: [
         { type: "product", name: "K-Culture SoundCast", code: "KC-SC-001", link: "/products/k-culture-sc", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
       ]},
-      { name: "LG All-In-One LED", id: "tab-3-5", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab2.png", title: "Experience the convenience of LG's LED All-in-One LAPA series", description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.", productList: [
+      { name: "LG All-In-One LED", id: "tab-3-5", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_5.png", title: "Experience the convenience of LG's LED All-in-One LAPA series", description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.", productList: [
         { type: "product", name: "K-Culture All-In-One LED", code: "KC-AIO-001", link: "/products/k-culture-aio", image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1.png" }
       ]}
     ],
     productList: [],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png', title: 'K-Culture Overview Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png', title: 'Gallery Image 3' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png', title: 'Gallery Image 4' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1055,10 +1101,8 @@ const layerPopupData = [
       { type: "product", name: "Drive-thru Display", code: "DT-001", link: "/products/drive-thru", image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png', title: 'Drive-thru Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab1.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4_tab2.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1075,10 +1119,8 @@ const layerPopupData = [
       { type: "product", name: "Interactive Board", code: "IB-001", link: "/products/interactive-board", image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png', title: 'Meeting Room Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab1.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1094,10 +1136,8 @@ const layerPopupData = [
       { name: "Control Display", code: "CD-001", link: "/products/control-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png', title: 'Control Room Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab1.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6_tab2.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1113,10 +1153,8 @@ const layerPopupData = [
       { name: "E-Paper Display", code: "EP-001", link: "/products/e-paper", image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png', title: 'E-Paper Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab1.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7_tab2.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1133,10 +1171,8 @@ const layerPopupData = [
       { name: "Interactive Whiteboard", code: "IW-001", link: "/products/interactive-whiteboard", image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png', title: 'Learning Zone Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_8_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8_tab1.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1152,10 +1188,8 @@ const layerPopupData = [
       { name: "Hotel Display", code: "HD-001", link: "/products/hotel-display", image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png', title: 'Hotel Zone Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab1.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9_tab2.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   },
   {
@@ -1164,19 +1198,17 @@ const layerPopupData = [
     description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
     defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png",
     tablist: [
-      { name: "Overview", id: "tab-10-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab1.png", title: "LED Tech Zone", description: "Next-generation LED display technology showcase" },
-      { name: "LED Technology", id: "tab-10-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab2.png", title: "LED Technology", description: "Innovative LED solutions for various applications" },
-      { name: "Applications", id: "tab-10-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab3.png", title: "Applications", description: "Real-world applications of LED display technology" }
+      { name: "Overview", id: "tab-10-1", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_1.png", title: "LED Tech Zone", description: "Next-generation LED display technology showcase" },
+      { name: "LED Technology", id: "tab-10-2", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_2.png", title: "LED Technology", description: "Innovative LED solutions for various applications" },
+      { name: "Applications", id: "tab-10-3", bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_3.png", title: "Applications", description: "Real-world applications of LED display technology" }
     ],
     productList: [
       { name: "LED Display Pro", code: "LED-PRO-001", link: "/products/led-pro", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1.png" },
       { name: "LED Display Ultra", code: "LED-ULTRA-001", link: "/products/led-ultra", image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2.png" }
     ],
     mediaGallery: [
-      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png', title: 'LED Tech Zone Video' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_10_1.png', title: 'Gallery Image 1' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/product_img_10_2.png', title: 'Gallery Image 2' },
-      { type: 'image', imageUrl: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab1.png', title: 'Gallery Image 3' }
+      { type: 'youtube', youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', thumbnail: '/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png' }
+      // 이미지는 자동으로 감지되어 추가됩니다
     ]
   }
 ];
@@ -1429,6 +1461,12 @@ function openVideoLayer(index) {
   
   if (!videoLayer || !data.mediaGallery) return;
   
+  // 부스 이름 설정
+  const boothNameEl = videoLayer.querySelector(".booth-name");
+  if (boothNameEl) {
+    boothNameEl.textContent = data.title;
+  }
+  
   // 갤러리 렌더링
   renderMediaGallery(data.mediaGallery);
   
@@ -1447,6 +1485,12 @@ function closeVideoLayer() {
   if (!videoLayer) return;
   
   videoLayer.classList.remove("active");
+  
+  // photo-btn의 active 클래스도 제거
+  const photoBtn = document.querySelector(".layer-tab .photo-btn");
+  if (photoBtn) {
+    photoBtn.classList.remove("active");
+  }
   
   // Swiper 인스턴스 제거
   if (mainGallerySwiper) {
@@ -1469,18 +1513,22 @@ function renderMediaGallery(mediaGallery) {
   // 메인 슬라이드 생성
   const mainSlides = mediaGallery.map((item) => {
     if (item.type === 'youtube') {
+      const videoTitle = item.title || 'LG at ISE 2026';
       return `
         <div class="swiper-slide">
-          <a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-link">
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <div class="play-icon"></div>
-          </a>
+          <div class="video-item">
+            <img src="${item.thumbnail}" alt="${videoTitle}">
+            <div class="txt-bx">
+              <p class="title">${videoTitle}</p>
+            </div>
+            <a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-link"> Learn more</a>
+          </div>
         </div>
       `;
     } else {
       return `
         <div class="swiper-slide">
-          <img src="${item.imageUrl}" alt="${item.title}">
+          <img src="${item.imageUrl}" alt="LG at ISE 2026">
         </div>
       `;
     }
@@ -1490,9 +1538,10 @@ function renderMediaGallery(mediaGallery) {
   const thumbSlides = mediaGallery.map((item) => {
     const thumbUrl = item.type === 'youtube' ? item.thumbnail : item.imageUrl;
     const iconClass = item.type === 'youtube' ? 'has-play-icon' : '';
+    const altText = item.type === 'youtube' && item.title ? item.title : 'LG at ISE 2026';
     return `
       <div class="swiper-slide ${iconClass}">
-        <img src="${thumbUrl}" alt="${item.title}">
+        <img src="${thumbUrl}" alt="${altText}">
       </div>
     `;
   }).join('');
@@ -1509,8 +1558,8 @@ function initMediaGallerySwiper() {
   
   // Thumbs Swiper 먼저 초기화
   thumbGallerySwiper = new Swiper(".thumb-gallery-swiper", {
-    slidesPerView: 4,
-    spaceBetween: 10,
+    slidesPerView: 5,
+    spaceBetween: 14,
     watchSlidesProgress: true,
     direction: 'vertical',
     navigation: {
@@ -1523,6 +1572,7 @@ function initMediaGallerySwiper() {
   mainGallerySwiper = new Swiper(".main-gallery-swiper", {
     slidesPerView: 1,
     spaceBetween: 0,
+    effect: 'fade',
     thumbs: {
       swiper: thumbGallerySwiper,
     },
@@ -1636,6 +1686,7 @@ function handleLayerPopup() {
       // video-layer가 이미 열려있으면 닫기
       if (videoLayer && videoLayer.classList.contains("active")) {
         closeVideoLayer();
+        photoBtn.classList.remove("active");
       } else {
         // 닫혀있으면 열기
         const layerTabItems = document.querySelectorAll(".layer-tab-item");
@@ -1644,6 +1695,7 @@ function handleLayerPopup() {
         
         if (activeIndex >= 0 && activeIndex < layerPopupData.length) {
           openVideoLayer(activeIndex);
+          photoBtn.classList.add("active");
         }
       }
     });
@@ -1677,12 +1729,10 @@ function handleLayerPopup() {
       // fade 효과와 함께 컨텐츠 렌더링
       if (layerContent) {
         layerContent.style.opacity = '0';
-        layerContent.style.transform = 'translateY(-10px)';
         
         setTimeout(() => {
           renderLayerContent(index);
           layerContent.style.opacity = '1';
-          layerContent.style.transform = 'translateY(0)';
           
           // home-btn 숨김 (renderLayerContent에서도 제거하지만 명시적으로 추가)
           layerContent.classList.remove('has-active-subtab');
@@ -1864,7 +1914,10 @@ function handleLayerPopup() {
 }
 
 /* 모든 기능 초기화 */
-function init() {
+async function init() {
+  // 페이지 로드 시 모든 부스의 이미지 자동 감지
+  await initBoothMediaGalleries();
+  
   initFadeUp();
   initKVVideo();
   initBoothSlide();

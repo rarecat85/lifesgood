@@ -10,6 +10,11 @@
   @include desktop {
     padding: 0;
   }
+  .inner {
+    @include desktop {
+      padding: rem(158) rem(30) rem(64);
+    }
+  }
   .section-tit-bx {
     margin-bottom: rem(20);
     @include tablet {
