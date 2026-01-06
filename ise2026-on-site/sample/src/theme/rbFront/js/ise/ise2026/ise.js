@@ -531,6 +531,21 @@ function handleBoothSlide() {
               initialActiveBullet.setAttribute("aria-current", "true");
             }
           }, 0);
+          
+          // pagination에 이벤트 위임 (bullet 클릭 시 menu 닫기)
+          const pagination = document.querySelector('.booth-map .swiper-pagination');
+          if (pagination && !pagination.dataset.eventAttached) {
+            pagination.addEventListener('click', function(e) {
+              if (e.target.closest('.swiper-pagination-bullet')) {
+                const menuBtn = document.querySelector('.booth-map .menu-btn');
+                if (menuBtn) {
+                  menuBtn.classList.remove('active');
+                }
+                pagination.classList.remove('active');
+              }
+            });
+            pagination.dataset.eventAttached = 'true';
+          }
         },
         slideChange: function() {
           if (this.pagination && this.pagination.el) {
@@ -728,6 +743,18 @@ function handleBoothSlide() {
       bullets[targetIndex].click();
     }
   });
+
+  // menu-btn 클릭 이벤트 (토글)
+  const menuBtn = document.querySelector('.booth-map .menu-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      const pagination = document.querySelector('.booth-map .swiper-pagination');
+      if (pagination) {
+        pagination.classList.toggle('active');
+      }
+    });
+  }
 }
 
 /* Culture 슬라이드 초기화 (thumbs 방식) */

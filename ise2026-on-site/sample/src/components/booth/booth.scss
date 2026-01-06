@@ -314,44 +314,59 @@
             position: absolute;;
             inset: 0;
             transform-origin: 0 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
             &:nth-child(1) {
               display: none;
             }
             &:nth-child(2) {
-              transform: translate(rem(0),rem(49)); 
+              transform: translate(rem(0),rem(49)) scale(0.8);
+              transition-delay: 0s;
             }
             &:nth-child(3) {
-              transform: translate(rem(8.76),rem(20.28)); 
+              transform: translate(rem(8.76),rem(20.28)) scale(0.8);
+              transition-delay: 0.05s;
             }
             &:nth-child(4) {
-              transform: translate(rem(35.67), 0); 
+              transform: translate(rem(35.67), 0) scale(0.8);
+              transition-delay: 0.1s;
             }
             &:nth-child(5) {
-              transform: translate(rem(68.76), 0); 
+              transform: translate(rem(68.76), 0) scale(0.8);
+              transition-delay: 0.15s;
             }
             &:nth-child(6) {
-              transform: translate(rem(93.88),rem(19.74)); 
+              transform: translate(rem(93.88),rem(19.74)) scale(0.8);
+              transition-delay: 0.2s;
             }
             &:nth-child(7) {
-              transform: translate(rem(103),rem(49)); 
+              transform: translate(rem(103),rem(49)) scale(0.8);
+              transition-delay: 0.25s;
             }
             &:nth-child(8) {
-              transform: translate(rem(94.24),rem(77.74)); 
+              transform: translate(rem(94.24),rem(77.74)) scale(0.8);
+              transition-delay: 0.3s;
             }
             &:nth-child(9) {
-              transform: translate(rem(67.33), rem(98.02)); 
+              transform: translate(rem(67.33), rem(98.02)) scale(0.8);
+              transition-delay: 0.35s;
             }
             &:nth-child(10) {
-              transform: translate(rem(34.24), rem(97.53)); 
+              transform: translate(rem(34.24), rem(97.53)) scale(0.8);
+              transition-delay: 0.4s;
             }
             &:nth-child(11) {
-              transform: translate(rem(9.12), rem(78.28)); 
+              transform: translate(rem(9.12), rem(78.28)) scale(0.8);
+              transition-delay: 0.45s;
             }
           }
           @include desktop {
             width: inherit;
             height: inherit;
             position: static;
+            opacity: 1;
+            visibility: visible;
             @for $i from 1 through 11 {
               &:nth-child(#{$i}) {
                 display: block;
@@ -402,6 +417,54 @@
               opacity: 1;
               visibility: visible;
               transform: translateX(-50%) translateY(0px);
+            }
+          }
+        }
+        &.active {
+          @include tablet {
+            .swiper-pagination-bullet {
+              opacity: 1;
+              visibility: visible;
+              &:nth-child(2) {
+                transform: translate(rem(0),rem(49)) scale(1);
+                transition-delay: 0s;
+              }
+              &:nth-child(3) {
+                transform: translate(rem(8.76),rem(20.28)) scale(1);
+                transition-delay: 0.05s;
+              }
+              &:nth-child(4) {
+                transform: translate(rem(35.67), 0) scale(1);
+                transition-delay: 0.1s;
+              }
+              &:nth-child(5) {
+                transform: translate(rem(68.76), 0) scale(1);
+                transition-delay: 0.15s;
+              }
+              &:nth-child(6) {
+                transform: translate(rem(93.88),rem(19.74)) scale(1);
+                transition-delay: 0.2s;
+              }
+              &:nth-child(7) {
+                transform: translate(rem(103),rem(49)) scale(1);
+                transition-delay: 0.25s;
+              }
+              &:nth-child(8) {
+                transform: translate(rem(94.24),rem(77.74)) scale(1);
+                transition-delay: 0.3s;
+              }
+              &:nth-child(9) {
+                transform: translate(rem(67.33), rem(98.02)) scale(1);
+                transition-delay: 0.35s;
+              }
+              &:nth-child(10) {
+                transform: translate(rem(34.24), rem(97.53)) scale(1);
+                transition-delay: 0.4s;
+              }
+              &:nth-child(11) {
+                transform: translate(rem(9.12), rem(78.28)) scale(1);
+                transition-delay: 0.45s;
+              }
             }
           }
         }
