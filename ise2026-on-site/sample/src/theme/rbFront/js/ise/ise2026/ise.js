@@ -1023,12 +1023,14 @@ const layerPopupData = [
     defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png",
     productList: [
       {
+        type: "product",
         name: "webOS Signage",
         code: "110UH5Q-E",
         link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
         image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png"
       },
       {
+        type: "product",
         name: "Transparent OLED Signage",
         code: "55EW5P-M",
         link: "/products/fine-pitch-led",
@@ -2127,8 +2129,8 @@ function openLayerPopup(index) {
     initProductSwiper();
   }, 100);
   
-  // body scroll 방지 (선택사항)
-  document.body.style.overflow = "hidden";
+  // body scroll 방지 - 클래스로 처리
+  document.body.classList.add("layer-open");
 }
 
 /* Layer Popup 닫기 */
@@ -2147,8 +2149,8 @@ function closeLayerPopup() {
   // 모든 탭의 active 클래스 제거
   layerTabItems.forEach(item => item.classList.remove("active"));
   
-  // body scroll 복원
-  document.body.style.overflow = "";
+  // body scroll 복원 - 클래스 제거
+  document.body.classList.remove("layer-open");
 }
 
 /* Video Layer (Photos Gallery) 관리 */

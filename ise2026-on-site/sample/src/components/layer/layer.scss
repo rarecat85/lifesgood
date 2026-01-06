@@ -1,6 +1,17 @@
 @use "../../assets/scss/mixin"as *;
 @use "../../assets/scss/variable"as *;
 
+// 레이어 팝업이 열렸을 때 body 스크롤 방지
+body.layer-open {
+  overflow: hidden !important;
+  
+  // 모바일에서 추가 처리 (iOS 스크롤 완전 방지)
+  @media (max-width: 1280px) {
+    position: fixed;
+    width: 100%;
+  }
+}
+
 .layer-pop {
   position: fixed;
   width: 100%;
@@ -12,6 +23,7 @@
   visibility: hidden;
   z-index: 1000;
   box-sizing: border-box;
+  transition: opacity 0.3s;
   * {
     margin: 0;
     padding: 0;
@@ -27,26 +39,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: min(100%, rem(1260));
+    
     height: 100%;
     margin: 0 auto;
     padding: 0 rem(30);
-
+    @include tablet {
+      width: min(100%, rem(800));
+    }
+    @include desktop {
+      width: min(100%, rem(1260));
+    }
     .layer-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       flex-shrink: 0;
+      @include tablet {
+        top: rem(50);
+        right: rem(50);
+        position: absolute;
+      }
       @include desktop {
         width: auto;
-        position: absolute;
         top: rem(64);
         right: rem(80);
       }
       .logo {
         width: rem(28);      
-        @include desktop {
+        @include tablet {
           opacity: 0;
           visibility: visible;
         }
@@ -66,11 +87,26 @@
       padding: rem(17.5) 0;
       margin-bottom: rem(20);
       position: relative;
+      @include tablet {
+        padding: rem(7.5) 0;
+        margin-bottom: rem(10);
+      }
+      @include desktop {
+        padding: rem(17.5) 0;
+        margin-bottom: rem(20);
+      }
       .layer-nav-tabs {
         display: flex;
+        justify-content: space-between;
         .layer-tab-item {
           padding: 0 rem(18);
           position: relative;
+          @include tablet {
+            padding: 0 rem(10.8);
+          }
+          @include desktop {
+            padding: 0 rem(18);
+          }
           &:not(:last-child) {
             &::after {
               content: "";
@@ -89,6 +125,12 @@
             border-bottom: rem(2) solid transparent;
             white-space: nowrap;
             transition: all 0.3s;
+            @include tablet {
+              font-size: rem(11);
+            }
+            @include desktop {
+              font-size: rem(18);
+            }
           }
           &.active {
             .layer-tab-btn {
@@ -102,15 +144,10 @@
       .photo-btn {
         display: inline-flex;
         align-items: center;
-        gap: rem(10);
         @include font(24,1.16,400,$white);
-        padding: rem(12.5) rem(28.5);
         border: rem(1) solid #5C5C5C;
-        border-radius: rem(20);
         cursor: pointer;
         position: absolute;
-        top: rem(120);
-        right: rem(36);
         z-index: 1002;
         transition: all 0.3s;
         &::before {
@@ -119,8 +156,33 @@
           width: rem(26);
           height: rem(22);
           background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+          background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
+        }
+        @include tablet {
+          gap: rem(6);
+          font-size: rem(14);
+          top: rem(74);
+          right: rem(24);
+          padding: rem(7.75) rem(18.75);
+          border-radius: rem(10);
+          &::before {
+            width: rem(16);
+            height: rem(13);
+          }
+        }
+        @include desktop {
+          gap: rem(10);
+          font-size: rem(24);
+          top: rem(120);
+          right: rem(36);
+          padding: rem(12.5) rem(28.5);
+          border-radius: rem(20);
+          &::before  {
+            width: rem(26);
+            height: rem(22);
+          }
         }
         &.is-hidden {
           opacity: 0;
@@ -139,16 +201,21 @@
       transition: background-image 0.5s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       opacity: 1;
       position: relative;
+      @include tablet {
+        max-height: rem(376);
+      }
+      @include desktop {
+        max-height: rem(610);
+      }
       .layer-content-inner {
         width: 100%;
         height: 100%;
         position: relative;
         overflow: hidden;
-        @include desktop {
+        @include tablet {
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          padding: 0 rem(62) rem(55);
         }
       }
       
@@ -161,13 +228,18 @@
       
       // tablist가 있을 때의 스타일
       &.has-tablist {
+        .layer-content-inner {
+          @include tablet {
+            padding: 0 rem(34) rem(34);
+          }
+          @include desktop {
+            padding: 0 rem(62) rem(55);
+          }
+        }
         .layer-content-text {
           gap: rem(16);
         }
         
-        .layer-product-list {
-          margin-top: rem(16);
-        }
         .layer-product-list {
           width: min(100%, rem(930));
           padding: rem(16) rem(28) rem(28);
@@ -176,16 +248,33 @@
           left: 0;
           background-color: #343434;
           border-bottom-left-radius: rem(30);
+          @include tablet {
+            width: min(100%, rem(573));
+            padding: rem(16) rem(28) rem(28);
+          }
+          @include desktop {
+            width: min(100%, rem(930));
+            padding: rem(16) rem(28) rem(28);
+          }
         }
       }
       
       // tablist가 없을 때의 스타일
       &.no-tablist {
         .layer-content-inner {
-          padding: 0 rem(47) rem(30);
+          @include tablet {
+            width: min(100%, rem(590));
+            padding: 0 rem(17) rem(18);
+          }
+          @include desktop {
+            width: min(100%, rem(960));
+            padding: 0 rem(47) rem(30);
+          }
         }
-        .layer-content-inner {
-          width: min(100%, rem(960));
+        .layer-content-title-wrap {
+          @include tablet {
+            padding-left: rem(15);
+          }
         }
         .layer-content-text {
           gap: rem(24);
@@ -218,16 +307,33 @@
         @include font(46,1,550,$white);
         margin-bottom: rem(35);
         transition: transform 0.3s ease-in-out;
+        @include tablet {
+          font-size: rem(28);
+          margin-bottom: rem(19);
+        }
+        @include desktop {
+          font-size: rem(46);
+          margin-bottom: rem(35);
+        }
         .home-btn {
           display: none; // 기본적으로 숨김.
           @include font(14,1,550,$white);
-          padding: rem(9) rem(14);
           border: rem(1) solid $white;
           border-radius: rem(50);
+          padding: rem(9) rem(14);
           margin-left: rem(15);
           cursor: pointer;
           transition: all 0.3s ease;
-          
+          @include tablet {
+            font-size: rem(9);
+            padding: rem(4.5) rem(12);
+            margin-left: rem(10);
+          }
+          @include desktop {
+            font-size: rem(14);
+            padding: rem(9) rem(14);
+            margin-left: rem(15);
+          }
           &:hover {
             background: rgba(255, 255, 255, 0.3);
           }
@@ -250,16 +356,27 @@
         gap: rem(8);
         list-style: none;
         flex-wrap: wrap;
-        
+        @include tablet {
+          gap: rem(5);
+        }
+        @include desktop {
+          gap: rem(8);
+        }
         .layer-tab-btn {
-          padding: rem(9) rem(15);
           border: 1px solid $white;
           background-color: transparent;
           @include font(14,1,550,$white);
           cursor: pointer;
           border-radius: rem(30);
           transition: all 0.3s ease;
-          
+          @include tablet {
+            font-size: rem(9);
+            padding: rem(4.5) rem(12);
+          }
+          @include desktop {
+            font-size: rem(14);
+            padding: rem(9) rem(15);
+          }
           &:hover {
             background-color: rgba(255, 255, 255, 0.1);
           }
@@ -273,13 +390,18 @@
         
         .tab-detail {
           display: none;
-          position: absolute;
-          top: 0;
-          right: 0;
-          padding: rem(33);
+          @include tablet {
+            position: absolute;
+            top: 0;
+            right: 0;
+            max-width: rem(166);
+            height: rem(236);
+            padding: rem(20) rem(18);
+          }
           @include desktop {
             max-width: rem(269);
             height: rem(383);
+            padding: rem(33);
           }
           &.active {
             display: flex;
@@ -291,17 +413,36 @@
           .tab-detail-subtitle {
             display: inline-block;
             @include font(22,1.09,400);
-            margin-bottom: rem(12)
+            margin-bottom: rem(12);
+            @include tablet {
+              font-size: rem(14);
+            }
+            @include desktop {
+              font-size: rem(22);
+            }
           }
           
           .tab-detail-title {
             @include font(32,1,550);
+            @include tablet {
+              font-size: rem(20);
+              letter-spacing: 0.01em;
+            }
+            @include desktop {
+              font-size: rem(32);
+            }
           }
           
           .tab-detail-desc {
             @include font(12,1.3,400);
             line-height: 1.6;
             margin-top: rem(8);
+            @include tablet {
+              font-size: rem(7);
+            }
+            @include desktop {
+              font-size: rem(12);
+            }
           }
         }
       }
@@ -355,6 +496,7 @@
         &.no-tabs {
           // 항상 표시
           display: block;
+          margin-top: 0;
         }
         
         // 닫힘 상태
@@ -387,10 +529,18 @@
             align-items: center;
             gap:rem(13);
             cursor: pointer;    
-            border-radius: rem(15);
             min-height: rem(80);
-            padding: rem(4) rem(16);
             background-color: $white;
+            @include tablet {
+              min-height: rem(50);
+              padding: rem(4) rem(10);
+              border-radius: rem(10);
+            }
+            @include desktop {
+              min-height: rem(80);
+              padding: rem(4) rem(16);
+              border-radius: rem(15);
+            }
             &::after {
               content: "";
               display: inline-block;
@@ -429,6 +579,14 @@
                 height: rem(48);
                 flex-shrink: 0;
                 object-fit: cover;
+                @include tablet {
+                  width: rem(44);
+                  height: rem(30);
+                }
+                @include desktop {
+                  width: rem(70);
+                  height: rem(48);
+                }
               }
               .product-label {
                 display: inline-flex;
@@ -455,15 +613,33 @@
               .product-name {
                 display: block;
                 @include font(14,1,550);
+                @include tablet {
+                  font-size: rem(8);
+                }
+                @include desktop {
+                  font-size: rem(14);
+                }
               }
               .product-description {
                 display: block;
                 @include font(11,1,400);
+                @include tablet {
+                  font-size: rem(7);
+                }
+                @include desktop {
+                  font-size: rem(11);
+                }
               }
               
               .product-code {
                 display: block;
                 @include font(11,1.09,400,#7E7C77);
+                @include tablet {
+                  font-size: rem(7);
+                }
+                @include desktop {
+                  font-size: rem(11);
+                }
               }
             }
           }
