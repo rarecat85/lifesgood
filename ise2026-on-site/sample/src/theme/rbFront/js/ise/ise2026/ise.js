@@ -2091,6 +2091,9 @@ function renderLayerContent(index) {
   // 컨텐츠 HTML 생성
   const contentHTML = `
     <div class="layer-content-inner">
+      <div class="booth-detail-img">
+        <img src="/theme/rbFront/img/m/ise/ise2026/booth_detail_img_${index + 1}.jpg" alt="${data.title}">
+      </div>
       <div class="layer-content-title-wrap">
         <h3 class="layer-content-title">
           <span>${index + 1}.&nbsp;</span>${data.title}<button type="button" class="home-btn">Home</button>
@@ -2113,9 +2116,10 @@ function renderLayerContent(index) {
     layerContent.appendChild(videoLayer);
   }
   
-  // innerHTML 설정 후 배경 이미지 설정 (defaultBg)
+  // innerHTML 설정 후 배경 이미지 설정 (defaultBg) - 데스크톱 전용
   layerContent.style.backgroundImage = `url('${data.defaultBg}')`;
   layerContent.setAttribute('data-default-bg', data.defaultBg); // defaultBg 저장 (home-btn 클릭 시 복원용)
+  
   layerContent.classList.remove('active'); // 초기 상태: 비활성화
   layerContent.classList.remove('has-active-subtab'); // 초기 상태에서는 home-btn 숨김
   
@@ -2154,6 +2158,13 @@ function openLayerPopup(index) {
   // 컨텐츠 렌더링
   renderLayerContent(index);
   
+  // dropdown 텍스트 초기화 (모바일)
+  const dropdownBtnSpan = document.querySelector('.layer-pop .dropdown-btn span');
+  const activeTabBtn = document.querySelectorAll(".layer-nav-tabs .layer-tab-btn")[index];
+  if (dropdownBtnSpan && activeTabBtn) {
+    dropdownBtnSpan.textContent = `${index + 1}. ${activeTabBtn.textContent.trim()}`;
+  }
+  
   // 컨텐츠 렌더링 후 Swiper 초기화
   setTimeout(() => {
     initProductSwiper();
@@ -2167,14 +2178,17 @@ function openLayerPopup(index) {
 function closeLayerPopup() {
   const layerPop = document.querySelector(".layer-pop");
   const layerTabItems = document.querySelectorAll(".layer-tab-item");
-  
-  if (!layerPop) return;
+
+  const layerNavTabs = document.querySelector('.layer-nav-tabs-wrap');
+  if (!layerPop || !layerNavTabs) return;
   
   // video-layer도 함께 닫기
   closeVideoLayer();
   
   // 레이어 팝업 비활성화
   layerPop.classList.remove("active");
+
+  layerNavTabs.classList.remove('active');
   
   // 모든 탭의 active 클래스 제거
   layerTabItems.forEach(item => item.classList.remove("active"));
@@ -2186,6 +2200,7 @@ function closeLayerPopup() {
 /* Video Layer (Photos Gallery) 관리 */
 let mainGallerySwiper = null;
 let thumbGallerySwiper = null;
+let galleryBreakpointState = null; // 'mobile' or 'desktop'
 
 /* Video Layer 열기 */
 function openVideoLayer(index) {
@@ -2289,7 +2304,19 @@ function initMediaGallerySwiper() {
   if (mainGallerySwiper) mainGallerySwiper.destroy();
   if (thumbGallerySwiper) thumbGallerySwiper.destroy();
   
-  // Thumbs Swiper 먼저 초기화
+  // 768px 이하 모바일에서는 스와이퍼 생성하지 않음
+  const isDesktop = window.innerWidth > 768;
+  
+  if (!isDesktop) {
+    galleryBreakpointState = 'mobile';
+    mainGallerySwiper = null;
+    thumbGallerySwiper = null;
+    return;
+  }
+  
+  galleryBreakpointState = 'desktop';
+  
+  // Thumbs Swiper 먼저 초기화 (데스크톱만)
   thumbGallerySwiper = new Swiper(".thumb-gallery-swiper", {
     slidesPerView: 5,
     spaceBetween: 14,
@@ -2328,9 +2355,24 @@ function initMediaGallerySwiper() {
 
 /* Product Swiper 인스턴스 관리 */
 let productSwiperInstances = new Map();
+let productSwiperBreakpoint = null; // 'mobile' or 'desktop'
 
 /* Product Swiper 초기화 */
 function initProductSwiper() {
+  const isMobile = window.innerWidth < 769;
+  
+  if (isMobile) {
+    // 모바일: 모든 Swiper destroy
+    productSwiperInstances.forEach((swiper) => {
+      if (swiper) swiper.destroy(true, true);
+    });
+    productSwiperInstances.clear();
+    productSwiperBreakpoint = 'mobile';
+    return;
+  }
+  
+  // 데스크톱/태블릿: Swiper 생성
+  productSwiperBreakpoint = 'desktop';
   const productSliders = document.querySelectorAll(".layer-product-list .product-slider .swiper");
 
   productSliders.forEach((slider) => {
@@ -2458,6 +2500,28 @@ function handleLayerPopup() {
     videoCloseBtn.addEventListener("click", closeVideoLayer);
   }
   
+  // 2-3. Dropdown 버튼 클릭 이벤트 (모바일 전용)
+  const dropdownBtn = document.querySelector('.layer-pop .dropdown-btn');
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', () => {
+      const layerNavTabs = document.querySelector('.layer-nav-tabs-wrap');
+      if (layerNavTabs) {
+        layerNavTabs.classList.toggle('active');
+      }
+    });
+  }
+  
+  // 2-4. Back 버튼 클릭 이벤트 (모바일 전용 - dropdown 메뉴 닫기)
+  const backBtn = document.querySelector('.layer-nav-tabs-wrap .back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      const layerNavTabs = document.querySelector('.layer-nav-tabs-wrap');
+      if (layerNavTabs) {
+        layerNavTabs.classList.remove('active');
+      }
+    });
+  }
+  
   // 3. 레이어 탭 버튼 클릭 이벤트 (외부 탭: layer-tab-item)
   const layerTabButtons = document.querySelectorAll(".layer-nav-tabs .layer-tab-btn");
   
@@ -2465,6 +2529,18 @@ function handleLayerPopup() {
     button.addEventListener("click", () => {
       const layerTabItems = document.querySelectorAll(".layer-tab-item");
       const layerContent = document.querySelector(".layer-content");
+      
+      // dropdown 텍스트 업데이트 (모바일)
+      const dropdownBtnSpan = document.querySelector('.layer-pop .dropdown-btn span');
+      if (dropdownBtnSpan) {
+        dropdownBtnSpan.textContent = `${index + 1}. ${button.textContent.trim()}`;
+      }
+      
+      // dropdown 메뉴 닫기 (모바일)
+      const layerNavTabs = document.querySelector('.layer-nav-tabs-wrap');
+      if (layerNavTabs) {
+        layerNavTabs.classList.remove('active');
+      }
       
       // 탭 변경 시 video-layer 닫기
       closeVideoLayer();
@@ -2544,7 +2620,7 @@ function handleLayerPopup() {
         const allTabDetails = layerContent.querySelectorAll(".tab-detail");
         allTabDetails.forEach(detail => detail.classList.remove("active"));
         
-        // 배경 이미지를 defaultBg로 복원
+        // 배경 이미지를 defaultBg로 복원 - 데스크톱 전용
         const defaultBg = layerContent.getAttribute("data-default-bg");
         if (defaultBg) {
           layerContent.style.backgroundImage = `url('${defaultBg}')`;
@@ -2659,7 +2735,7 @@ function handleLayerPopup() {
         contentTitle.classList.add("active");
       }
       
-      // 배경 이미지를 탭의 bg로 즉시 변경 (fade 효과 없음)
+      // 배경 이미지를 탭의 bg로 즉시 변경 (fade 효과 없음) - 데스크톱 전용
       const tabBg = clickedTab.getAttribute("data-bg");
       if (tabBg) {
         layerContent.style.backgroundImage = `url('${tabBg}')`;
@@ -2696,6 +2772,50 @@ function handleLayerPopup() {
   // 6. 제품 리스트 초기화
   initProductSwiper();
   initProductAccordion();
+  
+  // 7. Product Swiper 리사이즈 핸들러
+  let productResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(productResizeTimer);
+    productResizeTimer = setTimeout(() => {
+      const isMobile = window.innerWidth < 769;
+      const newState = isMobile ? 'mobile' : 'desktop';
+      
+      // 상태가 변경되었을 때만 재초기화
+      if (newState !== productSwiperBreakpoint) {
+        initProductSwiper();
+      }
+    }, 250);
+  });
+  
+  // 8. Gallery Swiper 리사이즈 핸들러
+  let galleryResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(galleryResizeTimer);
+    galleryResizeTimer = setTimeout(() => {
+      const isDesktop = window.innerWidth > 768;
+      const newState = isDesktop ? 'desktop' : 'mobile';
+      
+      // 상태가 변경되었을 때만 처리
+      if (newState !== galleryBreakpointState) {
+        if (newState === 'mobile') {
+          // 데스크톱 → 모바일: Swiper destroy
+          if (mainGallerySwiper) {
+            mainGallerySwiper.destroy(true, true);
+            mainGallerySwiper = null;
+          }
+          if (thumbGallerySwiper) {
+            thumbGallerySwiper.destroy(true, true);
+            thumbGallerySwiper = null;
+          }
+        } else {
+          // 모바일 → 데스크톱: Swiper 재생성
+          initMediaGallerySwiper();
+        }
+        galleryBreakpointState = newState;
+      }
+    }, 250);
+  });
 }
 
 /* 모든 기능 초기화 */
@@ -2721,7 +2841,7 @@ async function init() {
     navigation: true,
     navigationTooltips: [
       "Home",
-      "Wall graphic",
+      "LED media art",
       "Booth map",
       "K-Culture shop",
       "LED Tech Zone",

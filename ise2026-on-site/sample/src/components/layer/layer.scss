@@ -24,6 +24,7 @@ body.layer-open {
   z-index: 1000;
   box-sizing: border-box;
   transition: opacity 0.3s;
+  overflow: auto;
   * {
     margin: 0;
     padding: 0;
@@ -35,19 +36,29 @@ body.layer-open {
     visibility: visible;
   }
   .layer-pop-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    height: 100%;
+    max-width: rem(484);
+    height: auto;
     margin: 0 auto;
-    padding: 0 rem(30);
+    padding: rem(67) rem(30) rem(77);
     @include tablet {
+      max-width: unset;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: min(100%, rem(800));
+      height: 100%;
+      padding: 0 rem(30);
+      overflow: unset;
     }
     @include desktop {
       width: min(100%, rem(1260));
+    }
+    .booth-info-tit {
+      @include font(30,1,550,$white);
+      @include tablet {
+        display: none;
+      }
     }
     .layer-top {
       display: flex;
@@ -55,10 +66,18 @@ body.layer-open {
       justify-content: space-between;
       width: 100%;
       flex-shrink: 0;
+      position: sticky;
+      top: rem(0);
+      left: 0;
+      z-index: 2;
+      background-color: $black;
+      padding: rem(10) 0 rem(14);
       @include tablet {
         top: rem(50);
         right: rem(50);
         position: absolute;
+        background-color: unset;
+        padding: 0;
       }
       @include desktop {
         width: auto;
@@ -82,24 +101,123 @@ body.layer-open {
     }
     
     .layer-tab {
+      display: flex;
       width: 100%;
+      gap: rem(6);
       flex-shrink: 0;
-      padding: rem(17.5) 0;
+      padding: rem(10) 0 0;
       margin-bottom: rem(20);
-      position: relative;
+      position: sticky;
+      top: rem(52);
+      z-index: 2;
+      background-color: $black;
       @include tablet {
+        gap: 0;
         padding: rem(7.5) 0;
         margin-bottom: rem(10);
+        position: relative;
+        top: 0;
+        background-color: transparent;
       }
       @include desktop {
         padding: rem(17.5) 0;
         margin-bottom: rem(20);
       }
+      .dropdown-btn {
+        @include font(17,1,550,$black);
+        text-align: left;
+        width: calc(100% - rem(50));
+        background-color: $white;
+        padding: rem(15) rem(47) rem(15) rem(15);
+        border-radius: rem(15);
+        position: relative;
+        span {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        &::after {
+          content: "";
+          width: rem(17);
+          height: rem(17);
+          position: absolute;
+          transform: translateY(-50%);
+          top: 50%;
+          right: rem(15);
+          background: url('/theme/rbFront/img/w/ise/ise2026/ic_dropdown.svg') no-repeat right center / contain;
+        }
+        @include tablet {
+          display: none;
+        }
+      }
+      .layer-nav-tabs-wrap {
+        .layer-nav-tabs-controller {
+          @include tablet {
+            display: none;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $black;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s;
+          padding: rem(77) rem(30);
+          &.active {
+            opacity: 1;
+            visibility: visible;
+          }
+          .back-btn {
+            width: rem(20);
+            height: rem(20);
+            background: url('/theme/rbFront/img/w/ise/ise2026/ic_back.svg') no-repeat center center / contain;
+          }
+          .layer-nav-tabs,
+          .layer-nav-tabs-controller {
+            max-width: rem(424);
+            margin: 0 auto;
+          }
+          .layer-nav-tabs-controller {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: rem(42);
+            .logo {
+              width: rem(28);
+            }
+          }
+          .layer-nav-tabs {
+            overflow: auto;
+            padding-bottom: rem(42);
+            .layer-tab-item {
+              .layer-tab-btn {
+                width: 100%;
+                text-align: left;
+                padding: rem(10) 0;
+              }
+              &:not(:last-child) {
+                margin-bottom: rem(8);
+              }
+            }
+          }
+        }
+      }
       .layer-nav-tabs {
-        display: flex;
-        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        background-color: $black;
+        z-index: 100;
+        
+        @include tablet {
+          display: flex;
+          justify-content: space-between;
+          height: auto;    
+        }
         .layer-tab-item {
-          padding: 0 rem(18);
           position: relative;
           @include tablet {
             padding: 0 rem(10.8);
@@ -110,6 +228,7 @@ body.layer-open {
           &:not(:last-child) {
             &::after {
               content: "";
+              display: none;
               width: rem(1);
               height: rem(18);
               background-color: #303030;
@@ -117,6 +236,18 @@ body.layer-open {
               top: 50%;
               right: 0;
               transform: translateY(-50%);
+              @include tablet {
+                display: block;
+              }
+            }
+          }
+          @for $i from 1 through 12 {
+            &:nth-child(#{$i}) .layer-tab-btn::before {
+              content: "#{$i}. ";
+              display: inline-block;
+              @include tablet {
+                display: none
+              }
             }
           }
           .layer-tab-btn {
@@ -138,38 +269,60 @@ body.layer-open {
               border-color: $primary;
             }
           }
-          
         }
       }
       .photo-btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: rem(50);
+        height: rem(50);
         @include font(24,1.16,400,$white);
-        border: rem(1) solid #5C5C5C;
+        background-color: $white;
+        border-radius: rem(15);
         cursor: pointer;
-        position: absolute;
-        z-index: 1002;
         transition: all 0.3s;
         &::before {
           content: "";
           display: inline-block;
-          width: rem(26);
-          height: rem(22);
-          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+          width: rem(18);
+          height: rem(15);
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
         }
+        &.active {
+          background-color: $primary;
+          &::before {
+            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+          }
+        }
         @include tablet {
+          width: auto;
+          height: auto;
           gap: rem(6);
           font-size: rem(14);
           top: rem(74);
           right: rem(24);
           padding: rem(7.75) rem(18.75);
+          border: rem(1) solid #5C5C5C;
+          background-color: transparent;
           border-radius: rem(10);
+          position: absolute;
+          z-index: 1002;
           &::before {
+            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
             width: rem(16);
             height: rem(13);
+          }
+          &.active {
+            background-color: $white;
+            color: $black;
+            &::before {
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
+            }
           }
         }
         @include desktop {
@@ -184,6 +337,12 @@ body.layer-open {
             height: rem(22);
           }
         }
+        span {
+          display: none;
+          @include tablet {
+            display: inline-block;
+          }
+        }
         &.is-hidden {
           opacity: 0;
           visibility: hidden;
@@ -194,13 +353,15 @@ body.layer-open {
     .layer-content {
       width: 100%;
       flex: 1;
-      max-height: rem(610);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
       transition: background-image 0.5s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       opacity: 1;
       position: relative;
+      @media screen and (max-width: 768px) {
+        background-image: unset !important;
+      }
       @include tablet {
         max-height: rem(376);
       }
@@ -293,7 +454,25 @@ body.layer-open {
           display: inline-block;
         }
       }
+      .booth-detail-img {
+        overflow: auto;
+        border-radius: rem(30) rem(30) 0 0;
+        @include tablet {
+          display: none;
+        }
+      }
       .layer-content-title-wrap {
+        @media screen and (max-width: 768px) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: 0 0 rem(30) rem(30);
+          overflow: hidden;
+          background-color: #535353;
+          position: relative;
+          margin-bottom: rem(20);
+          padding: rem(14) rem(18) rem(18);
+        }
         .booth-location {
           max-width: rem(82);
           @include tablet {
@@ -303,11 +482,17 @@ body.layer-open {
       }
       .layer-content-title {
         display: inline-flex;
-        align-items: flex-end;
-        @include font(46,1,550,$white);
-        margin-bottom: rem(35);
+        @include font(24,1,550,$white);
+        max-width: calc(88% - rem(82));
         transition: transform 0.3s ease-in-out;
+        span {
+          margin-right: rem(10);
+          @include tablet {
+            margin-right: 0;  
+          }
+        }
         @include tablet {
+          align-items: flex-end;
           font-size: rem(28);
           margin-bottom: rem(19);
         }
@@ -550,7 +735,6 @@ body.layer-open {
         
         .product-slider {
           position: relative;
-          padding: 0 rem(23);
           @include tablet {
             padding: 0 rem(15);
           }
@@ -559,9 +743,11 @@ body.layer-open {
           }
           .swiper-wrapper {
             display: flex;
-            
-            @media (max-width: 767px) {
-              display: block;
+            flex-direction: column;
+            gap: rem(10);
+            @include tablet {
+              flex-direction: row;
+              gap: 0;
             }
           }
           
@@ -571,12 +757,16 @@ body.layer-open {
             gap:rem(13);
             cursor: pointer;    
             min-height: rem(80);
-            background-color: $white;
+            padding: rem(4) rem(16);
+            border: rem(1) solid #4A4946;
+            border-radius: rem(15);
             @include tablet {
               gap:rem(4);
               min-height: rem(50);
               padding: rem(4) rem(10);
+              border: 0;
               border-radius: rem(10);
+              background-color: $white;
             }
             @include desktop {
               gap:rem(13);
@@ -598,6 +788,18 @@ body.layer-open {
               @include desktop {
                 width: rem(12);
                 height: rem(12);
+              }
+            }
+            &:not([class*="type"]) {
+              @media screen and (max-width: 768px) {
+                &::after {
+                  background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink_w.svg') no-repeat center center / cover;
+                }
+                .product-info {
+                  .product-name {
+                    color: $white;
+                  }
+                }
               }
             }
             &.type01 {
@@ -697,6 +899,7 @@ body.layer-open {
           
           .slide-prev,
           .slide-next {
+            display: none;
             width: rem(15);
             height: rem(26);
             background-size: contain;
@@ -707,6 +910,7 @@ body.layer-open {
             top: 50%;
             cursor: pointer;
             @include tablet {
+              display: block;
               width: rem(10);
               height: rem(17);
             }
@@ -735,14 +939,15 @@ body.layer-open {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #242424;
+    background-color: $black;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1001;
+
     @include tablet {
       padding: rem(27) rem(24) rem(35) rem(32);
       border-radius: rem(18);
+      background-color: #242424;
     }
     @include desktop {
       padding: rem(43) rem(36) rem(57) rem(53);
@@ -792,13 +997,27 @@ body.layer-open {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: rem(20);
       width: 100%;
       height: 100%;
+      &::before {
+        content: "ISE 2026 photos";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        @include font(24,1,550,$white);
+        border: rem(1) solid $white;
+        border-radius: rem(15);
+        padding: rem(18.5) 0;
+        margin-bottom: rem(16);
+      }
       @include tablet {
         flex-direction: row;
         justify-content: space-between;
         gap: rem(10);
+        &::before {
+          display: none;
+        }
       }
       @include desktop {
         gap: rem(10);
@@ -812,6 +1031,12 @@ body.layer-open {
         }
         @include desktop {
           max-width: rem(900);
+        }
+        .swiper-wrapper {
+          flex-wrap: wrap;
+          @include tablet {
+            flex-wrap: nowrap;
+          }
         }
         .swiper-pagination {
           width: auto;
@@ -833,6 +1058,7 @@ body.layer-open {
           height: 100%;
           .swiper-slide {
             border-radius: rem(30);
+            height: auto;
             overflow: hidden;
             @include tablet {
               border-radius: rem(20);
@@ -940,7 +1166,9 @@ body.layer-open {
       }
       
       .thumb-swiper-container {
+        display: none;
         @include tablet {
+          display: block;
           width: min(100%, rem(98));
           padding-top: rem(51);
         }
@@ -949,9 +1177,11 @@ body.layer-open {
           padding-top: rem(83);
         }
         .booth-name {
+          display: none;
           @include font(20,1,550,$white);
           text-align: center;
           @include tablet {
+            display: inline-block;
             font-size: rem(12);
           }
           @include desktop {

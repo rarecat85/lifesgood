@@ -55,7 +55,7 @@
       }
       
       // 태블릿/데스크톱 (768px 이상): SVG 표시, JPG 숨김
-      @media (min-width: 768px) {
+      @media (min-width: 769px) {
         .mobile-img {
           display: none;
         }
@@ -74,13 +74,13 @@
     .swiper-slide {
       .slide-item {
         // 모바일: opacity 모션 없이 즉시 표시
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
           opacity: 1;
           transition: none;
         }
         
         // 태블릿/데스크톱: opacity 모션 적용
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
           opacity: 0;
           transition: opacity 0.3s ease-in-out;
         }
@@ -145,7 +145,7 @@
         transition: all 0.3s;
         
         // 모바일: 기본 최소 너비 설정
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
           min-width: rem(35);
           justify-content: center;
           // 2단계: 너비 변화에 0.3s delay (1단계 비활성화가 끝난 후 시작)
@@ -177,7 +177,7 @@
         
         // 모바일 전용: label 기본 숨김 상태
         .pagination-label {
-          @media (max-width: 767px) {
+          @media (max-width: 768px) {
             max-width: 0;
             opacity: 0;
             overflow: hidden;
@@ -188,7 +188,7 @@
         }
         
         .pagination-number {
-          @media (max-width: 767px) {
+          @media (max-width: 768px) {
             transition: max-width 0.3s ease, opacity 0.3s ease;
           }
           @include tablet {
@@ -203,7 +203,7 @@
           }
           
           // 모바일에서 활성화 시: 2단계 시퀀스
-          @media (max-width: 767px) {
+          @media (max-width: 768px) {
             // 2단계-1: 텍스트 길이에 맞게 너비 확장 (0.3s delay 후 시작)
             min-width: auto;
             
