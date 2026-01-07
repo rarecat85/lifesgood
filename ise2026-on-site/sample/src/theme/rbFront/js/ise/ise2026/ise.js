@@ -420,8 +420,12 @@ function handleBoothSlide() {
     let currentState = 'mobile';
     
     // 현재 화면 크기에 따른 상태 결정 (1281px 분기점만 체크)
-    if (currentWidth >= 1281) {
+    if (currentWidth >= 1280) {
       currentState = 'desktop';
+    } else if (currentWidth >= 768) {
+      currentState = 'tablet';
+    } else {
+      currentState = 'mobile';
     }
     
     // 상태가 변경되지 않았으면 재생성하지 않음
@@ -483,6 +487,10 @@ function handleBoothSlide() {
       loop: true,
       speed: 500,
       initialSlide: initialSlide,
+      navigation: {
+        nextEl: ".booth-map .slide-bx .next-btn",
+        prevEl: ".booth-map .slide-bx .prev-btn",
+      },
       pagination: {
         el: ".booth-map .slide-bx .swiper-pagination",
         type: "bullets",
@@ -590,16 +598,14 @@ function handleBoothSlide() {
           translate: ["100%", 0, 0],
         },
       };
-    } else {
-      // 1281px 미만: 일반 슬라이드 (breakpoints로 768px 전환 처리)
+    } else if (state === 'tablet') {
+      // 768px~1279px: 태블릿용 설정
       swiperConfig.slidesPerView = 3;
-      swiperConfig.spaceBetween = 30;
-      swiperConfig.breakpoints = {
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 8,
-        }
-      };
+      swiperConfig.spaceBetween = 8;
+    } else {
+      // 768px 미만: 모바일용 설정
+      swiperConfig.slidesPerView = 1.3;
+      swiperConfig.spaceBetween = 10;
     }
     
     boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
