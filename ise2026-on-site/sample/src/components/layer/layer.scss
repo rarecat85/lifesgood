@@ -870,6 +870,7 @@ body.layer-open {
               border-width: rem(4);
             }
             .txt-bx {
+              width: 80%;
               position: absolute;
               top: rem(30);
               left: rem(30);
@@ -883,7 +884,6 @@ body.layer-open {
               }
               .title {
                 @include font(60,1,550,$white);
-                max-width: 80%;
                 text-wrap: balance;
                 word-break: break-all;
                 &::before {

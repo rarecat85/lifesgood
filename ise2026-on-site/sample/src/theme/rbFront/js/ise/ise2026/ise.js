@@ -420,9 +420,9 @@ function handleBoothSlide() {
     let currentState = 'mobile';
     
     // 현재 화면 크기에 따른 상태 결정 (1281px 분기점만 체크)
-    if (currentWidth >= 1280) {
+    if (currentWidth >= 1281) {
       currentState = 'desktop';
-    } else if (currentWidth >= 768) {
+    } else if (currentWidth >= 769) {
       currentState = 'tablet';
     } else {
       currentState = 'mobile';
@@ -430,8 +430,6 @@ function handleBoothSlide() {
     
     // 상태가 변경되지 않았으면 재생성하지 않음
     if (boothBreakpointState === currentState && boothSlideSwiper) {
-      // 페이드 인 (이미 페이드 아웃된 경우를 위해)
-      boothSlide.classList.remove('is-transitioning');
       isTransitioning = false;
       return;
     }
@@ -440,38 +438,29 @@ function handleBoothSlide() {
     if (boothSlideSwiper) {
       const currentSlideIndex = boothSlideSwiper.realIndex;
       
-      // transitionend 이벤트로 페이드 아웃 완료를 감지
-      const handleTransitionEnd = (e) => {
-        // opacity transition만 감지 (다른 transition 무시)
-        if (e.propertyName !== 'opacity') return;
-        
-        // 이벤트 리스너 제거 (한 번만 실행)
-        boothSlide.removeEventListener('transitionend', handleTransitionEnd);
-        
-        // 페이드 아웃 완료 후 Swiper destroy
-        boothSlideSwiper.destroy(true, true);
-        boothSlideSwiper = null;
-        
-        // DOM 정리 후 새 Swiper 생성
-        setTimeout(() => {
-          createSwiper(currentState, currentSlideIndex);
-          
-          // Swiper 생성 완료 후 페이드 인
-          requestAnimationFrame(() => {
-            boothSlide.classList.remove('is-transitioning');
-            isTransitioning = false; // 전환 완료
-          });
-        }, 50);
-      };
+      // transition 제거하고 즉시 숨김
+      const slideContainer = boothSlide.parentElement;
+      slideContainer.style.transition = 'none';
+      slideContainer.style.opacity = '0';
       
-      // transitionend 이벤트 리스너 등록
-      boothSlide.addEventListener('transitionend', handleTransitionEnd);
+      // 강제 reflow로 transition: none이 즉시 적용되도록 함
+      void slideContainer.offsetHeight;
       
-      // 만약 이미 페이드 아웃 상태가 아니라면 페이드 아웃 시작
-      if (!boothSlide.classList.contains('is-transitioning')) {
-        boothSlide.classList.add('is-transitioning');
-        isTransitioning = true;
-      }
+      // Swiper destroy
+      boothSlideSwiper.destroy(true, true);
+      boothSlideSwiper = null;
+      
+      // DOM 정리 후 새 Swiper 생성
+      setTimeout(() => {
+        createSwiper(currentState, currentSlideIndex);
+        
+        // Swiper 생성 완료 후 transition 복원하고 부드럽게 표시
+        requestAnimationFrame(() => {
+          slideContainer.style.transition = 'opacity 0.3s ease';
+          slideContainer.style.opacity = '1';
+          isTransitioning = false;
+        });
+      }, 50);
     } else {
       // 초기 생성 시에는 바로 생성
       createSwiper(currentState, 0);
@@ -604,7 +593,7 @@ function handleBoothSlide() {
       swiperConfig.spaceBetween = 8;
     } else {
       // 768px 미만: 모바일용 설정
-      swiperConfig.slidesPerView = 1.3;
+      swiperConfig.slidesPerView = "auto";
       swiperConfig.spaceBetween = 10;
     }
     
@@ -657,10 +646,8 @@ function handleBoothSlide() {
       currentState = 'desktop';
     }
     
-    // 상태가 변경되었을 때만 페이드 아웃 즉시 실행 (1281px 분기점에서만)
+    // 상태가 변경되었을 때 전환 플래그 설정
     if (lastCheckedState !== null && lastCheckedState !== currentState && !isTransitioning) {
-      // 1281px 분기점을 넘어갈 때 즉시 페이드 아웃하여 일그러진 모습 숨김
-      boothSlide.classList.add('is-transitioning');
       isTransitioning = true;
     }
     
