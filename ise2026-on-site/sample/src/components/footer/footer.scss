@@ -354,10 +354,13 @@
   }
   .submit-btn {
     @include btn($primary);
-    margin: 0 auto;
+    font-size: rem(16);
+    height: rem(42);
+    padding: rem(11) rem(30);
     @include tablet {
       font-size: rem(14);
       height: rem(36);
+      margin: 0 auto;
     }
     @include desktop {
       font-size: rem(16);
