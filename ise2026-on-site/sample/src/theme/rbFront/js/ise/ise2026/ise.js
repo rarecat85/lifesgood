@@ -17,7 +17,7 @@ const OBSERVER_THRESHOLD = 0.15;
 const FADE_UP_DELAY_INTERVAL = 0.15;
 
 // Scroll Indicator
-const SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD = 424;
+const SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD = 425;
 
 // Image Detection
 const MAX_BOOTH_IMAGE_CHECK = 50;
@@ -100,127 +100,127 @@ function checkImageExists(imageUrl) {
  * - data-delay 속성으로 커스텀 딜레이 지정 가능
  * - 이미 지나간 요소는 즉시 활성화
  */
-function initFadeUp() {
-  const fadeUpElements = document.querySelectorAll(".fade-in, .fade-in-up");
+// function initFadeUp() {
+//   const fadeUpElements = document.querySelectorAll(".fade-in, .fade-in-up");
 
-  if (fadeUpElements.length === 0) return;
+//   if (fadeUpElements.length === 0) return;
 
-  // 부모 요소별로 그룹화
-  const parentGroups = new Map();
+//   // 부모 요소별로 그룹화
+//   const parentGroups = new Map();
 
-  fadeUpElements.forEach((element) => {
-      // 부모 요소 찾기 (data-fade-group이 있으면 그것을 기준으로, 없으면 가장 가까운 공통 부모)
-      let parent = element.parentElement;
-      let groupKey = null;
+//   fadeUpElements.forEach((element) => {
+//       // 부모 요소 찾기 (data-fade-group이 있으면 그것을 기준으로, 없으면 가장 가까운 공통 부모)
+//       let parent = element.parentElement;
+//       let groupKey = null;
 
-      while (parent && parent !== document.body) {
-          if (parent.hasAttribute("data-fade-group")) {
-              groupKey = parent.getAttribute("data-fade-group");
-              break;
-          }
-          // text-wrap, inner, section 등을 기준으로 그룹화
-          if (
-              parent.classList.contains("text-wrap") ||
-              parent.classList.contains("inner") ||
-              parent.tagName === "SECTION"
-          ) {
-              // 같은 부모를 가진 요소들을 하나의 그룹으로
-              groupKey = parent;
-              break;
-          }
-          parent = parent.parentElement;
-      }
+//       while (parent && parent !== document.body) {
+//           if (parent.hasAttribute("data-fade-group")) {
+//               groupKey = parent.getAttribute("data-fade-group");
+//               break;
+//           }
+//           // text-wrap, inner, section 등을 기준으로 그룹화
+//           if (
+//               parent.classList.contains("text-wrap") ||
+//               parent.classList.contains("inner") ||
+//               parent.tagName === "SECTION"
+//           ) {
+//               // 같은 부모를 가진 요소들을 하나의 그룹으로
+//               groupKey = parent;
+//               break;
+//           }
+//           parent = parent.parentElement;
+//       }
 
-      // 그룹 키가 없으면 요소의 직접 부모 사용
-      if (!groupKey) {
-          groupKey = element.parentElement || "default";
-      }
+//       // 그룹 키가 없으면 요소의 직접 부모 사용
+//       if (!groupKey) {
+//           groupKey = element.parentElement || "default";
+//       }
 
-      if (!parentGroups.has(groupKey)) {
-          parentGroups.set(groupKey, []);
-      }
+//       if (!parentGroups.has(groupKey)) {
+//           parentGroups.set(groupKey, []);
+//       }
 
-      parentGroups.get(groupKey).push({
-          element: element,
-          delay: element.hasAttribute("data-delay") ?
-              parseFloat(element.getAttribute("data-delay")) :
-              null,
-      });
-  });
+//       parentGroups.get(groupKey).push({
+//           element: element,
+//           delay: element.hasAttribute("data-delay") ?
+//               parseFloat(element.getAttribute("data-delay")) :
+//               null,
+//       });
+//   });
 
-  // 각 그룹별로 transition-delay 설정
-  const groupObservers = new Map();
+//   // 각 그룹별로 transition-delay 설정
+//   const groupObservers = new Map();
 
-  parentGroups.forEach((group, groupKey) => {
-      // 같은 그룹 내의 요소들을 DOM 순서대로 정렬
-      const sortedElements = group.sort((a, b) => {
-          const position = a.element.compareDocumentPosition(b.element);
-          return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
-      });
+//   parentGroups.forEach((group, groupKey) => {
+//       // 같은 그룹 내의 요소들을 DOM 순서대로 정렬
+//       const sortedElements = group.sort((a, b) => {
+//           const position = a.element.compareDocumentPosition(b.element);
+//           return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+//       });
 
-      sortedElements.forEach((item, index) => {
-          const {
-              element,
-              delay
-          } = item;
+//       sortedElements.forEach((item, index) => {
+//           const {
+//               element,
+//               delay
+//           } = item;
 
-          // data-delay가 명시적으로 지정되어 있지 않은 경우, 인덱스에 따라 자동 딜레이 적용
-          const finalDelay = delay !== null ? delay : index * 0.15; // 기본 딜레이 간격: 0.15초
+//           // data-delay가 명시적으로 지정되어 있지 않은 경우, 인덱스에 따라 자동 딜레이 적용
+//           const finalDelay = delay !== null ? delay : index * 0.15; // 기본 딜레이 간격: 0.15초
 
-          // CSS transition-delay 설정
-          element.style.transitionDelay = `${finalDelay}s`;
+//           // CSS transition-delay 설정
+//           element.style.transitionDelay = `${finalDelay}s`;
 
-          // 그룹 정보를 요소에 저장 (나중에 참조하기 위해)
-          element.dataset.fadeGroupKey = groupKey.toString();
-      });
+//           // 그룹 정보를 요소에 저장 (나중에 참조하기 위해)
+//           element.dataset.fadeGroupKey = groupKey.toString();
+//       });
 
-      // 페이지 로드 시 각 요소의 위치를 개별적으로 확인
-      // 뷰포트 위로 완전히 지나간 요소는 즉시 활성화
-      sortedElements.forEach((item) => {
-          const rect = item.element.getBoundingClientRect();
+//       // 페이지 로드 시 각 요소의 위치를 개별적으로 확인
+//       // 뷰포트 위로 완전히 지나간 요소는 즉시 활성화
+//       sortedElements.forEach((item) => {
+//           const rect = item.element.getBoundingClientRect();
 
-          // 요소가 뷰포트 위로 완전히 지나갔으면 즉시 활성화
-          if (rect.bottom < 0) {
-              item.element.classList.add("is-visible");
-              item.isPastViewport = true;
-          } else {
-              item.isPastViewport = false;
-          }
-      });
+//           // 요소가 뷰포트 위로 완전히 지나갔으면 즉시 활성화
+//           if (rect.bottom < 0) {
+//               item.element.classList.add("is-visible");
+//               item.isPastViewport = true;
+//           } else {
+//               item.isPastViewport = false;
+//           }
+//       });
 
-      // 아직 안 보이는 요소들만 필터링
-      const elementsToObserve = sortedElements.filter(
-          (item) => !item.isPastViewport
-      );
+//       // 아직 안 보이는 요소들만 필터링
+//       const elementsToObserve = sortedElements.filter(
+//           (item) => !item.isPastViewport
+//       );
 
-      // 관찰할 요소가 있는 경우에만 Intersection Observer 설정
-      if (elementsToObserve.length > 0) {
-          const observerOptions = {
-              root: null,
-              rootMargin: "0px",
-              threshold: 0.15, // 요소의 15%가 보이면 트리거
-          };
+//       // 관찰할 요소가 있는 경우에만 Intersection Observer 설정
+//       if (elementsToObserve.length > 0) {
+//           const observerOptions = {
+//               root: null,
+//               rootMargin: "0px",
+//               threshold: 0.15, // 요소의 15%가 보이면 트리거
+//           };
 
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                      // 해당 요소에 is-visible 클래스 추가
-                      entry.target.classList.add("is-visible");
-                      // 해당 요소는 더 이상 관찰하지 않음
-                      observer.unobserve(entry.target);
-                  }
-              });
-          }, observerOptions);
+//           const observer = new IntersectionObserver((entries) => {
+//               entries.forEach((entry) => {
+//                   if (entry.isIntersecting) {
+//                       // 해당 요소에 is-visible 클래스 추가
+//                       entry.target.classList.add("is-visible");
+//                       // 해당 요소는 더 이상 관찰하지 않음
+//                       observer.unobserve(entry.target);
+//                   }
+//               });
+//           }, observerOptions);
 
-          // 아직 안 보이는 요소들을 개별적으로 관찰
-          elementsToObserve.forEach((item) => {
-              observer.observe(item.element);
-          });
+//           // 아직 안 보이는 요소들을 개별적으로 관찰
+//           elementsToObserve.forEach((item) => {
+//               observer.observe(item.element);
+//           });
 
-          groupObservers.set(groupKey, observer);
-      }
-  });
-}
+//           groupObservers.set(groupKey, observer);
+//       }
+//   });
+// }
 
 
 // ============================================================================
@@ -992,8 +992,8 @@ function handleTechzoneSlide() {
       slidesPerView: 1,
       spaceBetween: 0,
       effect: "fade",
-      autoplay: true,
       speed: 1000,
+      autoplay: true,
       on: {
           slideChange: function() {
               // 현재 활성화된 슬라이드 정보 가져오기
@@ -1028,6 +1028,11 @@ function handleTechzoneSlide() {
                   "</span>"
               );
           },
+      },
+      breakpoints: {
+        769: {
+          autoplay: false,
+        },
       },
   });
 
@@ -2235,30 +2240,54 @@ function generateProductItemHTML(product, productList) {
 /**
  * 스크롤 인디케이터 표시/숨김 체크
  * 이미지 너비가 임계값보다 크면 인디케이터 표시
+ * @returns {Promise} 스크롤 설정 완료 후 resolve
  */
 function checkScrollIndicator() {
-    const boothDetailImage = document.querySelector('.booth-detail-img');
-    const image = document.querySelector('.booth-detail-img img');
-    const scrollIndicator = document.querySelector('.scroll-indicator');
+    return new Promise((resolve) => {
+        const boothDetailImage = document.querySelector('.booth-detail-img');
+        const boothDetailImageWrap = document.querySelector('.booth-detail-img-wrap'); // 실제 스크롤 요소
+        const image = document.querySelector('.booth-detail-img img');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
 
-    if (!boothDetailImage || !image || !scrollIndicator) return;
-
-    // 이미지 로드 완료 후 크기 체크
-    if (image.complete) {
-        checkAndShowIndicator();
-    } else {
-        image.addEventListener('load', checkAndShowIndicator);
-    }
-
-    function checkAndShowIndicator() {
-        const imageWidth = image.naturalWidth || image.width;
-
-        if (imageWidth > SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD) {
-            scrollIndicator.style.display = 'block';
-        } else {
-            scrollIndicator.style.display = 'none';
+        if (!boothDetailImage || !boothDetailImageWrap || !image || !scrollIndicator) {
+            resolve();
+            return;
         }
-    }
+
+        // 이미지 로드 완료 후 크기 체크
+        if (image.complete) {
+            checkAndShowIndicator();
+        } else {
+            image.addEventListener('load', checkAndShowIndicator);
+        }
+
+        function checkAndShowIndicator() {
+            const imageWidth = image.naturalWidth || image.width;
+
+            if (imageWidth > SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD) {
+                scrollIndicator.style.display = 'block';
+                
+                // 이미지 로드 후 레이아웃 계산 완료를 보장
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // 실제 스크롤 가능한 요소(.booth-detail-img-wrap)의 스크롤 위치를 중앙으로 설정
+                        const scrollableWidth = boothDetailImageWrap.scrollWidth - boothDetailImageWrap.clientWidth;
+                        if (scrollableWidth > 0) {
+                            boothDetailImageWrap.scrollLeft = scrollableWidth / 2;
+                        }
+                        
+                        // scroll 이벤트가 완전히 처리될 때까지 대기 후 resolve
+                        setTimeout(() => {
+                            resolve();
+                        }, 50); // 충분한 시간 확보
+                    });
+                });
+            } else {
+                scrollIndicator.style.display = 'none';
+                resolve();
+            }
+        }
+    });
 }
 
 
@@ -2268,18 +2297,20 @@ function checkScrollIndicator() {
  */
 function initScrollIndicatorHide() {
     const boothDetailImage = document.querySelector('.booth-detail-img');
+    const boothDetailImageWrap = document.querySelector('.booth-detail-img-wrap'); // 실제 스크롤 요소
     const scrollIndicator = document.querySelector('.scroll-indicator');
 
-    if (!boothDetailImage || !scrollIndicator) return;
+    if (!boothDetailImage || !boothDetailImageWrap || !scrollIndicator) return;
 
     const hideIndicator = () => {
         scrollIndicator.classList.add(CLASS_NAMES.ACTIVE);
     };
 
-    // booth-detail-img 영역 터치/클릭/스크롤 시 인디케이터 숨김
+    // booth-detail-img 영역 터치/클릭 시 인디케이터 숨김
     boothDetailImage.addEventListener('touchstart', hideIndicator, { once: true });
     boothDetailImage.addEventListener('click', hideIndicator, { once: true });
-    boothDetailImage.addEventListener('scroll', hideIndicator, { once: true });
+    // 실제 스크롤이 일어나는 요소(.booth-detail-img-wrap)에 스크롤 이벤트 등록
+    boothDetailImageWrap.addEventListener('scroll', hideIndicator, { once: true });
 }
 
 
@@ -2305,7 +2336,7 @@ function renderLayerContent(index) {
         `
     <ul class="layer-sub-tabs" role="tablist">
       ${data.tablist
-        .map((tab, index) => {
+        .map((tab, tabIndex) => {
           // 모바일용: product-item들을 직접 생성 (초기 상태는 숨김)
           const mobileProductItems =
             isMobileDevice && tab.productList && tab.productList.length > 0
@@ -2337,7 +2368,7 @@ function renderLayerContent(index) {
                 <h4 class="tab-detail-title">${tab.title || ""}</h4>
                 <p class="tab-detail-desc">${tab.description || ""}</p>
                 ${isMobileDevice ? `
-                  <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${index + 1}.jpg" alt="${tab.name}" class="tab-detail-img">
+                  <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${tabIndex + 1}.jpg" alt="${tab.name}" class="tab-detail-img">
                 ` : ''}
             </div>
             ${mobileProductItems}
@@ -2488,9 +2519,9 @@ function renderLayerContent(index) {
       });
 
   // 스크롤 인디케이터 체크 및 이벤트 초기화
-  setTimeout(() => {
-      checkScrollIndicator();
-      initScrollIndicatorHide();
+  setTimeout(async () => {
+      await checkScrollIndicator(); // 스크롤 설정 완료 대기
+      initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
     }, 100);
 }
 
@@ -3356,10 +3387,10 @@ function handleLayerPopup() {
           renderLayerContent(activeIndex);
 
           // Swiper 재초기화 및 스크롤 인디케이터 재체크
-          setTimeout(() => {
+          setTimeout(async () => {
               initProductSwiper();
-              checkScrollIndicator();
-              initScrollIndicatorHide();
+              await checkScrollIndicator(); // 스크롤 설정 완료 대기
+              initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
           }, 100);
       }
   };
@@ -3386,7 +3417,7 @@ async function init() {
   // 페이지 로드 시 모든 부스의 이미지 자동 감지
   await initBoothMediaGalleries();
 
-  initFadeUp();
+  // initFadeUp();
   initKVVideo();
   initBoothSlide();
   handleFooterNavClick();
@@ -3454,4 +3485,4 @@ if (document.readyState === "loading") {
 
 
 // 동적으로 추가된 요소를 위한 함수 export
-window.reinitFadeUp = initFadeUp;
+// window.reinitFadeUp = initFadeUp;
