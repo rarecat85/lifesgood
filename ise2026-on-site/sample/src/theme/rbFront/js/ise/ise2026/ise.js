@@ -1931,6 +1931,39 @@ function handleComingSoonProduct(event) {
   // 나중에 커스텀 레이어 팝업으로 변경 가능
 }
 
+/* Helper 함수: product-item HTML 생성 */
+function generateProductItemHTML(product, productList) {
+  const isSolution = product.type === 'solution';
+  const isProduct = product.type === 'product';
+  const productItems = productList.filter(p => p.type === 'product');
+  const productIndex = productItems.indexOf(product);
+  const label = isProduct && productIndex >= 0 ? String.fromCharCode(97 + productIndex) : '';
+  const bgClass = isSolution && product.bgClass ? product.bgClass : '';
+  
+  return `
+    <a href="${product.link || '#'}" class="product-item ${bgClass} ${!product.link ? 'is-coming-soon' : ''}" ${product.link ? 'target="_blank" rel="noopener noreferrer"' : 'data-coming-soon="true"'}>
+      ${product.image ? `
+        <div class="product-img-wrapper">
+          <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
+          ${isProduct && label ? `<span class="product-label">${label}</span>` : ''}
+        </div>
+      ` : ''}
+      <div class="product-info">
+        ${isSolution ? `
+          <span class="product-name">${product.name}</span>
+          ${product.description ? `<span class="product-description">${product.description}</span>` : ''}
+        ` : `
+          <span class="product-name">${product.name}</span>
+          ${product.code ? `<span class="product-code">${product.code}</span>` : ''}
+        `}
+      </div>
+      <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
+        <span class="icon"></span>
+      </button>
+    </a>
+  `;
+}
+
 /* Layer Popup 컨텐츠 렌더링 */
 function renderLayerContent(index) {
   const layerContent = document.querySelector(".layer-content");
@@ -1938,34 +1971,49 @@ function renderLayerContent(index) {
   
   const data = layerPopupData[index];
   
+  // 모바일 체크
+  const isMobile = window.innerWidth < 769;
+  
   // tablist 유무 확인
   const hasTablist = data.tablist && data.tablist.length > 0;
   
   // Tablist HTML 생성 (모든 탭 비활성 상태로 시작)
   const tablistHTML = hasTablist ? `
     <ul class="layer-sub-tabs" role="tablist">
-      ${data.tablist.map((tab, idx) => `
-        <li role="presentation">
-          <button 
-            role="tab" 
-            id="${tab.id}" 
-            aria-selected="false"
-            class="layer-tab-btn"
-            data-bg="${tab.bg || ''}"
-            data-title="${tab.title || ''}"
-            data-description="${tab.description || ''}"
-          >
-            ${tab.name}
-          </button>
-          <div class="tab-detail">
-            <div class="tab-detail-title-wrap">
-              <span class="tab-detail-subtitle">${tab.name}</span>
-              <h4 class="tab-detail-title">${tab.title || ''}</h4>
+      ${data.tablist.map((tab, idx) => {
+        // 모바일용: product-item들을 직접 생성
+        const mobileProductItems = (isMobile && tab.productList && tab.productList.length > 0) 
+          ? `<div class="mobile-product-list">
+               ${tab.productList.map(product => 
+                 generateProductItemHTML(product, tab.productList)
+               ).join('')}
+             </div>`
+          : '';
+        
+        return `
+          <li role="presentation">
+            <button 
+              role="tab" 
+              id="${tab.id}" 
+              aria-selected="false"
+              class="layer-tab-btn"
+              data-bg="${tab.bg || ''}"
+              data-title="${tab.title || ''}"
+              data-description="${tab.description || ''}"
+            >
+              ${tab.name}
+            </button>
+            <div class="tab-detail">
+              <div class="tab-detail-title-wrap">
+                <span class="tab-detail-subtitle">${tab.name}</span>
+                <h4 class="tab-detail-title">${tab.title || ''}</h4>
+              </div>
+              <p class="tab-detail-desc">${tab.description || ''}</p>
             </div>
-            <p class="tab-detail-desc">${tab.description || ''}</p>
-          </div>
-        </li>
-      `).join('')}
+            ${mobileProductItems}
+          </li>
+        `;
+      }).join('')}
     </ul>
   ` : '';
   
@@ -1983,8 +2031,8 @@ function renderLayerContent(index) {
   let productListHTML = '';
   
   if (hasTablist && data.tablist) {
-    // tablist가 있을 때: 탭별로 개별 생성
-    productListHTML = data.tablist.map((tab, tabIdx) => {
+    // tablist가 있을 때: 데스크톱에서만 탭별로 개별 생성
+    productListHTML = !isMobile ? data.tablist.map((tab, tabIdx) => {
       if (!tab.productList || tab.productList.length === 0) return '';
       
       return `
@@ -1995,37 +2043,9 @@ function renderLayerContent(index) {
             <div class="swiper">
               <div class="swiper-wrapper">
                 ${tab.productList.map((product, idx) => {
-                  const isSolution = product.type === 'solution';
-                  const isProduct = product.type === 'product';
-                  
-                  // product 유형만 필터링하여 인덱스 계산
-                  const productItems = tab.productList.filter(p => p.type === 'product');
-                  const productIndex = productItems.indexOf(product);
-                  const label = isProduct && productIndex >= 0 ? String.fromCharCode(97 + productIndex) : '';
-                  const bgClass = isSolution && product.bgClass ? product.bgClass : '';
-                  
                   return `
                     <div class="swiper-slide">
-                      <a href="${product.link || '#'}" class="product-item ${bgClass} ${!product.link ? 'is-coming-soon' : ''}" ${product.link ? 'target="_blank" rel="noopener noreferrer"' : 'data-coming-soon="true"'}>
-                        ${product.image ? `
-                          <div class="product-img-wrapper">
-                            <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
-                            ${isProduct && label ? `<span class="product-label">${label}</span>` : ''}
-                          </div>
-                        ` : ''}
-                        <div class="product-info">
-                          ${isSolution ? `
-                            <span class="product-name">${product.name}</span>
-                            ${product.description ? `<span class="product-description">${product.description}</span>` : ''}
-                          ` : `
-                            <span class="product-name">${product.name}</span>
-                            ${product.code ? `<span class="product-code">${product.code}</span>` : ''}
-                          `}
-                        </div>
-                        <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
-                          <span class="icon"></span>
-                        </button>
-                      </a>
+                      ${generateProductItemHTML(product, tab.productList)}
                     </div>
                   `;
                 }).join('')}
@@ -2036,7 +2056,7 @@ function renderLayerContent(index) {
           </div>
         </div>
       `;
-    }).join('');
+    }).join('') : '';
   } else if (data.productList && data.productList.length > 0) {
     // tablist가 없을 때: 최상위 productList 사용
     productListHTML = `
@@ -2045,37 +2065,9 @@ function renderLayerContent(index) {
           <div class="swiper">
             <div class="swiper-wrapper">
               ${data.productList.map((product, idx) => {
-                const isSolution = product.type === 'solution';
-                const isProduct = product.type === 'product';
-                
-                // product 유형만 필터링하여 인덱스 계산
-                const productItems = data.productList.filter(p => p.type === 'product');
-                const productIndex = productItems.indexOf(product);
-                const label = isProduct && productIndex >= 0 ? String.fromCharCode(97 + productIndex) : '';
-                const bgClass = isSolution && product.bgClass ? product.bgClass : '';
-                
                 return `
                   <div class="swiper-slide">
-                    <a href="${product.link || '#'}" class="product-item ${bgClass} ${!product.link ? 'is-coming-soon' : ''}" ${product.link ? 'target="_blank" rel="noopener noreferrer"' : 'data-coming-soon="true"'}>
-                      ${product.image ? `
-                        <div class="product-img-wrapper">
-                          <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
-                          ${isProduct && label ? `<span class="product-label">${label}</span>` : ''}
-                        </div>
-                      ` : ''}
-                      <div class="product-info">
-                        ${isSolution ? `
-                          <span class="product-name">${product.name}</span>
-                          ${product.description ? `<span class="product-description">${product.description}</span>` : ''}
-                        ` : `
-                          <span class="product-name">${product.name}</span>
-                          ${product.code ? `<span class="product-code">${product.code}</span>` : ''}
-                        `}
-                      </div>
-                      <button class="accordion-toggle" aria-label="Toggle details" aria-expanded="false">
-                        <span class="icon"></span>
-                      </button>
-                    </a>
+                    ${generateProductItemHTML(product, data.productList)}
                   </div>
                 `;
               }).join('')}

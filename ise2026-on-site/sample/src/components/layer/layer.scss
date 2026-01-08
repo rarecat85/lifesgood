@@ -324,6 +324,10 @@ body.layer-open {
               background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
             }
           }
+          &.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+          }
         }
         @include desktop {
           gap: rem(10);
@@ -342,10 +346,6 @@ body.layer-open {
           @include tablet {
             display: inline-block;
           }
-        }
-        &.is-hidden {
-          opacity: 0;
-          visibility: hidden;
         }
       }
     }
@@ -404,14 +404,14 @@ body.layer-open {
         .layer-product-list {
           width: min(100%, rem(930));
           padding: rem(16) rem(28) rem(28);
-          position: absolute;
-          bottom: 0;
-          left: 0;
           background-color: #343434;
           border-bottom-left-radius: rem(30);
           @include tablet {
             width: min(100%, rem(573));
             padding: rem(16) rem(28) rem(28);
+            position: absolute;
+            bottom: 0;
+            left: 0;
           }
           @include desktop {
             width: min(100%, rem(930));
@@ -450,10 +450,13 @@ body.layer-open {
       
       // 내부 서브탭이 활성화되었을 때 home-btn 표시
       &.has-active-subtab {
-        .layer-content-title .home-btn {
-          display: inline-block;
+        @include tablet {
+          .layer-content-title .home-btn {
+            display: inline-block;
+          }
         }
       }
+
       .booth-detail-img {
         overflow: auto;
         border-radius: rem(30) rem(30) 0 0;
@@ -461,6 +464,7 @@ body.layer-open {
           display: none;
         }
       }
+
       .layer-content-title-wrap {
         @media screen and (max-width: 768px) {
           display: flex;
@@ -480,6 +484,7 @@ body.layer-open {
           }
         }
       }
+
       .layer-content-title {
         display: inline-flex;
         @include font(24,1,550,$white);
@@ -495,6 +500,9 @@ body.layer-open {
           align-items: flex-end;
           font-size: rem(28);
           margin-bottom: rem(19);
+          &.active {
+            transform: translateY(rem(-57));
+          }
         }
         @include desktop {
           font-size: rem(46);
@@ -523,9 +531,7 @@ body.layer-open {
             background: rgba(255, 255, 255, 0.3);
           }
         }
-        &.active {
-          transform: translateY(rem(-57));
-        }
+        
       }
       
       .layer-content-desc {
@@ -537,24 +543,22 @@ body.layer-open {
       
       // Tablist 스타일
       .layer-sub-tabs {
-        display: flex;
-        gap: rem(8);
-        list-style: none;
-        flex-wrap: wrap;
         @include tablet {
+          display: flex;
+          flex-wrap: wrap;
           gap: rem(5);
         }
         @include desktop {
           gap: rem(8);
         }
         .layer-tab-btn {
-          border: 1px solid $white;
           background-color: transparent;
           @include font(14,1,550,$white);
           cursor: pointer;
-          border-radius: rem(30);
           transition: all 0.3s ease;
           @include tablet {
+            border: 1px solid $white;
+            border-radius: rem(30);
             font-size: rem(9);
             padding: rem(4.5) rem(12);
           }
@@ -640,7 +644,7 @@ body.layer-open {
         transform: translateY(0);
         transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
         .close-product-btn {
-          display: inline-flex;
+          display: none;
           align-items: center;
           justify-content: center;
           gap: rem(6);
@@ -654,6 +658,7 @@ body.layer-open {
           right: rem(45);
           transform: translateY(rem(-27));
           @include tablet {
+            display: inline-flex;
             height: rem(18);
             font-size: rem(10);
             padding: 0 rem(11);
@@ -750,153 +755,7 @@ body.layer-open {
               gap: 0;
             }
           }
-          
-          .product-item {
-            display: flex;
-            align-items: center;
-            gap:rem(13);
-            cursor: pointer;    
-            min-height: rem(80);
-            padding: rem(4) rem(16);
-            border: rem(1) solid #4A4946;
-            border-radius: rem(15);
-            @include tablet {
-              gap:rem(4);
-              min-height: rem(50);
-              padding: rem(4) rem(10);
-              border: 0;
-              border-radius: rem(10);
-              background-color: $white;
-            }
-            @include desktop {
-              gap:rem(13);
-              min-height: rem(80);
-              padding: rem(4) rem(16);
-              border-radius: rem(15);
-            }
-            &::after {
-              content: "";
-              display: inline-block;
-              flex-shrink: 0;
-              width: rem(12);
-              height: rem(12);
-              background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink.svg') no-repeat center center / cover;
-              @include tablet {
-                width: rem(8);
-                height: rem(8);
-              }
-              @include desktop {
-                width: rem(12);
-                height: rem(12);
-              }
-            }
-            &:not([class*="type"]) {
-              @media screen and (max-width: 768px) {
-                &::after {
-                  background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink_w.svg') no-repeat center center / cover;
-                }
-                .product-info {
-                  .product-name {
-                    color: $white;
-                  }
-                }
-              }
-            }
-            &.type01 {
-              background-color: #B1DBFF;
-            }
-            &.type02 {
-              background-color: #C7BDFB;
-            }
-            &.type03 {
-              background-color: #CAA8FF;
-            }
-            &.type04 {
-              background-color: #A8EBDC;
-            }
-            &.type05 {
-              background-color: #B7BBFD;
-            }
-            &.type06 {
-              background-color: #B1DBFF;
-            }
-            &.type07 {
-              background-color: #D6B5FF;
-            }
-
-            .product-img-wrapper {
-              position: relative;
-              .product-img {
-                display: block;
-                width: rem(70);
-                height: rem(48);
-                flex-shrink: 0;
-                object-fit: cover;
-                @include tablet {
-                  width: rem(44);
-                  height: rem(30);
-                }
-                @include desktop {
-                  width: rem(70);
-                  height: rem(48);
-                }
-              }
-              .product-label {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: rem(12);
-                height: rem(12);
-                @include font(10,1,550,$white);
-                text-transform: uppercase;
-                position: absolute;
-                top: rem(-6);
-                left: rem(-6);
-                background-color: #262626;
-                border-radius: 50%;
-              }
-            }
-
-            .product-info {
-              flex: 1;
-              display: flex;
-              flex-direction: column;
-              gap: rem(4);
-              
-              .product-name {
-                display: block;
-                @include font(14,1,550);
-                @include tablet {
-                  font-size: rem(8);
-                }
-                @include desktop {
-                  font-size: rem(14);
-                }
-              }
-              .product-description {
-                display: block;
-                @include font(11,1,400);
-                @include tablet {
-                  font-size: rem(7);
-                }
-                @include desktop {
-                  font-size: rem(11);
-                }
-              }
-              
-              .product-code {
-                display: block;
-                @include font(11,1.09,400,#7E7C77);
-                @include tablet {
-                  font-size: rem(7);
-                }
-                @include desktop {
-                  font-size: rem(11);
-                }
-              }
-            }
-          }
-          
+                    
           .slide-prev,
           .slide-next {
             display: none;
@@ -926,6 +785,152 @@ body.layer-open {
           .slide-next {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_next.svg');
             right: 0;
+          }
+        }
+      }
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        gap:rem(13);
+        cursor: pointer;    
+        min-height: rem(80);
+        padding: rem(4) rem(16);
+        border: rem(1) solid #4A4946;
+        border-radius: rem(15);
+        @include tablet {
+          gap:rem(4);
+          min-height: rem(50);
+          padding: rem(4) rem(10);
+          border: 0;
+          border-radius: rem(10);
+          background-color: $white;
+        }
+        @include desktop {
+          gap:rem(13);
+          min-height: rem(80);
+          padding: rem(4) rem(16);
+          border-radius: rem(15);
+        }
+        &::after {
+          content: "";
+          display: inline-block;
+          flex-shrink: 0;
+          width: rem(12);
+          height: rem(12);
+          background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink.svg') no-repeat center center / cover;
+          @include tablet {
+            width: rem(8);
+            height: rem(8);
+          }
+          @include desktop {
+            width: rem(12);
+            height: rem(12);
+          }
+        }
+        &:not([class*="type"]) {
+          @media screen and (max-width: 768px) {
+            &::after {
+              background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink_w.svg') no-repeat center center / cover;
+            }
+            .product-info {
+              .product-name {
+                color: $white;
+              }
+            }
+          }
+        }
+        &.type01 {
+          background-color: #B1DBFF;
+        }
+        &.type02 {
+          background-color: #C7BDFB;
+        }
+        &.type03 {
+          background-color: #CAA8FF;
+        }
+        &.type04 {
+          background-color: #A8EBDC;
+        }
+        &.type05 {
+          background-color: #B7BBFD;
+        }
+        &.type06 {
+          background-color: #B1DBFF;
+        }
+        &.type07 {
+          background-color: #D6B5FF;
+        }
+
+        .product-img-wrapper {
+          position: relative;
+          .product-img {
+            display: block;
+            width: rem(70);
+            height: rem(48);
+            flex-shrink: 0;
+            object-fit: cover;
+            @include tablet {
+              width: rem(44);
+              height: rem(30);
+            }
+            @include desktop {
+              width: rem(70);
+              height: rem(48);
+            }
+          }
+          .product-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(12);
+            height: rem(12);
+            @include font(10,1,550,$white);
+            text-transform: uppercase;
+            position: absolute;
+            top: rem(-6);
+            left: rem(-6);
+            background-color: #262626;
+            border-radius: 50%;
+          }
+        }
+
+        .product-info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: rem(4);
+          
+          .product-name {
+            display: block;
+            @include font(14,1,550);
+            @include tablet {
+              font-size: rem(8);
+            }
+            @include desktop {
+              font-size: rem(14);
+            }
+          }
+          .product-description {
+            display: block;
+            @include font(11,1,400);
+            @include tablet {
+              font-size: rem(7);
+            }
+            @include desktop {
+              font-size: rem(11);
+            }
+          }
+          
+          .product-code {
+            display: block;
+            @include font(11,1.09,400,#7E7C77);
+            @include tablet {
+              font-size: rem(7);
+            }
+            @include desktop {
+              font-size: rem(11);
+            }
           }
         }
       }
