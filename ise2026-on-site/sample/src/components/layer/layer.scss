@@ -77,7 +77,7 @@ body.layer-open {
         right: rem(50);
         position: absolute;
         background-color: unset;
-        padding: 0;
+        padding: 0 rem(30) 0 0;
       }
       @include desktop {
         width: auto;
@@ -1092,8 +1092,10 @@ body.layer-open {
     &.active {
       opacity: 1;
       visibility: visible;
-      overflow: unset;
-      position: static;
+      @media screen and (max-width: 768px) {
+        overflow: unset;
+        position: static;
+      }
     }
     
     .video-layer-inner {

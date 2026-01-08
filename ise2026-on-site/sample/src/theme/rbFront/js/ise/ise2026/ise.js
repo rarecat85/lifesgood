@@ -1,4 +1,105 @@
-/* fade-up 클래스를 가진 요소들을 Intersection Observer로 감지하여 애니메이션 적용 */
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+// Breakpoints
+const BREAKPOINT_MOBILE = 768;
+const BREAKPOINT_TABLET = 769;
+const BREAKPOINT_DESKTOP = 1281;
+
+// Timing
+const DEBOUNCE_DELAY_SHORT = 250;
+const DEBOUNCE_DELAY_MEDIUM = 350;
+const DEBOUNCE_DELAY_KV_VIDEO = 250;
+const TRANSITION_DURATION = 300;
+const BOOTH_SLIDE_INTERVAL = 1500;
+const OBSERVER_THRESHOLD = 0.15;
+const FADE_UP_DELAY_INTERVAL = 0.15;
+
+// Scroll Indicator
+const SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD = 424;
+
+// Image Detection
+const MAX_BOOTH_IMAGE_CHECK = 50;
+const MAX_CONSECUTIVE_NOT_FOUND = 1;
+
+// Class Names
+const CLASS_NAMES = {
+    ACTIVE: 'active',
+    CLOSED: 'closed',
+    HIDDEN: 'hidden',
+    IS_VISIBLE: 'is-visible',
+    IS_COMING_SOON: 'is-coming-soon',
+    LAYER_OPEN: 'layer-open',
+    HAS_ACTIVE_SUBTAB: 'has-active-subtab',
+    HAS_TABLIST: 'has-tablist',
+    NO_TABLIST: 'no-tablist',
+    IS_HIDDEN: 'is-hidden',
+};
+
+// Selectors
+const SELECTORS = {
+    LAYER_POP: '.layer-pop',
+    LAYER_CONTENT: '.layer-content',
+    VIDEO_LAYER: '.video-layer',
+    LAYER_TAB_ITEM: '.layer-tab-item',
+    PHOTO_BTN: '.layer-tab .photo-btn',
+    BOOTH_MAP_SWIPER: '.booth-map .slide-bx .swiper',
+};
+
+
+// ============================================================================
+// 1. UTILITY FUNCTIONS
+// ============================================================================
+
+/**
+ * 함수 실행을 지연시키는 디바운스 유틸리티
+ * 
+ * @param {Function} func - 실행할 함수
+ * @param {number} wait - 대기 시간 (밀리초)
+ * @returns {Function} 디바운스된 함수
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+
+/**
+ * 이미지 존재 여부를 확인하는 비동기 함수
+ * fetch HEAD 요청을 사용하여 콘솔에 404 에러가 표시되지 않도록 처리
+ * 
+ * @param {string} imageUrl - 확인할 이미지 URL
+ * @returns {Promise<boolean>} 이미지 존재 여부
+ */
+function checkImageExists(imageUrl) {
+    return fetch(imageUrl, { method: 'HEAD' })
+        .then(response => response.ok)
+        .catch(() => false);
+}
+
+
+// ============================================================================
+// 2. FADE-UP ANIMATION
+// ============================================================================
+
+/**
+ * Fade-up 애니메이션을 위한 Intersection Observer 초기화
+ * .fade-in, .fade-in-up 클래스를 가진 요소들을 감지하여
+ * 뷰포트에 진입 시 애니메이션을 적용합니다.
+ * 
+ * @description
+ * - 부모 요소별로 그룹화하여 순차적 딜레이 적용
+ * - data-delay 속성으로 커스텀 딜레이 지정 가능
+ * - 이미 지나간 요소는 즉시 활성화
+ */
 function initFadeUp() {
   const fadeUpElements = document.querySelectorAll(".fade-in, .fade-in-up");
 
@@ -121,134 +222,164 @@ function initFadeUp() {
   });
 }
 
-/* KV 영상 재생 제어 */
-const KV_BREAKPOINT = 768; // 모바일 기준점 (px)
+
+// ============================================================================
+// 3. KV VIDEO CONTROL
+// ============================================================================
+
+/**
+ * KV 비디오 관련 전역 변수
+ */
 let kvVideo = null;
 let isKVIntroComplete = false;
 let kvResizeTimer = null;
-let currentPlayPromise = null; // 진행 중인 비디오 재생 Promise 추적
-let isKVVideoInitialized = false; // KV 비디오 초기화 완료 상태 추적
+let currentPlayPromise = null;
+let isKVVideoInitialized = false;
 
-/* 현재 화면 크기에 따른 모바일 여부 판단 */
+
+/**
+ * 현재 화면 크기가 모바일인지 판단
+ * 
+ * @returns {boolean} 모바일 여부
+ */
 function isMobile() {
-  return window.innerWidth <= KV_BREAKPOINT;
+    return window.innerWidth <= BREAKPOINT_MOBILE;
 }
 
-/* 현재 화면 크기에 맞는 영상 파일 경로 반환 */
+
+/**
+ * 현재 화면 크기에 맞는 비디오 파일 경로를 반환
+ * 
+ * @param {string} type - 비디오 타입 ('intro' 또는 'default')
+ * @returns {string} 비디오 파일의 전체 경로
+ */
 function getVideoPath(type) {
-  const isMob = isMobile();
-  const prefix = isMob ? "kv_" + type + "_m" : "kv_" + type;
-  const devicePath = isMob ? "m" : "w";
-  return `/theme/rbFront/img/${devicePath}/ise/ise2026/${prefix}.mp4`;
+    const isMobileDevice = isMobile();
+    const prefix = isMobileDevice ? "kv_" + type + "_m" : "kv_" + type;
+    const devicePath = isMobileDevice ? "m" : "w";
+    return `/theme/rbFront/img/${devicePath}/ise/ise2026/${prefix}.mp4`;
 }
 
-/* 영상 소스 변경 (단순 소스 교체 방식) */
+
+/**
+ * 비디오 소스를 변경하고 재생
+ * 
+ * @param {string} videoPath - 새로운 비디오 파일 경로
+ * @param {boolean} shouldLoop - 반복 재생 여부
+ * @returns {Promise<void>}
+ */
 async function changeVideoSource(videoPath, shouldLoop) {
-  if (!kvVideo) return;
+    if (!kvVideo) return;
 
-  // 진행 중인 재생 작업이 있으면 완료 대기
-  if (currentPlayPromise) {
-      try {
-          await currentPlayPromise;
-      } catch (err) {
-          // AbortError는 정상적인 동작이므로 무시
-          if (err.name !== "AbortError") {
-              console.warn("Previous play promise rejected:", err);
-          }
-      }
-  }
+    // 진행 중인 재생 작업이 있으면 완료 대기
+    if (currentPlayPromise) {
+        try {
+            await currentPlayPromise;
+        } catch (err) {
+            // AbortError는 정상적인 동작이므로 무시
+            if (err.name !== "AbortError") {
+                console.warn("Previous play promise rejected:", err);
+            }
+        }
+    }
 
-  // 기존 이벤트 리스너 제거
-  kvVideo.removeEventListener("ended", handleIntroComplete);
+    // 기존 이벤트 리스너 제거
+    kvVideo.removeEventListener("ended", handleIntroComplete);
 
-  // 비디오 일시정지
-  kvVideo.pause();
+    // 비디오 일시정지
+    kvVideo.pause();
 
-  // 소스 변경
-  kvVideo.src = videoPath;
-  kvVideo.loop = shouldLoop;
+    // 소스 변경
+    kvVideo.src = videoPath;
+    kvVideo.loop = shouldLoop;
 
-  // 새 영상이 로드되면 재생
-  const handleCanPlay = () => {
-      currentPlayPromise = kvVideo
-          .play()
-          .then(() => {
-              currentPlayPromise = null;
-          })
-          .catch((err) => {
-              currentPlayPromise = null;
-              // AbortError는 정상적인 동작이므로 무시
-              if (err.name !== "AbortError") {
-                  console.warn("Video play failed:", err);
-              }
-          });
-  };
+    // 새 영상이 로드되면 재생
+    const handleCanPlay = () => {
+        currentPlayPromise = kvVideo
+            .play()
+            .then(() => {
+                currentPlayPromise = null;
+            })
+            .catch((err) => {
+                currentPlayPromise = null;
+                // AbortError는 정상적인 동작이므로 무시
+                if (err.name !== "AbortError") {
+                    console.warn("Video play failed:", err);
+                }
+            });
+    };
 
-  // 에러 처리
-  const handleError = () => {
-      console.warn("Video load failed:", videoPath);
-  };
+    // 에러 처리
+    const handleError = () => {
+        console.warn("Video load failed:", videoPath);
+    };
 
-  // 이벤트 리스너 등록
-  kvVideo.addEventListener("canplaythrough", handleCanPlay, {
-      once: true
-  });
-  kvVideo.addEventListener("error", handleError, {
-      once: true
-  });
+    // 이벤트 리스너 등록
+    kvVideo.addEventListener("canplaythrough", handleCanPlay, {
+        once: true
+    });
+    kvVideo.addEventListener("error", handleError, {
+        once: true
+    });
 
-  // intro 영상인 경우 ended 이벤트 리스너 추가
-  if (!isKVIntroComplete) {
-      kvVideo.addEventListener("ended", handleIntroComplete, {
-          once: false
-      });
-  }
+    // intro 영상인 경우 ended 이벤트 리스너 추가
+    if (!isKVIntroComplete) {
+        kvVideo.addEventListener("ended", handleIntroComplete, {
+            once: false
+        });
+    }
 
-  // 비디오 로드 시작
-  kvVideo.load();
+    // 비디오 로드 시작
+    kvVideo.load();
 }
 
-/* intro 영상 재생 완료 후 default 영상으로 전환 */
+
+/**
+ * Intro 영상 재생 완료 시 default 영상으로 전환
+ */
 function handleIntroComplete() {
-  if (isKVIntroComplete) return;
+    if (isKVIntroComplete) return;
 
-  isKVIntroComplete = true;
-  const defaultVideoPath = getVideoPath("default");
-  changeVideoSource(defaultVideoPath, true); // default 영상은 반복 재생
+    isKVIntroComplete = true;
+    const defaultVideoPath = getVideoPath("default");
+    changeVideoSource(defaultVideoPath, true);
 }
 
-/* 화면 크기 변경 시 영상 재설정 */
+
+/**
+ * 화면 크기 변경 시 영상 재설정 (모바일/데스크톱 전환 감지)
+ * 디바운스 처리로 성능 최적화
+ */
 function handleKVResize() {
-  // 초기화가 완료되지 않았으면 리사이즈 처리 건너뛰기
-  if (!isKVVideoInitialized) return;
+    if (!isKVVideoInitialized) return;
 
-  // 디바운스 처리
-  clearTimeout(kvResizeTimer);
-  kvResizeTimer = setTimeout(() => {
-      if (!kvVideo) return;
+    clearTimeout(kvResizeTimer);
+    kvResizeTimer = setTimeout(() => {
+        if (!kvVideo) return;
 
-      const wasIntroComplete = isKVIntroComplete;
-      const currentVideoPath = kvVideo.src;
-      const currentIsMobile = currentVideoPath.includes("_m.mp4");
-      const newIsMobile = isMobile();
+        const wasIntroComplete = isKVIntroComplete;
+        const currentVideoPath = kvVideo.src;
+        const currentIsMobileVideo = currentVideoPath.includes("_m.mp4");
+        const newIsMobileDevice = isMobile();
 
-      // 모바일/데스크톱 전환이 발생한 경우에만 영상 변경
-      if (currentIsMobile !== newIsMobile) {
-          if (wasIntroComplete) {
-              // default 영상으로 변경
-              const defaultVideoPath = getVideoPath("default");
-              changeVideoSource(defaultVideoPath, true);
-          } else {
-              // intro 영상부터 다시 시작
-              isKVIntroComplete = false;
-              const introVideoPath = getVideoPath("intro");
-              changeVideoSource(introVideoPath, false);
-          }
-      }
-  }, 250); // 250ms 디바운스
+        // 모바일/데스크톱 전환이 발생한 경우에만 영상 변경
+        if (currentIsMobileVideo !== newIsMobileDevice) {
+            if (wasIntroComplete) {
+                const defaultVideoPath = getVideoPath("default");
+                changeVideoSource(defaultVideoPath, true);
+            } else {
+                isKVIntroComplete = false;
+                const introVideoPath = getVideoPath("intro");
+                changeVideoSource(introVideoPath, false);
+            }
+        }
+    }, DEBOUNCE_DELAY_KV_VIDEO);
 }
 
-/* KV 영상 초기화 */
+
+/**
+ * KV 비디오 요소 초기화 및 Intro 영상 재생 시작
+ */
 function initKVVideo() {
   const videoBx = document.querySelector(".kv .video-bx");
   if (!videoBx) return;
@@ -340,37 +471,53 @@ function initKVVideo() {
           once: false
       });
 
-      // 7. 새 소스 설정 (이것만으로 브라우저가 자동으로 로드 시작)
-      kvVideo.src = introVideoPath;
-  });
+        // 7. 새 소스 설정 (이것만으로 브라우저가 자동으로 로드 시작)
+        kvVideo.src = introVideoPath;
+    });
 }
 
-/* Booth 이미지 슬라이드 자동 전환 */
+
+// ============================================================================
+// 4. BOOTH SLIDE
+// ============================================================================
+
+/**
+ * Booth 슬라이드 관련 전역 변수
+ */
 let boothSlideInterval = null;
 let currentBoothIndex = 0;
+let boothSlideSwiper = null;
+let boothBreakpointState = null;
 
+
+/**
+ * Booth 이미지 자동 슬라이드 초기화
+ * .booth-map .img-list의 이미지들을 자동으로 전환
+ */
 function initBoothSlide() {
-  const boothSlides = document.querySelectorAll(".booth-map .img-list li");
+    const boothSlides = document.querySelectorAll(".booth-map .img-list li");
 
-  if (boothSlides.length === 0) return;
+    if (boothSlides.length === 0) return;
 
-  // 자동 슬라이드 전환 함수
-  function nextSlide() {
-      // 현재 활성화된 슬라이드의 active 클래스 제거
-      boothSlides[currentBoothIndex].classList.remove("active");
+    // 자동 슬라이드 전환 함수
+    function nextSlide() {
+        boothSlides[currentBoothIndex].classList.remove(CLASS_NAMES.ACTIVE);
+        currentBoothIndex = (currentBoothIndex + 1) % boothSlides.length;
+        boothSlides[currentBoothIndex].classList.add(CLASS_NAMES.ACTIVE);
+    }
 
-      // 다음 인덱스 계산
-      currentBoothIndex = (currentBoothIndex + 1) % boothSlides.length;
-
-      // 다음 슬라이드에 active 클래스 추가
-      boothSlides[currentBoothIndex].classList.add("active");
-  }
-
-  // 3초마다 자동 전환
-  boothSlideInterval = setInterval(nextSlide, 1500);
+    boothSlideInterval = setInterval(nextSlide, BOOTH_SLIDE_INTERVAL);
 }
 
-/* footer 네비게이션 버튼 클릭 이벤트 */
+
+// ============================================================================
+// 5. FOOTER NAVIGATION
+// ============================================================================
+
+/**
+ * Footer 네비게이션 버튼 클릭 이벤트 핸들러
+ * data-section 속성을 기반으로 해당 섹션으로 이동
+ */
 function handleFooterNavClick() {
   const footerNavLinks = document.querySelectorAll(
       ".ise-footer .nav-link[data-section]"
@@ -425,13 +572,14 @@ function handleFooterNavClick() {
               }
           }
       });
-  });
+    });
 }
 
-// Booth Swiper 인스턴스 및 상태 관리
-let boothSlideSwiper = null;
-let boothBreakpointState = null; // 'mobile', 'tablet', 'desktop'
 
+/**
+ * Booth Swiper 초기화 및 반응형 처리
+ * 화면 크기에 따라 다른 Swiper 설정 적용 (모바일/태블릿/데스크톱)
+ */
 function handleBoothSlide() {
   const boothSlide = document.querySelector(".booth-map .slide-bx .swiper");
   if (!boothSlide) return;
@@ -641,28 +789,15 @@ function handleBoothSlide() {
           swiperConfig.spaceBetween = 10;
       }
 
-      boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
-  }
+        boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
+    }
 
-  // 디바운스 함수
-  function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-          const later = () => {
-              clearTimeout(timeout);
-              func(...args);
-          };
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-      };
-  }
+    // 분기점 체크 변수
+    let lastCheckedState = null;
+    let isTransitioning = false;
 
-  // 분기점 체크 변수
-  let lastCheckedState = null;
-  let isTransitioning = false; // 전환 중 플래그
-
-  // 리사이즈 핸들러 (디바운스 적용)
-  const handleResizeDebounced = debounce(() => {
+    // 리사이즈 핸들러 (디바운스 적용)
+    const handleResizeDebounced = debounce(() => {
       initBoothSwiper();
 
       // pagination 재렌더링 (모바일/데스크탑 번호 형식 전환)
@@ -675,12 +810,12 @@ function handleBoothSlide() {
               ".booth-map .slide-bx .swiper-pagination-bullet-active"
           );
           if (activeBullet) {
-              activeBullet.setAttribute("aria-current", "true");
-          }
-      }
-  }, 350); // 350ms 디바운스 (페이드 아웃 시간 고려)
+                activeBullet.setAttribute("aria-current", "true");
+            }
+        }
+    }, DEBOUNCE_DELAY_MEDIUM);
 
-  // 리사이즈 이벤트 핸들러 (즉시 페이드 아웃 + 디바운스된 재생성)
+    // 리사이즈 이벤트 핸들러 (즉시 페이드 아웃 + 디바운스된 재생성)
   const handleResize = () => {
       const currentWidth = window.innerWidth;
       let currentState = "mobile";
@@ -796,11 +931,19 @@ function handleBoothSlide() {
           if (pagination) {
               pagination.classList.toggle("active");
           }
-      });
-  }
+        });
+    }
 }
 
-/* Culture 슬라이드 초기화 (thumbs 방식) */
+
+// ============================================================================
+// 6. CULTURE SLIDE
+// ============================================================================
+
+/**
+ * Culture 슬라이드 초기화 (썸네일 연동 방식)
+ * btn-slide를 썸네일로, content-slide를 메인으로 연결
+ */
 function handleCultureSlide() {
   const btnSlide = document.querySelector(".culture .btn-slide");
   const contentSlide = document.querySelector(".culture .content-slide");
@@ -831,9 +974,18 @@ function handleCultureSlide() {
       thumbs: {
           swiper: btnSwiper,
       },
-  });
+    });
 }
 
+
+// ============================================================================
+// 7. TECHZONE
+// ============================================================================
+
+/**
+ * Techzone 메인 슬라이드 초기화
+ * SVG 애니메이션과 함께 슬라이드 효과 적용
+ */
 function handleTechzoneSlide() {
   const techMainSlide = document.querySelector(".techzone .slide-bx");
   const techMainSwiper = new Swiper(techMainSlide, {
@@ -887,7 +1039,13 @@ function handleTechzoneSlide() {
 
 gsap.registerPlugin(DrawSVGPlugin);
 
-// 활성화된 슬라이드에서 실행할 효과 함수
+
+/**
+ * Techzone 슬라이드의 SVG 드로잉 애니메이션 실행
+ * 
+ * @param {HTMLElement} slideElement - 활성화된 슬라이드 요소
+ * @param {number} slideIndex - 슬라이드 인덱스
+ */
 function handleActiveSlideEffect(slideElement, slideIndex) {
   const maskedGroup = slideElement.querySelector(".masked-group");
   if (!maskedGroup) return;
@@ -926,9 +1084,14 @@ function handleActiveSlideEffect(slideElement, slideIndex) {
       duration: 1.45,
       ease: "none",
       stagger: 0.1,
-  });
+    });
 }
 
+
+/**
+ * Techzone 뉴스 슬라이드 초기화
+ * 반응형 breakpoint에 따라 슬라이드 개수 변경
+ */
 function handleTechzoneNewsSlide() {
   const techzoneNewsSlide = document.querySelector(
       ".techzone-list .news-slide .swiper"
@@ -956,13 +1119,25 @@ function handleTechzoneNewsSlide() {
           el: ".techzone-list .news-slide .swiper-pagination",
           type: "fraction",
       },
-  });
+    });
 }
 
-// Highlights Sub Swiper 인스턴스 및 상태 관리
-let highlightsSubSwiper = null;
-let highlightsBreakpointState = null; // 'mobile' or 'desktop'
 
+// ============================================================================
+// 8. HIGHLIGHTS SLIDE
+// ============================================================================
+
+/**
+ * Highlights 슬라이드 관련 전역 변수
+ */
+let highlightsSubSwiper = null;
+let highlightsBreakpointState = null;
+
+
+/**
+ * Highlights 슬라이드 초기화 (메인 + 서브)
+ * 데스크톱에서만 서브 슬라이더 활성화, 모바일에서는 비활성화
+ */
 function handleHighlightsSlide() {
   const highlightsMainSlide = document.querySelector(
       ".highlights .main-slide .swiper"
@@ -1045,69 +1220,75 @@ function handleHighlightsSlide() {
   window.addEventListener("resize", handleResize);
 
   // 초기화 실행
-  initSubSwiper();
+    initSubSwiper();
 }
 
-/* 이미지 존재 여부 확인 함수 */
-function checkImageExists(imageUrl) {
-  return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
-      img.src = imageUrl;
-  });
-}
 
-/* 부스별 이미지 자동 감지 함수 */
+// ============================================================================
+// 9. LAYER POPUP DATA
+// ============================================================================
+
+/**
+ * 부스별 이미지 자동 감지 함수
+ * 특정 부스의 이미지들을 순차적으로 확인하여 존재하는 이미지 목록 반환
+ * 
+ * @param {number} boothNumber - 부스 번호 (1-10)
+ * @returns {Promise<Array>} 감지된 이미지 객체 배열
+ */
 async function detectBoothImages(boothNumber) {
-  const basePath = `/theme/rbFront/img/w/ise/ise2026/booth-${boothNumber}/`;
-  const images = [];
-  let imageIndex = 1;
-  let consecutiveNotFound = 0;
-  const maxConsecutiveNotFound = 3; // 3개 연속 없으면 중단
+    const basePath = `/theme/rbFront/img/w/ise/ise2026/booth-${boothNumber}/`;
+    const images = [];
+    let imageIndex = 1;
+    let consecutiveNotFound = 0;
 
-  // 최대 50개까지 체크 (충분히 큰 범위)
-  while (imageIndex <= 50) {
-      const imageUrl = `${basePath}booth_img_${imageIndex}.jpg`;
-      const exists = await checkImageExists(imageUrl);
+    while (imageIndex <= MAX_BOOTH_IMAGE_CHECK) {
+        const imageUrl = `${basePath}booth_img_${imageIndex}.jpg`;
+        const exists = await checkImageExists(imageUrl);
 
-      if (exists) {
-          // 이미지가 있으면 배열에 추가
-          images.push({
-              type: "image",
-              imageUrl: imageUrl,
-          });
-          consecutiveNotFound = 0; // 카운터 리셋
-      } else {
-          consecutiveNotFound++;
-          // 3개 연속 없으면 더 이상 없다고 판단
-          if (consecutiveNotFound >= maxConsecutiveNotFound) {
-              break;
-          }
-      }
+        if (exists) {
+            images.push({
+                type: "image",
+                imageUrl: imageUrl,
+            });
+            consecutiveNotFound = 0;
+        } else {
+            consecutiveNotFound++;
+            if (consecutiveNotFound >= MAX_CONSECUTIVE_NOT_FOUND) {
+                break;
+            }
+        }
 
-      imageIndex++;
-  }
+        imageIndex++;
+    }
 
-  return images;
+    return images;
 }
 
-/* 모든 부스의 미디어 갤러리 초기화 */
+
+/**
+ * 모든 부스의 미디어 갤러리 초기화
+ * 각 부스별로 이미지를 자동 감지하여 mediaGallery에 추가
+ */
 async function initBoothMediaGalleries() {
-  // 모든 부스 (1-10)에 대해 이미지 자동 감지
-  for (let i = 0; i < layerPopupData.length; i++) {
-      const boothNumber = i + 1;
-      const detectedImages = await detectBoothImages(boothNumber);
+    // 모든 부스 (1-10)에 대해 이미지 자동 감지
+    for (let i = 0; i < layerPopupData.length; i++) {
+        const boothNumber = i + 1;
+        const detectedImages = await detectBoothImages(boothNumber);
 
-      // 기존 mediaGallery에 감지된 이미지들을 추가
-      // 유튜브 영상은 이미 있으므로, 이미지만 추가
-      if (detectedImages.length > 0) {
-          layerPopupData[i].mediaGallery.push(...detectedImages);
-      }
-  }
+        // 기존 mediaGallery에 감지된 이미지들을 추가
+        if (detectedImages.length > 0) {
+            layerPopupData[i].mediaGallery.push(...detectedImages);
+        }
+    }
 }
 
-/* Layer Popup 데이터 구조 */
+
+/**
+ * Layer Popup 데이터 구조
+ * 각 부스별 정보 (제목, 설명, 제품 목록, 미디어 갤러리 등)를 담고 있는 배열
+ * 
+ * @type {Array<Object>}
+ */
 const layerPopupData = [
   // Booth 1: Key Attractor
   {
@@ -1964,17 +2145,32 @@ const layerPopupData = [
           },
           // 이미지는 자동으로 감지되어 추가됩니다
       ],
-  },
+    },
 ];
 
-/* 준비중인 제품 클릭 핸들러 */
+
+// ============================================================================
+// 10. LAYER POPUP MANAGEMENT
+// ============================================================================
+
+/**
+ * 준비중인 제품 클릭 시 알림 표시
+ * 
+ * @param {Event} event - 클릭 이벤트
+ */
 function handleComingSoonProduct(event) {
-  event.preventDefault();
-  alert("준비중입니다.");
-  // 나중에 커스텀 레이어 팝업으로 변경 가능
+    event.preventDefault();
+    alert("준비중입니다.");
 }
 
-/* Helper 함수: product-item HTML 생성 */
+
+/**
+ * Product-item HTML 생성 헬퍼 함수
+ * 
+ * @param {Object} product - 제품 객체
+ * @param {Array} productList - 전체 제품 목록
+ * @returns {string} 생성된 HTML 문자열
+ */
 function generateProductItemHTML(product, productList) {
   const isSolution = product.type === "solution";
   const isProduct = product.type === "product";
@@ -2035,81 +2231,84 @@ function generateProductItemHTML(product, productList) {
 `;
 }
 
-/* 스크롤 인디케이터 표시/숨김 체크 */
+
+/**
+ * 스크롤 인디케이터 표시/숨김 체크
+ * 이미지 너비가 임계값보다 크면 인디케이터 표시
+ */
 function checkScrollIndicator() {
-  const boothDetailImg = document.querySelector('.booth-detail-img');
-  const image = document.querySelector('.booth-detail-img img');
-  const scrollIndicator = document.querySelector('.scroll-indicator');
+    const boothDetailImage = document.querySelector('.booth-detail-img');
+    const image = document.querySelector('.booth-detail-img img');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
 
-  if (!boothDetailImg || !image || !scrollIndicator) return;
+    if (!boothDetailImage || !image || !scrollIndicator) return;
 
-  // 이미지 로드 완료 후 크기 체크
-  if (image.complete) {
-      checkAndShowIndicator();
-  } else {
-      image.addEventListener('load', checkAndShowIndicator);
-  }
+    // 이미지 로드 완료 후 크기 체크
+    if (image.complete) {
+        checkAndShowIndicator();
+    } else {
+        image.addEventListener('load', checkAndShowIndicator);
+    }
 
-  function checkAndShowIndicator() {
-      const imageWidth = image.naturalWidth || image.width;
+    function checkAndShowIndicator() {
+        const imageWidth = image.naturalWidth || image.width;
 
-      // 이미지 너비가 424px보다 크면 인디케이터 표시
-      if (imageWidth > 424) {
-          scrollIndicator.style.display = 'block';
-      } else {
-          scrollIndicator.style.display = 'none';
-      }
-  }
+        if (imageWidth > SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD) {
+            scrollIndicator.style.display = 'block';
+        } else {
+            scrollIndicator.style.display = 'none';
+        }
+    }
 }
 
-/* 스크롤 인디케이터 터치/클릭 시 숨김 */
+
+/**
+ * 스크롤 인디케이터 터치/클릭 시 숨김 처리
+ * 사용자 인터랙션 감지 시 인디케이터를 페이드 아웃
+ */
 function initScrollIndicatorHide() {
-  const boothDetailImg = document.querySelector('.booth-detail-img');
-  const scrollIndicator = document.querySelector('.scroll-indicator');
+    const boothDetailImage = document.querySelector('.booth-detail-img');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
 
-  if (!boothDetailImg || !scrollIndicator) return;
+    if (!boothDetailImage || !scrollIndicator) return;
 
-  // 터치, 클릭, 스크롤 시 active 클래스 추가 (인디케이터 fade)
-  const hideIndicator = () => {
-      scrollIndicator.classList.add('active');
-  };
+    const hideIndicator = () => {
+        scrollIndicator.classList.add(CLASS_NAMES.ACTIVE);
+    };
 
-  // booth-detail-img 영역 터치 시
-  boothDetailImg.addEventListener('touchstart', hideIndicator, {
-      once: true
-  });
-  // booth-detail-img 영역 클릭 시
-  boothDetailImg.addEventListener('click', hideIndicator, {
-      once: true
-  });
-  // booth-detail-img 영역 스크롤 시
-  boothDetailImg.addEventListener('scroll', hideIndicator, {
-      once: true
-  });
+    // booth-detail-img 영역 터치/클릭/스크롤 시 인디케이터 숨김
+    boothDetailImage.addEventListener('touchstart', hideIndicator, { once: true });
+    boothDetailImage.addEventListener('click', hideIndicator, { once: true });
+    boothDetailImage.addEventListener('scroll', hideIndicator, { once: true });
 }
 
-/* Layer Popup 컨텐츠 렌더링 */
+
+/**
+ * Layer Popup 컨텐츠 렌더링
+ * 
+ * @param {number} index - 부스 인덱스 (0-9)
+ */
 function renderLayerContent(index) {
-  const layerContent = document.querySelector(".layer-content");
-  if (!layerContent || index < 0 || index >= layerPopupData.length) return;
+    const layerContent = document.querySelector(".layer-content");
+    if (!layerContent || index < 0 || index >= layerPopupData.length) return;
 
-  const data = layerPopupData[index];
+    const data = layerPopupData[index];
 
-  // 모바일 체크
-  const isMobile = window.innerWidth < 769;
+    // 모바일 체크
+    const isMobileDevice = window.innerWidth < BREAKPOINT_TABLET;
 
   // tablist 유무 확인
   const hasTablist = data.tablist && data.tablist.length > 0;
 
-  // Tablist HTML 생성 (모든 탭 비활성 상태로 시작)
-  const tablistHTML = hasTablist ?
-      `
-  <ul class="layer-sub-tabs" role="tablist">
-    ${data.tablist
-      .map((tab, idx) => {
-        // 모바일용: product-item들을 직접 생성 (초기 상태는 숨김)
-        const mobileProductItems =
-          isMobile && tab.productList && tab.productList.length > 0
+    // Tablist HTML 생성 (모든 탭 비활성 상태로 시작)
+    const tablistHTML = hasTablist ?
+        `
+    <ul class="layer-sub-tabs" role="tablist">
+      ${data.tablist
+        .map((tab, index) => {
+          // 모바일용: product-item들을 직접 생성 (초기 상태는 숨김)
+          const mobileProductItems =
+            isMobileDevice && tab.productList && tab.productList.length > 0
             ? `<div class="mobile-product-list hidden">
              ${tab.productList
                .map((product) =>
@@ -2132,14 +2331,14 @@ function renderLayerContent(index) {
           >
             ${tab.name}
           </button>
-          <div class="tab-detail">
-            <div class="tab-detail-title-wrap">
-              ${!isMobile ? `<span class="tab-detail-subtitle">${tab.name}</span>` : ''}
-              <h4 class="tab-detail-title">${tab.title || ""}</h4>
-              <p class="tab-detail-desc">${tab.description || ""}</p>
-              ${isMobile ? `
-                <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${idx + 1}.jpg" alt="${tab.name}" class="tab-detail-img">
-              ` : ''}
+            <div class="tab-detail">
+              <div class="tab-detail-title-wrap">
+                ${!isMobileDevice ? `<span class="tab-detail-subtitle">${tab.name}</span>` : ''}
+                <h4 class="tab-detail-title">${tab.title || ""}</h4>
+                <p class="tab-detail-desc">${tab.description || ""}</p>
+                ${isMobileDevice ? `
+                  <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${index + 1}.jpg" alt="${tab.name}" class="tab-detail-img">
+                ` : ''}
             </div>
             ${mobileProductItems}
           </div>
@@ -2164,9 +2363,9 @@ function renderLayerContent(index) {
   // Product List HTML 생성
   let productListHTML = "";
 
-  if (hasTablist && data.tablist) {
-      // tablist가 있을 때: 데스크톱에서만 탭별로 개별 생성
-      productListHTML = !isMobile ?
+    if (hasTablist && data.tablist) {
+        // tablist가 있을 때: 데스크톱에서만 탭별로 개별 생성
+        productListHTML = !isMobileDevice ?
           data.tablist
           .map((tab, tabIdx) => {
               if (!tab.productList || tab.productList.length === 0) return "";
@@ -2292,10 +2491,15 @@ function renderLayerContent(index) {
   setTimeout(() => {
       checkScrollIndicator();
       initScrollIndicatorHide();
-  }, 100);
+    }, 100);
 }
 
-/* Layer Popup 열기 */
+
+/**
+ * Layer Popup 열기
+ * 
+ * @param {number} index - 부스 인덱스 (0-9)
+ */
 function openLayerPopup(index) {
   const layerPop = document.querySelector(".layer-pop");
   const layerTabItems = document.querySelectorAll(".layer-tab-item");
@@ -2335,10 +2539,13 @@ function openLayerPopup(index) {
   }, 100);
 
   // body scroll 방지 - 클래스로 처리
-  document.body.classList.add("layer-open");
+    document.body.classList.add(CLASS_NAMES.LAYER_OPEN);
 }
 
-/* Layer Popup 닫기 */
+
+/**
+ * Layer Popup 닫기
+ */
 function closeLayerPopup() {
   const layerPop = document.querySelector(".layer-pop");
   const layerTabItems = document.querySelectorAll(".layer-tab-item");
@@ -2358,15 +2565,27 @@ function closeLayerPopup() {
   layerTabItems.forEach((item) => item.classList.remove("active"));
 
   // body scroll 복원 - 클래스 제거
-  document.body.classList.remove("layer-open");
+    document.body.classList.remove(CLASS_NAMES.LAYER_OPEN);
 }
 
-/* Video Layer (Photos Gallery) 관리 */
+
+// ============================================================================
+// 11. VIDEO LAYER (GALLERY)
+// ============================================================================
+
+/**
+ * Video Layer (Photos Gallery) 관련 전역 변수
+ */
 let mainGallerySwiper = null;
 let thumbGallerySwiper = null;
-let galleryBreakpointState = null; // 'mobile' or 'desktop'
+let galleryBreakpointState = null;
 
-/* Video Layer 열기 */
+
+/**
+ * Video Layer (Photos Gallery) 열기
+ * 
+ * @param {number} index - 부스 인덱스 (0-9)
+ */
 function openVideoLayer(index) {
   const videoLayer = document.querySelector(".video-layer");
   const data = layerPopupData[index];
@@ -2388,10 +2607,13 @@ function openVideoLayer(index) {
   // Swiper Thumbs 초기화
   setTimeout(() => {
       initMediaGallerySwiper();
-  }, 100);
+    }, 100);
 }
 
-/* Video Layer 닫기 */
+
+/**
+ * Video Layer 닫기
+ */
 function closeVideoLayer() {
   const videoLayer = document.querySelector(".video-layer");
   if (!videoLayer) return;
@@ -2412,10 +2634,15 @@ function closeVideoLayer() {
   if (thumbGallerySwiper) {
       thumbGallerySwiper.destroy();
       thumbGallerySwiper = null;
-  }
+    }
 }
 
-/* 미디어 갤러리 렌더링 */
+
+/**
+ * 미디어 갤러리 렌더링 (이미지 + 유튜브 동영상)
+ * 
+ * @param {Array} mediaGallery - 미디어 아이템 배열
+ */
 function renderMediaGallery(mediaGallery) {
   const mainWrapper = document.querySelector(
       ".main-gallery-swiper .swiper-wrapper"
@@ -2468,10 +2695,14 @@ function renderMediaGallery(mediaGallery) {
       .join("");
 
   mainWrapper.innerHTML = mainSlides;
-  thumbWrapper.innerHTML = thumbSlides;
+    thumbWrapper.innerHTML = thumbSlides;
 }
 
-/* 미디어 갤러리 Swiper 초기화 */
+
+/**
+ * 미디어 갤러리 Swiper 초기화 (데스크톱 전용)
+ * 모바일에서는 Swiper를 생성하지 않음
+ */
 function initMediaGallerySwiper() {
   // 기존 인스턴스 제거
   if (mainGallerySwiper) mainGallerySwiper.destroy();
@@ -2523,14 +2754,25 @@ function initMediaGallerySwiper() {
           el: ".main-swiper-container .swiper-pagination",
           type: "fraction",
       },
-  });
+    });
 }
 
-/* Product Swiper 인스턴스 관리 */
-let productSwiperInstances = new Map();
-let productSwiperBreakpoint = null; // 'mobile' or 'desktop'
 
-/* Product Swiper 초기화 */
+// ============================================================================
+// 12. PRODUCT SWIPER
+// ============================================================================
+
+/**
+ * Product Swiper 관련 전역 변수
+ */
+let productSwiperInstances = new Map();
+let productSwiperBreakpoint = null;
+
+
+/**
+ * Product Swiper 초기화
+ * 모바일에서는 비활성화, 데스크톱/태블릿에서만 활성화
+ */
 function initProductSwiper() {
   const isMobile = window.innerWidth < 769;
 
@@ -2589,10 +2831,13 @@ function initProductSwiper() {
           if (nextBtn) nextBtn.style.display = "none";
           if (prevBtn) prevBtn.style.display = "none";
       }
-  });
+    });
 }
 
-/* Product 아코디언 토글 처리 */
+
+/**
+ * Product 아코디언 토글 처리 (모바일 전용)
+ */
 function initProductAccordion() {
   const layerContent = document.querySelector(".layer-content");
   if (!layerContent) return;
@@ -2610,10 +2855,18 @@ function initProductAccordion() {
       // 토글
       const isActive = item.classList.toggle("active");
       toggle.setAttribute("aria-expanded", isActive);
-  });
+    });
 }
 
-/* Layer Popup 이벤트 핸들러 초기화 */
+
+// ============================================================================
+// 13. EVENT HANDLERS
+// ============================================================================
+
+/**
+ * Layer Popup 이벤트 핸들러 초기화
+ * 모든 레이어 팝업 관련 이벤트 리스너 등록
+ */
 function handleLayerPopup() {
   // 1. Learn more 버튼 클릭 이벤트
   const learnMoreButtons = document.querySelectorAll(
@@ -3117,10 +3370,18 @@ function handleLayerPopup() {
   } else {
       // 구형 브라우저 지원
       layerMediaQuery.addListener(handleLayerMediaChange);
-  }
+    }
 }
 
-/* 모든 기능 초기화 */
+
+// ============================================================================
+// 14. INITIALIZATION
+// ============================================================================
+
+/**
+ * 모든 기능 초기화
+ * 페이지 로드 시 실행되는 메인 초기화 함수
+ */
 async function init() {
   // 페이지 로드 시 모든 부스의 이미지 자동 감지
   await initBoothMediaGalleries();
@@ -3141,6 +3402,14 @@ async function init() {
       scrollingSpeed: 1000,
       easingcss3: "cubic-bezier(0.645, 0.045, 0.355, 1.000)",
       navigation: true,
+      anchors: [
+        "kv",
+        "wallgraphic",
+        "booth-map",
+        "culture",
+        "techzone",
+        "highlights"
+    ],
       navigationTooltips: [
           "Home",
           "LED media art",
@@ -3172,15 +3441,17 @@ async function init() {
               nav.classList.remove("black");
           }
       },
-  });
+    });
 }
 
-// DOM 로드 후 초기화
+
+// DOM 로드 후 초기화 실행
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init);
 } else {
-  init();
+    init();
 }
 
-// 동적으로 추가된 요소를 위해 재실행 가능하도록 함수 export (필요시)
+
+// 동적으로 추가된 요소를 위한 함수 export
 window.reinitFadeUp = initFadeUp;
