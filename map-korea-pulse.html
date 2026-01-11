@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korea Pulse Map</title>
+    <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .inner {
+            width: 1440px;
+            max-width: 100%;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 720px;
+            position: relative;
+            background: #F0ECE4;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 펄스 애니메이션 */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        .pulse-marker {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="inner">
+        <div class="map-container" id="deck-container"></div>
+    </div>
+
+    <script>
+        const COUNTRIES_URL = 'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson';
+        
+        // 한국 중심 좌표
+        const KOREA_POSITION = [127.5, 36.5];
+        
+        // 전역 DeckGL 인스턴스
+        let deckgl = null;
+
+        async function initMap() {
+            const response = await fetch(COUNTRIES_URL);
+            const geojsonData = await response.json();
+
+            // 남극대륙 제외 필터링
+            const filteredData = {
+                ...geojsonData,
+                features: geojsonData.features.filter(feature => {
+                    const name = feature.properties.ADMIN || feature.properties.name || '';
+                    const iso = feature.properties.ISO_A3 || '';
+                    return name !== 'Antarctica' && iso !== 'ATA';
+                })
+            };
+
+            // 초기 뷰 상태
+            const INITIAL_VIEW_STATE = {
+                longitude: 10,
+                latitude: 50,
+                zoom: 1,
+                pitch: 0,
+                bearing: 0
+            };
+
+            // 한국 클릭 핸들러
+            const handleKoreaClick = (info, event) => {
+                if (info.object) {
+                    // 한국으로 부드럽게 확대
+                    deckgl.setProps({
+                        initialViewState: {
+                            longitude: KOREA_POSITION[0],
+                            latitude: KOREA_POSITION[1],
+                            zoom: 6,
+                            pitch: 0,
+                            bearing: 0,
+                            transitionDuration: 1500,
+                            transitionInterpolator: new deck.FlyToInterpolator()
+                        }
+                    });
+                }
+            };
+
+            // 레이어 생성 함수
+            const createLayers = () => {
+                return [
+                    // 세계지도 레이어
+                    new deck.GeoJsonLayer({
+                        id: 'world-countries',
+                        data: filteredData,
+                        stroked: true,
+                        filled: true,
+                        lineWidthMinPixels: 1,
+                        lineWidthMaxPixels: 2,
+                        getFillColor: [240, 236, 228, 255],
+                        getLineColor: [180, 180, 190, 255],
+                        getLineWidth: 1,
+                        pickable: false,
+                        autoHighlight: false
+                    }),
+                    
+                    // 한국 펄스 - 외부 애니메이션 원
+                    new deck.ScatterplotLayer({
+                        id: 'korea-pulse-outer',
+                        data: [{ position: KOREA_POSITION, size: 1 }],
+                        getPosition: d => d.position,
+                        getRadius: d => d.size,
+                        radiusScale: 25000,
+                        radiusMinPixels: 20,
+                        radiusMaxPixels: 40,
+                        getFillColor: [220, 38, 38, 100], // 빨간색, 반투명
+                        pickable: true,
+                        onClick: handleKoreaClick,
+                        updateTriggers: {
+                            getRadius: Date.now()
+                        }
+                    }),
+                    
+                    // 한국 펄스 - 내부 고정 원
+                    new deck.ScatterplotLayer({
+                        id: 'korea-pulse-inner',
+                        data: [{ position: KOREA_POSITION, size: 1 }],
+                        getPosition: d => d.position,
+                        getRadius: d => d.size,
+                        radiusScale: 12000,
+                        radiusMinPixels: 10,
+                        radiusMaxPixels: 20,
+                        getFillColor: [220, 38, 38, 255], // 빨간색, 불투명
+                        pickable: true,
+                        onClick: handleKoreaClick
+                    })
+                ];
+            };
+
+            // 펄스 애니메이션을 위한 주기적 업데이트
+            let pulseScale = 1;
+            let pulseDirection = 1;
+            
+            const animatePulse = () => {
+                pulseScale += 0.02 * pulseDirection;
+                
+                if (pulseScale >= 1.5) {
+                    pulseDirection = -1;
+                } else if (pulseScale <= 1) {
+                    pulseDirection = 1;
+                }
+                
+                if (deckgl) {
+                    const layers = createLayers();
+                    // 외부 원의 크기를 동적으로 변경
+                    layers[1] = new deck.ScatterplotLayer({
+                        id: 'korea-pulse-outer',
+                        data: [{ position: KOREA_POSITION, size: pulseScale }],
+                        getPosition: d => d.position,
+                        getRadius: d => d.size,
+                        radiusScale: 25000,
+                        radiusMinPixels: 20,
+                        radiusMaxPixels: 40,
+                        getFillColor: [220, 38, 38, Math.max(50, 150 - (pulseScale - 1) * 100)],
+                        pickable: true,
+                        onClick: handleKoreaClick
+                    });
+                    
+                    deckgl.setProps({ layers });
+                }
+                
+                requestAnimationFrame(animatePulse);
+            };
+
+            // DeckGL 인스턴스 생성
+            deckgl = new deck.DeckGL({
+                container: 'deck-container',
+                initialViewState: INITIAL_VIEW_STATE,
+                controller: {
+                    scrollZoom: false,
+                    doubleClickZoom: false,
+                    dragPan: false,
+                    dragRotate: false,
+                    keyboard: false,
+                    touchZoom: false,
+                    touchRotate: false
+                },
+                layers: createLayers()
+            });
+
+            // 펄스 애니메이션 시작
+            animatePulse();
+        }
+
+        // 페이지 로드 시 지도 초기화
+        initMap();
+    </script>
+</body>
+</html>
+

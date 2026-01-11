@@ -1,0 +1,70 @@
+@use './variable' as *;
+@use './mixin' as *;
+
+.a11y-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.ise-container {
+  width:100%;
+  margin:0 auto;
+  font-family: $font-text;
+  
+  * {
+    font-family: $font-text;
+    word-wrap: break-word; 
+    word-break: keep-all;
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    &:active, &:focus, &:hover {
+      text-decoration: none;
+      font-weight: inherit;
+    }
+  }
+
+  br {
+    &.pc-only {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+    &.tab-only {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+      @include desktop {
+        display: none;
+      }
+    }
+    &.mo-only {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+  
+  .inner {
+    width:100%;
+    // max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
+    margin:0 auto;
+    padding:0 rem(30);
+    @include tablet {
+      max-width: calc($inner_tab + rem(60));
+    }
+    @include desktop {
+      max-width: calc($inner + rem(60));
+    }
+  }
+
+}

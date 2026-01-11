@@ -528,7 +528,7 @@ function handleFooterNavClick() {
   // 실제 섹션 매핑
   const sectionMap = new Map();
   const sections = document.querySelectorAll(
-      ".kv, .wallgraphic, .booth-map, .culture, .techzone, .highlights"
+      ".kv, .led-media-art, .booth-map, .culture, .techzone, .highlights"
   );
 
   sections.forEach((section, index) => {
@@ -536,7 +536,7 @@ function handleFooterNavClick() {
           .split(" ")
           .find((cls) => [
               "kv",
-              "wallgraphic",
+              "led-media-art",
               "booth-map",
               "culture",
               "techzone",
@@ -3435,7 +3435,7 @@ async function init() {
       navigation: true,
       anchors: [
         "kv",
-        "wallgraphic",
+        "led-media-art",
         "booth-map",
         "culture",
         "techzone",

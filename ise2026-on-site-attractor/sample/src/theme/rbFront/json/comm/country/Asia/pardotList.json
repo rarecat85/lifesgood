@@ -1,0 +1,53 @@
+{
+  "countryList": [
+    {
+      "type": "China",
+      "friendlyType": "China"
+    },
+    {
+      "type": "Japan",
+      "friendlyType": "Japan"
+    },
+    {
+      "type": "South Korea",
+      "friendlyType": "South Korea"
+    },
+    {
+      "type": "India",
+      "friendlyType": "India"
+    },
+    {
+      "type": "Singapore",
+      "friendlyType": "Singapore"
+    },
+    {
+      "type": "Thailand",
+      "friendlyType": "Thailand"
+    },
+    {
+      "type": "Vietnam",
+      "friendlyType": "Vietnam"
+    },
+    {
+      "type": "Indonesia",
+      "friendlyType": "Indonesia"
+    },
+    {
+      "type": "Malaysia",
+      "friendlyType": "Malaysia"
+    },
+    {
+      "type": "Philippines",
+      "friendlyType": "Philippines"
+    },
+    {
+      "type": "Taiwan",
+      "friendlyType": "Taiwan"
+    },
+    {
+      "type": "Hong Kong",
+      "friendlyType": "Hong Kong"
+    }
+  ]
+}
+
