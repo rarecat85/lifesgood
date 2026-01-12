@@ -15,11 +15,13 @@
 }
 
 .overview {
+  padding-top: rem(50);
   padding-bottom:rem(68);
   .font-headline {
     font-family: $font-headline;
   }
   @include tablet {
+    padding-top: rem(88);
     padding-bottom:rem(40);
   }
   &-heading {
