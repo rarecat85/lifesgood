@@ -354,7 +354,11 @@
   }
   .submit-btn {
     @include btn($primary);
+    height: rem(42);
     margin: 0 auto;
+    @include tablet {
+      height: rem(38);
+    }
   }
   .ise-footer-bottom {
     display: block;

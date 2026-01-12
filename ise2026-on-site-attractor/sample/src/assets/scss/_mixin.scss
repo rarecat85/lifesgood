@@ -57,13 +57,12 @@
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  font-family: $font-headline;
-  @include font(12,1.16,400);
+  @include font(14,140%,400);
   width: fit-content;
   white-space: nowrap;
-  height:rem(26);
+  height:rem(38);
   border-radius:rem(100);
-  padding: rem(8) rem(22);
+  padding: rem(13) rem(30);
   cursor: pointer;
   transition: all 0.3s;
   
@@ -88,7 +87,7 @@
         background: $hoverCo;
         border-color: $hoverCo;
         color: $white;
-        text-decoration:none;
+        text-decoration: none;
       }
     } @else {
       // hover 색상이 지정되지 않은 경우: $co가 배경으로 들어가고 텍스트는 대비색
@@ -128,13 +127,19 @@
         } @else {
           // 기본 hover: 흰색 배경으로 변경
           background: $white;
+          border: 1px solid $black;
           color: $black;
         }
         text-decoration:none;
       }
     }
   }
+  @include tablet {
+    font-size:rem(14);
+    padding: rem(9) rem(30);
+  }
   @include desktop{
-    min-width: rem(102);
+    min-width: rem(70);
+    font-size:rem(16);
   }
 }
