@@ -279,20 +279,18 @@
               }
               .download-btn {
                 display: inline-flex;
-                align-items: flex-end;
+                align-items: center;
                 font-family: $font-headline;
                 @include font(12, 1, 550);
                 padding: rem(10) rem(22) rem(10) rem(20);
                 border-radius: rem(100);
                 margin-top: rem(10);
                 @include tablet {
-                  align-items: center;
                   font-size: rem(9);
                   padding: rem(7) rem(12);
                   margin-top: 0;
                 }
                 @include desktop {
-                  align-items: flex-end;
                   font-size: rem(12);
                   padding: rem(10) rem(22) rem(10) rem(20);
                 }

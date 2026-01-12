@@ -252,8 +252,9 @@
         justify-content: space-between;
         gap: rem(10);
         font-family: $font-headline;
-        @include font(18, 1.1, 700);
+        @include font(18, 1.1, 550);
         @include tablet {
+          font-weight: 700;
           font-size: rem(13);
           margin-bottom: rem(15);
         }
@@ -280,8 +281,8 @@
         &::after {
           content: "";
           display: inline-block;
-          width: rem(20);
-          height: rem(20);
+          width: rem(12);
+          height: rem(12);
           background: url("/theme/rbFront/img/w/ise/ise2026/ic_link.svg") no-repeat center center / contain;
           @include tablet {
             width: rem(13);
@@ -343,12 +344,12 @@
     }
     .swiper-pagination {
       width: auto;
-      top: rem(30);
-      right: rem(30);
+      top: rem(14);
+      right: rem(14);
       left: inherit;
       bottom: inherit;
       z-index: 2;
-      @include font(18,1,550);
+      @include font(12,1,550);
       letter-spacing: -0.08em;
       color: $white;
       span {

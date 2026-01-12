@@ -3004,18 +3004,13 @@ function handleLayerPopup() {
 
   learnMoreButtons.forEach((button) => {
       button.addEventListener("click", () => {
-          // 부모 슬라이드의 index 찾기
-          const swiperSlide = button.closest(".swiper-slide");
-          if (!swiperSlide) return;
-
-          // boothSlideSwiper가 있으면 realIndex 사용
-          if (boothSlideSwiper) {
-              const slides = Array.from(boothSlideSwiper.slides);
-              const slideIndex = slides.indexOf(swiperSlide);
-
-              // slideIndex가 1~10이므로 0~9로 변환 (0번 슬라이드는 Hall 맵이므로 제외)
-              const layerIndex = slideIndex - 1;
-
+          // 버튼의 data-booth-index 속성에서 직접 인덱스 가져오기
+          const boothIndex = button.getAttribute("data-booth-index");
+          
+          if (boothIndex !== null) {
+              const layerIndex = parseInt(boothIndex, 10);
+              
+              // 유효한 인덱스 범위 확인 (0-9: Booth 1-10)
               if (layerIndex >= 0 && layerIndex < 10) {
                   openLayerPopup(layerIndex);
               }

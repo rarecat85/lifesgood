@@ -281,11 +281,12 @@
         @include font(18, 1.1, 550);
         span {
           display: inline-flex;
+          align-items: center;
           &::before {
             content: "";
             display: inline-block;
-            width: rem(26);
-            height: rem(23);
+            width: rem(16);
+            height: rem(13);
             background: url("/theme/rbFront/img/w/ise/ise2026/ic_news.svg") no-repeat center center / contain;
             margin-right: rem(6);
 
@@ -302,8 +303,8 @@
         &::after {
           content: "";
           display: inline-block;
-          width: rem(20);
-          height: rem(20);
+          width: rem(12);
+          height: rem(12);
           background: url("/theme/rbFront/img/w/ise/ise2026/ic_link.svg") no-repeat center center / contain;
           @include tablet {
             width: rem(13);
@@ -315,6 +316,7 @@
           }
         }
         @include tablet {
+          font-weight: 700;
           font-size: rem(12);
           margin-bottom: rem(9);
         }
