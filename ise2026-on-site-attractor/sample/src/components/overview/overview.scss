@@ -1,0 +1,139 @@
+@use '../../assets/scss/variable' as *;
+@use '../../assets/scss/mixin' as *;
+
+.mo-only {
+  display:block;
+  @include tablet {
+    display:none !important;
+  }
+}
+.tab-pc {
+  display:none;
+  @include tablet {
+    display:block;
+  }
+}
+
+.overview {
+  padding-bottom:rem(68);
+  .font-headline {
+    font-family: $font-headline;
+  }
+  @include tablet {
+    padding-bottom:rem(40);
+  }
+  &-heading {
+    width:100%;
+    padding-top:rem(20);
+    margin-bottom:rem(22);
+    @include tablet {
+      text-align: center;
+      padding-top:rem(40);
+      margin-bottom: rem(30);
+    }
+    &-eyebrow {
+      @include font(15, $fw: 700, $cl: $black);
+      margin:0 auto rem(18);
+      display:flex;
+      flex-direction: column;
+      @include tablet {
+        @include font(14, $fw: 700, $cl: $black);
+        align-items: center;
+        justify-content: center;
+      }
+      &::after {
+        content:'';
+        width:100%;
+        height:rem(1);
+        background:#000;
+        margin-top:rem(11);
+        display:flex;
+        @include tablet {
+          width:rem(22);
+        }
+      }
+    }
+    &-title {
+      @include font(36, $fw: 700, $lh:1.16, $cl: $black);
+      margin:0 auto rem(18);
+      @include tablet {
+        @include font(42, $lh:1);
+        text-align: center;
+      }
+    }
+    &-description {
+      @include font(20, 1.35, $cl: $black);
+      @include tablet {
+        @include font(13, 1.23, $cl: $black);
+        text-align: center;
+      }
+    }
+  }
+  &-video {
+    width:100%;
+    aspect-ratio:300/370;
+    position:relative;
+    margin-bottom: rem(25);
+    @include tablet {
+      aspect-ratio:1080/533;
+      margin-bottom: rem(42);
+    }
+    video {
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+  }
+  &-content {
+    width:100%;
+    max-width:rem(768);
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    @include tablet {
+      column-gap: rem(47);
+      flex-direction: row;
+    }
+    &-title {
+      width:100%;
+      @include font(28, $fw: 700, $cl: $black);
+      flex-shrink:0;
+      margin-bottom:rem(20);
+      @include tablet {
+        max-width:rem(175);
+        @include font(24);
+        margin-bottom:0;
+      }
+    }
+    &-item {
+      display: flex;
+      flex-direction: column;
+      row-gap: rem(35);
+      @include tablet {
+        row-gap: rem(30);
+      }
+      &-description {
+        @include font(20, 1.35, $cl: $black);
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+          @include font(15, 1.33);
+        }
+        &::after {
+          content:'';
+          width:100%;
+          height:rem(1);
+          background:#000;
+          display:flex;
+          margin-top:rem(30);
+        }
+      }
+      &-cta {
+        &-link {
+          @include btn($primary);
+        }
+      }
+    }
+  }
+}
