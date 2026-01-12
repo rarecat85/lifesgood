@@ -96,6 +96,7 @@
     .content-slide {
       width: calc(100% - rem(60));
       margin: 0 auto;
+      position: relative;
       @include tablet {
         width: 100%;
         padding: 0;
@@ -455,17 +456,17 @@
         z-index: 2;
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(calc(-50% + rem(35)));
         @include tablet {
           display: none;
         }
       }
       .slide-prev {
-        left: rem(10);
+        left: rem(-22);
         background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_left.svg");
       }
       .slide-next {
-        right: rem(10);
+        right: rem(-22);
         background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_right.svg");
       }
     }

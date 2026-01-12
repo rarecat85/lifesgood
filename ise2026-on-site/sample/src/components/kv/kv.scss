@@ -156,10 +156,12 @@ header {
       margin: rem(32) auto rem(47);
       position: relative;
       @include tablet {
+        width: calc(100% - rem(60));
         height: 42dvh;
         margin: rem(35) auto rem(36);
       }
       @include desktop {
+        width: fit-content;
         margin: rem(52) auto rem(53);
       }
       .video-title {

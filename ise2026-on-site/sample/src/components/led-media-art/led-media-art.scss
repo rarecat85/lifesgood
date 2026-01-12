@@ -2,14 +2,156 @@
 @use "../../assets/scss/variable"as *;
 
 .led-media-art {
-  background-color: $red;
+  background-color: $black;
   .video-bx {
     width: 100%;
     height: 100vh;
+    position: relative;
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      background: linear-gradient(270deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.78) 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+  .txt-bx {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 2;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 0;
+    width: min(calc(100% - rem(60)), rem(288));
+    height: 100%;
+    color: $white;
+    text-align: center;
+    padding-bottom: rem(60);
+    @include tablet {
+      justify-content: space-between;
+      width: min(calc(100% - rem(60)), rem(1175));
+      height: unset;
+      transform: translateX(-50%);
+      left: 50%;
+      width: min(calc(100% - rem(60)), rem(756));
+      min-height: rem(298);
+      top: 30vh;
+      padding-bottom: 0;
+      text-align: left;
+    }
+    @include desktop {
+      width: min(calc(100% - rem(60)), rem(1175));
+      top: 22vh;
+      min-height: rem(414);
+    }
+    @media all and (min-width: 1921px) {
+      width: min(calc(100% - rem(60)), rem(1250));
+    }
+    .bx-1 {
+      @include tablet {
+        max-width: rem(368);
+      }
+      .title {
+        font-family: $font-headline;
+        @include font(29,0.9,600);
+        margin-bottom: rem(31);
+        @include tablet {
+          max-width: rem(240);
+          font-size: rem(29);
+        }
+        @include desktop {
+          font-weight: 700;
+          max-width: 100%;
+          font-size: rem(45)
+        }
+      }
+      .text {
+        display: none;
+        @include font(16,1.47,400);
+        position: relative;
+        br {
+          display: none;
+        }
+        @include tablet {
+          display: block;
+          max-width: rem(220);
+          font-size: rem(12);
+          padding-left: rem(10);
+          &::after {
+            content: '';
+            display: block;
+            width: rem(1);
+            height: 90%;
+            background-color: $white;
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 0;
+          }
+        }
+        @include desktop {
+          max-width: 100%;
+          font-size: rem(16);
+          padding-left: rem(16);
+          br {
+            display: block;
+          }
+        }
+      }
+    }
+    .bx-2 {
+      align-self: flex-end;
+      position: relative;
+      @include tablet {
+        max-width: rem(187);
+      }
+      @include desktop {
+        max-width: rem(261);
+      }
+      @media all and (min-width: 1921px) {
+        top: 4vh;
+        right: 5%;
+      }
+      .title {
+        font-family: $font-headline;
+        @include font(14,1.375,700);
+        margin-bottom: rem(12);
+        @include tablet {
+          font-size: rem(11);
+        }
+        @include desktop {
+          font-size: rem(16);
+          white-space: nowrap
+        }
+      }
+      .text {
+        @include font(12,1.384,400);
+        br {
+          display: none;
+        }
+        @include tablet {
+          font-size: rem(10);
+        }
+        @include desktop {
+          font-size: rem(13);
+          br {
+            display: block;
+          }
+        }
+      }
     }
   }
 }

@@ -1595,7 +1595,7 @@ const layerPopupData = [
                       type: "solution",
                       name: "LG SoundCast",
                       description: "Audio sales platform",
-                      bgClass: "type01",
+                      bgClass: "type07",
                       link: "",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_1.png",
                   },
@@ -1924,7 +1924,7 @@ const layerPopupData = [
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png",
       productList: [{
               type: "solution",
-              name: "Hotel Display",
+              name: "LG Pro:Centric Cloud",
               description: "Cloud-Based Hospitality Solution",
               bgClass: "type04",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-procentric-cloud",
@@ -2229,6 +2229,13 @@ const layerPopupData = [
       ],
     },
 ];
+
+/**
+ * 부스별 이미지 로딩 상태 추적 배열
+ * 각 부스의 이미지가 이미 로드되었는지 확인하는 플래그
+ * @type {Array<boolean>}
+ */
+const boothImagesLoaded = new Array(layerPopupData.length).fill(false);
 
 
 // ============================================================================
@@ -2608,7 +2615,7 @@ function renderLayerContent(index) {
  * 
  * @param {number} index - 부스 인덱스 (0-9)
  */
-function openLayerPopup(index) {
+async function openLayerPopup(index) {
   const layerPop = document.querySelector(".layer-pop");
   const layerTabItems = document.querySelectorAll(".layer-tab-item");
 
@@ -2623,6 +2630,20 @@ function openLayerPopup(index) {
   // 해당 index의 탭 활성화
   if (layerTabItems[index]) {
       layerTabItems[index].classList.add("active");
+  }
+
+  // 부스 이미지 Lazy Loading: 아직 로드되지 않은 경우에만 이미지 감지
+  if (!boothImagesLoaded[index]) {
+      const boothNumber = index + 1;
+      const detectedImages = await detectBoothImages(boothNumber);
+      
+      // 감지된 이미지를 mediaGallery에 추가
+      if (detectedImages.length > 0) {
+          layerPopupData[index].mediaGallery.push(...detectedImages);
+      }
+      
+      // 로딩 완료 플래그 설정 (중복 로드 방지)
+      boothImagesLoaded[index] = true;
   }
 
   // 컨텐츠 렌더링
@@ -3491,9 +3512,6 @@ function handleLayerPopup() {
  * 페이지 로드 시 실행되는 메인 초기화 함수
  */
 async function init() {
-  // 페이지 로드 시 모든 부스의 이미지 자동 감지
-  await initBoothMediaGalleries();
-
   // initFadeUp();
   initKVVideo();
   initBoothSlide();

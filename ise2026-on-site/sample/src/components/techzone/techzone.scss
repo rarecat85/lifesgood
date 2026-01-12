@@ -436,58 +436,36 @@
         background-repeat: no-repeat;
         background-position: center center;
         z-index: 2;
+        transition: border-color 0.3s;
         @include tablet {
           width: rem(20);
           height: rem(20);
+          border: 1px solid transparent;
+          border-radius: 50%;
+          background-size: rem(8) rem(16);
         }
         @include desktop {
           opacity: 0;
           visibility: hidden;
         }
-        &::after {
-          display: none;
-          content: "";
-          width: 100%;
-          height: 100%;
-          background-image: inherit;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center center;
-          opacity: 0;
-          transition: all 0.3s;
-        }
         &:hover {
-          &::after {
-            opacity: 1;
-          }
+          border-color: $white;
         }
       }
       .slide-prev {
         left: rem(-20);
         background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_left.svg");
-        &::after {
-          background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_left_active.svg");
-        }
         @include tablet {
           left: rem(10);
-          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_left.svg");
-          &::after {
-            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_left_active.svg");
-          }
+          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_prev.svg");
         }
       }
       .slide-next {
         right: rem(-20);
         background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_right.svg");
-        &::after {
-          background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_right_active.svg");
-        }
         @include tablet {
           right: rem(10);
-          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_right.svg");
-          &::after {
-            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_right_active.svg");
-          }
+          background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_right_w.svg");
         }
       }
     }
