@@ -946,37 +946,114 @@ function handleBoothSlide() {
  */
 function handleCultureSlide() {
   const btnSlide = document.querySelector(".culture .btn-slide");
-  const contentSlide = document.querySelector(".culture .content-slide");
+  const contentSlide = document.querySelector(".culture .content-slide .swiper");
 
   if (!btnSlide || !contentSlide) return;
 
-  // btn-slide를 썸네일로 초기화
-  const btnSwiper = new Swiper(btnSlide, {
-      slidesPerView: 2.4,
-      spaceBetween: 8,
-      centeredSlides: true,
-      watchSlidesProgress: true,
-      breakpoints: {
-          768: {
-              slidesPerView: 5,
-              spaceBetween: 17,
-              centeredSlides: false,
+  let btnSwiper = null;
+  let contentSwiper = null;
+  let currentIsMobile = null;
+
+  // Swiper 초기화 함수
+  function initSwipers() {
+    const isMobile = window.innerWidth < BREAKPOINT_MOBILE;
+    
+    // 상태가 변경되지 않았으면 리턴
+    if (currentIsMobile === isMobile) return;
+    
+    currentIsMobile = isMobile;
+    
+    // 기존 인스턴스 제거
+    if (btnSwiper) btnSwiper.destroy(true, true);
+    if (contentSwiper) contentSwiper.destroy(true, true);
+    
+    // btn-slide를 썸네일로 초기화
+    btnSwiper = new Swiper(btnSlide, {
+        slidesPerView: 1,
+        spaceBetween: 8,
+        loop:true,
+        loopedSlides: 5,
+        centeredSlides: true,
+        breakpoints: {
+          [BREAKPOINT_MOBILE]: {
+            slidesPerView: 5,
+            spaceBetween: 17,
+            centeredSlides: false,
+            loop:false,
+            watchSlidesProgress: true,
           },
-      },
-  });
-
-  // content-slide를 메인 슬라이드로 초기화하고 thumbs로 연결
-  const contentSwiper = new Swiper(contentSlide, {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      effect: "fade",
-      speed: 500,
-      thumbs: {
-          swiper: btnSwiper,
-      },
+        },
     });
-}
 
+    // content-slide 초기화 옵션 설정
+    const contentSwiperOptions = {
+      slidesPerView: 1,
+      spaceBetween: isMobile ? 10 : 0,
+      centeredSlides: true,
+      speed: 500,
+      loop:true,
+      loopedSlides: 5, 
+      navigation: {
+        nextEl: ".culture .content-slide .slide-next",
+        prevEl: ".culture .content-slide .slide-prev",
+      },
+    };
+ 
+    // 태블릿 이상: fade 효과 + thumbs로 연결
+    if (!isMobile) {
+      contentSwiperOptions.effect = "fade";
+      contentSwiperOptions.fadeEffect = {
+        crossFade: true
+      };
+      contentSwiperOptions.thumbs = {
+        swiper: btnSwiper,
+      };
+    }
+
+    contentSwiper = new Swiper(contentSlide, contentSwiperOptions);
+
+    // 모바일: controller로 양방향 연결
+    if (isMobile) {
+      btnSwiper.controller.control = contentSwiper;
+      contentSwiper.controller.control = btnSwiper;
+    }
+
+    // 초기화 후 리셋 (resize 시에만 실행하여 성능 최적화)
+    if (currentIsMobile !== null) {
+      // 브라우저 렌더링 완료 후 실행
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (btnSwiper && contentSwiper) {
+            // loop 모드에서만 slideToLoop 실행
+            if (btnSwiper.params.loop) {
+              btnSwiper.slideToLoop(0, 0);
+            }
+            if (contentSwiper.params.loop) {
+              contentSwiper.slideToLoop(0, 0);
+            }
+            
+            // 상태 갱신
+            btnSwiper.update();
+            contentSwiper.update();
+          }
+        });
+      });
+    }
+  }
+
+  // 디바운스 적용된 resize 핸들러
+  let resizeTimer;
+  function handleResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initSwipers, 200);
+  }
+
+  // 초기 실행
+  initSwipers();
+  
+  // resize 이벤트 리스너
+  window.addEventListener('resize', handleResize);
+}
 
 // ============================================================================
 // 7. TECHZONE

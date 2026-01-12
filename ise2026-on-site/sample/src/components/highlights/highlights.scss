@@ -27,10 +27,6 @@
   }
   .slide-wrap {
     @include desktop {
-      background-image: url("/theme/rbFront/img/w/ise/ise2026/highlights_bg.png");
-      background-size: auto;
-      background-position: center;
-      background-repeat: no-repeat;
       margin-bottom: rem(126);
     }
     .inner {
@@ -376,7 +372,7 @@
       transform: translateY(-50%);
       width: rem(15);
       height: rem(26);
-      background-size: contain;
+      background-size: rem(8) rem(16);
       background-repeat: no-repeat;
       background-position: center center;
       z-index: 2;
@@ -414,9 +410,9 @@
       }
       @include tablet {
         left: rem(18);
-        background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_left.svg");
+        background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_prev.svg");
         &::after {
-          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_left_active.svg");
+          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_left.svg");
         }
       }
       @include desktop {
@@ -431,9 +427,9 @@
       }
       @include tablet {
         right: rem(18);
-        background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_right.svg");
+        background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_next.svg");
         &::after {
-          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_right_active.svg");
+          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_slide_right.svg");
         }
       }
       @include desktop {

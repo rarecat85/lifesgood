@@ -39,30 +39,22 @@
     }
   }
 
-  br {
-    &.pc-only {
-      display: none;
-      @include desktop {
-        display: block;
-      }
-    }
-    &.tab-only {
-      display: none;
-      @include tablet {
-        display: block;
-      }
-      @include desktop {
-        display: none;
-      }
-    }
-    &.mo-only {
-      display: block;
-      @include desktop {
-        display: none;
-      }
-    }
+  .pc-only{
+    display: block;
+  }
+  .mo-only {
+    display: none;
   }
   
+  @media screen and (max-width: 769px) {
+    .pc-only{
+      display: none;
+    }
+    .mo-only {
+      display: block;
+    }
+  }
+
   .inner {
     width:100%;
     // max-width: calc($inner_mo + rem(60)); /* padding 좌우 30씩 포함 */
@@ -92,17 +84,12 @@
     .text {
       @include font(14,140%,400);
       text-wrap: balance;
-      br {
-        display: none;
-        @include desktop {
-          display: block;
-        }
-      }
     }
     @include tablet {
       text-align: center;
       .title {
         font-size: rem(36);
+        margin-bottom: rem(20);
       }
       .text {
         font-size: rem(16);
@@ -111,6 +98,7 @@
     @include desktop {
       .title {
         font-size: rem(50);
+        margin-bottom: rem(20);
       }
       .text {
         font-size: rem(22);

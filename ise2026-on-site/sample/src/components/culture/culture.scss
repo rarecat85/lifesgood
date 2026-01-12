@@ -3,6 +3,7 @@
 
 .culture {
   background-color: #F0ECE4;
+  padding: rem(78) 0 rem(53);
   @include tablet {
     padding: rem(50) 0 rem(61.58);
   }
@@ -24,19 +25,42 @@
     }
   }
   .slide-bx {
-    max-width: rem(1260);
-    padding: 0 rem(30);
+    overflow: hidden;
     margin: 0 auto;
+    @include tablet {
+      max-width: rem(780);
+      padding: 0 rem(30);
+    }
+    @include desktop {
+      max-width: rem(1260);
+    }
     .btn-slide {
       margin-bottom: rem(8);
-      .swiper-slide-thumb-active {
-        .culture-btn {
-          .culture-btn-img {
-            opacity: 0;
+      overflow: visible;
+      @media screen and (max-width: 767px) {
+        width: calc(100% / 2.4);
+        .swiper-slide-active {
+          .culture-btn {
+            .culture-btn-img {
+              opacity: 0;
+            }
+            .culture-btn-img-active {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
-          .culture-btn-img-active {
-            opacity: 1;
-            transform: translateY(0);
+        }
+      }
+      @include tablet {
+        .swiper-slide-thumb-active {
+          .culture-btn {
+            .culture-btn-img {
+              opacity: 0;
+            }
+            .culture-btn-img-active {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         }
       }
@@ -70,240 +94,379 @@
       }
     }
     .content-slide {
-      .swiper-slide {
-        height: auto;
-      }
-    }
-    .content-wrap {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      border-radius: rem(20);
-      overflow: hidden;
-      .title-bx {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: rem(12);
+      width: calc(100% - rem(60));
+      margin: 0 auto;
+      @include tablet {
         width: 100%;
-        text-align: center;
-        background-color: #242424;
-        padding: rem(18);
-        .title {
-          font-family: $font-headline;
-          @include font(24, 1.29, 550, $white);
-          @include tablet {
-            font-size: rem(20)
-          }
-          @include desktop {
-            font-size: rem(34)
-          }
-        }
-        .text {
-          @include font(15, 1, 300, $white);
-          @include tablet {
-            font-size: rem(13)
-          }
-          @include desktop {
-            font-size: rem(22)
+        padding: 0;
+        .swiper-slide {
+          opacity: 0;
+          &.swiper-slide-visible {
+            opacity: 1;
           }
         }
       }
-      .content-bx {
-        display: flex;
+      .content-wrap {
         width: 100%;
-        height: calc(100% - rem(80));
-        .brand-img {
-          width: 60%;
-          img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        .info-bx {
-          width: 40%;
-          .quote-bx {
+        height: 100%;
+        position: relative;
+        border-radius: rem(20);
+        overflow: hidden;
+        .title-bx {
+          gap: rem(12);
+          width: 100%;
+          text-align: center;
+          background-color: #242424;
+          padding: rem(23) rem(20) rem(18);
+          @include tablet {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            padding: rem(18);
+          }
+          .title {
+            font-family: $font-headline;
+            @include font(24, 1.29, 550, $white);
+            margin-bottom: rem(8);
+            @include tablet {
+              font-size: rem(20);
+              margin-bottom: 0;
+            }
+            @include desktop {
+              font-size: rem(34)
+            }
+          }
+          .text {
+            @include font(15, 1.2, 300, $white);
+            @include tablet {
+              font-size: rem(13)
+            }
+            @include desktop {
+              font-size: rem(22)
+            }
+          }
+        }
+        .content-bx {
+          width: 100%;
+          height: calc(100% - rem(80));
+          @include tablet {
+            display: flex;
+          }
+          .brand-img {
             width: 100%;
-            height: calc(100% - rem(130));
-            background-color: $black;
-            padding: rem(10) rem(44) rem(25);
-            text-align: center;
-            .text {
+            @include tablet {
+              width: 60%;
+            }
+            img {
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          .info-bx {
+            width: 100%;
+            @include tablet {
+              width: 40%;
+            }
+            .quote-bx {
               display: flex;
               flex-direction: column;
               align-items: center;
-              justify-content: center;
+              justify-content: space-between;
               width: 100%;
-              height: calc(100% - rem(50));
-              @include font(19, 1.26, 400, $white);
-              text-wrap: balance;
-              position: relative;
-              z-index: 1;
-              &::before,
-              &::after {
-                content: "";
-                width: rem(67);
-                height: rem(46);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center center;
-                position: relative;
-                z-index: -1;
-              }
-              &::before {
-                align-self: flex-start;
-                background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_lsquo.svg);
-              }
-              &::after {
-                position: absolute;
-                background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_rsquo.svg);
-                bottom: rem(-30);
-                right: rem(0);
-              }
+              min-height: rem(224);
+              background-color: $black;
+              padding: rem(43) rem(20) rem(30);
+              text-align: center;
               @include tablet {
-                font-size: rem(11);
-                &::before,
-                &::after {
-                  width: rem(40);
-                  height: rem(27);
-                }
+                min-height: unset;
+                height: calc(100% - rem(78));
+                padding: rem(6) rem(27) rem(12) rem(24);
+                position: relative;
               }
               @include desktop {
-                font-size: rem(19);
-                &::before,
-                &::after {
-                  width: rem(67);
-                  height: rem(46);
+                height: calc(100% - rem(130));
+                padding: rem(10) rem(44) rem(25);
+              }
+              .text-bx {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: rem(262);
+                height: 100%;
+                min-height: rem(120);
+                position: relative;
+                @include tablet {
+                  width: 100%;
+                  min-height: unset;
+                  padding-top: rem(14);
+                  position: static;
+                }
+                @include desktop {
+                  padding-top: rem(20);
+                }
+                .text {
+                  width: rem(230);
+                  @include font(14, 1.26, 400, $white);
+                  text-wrap: balance;
+                  z-index: 1;
+                  &::before,
+                  &::after {
+                    content: "";
+                    width: rem(39);
+                    height: rem(27);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center center;
+                    position: absolute;
+                    z-index: -1;
+                    @include tablet {
+                      width: rem(40);
+                      height: rem(27);
+                    }
+                    @include desktop {
+                      width: rem(67);
+                      height: rem(46);
+                    }
+                  }
+                  &::before {
+                    background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_lsquo.svg);
+                    top: rem(0);
+                    left: rem(0);
+                    @include tablet {
+                      top: rem(6);
+                      left: rem(24);
+                    }
+                    @include desktop {
+                      top: rem(9);
+                      left: rem(40);
+                    }
+                  }
+                  &::after {
+                    background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_rsquo.svg);
+                    right: rem(0);
+                    bottom: rem(-5);
+                    @include tablet {
+                      right: rem(27);
+                      bottom: rem(36);
+                    }
+                    @include desktop {
+                      right: rem(34);
+                      bottom: rem(60);
+                    }
+                  }
+                  @include tablet {
+                    width: 100%;
+                    font-size: rem(11);
+                    &::before,
+                    &::after {
+                      width: rem(40);
+                      height: rem(27);
+                    }
+                  }
+                  @include desktop {
+                    font-size: rem(19);
+                    &::before,
+                    &::after {
+                      width: rem(67);
+                      height: rem(46);
+                    }
+                  }
                 }
               }
-            }
-            .download-btn {
-              display: inline-flex;
-              align-items: flex-end;
-              font-family: $font-headline;
-              @include font(12, 1, 550);
-              padding: rem(10) rem(22) rem(10) rem(20);
-              border-radius: rem(100);
-              &::before {
-                content: '';
-                display: inline-block;
-                width: rem(12);
-                height: rem(15);
-                background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_download.svg);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center center;
-                margin-right: rem(10);
-              }
-              &.type01 {
-                background-color: $thewhoo;
-                color: $black;
-                &::before {
-                  background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_download_b.svg);
-                }
-              }
-              &.type02 {
-                background-color: $aurora;
-                color: $white;
-              }
-              &.type03 {
-                background-color: $samyang;
-                color: $white;
-              }
-              &.type04 {
-                background-color: $paris;
-                color: $white;
-              }
-              &.type05 {
-                background-color: $boksoondoga;
-                color: $white;
-              }
-            }
-          }
-          .info-desc {
-            display: flex;
-            justify-content: center;
-            gap: rem(12);
-            width: 100%;
-            max-width: rem(438);
-            height: rem(130);
-            padding: rem(28) rem(20) rem(10) rem(50);
-            @include tablet {
-              height: rem(78);
-            }
-            @include desktop {
-              height: rem(130);
-            }
-            .img-bx {
-              flex-shrink: 0;
-              img {
-                display: block;
-                max-width: 100%;
-                object-fit: cover;
-                border-radius: rem(20);
-              }
-            }
-            .txt-bx {
-              color: $white;
-              .title {
+              .download-btn {
+                display: inline-flex;
+                align-items: flex-end;
                 font-family: $font-headline;
-                @include font(14, 1, 550);
-                margin-bottom: rem(4);
+                @include font(12, 1, 550);
+                padding: rem(10) rem(22) rem(10) rem(20);
+                border-radius: rem(100);
+                margin-top: rem(10);
                 @include tablet {
+                  align-items: center;
                   font-size: rem(9);
+                  padding: rem(7) rem(12);
+                  margin-top: 0;
                 }
                 @include desktop {
-                  font-size: rem(14);
-                }
-              }
-              .text {
-                @include font(12, 1.33, 400);
-                @include tablet {
-                  font-size: rem(8);
-                }
-                @include desktop {
+                  align-items: flex-end;
                   font-size: rem(12);
+                  padding: rem(10) rem(22) rem(10) rem(20);
+                }
+                &::before {
+                  content: '';
+                  display: inline-block;
+                  width: rem(12);
+                  height: rem(15);
+                  background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_download.svg);
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                  background-position: center center;
+                  margin-right: rem(10);
+                  @include tablet {
+                    width: rem(10);
+                    height: rem(10);
+                    margin-right: rem(4);
+                  }
+                  @include desktop {
+                    width: rem(12);
+                    height: rem(15);
+                    margin-right: rem(10);
+                  }
+                }
+                &.type01 {
+                  background-color: $thewhoo;
+                  color: $black;
+                  &::before {
+                    background-image: url(/theme/rbFront/img/w/ise/ise2026/ic_download_b.svg);
+                  }
+                }
+                &.type02 {
+                  background-color: $aurora;
+                  color: $white;
+                }
+                &.type03 {
+                  background-color: $samyang;
+                  color: $white;
+                }
+                &.type04 {
+                  background-color: $paris;
+                  color: $white;
+                }
+                &.type05 {
+                  background-color: $boksoondoga;
+                  color: $white;
+                }
+              }
+            }
+            .info-desc {
+              display: flex;
+              justify-content: flex-start;
+              gap: rem(13);
+              width: 100%;
+              min-height: rem(109);
+              padding: rem(14) rem(13) rem(10) rem(25);
+
+              @include tablet {
+                justify-content: center;
+                max-width: rem(438);
+                min-height: unset;
+                gap: rem(7);
+                height: rem(78);
+                padding: rem(17) rem(27) rem(24) rem(30);
+              }
+              @include desktop {
+                gap: rem(12);
+                height: rem(130);
+                padding: rem(28) rem(20) rem(10) rem(50);
+              }
+              .img-bx {
+                flex-shrink: 0;
+                img {
+                  width: rem(92);
+                  display: block;
+                  max-width: 100%;
+                  object-fit: cover;
+                  border-radius: rem(50);
+                  @include tablet {
+                    width: rem(54);
+                    aspect-ratio: 54 / 37;
+                    border-radius: rem(12);
+                  }
+                  @include desktop {
+                    width: rem(90);
+                    aspect-ratio: 90 / 62;
+                    border-radius: rem(20);
+                  }
+                }
+              }
+              .txt-bx {
+                color: $white;
+                .title {
+                  font-family: $font-headline;
+                  @include font(14, 1, 550);
+                  margin-bottom: rem(4);
+                  @include tablet {
+                    font-size: rem(9);
+                  }
+                  @include desktop {
+                    font-size: rem(14);
+                  }
+                }
+                .text {
+                  max-width: rem(300);
+                  @include font(10, 1.33, 400);
+                  text-wrap: balance;
+                  @include tablet {
+                    max-width: unset;
+                    font-size: rem(8);
+                    letter-spacing: -0.02em;
+                  }
+                  @include desktop {
+                    font-size: rem(12);
+                    letter-spacing: 0;
+                  }
                 }
               }
             }
           }
         }
-      }
-      &.the-whoo {
-        .info-bx {
-          background-color: $thewhoo;
-          .info-desc {
-            .txt-bx {
-              color: $black;
+        &.the-whoo {
+          .info-bx {
+            background-color: $thewhoo;
+            .info-desc {
+              .txt-bx {
+                color: $black;
+              }
             }
           }
         }
-      }
-      &.aurora {
-        .info-bx {
-          background-color: $aurora;
+        &.aurora {
+          .info-bx {
+            background-color: $aurora;
+          }
+        }
+        &.samyang {
+          .info-bx {
+            background-color: $samyang;
+          }
+        }
+        &.paris {
+          .info-bx {
+            background-color: $paris;
+          }
+        }
+        &.boksoondoga {
+          .info-bx {
+            background-color: $boksoondoga;
+          }
         }
       }
-      &.samyang {
-        .info-bx {
-          background-color: $samyang;
+      .slide-prev,
+      .slide-next {
+        display: block;
+        width: rem(15);
+        height: rem(26);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @include tablet {
+          display: none;
         }
       }
-      &.paris {
-        .info-bx {
-          background-color: $paris;
-        }
+      .slide-prev {
+        left: rem(10);
+        background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_left.svg");
       }
-      &.boksoondoga {
-        .info-bx {
-          background-color: $boksoondoga;
-        }
+      .slide-next {
+        right: rem(10);
+        background-image: url("/theme/rbFront/img/m/ise/ise2026/ic_slide_right.svg");
       }
     }
   }

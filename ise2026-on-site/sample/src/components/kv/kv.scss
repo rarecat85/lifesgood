@@ -181,9 +181,9 @@ header {
         @include tablet {
           font-size: rem(10);
           background-image: url('/theme/rbFront/img/w/ise/ise2026/ise_round.svg');
-          width: rem(84.6);
-          height: rem(84.6);
-          left: rem(-47);
+          width: rem(66);
+          height: rem(66);
+          left: rem(-36);
         }
         @include desktop {
           width: rem(94);
@@ -206,9 +206,9 @@ header {
         z-index: 2;
         @include tablet {
           font-size: rem(10);
-          width: rem(55);
-          height: rem(55);
-          right: rem(-47);
+          width: rem(43);
+          height: rem(43);
+          right: rem(-35);
         }
         @include desktop {
           width: rem(61);
