@@ -390,14 +390,15 @@ function initKVVideo() {
   // 초기 intro 영상 경로
   const introVideoPath = getVideoPath("intro");
 
-  // 1. 즉시 autoplay 비활성화 (추가 재생 시도 방지)
-  kvVideo.autoplay = false;
+  // 1. autoplay 속성은 HTML에서 제어 (모바일 자동재생 허용)
+  // kvVideo.autoplay는 건드리지 않음
 
   // 2. 비디오 속성 설정
   kvVideo.loop = false; // intro는 반복하지 않음
   kvVideo.muted = true;
   kvVideo.playsInline = true;
   kvVideo.preload = "auto";
+  kvVideo.autoplay = true;
 
   // 3. CSS transition을 위한 스타일 설정
   kvVideo.style.position = "relative";
@@ -415,6 +416,7 @@ function initKVVideo() {
           if (!kvVideo.paused) {
               kvVideo.pause();
           }
+
 
           // 기존 소스 완전 제거
           kvVideo.removeAttribute("src");
@@ -1318,6 +1320,7 @@ function handleHighlightsSlide() {
  * @returns {Promise<Array>} 감지된 이미지 객체 배열
  */
 async function detectBoothImages(boothNumber) {
+    console.log(`[DEBUG] detectBoothImages 호출: booth-${boothNumber}`);
     const basePath = `/theme/rbFront/img/w/ise/ise2026/booth-${boothNumber}/`;
     const images = [];
     let imageIndex = 1;
@@ -1343,6 +1346,7 @@ async function detectBoothImages(boothNumber) {
         imageIndex++;
     }
 
+    console.log(`[DEBUG] detectBoothImages 완료: booth-${boothNumber}, 감지된 이미지 개수: ${images.length}`);
     return images;
 }
 
@@ -2616,6 +2620,7 @@ function renderLayerContent(index) {
  * @param {number} index - 부스 인덱스 (0-9)
  */
 async function openLayerPopup(index) {
+  console.log(`[DEBUG] openLayerPopup 호출: index=${index}, booth-${index + 1}`);
   const layerPop = document.querySelector(".layer-pop");
   const layerTabItems = document.querySelectorAll(".layer-tab-item");
 
@@ -2633,17 +2638,21 @@ async function openLayerPopup(index) {
   }
 
   // 부스 이미지 Lazy Loading: 아직 로드되지 않은 경우에만 이미지 감지
+  console.log(`[DEBUG] boothImagesLoaded[${index}] = ${boothImagesLoaded[index]}`);
   if (!boothImagesLoaded[index]) {
       const boothNumber = index + 1;
       const detectedImages = await detectBoothImages(boothNumber);
       
       // 감지된 이미지를 mediaGallery에 추가
       if (detectedImages.length > 0) {
+          console.log(`[DEBUG] mediaGallery에 ${detectedImages.length}개 이미지 추가 (index=${index})`);
           layerPopupData[index].mediaGallery.push(...detectedImages);
       }
       
       // 로딩 완료 플래그 설정 (중복 로드 방지)
       boothImagesLoaded[index] = true;
+  } else {
+      console.log(`[DEBUG] 이미 로드됨: booth-${index + 1}, mediaGallery 크기: ${layerPopupData[index].mediaGallery.length}`);
   }
 
   // 컨텐츠 렌더링
@@ -2715,11 +2724,28 @@ let galleryBreakpointState = null;
  * 
  * @param {number} index - 부스 인덱스 (0-9)
  */
-function openVideoLayer(index) {
+async function openVideoLayer(index) {
+  console.log(`[DEBUG] openVideoLayer 호출: index=${index}, booth-${index + 1}`);
   const videoLayer = document.querySelector(".video-layer");
   const data = layerPopupData[index];
 
   if (!videoLayer || !data.mediaGallery) return;
+
+  console.log(`[DEBUG] mediaGallery 내용:`, data.mediaGallery);
+  console.log(`[DEBUG] mediaGallery 크기: ${data.mediaGallery.length}, 이미지 타입 개수: ${data.mediaGallery.filter(item => item.type === 'image').length}`);
+
+  // mediaGallery에 image 타입이 없으면 강제로 감지
+  const hasImages = data.mediaGallery.some(item => item.type === 'image');
+  if (!hasImages) {
+      console.log(`[DEBUG] 이미지가 없어서 강제 감지 시작: booth-${index + 1}`);
+      const boothNumber = index + 1;
+      const detectedImages = await detectBoothImages(boothNumber);
+      if (detectedImages.length > 0) {
+          console.log(`[DEBUG] 강제 감지 완료: ${detectedImages.length}개 이미지 추가`);
+          data.mediaGallery.push(...detectedImages);
+          boothImagesLoaded[index] = true;
+      }
+  }
 
   // 부스 이름 설정
   const boothNameEl = videoLayer.querySelector(".booth-name");
@@ -2773,6 +2799,9 @@ function closeVideoLayer() {
  * @param {Array} mediaGallery - 미디어 아이템 배열
  */
 function renderMediaGallery(mediaGallery) {
+  console.log(`[DEBUG] renderMediaGallery 호출: 총 ${mediaGallery.length}개 아이템`);
+  console.log(`[DEBUG] 렌더링할 아이템:`, mediaGallery);
+  
   const mainWrapper = document.querySelector(
       ".main-gallery-swiper .swiper-wrapper"
   );
@@ -3027,7 +3056,7 @@ function handleLayerPopup() {
   // 2-1. Photos 버튼 클릭 이벤트 (토글)
   const photoBtn = document.querySelector(".layer-tab .photo-btn");
   if (photoBtn) {
-      photoBtn.addEventListener("click", () => {
+      photoBtn.addEventListener("click", async () => {
           const videoLayer = document.querySelector(".video-layer");
           const layerContentInner = document.querySelector(".layer-content-inner");
 
@@ -3047,7 +3076,7 @@ function handleLayerPopup() {
               const activeIndex = Array.from(layerTabItems).indexOf(activeTabItem);
 
               if (activeIndex >= 0 && activeIndex < layerPopupData.length) {
-                  openVideoLayer(activeIndex);
+                  await openVideoLayer(activeIndex);
                   photoBtn.classList.add("active");
 
                   // layer-content-inner에 active 추가
