@@ -19,10 +19,6 @@ const FADE_UP_DELAY_INTERVAL = 0.15;
 // Scroll Indicator
 const SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD = 425;
 
-// Image Detection
-const MAX_BOOTH_IMAGE_CHECK = 50;
-const MAX_CONSECUTIVE_NOT_FOUND = 1;
-
 // Class Names
 const CLASS_NAMES = {
     ACTIVE: 'active',
@@ -69,20 +65,6 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
-}
-
-
-/**
- * 이미지 존재 여부를 확인하는 비동기 함수
- * fetch HEAD 요청을 사용하여 콘솔에 404 에러가 표시되지 않도록 처리
- * 
- * @param {string} imageUrl - 확인할 이미지 URL
- * @returns {Promise<boolean>} 이미지 존재 여부
- */
-function checkImageExists(imageUrl) {
-    return fetch(imageUrl, { method: 'HEAD' })
-        .then(response => response.ok)
-        .catch(() => false);
 }
 
 
@@ -1313,63 +1295,6 @@ function handleHighlightsSlide() {
 // ============================================================================
 
 /**
- * 부스별 이미지 자동 감지 함수
- * 특정 부스의 이미지들을 순차적으로 확인하여 존재하는 이미지 목록 반환
- * 
- * @param {number} boothNumber - 부스 번호 (1-10)
- * @returns {Promise<Array>} 감지된 이미지 객체 배열
- */
-async function detectBoothImages(boothNumber) {
-    console.log(`[DEBUG] detectBoothImages 호출: booth-${boothNumber}`);
-    const basePath = `/theme/rbFront/img/w/ise/ise2026/booth-${boothNumber}/`;
-    const images = [];
-    let imageIndex = 1;
-    let consecutiveNotFound = 0;
-
-    while (imageIndex <= MAX_BOOTH_IMAGE_CHECK) {
-        const imageUrl = `${basePath}booth_img_${imageIndex}.jpg`;
-        const exists = await checkImageExists(imageUrl);
-
-        if (exists) {
-            images.push({
-                type: "image",
-                imageUrl: imageUrl,
-            });
-            consecutiveNotFound = 0;
-        } else {
-            consecutiveNotFound++;
-            if (consecutiveNotFound >= MAX_CONSECUTIVE_NOT_FOUND) {
-                break;
-            }
-        }
-
-        imageIndex++;
-    }
-
-    console.log(`[DEBUG] detectBoothImages 완료: booth-${boothNumber}, 감지된 이미지 개수: ${images.length}`);
-    return images;
-}
-
-
-/**
- * 모든 부스의 미디어 갤러리 초기화
- * 각 부스별로 이미지를 자동 감지하여 mediaGallery에 추가
- */
-async function initBoothMediaGalleries() {
-    // 모든 부스 (1-10)에 대해 이미지 자동 감지
-    for (let i = 0; i < layerPopupData.length; i++) {
-        const boothNumber = i + 1;
-        const detectedImages = await detectBoothImages(boothNumber);
-
-        // 기존 mediaGallery에 감지된 이미지들을 추가
-        if (detectedImages.length > 0) {
-            layerPopupData[i].mediaGallery.push(...detectedImages);
-        }
-    }
-}
-
-
-/**
  * Layer Popup 데이터 구조
  * 각 부스별 정보 (제목, 설명, 제품 목록, 미디어 갤러리 등)를 담고 있는 배열
  * 
@@ -1403,7 +1328,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-1/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1482,7 +1430,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-2/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1647,7 +1618,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-3/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1713,7 +1707,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-4/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1772,7 +1789,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-5/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1819,7 +1859,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-6/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1864,7 +1927,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-7/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1916,7 +2002,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-8/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -1983,7 +2092,30 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-9/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_6.jpg",
+          },
       ],
   },
 
@@ -2229,18 +2361,33 @@ const layerPopupData = [
               title: "Overview",
               thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-10/youtube_thumb_1.jpg",
           },
-          // 이미지는 자동으로 감지되어 추가됩니다
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_1.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_2.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_3.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_4.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_5.jpg",
+          },
+          {
+              type: "image",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_6.jpg",
+          },
       ],
     },
 ];
-
-/**
- * 부스별 이미지 로딩 상태 추적 배열
- * 각 부스의 이미지가 이미 로드되었는지 확인하는 플래그
- * @type {Array<boolean>}
- */
-const boothImagesLoaded = new Array(layerPopupData.length).fill(false);
-
 
 // ============================================================================
 // 10. LAYER POPUP MANAGEMENT
@@ -2637,24 +2784,6 @@ async function openLayerPopup(index) {
       layerTabItems[index].classList.add("active");
   }
 
-  // 부스 이미지 Lazy Loading: 아직 로드되지 않은 경우에만 이미지 감지
-  console.log(`[DEBUG] boothImagesLoaded[${index}] = ${boothImagesLoaded[index]}`);
-  if (!boothImagesLoaded[index]) {
-      const boothNumber = index + 1;
-      const detectedImages = await detectBoothImages(boothNumber);
-      
-      // 감지된 이미지를 mediaGallery에 추가
-      if (detectedImages.length > 0) {
-          console.log(`[DEBUG] mediaGallery에 ${detectedImages.length}개 이미지 추가 (index=${index})`);
-          layerPopupData[index].mediaGallery.push(...detectedImages);
-      }
-      
-      // 로딩 완료 플래그 설정 (중복 로드 방지)
-      boothImagesLoaded[index] = true;
-  } else {
-      console.log(`[DEBUG] 이미 로드됨: booth-${index + 1}, mediaGallery 크기: ${layerPopupData[index].mediaGallery.length}`);
-  }
-
   // 컨텐츠 렌더링
   renderLayerContent(index);
 
@@ -2730,22 +2859,6 @@ async function openVideoLayer(index) {
   const data = layerPopupData[index];
 
   if (!videoLayer || !data.mediaGallery) return;
-
-  console.log(`[DEBUG] mediaGallery 내용:`, data.mediaGallery);
-  console.log(`[DEBUG] mediaGallery 크기: ${data.mediaGallery.length}, 이미지 타입 개수: ${data.mediaGallery.filter(item => item.type === 'image').length}`);
-
-  // mediaGallery에 image 타입이 없으면 강제로 감지
-  const hasImages = data.mediaGallery.some(item => item.type === 'image');
-  if (!hasImages) {
-      console.log(`[DEBUG] 이미지가 없어서 강제 감지 시작: booth-${index + 1}`);
-      const boothNumber = index + 1;
-      const detectedImages = await detectBoothImages(boothNumber);
-      if (detectedImages.length > 0) {
-          console.log(`[DEBUG] 강제 감지 완료: ${detectedImages.length}개 이미지 추가`);
-          data.mediaGallery.push(...detectedImages);
-          boothImagesLoaded[index] = true;
-      }
-  }
 
   // 부스 이름 설정
   const boothNameEl = videoLayer.querySelector(".booth-name");

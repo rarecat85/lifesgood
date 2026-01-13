@@ -354,7 +354,6 @@
         }
         @include desktop {
           font-size: rem(12);
-          -webkit-line-clamp: 2;
         }
       }
     }
