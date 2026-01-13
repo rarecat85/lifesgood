@@ -139,12 +139,13 @@
       }
       .text {
         @include font(12,1.384,400);
-        color: #CBC8C2;
+        color: #AFAFAF;
         br {
           display: none;
         }
         @include tablet {
           font-size: rem(10);
+          color: #CBC8C2;
         }
         @include desktop {
           font-size: rem(13);
