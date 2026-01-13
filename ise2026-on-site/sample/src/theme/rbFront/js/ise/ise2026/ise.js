@@ -3662,7 +3662,7 @@ async function init() {
 
   new fullpage(".ise-container", {
       licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
-      scrollingSpeed: 1000,
+      scrollingSpeed: 1200,
       easingcss3: "cubic-bezier(0.645, 0.045, 0.355, 1.000)",
       navigation: true,
       anchors: [
