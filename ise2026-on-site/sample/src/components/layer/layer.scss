@@ -374,8 +374,10 @@ body.layer-open {
         height: 100%;
         position: relative;
         overflow: hidden;
-        &.active {
-          display: none;
+        @media screen and (max-width: 768px) {
+          &.active {
+            display: none;
+          }
         }
         @include tablet {
           display: flex;

@@ -2937,6 +2937,12 @@ function closeVideoLayer() {
       photoBtn.classList.remove("active");
   }
 
+  // layer-content-inner의 active 클래스도 제거
+  const layerContentInner = document.querySelector(".layer-content-inner");
+  if (layerContentInner) {
+      layerContentInner.classList.remove("active");
+  }
+
   // Swiper 인스턴스 제거
   if (mainGallerySwiper) {
       mainGallerySwiper.destroy();
@@ -3655,6 +3661,10 @@ function handleLayerPopup() {
       const layerPop = document.querySelector(".layer-pop");
       if (!layerPop || !layerPop.classList.contains("active")) return;
 
+      // layer-content-inner의 active 상태 저장
+      const layerContentInner = document.querySelector(".layer-content-inner");
+      const wasActive = layerContentInner && layerContentInner.classList.contains("active");
+
       // 현재 활성화된 탭 인덱스 찾기
       const layerTabItems = document.querySelectorAll(".layer-tab-item");
       const activeTabItem = document.querySelector(".layer-tab-item.active");
@@ -3663,6 +3673,14 @@ function handleLayerPopup() {
       if (activeIndex >= 0) {
           // 컨텐츠 재렌더링
           renderLayerContent(activeIndex);
+
+          // layer-content-inner의 active 상태 복원
+          if (wasActive) {
+              const newLayerContentInner = document.querySelector(".layer-content-inner");
+              if (newLayerContentInner) {
+                  newLayerContentInner.classList.add("active");
+              }
+          }
 
           // Swiper 재초기화 및 스크롤 인디케이터 재체크
           setTimeout(async () => {

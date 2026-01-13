@@ -139,6 +139,7 @@
       }
       .text {
         @include font(12,1.384,400);
+        color: #CBC8C2;
         br {
           display: none;
         }
