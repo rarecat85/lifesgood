@@ -1831,6 +1831,8 @@ const layerPopupData = [
         bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_3.png",
         title: "Smart collaboration that empowers teamwork",
         description: "Interactive displays and intuitive sharing tools help teams collaborate and work more efficiently.",
+        tabImgScroll: true,
+        initialScrollPosition: 0,
         productList: [{
                 type: "product",
                 name: "webOS Signage",
@@ -2559,6 +2561,108 @@ function initScrollIndicatorHide() {
 
 
 /**
+ * 탭 디테일 이미지 스크롤 인디케이터 표시/숨김 체크
+ * 이미지 너비가 임계값보다 크면 인디케이터 표시
+ * @returns {Promise} 스크롤 설정 완료 후 resolve
+ */
+function checkTabDetailScrollIndicator() {
+    return new Promise((resolve) => {
+        const tabDetailImgs = document.querySelectorAll('.tab-detail-img');
+        
+        if (tabDetailImgs.length === 0) {
+            resolve();
+            return;
+        }
+
+        let checkCount = 0;
+        const totalCount = tabDetailImgs.length;
+
+        tabDetailImgs.forEach((tabDetailImg) => {
+            const tabDetailImageWrap = tabDetailImg.querySelector('.tab-detail-img-wrap');
+            const image = tabDetailImg.querySelector('img');
+            const scrollIndicator = tabDetailImg.querySelector('.scroll-indicator');
+
+            if (!tabDetailImageWrap || !image || !scrollIndicator) {
+                checkCount++;
+                if (checkCount === totalCount) resolve();
+                return;
+            }
+
+            // 이미지 로드 완료 후 크기 체크
+            if (image.complete) {
+                checkAndShowIndicator();
+            } else {
+                image.addEventListener('load', checkAndShowIndicator);
+            }
+
+            function checkAndShowIndicator() {
+                const imageWidth = image.naturalWidth || image.width;
+
+                if (imageWidth > SCROLL_INDICATOR_IMAGE_WIDTH_THRESHOLD) {
+                    scrollIndicator.classList.add('show');
+                    
+                    // 이미지 로드 후 레이아웃 계산 완료를 보장
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            // data-scroll-position 속성에서 값 읽기 (없으면 50%)
+                            const scrollPosition = tabDetailImageWrap.dataset.scrollPosition !== undefined
+                                ? parseFloat(tabDetailImageWrap.dataset.scrollPosition)
+                                : 50;
+                            
+                            const scrollPercentage = scrollPosition / 100;
+                            
+                            // 실제 스크롤 가능한 요소의 스크롤 위치 설정
+                            const scrollableWidth = tabDetailImageWrap.scrollWidth - tabDetailImageWrap.clientWidth;
+                            if (scrollableWidth > 0) {
+                                tabDetailImageWrap.scrollLeft = scrollableWidth * scrollPercentage;
+                            }
+                            
+                            checkCount++;
+                            if (checkCount === totalCount) {
+                                setTimeout(() => {
+                                    resolve();
+                                }, 50);
+                            }
+                        });
+                    });
+                } else {
+                    scrollIndicator.classList.remove('show');
+                    checkCount++;
+                    if (checkCount === totalCount) resolve();
+                }
+            }
+        });
+    });
+}
+
+
+/**
+ * 탭 디테일 이미지 스크롤 인디케이터 터치/클릭 시 숨김 처리
+ * 사용자 인터랙션 감지 시 인디케이터를 페이드 아웃
+ */
+function initTabDetailScrollIndicatorHide() {
+    const tabDetailImgs = document.querySelectorAll('.tab-detail-img');
+    
+    tabDetailImgs.forEach((tabDetailImg) => {
+        const tabDetailImageWrap = tabDetailImg.querySelector('.tab-detail-img-wrap');
+        const scrollIndicator = tabDetailImg.querySelector('.scroll-indicator');
+
+        if (!tabDetailImageWrap || !scrollIndicator) return;
+
+        const hideIndicator = () => {
+            scrollIndicator.classList.add(CLASS_NAMES.ACTIVE);
+        };
+
+        // tab-detail-img 영역 터치/클릭 시 인디케이터 숨김
+        tabDetailImg.addEventListener('touchstart', hideIndicator, { once: true });
+        tabDetailImg.addEventListener('click', hideIndicator, { once: true });
+        // 실제 스크롤이 일어나는 요소(.tab-detail-img-wrap)에 스크롤 이벤트 등록
+        tabDetailImageWrap.addEventListener('scroll', hideIndicator, { once: true });
+    });
+}
+
+
+/**
  * Layer Popup 컨텐츠 렌더링
  * 
  * @param {number} index - 부스 인덱스 (0-9)
@@ -2611,9 +2715,30 @@ function renderLayerContent(index) {
                 ${!isMobileDevice ? `<span class="tab-detail-subtitle">${tab.name}</span>` : ''}
                 <h4 class="tab-detail-title">${tab.title || ""}</h4>
                 <p class="tab-detail-desc">${tab.description || ""}</p>
-                ${isMobileDevice ? `
+                ${isMobileDevice ? (
+                  tab.tabImgScroll 
+                    ? `
+                  <div class="tab-detail-img">
+                    <div class="tab-detail-img-wrap" data-scroll-position="${tab.initialScrollPosition !== undefined ? tab.initialScrollPosition : 50}">
+                      <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${tabIndex + 1}.jpg" alt="${tab.name}">
+                    </div>
+                    <div class="scroll-indicator">
+                      <svg width="78" height="79" viewBox="0 0 78 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="39" cy="39.5" rx="39" ry="39.5" fill="black" fill-opacity="0.5"/>
+                        <g class="ic-pointer">
+                          <path d="M35.1582 47.1134L34.8719 27.1154C34.8561 26.011 35.7386 25.1028 36.8431 25.087C37.9475 25.0712 38.8557 25.9537 38.8715 27.0582L39.0862 42.0566L39.0146 37.0572C38.9988 35.9527 39.8813 35.0445 40.9858 35.0287C42.0903 35.0129 42.9984 35.8954 43.0142 36.9999L43.0858 41.9994L43.0285 37.9998C43.0127 36.8953 43.8952 35.9872 44.9997 35.9714C46.1042 35.9556 47.0123 36.8381 47.0281 37.9425L47.0854 41.9421L47.0568 39.9423C47.0409 38.8379 47.9235 37.9297 49.0279 37.9139C50.1324 37.8981 51.0405 38.7806 51.0564 39.8851L51.1422 45.8845" stroke="white" stroke-linecap="round"/>
+                          <path d="M35 47C32.8803 44.9115 30.45 41.9305 29.6802 41.2496C29.5493 41.1338 29.3782 41.0807 29.2063 41.0491C27.9018 40.8086 26.9992 41.4922 26.4729 42.2173C26.0993 42.7321 26.213 43.4167 26.5736 43.9405L33.4961 53.9943C33.4981 53.9973 33.5023 53.9976 33.5048 53.9951C33.5074 53.9926 33.5116 53.993 33.5136 53.996C35.1278 56.41 37.878 58 41 58H42C46.9706 58 51 53.9705 51 49V44" stroke="white" stroke-linecap="round"/>
+                        </g>
+                        <path d="M53.3536 28.3535C53.5488 28.1583 53.5488 27.8417 53.3536 27.6464L50.1716 24.4645C49.9763 24.2692 49.6597 24.2692 49.4645 24.4645C49.2692 24.6597 49.2692 24.9763 49.4645 25.1716L52.2929 28L49.4645 30.8284C49.2692 31.0237 49.2692 31.3403 49.4645 31.5355C49.6597 31.7308 49.9763 31.7308 50.1716 31.5355L53.3536 28.3535ZM43 28V28.5H53V28V27.5H43V28Z" fill="white"/>
+                        <path d="M21.6464 28.3535C21.4512 28.1583 21.4512 27.8417 21.6464 27.6464L24.8284 24.4645C25.0237 24.2692 25.3403 24.2692 25.5355 24.4645C25.7308 24.6597 25.7308 24.9763 25.5355 25.1716L22.7071 28L25.5355 30.8284C25.7308 31.0237 25.7308 31.3403 25.5355 31.5355C25.3403 31.7308 25.0237 31.7308 24.8284 31.5355L21.6464 28.3535ZM32 28V28.5H22V28V27.5H32V28Z" fill="white"/>
+                      </svg>
+                    </div>
+                  </div>
+                    `
+                    : `
                   <img src="/theme/rbFront/img/m/ise/ise2026/booth_layer_bg_${index + 1}_tab_${tabIndex + 1}.jpg" alt="${tab.name}" class="tab-detail-img">
-                ` : ''}
+                    `
+                ) : ''}
             </div>
             ${mobileProductItems}
           </div>
@@ -2766,6 +2891,8 @@ function renderLayerContent(index) {
   setTimeout(async () => {
       await checkScrollIndicator(index); // 스크롤 설정 완료 대기
       initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
+      await checkTabDetailScrollIndicator(); // 탭 디테일 이미지 스크롤 체크
+      initTabDetailScrollIndicatorHide(); // 탭 디테일 이미지 이벤트 리스너 등록
     }, 100);
 }
 
@@ -3558,6 +3685,14 @@ function handleLayerPopup() {
                   }, 100);
               }
           }
+          
+          // 탭 전환 시 스크롤 인디케이터 체크 (모바일)
+          if (isMobile) {
+              setTimeout(async () => {
+                  await checkTabDetailScrollIndicator();
+                  initTabDetailScrollIndicatorHide();
+              }, 100);
+          }
       });
   }
 
@@ -3653,6 +3788,8 @@ function handleLayerPopup() {
               initProductSwiper();
               await checkScrollIndicator(activeIndex); // 스크롤 설정 완료 대기
               initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
+              await checkTabDetailScrollIndicator(); // 탭 디테일 이미지 스크롤 체크
+              initTabDetailScrollIndicatorHide(); // 탭 디테일 이미지 이벤트 리스너 등록
           }, 100);
       }
   };
