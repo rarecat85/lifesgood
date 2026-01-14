@@ -2394,8 +2394,12 @@ const layerPopupData = [
  * @param {Event} event - 클릭 이벤트
  */
 function handleComingSoonProduct(event) {
-    event.preventDefault();
-    alert("준비중입니다.");
+  const alertLayer = document.querySelector('.alert-layer');
+  alertLayer.classList.add('active');
+  const closeBtn = alertLayer.querySelector('.close-btn');
+  closeBtn.addEventListener('click', () => {
+    alertLayer.classList.remove('active');
+  });
 }
 
 
