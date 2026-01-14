@@ -1133,11 +1133,6 @@ function handleTechzoneSlide() {
               );
           },
       },
-      breakpoints: {
-        769: {
-          autoplay: false,
-        },
-      },
   });
 
   // 초기 로드 시 첫 번째 슬라이드 효과 실행
@@ -1258,6 +1253,7 @@ function handleHighlightsSlide() {
       loop: true,
       spaceBetween: 20,
       speed: 1000,
+      autoplay: true,
       navigation: {
           nextEl: ".highlights .main-slide .slide-next",
           prevEl: ".highlights .main-slide .slide-prev",
@@ -1352,16 +1348,16 @@ const layerPopupData = [
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png",
       productList: [{
               type: "product",
-              name: "webOS Signage",
-              code: "110UH5Q-E",
+              name: "Indoor LED",
+              code: "LSCC012",
               link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png",
           },
           {
               type: "product",
-              name: "Transparent OLED Signage",
-              code: "55EW5P-M",
-              link: "/products/fine-pitch-led",
+              name: "Transparent Mesh LED",
+              code: "LTPA062",
+              link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png",
           },
       ],
@@ -1404,13 +1400,14 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience customized cloud solutions designed for every business area!",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
+      initialScrollPosition: 80, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
               name: "LG ConnectedCare",
               description: "Display remote solution",
               bgClass: "type01",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
           },
           {
               type: "solution",
@@ -1418,15 +1415,7 @@ const layerPopupData = [
               description: "Signage content solution",
               bgClass: "type02",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-supersign-cloud",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png",
-          },
-          {
-              type: "solution",
-              name: "LG DOOH Ads",
-              description: "Smart advertising solution",
-              bgClass: "type03",
-              link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-dooh-ads",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_3.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_2.png",
           },
           {
               type: "solution",
@@ -1434,7 +1423,7 @@ const layerPopupData = [
               description: "Hospitality solution",
               bgClass: "type04",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-procentric-cloud",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_4.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_4.png",
           },
           {
               type: "solution",
@@ -1442,7 +1431,7 @@ const layerPopupData = [
               description: "Collaborative writing solution",
               bgClass: "type05",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-createboard-lab",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_5.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_5.png",
           },
           {
               type: "solution",
@@ -1450,21 +1439,21 @@ const layerPopupData = [
               description: "Display management solution",
               bgClass: "type06",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare-dms",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_6.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_6.png",
           },
           {
               type: "product",
               name: "webOS Signage",
               code: "110UH5Q-E",
               link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_7.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png",
           },
           {
               type: "product",
               name: "Transparent OLED Signage",
               code: "55EW5P-M",
               link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_8.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png",
           },
       ],
       mediaGallery: [{
@@ -1518,14 +1507,35 @@ const layerPopupData = [
                       description: "Display remote solution",
                       bgClass: "type01",
                       link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
+                  },
+                  {
+                      type: "product",
+                      name: "webOS Signage",
+                      code: "65UH5Q-E",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png",
+                  },
+                  {
+                      type: "product",
+                      name: "LG StandbyME 2",
+                      code: "27LX6T",
+                      link: "",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png",
+                  },
+                  {
+                      type: "product",
+                      name: "Transparent OLED Signage",
+                      code: "30EW5TP-A",
+                      link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/30EW5TP-A",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_3.png",
                   },
                   {
                       type: "product",
                       name: "Transparent OLED Signage",
                       code: "55EW5P-M",
                       link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_4.png",
                   },
               ],
           },
@@ -1541,27 +1551,34 @@ const layerPopupData = [
                       description: "Signage content solution",
                       bgClass: "type01",
                       link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-supersign-cloud",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
                   },
                   {
                       type: "product",
                       name: "4K UHD Signage",
                       code: "65UH5Q-E",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png",
                   },
                   {
                       type: "product",
                       name: "Stretch Signage",
                       code: "37BH7N",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_3.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_2.png",
                   },
                   {
                       type: "product",
                       name: "Transparent OLED Signage",
                       code: "55EW5P-M",
                       link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_3.png",
+                  },,
+                  {
+                      type: "product",
+                      name: "Window Facing Signage",
+                      code: "75XS4P",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/high-brightness/window-facing/75XS4P",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_4.png",
                   },
               ],
@@ -1578,6 +1595,13 @@ const layerPopupData = [
                       description: "Smart advertising solution",
                       bgClass: "type01",
                       link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-dooh-ads",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
+                  },
+                  {
+                      type: "product",
+                      name: "Stretch Signage",
+                      code: "37BH7N",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_1.png",
                   },
                   {
@@ -1589,17 +1613,10 @@ const layerPopupData = [
                   },
                   {
                       type: "product",
-                      name: "Stretch Signage",
-                      code: "37BH7N",
-                      link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_3.png",
-                  },
-                  {
-                      type: "product",
                       name: "LG Kiosk",
                       code: "27KC3P-M",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/special/27KC3P-M",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_4.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_3.png",
                   },
               ],
           },
@@ -1615,28 +1632,28 @@ const layerPopupData = [
                       description: "Audio sales platform",
                       bgClass: "type07",
                       link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_1.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_7.png",
                   },
                   {
                       type: "product",
                       name: "4K UHD Signage",
                       code: "65UH5Q-E",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_2.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_1.png",
                   },
                   {
                       type: "product",
                       name: "Stretch Signage",
                       code: "37BH7N",
                       link: "httpshttps://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_3.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_2.png",
                   },
                   {
                       type: "product",
-                      name: "",
-                      code: '13.3"EPD',
+                      name: '13.3"EPD',
+                      code: '',
                       link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_4.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_3.png",
                   },
               ],
           },
@@ -1694,11 +1711,12 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png",
+      initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "product",
               name: "Outdoor LED",
               code: "GSPC029-GC",
-              link: "/products/drive-thru",
+              link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPC029",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_1.png",
           },
           {
@@ -1735,13 +1753,6 @@ const layerPopupData = [
               code: "55UL5Q-E",
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UL5Q-E",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
-          },
-          {
-              type: "product",
-              name: "Outdoor LED",
-              code: "GSPC029-GC",
-              link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPC029",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_7.png",
           },
       ],
       mediaGallery: [{
@@ -1783,48 +1794,73 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png",
-      productList: [{
-              type: "product",
-              name: "LG CreateBoard",
-              code: "65TR3BQ",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/65TR3BQ",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1.png",
-          },
-          {
-              type: "product",
-              name: "LG MAGNIT AIO",
-              code: "LAAB136BXNA",
-              link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2.png",
-          },
-          {
+      initialScrollPosition: 31.8, // 0-100 사이의 퍼센티지 (50 = 중앙)
+      tablist: [{
+        name: "Huddle room",
+        id: "tab-5-1",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_1.png",
+        title: "Where ideas come together",
+        description: "Smart displays help teams share ideas, collaborate easily, and stay focused during meetings.",
+        productList: [{
+                type: "product",
+                name: "LG CreateBoard",
+                code: "65TR3BQ",
+                link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/65TR3BQ",
+                image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_1_1.png",
+            },
+        ],
+      },
+      {
+        name: "Board room",
+        id: "tab-5-2",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_2.png",
+        title: "Boardroom brilliance with all-in-one Micro LED",
+        description: "Executive-ready visuals and built-in control deliver confident presentations with effortless setup.",
+        productList: [{
+                type: "product",
+                name: "LG MAGNIT AIO",
+                code: "LAAB136BXNA",
+                link: "",
+                image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2_1.png",
+            },
+        ],
+      },
+      {
+        name: "Meeting room",
+        id: "tab-5-3",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_3.png",
+        title: "Smart collaboration that empowers teamwork",
+        description: "Interactive displays and intuitive sharing tools help teams collaborate and work more efficiently.",
+        productList: [{
+                type: "product",
+                name: "webOS Signage",
+                code: "65UH5Q-E",
+                link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
+                image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_1.png",
+            },
+            {
               type: "product",
               name: "LG CreateBoard",
               code: "105TR5WP",
               link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/105TR5WP",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3.png",
-          },
-          {
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_2.png",
+            },
+              {
+                type: "product",
+                name: "webOS Signage",
+                code: "55UH5Q-E",
+                link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
+                image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_3.png",
+            },
+            {
               type: "product",
-              name: "webOS Signage",
-              code: "65UH5Q-E",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_4.png",
-          },
-          {
-              type: "product",
-              name: "webOS Signage",
-              code: "55UH5Q-E",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_5.png",
-          },
-          {
-              type: "product",
-              name: "webOS Signage",
+              name: "4K UHD Signage",
               code: "55UL5Q-E",
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UL5Q-E",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_6.png",
-          },
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_4.png",
+            },
+          ],
+        },
       ],
       mediaGallery: [{
               type: "youtube",
@@ -1865,35 +1901,36 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png",
+      initialScrollPosition: 37, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
-              type: "product",
-              name: "4K UHD Signage",
-              code: "55UH5Q-E 163”",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png",
+              type: "solution",
+              name: "LG ConnectedCare",
+              description: "Smart Device Care Solution",
+              bgClass: "type01",
+              link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
+          },
+          {
+              type: "solution",
+              name: "LG Shield",
+              description: "Product Security",
+              bgClass: "type08",
+              link: "https://lgshield.lge.com/en",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_8.png",
           },
           {
               type: "product",
               name: "Commercial Micro LED",
               code: "LSAB009",
               link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LSAB009",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png",
+          },
+          {
+              type: "product",
+              name: "4K UHD Signage",
+              code: "55UH5Q-E",
+              link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_2.png",
-          },
-          {
-              type: "solution",
-              name: "LG ConnectedCare",
-              description: "Smart Device Care Solution",
-              bgClass: "type01",
-              link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_3.png",
-          },
-          {
-              type: "solution",
-              name: "LG Shield",
-              description: "Product Security",
-              bgClass: "type02",
-              link: "https://lgshield.lge.com/en",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_4.png",
           },
       ],
       mediaGallery: [{
@@ -1934,34 +1971,21 @@ const layerPopupData = [
       title: "E-Paper display",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
+      disableScroll: true,
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png",
       productList: [{
               type: "product",
-              name: "13.3” EPD",
+              name: "32” EPD",
               code: "",
               link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_1.png",
           },
           {
               type: "product",
-              name: "32” EPD",
+              name: "13.3” EPD",
               code: "",
               link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_2.png",
-          },
-          {
-              type: "product",
-              name: "55” EPD",
-              code: "",
-              link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_3.png",
-          },
-          {
-              type: "product",
-              name: "75” EPD",
-              code: "",
-              link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_4.png",
           },
       ],
       mediaGallery: [{
@@ -2003,6 +2027,7 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png",
+      initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "product",
               name: "LG CreateBoard",
@@ -2027,15 +2052,15 @@ const layerPopupData = [
           {
               type: "product",
               name: "LG CreateBoard",
-              code: "65TR3BQ",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/65TR3BQ",
+              code: "75TR3DQ-BG",
+              link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/75TR3DQ",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_4.png",
           },
           {
               type: "product",
               name: "LG CreateBoard",
-              code: "75TR3DQ-BG",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/75TR3DQ",
+              code: "65TR3BQ",
+              link: "https://www.lg-informationdisplay.com/product/digital-signage/interactive/65TR3BQ",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_5.png",
           },
       ],
@@ -2078,19 +2103,27 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png",
+      initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
               name: "LG Pro:Centric Cloud",
               description: "Cloud-Based Hospitality Solution",
               bgClass: "type04",
               link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-procentric-cloud",
+              image: "/theme/rbFront/img/w/ise/ise2026/solution_img_4.png",
+          },
+          {
+              type: "product",
+              name: "Hotel TV",
+              code: "65LX7BPGA",
+              link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png",
           },
           {
               type: "product",
-              name: "4K UHD TV",
-              code: "55UK660H",
-              link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/55UK660H-EU-CIS",
+              name: "4K UHD TV with Pro:Centric",
+              code: "65UK767H (QNED)",
+              link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/65UK762H-EU-CIS",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_2.png",
           },
           {
@@ -2102,31 +2135,24 @@ const layerPopupData = [
           },
           {
               type: "product",
-              name: "4K UHD TV with Pro:Centric",
-              code: "65UK767H (QNED)",
-              link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/65UK762H-EU-CIS",
+              name: "4K UHD TV",
+              code: "55UK660H",
+              link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/55UK660H-EU-CIS",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_4.png",
           },
           {
               type: "product",
-              name: "Hotel TV",
-              code: "65LX7BPGA",
-              link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_5.png",
-          },
-          {
-              type: "product",
-              name: "Hotel TV",
+              name: "LG StandbyME 2",
               code: "27LX6T",
               link: "",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_6.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_5.png",
           },
           {
               type: "product",
               name: "4K UHD Signage",
               code: "55UL5Q-E",
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UL5Q-E",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_7.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_6.png",
           },
       ],
       mediaGallery: [{
@@ -2168,6 +2194,7 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png",
+      initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG MAGNIT 1",
               id: "tab-10-1",
@@ -2181,27 +2208,6 @@ const layerPopupData = [
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB007",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_1.png",
                   },
-                  {
-                      type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPB009",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB009",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_2.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPA009",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPA009",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_3.png",
-                  },
-                  {
-                      type: "product",
-                      name: "LG MAGNIT Active Micro LED",
-                      code: "LSAH007",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LSAH007",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_4.png",
-                  },
               ],
           },
           {
@@ -2212,31 +2218,10 @@ const layerPopupData = [
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
                       type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPB007",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB007",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_1.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPB009",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB009",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_2.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPA009",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPA009",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_3.png",
-                  },
-                  {
-                      type: "product",
                       name: "LG MAGNIT Active Micro LED",
                       code: "LSAH007",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LSAH007",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_4.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_1.png",
                   },
               ],
           },
@@ -2248,30 +2233,30 @@ const layerPopupData = [
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
                       type: "product",
-                      name: "",
-                      code: "LBAF019",
+                      name: "Virtual Production LED",
+                      code: "LBQB039",
                       link: "",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_3_1.png",
                   },
                   {
                       type: "product",
                       name: "Virtual Production LED",
-                      code: "LFCL039",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LFCL039",
+                      code: "LBPA019",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LBPA019",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_3_2.png",
                   },
                   {
                       type: "product",
-                      name: "",
-                      code: "LBQB039",
-                      link: "",
+                      name: "Virtual Production LED",
+                      code: "LFCL039",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LFCL039",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_3_3.png",
                   },
                   {
                       type: "product",
-                      name: "Virtual Production LED",
-                      code: "LFCM039",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LFCM039",
+                      name: "Virtual Production Micro LED",
+                      code: "LBAF015",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LBAF015",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_3_4.png",
                   },
               ],
@@ -2284,80 +2269,38 @@ const layerPopupData = [
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
                       type: "product",
-                      name: "",
+                      name: "Indoor LED",
                       code: "LMEA012",
-                      link: "",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LMEA012",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_1.png",
                   },
                   {
                       type: "product",
                       name: "Indoor LED",
-                      code: "LSCC012-GZ, CZ, CZF, GZG",
+                      code: "LSCC012",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_2.png",
                   },
                   {
                       type: "product",
                       name: "Indoor LED",
-                      code: "LSCC012 - GZ",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_3.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Indoor LED",
                       code: "LSCC015",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC015",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_4.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_3.png",
                   },
                   {
                       type: "product",
                       name: "Indoor LED",
                       code: "LSCC018",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC018",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_5.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_4.png",
                   },
                   {
                       type: "product",
                       name: "Indoor LED",
                       code: "LSCC025",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC025",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_6.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Virtual Production Micro LED",
-                      code: "LBAF015",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LBAF015",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_7.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Virtual Production LED",
-                      code: "LBPA019",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LBPA019",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_8.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Virtual Production LED",
-                      code: "LFCL039",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/virtual-production/LFCL039",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_9.png",
-                  },
-                  {
-                      type: "product",
-                      name: "",
-                      code: "LBQB039",
-                      link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_10.png",
-                  },
-                  {
-                      type: "product",
-                      name: "",
-                      code: "LTPA062",
-                      link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_11.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_4_5.png",
                   },
               ],
           },
@@ -2370,30 +2313,37 @@ const layerPopupData = [
               productList: [{
                       type: "product",
                       name: "Outdoor LED",
-                      code: "GSPB039",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPB039",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Stadium LED",
-                      code: "GRPA062",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GRPA062",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
-                  },
-                  {
-                      type: "product",
-                      name: "",
-                      code: "GPPA052-GA",
+                      code: "LTPA062",
                       link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_3.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
                   },
                   {
                       type: "product",
                       name: "Mesh LED",
                       code: "GMBD035-GN4",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/mesh-led/GMBD035",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                  },
+                  {
+                      type: "product",
+                      name: "Outdoor LED",
+                      code: "GSPB039",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPB039",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_3.png",
+                  },
+                  {
+                      type: "product",
+                      name: "Stadium LED",
+                      code: "GRPA062",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GRPA062",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_4.png",
+                  },
+                  {
+                      type: "product",
+                      name: "Outdoor LED",
+                      code: "GPPA062-GA",
+                      link: "",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_5.png",
                   },
               ],
           },
@@ -2518,14 +2468,21 @@ function generateProductItemHTML(product, productList) {
 /**
  * 스크롤 인디케이터 표시/숨김 체크
  * 이미지 너비가 임계값보다 크면 인디케이터 표시
+ * @param {number} index - 부스 인덱스 (0-9)
  * @returns {Promise} 스크롤 설정 완료 후 resolve
  */
-function checkScrollIndicator() {
+function checkScrollIndicator(index) {
     return new Promise((resolve) => {
         const boothDetailImage = document.querySelector('.booth-detail-img');
         const boothDetailImageWrap = document.querySelector('.booth-detail-img-wrap'); // 실제 스크롤 요소
         const image = document.querySelector('.booth-detail-img img');
         const scrollIndicator = document.querySelector('.scroll-indicator');
+
+        // no-scroll 클래스가 있으면 스크롤 인디케이터 처리 생략
+        if (boothDetailImageWrap && boothDetailImageWrap.classList.contains('no-scroll')) {
+            resolve();
+            return;
+        }
 
         if (!boothDetailImage || !boothDetailImageWrap || !image || !scrollIndicator) {
             resolve();
@@ -2548,10 +2505,19 @@ function checkScrollIndicator() {
                 // 이미지 로드 후 레이아웃 계산 완료를 보장
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
-                        // 실제 스크롤 가능한 요소(.booth-detail-img-wrap)의 스크롤 위치를 중앙으로 설정
+                        // layerPopupData에서 initialScrollPosition 값을 가져옴 (없으면 기본값 50%)
+                        const data = layerPopupData[index];
+                        const initialScrollPosition = data && data.initialScrollPosition !== undefined 
+                            ? data.initialScrollPosition 
+                            : 50;
+                        
+                        // 퍼센티지를 0-1 사이의 비율로 변환
+                        const scrollPercentage = initialScrollPosition / 100;
+                        
+                        // 실제 스크롤 가능한 요소(.booth-detail-img-wrap)의 스크롤 위치를 설정
                         const scrollableWidth = boothDetailImageWrap.scrollWidth - boothDetailImageWrap.clientWidth;
                         if (scrollableWidth > 0) {
-                            boothDetailImageWrap.scrollLeft = scrollableWidth / 2;
+                            boothDetailImageWrap.scrollLeft = scrollableWidth * scrollPercentage;
                         }
                         
                         // scroll 이벤트가 완전히 처리될 때까지 대기 후 resolve
@@ -2734,12 +2700,12 @@ function renderLayerContent(index) {
   const contentHTML = `
   <div class="layer-content-inner">
     <div class="booth-detail-img">
-      <div class="booth-detail-img-wrap">
+      <div class="booth-detail-img-wrap${data.disableScroll ? ' no-scroll' : ''}">
         <img src="/theme/rbFront/img/m/ise/ise2026/booth_detail_img_${
           index + 1
         }.jpg" alt="${data.title}">
       </div>
-      <div class="scroll-indicator">
+      ${!data.disableScroll ? `<div class="scroll-indicator">
         <svg width="78" height="79" viewBox="0 0 78 79" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="39" cy="39.5" rx="39" ry="39.5" fill="black" fill-opacity="0.5"/>
           <g class="ic-pointer">
@@ -2749,7 +2715,7 @@ function renderLayerContent(index) {
           <path d="M53.3536 28.3535C53.5488 28.1583 53.5488 27.8417 53.3536 27.6464L50.1716 24.4645C49.9763 24.2692 49.6597 24.2692 49.4645 24.4645C49.2692 24.6597 49.2692 24.9763 49.4645 25.1716L52.2929 28L49.4645 30.8284C49.2692 31.0237 49.2692 31.3403 49.4645 31.5355C49.6597 31.7308 49.9763 31.7308 50.1716 31.5355L53.3536 28.3535ZM43 28V28.5H53V28V27.5H43V28Z" fill="white"/>
           <path d="M21.6464 28.3535C21.4512 28.1583 21.4512 27.8417 21.6464 27.6464L24.8284 24.4645C25.0237 24.2692 25.3403 24.2692 25.5355 24.4645C25.7308 24.6597 25.7308 24.9763 25.5355 25.1716L22.7071 28L25.5355 30.8284C25.7308 31.0237 25.7308 31.3403 25.5355 31.5355C25.3403 31.7308 25.0237 31.7308 24.8284 31.5355L21.6464 28.3535ZM32 28V28.5H22V28V27.5H32V28Z" fill="white"/>
         </svg>
-      </div>
+      </div>` : ''}
     </div>
     <div class="layer-content-title-wrap">
       <h3 class="layer-content-title">
@@ -2798,7 +2764,7 @@ function renderLayerContent(index) {
 
   // 스크롤 인디케이터 체크 및 이벤트 초기화
   setTimeout(async () => {
-      await checkScrollIndicator(); // 스크롤 설정 완료 대기
+      await checkScrollIndicator(index); // 스크롤 설정 완료 대기
       initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
     }, 100);
 }
@@ -3685,7 +3651,7 @@ function handleLayerPopup() {
           // Swiper 재초기화 및 스크롤 인디케이터 재체크
           setTimeout(async () => {
               initProductSwiper();
-              await checkScrollIndicator(); // 스크롤 설정 완료 대기
+              await checkScrollIndicator(activeIndex); // 스크롤 설정 완료 대기
               initScrollIndicatorHide(); // 그 다음에 이벤트 리스너 등록
           }, 100);
       }

@@ -12,7 +12,7 @@
   }
   .inner {
     @include desktop {
-      padding-top: rem(156);
+      padding: rem(158) rem(30) rem(64);
     }
   }
   .section-tit-bx {
