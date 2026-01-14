@@ -396,6 +396,7 @@
                 }
                 .text {
                   max-width: rem(300);
+                  font-family: $font-headline;
                   @include font(10, 1.33, 400);
                   text-wrap: balance;
                   @include tablet {

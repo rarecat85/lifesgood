@@ -101,6 +101,7 @@
         }
         .text {
           display: inline-block;
+          font-family: $font-headline;
           @include font(14,1,550,$white);
           border-bottom: 1px solid $white;
           padding-bottom: rem(2);
@@ -158,6 +159,7 @@
           display: inline-flex;
           align-items: center;
           gap: rem(6);
+          font-family: $font-headline;
           @include font(20,1.1,700,$white);
           position: absolute;
           top: rem(10);
@@ -295,6 +297,7 @@
         }
         span {
           display: inline-flex;
+          font-family: $font-headline;
           align-items: center;
           &::before {
             content: "";
