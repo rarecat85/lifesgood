@@ -343,24 +343,23 @@
             }
             .info-desc {
               display: flex;
-              justify-content: flex-start;
+              align-items: center;
               gap: rem(13);
               width: 100%;
               min-height: rem(109);
-              padding: rem(14) rem(13) rem(10) rem(25);
+              padding: rem(14) rem(23) rem(13) rem(25);
 
               @include tablet {
-                justify-content: center;
-                max-width: rem(438);
+                align-items: flex-start;
                 min-height: unset;
                 gap: rem(7);
                 height: rem(78);
-                padding: rem(17) rem(27) rem(24) rem(30);
+                padding: rem(17) rem(24) rem(24) rem(24);
               }
               @include desktop {
                 gap: rem(12);
                 height: rem(130);
-                padding: rem(28) rem(20) rem(10) rem(50);
+                padding: rem(28) rem(20) rem(10) rem(45);
               }
               .img-bx {
                 flex-shrink: 0;
@@ -408,6 +407,18 @@
                   @include desktop {
                     font-size: rem(12);
                     letter-spacing: 0;
+                  }
+                }
+                .desc {
+                  @include font(6, 1.33, 400);
+                  font-style: italic;
+                  margin-top: rem(2);
+                  @include tablet {
+                    font-size: rem(5);
+                  }
+                  @include desktop {
+                    font-size: rem(9);
+                    margin-top: rem(4);
                   }
                 }
               }

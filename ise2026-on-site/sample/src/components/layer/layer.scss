@@ -544,7 +544,7 @@ body.layer-open {
 
       .layer-content-title {
         display: inline-flex;
-        @include font(24,1,550,$white);
+        @include font(22,1,550,$white);
         max-width: calc(88% - rem(82));
         transition: transform 0.3s ease-in-out;
         span {
@@ -554,9 +554,9 @@ body.layer-open {
           }
         }
         @include tablet {
-          align-items: flex-end;
           font-size: rem(28);
           margin-bottom: rem(19);
+          max-width: unset;
           &.active {
             transform: translateY(rem(-57));
           }

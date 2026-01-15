@@ -571,16 +571,16 @@ function handleBoothSlide() {
   // 각 슬라이드에 표시할 커스텀 텍스트 배열 (사용자가 원하는 대로 수정 가능)
   const boothSlideTexts = [
       "Hall",
-      "Key<br>attractor",
-      "LG Business<br>solutions",
-      "K-Culture<br>shop",
-      "Drive-<br class='pc-only'>thru",
-      "Meeting<br>room",
-      "Control<br>room",
-      "E-Paper<br>display",
-      "Learning<br>zone",
+      "Key<br>Attractor", 
+      "LG Business Cloud <br>& Software Solution",
+      "K-Culture<br>Shop", 
+      "Drive <br class='pc-only'>Thru",
+      "Meeting<br>Room",
+      "Control<br>Room",
+      "E-Paper<br>Display",
+      "Learning<br>Zone",
       "Hotel",
-      "LED tech<br>zone",
+      "LED Tech<br>Zone",
   ];
 
   // Swiper 초기화 함수
@@ -1397,10 +1397,10 @@ const layerPopupData = [
 
   // Booth 2: LG Business cloud solutions
   {
-      title: "LG Business Cloud Solutions",
+      title: "LG Business Cloud & Software Solutions",
       subtitle: "",
       description: "Experience customized cloud solutions designed for every business area!",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.jpg",
       initialScrollPosition: 50, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
@@ -1495,12 +1495,12 @@ const layerPopupData = [
       title: "K-Culture Shop",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.jpg",
       initialScrollPosition: 52, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG Connected Care",
               id: "tab-3-1",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_1.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_1.jpg",
               title: "Display remote management solution",
               description: "It is important to have a device control solution that manages signage across multiple stores.",
               productList: [{
@@ -1544,7 +1544,7 @@ const layerPopupData = [
           {
               name: "LG SuperSign Cloud",
               id: "tab-3-2",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_2.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_2.jpg",
               title: "Cloud-Based Content Management Solution",
               description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.",
               productList: [{
@@ -1588,7 +1588,7 @@ const layerPopupData = [
           {
               name: "LG DOOH Ads",
               id: "tab-3-3",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_3.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_3.jpg",
               title: "Signage Display Advertising Platform",
               description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.",
               productList: [{
@@ -1625,7 +1625,7 @@ const layerPopupData = [
           {
               name: "LG SoundCast",
               id: "tab-3-4",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_4.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_4.jpg",
               title: "Signage Display Advertising Platform",
               description: "We need a solution that would allow us to control the multiple in-store screens across our global retail locations so customers could enjoy the cute Palm Pals video content exactly the way we envision it.",
               productList: [{
@@ -1662,7 +1662,7 @@ const layerPopupData = [
           {
               name: "LG All-In-One LED",
               id: "tab-3-5",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_5.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_5.jpg",
               title: "Experience the convenience of LG's LED All-in-One LAPA series",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -1712,7 +1712,7 @@ const layerPopupData = [
       title: "Drive Thru",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.jpg",
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "product",
@@ -1795,12 +1795,12 @@ const layerPopupData = [
       title: "Meeting Room",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.jpg",
       initialScrollPosition: 31.8, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
         name: "Huddle room",
         id: "tab-5-1",
-        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_1.png",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_1.jpg",
         title: "Where ideas come together",
         description: "Smart displays help teams share ideas, collaborate easily, and stay focused during meetings.",
         productList: [{
@@ -1815,7 +1815,7 @@ const layerPopupData = [
       {
         name: "Board room",
         id: "tab-5-2",
-        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_2.png",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_2.jpg",
         title: "Boardroom brilliance with all-in-one Micro LED",
         description: "Executive-ready visuals and built-in control deliver confident presentations with effortless setup.",
         productList: [{
@@ -1830,7 +1830,7 @@ const layerPopupData = [
       {
         name: "Meeting room",
         id: "tab-5-3",
-        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_3.png",
+        bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_3.jpg",
         title: "Smart collaboration that empowers teamwork",
         description: "Interactive displays and intuitive sharing tools help teams collaborate and work more efficiently.",
         tabImgScroll: true,
@@ -1904,7 +1904,7 @@ const layerPopupData = [
       title: "Control Room",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.jpg",
       initialScrollPosition: 37, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
@@ -1976,7 +1976,7 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       disableScroll: true,
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_7.jpg",
       productList: [{
               type: "product",
               name: "32” EPD",
@@ -2030,7 +2030,7 @@ const layerPopupData = [
       title: "Learning Zone",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.jpg",
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "product",
@@ -2106,7 +2106,7 @@ const layerPopupData = [
       title: "Hotel",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.jpg",
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
@@ -2197,12 +2197,12 @@ const layerPopupData = [
       title: "LED Tech Zone",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.jpg",
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG MAGNIT 1",
               id: "tab-10-1",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_1.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_1.jpg",
               title: "Integrating hardware and software innovations",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -2217,7 +2217,7 @@ const layerPopupData = [
           {
               name: "LG MAGNIT 2",
               id: "tab-10-2",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_2.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_2.jpg",
               title: "Integrating hardware and software innovations",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -2232,7 +2232,7 @@ const layerPopupData = [
           {
               name: "Virtual production",
               id: "tab-10-3",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_3.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_3.jpg",
               title: "Integrating hardware and software innovations",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -2268,7 +2268,7 @@ const layerPopupData = [
           {
               name: "Indoor LED",
               id: "tab-10-4",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_4.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_4.jpg",
               title: "Integrating hardware and software innovations",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -2311,7 +2311,7 @@ const layerPopupData = [
           {
               name: "Virtual production",
               id: "tab-10-5",
-              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_5.png",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_5.jpg",
               title: "Integrating hardware and software innovations",
               description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
               productList: [{
@@ -3844,12 +3844,12 @@ async function init() {
         "highlights"
     ],
       navigationTooltips: [
-          "Home",
-          "LED media art",
-          "Booth map",
-          "K-Culture Shop",
-          "LED Tech Zone",
-          "Highlight",
+          "ISE 2026",
+          "Key Attractor",
+          "Products & Solutions",
+          "K-brands collaboration",
+          "Unveiled LED Technology",
+          "Highlights",
       ],
       showActiveTooltip: true,
       scrollOverflow: true, // 콘텐츠가 넘칠 때 섹션 내부 스크롤 활성화

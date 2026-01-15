@@ -229,6 +229,9 @@
             color: $white;
             max-width: rem(152);
             margin-bottom: rem(10);
+            &.text-long {
+              line-height: 0.9;
+            }
             span {
               display: none;
               font-family: $font-headline;
