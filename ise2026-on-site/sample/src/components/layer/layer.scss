@@ -179,7 +179,7 @@ body.layer-open {
           }
           .layer-nav-tabs,
           .layer-nav-tabs-controller {
-            max-width: rem(424);
+            max-width: rem(300);
             margin: 0 auto;
           }
           .layer-nav-tabs-controller {
@@ -1034,7 +1034,13 @@ body.layer-open {
             width: rem(20);
             height: rem(20);
             @include tablet {
+              width: rem(12);
+              height: rem(12);
               background: url('/theme/rbFront/img/w/ise/ise2026/ic_soon.svg') no-repeat center center / cover;
+            }
+            @include desktop {
+              width: rem(20);
+              height: rem(20);
             }
           }
         }
@@ -1612,8 +1618,7 @@ body.layer-open {
             &:hover,
             &:active {
               border-color: $primary;
-              background-color: $primary;
-              color: $white;
+              color: $primary;
             }
           }
         }

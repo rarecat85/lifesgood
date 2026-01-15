@@ -54,8 +54,8 @@
       }
       .link-btn {
         position: absolute;
-        top: rem(12);
-        left: rem(10);
+        top: rem(20);
+        left: rem(20);
         @include tablet {
           top: rem(18);
           left: rem(18);
@@ -377,8 +377,8 @@
     }
     .swiper-pagination {
       width: auto;
-      top: rem(14);
-      right: rem(14);
+      top: rem(20);
+      right: rem(20);
       left: inherit;
       bottom: inherit;
       z-index: 2;

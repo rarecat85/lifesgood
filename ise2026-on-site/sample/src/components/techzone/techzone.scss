@@ -391,10 +391,10 @@
         &-txt {
           padding: rem(16) rem(20) rem(12);
           @include tablet {
-            padding: rem(7) rem(9) rem(3) rem(24);
+            padding: rem(9) rem(24) rem(12);
           }
           @include desktop {
-            padding: rem(21) rem(18) rem(12) rem(30);
+            padding: rem(20) rem(18) rem(25) rem(30);
           }
           .news-item-title {
             font-family: $font-headline;

@@ -1021,12 +1021,13 @@ function handleCultureSlide() {
         speed: 500,
         loop:true,
         loopedSlides: 5, 
+        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }, 
         navigation: {
           nextEl: ".culture .content-slide .slide-next",
           prevEl: ".culture .content-slide .slide-prev",
         },
       };
-   
+  
       // 태블릿 이상: fade 효과 + thumbs로 연결
       if (!isMobile) {
         contentSwiperOptions.effect = "fade";
@@ -1396,7 +1397,7 @@ const layerPopupData = [
 
   // Booth 2: LG Business cloud solutions
   {
-      title: "LG Business cloud solutions",
+      title: "LG Business Cloud Solutions",
       subtitle: "",
       description: "Experience customized cloud solutions designed for every business area!",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
@@ -1491,7 +1492,7 @@ const layerPopupData = [
 
   // Booth 3: K-Culture shop
   {
-      title: "K-Culture shop",
+      title: "K-Culture Shop",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
@@ -1708,7 +1709,7 @@ const layerPopupData = [
 
   // Booth 4: Drive-thru
   {
-      title: "Drive-thru",
+      title: "Drive Thru",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_4.png",
@@ -1791,7 +1792,7 @@ const layerPopupData = [
 
   // Booth 5: Meeting room
   {
-      title: "Meeting room",
+      title: "Meeting Room",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.png",
@@ -1900,7 +1901,7 @@ const layerPopupData = [
 
   // Booth 6: Control room
   {
-      title: "Control room",
+      title: "Control Room",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_6.png",
@@ -1971,7 +1972,7 @@ const layerPopupData = [
 
   // Booth 7: E-Paper display
   {
-      title: "E-Paper display",
+      title: "E-Paper Display",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       disableScroll: true,
@@ -2026,7 +2027,7 @@ const layerPopupData = [
 
   // Booth 8: Learning zone
   {
-      title: "Learning zone",
+      title: "Learning Zone",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_8.png",
@@ -2102,7 +2103,7 @@ const layerPopupData = [
 
   // Booth 9: Hotel zone
   {
-      title: "Hotel zone",
+      title: "Hotel",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_9.png",
@@ -2193,7 +2194,7 @@ const layerPopupData = [
 
   // Booth 10: LED tech zone
   {
-      title: "LED tech zone",
+      title: "LED Tech Zone",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10.png",
@@ -3846,7 +3847,7 @@ async function init() {
           "Home",
           "LED media art",
           "Booth map",
-          "K-Culture shop",
+          "K-Culture Shop",
           "LED Tech Zone",
           "Highlight",
       ],
