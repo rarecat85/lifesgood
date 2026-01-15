@@ -584,7 +584,7 @@ function handleBoothSlide() {
   ];
 
   // Swiper 초기화 함수
-  function initBoothSwiper() {
+  async function initBoothSwiper() {
       const currentWidth = window.innerWidth;
       let currentState = "mobile";
 
@@ -620,8 +620,9 @@ function handleBoothSlide() {
           boothSlideSwiper = null;
 
           // DOM 정리 후 새 Swiper 생성
-          setTimeout(() => {
-              createSwiper(currentState, currentSlideIndex);
+          setTimeout(async () => {
+              // Swiper 초기화 완료를 기다림
+              await createSwiper(currentState, currentSlideIndex);
 
               // Swiper 생성 완료 후 transition 복원하고 부드럽게 표시
               requestAnimationFrame(() => {
@@ -632,148 +633,158 @@ function handleBoothSlide() {
           }, 50);
       } else {
           // 초기 생성 시에는 바로 생성
-          createSwiper(currentState, 0);
+          await createSwiper(currentState, 0);
           isTransitioning = false;
       }
 
       boothBreakpointState = currentState;
   }
 
-  // Swiper 생성 함수
+  // Swiper 생성 함수 (Promise 반환)
   function createSwiper(state, initialSlide = 0) {
-      let swiperConfig = {
-          loop: true,
-          speed: 500,
-          initialSlide: initialSlide,
-          navigation: {
-              nextEl: ".booth-map .slide-bx .next-btn",
-              prevEl: ".booth-map .slide-bx .prev-btn",
-          },
-          pagination: {
-              el: ".booth-map .slide-bx .swiper-pagination",
-              type: "bullets",
-              clickable: true,
-              renderBullet: function(index, className) {
-                  // 번호: 첫 번째는 'H', 나머지는 모바일에서는 '1', '2', '3', 데스크탑에서는 '01', '02', '03' 형식
-                  const isMobile = window.matchMedia("(max-width: 767px)").matches;
-                  const bulletNum =
-                      index === 0 ?
-                      "H" :
-                      isMobile ?
-                      String(index) :
-                      String(index).padStart(2, "0");
-                  // 커스텀 텍스트
-                  const bulletText = boothSlideTexts[index] || "";
-                  // 스크린 리더를 위한 plain text 버전 (HTML 태그 제거)
-                  const bulletTextPlain = bulletText.replace(/<br\s*\/?>/gi, " ");
-                  // ARIA label 생성
-                  const ariaLabel = bulletTextPlain + "로 이동";
-
-                  // 접근성을 고려한 마크업 반환
-                  return (
-                      '<span class="' +
-                      className +
-                      '" role="button" aria-label="' +
-                      ariaLabel +
-                      '" tabindex="0">' +
-                      '<span class="bullet-wrap" aria-hidden="true">' +
-                      '<span class="bullet-text">' +
-                      bulletText +
-                      "</span>" +
-                      '<span class="bullet-num">' +
-                      bulletNum +
-                      "</span>" +
-                      "</span>" +
-                      "</span>"
-                  );
+      return new Promise((resolve) => {
+          let swiperConfig = {
+              loop: true,
+              speed: 500,
+              initialSlide: initialSlide,
+              navigation: {
+                  nextEl: ".booth-map .slide-bx .next-btn",
+                  prevEl: ".booth-map .slide-bx .prev-btn",
               },
-          },
-          on: {
-              init: function() {
-                  if (this.pagination && this.pagination.el) {
-                      this.pagination.el.style.width = "";
-                  }
-                  // 초기 로드 시에도 첫 번째 bullet에 aria-current 설정
-                  setTimeout(() => {
-                      const initialActiveBullet = document.querySelector(
-                          ".booth-map .slide-bx .swiper-pagination-bullet-active"
-                      );
-                      if (initialActiveBullet) {
-                          initialActiveBullet.setAttribute("aria-current", "true");
-                      }
-                  }, 0);
+              pagination: {
+                  el: ".booth-map .slide-bx .swiper-pagination",
+                  type: "bullets",
+                  clickable: true,
+                  renderBullet: function(index, className) {
+                      // 번호: 첫 번째는 'H', 나머지는 모바일에서는 '1', '2', '3', 데스크탑에서는 '01', '02', '03' 형식
+                      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+                      const bulletNum =
+                          index === 0 ?
+                          "H" :
+                          isMobile ?
+                          String(index) :
+                          String(index).padStart(2, "0");
+                      // 커스텀 텍스트
+                      const bulletText = boothSlideTexts[index] || "";
+                      // 스크린 리더를 위한 plain text 버전 (HTML 태그 제거)
+                      const bulletTextPlain = bulletText.replace(/<br\s*\/?>/gi, " ");
+                      // ARIA label 생성
+                      const ariaLabel = bulletTextPlain + "로 이동";
 
-                  // pagination에 이벤트 위임 (bullet 클릭 시 menu 닫기)
-                  const pagination = document.querySelector(
-                      ".booth-map .swiper-pagination"
-                  );
-                  if (pagination && !pagination.dataset.eventAttached) {
-                      pagination.addEventListener("click", function(e) {
-                          if (e.target.closest(".swiper-pagination-bullet")) {
-                              const menuBtn = document.querySelector(".booth-map .menu-btn");
-                              if (menuBtn) {
-                                  menuBtn.classList.remove("active");
+                      // 접근성을 고려한 마크업 반환
+                      return (
+                          '<span class="' +
+                          className +
+                          '" role="button" aria-label="' +
+                          ariaLabel +
+                          '" tabindex="0">' +
+                          '<span class="bullet-wrap" aria-hidden="true">' +
+                          '<span class="bullet-text">' +
+                          bulletText +
+                          "</span>" +
+                          '<span class="bullet-num">' +
+                          bulletNum +
+                          "</span>" +
+                          "</span>" +
+                          "</span>"
+                      );
+                  },
+              },
+              on: {
+                  init: function() {
+                      if (this.pagination && this.pagination.el) {
+                          this.pagination.el.style.width = "";
+                      }
+                      // 초기 로드 시에도 첫 번째 bullet에 aria-current 설정
+                      // requestAnimationFrame 2회 중첩으로 pagination 초기화 완료 보장
+                      requestAnimationFrame(() => {
+                          requestAnimationFrame(() => {
+                              const initialActiveBullet = document.querySelector(
+                                  ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                              );
+                              if (initialActiveBullet) {
+                                  initialActiveBullet.setAttribute("aria-current", "true");
                               }
-                              pagination.classList.remove("active");
+                              // 초기화 완료 시 Promise resolve
+                              resolve();
+                          });
+                      });
+
+                      // pagination에 이벤트 위임 (bullet 클릭 시 menu 닫기)
+                      const pagination = document.querySelector(
+                          ".booth-map .swiper-pagination"
+                      );
+                      if (pagination && !pagination.dataset.eventAttached) {
+                          pagination.addEventListener("click", function(e) {
+                              if (e.target.closest(".swiper-pagination-bullet")) {
+                                  const menuBtn = document.querySelector(".booth-map .menu-btn");
+                                  if (menuBtn) {
+                                      menuBtn.classList.remove("active");
+                                  }
+                                  pagination.classList.remove("active");
+                              }
+                          });
+                          pagination.dataset.eventAttached = "true";
+                      }
+                  },
+                  slideChange: function() {
+                      if (this.pagination && this.pagination.el) {
+                          this.pagination.el.style.width = "";
+                      }
+                      // 슬라이드 변경 시 aria-current 속성 업데이트
+                      // requestAnimationFrame으로 DOM 업데이트 완료 보장
+                      requestAnimationFrame(() => {
+                          const allBullets = document.querySelectorAll(
+                              ".booth-map .slide-bx .swiper-pagination-bullet"
+                          );
+                          allBullets.forEach((bullet) => {
+                              bullet.removeAttribute("aria-current");
+                          });
+
+                          const activeBullet = document.querySelector(
+                              ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                          );
+                          if (activeBullet) {
+                              activeBullet.setAttribute("aria-current", "true");
                           }
                       });
-                      pagination.dataset.eventAttached = "true";
-                  }
-              },
-              slideChange: function() {
-                  if (this.pagination && this.pagination.el) {
-                      this.pagination.el.style.width = "";
-                  }
-                  // 슬라이드 변경 시 aria-current 속성 업데이트
-                  const allBullets = document.querySelectorAll(
-                      ".booth-map .slide-bx .swiper-pagination-bullet"
-                  );
-                  allBullets.forEach((bullet) => {
-                      bullet.removeAttribute("aria-current");
-                  });
-
-                  const activeBullet = document.querySelector(
-                      ".booth-map .slide-bx .swiper-pagination-bullet-active"
-                  );
-                  if (activeBullet) {
-                      activeBullet.setAttribute("aria-current", "true");
-                  }
-              },
-              resize: function() {
-                  if (this.pagination && this.pagination.el) {
-                      this.pagination.el.style.width = "";
-                  }
-              },
-          },
-      };
-
-      // 화면 크기에 따라 다른 설정 적용
-      if (state === "desktop") {
-          // 1281px 이상: creative effect
-          swiperConfig.slidesPerView = 1;
-          swiperConfig.spaceBetween = 30;
-          swiperConfig.effect = "creative";
-          swiperConfig.grabCursor = true;
-          swiperConfig.creativeEffect = {
-              prev: {
-                  shadow: true,
-                  translate: [0, 0, -400],
-              },
-              next: {
-                  translate: ["100%", 0, 0],
+                  },
+                  resize: function() {
+                      if (this.pagination && this.pagination.el) {
+                          this.pagination.el.style.width = "";
+                      }
+                  },
               },
           };
-      } else if (state === "tablet") {
-          // 768px~1279px: 태블릿용 설정
-          swiperConfig.slidesPerView = 3;
-          swiperConfig.spaceBetween = 8;
-      } else {
-          // 768px 미만: 모바일용 설정
-          swiperConfig.slidesPerView = "auto";
-          swiperConfig.spaceBetween = 10;
-      }
 
-        boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
+          // 화면 크기에 따라 다른 설정 적용
+          if (state === "desktop") {
+              // 1281px 이상: creative effect
+              swiperConfig.slidesPerView = 1;
+              swiperConfig.spaceBetween = 30;
+              swiperConfig.effect = "creative";
+              swiperConfig.grabCursor = true;
+              swiperConfig.creativeEffect = {
+                  prev: {
+                      shadow: true,
+                      translate: [0, 0, -400],
+                  },
+                  next: {
+                      translate: ["100%", 0, 0],
+                  },
+              };
+          } else if (state === "tablet") {
+              // 768px~1279px: 태블릿용 설정
+              swiperConfig.slidesPerView = 3;
+              swiperConfig.spaceBetween = 8;
+          } else {
+              // 768px 미만: 모바일용 설정
+              swiperConfig.slidesPerView = "auto";
+              swiperConfig.spaceBetween = 10;
+          }
+
+          boothSlideSwiper = new Swiper(boothSlide, swiperConfig);
+      });
     }
 
     // 분기점 체크 변수
@@ -790,12 +801,15 @@ function handleBoothSlide() {
           boothSlideSwiper.pagination.init();
 
           // aria-current 속성 재설정
-          const activeBullet = document.querySelector(
-              ".booth-map .slide-bx .swiper-pagination-bullet-active"
-          );
-          if (activeBullet) {
-                activeBullet.setAttribute("aria-current", "true");
-            }
+          // requestAnimationFrame으로 pagination 업데이트가 DOM에 반영될 때까지 대기
+          requestAnimationFrame(() => {
+              const activeBullet = document.querySelector(
+                  ".booth-map .slide-bx .swiper-pagination-bullet-active"
+              );
+              if (activeBullet) {
+                    activeBullet.setAttribute("aria-current", "true");
+                }
+          });
         }
     }, DEBOUNCE_DELAY_MEDIUM);
 
@@ -844,12 +858,15 @@ function handleBoothSlide() {
           boothSlideSwiper.pagination.init();
 
           // aria-current 속성 재설정
-          const activeBullet = document.querySelector(
-              ".booth-map .slide-bx .swiper-pagination-bullet-active"
-          );
-          if (activeBullet) {
-              activeBullet.setAttribute("aria-current", "true");
-          }
+          // requestAnimationFrame으로 pagination 업데이트가 DOM에 반영될 때까지 대기
+          requestAnimationFrame(() => {
+              const activeBullet = document.querySelector(
+                  ".booth-map .slide-bx .swiper-pagination-bullet-active"
+              );
+              if (activeBullet) {
+                  activeBullet.setAttribute("aria-current", "true");
+              }
+          });
       }
   };
 
