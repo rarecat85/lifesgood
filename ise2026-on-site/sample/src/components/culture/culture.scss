@@ -10,18 +10,18 @@
   @include desktop {
     padding: 0;
   }
-  .inner {
-    @include desktop {
-      padding: rem(158) rem(30) rem(64);
-    }
-  }
   .section-tit-bx {
-    margin-bottom: rem(20);
+    margin-bottom: rem(21);
     @include tablet {
       margin-bottom: rem(45);
     }
     @include desktop {
       margin-bottom: rem(60);
+    }
+  }
+  .inner {
+    @include desktop {
+      padding-top: rem(158);
     }
   }
   .slide-bx {
@@ -33,6 +33,7 @@
     }
     @include desktop {
       max-width: rem(1260);
+      margin-bottom: rem(144);
     }
     .btn-slide {
       margin-bottom: rem(8);

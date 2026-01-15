@@ -1606,6 +1606,7 @@ body.layer-open {
           }
         }
         .close-btn {
+          color: $black;
           border-color: $black;
           @include tablet {
             &:hover,

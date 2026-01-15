@@ -78,7 +78,7 @@
     .title {
       font-family: "LG EI Headline";
       @include font(30,110%,700);
-      margin-bottom: rem(20);
+      margin-bottom: rem(10);
       text-wrap: balance;
     }
     .text {
@@ -89,7 +89,7 @@
       text-align: center;
       .title {
         font-size: rem(36);
-        margin-bottom: rem(20);
+        margin-bottom: rem(10);
       }
       .text {
         font-size: rem(16);

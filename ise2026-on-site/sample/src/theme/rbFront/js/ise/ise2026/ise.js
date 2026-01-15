@@ -1400,7 +1400,7 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience customized cloud solutions designed for every business area!",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_2.png",
-      initialScrollPosition: 80, // 0-100 사이의 퍼센티지 (50 = 중앙)
+      initialScrollPosition: 50, // 0-100 사이의 퍼센티지 (50 = 중앙)
       productList: [{
               type: "solution",
               name: "LG ConnectedCare",
@@ -1495,6 +1495,7 @@ const layerPopupData = [
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.png",
+      initialScrollPosition: 52, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG Connected Care",
               id: "tab-3-1",
