@@ -1346,7 +1346,7 @@ const layerPopupData = [
       title: "Key Attractor",
       subtitle: "(Brand Facade)",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
-      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.png",
+      defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.jpg",
       productList: [{
               type: "product",
               name: "Indoor LED",
