@@ -416,11 +416,12 @@
         height: rem(20);
         border: 1px solid transparent;
         border-radius: 50%;
-        background-size: rem(8) rem(16);
+        background-size: rem(5) rem(10);
       }
       @include desktop {
         width: rem(32);
         height: rem(32);
+        background-size: rem(8) rem(16);
       }
       &:hover {
         border-color: $white;
@@ -432,7 +433,6 @@
       @include tablet {
         left: rem(18);
         background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_prev.svg");
-        background-position: calc(50% - rem(2)) center;
       }
       @include desktop {
         left: rem(30);
@@ -444,7 +444,6 @@
       @include tablet {
         right: rem(18);
         background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_next.svg");
-        background-position: calc(50% + rem(2)) center;
       }
       @include desktop {
         right: rem(30);

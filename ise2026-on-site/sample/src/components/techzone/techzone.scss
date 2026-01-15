@@ -447,11 +447,12 @@
           height: rem(20);
           border: 1px solid transparent;
           border-radius: 50%;
-          background-size: rem(8) rem(16);
+          background-size: rem(5) rem(10);
         }
         @include desktop {
           opacity: 0;
           visibility: hidden;
+          background-size: rem(8) rem(16);
         }
         &:hover {
           border-color: $white;

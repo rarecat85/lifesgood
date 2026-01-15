@@ -1017,8 +1017,8 @@ body.layer-open {
           content: "";
           display: inline-block;
           flex-shrink: 0;
-          width: rem(12);
-          height: rem(12);
+          width: rem(14);
+          height: rem(14);
           background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink.svg') no-repeat center center / cover;
           @include tablet {
             width: rem(8);
@@ -1029,10 +1029,24 @@ body.layer-open {
             height: rem(12);
           }
         }
+        &.is-coming-soon {
+          &::after {
+            width: rem(20);
+            height: rem(20);
+            @include tablet {
+              background: url('/theme/rbFront/img/w/ise/ise2026/ic_soon.svg') no-repeat center center / cover;
+            }
+          }
+        }
         &:not([class*="type"]) {
           @media screen and (max-width: 768px) {
             &::after {
               background: url('/theme/rbFront/img/w/ise/ise2026/ic_outlink_w.svg') no-repeat center center / cover;
+            }
+            &.is-coming-soon {
+              &::after {
+                background: url('/theme/rbFront/img/w/ise/ise2026/ic_soon_w.svg') no-repeat center center / cover;
+              }
             }
             .product-info {
               .product-name {
