@@ -1,17 +1,6 @@
 @use "../../assets/scss/mixin"as *;
 @use "../../assets/scss/variable"as *;
 
-header {
-  position: fixed;
-  width: 100%;
-  height: rem(50);
-  background: #fff;
-  z-index: 100;
-  @include tablet {
-    height: rem(88);
-  }
-}
-
 .kv {
   background-color: $black;
   color: $white;  

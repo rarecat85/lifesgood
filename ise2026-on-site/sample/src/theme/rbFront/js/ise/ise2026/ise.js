@@ -1016,7 +1016,7 @@ function handleCultureSlide() {
       btnSwiper = new Swiper(btnSlide, {
           slidesPerView: 1,
           spaceBetween: 8,
-          loop:true,
+          // loop:true,
           loopedSlides: 5,
           centeredSlides: true,
           breakpoints: {
@@ -1036,8 +1036,8 @@ function handleCultureSlide() {
         spaceBetween: isMobile ? 10 : 0,
         centeredSlides: true,
         speed: 500,
-        loop:true,
-        loopedSlides: 5, 
+        // loop:true,
+        // loopedSlides: 5, 
         autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }, 
         navigation: {
           nextEl: ".culture .content-slide .slide-next",
@@ -1518,8 +1518,8 @@ const layerPopupData = [
               name: "LG Connected Care",
               id: "tab-3-1",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_1.jpg",
-              title: "Display remote management solution",
-              description: "It is important to have a device control solution that manages signage across multiple stores.",
+              title: "Display Remote Management Solution",
+              description: "LG ConnectedCare is a cloud-based solution that remotely monitors and manages LG signage to ensure optimal performance anytime, anywhere.",
               productList: [{
                       type: "solution",
                       name: "LG ConnectedCare",
@@ -1555,8 +1555,8 @@ const layerPopupData = [
               name: "LG SuperSign Cloud",
               id: "tab-3-2",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_2.jpg",
-              title: "Cloud-Based Content Management Solution",
-              description: "We're looking for a way to deliver a seamless omnichannel experience that strengthens customer relationships and drives growth through personalized offers.",
+              title: "Amplify Ambience with Cloud-Based Content Management Solution",
+              description: "LG SuperSign Cloud is a cloud-based CMS that simplifies remote control and content delivery for digital signage—anytime, anywhere.",
               productList: [{
                       type: "solution",
                       name: "LG SuperSign Cloud",
@@ -1600,7 +1600,7 @@ const layerPopupData = [
               id: "tab-3-3",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_3.jpg",
               title: "Signage Display Advertising Platform",
-              description: "We operate stores in high-traffic areas,so launching an ad business for additional revenue would be a great opportunity.",
+              description: "LG DOOH Ads helps screen owners turn everyday displays into new revenue opportunities.",
               productList: [{
                       type: "solution",
                       name: "LG DOOH Ads",
@@ -1673,8 +1673,8 @@ const layerPopupData = [
               name: "LG All-In-One LED",
               id: "tab-3-5",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_5.jpg",
-              title: "Experience the convenience of LG's LED All-in-One LAPA series",
-              description: "This all-in-one package includes an embedded controller and built-in speaker, making setup a breeze.",
+              title: "An all-in-one LED display with webOS and built-in speakers.",
+              description: "The LG LED All-in-One LAPA series delivers a stunning 163- or 136-inch display with built-in control and sound—designed for fast, hassle-free installation.",
               productList: [{
                   type: "product",
                   name: "All-in-One LED",

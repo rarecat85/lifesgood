@@ -175,6 +175,7 @@
             background-position: center center;
           }
           span {
+            font-family: $font-headline;
             display: none;
           }
           @include tablet {
