@@ -406,7 +406,6 @@ body.layer-open {
         .layer-content-text {
           gap: rem(16);
         }
-        
         .layer-product-list {
           width: min(100%, rem(930));
           padding: rem(16) rem(28) rem(28);
@@ -422,6 +421,14 @@ body.layer-open {
           @include desktop {
             width: min(100%, rem(930));
             padding: rem(16) rem(28) rem(28);
+          }
+        }
+        .layer-content-title {
+          @include tablet {
+            margin-bottom: rem(25);
+          }
+          @include desktop {
+            margin-bottom: rem(35);
           }
         }
       }
@@ -441,6 +448,11 @@ body.layer-open {
         .layer-content-title-wrap {
           @include tablet {
             padding-left: rem(15);
+          }
+          @include tablet {
+            .layer-content-title {
+              margin-bottom: rem(14);
+            }
           }
         }
         .layer-content-text {
@@ -556,7 +568,6 @@ body.layer-open {
         }
         @include tablet {
           font-size: rem(28);
-          margin-bottom: rem(19);
           max-width: unset;
           &.active {
             transform: translateY(rem(-57));
@@ -564,7 +575,6 @@ body.layer-open {
         }
         @include desktop {
           font-size: rem(46);
-          margin-bottom: rem(35);
         }
         .home-btn {
           display: none; // 기본적으로 숨김.
@@ -981,6 +991,7 @@ body.layer-open {
             transform: translateY(-50%);
             top: 50%;
             cursor: pointer;
+            transition: opacity 0.3s;
             @include tablet {
               display: block;
               width: rem(10);
@@ -989,6 +1000,10 @@ body.layer-open {
             @include desktop {
               width: rem(15);
               height: rem(26);
+            }
+            &.swiper-button-disabled {
+              opacity: 0;
+              visibility: hidden;
             }
           }
           .slide-prev {

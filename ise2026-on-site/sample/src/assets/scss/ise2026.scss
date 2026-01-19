@@ -9,7 +9,9 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0 0);
 }
-
+.fp-watermark {
+  display: none;
+}
 .ise-container {
   width:100%;
   margin:0 auto;
@@ -17,7 +19,9 @@
   
   @media screen and (max-width: $pc) {
     .fp-is-overflow {
-      min-height: auto !important;
+      &:not(.kv) {
+        min-height: auto !important;
+      }
     }
     .fp-overflow {
       overflow-y: unset;

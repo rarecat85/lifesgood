@@ -1016,7 +1016,6 @@ function handleCultureSlide() {
       btnSwiper = new Swiper(btnSlide, {
           slidesPerView: 1,
           spaceBetween: 8,
-          // loop:true,
           loopedSlides: 5,
           centeredSlides: true,
           breakpoints: {
@@ -1036,8 +1035,6 @@ function handleCultureSlide() {
         spaceBetween: isMobile ? 10 : 0,
         centeredSlides: true,
         speed: 500,
-        // loop:true,
-        // loopedSlides: 5, 
         autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }, 
         navigation: {
           nextEl: ".culture .content-slide .slide-next",
@@ -3222,7 +3219,6 @@ function initProductSwiper() {
       const swiper = new Swiper(slider, {
           slidesPerView: 1,
           spaceBetween: 16,
-          loop: slideCount > 3,
           navigation: {
               nextEl: nextBtn,
               prevEl: prevBtn,
@@ -3828,7 +3824,7 @@ async function init() {
 
   new fullpage(".ise-container", {
       licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
-      scrollingSpeed: 1200,
+      scrollingSpeed: 1400,
       easingcss3: "cubic-bezier(0.645, 0.045, 0.355, 1.000)",
       navigation: true,
       anchors: [

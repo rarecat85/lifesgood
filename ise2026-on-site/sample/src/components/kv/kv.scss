@@ -6,6 +6,18 @@
   color: $white;  
   position: relative;
   padding: rem(110) 0 rem(50);
+  .fp-overflow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100% - rem(160));
+    @include tablet {
+      min-height: calc(100% - rem(171));
+    } 
+    @include desktop {
+      min-height: 100vh;
+    }
+  }
   @include tablet {
     padding: rem(124) 0 rem(47);
   }
