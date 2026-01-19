@@ -541,17 +541,21 @@ function handleFooterNavClick() {
           const targetSection = sectionMap.get(sectionClass);
 
           if (targetSection) {
-              // fullpage API가 존재하고 반응형 모드가 아닐 때
-              if (
-                  typeof fullpage_api !== "undefined" &&
-                  !fullpage_api.test.isResponsive
-              ) {
+              // 화면 너비 기준으로 데스크톱/모바일 구분
+              const isDesktop = window.innerWidth >= BREAKPOINT_DESKTOP; // 1281px
+              
+              if (isDesktop && typeof fullpage_api !== "undefined") {
+                  // 데스크톱: fullpage.js 사용
                   fullpage_api.moveTo(targetSection.index);
               } else {
-                  // 일반 스크롤
-                  targetSection.element.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
+                  // 모바일/태블릿: 일반 스크롤 (페이지 끝 고려)
+                  const sectionTop = targetSection.element.getBoundingClientRect().top + window.pageYOffset;
+                  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                  const scrollPosition = Math.min(sectionTop, maxScroll);
+                  
+                  window.scrollTo({
+                      top: scrollPosition,
+                      behavior: "smooth"
                   });
               }
           }
