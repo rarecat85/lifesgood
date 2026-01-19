@@ -2712,7 +2712,7 @@ function renderLayerContent(index) {
           >
             ${tab.name}
           </button>
-            <div class="tab-detail">
+            <div class="tab-detail tab-detail-${index + 1}">
               <div class="tab-detail-title-wrap">
                 ${!isMobileDevice ? `<span class="tab-detail-subtitle">${tab.name}</span>` : ''}
                 <h4 class="tab-detail-title">${tab.title || ""}</h4>

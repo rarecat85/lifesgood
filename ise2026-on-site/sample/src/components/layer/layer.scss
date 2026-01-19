@@ -673,6 +673,12 @@ body.layer-open {
           display: none;
           padding: 0 0 rem(10);
           // 모바일: 아코디언 애니메이션
+
+          &.tab-detail-10 {
+            .tab-detail-subtitle {
+              display: none;
+            }
+          }
           @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
