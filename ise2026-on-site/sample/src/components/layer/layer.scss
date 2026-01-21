@@ -286,7 +286,7 @@ body.layer-open {
         transition: all 0.3s;
         &::after {
           content: "";
-          display: inline-block;
+          display: none;
           width: rem(9);
           height: rem(9);
           background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_close_b.svg');
@@ -346,6 +346,13 @@ body.layer-open {
           border-radius: rem(10);
           position: absolute;
           z-index: 1002;
+          &::after {
+            display: block;
+            width: rem(6);
+            height: rem(6);
+            top: rem(5);
+            right: rem(5);
+          }
           &::before {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
             width: rem(16);
@@ -376,6 +383,12 @@ body.layer-open {
           right: rem(36);
           padding: rem(12.5) rem(28.5);
           border-radius: rem(20);
+          &::after {
+            width: rem(9);
+            height: rem(9);
+            top: rem(12);
+            right: rem(12);
+          }
           &::before  {
             width: rem(26);
             height: rem(22);

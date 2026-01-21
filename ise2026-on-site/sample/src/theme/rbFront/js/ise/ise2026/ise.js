@@ -582,9 +582,9 @@ function handleBoothSlide() {
       "Hall",
       "Key<br>Attractor", 
       "LG Business Cloud <br>& Software Solution",
-      "K-Culture<br>Shop", 
+      "K-Culture<br>Stores", 
       "Drive <br class='pc-only'>Thru",
-      "Meeting<br>Room",
+      "Meeting<br>Rooms",
       "Control<br>Room",
       "E-Paper<br>Display",
       "Learning<br>Zone",
@@ -1515,7 +1515,7 @@ const layerPopupData = [
 
   // Booth 3: K-Culture shop
   {
-      title: "K-Culture Shop",
+      title: "K-Culture Stores",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3.jpg",
@@ -1532,7 +1532,7 @@ const layerPopupData = [
                       name: "LG ConnectedCare",
                       description: "Remote Management Solution",
                       bgClass: "type01",
-                      link: "httpshttps://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
+                      link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
                       image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
                   },
                   {
@@ -1541,13 +1541,6 @@ const layerPopupData = [
                       code: "65UH5Q",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_1.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Transparent OLED Touch Signage",
-                      code: "30EW5TP-A",
-                      link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/30EW5TP-A",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_1_2.png",
                   },
                   {
                       type: "product",
@@ -1577,7 +1570,7 @@ const layerPopupData = [
                       type: "product",
                       name: "4K UHD Signage",
                       code: "65UH5Q",
-                      link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UP5Q-E",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png",
                   },
                   {
@@ -1593,13 +1586,6 @@ const layerPopupData = [
                       code: "55EW5P-M",
                       link: "https://www.lg-informationdisplay.com/product/oled-signage/transparent-oled/55EW5P-M",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_3.png",
-                  },,
-                  {
-                      type: "product",
-                      name: "Window Facing Signage",
-                      code: "75XS4P",
-                      link: "https://www.lg-informationdisplay.com/product/digital-signage/high-brightness/window-facing/75XS4P",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_4.png",
                   },
               ],
           },
@@ -1628,7 +1614,7 @@ const layerPopupData = [
                   {
                       type: "product",
                       name: "Stretch Signage",
-                      code: "27KC3P-M",
+                      code: "37BH7N",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_2.png",
                   },
@@ -1777,13 +1763,6 @@ const layerPopupData = [
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UL5Q-E",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
           },
-          {
-              type: "product",
-              name: "Outdoor LED Signage",
-              code: "GSPC029",
-              link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPC029",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
-          },
       ],
       mediaGallery: [{
               type: "youtube",
@@ -1869,7 +1848,7 @@ const layerPopupData = [
         productList: [{
                 type: "product",
                 name: "4K UHD Signage",
-                code: "65UH5Q-E",
+                code: "65UH5Q",
                 link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                 image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_1.png",
             },
@@ -1883,7 +1862,7 @@ const layerPopupData = [
               {
                 type: "product",
                 name: "4K UHD Signage",
-                code: "55UH5Q-E",
+                code: "55UH5Q",
                 link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
                 image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_3_3.png",
             },
@@ -2073,7 +2052,7 @@ const layerPopupData = [
           {
               type: "product",
               name: "4K UHD Signage",
-              code: "65UH5Q-E",
+              code: "65UH5Q",
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_2.png",
           },
