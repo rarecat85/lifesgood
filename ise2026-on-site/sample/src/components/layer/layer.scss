@@ -21,7 +21,7 @@ body.layer-open {
   left: 0;
   opacity: 0;
   visibility: hidden;
-  z-index: 1000;
+  z-index: 98;
   box-sizing: border-box;
   transition: opacity 0.3s;
   overflow: auto;
@@ -299,6 +299,22 @@ body.layer-open {
           &::before {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
           }
+          &:hover {
+            border-color: $primary;
+            background-color: $primary;
+            color: $white;
+            &::before {
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+            }
+          }
+        }
+        &:hover {
+          border-color: $primary;
+          background-color: $primary;
+          color: $white;
+          // &::before {
+          //   background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
+          // }
         }
         @include tablet {
           width: auto;
@@ -308,7 +324,7 @@ body.layer-open {
           top: rem(74);
           right: rem(24);
           padding: rem(7.75) rem(18.75);
-          border: rem(1) solid #5C5C5C;
+          border: rem(1) solid $white;
           background-color: transparent;
           border-radius: rem(10);
           position: absolute;
@@ -584,6 +600,7 @@ body.layer-open {
           padding: rem(9) rem(14);
           margin-left: rem(15);
           cursor: pointer;
+          box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
           @include tablet {
             font-size: rem(9);
@@ -598,7 +615,8 @@ body.layer-open {
             margin-left: rem(15);
           }
           &:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: $white;
+            color: $black;
           }
         }
         
@@ -664,7 +682,8 @@ body.layer-open {
               display: none;
             }
             &:hover {
-              background-color: rgba(255, 255, 255, 0.1);
+              background-color: $white;
+              color: $black;
             }
             
             &.active {
@@ -1135,9 +1154,9 @@ body.layer-open {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: rem(12);
-            height: rem(12);
-            @include font(10,1,550,$white);
+            width: rem(18);
+            height: rem(18);
+            @include font(12,1,550,$white);
             text-transform: uppercase;
             position: absolute;
             top: rem(-6);

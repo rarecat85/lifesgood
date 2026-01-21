@@ -9,8 +9,14 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0 0);
 }
+.chatbot {
+  display: none !important;
+}
 .fp-watermark {
   display: none;
+}
+#fp-nav {
+  z-index: 97;
 }
 .ise-container {
   width:100%;
@@ -130,4 +136,15 @@
   //     opacity: 1;
   //   }
   // }
+}
+
+.btn-inquiry {
+  position: fixed;
+  bottom: rem(20);
+  right: rem(20);
+  z-index: 998;
+  img {
+    width: rem(100);
+    height: rem(100);
+  }
 }

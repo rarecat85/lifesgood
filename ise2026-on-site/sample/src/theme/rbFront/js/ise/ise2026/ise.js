@@ -1517,6 +1517,7 @@ const layerPopupData = [
       initialScrollPosition: 52, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG Connected Care",
+              subname: "LG Connected Care",
               id: "tab-3-1",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_1.jpg",
               title: "Display Remote Management Solution",
@@ -1554,6 +1555,7 @@ const layerPopupData = [
           },
           {
               name: "LG SuperSign Cloud",
+              subname: "LG SuperSign Cloud",
               id: "tab-3-2",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_2.jpg",
               title: "Amplify Ambience with Cloud-Based Content Management Solution",
@@ -1598,6 +1600,7 @@ const layerPopupData = [
           },
           {
               name: "LG DOOH Ads",
+              subname: "LG DOOH Ads",
               id: "tab-3-3",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_3.jpg",
               title: "Signage Display Advertising Platform",
@@ -1635,6 +1638,7 @@ const layerPopupData = [
           },
           {
               name: "LG SoundCast",
+              subname: "LG SoundCast",
               id: "tab-3-4",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_4.jpg",
               title: "Synchronized content control for retail displays",
@@ -1672,6 +1676,7 @@ const layerPopupData = [
           },
           {
               name: "LG All-In-One LED",
+              subname: "LG All-In-One LED",
               id: "tab-3-5",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_3_tab_5.jpg",
               title: "An all-in-one LED display with webOS and built-in speakers.",
@@ -1803,13 +1808,14 @@ const layerPopupData = [
 
   // Booth 5: Meeting room
   {
-      title: "Meeting Room",
+      title: "Meeting Rooms",
       subtitle: "",
       description: "Experience a tower-style display powered by fine-pitch LED and T-Mesh—where media art meets premium advertising.",
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5.jpg",
       initialScrollPosition: 31.8, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
-        name: "Huddle room",
+        name: "Huddle rooms",
+        subname: "Huddle rooms",
         id: "tab-5-1",
         bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_1.jpg",
         title: "Spark ideas, inspire collaboration ",
@@ -1824,7 +1830,8 @@ const layerPopupData = [
         ],
       },
       {
-        name: "Board room",
+        name: "Board rooms",
+        subname: "Board rooms",
         id: "tab-5-2",
         bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_2.jpg",
         title: "Excellence with all-in-one micro LED display.",
@@ -1839,7 +1846,8 @@ const layerPopupData = [
         ],
       },
       {
-        name: "Meeting room",
+        name: "Meeting rooms",
+        subname: "Meeting rooms",
         id: "tab-5-3",
         bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_5_tab_3.jpg",
         title: "Smart collaboration that empowers teamwork.",
@@ -2198,6 +2206,7 @@ const layerPopupData = [
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG MAGNIT 1",
+              subname: "LG MAGNIT",
               id: "tab-10-1",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_1.jpg",
               title: "LG MAGNIT",
@@ -2213,6 +2222,7 @@ const layerPopupData = [
           },
           {
               name: "LG MAGNIT 2",
+              subname: "LG MAGNIT",
               id: "tab-10-2",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_2.jpg",
               title: "LG MAGNIT",
@@ -2228,6 +2238,7 @@ const layerPopupData = [
           },
           {
               name: "Virtual production",
+              subname: "Virtual production",
               id: "tab-10-3",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_3.jpg",
               title: "Virtual production",
@@ -2264,6 +2275,7 @@ const layerPopupData = [
           },
           {
               name: "Indoor LED",
+              subname: "Indoor LED",
               id: "tab-10-4",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_4.jpg",
               title: "Indoor LED",
@@ -2307,6 +2319,7 @@ const layerPopupData = [
           },
           {
               name: "Outdoor LED",
+              subname: "Outdoor LED",
               id: "tab-10-5",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_5.jpg",
               title: "Outdoor LED",
@@ -2776,7 +2789,7 @@ function renderLayerContent(index) {
               return `
       <div class="layer-product-list has-tabs closed" data-tab-id="${tab.id}">
         <button type="button" class="close-product-btn">menu</button>
-        <h4 class="product-list-title">${tab.name}</h4>
+        <h4 class="product-list-title">${tab.subname}</h4>
         <div class="product-slider">
           <div class="swiper">
             <div class="swiper-wrapper">
