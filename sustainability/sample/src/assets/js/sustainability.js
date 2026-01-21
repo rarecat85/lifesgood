@@ -1,9 +1,13 @@
 // GSAP Plugin Registration
 gsap.registerPlugin(ScrollTrigger);
 
+// Resize 시 ScrollTrigger 재계산
+window.addEventListener('resize', () => {
+  ScrollTrigger.refresh();
+});
+
 // Keyvisual Scroll Interaction
 const keyvisualSection = document.querySelector('.sustainability-keyvisual');
-const keyvisualTitle = document.querySelector('.keyvisual-title');
 const keyvisualOverlay = document.querySelector('.keyvisual-overlay');
 const keyvisualOverlayTitle = document.querySelector('.keyvisual-overlay-title');
 const keyvisualOverlayDesc = document.querySelector('.keyvisual-overlay-desc');
@@ -19,13 +23,7 @@ if (keyvisualSection) {
     }
   });
 
-  // 1. 기존 타이틀 페이드 아웃
-  tl.to(keyvisualTitle, {
-    opacity: 0,
-    duration: 0.3,
-  });
-
-  // 2. 블러 오버레이 원형으로 확장 + opacity
+  // 1. 블러 오버레이 원형으로 확장 + opacity
   tl.to(keyvisualOverlay, {
     clipPath: 'circle(150% at 50% 50%)',
     opacity: 1,
@@ -33,14 +31,14 @@ if (keyvisualSection) {
     ease: 'power2.out',
   });
 
-  // 3. 새 타이틀 아래에서 위로 등장
+  // 2. 타이틀 아래에서 위로 등장
   tl.to(keyvisualOverlayTitle, {
     opacity: 1,
     y: 0,
     duration: 0.4,
   });
 
-  // 4. 설명 텍스트 아래에서 위로 등장
+  // 3. 설명 텍스트 아래에서 위로 등장
   tl.to(keyvisualOverlayDesc, {
     opacity: 1,
     y: 0,
@@ -50,6 +48,92 @@ if (keyvisualSection) {
   // 초기 상태 설정
   gsap.set(keyvisualOverlayTitle, { y: 50 });
   gsap.set(keyvisualOverlayDesc, { y: 50 });
+}
+
+// Keyvisual Video Play/Pause
+const keyvisualVideo = document.querySelector('.keyvisual-video');
+const keyvisualVideoBtn = document.querySelector('.keyvisual-video-btn');
+
+if (keyvisualVideo && keyvisualVideoBtn) {
+  keyvisualVideoBtn.addEventListener('click', function() {
+    if (keyvisualVideo.paused) {
+      keyvisualVideo.play();
+      keyvisualVideoBtn.classList.remove('is-paused');
+      keyvisualVideoBtn.setAttribute('aria-label', 'Pause video');
+    } else {
+      keyvisualVideo.pause();
+      keyvisualVideoBtn.classList.add('is-paused');
+      keyvisualVideoBtn.setAttribute('aria-label', 'Play video');
+    }
+  });
+}
+
+// Sticky Bar Scroll Interaction
+const stickyBar = document.querySelector('.sustainability-sticky-bar');
+const overviewSection = document.querySelector('.sustainability-overview');
+const nextSection = document.querySelector('.sustainability-overview + section'); // overview 다음 섹션
+
+if (stickyBar && overviewSection) {
+  let isSticky = false;
+  let isExpanded = false;
+  
+  // CTA 링크 요소
+  const ctaLink = stickyBar.querySelector('.sticky-bar-cta-link');
+  
+  // sticky bar의 overview 섹션 내 위치 계산 (페이지 기준)
+  const overviewTop = overviewSection.getBoundingClientRect().top + window.scrollY;
+  const stickyBarTop = stickyBar.getBoundingClientRect().top + window.scrollY;
+  const stickyBarOffsetFromOverview = stickyBarTop - overviewTop;
+
+  // 1단계: sticky bar가 상단에 도달하면 sticky만 됨 (펼쳐지지 않음)
+  // trigger를 overview 섹션으로 하여 sticky bar가 fixed가 되어도 트리거 위치 유지
+  ScrollTrigger.create({
+    trigger: overviewSection,
+    start: `top+=${stickyBarOffsetFromOverview} top+=16`,
+    endTrigger: 'body',
+    end: 'bottom bottom',
+    onEnter: () => {
+      stickyBar.classList.add('is-sticky');
+      if (ctaLink) ctaLink.classList.add('change');
+      isSticky = true;
+    },
+    onLeaveBack: () => {
+      // 원래 자리로 돌아오면 sticky 해제
+      stickyBar.classList.remove('is-sticky');
+      if (ctaLink) ctaLink.classList.remove('change');
+      isSticky = false;
+    }
+  });
+
+  // 2단계: 다음 섹션 진입 시 펼쳐짐 (다음 섹션이 화면 상단에 도달)
+  if (nextSection) {
+    ScrollTrigger.create({
+      trigger: nextSection,
+      start: 'top top',
+      onEnter: () => {
+        stickyBar.classList.add('is-expanded');
+        isExpanded = true;
+      },
+      onLeaveBack: () => {
+        // overview 영역으로 돌아오면 메뉴 접기
+        stickyBar.classList.remove('is-expanded');
+        isExpanded = false;
+      }
+    });
+  }
+
+  // KV 영역으로 돌아갈 때 처리
+  if (keyvisualSection) {
+    ScrollTrigger.create({
+      trigger: keyvisualSection,
+      start: 'bottom top+=100',
+      onEnterBack: () => {
+        // KV로 돌아가면 메뉴만 접기 (sticky는 1단계에서 해제됨)
+        stickyBar.classList.remove('is-expanded');
+        isExpanded = false;
+      }
+    });
+  }
 }
 
 // ESG Data Grid Scroll Interaction

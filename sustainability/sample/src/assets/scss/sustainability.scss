@@ -1,0 +1,20 @@
+@use './variable' as *;
+@use './mixin' as *;
+
+.sustainability-container {
+  width:100%;
+  margin:0 auto;
+  background-color: $bg;
+  .inner {
+    width:100%;
+    max-width: $inner;
+    margin:0 auto;
+    padding:0 1rem;
+    @include tablet {
+      padding:0;
+    }
+  }
+  .heading {
+    font-family: 'LGEI Headline', sans-serif;
+  }
+}

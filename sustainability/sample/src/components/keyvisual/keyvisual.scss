@@ -1,16 +1,15 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
 .sustainability-keyvisual {
   position: relative;
   width: 100%;
-  max-width: 1920px;
   height: 100vh;
-  max-height: 1080px;
+  max-height: rem(1080);
   margin: 0 auto;
   overflow: hidden;
 
   .keyvisual-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #2C3E50 0%, #4CA1AF 100%);
@@ -27,29 +26,54 @@
     z-index: 1;
   }
 
-  .keyvisual-title {
+  .keyvisual-video-btn {
     position: absolute;
-    top: 50%;
+    bottom: rem(176);
     left: 50%;
-    transform: translate(-50%, -50%);
-    color: #FFF;
-    text-align: center;
-    font-family: "LG EI";
-    font-size: 120px;
-    font-style: normal;
-    font-weight: 550;
-    line-height: 80px;
-    z-index: 2;
+    transform: translateX(-50%);
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    .icon-play {
+      display: none;
+    }
+    &.is-paused {
+      .icon-pause {
+        display: none;
+      }
+      .icon-play {
+        display: block;
+      }
+    }
   }
 
+  .keyvisual-arrow {
+    position: absolute;
+    bottom: rem(40);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: arrowBounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes arrowBounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+  
   .keyvisual-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.20);
-    backdrop-filter: blur(50px);
+    background: rgba($black, 0.40);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,26 +87,16 @@
   }
 
   .keyvisual-overlay-title {
-    color: #FFF;
     text-align: center;
-    font-family: var(--Font-family-font-family-title, "LG EI");
-    font-size: var(--Font-size-title-l, 80px);
-    font-style: normal;
-    font-weight: 550;
-    line-height: var(--Line-height-title-l, 80px);
     opacity: 0;
+    @include font(96, 100%, 550, $white);
   }
 
   .keyvisual-overlay-desc {
-    margin-top: 16px;
-    color: #FFF;
+    margin-top: rem(16);
     text-align: center;
-    font-family: var(--Font-family-font-family-body, "LG EI");
-    font-size: var(--line-height-24, 24px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Line-height-subtitle-m, 28px);
     opacity: 0;
+    @include font(24, 117%, 400, $white);
   }
 }
 
