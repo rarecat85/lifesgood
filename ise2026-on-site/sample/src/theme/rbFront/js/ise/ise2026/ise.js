@@ -1462,7 +1462,7 @@ const layerPopupData = [
               name: "LG ConnectedCare (DMS)",
               description: "School Display Management Solution",
               bgClass: "type06",
-              link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare",
+              link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-connectedcare-dms",
               image: "/theme/rbFront/img/w/ise/ise2026/solution_img_6.png",
           },
           {
