@@ -21,10 +21,11 @@ body.layer-open {
   left: 0;
   opacity: 0;
   visibility: hidden;
-  z-index: 98;
+  z-index: 100;
   box-sizing: border-box;
   transition: opacity 0.3s;
   overflow: auto;
+
   * {
     margin: 0;
     padding: 0;
@@ -34,6 +35,10 @@ body.layer-open {
   &.active {
     opacity: 1;
     visibility: visible;
+    z-index: 400; 
+    & + .btn-inquiry {
+      z-index: 400;
+    }
   }
   .layer-pop-inner {
     max-width: rem(360);
