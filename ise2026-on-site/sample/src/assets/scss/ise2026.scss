@@ -140,11 +140,19 @@
 
 .btn-inquiry {
   position: fixed;
-  bottom: rem(20);
-  right: rem(20);
-  z-index: 998;
+  bottom: rem(10);
+  right: rem(14);
+  z-index: 98;
   img {
-    width: rem(100);
-    height: rem(100);
+    width: rem(50);
+    height: rem(50);
+  }
+  @include desktop {
+    bottom: rem(103);
+    right: rem(66);
+    img {
+      width: rem(100);
+      height: rem(100);
+    }
   }
 }

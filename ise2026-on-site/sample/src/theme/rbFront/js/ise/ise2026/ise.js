@@ -485,9 +485,14 @@ function initBoothSlide() {
 
     // 자동 슬라이드 전환 함수
     function nextSlide() {
-        boothSlides[currentBoothIndex].classList.remove(CLASS_NAMES.ACTIVE);
+        const prevIndex = currentBoothIndex;
         currentBoothIndex = (currentBoothIndex + 1) % boothSlides.length;
+        
+        // 다음 슬라이드를 먼저 활성화 (z-index: 2로 위에 나타남)
         boothSlides[currentBoothIndex].classList.add(CLASS_NAMES.ACTIVE);
+        
+        // 이전 슬라이드 비활성화 (z-index: 1로 아래에서 사라짐)
+        boothSlides[prevIndex].classList.remove(CLASS_NAMES.ACTIVE);
     }
 
     boothSlideInterval = setInterval(nextSlide, BOOTH_SLIDE_INTERVAL);
@@ -1367,16 +1372,16 @@ const layerPopupData = [
       defaultBg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_1.jpg",
       productList: [{
               type: "product",
-              name: "Flat Indoor LED Signage ",
-              code: "LSCC012",
-              link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
+              name: "Transparent Mesh LED Signage ",
+              code: "",
+              link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_1.png",
           },
           {
               type: "product",
-              name: "Transparent Mesh LED Signage",
-              code: "LTPA062",
-              link: "",
+              name: "Flat Indoor LED Signage",
+              code: "LSCC012",
+              link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LSCC012",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png",
           },
       ],
@@ -1463,7 +1468,7 @@ const layerPopupData = [
           {
               type: "product",
               name: "webOS Signage",
-              code: "110UH5Q-E",
+              code: "",
               link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_1.png",
           },
@@ -1571,7 +1576,7 @@ const layerPopupData = [
                   {
                       type: "product",
                       name: "4K UHD Signage",
-                      code: "65UP5Q",
+                      code: "65UH5Q",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UP5Q-E",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_2_1.png",
                   },
@@ -1615,16 +1620,16 @@ const layerPopupData = [
                   },
                   {
                       type: "product",
-                      name: "Stretch Signage",
-                      code: "37BH7N",
-                      link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
+                      name: "4K UHD Signage",
+                      code: "65UH5Q-E",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_1.png",
                   },
                   {
                       type: "product",
-                      name: "4K UHD Signage",
-                      code: "65UH5Q-E",
-                      link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
+                      name: "Stretch Signage",
+                      code: "27KC3P-M",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_2.png",
                   },
                   {
@@ -1667,7 +1672,7 @@ const layerPopupData = [
                   },
                   {
                       type: "product",
-                      name: '13.3" E-Paper Display',
+                      name: "13.3” E-Paper Display",
                       code: '',
                       link: "",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_3.png",
@@ -1772,6 +1777,13 @@ const layerPopupData = [
               link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UL5Q-E",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
           },
+          {
+              type: "product",
+              name: "Outdoor LED Signage",
+              code: "GSPC029",
+              link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPC029",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
+          },
       ],
       mediaGallery: [{
               type: "youtube",
@@ -1839,7 +1851,7 @@ const layerPopupData = [
         productList: [{
                 type: "product",
                 name: "LG MAGNIT AIO",
-                code: "LAAB136",
+                code: "",
                 link: "",
                 image: "/theme/rbFront/img/w/ise/ise2026/product_img_5_2_1.png",
             },
@@ -2054,7 +2066,7 @@ const layerPopupData = [
       productList: [{
               type: "product",
               name: "LG CreateBoard",
-              code: "65TR3ER",
+              code: "",
               link: "",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_1.png",
           },
@@ -2463,17 +2475,21 @@ function generateProductItemHTML(product, productList) {
           ? `
         <span class="product-name">${product.name}</span>
         ${
-          product.description
-            ? `<span class="product-description">${product.description}</span>`
-            : ""
+          !product.link
+            ? `<span class="product-description">Coming Soon</span>`
+            : product.description
+              ? `<span class="product-description">${product.description}</span>`
+              : ""
         }
       `
           : `
         <span class="product-name">${product.name}</span>
         ${
-          product.code
-            ? `<span class="product-code">${product.code}</span>`
-            : ""
+          !product.link
+            ? `<span class="product-code">Coming Soon</span>`
+            : product.code
+              ? `<span class="product-code">${product.code}</span>`
+              : ""
         }
       `
       }

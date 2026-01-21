@@ -284,6 +284,21 @@ body.layer-open {
         border-radius: rem(15);
         cursor: pointer;
         transition: all 0.3s;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: rem(9);
+          height: rem(9);
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_close_b.svg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          position: absolute;
+          top: rem(12);
+          right: rem(12);
+          opacity: 0;
+          transition: opacity 0.3s, background-image 0.3s;
+        }
         &::before {
           content: "";
           display: inline-block;
@@ -293,29 +308,31 @@ body.layer-open {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
+          transition: background-image 0.3s;
         }
         &.active {
           background-color: $primary;
+          &::after {
+            opacity: 1;
+          }
           &::before {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
           }
-          &:hover {
-            border-color: $primary;
-            background-color: $primary;
-            color: $white;
-            &::before {
-              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+          @include tablet {
+            &:hover {
+              border-color: $primary;
+              background-color: $primary;
+              color: $white;
+              &::after {
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_close_w.svg');
+              }
+              &::before {
+                background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+              }
             }
           }
         }
-        &:hover {
-          border-color: $primary;
-          background-color: $primary;
-          color: $white;
-          // &::before {
-          //   background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
-          // }
-        }
+        
         @include tablet {
           width: auto;
           height: auto;
@@ -335,11 +352,17 @@ body.layer-open {
             height: rem(13);
           }
           &.active {
+            border-color: #5C5C5C;
             background-color: $white;
             color: $black;
             &::before {
               background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
             }
+          }
+          &:hover {
+            border-color: $primary;
+            background-color: $primary;
+            color: $white;
           }
           &.is-hidden {
             opacity: 0;
@@ -426,17 +449,18 @@ body.layer-open {
           width: min(100%, rem(930));
           padding: rem(16) rem(28) rem(28);
           background-color: #343434;
-          border-bottom-left-radius: rem(24);
           @include tablet {
             width: min(100%, rem(573));
             padding: rem(16) rem(28) rem(28);
             position: absolute;
             bottom: 0;
             left: 0;
+            border-bottom-left-radius: rem(13);
           }
           @include desktop {
             width: min(100%, rem(930));
             padding: rem(16) rem(28) rem(28);
+            border-bottom-left-radius: rem(24);
           }
         }
         .layer-content-title {
@@ -572,7 +596,7 @@ body.layer-open {
 
       .layer-content-title {
         display: inline-flex;
-        align-items: center;
+        align-items: flex-start;
         @include font(22,1,550,$white);
         max-width: calc(88% - rem(82));
         transition: transform 0.3s ease-in-out;
@@ -585,6 +609,7 @@ body.layer-open {
         @include tablet {
           font-size: rem(28);
           max-width: unset;
+          align-items: center;
           &.active {
             transform: translateY(rem(-57));
           }
@@ -1077,16 +1102,16 @@ body.layer-open {
         }
         &.is-coming-soon {
           &::after {
-            width: rem(20);
-            height: rem(20);
+            width: rem(39);
+            height: rem(19);
             background: url('/theme/rbFront/img/w/ise/ise2026/ic_soon.svg') no-repeat center center / cover;
             @include tablet {
-              width: rem(12);
-              height: rem(12);
+              width: rem(20);
+              height: rem(10);
             }
             @include desktop {
-              width: rem(20);
-              height: rem(20);
+              width: rem(39);
+              height: rem(19);
             }
           }
         }
@@ -1612,7 +1637,7 @@ body.layer-open {
         padding-top: rem(77);
         background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_notice.svg');
         background-repeat: no-repeat;
-        background-size: rem(73) rem(63);
+        background-size: rem(79) rem(63);
         background-position: center top;
         @include tablet {
           text-align: left;
