@@ -581,7 +581,7 @@ function handleBoothSlide() {
   const boothSlideTexts = [
       "Hall",
       "Key<br>Attractor", 
-      "LG Business Cloud <br>& Software Solution",
+      "LG Business Cloud <br>& Software Solutions",
       "K-Culture<br>Stores", 
       "Drive <br class='pc-only'>Thru",
       "Meeting<br>Rooms",
