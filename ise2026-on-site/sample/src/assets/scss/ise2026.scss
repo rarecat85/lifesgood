@@ -140,12 +140,12 @@
 
 .btn-inquiry {
   position: fixed;
-  bottom: rem(10);
-  right: rem(14);
+  bottom: rem(30);
+  right: rem(25);
   z-index: 98;
   img {
-    width: rem(50);
-    height: rem(50);
+    width: rem(60);
+    height: rem(60);
   }
   @include desktop {
     bottom: rem(103);

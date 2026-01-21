@@ -1607,7 +1607,7 @@ const layerPopupData = [
                   {
                       type: "product",
                       name: "4K UHD Signage",
-                      code: "65UH5Q-E",
+                      code: "65UH5Q",
                       link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/65UH5Q",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_3_1.png",
                   },
@@ -1653,7 +1653,7 @@ const layerPopupData = [
                       type: "product",
                       name: "Stretch Signage",
                       code: "37BH7N",
-                      link: "httpshttps://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
+                      link: "https://www.lg-informationdisplay.com/product/digital-signage/special/37BH7N",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_3_4_2.png",
                   },
                   {
@@ -1938,13 +1938,6 @@ const layerPopupData = [
               code: "LSAB009",
               link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LSAB009",
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png",
-          },
-          {
-              type: "product",
-              name: "4K UHD Signage",
-              code: "55UH5Q-E",
-              link: "https://www.lg-informationdisplay.com/product/digital-signage/standard/55UH5Q",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_2.png",
           },
       ],
       mediaGallery: [{
