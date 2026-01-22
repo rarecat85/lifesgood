@@ -5,7 +5,7 @@
   position: relative;
   padding:rem(120) 0;
   background-color: $bg;
-  z-index: 1;
+  z-index: 2;
   .inner {
     text-align: center;
     display: flex;
@@ -18,10 +18,37 @@
     margin-bottom:rem(24);
     &-title {
       @include font(56, 107%, 550, $black);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     &-desc {
       margin-top:rem(8);
       @include font(24, 116%, 400, #262626);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition-delay: 0.15s;
+    }
+  }
+
+  .sustainability-sticky-bar:not(.is-sticky) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+    transition-delay: 0.3s;
+  }
+
+  // 애니메이션 활성화 시
+  &.is-animated {
+    .sustainability-overview-heading-title,
+    .sustainability-overview-heading-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .sustainability-sticky-bar:not(.is-sticky) {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
@@ -38,8 +65,8 @@
   &.is-sticky {
     position: fixed;
     top: rem(16);
-    left: 50%;
-    transform: translateX(-50%);
+    // left: 50%;
+    // transform: translateX(-50%);
     z-index: 100;
     background-color: transparent;
     box-shadow: none;
@@ -48,6 +75,7 @@
   // 펼쳐진 상태에서만 배경과 그림자 표시
   &.is-sticky.is-expanded {
     background: linear-gradient(0deg, rgba(250, 245, 234, 0.35) 0%, rgba(250, 245, 234, 0.35) 100%), rgba(217, 211, 200, 0.70);
+    // background-color: #e9e4d9;
     backdrop-filter: blur(10px);
     box-shadow: 0 rem(4) rem(20) rgba($black, 0.1);
   }

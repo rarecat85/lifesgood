@@ -68,9 +68,24 @@ if (keyvisualVideo && keyvisualVideoBtn) {
   });
 }
 
+// Overview Section Entrance Animation
+const overviewSection = document.querySelector('.sustainability-overview');
+
+if (overviewSection) {
+  ScrollTrigger.create({
+    trigger: overviewSection,
+    start: 'top 70%',
+    onEnter: () => {
+      overviewSection.classList.add('is-animated');
+    },
+    onLeaveBack: () => {
+      overviewSection.classList.remove('is-animated');
+    }
+  });
+}
+
 // Sticky Bar Scroll Interaction
 const stickyBar = document.querySelector('.sustainability-sticky-bar');
-const overviewSection = document.querySelector('.sustainability-overview');
 const nextSection = document.querySelector('.sustainability-overview + section'); // overview 다음 섹션
 
 if (stickyBar && overviewSection) {
@@ -134,6 +149,100 @@ if (stickyBar && overviewSection) {
       }
     });
   }
+}
+
+// Achievement Section Interaction
+const achievementSection = document.querySelector('.sustainability-achievement');
+const achievementCards = document.querySelectorAll('.achievement-card');
+
+if (achievementSection && achievementCards.length > 0) {
+  // 배경 채우기 방향 설정 (상하좌우 순환)
+  const directions = ['from-top', 'from-right', 'from-bottom', 'from-left'];
+  
+  achievementCards.forEach((card, index) => {
+    // 각 카드에 방향 클래스 부여
+    const direction = directions[index % 4];
+    card.classList.add(direction);
+  });
+
+  // 숫자 카운팅 함수
+  function countUp(element, target, duration = 1500) {
+    const start = 0;
+    const startTime = performance.now();
+    
+    // 숫자에서 실제 값 추출 ($ 기호, 소수점 등 처리)
+    const hasPrefix = target.startsWith('$');
+    const numericValue = parseFloat(target.replace(/[^0-9.]/g, ''));
+    const hasDecimal = target.includes('.');
+    const decimalPlaces = hasDecimal ? (target.split('.')[1] || '').replace(/[^0-9]/g, '').length : 0;
+    
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // easeOutQuart
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      const currentValue = start + (numericValue - start) * easeProgress;
+      
+      let displayValue = hasDecimal 
+        ? currentValue.toFixed(decimalPlaces) 
+        : Math.floor(currentValue).toString();
+      
+      if (hasPrefix) {
+        displayValue = '$' + displayValue;
+      }
+      
+      element.textContent = displayValue;
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  // 각 카드의 원본 숫자값 저장
+  const originalValues = [];
+  achievementCards.forEach((card) => {
+    const valueNumber = card.querySelector('.value-number');
+    if (valueNumber) {
+      originalValues.push(valueNumber.textContent);
+    } else {
+      originalValues.push(null);
+    }
+  });
+
+  // ScrollTrigger로 애니메이션 시작
+  ScrollTrigger.create({
+    trigger: achievementSection,
+    start: 'top 40%',
+    onEnter: () => {
+      // 모든 카드 동시에 애니메이션 적용
+      achievementCards.forEach((card, index) => {
+        card.classList.add('is-animated');
+        
+        // 숫자 카운팅 시작 (배경 채워진 후)
+        const valueNumber = card.querySelector('.value-number');
+        if (valueNumber && originalValues[index]) {
+          valueNumber.textContent = '0';
+          setTimeout(() => {
+            countUp(valueNumber, originalValues[index], 1500);
+          }, 600); // 배경 애니메이션 완료 후 카운팅 시작
+        }
+      });
+    },
+    onLeaveBack: () => {
+      // 위로 스크롤해서 벗어나면 초기화
+      achievementCards.forEach((card, index) => {
+        card.classList.remove('is-animated');
+        const valueNumber = card.querySelector('.value-number');
+        if (valueNumber && originalValues[index]) {
+          valueNumber.textContent = originalValues[index];
+        }
+      });
+    }
+  });
 }
 
 // ESG Data Grid Scroll Interaction
