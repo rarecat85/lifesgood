@@ -336,10 +336,10 @@
         margin-bottom: rem(10);
         @include tablet {
           display: inline-block;
-          font-size: rem(12);
+          font-size: rem(16);
         }
         @include desktop {
-          font-size: rem(20);
+          font-size: rem(32);
         }
       }
       .news-item-desc {
@@ -353,11 +353,11 @@
         padding-right: rem(20);
         @include tablet {
           display: -webkit-box;
-          font-size: rem(10);
-          -webkit-line-clamp: 3;
+          font-size: rem(12);
+          -webkit-line-clamp: 4;
         }
         @include desktop {
-          font-size: rem(12);
+          font-size: rem(16);
         }
       }
     }
