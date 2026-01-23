@@ -294,7 +294,7 @@ body.layer-open {
           display: none;
           width: rem(9);
           height: rem(9);
-          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_close_b.svg');
+          background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_close_w.svg');
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
@@ -343,12 +343,12 @@ body.layer-open {
           height: auto;
           gap: rem(6);
           font-size: rem(14);
-          top: rem(74);
+          top: rem(47);
           right: rem(24);
           padding: rem(7.75) rem(18.75);
-          border: rem(1) solid $white;
-          background-color: transparent;
-          border-radius: rem(10);
+          border-top: 0;
+          border-radius: 0 0 rem(10) rem(10);
+          color: $black;
           position: absolute;
           z-index: 1002;
           &::after {
@@ -359,19 +359,19 @@ body.layer-open {
             right: rem(5);
           }
           &::before {
-            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
+            background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
             width: rem(16);
             height: rem(13);
           }
-          &.active {
-            border-color: #5C5C5C;
-            background-color: $white;
-            color: $black;
+          &:hover {
+            border-color: $primary;
+            background-color: $primary;
+            color: $white;
             &::before {
-              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo_b.svg');
+              background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_photo.svg');
             }
           }
-          &:hover {
+          &.active {
             border-color: $primary;
             background-color: $primary;
             color: $white;
@@ -384,10 +384,10 @@ body.layer-open {
         @include desktop {
           gap: rem(10);
           font-size: rem(24);
-          top: rem(120);
+          top: rem(84);
           right: rem(36);
           padding: rem(12.5) rem(28.5);
-          border-radius: rem(20);
+          border-radius: 0 0 rem(20) rem(20);
           &::after {
             width: rem(9);
             height: rem(9);
@@ -454,7 +454,7 @@ body.layer-open {
       &.has-tablist {
         .layer-content-inner {
           @include tablet {
-            padding: 0 rem(34) rem(34);
+            padding: 0 rem(20) rem(34);
           }
           @include desktop {
             padding: 0 rem(62) rem(55);
@@ -469,7 +469,7 @@ body.layer-open {
           background-color: #343434;
           @include tablet {
             width: min(100%, rem(573));
-            padding: rem(16) rem(28) rem(28);
+            padding: rem(16) rem(0) rem(28);
             position: absolute;
             bottom: 0;
             left: 0;
@@ -493,10 +493,15 @@ body.layer-open {
       
       // tablist가 없을 때의 스타일
       &.no-tablist {
+        .tablist-wrap {
+          .home-btn {
+            display: none;
+          }
+        }
         .layer-content-inner {
           @include tablet {
             width: min(100%, rem(590));
-            padding: 0 rem(17) rem(18);
+            padding: 0 0 rem(18);
           }
           @include desktop {
             width: min(100%, rem(960));
@@ -505,9 +510,7 @@ body.layer-open {
         }
         .layer-content-title-wrap {
           @include tablet {
-            padding-left: rem(15);
-          }
-          @include tablet {
+            padding-left: rem(20);
             .layer-content-title {
               margin-bottom: rem(14);
             }
@@ -520,15 +523,6 @@ body.layer-open {
         .layer-product-list {          
           .product-link {
             padding: rem(16) rem(20);
-          }
-        }
-      }
-      
-      // 내부 서브탭이 활성화되었을 때 home-btn 표시
-      &.has-active-subtab {
-        @include tablet {
-          .layer-content-title .home-btn {
-            display: inline-block;
           }
         }
       }
@@ -635,13 +629,24 @@ body.layer-open {
         @include desktop {
           font-size: rem(46);
         }
+      }
+      
+      .layer-content-desc {
+        font-size: rem(14);
+        color: $white;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      .tablist-wrap {
+        display: flex;
+        align-items: center;
+
         .home-btn {
-          display: none; // 기본적으로 숨김.
+          display: none;
           @include font(14,1,550,$white);
           border: rem(1) solid $white;
           border-radius: rem(50);
           padding: rem(9) rem(14);
-          margin-left: rem(15);
           cursor: pointer;
           box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
@@ -658,11 +663,10 @@ body.layer-open {
             transition: background-image 0.3s;
           }
           @include tablet {
+            display: inline-flex;
             font-size: rem(9);
             height: rem(20);
             padding: rem(4.5) rem(12);
-            margin-left: rem(10);
-            transform: translateY(rem(2));
             &::before {
               width: rem(7);
               height: rem(8);
@@ -673,15 +677,14 @@ body.layer-open {
             font-size: rem(14);
             height: rem(34);
             padding: rem(9) rem(14);
-            margin-left: rem(15);
-            transform: translateY(rem(4));
             &::before {
               width: rem(11);
               height: rem(12);
               margin-right: rem(5);
             }
           }
-          &:hover {
+          &:hover,
+          &.active {
             background: $white;
             color: $black;
             &::before {
@@ -691,23 +694,39 @@ body.layer-open {
         }
         
       }
-      
-      .layer-content-desc {
-        font-size: rem(14);
-        color: $white;
-        line-height: 1.6;
-        opacity: 0.9;
-      }
-      
       // Tablist 스타일
       .layer-sub-tabs {
+        width: 100%;
         @include tablet {
           display: flex;
           flex-wrap: wrap;
-          gap: rem(5);
+          align-items: center;
+          &::before {
+            content: "";
+            display: inline-block;
+            width: rem(1);
+            height: rem(18);
+            background-color: $white;
+            margin: 0 rem(5);
+          }
+          li {
+            & + li {
+              margin-left: rem(4);
+              @include desktop {
+                margin-left: rem(8);
+              }
+            }
+          }
         }
         @include desktop {
-          gap: rem(8);
+          &::before {
+            content: "";
+            display: inline-block;
+            width: rem(1);
+            height: rem(32);
+            background-color: $white;
+            margin: 0 rem(15);
+          }
         }
         .layer-tab-btn {
           @include font(18,1,550,$white);
@@ -770,7 +789,6 @@ body.layer-open {
         
         .tab-detail {
           display: none;
-          padding: 0 0 rem(10);
           // 모바일: 아코디언 애니메이션
 
           &.tab-detail-10 {
@@ -1053,7 +1071,7 @@ body.layer-open {
         .product-slider {
           position: relative;
           @include tablet {
-            padding: 0 rem(15);
+            padding: 0 rem(20);
           }
           @include desktop {
             padding: 0 rem(23);
@@ -1097,11 +1115,17 @@ body.layer-open {
           }
           .slide-prev {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_prev.svg');
-            left: 0;
+            left: rem(6);
+            @include desktop {
+              left: 0;
+            }
           }
           .slide-next {
             background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_next.svg');
-            right: 0;
+            right: rem(4);
+            @include desktop {
+              right: 0;
+            }
           }
         }
       }
@@ -1115,6 +1139,7 @@ body.layer-open {
         padding: rem(4) rem(16);
         border: rem(1) solid #4A4946;
         border-radius: rem(15);
+        position: relative;
         @include tablet {
           gap:rem(4);
           min-height: rem(50);
@@ -1203,7 +1228,6 @@ body.layer-open {
         }
 
         .product-img-wrapper {
-          position: relative;
           .product-img {
             display: block;
             width: rem(70);
@@ -1224,16 +1248,28 @@ body.layer-open {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: rem(18);
-            height: rem(18);
-            @include font(12,1,550,$white);
+            width: rem(24);
+            height: rem(24);
+            @include font(15,0,700,$white);
+            text-indent: rem(1);
+            text-align: center;
             text-transform: uppercase;
             position: absolute;
-            top: rem(-6);
-            left: rem(-6);
+            top: rem(3);
+            left: rem(3);
             background-color: #262626;
             border: rem(0.5) solid $white;
             border-radius: 50%;
+            @include tablet {
+              width: rem(18);
+              height: rem(18);
+              font-size: rem(10);
+            }
+            @include desktop {
+              width: rem(24);
+              height: rem(24);
+              font-size: rem(15);
+            }
           }
         }
 

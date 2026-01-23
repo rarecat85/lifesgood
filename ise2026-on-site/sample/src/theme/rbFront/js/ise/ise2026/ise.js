@@ -1562,9 +1562,9 @@ const layerPopupData = [
                       type: "solution",
                       name: "LG SuperSign Cloud",
                       description: "Content Management Solution",
-                      bgClass: "type01",
+                      bgClass: "type02",
                       link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-supersign-cloud",
-                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_2.png",
                   },
                   {
                       type: "product",
@@ -1600,9 +1600,9 @@ const layerPopupData = [
                       type: "solution",
                       name: "LG DOOH Ads",
                       description: "Smart advertising solution",
-                      bgClass: "type01",
+                      bgClass: "type03",
                       link: "https://www.lg-informationdisplay.com/software-solutions/lg-business-cloud/lg-dooh-ads",
-                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_1.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/solution_img_3.png",
                   },
                   {
                       type: "product",
@@ -2835,11 +2835,14 @@ function renderLayerContent(index) {
     <div class="layer-content-title-wrap">
       <h3 class="layer-content-title">
         <span>${index + 1}.&nbsp;</span>
-        ${data.title}<button type="button" class="home-btn">Home</button>
+        ${data.title}
       </h3>
       <img src="/theme/rbFront/img/m/ise/ise2026/booth_location_${index + 1}.png" alt="${data.title} location" class="booth-location">
     </div>
-    ${tablistHTML}
+    <div class="tablist-wrap">
+        <button type="button" class="home-btn active">Home</button>
+      ${tablistHTML}
+    </div>
     ${productListHTML}
   </div>
 `;
@@ -3484,6 +3487,9 @@ function handleLayerPopup() {
                   contentTitle.classList.remove("active");
               }
 
+              // home-btn 활성화
+              homeBtn.classList.add("active");
+
               // home-btn 숨김
               layerContent.classList.remove("has-active-subtab");
               layerContent.classList.remove("active");
@@ -3550,6 +3556,12 @@ function handleLayerPopup() {
                   const defaultBg = layerContent.getAttribute("data-default-bg");
                   if (defaultBg) {
                       layerContent.style.backgroundImage = `url('${defaultBg}')`;
+                  }
+
+                  // home-btn 활성화
+                  const homeBtnElement = layerContent.querySelector(".home-btn");
+                  if (homeBtnElement) {
+                      homeBtnElement.classList.add("active");
                   }
 
                   // photo-btn 표시
@@ -3620,6 +3632,12 @@ function handleLayerPopup() {
 
           // home-btn 표시를 위한 클래스 추가
           layerContent.classList.add("has-active-subtab");
+
+          // home-btn 비활성화
+          const homeBtnElement = layerContent.querySelector(".home-btn");
+          if (homeBtnElement) {
+              homeBtnElement.classList.remove("active");
+          }
 
           // photo-btn 숨김
           const photoBtn = document.querySelector(".layer-tab .photo-btn");
@@ -3794,6 +3812,35 @@ function handleLayerPopup() {
 
 
 // ============================================================================
+// 13. LED MEDIA ART AUDIO CONTROL
+// ============================================================================
+
+/**
+ * LED 미디어 아트 섹션의 음악 재생/정지 기능
+ * 버튼 클릭 시 음악을 토글하고 버튼 텍스트를 변경합니다.
+ */
+function handleLedMediaAudio() {
+  const btnPlay = document.querySelector('.led-media-art .btn-play');
+  const audio = document.getElementById('ledMediaAudio');
+
+  if (!btnPlay || !audio) return;
+
+  let isPlaying = false;
+
+  btnPlay.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      btnPlay.classList.remove('playing');
+    } else {
+      audio.play();
+      btnPlay.classList.add('playing');
+    }
+    isPlaying = !isPlaying;
+  });
+}
+
+
+// ============================================================================
 // 14. INITIALIZATION
 // ============================================================================
 
@@ -3812,6 +3859,7 @@ async function init() {
   handleTechzoneNewsSlide();
   handleHighlightsSlide();
   handleLayerPopup();
+  handleLedMediaAudio();
 
   new fullpage(".ise-container", {
       licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",

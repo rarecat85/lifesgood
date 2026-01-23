@@ -23,4 +23,4 @@ body {position:relative;font-weight:400; line-height:1; color:#000;}
 
 a {color:inherit;}
 
-a:active, a:focus, a:hover {text-decoration: none;}
+a:active, a:focus, a:hover {text-decoration: none; font-weight: inherit;}
