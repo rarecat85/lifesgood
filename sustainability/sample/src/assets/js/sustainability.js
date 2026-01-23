@@ -370,3 +370,59 @@ if (visionSection && visionItems.length > 0) {
     }
   });
 }
+
+// Products Section - Swiper & Tab Navigation
+const productsSwiper = document.querySelector('.products-swiper');
+const productsTabs = document.querySelectorAll('.products-tab-btn');
+
+if (productsSwiper && productsTabs.length > 0) {
+  // 마지막 카테고리의 첫 번째 슬라이드 인덱스 찾기
+  const slides = document.querySelectorAll('.products-swiper .swiper-slide');
+  let maxSlideIndex = slides.length - 1;
+  
+  // 마지막 카테고리(biodiversity)의 첫 번째 슬라이드 인덱스 찾기
+  for (let i = 0; i < slides.length; i++) {
+    if (slides[i].dataset.category === 'biodiversity') {
+      maxSlideIndex = i;
+      break;
+    }
+  }
+
+  // Swiper 초기화
+  const swiper = new Swiper('.products-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    slidesOffsetAfter: 900,
+    navigation: {
+      prevEl: '.products-slider-prev',
+      nextEl: '.products-slider-next',
+    },
+    on: {
+      slideChange: function() {
+        // 마지막 카테고리의 첫 번째 슬라이드를 넘어가면 되돌리기
+        if (this.activeIndex > maxSlideIndex) {
+          this.slideTo(maxSlideIndex, 300);
+        }
+      }
+    }
+  });
+
+  // 탭 클릭 시 해당 카테고리의 첫 번째 슬라이드로 이동
+  productsTabs.forEach((tab) => {
+    tab.addEventListener('click', function() {
+      // 활성화 상태 변경
+      productsTabs.forEach((t) => t.classList.remove('is-active'));
+      this.classList.add('is-active');
+
+      // 해당 카테고리의 첫 번째 슬라이드 찾기
+      const targetCategory = this.dataset.target;
+      
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].dataset.category === targetCategory) {
+          swiper.slideTo(i);
+          break;
+        }
+      }
+    });
+  });
+}
