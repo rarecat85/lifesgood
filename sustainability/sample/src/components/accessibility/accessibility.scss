@@ -1,0 +1,229 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
+.sustainability-accessibility {
+  position: relative;
+  padding: rem(80) 0;
+  background-color: #E6E1D6;
+
+  &-heading {
+    margin-bottom: rem(48);
+
+    &-eyebrow {
+      @include font(16, 125%, 400, $black);
+      margin-bottom: rem(8);
+    }
+
+    &-title {
+      @include font(56, 107%, 550, $black);
+      margin-bottom: rem(8);
+    }
+
+    &-desc {
+      @include font(24, 116%, 400, #262626);
+      max-width: rem(800);
+    }
+  }
+
+  &-content {
+    display: flex;
+    position: relative;
+  }
+}
+
+// 좌측 아코디언 메뉴
+.accessibility-menu {
+  height: 100%;
+  position: absolute;
+  left: rem(32);
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: rem(16);
+}
+
+// 페이지네이션 (세로 배치, 메뉴 좌측)
+.accessibility-pagination {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+
+  .pagination-prev,
+  .pagination-next {
+    width: rem(44);
+    height: rem(44);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: rgba($white, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba($black, 0.4);
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border: 1px solid #646464;
+    }
+  }
+}
+
+.accessibility-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  gap: rem(12);
+}
+
+.accessibility-menu-item {
+  background-color: rgba($white, 0.6);
+  border-radius: rem(28);
+  overflow: hidden;
+  padding: rem(24);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 rem(4) rem(20) rgba($black, 0.05);
+  backdrop-filter: blur(10px);
+
+  // 접힌 상태
+  .accessibility-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+    text-align: left;
+    transition: all 0.3s ease;
+
+    .menu-icon {
+      width: rem(28);
+      height: rem(28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .menu-title {
+      @include font(24, 16%, 600, $black);
+      white-space: nowrap;
+    }
+  }
+
+  // 펼쳐지는 콘텐츠
+  .accessibility-menu-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 rem(20);
+    display: none;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease 0.1s,
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .menu-desc {
+      @include font(13, 150%, 400, #4A4946);
+      margin-bottom: rem(14);
+      max-width: rem(180);
+    }
+
+    .menu-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: rem(8) rem(16);
+      background-color: $red;
+      border-radius: rem(100);
+      @include font(13, 100%, 600, $white);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($red, 10%);
+      }
+    }
+  }
+
+  // 펼쳐진 상태 (is-active)
+  &.is-active {
+    background-color: $white;
+    border-radius: rem(28);
+    box-shadow: 0 rem(4) rem(16) rgba($black, 0.1);
+
+    .accessibility-menu-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      max-height: rem(200);
+      opacity: 1;
+      padding: 0 rem(20) rem(16);
+    }
+  }
+
+  // 호버 상태
+  &:not(.is-active):hover {
+    background-color: rgba($white, 0.95);
+  }
+}
+
+// 우측 비주얼 영역
+.accessibility-visual {
+  flex: 1;
+  border-radius: rem(28);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1200 / 640;
+}
+
+.accessibility-visual-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.visual-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 100% 0 0); // 초기: 완전히 숨김
+  transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // 활성화된 슬라이드 (완전히 보임)
+  &.is-active {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+
+  // prev 방향: 좌측에서 우측으로 덮어씌움
+  &.is-entering-prev {
+    clip-path: inset(0 0 0 0);
+    z-index: 3;
+  }
+
+  // next 방향: 우측에서 좌측으로 덮어씌움
+  &.is-entering-next {
+    clip-path: inset(0 0 0 0);
+    z-index: 3;
+  }
+
+  // next 방향 초기 상태 (우측에서 시작)
+  &.from-right {
+    clip-path: inset(0 0 0 100%);
+  }
+}

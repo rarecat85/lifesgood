@@ -388,6 +388,52 @@ if (productsSwiper && productsTabs.length > 0) {
     }
   }
 
+  // 각 카테고리의 첫 번째 슬라이드 인덱스 맵 생성
+  const categoryFirstIndexMap = {};
+  const allCategories = [];
+  slides.forEach((slide, index) => {
+    const category = slide.dataset.category;
+    if (!categoryFirstIndexMap[category]) {
+      categoryFirstIndexMap[category] = index;
+      allCategories.push(category);
+    }
+  });
+
+  // 현재 슬라이드 인덱스에 해당하는 카테고리 찾기
+  function getCategoryForSlideIndex(slideIndex) {
+    // 각 카테고리의 첫 번째 슬라이드 인덱스를 확인
+    for (let i = allCategories.length - 1; i >= 0; i--) {
+      const category = allCategories[i];
+      const firstIndex = categoryFirstIndexMap[category];
+      
+      // 다음 카테고리의 첫 번째 인덱스 찾기
+      let nextCategoryFirstIndex = slides.length;
+      if (i < allCategories.length - 1) {
+        nextCategoryFirstIndex = categoryFirstIndexMap[allCategories[i + 1]];
+      }
+      
+      // 현재 슬라이드가 이 카테고리 범위에 있는지 확인
+      if (slideIndex >= firstIndex && slideIndex < nextCategoryFirstIndex) {
+        return category;
+      }
+    }
+    return allCategories[0]; // 기본값
+  }
+
+  // 탭 활성화 함수
+  function activateTabForCategory(category) {
+    productsTabs.forEach((tab) => {
+      if (tab.dataset.target === category) {
+        productsTabs.forEach((t) => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+      }
+    });
+  }
+
+  // 네비게이션 버튼 요소
+  const prevBtn = document.querySelector('.products-slider-prev');
+  const nextBtn = document.querySelector('.products-slider-next');
+
   // Swiper 초기화
   const swiper = new Swiper('.products-swiper', {
     slidesPerView: 'auto',
@@ -402,10 +448,60 @@ if (productsSwiper && productsTabs.length > 0) {
         // 마지막 카테고리의 첫 번째 슬라이드를 넘어가면 되돌리기
         if (this.activeIndex > maxSlideIndex) {
           this.slideTo(maxSlideIndex, 300);
+          return;
+        }
+        
+        // 네비게이션 버튼 상태 업데이트 (기존 로직과 동일하게)
+        // biodiversity의 첫 번째 슬라이드가 1번 위치에 오면 더 이상 next 불가
+        if (nextBtn) {
+          if (this.activeIndex >= maxSlideIndex) {
+            nextBtn.disabled = true;
+            nextBtn.classList.add('swiper-button-disabled');
+          } else {
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('swiper-button-disabled');
+          }
+        }
+        if (prevBtn) {
+          if (this.activeIndex === 0) {
+            prevBtn.disabled = true;
+            prevBtn.classList.add('swiper-button-disabled');
+          } else {
+            prevBtn.disabled = false;
+            prevBtn.classList.remove('swiper-button-disabled');
+          }
+        }
+        
+        // 현재 1번 위치에 있는 슬라이드의 카테고리 확인
+        const currentSlide = slides[this.activeIndex];
+        if (currentSlide) {
+          const currentCategory = currentSlide.dataset.category;
+          // 해당 카테고리에 맞는 탭 활성화
+          activateTabForCategory(currentCategory);
         }
       }
     }
   });
+
+  // 초기 네비게이션 버튼 상태 설정
+  if (nextBtn) {
+    if (swiper.activeIndex >= maxSlideIndex) {
+      nextBtn.disabled = true;
+      nextBtn.classList.add('swiper-button-disabled');
+    } else {
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('swiper-button-disabled');
+    }
+  }
+  if (prevBtn) {
+    if (swiper.activeIndex === 0) {
+      prevBtn.disabled = true;
+      prevBtn.classList.add('swiper-button-disabled');
+    } else {
+      prevBtn.disabled = false;
+      prevBtn.classList.remove('swiper-button-disabled');
+    }
+  }
 
   // 탭 클릭 시 해당 카테고리의 첫 번째 슬라이드로 이동
   productsTabs.forEach((tab) => {
@@ -425,4 +521,112 @@ if (productsSwiper && productsTabs.length > 0) {
       }
     });
   });
+}
+
+// Accessibility Section - 아코디언 메뉴 & 이미지 슬라이드
+const accessibilitySection = document.querySelector('.sustainability-accessibility');
+const accessibilityMenuItems = document.querySelectorAll('.accessibility-menu-item');
+const accessibilitySlides = document.querySelectorAll('.visual-slide');
+const accessibilityPrevBtn = document.querySelector('.accessibility-pagination .pagination-prev');
+const accessibilityNextBtn = document.querySelector('.accessibility-pagination .pagination-next');
+
+if (accessibilitySection && accessibilityMenuItems.length > 0) {
+  let currentIndex = 0;
+  const totalItems = accessibilityMenuItems.length;
+
+  // 메뉴 아이템 클릭 시 탭 전환
+  function switchTab(newIndex, direction = 'next') {
+    if (newIndex === currentIndex) return;
+
+    const prevIndex = currentIndex;
+    currentIndex = newIndex;
+
+    // 메뉴 아이템 활성화 상태 변경
+    accessibilityMenuItems.forEach((item, index) => {
+      if (index === currentIndex) {
+        item.classList.add('is-active');
+      } else {
+        item.classList.remove('is-active');
+      }
+    });
+
+    // 이미지 슬라이드 전환
+    const currentSlide = accessibilitySlides[currentIndex];
+    
+    // 이전 클래스 제거
+    currentSlide.classList.remove('is-active', 'is-entering-prev', 'is-entering-next', 'from-right');
+
+    // transition 비활성화 후 초기 위치 설정
+    currentSlide.style.transition = 'none';
+    currentSlide.style.zIndex = '3';
+    
+    if (direction === 'next') {
+      // next: 우측에서 좌측으로 덮어씌움
+      currentSlide.style.clipPath = 'inset(0 0 0 100%)';
+    } else {
+      // prev: 좌측에서 우측으로 덮어씌움
+      currentSlide.style.clipPath = 'inset(0 100% 0 0)';
+    }
+    
+    // 강제 리플로우 후 transition 활성화 및 애니메이션 시작
+    currentSlide.offsetHeight;
+    currentSlide.style.transition = 'clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    currentSlide.style.clipPath = 'inset(0 0 0 0)';
+    
+    // 애니메이션 완료 후 is-active로 전환
+    setTimeout(() => {
+      currentSlide.style.clipPath = '';
+      currentSlide.style.zIndex = '';
+      currentSlide.style.transition = '';
+      currentSlide.classList.add('is-active');
+      
+      // 이전 슬라이드의 is-active 제거
+      if (prevIndex !== currentIndex) {
+        accessibilitySlides[prevIndex].classList.remove('is-active');
+      }
+    }, 800);
+
+    // 페이지네이션 버튼 상태 업데이트
+    updatePaginationButtons();
+  }
+
+  // 페이지네이션 버튼 상태 업데이트
+  function updatePaginationButtons() {
+    if (accessibilityPrevBtn) {
+      accessibilityPrevBtn.disabled = currentIndex === 0;
+    }
+    if (accessibilityNextBtn) {
+      accessibilityNextBtn.disabled = currentIndex === totalItems - 1;
+    }
+  }
+
+  // 메뉴 아이템 클릭 이벤트
+  accessibilityMenuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      // 클릭한 메뉴가 현재보다 위에 있으면 prev, 아래면 next
+      const direction = index < currentIndex ? 'prev' : 'next';
+      switchTab(index, direction);
+    });
+  });
+
+  // 이전 버튼 클릭
+  if (accessibilityPrevBtn) {
+    accessibilityPrevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        switchTab(currentIndex - 1, 'prev');
+      }
+    });
+  }
+
+  // 다음 버튼 클릭
+  if (accessibilityNextBtn) {
+    accessibilityNextBtn.addEventListener('click', () => {
+      if (currentIndex < totalItems - 1) {
+        switchTab(currentIndex + 1, 'next');
+      }
+    });
+  }
+
+  // 초기 상태 설정
+  updatePaginationButtons();
 }
