@@ -87,6 +87,7 @@ if (overviewSection) {
 // Sticky Bar Scroll Interaction
 const stickyBar = document.querySelector('.sustainability-sticky-bar');
 const nextSection = document.querySelector('.sustainability-overview + section'); // overview 다음 섹션
+const stickyNavLinks = document.querySelectorAll('.sticky-bar-nav-list a');
 
 if (stickyBar && overviewSection) {
   let isSticky = false;
@@ -99,6 +100,72 @@ if (stickyBar && overviewSection) {
   const overviewTop = overviewSection.getBoundingClientRect().top + window.scrollY;
   const stickyBarTop = stickyBar.getBoundingClientRect().top + window.scrollY;
   const stickyBarOffsetFromOverview = stickyBarTop - overviewTop;
+
+  // 각 섹션에 대한 active 상태 관리
+  const sections = [
+    { id: 'achievement', element: document.querySelector('#achievement') },
+    { id: 'eco-products', element: document.querySelector('#eco-products') },
+    { id: 'accessibility', element: document.querySelector('#accessibility') },
+    { id: 'news', element: document.querySelector('#news') },
+    { id: 'explore', element: document.querySelector('#explore') }
+  ];
+
+  // 스티키 메뉴 링크 클릭 시 부드럽게 스크롤
+  stickyNavLinks.forEach((link) => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = sections.find(s => s.id === targetId);
+      
+      if (targetSection && targetSection.element) {
+        const targetTop = targetSection.element.getBoundingClientRect().top + window.scrollY;
+        const offset = 100; // 스티키 메뉴 높이 고려한 오프셋
+        
+        window.scrollTo({
+          top: targetTop - offset,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // 각 섹션에 ScrollTrigger 생성하여 active 상태 관리
+  sections.forEach((section) => {
+    if (section.element) {
+      ScrollTrigger.create({
+        trigger: section.element,
+        start: 'top 20%',
+        end: 'bottom 20%',
+        onEnter: () => {
+          // 해당 섹션의 링크에 active 클래스 추가, 다른 링크는 제거
+          stickyNavLinks.forEach((link) => {
+            if (link.getAttribute('href') === `#${section.id}`) {
+              link.classList.add('is-active');
+            } else {
+              link.classList.remove('is-active');
+            }
+          });
+        },
+        onEnterBack: () => {
+          // 위로 스크롤해서 다시 들어올 때도 active 설정
+          stickyNavLinks.forEach((link) => {
+            if (link.getAttribute('href') === `#${section.id}`) {
+              link.classList.add('is-active');
+            } else {
+              link.classList.remove('is-active');
+            }
+          });
+        },
+        onLeave: () => {
+          // 아래로 스크롤해서 섹션을 벗어날 때만 active 제거 (다음 섹션이 활성화되면 자동으로 제거됨)
+          // 작은 섹션의 경우를 위해 제거하지 않고 다음 섹션이 활성화될 때 제거되도록 함
+        },
+        onLeaveBack: () => {
+          // 위로 스크롤해서 벗어날 때만 active 제거 (이전 섹션이 활성화되면 자동으로 제거됨)
+        }
+      });
+    }
+  });
 
   // 1단계: sticky bar가 상단에 도달하면 sticky만 됨 (펼쳐지지 않음)
   // trigger를 overview 섹션으로 하여 sticky bar가 fixed가 되어도 트리거 위치 유지

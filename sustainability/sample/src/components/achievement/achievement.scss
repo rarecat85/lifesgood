@@ -15,7 +15,7 @@
 .achievement-card {
   position: relative;
   padding: rem(24);
-  min-height: rem(270);
+  min-height: rem(240);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -85,11 +85,11 @@
     }
   }
 
-  .card-scope {
-    @include font(16, 125%, 400, $white);
-    margin-bottom: rem(4);
-    transition-delay: 0.3s;
-  }
+  // .card-scope {
+  //   @include font(16, 125%, 400, $white);
+  //   margin-bottom: rem(4);
+  //   transition-delay: 0.3s;
+  // }
 
   .card-label {
     @include font(24, 117%, 550, $black);
@@ -102,11 +102,10 @@
 
   .card-icon {
     position: absolute;
-    right: rem(0);
-    top: 50%;
-    transform: translateY(-50%);
-    width: rem(120);
-    height: rem(120);
+    right: rem(16);
+    bottom: rem(16);
+    width: rem(80);
+    height: rem(80);
     opacity: 0;
     transition: opacity 0.5s ease 0.4s;
     img {
@@ -120,9 +119,8 @@
   // 아이콘 3개 배치 (마지막 카드용)
   .card-icons {
     position: absolute;
-    right: rem(24);
-    top: 50%;
-    transform: translateY(-50%);
+    right: rem(16);
+    bottom: rem(16);
     display: flex;
     gap: rem(16);
     opacity: 0;
@@ -131,8 +129,8 @@
     .card-icon {
       position: static;
       transform: none;
-      width: rem(120);
-      height: rem(120);
+      width: rem(80);
+      height: rem(80);
       opacity: 1;
       transition: none;
       img {
@@ -173,18 +171,18 @@
     transition-delay: 0.5s;
 
     .value-number {
-      @include font(80, 100%, 250, $black);
+      @include font(72, 100%, 250, $black);
       flex-shrink: 0;
       &.wh-text {
-        @include font(80, 100%, 250, $white);
+        @include font(72, 100%, 250, $white);
       }
     }
 
     .value-unit {
-      @include font(32, 140%, 400, $black);
+      @include font(28, 145%, 400, $black);
       flex-shrink: 0;
       &.wh-text {
-        @include font(32, 140%, 400, $white);
+        @include font(28, 145%, 400, $white);
       }
     }
   }
@@ -199,7 +197,7 @@
   .card-list {
     transition-delay: 0.5s;
     li {
-      @include font(24, 120%, 250, $white);
+      @include font(20, 120%, 250, $white);
       &::before {
         content: '· ';
       }
@@ -225,4 +223,10 @@ $card-colors: (
       }
     }
   }
+}
+
+.achievement-footer {
+  @include font(16, 112%, 400, #716F6A);
+  text-align: right;
+  margin-top: rem(16);
 }
