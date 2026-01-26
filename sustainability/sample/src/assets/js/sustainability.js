@@ -745,6 +745,15 @@ const energyLayerGroup = {
   title: '<p>Products for the planet</p><h2>Energy efficiency</h2>'
 };
 
+// Home environment 레이어 그룹 정의
+const homeEnvironmentLayerGroup = {
+  tabs: [
+    { id: 'home-steam-sterilization', label: 'Steam sterilization technology' },
+    { id: 'home-purotec', label: 'LG PuroTec™' }
+  ],
+  title: '<p>Products for the planet</p><h2>Home environment</h2>'
+};
+
 // 레이어 푸터 버튼 정의
 const layerFooterButtons = [
   { id: 'energy', label: 'Energy efficiency', layerTitle: '<p>Products for the planet</p><h2>Energy efficiency</h2>' },
@@ -802,6 +811,8 @@ function openLayerById(layerId, title, isTransition = false) {
 
   // Energy efficiency 그룹인지 확인
   const isEnergyLayer = layerId.startsWith('energy-');
+  // Home environment 그룹인지 확인
+  const isHomeEnvironmentLayer = layerId.startsWith('home-');
   const layerTabsArea = layer.querySelector('.layer-tabs-area');
 
   // 타이틀 설정
@@ -809,6 +820,8 @@ function openLayerById(layerId, title, isTransition = false) {
     layerTitleArea.innerHTML = title;
   } else if (isEnergyLayer) {
     layerTitleArea.innerHTML = energyLayerGroup.title;
+  } else if (isHomeEnvironmentLayer) {
+    layerTitleArea.innerHTML = homeEnvironmentLayerGroup.title;
   } else {
     layerTitleArea.innerHTML = '';
   }
@@ -844,6 +857,42 @@ function openLayerById(layerId, title, isTransition = false) {
         e.stopPropagation();
         const clickedLayerId = btn.getAttribute('data-layer-id');
         const clickedLayerTitle = energyLayerGroup.title;
+        
+        // 레이어가 이미 열려있는 경우 부드러운 전환
+        if (layer && layer.getAttribute('aria-hidden') === 'false') {
+          // 새 레이어 컨텐츠를 먼저 로드
+          openLayerById(clickedLayerId, clickedLayerTitle, true);
+        } else {
+          // 레이어가 닫혀있는 경우 일반적으로 열기
+          openLayerById(clickedLayerId, clickedLayerTitle);
+        }
+      });
+    });
+  } else if (isHomeEnvironmentLayer && layerTabsArea) {
+    // 탭 네비게이션 설정 (Home environment 그룹인 경우)
+    const tabsHtml = `
+      <ul class="layer-tabs-list">
+        ${homeEnvironmentLayerGroup.tabs.map(tab => `
+          <li>
+            <button type="button" class="layer-tab-btn ${tab.id === layerId ? 'is-active' : ''}" 
+                    data-layer-id="${tab.id}">
+              ${tab.label}
+            </button>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    layerTabsArea.innerHTML = tabsHtml;
+    layerTabsArea.style.display = 'flex';
+    
+    // 탭 버튼에 이벤트 리스너 직접 바인딩
+    const tabButtons = layerTabsArea.querySelectorAll('.layer-tab-btn');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const clickedLayerId = btn.getAttribute('data-layer-id');
+        const clickedLayerTitle = homeEnvironmentLayerGroup.title;
         
         // 레이어가 이미 열려있는 경우 부드러운 전환
         if (layer && layer.getAttribute('aria-hidden') === 'false') {
