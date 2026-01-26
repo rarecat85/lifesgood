@@ -523,6 +523,31 @@ if (productsSwiper && productsTabs.length > 0) {
   });
 }
 
+// Explore Section - Tab Navigation
+const exploreSection = document.querySelector('.sustainability-explore');
+const exploreTabs = document.querySelectorAll('.explore-tab-btn');
+const explorePanels = document.querySelectorAll('.explore-content-panel');
+
+if (exploreSection && exploreTabs.length > 0) {
+  exploreTabs.forEach((tab) => {
+    tab.addEventListener('click', function() {
+      // 탭 활성화 상태 변경
+      exploreTabs.forEach((t) => t.classList.remove('is-active'));
+      this.classList.add('is-active');
+
+      // 해당 탭의 콘텐츠 패널 표시
+      const targetPanel = this.dataset.target;
+      explorePanels.forEach((panel) => {
+        if (panel.dataset.panel === targetPanel) {
+          panel.classList.add('is-active');
+        } else {
+          panel.classList.remove('is-active');
+        }
+      });
+    });
+  });
+}
+
 // Accessibility Section - 아코디언 메뉴 & 이미지 슬라이드
 const accessibilitySection = document.querySelector('.sustainability-accessibility');
 const accessibilityMenuItems = document.querySelectorAll('.accessibility-menu-item');
