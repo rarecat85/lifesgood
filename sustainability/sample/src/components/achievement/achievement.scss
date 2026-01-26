@@ -15,7 +15,7 @@
 .achievement-card {
   position: relative;
   padding: rem(24);
-  min-height: rem(312);
+  min-height: rem(270);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -105,8 +105,8 @@
     right: rem(0);
     top: 50%;
     transform: translateY(-50%);
-    width: rem(140);
-    height: rem(140);
+    width: rem(120);
+    height: rem(120);
     opacity: 0;
     transition: opacity 0.5s ease 0.4s;
     img {
