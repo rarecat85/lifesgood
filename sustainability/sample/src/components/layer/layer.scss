@@ -1,0 +1,370 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
+.sustainability-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  overflow: hidden;
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
+
+  .layer-dimmed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .layer-container {
+    height:calc(100vh - rem(40));
+    position: absolute;
+    top: rem(40);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: rem(1024);
+    background-color: $white;
+    border-radius: rem(28) rem(28) 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .layer-header-fixed {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
+    padding: rem(56) rem(56) rem(16);
+    background-color: $white;
+    display:flex;
+    justify-content: flex-end;
+
+    .layer-close-btn {
+      width: rem(48);
+      height: rem(48);
+      cursor: pointer;
+      z-index: 2;
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+  }
+
+  .layer-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    // 스크롤바 숨기기 (기능은 유지)
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE, Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .layer-header-scrollable {
+    padding: 0 rem(48);
+
+    .layer-tabs-area {
+      margin-top: rem(48);
+      display: flex;
+      justify-content: center;
+    }
+
+    .layer-title-area {
+      p {
+        @include font(20, 120%, 400, $black);
+        margin-bottom: rem(8);
+      }
+      h2 {
+        @include font(44, 109%, 550, $black);
+      }
+    }
+  }
+
+  // 레이어 탭 네비게이션
+  .layer-tabs-list {
+    display: flex;
+    justify-content: center;
+    padding: rem(8);
+    border-radius: rem(100);
+    background-color: rgba(#ccc, 0.25);
+    gap: rem(8);
+    list-style: none;
+    margin: 0;
+
+    .layer-tab-btn {
+      display: flex;
+      padding: rem(14) rem(28);
+      border-radius: rem(100);
+      border: none;
+      background-color: transparent;
+      @include font(16, 125%, 400, #262626);
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: rgba($black, 0.05);
+      }
+
+      &.is-active {
+        background-color: $black;
+        font-weight: 600;
+        color: $white;
+      }
+    }
+  }
+
+  .layer-content {
+    padding: rem(48) rem(40);
+
+    // 레이어 컨텐츠 섹션
+    .layer-content-section {
+      margin-bottom: rem(56);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      h3 {
+        @include font(36, 105%, 550, $black);
+        margin-bottom: rem(24);
+      }
+
+      h4 {
+        @include font(24, 116%, 550, $black);
+        margin-bottom: rem(8);
+      }
+
+      p {
+        @include font(20, 120%, 400, #262626);
+      }
+    }
+
+    .layer-content-grid {
+      display: flex;
+      align-items:center;
+      gap: rem(48);
+      margin-bottom: rem(48);
+    }
+
+    .layer-content-image {
+      width: 100%;
+      max-width: rem(510);
+      aspect-ratio: 510 / 320;
+      border-radius: rem(999);
+      overflow: hidden;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .layer-content-image-full {
+      width: 100%;
+      margin-bottom: rem(32);
+      border-radius: rem(28);
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .layer-content-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .layer-content-specs {
+      margin-top: rem(32);
+      padding: rem(24);
+      background-color: rgba($black, 0.02);
+      border-radius: rem(16);
+
+      ul {
+        list-style: none;
+        margin: 0 0 rem(16) 0;
+        padding: 0;
+
+        li {
+          @include font(18, 120%, 400, #262626);
+          margin-bottom: rem(12);
+          padding-left: rem(24);
+          position: relative;
+
+          &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: $black;
+          }
+
+          strong {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .layer-content-cert-date {
+        @include font(14, 120%, 400, #666);
+        margin: 0;
+      }
+    }
+
+    .layer-content-disclaimer {
+      p {
+        @include font(16, 125%, 400, #646464);
+      }
+
+      .disclaimer-list-primary {
+        list-style: none;
+        margin: rem(16) 0 0 0;
+        padding: 0;
+        counter-reset: primary-item;
+
+        > li {
+          @include font(16, 125%, 400, #646464);
+          margin-bottom: rem(16);
+          padding-left: 0;
+
+          .disclaimer-label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: rem(8);
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .disclaimer-list-secondary {
+        list-style: none;
+        margin: rem(8) 0 0 0;
+        padding: 0;
+        padding-left: rem(20);
+
+        > li {
+          @include font(16, 125%, 400, #646464);
+          margin-bottom: rem(8);
+          padding-left: rem(8);
+          position: relative;
+
+          &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .disclaimer-list-tertiary {
+        list-style: decimal;
+        margin: rem(8) 0 0 0;
+        padding-left: rem(24);
+
+        > li {
+          @include font(16, 125%, 400, #646464);
+          margin-bottom: rem(8);
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .layer-footer {
+    flex-shrink: 0;
+    border-top: 1px solid #CBC8C2;
+    padding: rem(48) rem(48);
+    background-color: $white;
+
+    .layer-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: rem(24);
+    }
+
+    .layer-footer-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: rem(24);
+      background-color: rgba($black, 0.05);
+      border-radius: rem(16);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: left;
+
+      &:hover {
+        background-color: rgba(#ccc, 0.35);
+      }
+
+      .layer-footer-btn-text {
+        @include font(24, 16%, 600, $black);
+        flex: 1;
+      }
+
+      .layer-footer-btn-icon {
+        width: rem(36);
+        height: rem(36);
+        border-radius: 50%;
+        border: 1px solid $black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: rem(24);
+
+        svg {
+          width: rem(18);
+          height: rem(18);
+          stroke: $black;
+          stroke-width: 1;
+          fill: none;
+        }
+      }
+    }
+  }
+}
+
+// body 스크롤 잠금 클래스
+ body.layer-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}

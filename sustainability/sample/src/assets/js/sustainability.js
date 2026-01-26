@@ -722,3 +722,299 @@ if (accessibilitySection && accessibilityMenuItems.length > 0) {
   // 초기 상태 설정
   updatePaginationButtons();
 }
+
+// Layer Popup
+const layer = document.querySelector('.sustainability-layer');
+const layerDimmed = document.querySelector('.layer-dimmed');
+const layerCloseBtn = document.querySelector('.layer-close-btn');
+const layerTitleArea = document.querySelector('.layer-title-area');
+const layerContent = document.querySelector('.layer-content');
+const layerContainer = document.querySelector('.layer-container');
+const layerFooter = document.querySelector('.layer-footer');
+
+let savedScrollPosition = 0;
+
+// Energy efficiency 레이어 그룹 정의
+const energyLayerGroup = {
+  tabs: [
+    { id: 'energy-washing', label: 'Washing Machines' },
+    { id: 'energy-refrigerator', label: 'Refrigerators' },
+    { id: 'energy-smart-cottage', label: 'Smart Cottage' }
+  ],
+  title: '<p>Products for the planet</p><h2>Energy efficiency</h2>'
+};
+
+// 레이어 푸터 버튼 정의
+const layerFooterButtons = [
+  { id: 'circularity', label: 'Circularity', layerId: 'circularity', layerTitle: '<p>Products for the planet</p><h2>Circularity</h2>' },
+  { id: 'home-environment', label: 'Home environment', layerId: 'home-environment', layerTitle: '<p>Products for the planet</p><h2>Home environment</h2>' },
+  { id: 'biodiversity', label: 'Biodiversity', layerId: 'biodiversity', layerTitle: '<p>Products for the planet</p><h2>Biodiversity</h2>' }
+];
+
+// 레이어 열기 함수 (data-layer-id 방식)
+function openLayerById(layerId, title, isTransition = false) {
+  if (!layer || !layerTitleArea || !layerContent || !layerContainer) return;
+
+  // 템플릿 영역에서 해당 layerId 찾기
+  const layerTemplates = layer.querySelector('.layer-templates');
+  if (!layerTemplates) {
+    console.error('레이어 템플릿 영역을 찾을 수 없습니다.');
+    return;
+  }
+
+  const template = layerTemplates.querySelector(`[data-layer-id="${layerId}"]`);
+  if (!template) {
+    console.error(`레이어 템플릿을 찾을 수 없습니다: ${layerId}`);
+    return;
+  }
+
+  // Energy efficiency 그룹인지 확인
+  const isEnergyLayer = layerId.startsWith('energy-');
+  const layerTabsArea = layer.querySelector('.layer-tabs-area');
+
+  // 타이틀 설정
+  if (title) {
+    layerTitleArea.innerHTML = title;
+  } else if (isEnergyLayer) {
+    layerTitleArea.innerHTML = energyLayerGroup.title;
+  } else {
+    layerTitleArea.innerHTML = '';
+  }
+
+  // h2 요소에 heading 클래스 추가
+  const h2Element = layerTitleArea.querySelector('h2');
+  if (h2Element) {
+    h2Element.classList.add('heading');
+  }
+
+  // 탭 네비게이션 설정 (Energy efficiency 그룹인 경우)
+  if (isEnergyLayer && layerTabsArea) {
+    const tabsHtml = `
+      <ul class="layer-tabs-list">
+        ${energyLayerGroup.tabs.map(tab => `
+          <li>
+            <button type="button" class="layer-tab-btn ${tab.id === layerId ? 'is-active' : ''}" 
+                    data-layer-id="${tab.id}">
+              ${tab.label}
+            </button>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    layerTabsArea.innerHTML = tabsHtml;
+    
+    // 탭 버튼에 이벤트 리스너 직접 바인딩
+    const tabButtons = layerTabsArea.querySelectorAll('.layer-tab-btn');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const clickedLayerId = btn.getAttribute('data-layer-id');
+        const clickedLayerTitle = energyLayerGroup.title;
+        
+        // 레이어가 이미 열려있는 경우 부드러운 전환
+        if (layer && layer.getAttribute('aria-hidden') === 'false') {
+          // 새 레이어 컨텐츠를 먼저 로드
+          openLayerById(clickedLayerId, clickedLayerTitle, true);
+        } else {
+          // 레이어가 닫혀있는 경우 일반적으로 열기
+          openLayerById(clickedLayerId, clickedLayerTitle);
+        }
+      });
+    });
+  } else if (layerTabsArea) {
+    layerTabsArea.innerHTML = '';
+  }
+
+  // 템플릿 내용 복사해서 컨텐츠에 삽입
+  layerContent.innerHTML = template.innerHTML;
+
+  // 푸터 버튼 생성
+  if (layerFooter) {
+    const footerHtml = `
+      <div class="layer-footer-grid">
+        ${layerFooterButtons.map(btn => `
+          <button type="button" class="layer-footer-btn" data-layer-id="${btn.layerId}" data-layer-title="${btn.layerTitle.replace(/"/g, '&quot;')}">
+            <span class="layer-footer-btn-text">${btn.label}</span>
+            <span class="layer-footer-btn-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 9L7.5 6L4.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    layerFooter.innerHTML = footerHtml;
+  }
+
+  // 전환 모드가 아닌 경우에만 스크롤 위치 저장 및 레이어 표시
+  if (!isTransition) {
+    // 현재 스크롤 위치 저장
+    savedScrollPosition = window.scrollY;
+
+    // 레이어 컨테이너 위치 설정
+    // 상단 40px 떨어진 위치에 표시 (뷰포트 기준)
+    layerContainer.style.top = '40px';
+    layerContainer.style.height = '';
+    layerContainer.style.maxHeight = '';
+
+    // body 스크롤 잠금
+    document.body.classList.add('layer-open');
+    document.body.style.top = `-${savedScrollPosition}px`;
+
+    // 레이어 표시
+    layer.setAttribute('aria-hidden', 'false');
+  } else {
+    // 전환 모드: 컨텐츠만 교체하고 스크롤 위치 초기화
+    layerContent.scrollTop = 0;
+  }
+}
+
+// 레이어 열기 함수 (기존 방식 - title, content 직접 전달)
+function openLayer(title, content) {
+  if (!layer || !layerTitleArea || !layerContent || !layerContainer) return;
+
+  // 타이틀 설정
+  layerTitleArea.innerHTML = title;
+
+  // h2 요소에 heading 클래스 추가
+  const h2Element = layerTitleArea.querySelector('h2');
+  if (h2Element) {
+    h2Element.classList.add('heading');
+  }
+
+  // 컨텐츠 설정
+  layerContent.innerHTML = content;
+
+  // 푸터 버튼 생성
+  if (layerFooter) {
+    const footerHtml = `
+      <div class="layer-footer-grid">
+        ${layerFooterButtons.map(btn => `
+          <button type="button" class="layer-footer-btn" data-layer-id="${btn.layerId}" data-layer-title="${btn.layerTitle.replace(/"/g, '&quot;')}">
+            <span class="layer-footer-btn-text">${btn.label}</span>
+            <span class="layer-footer-btn-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 9L7.5 6L4.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    layerFooter.innerHTML = footerHtml;
+  }
+
+  // 현재 스크롤 위치 저장
+  savedScrollPosition = window.scrollY;
+
+  // 레이어 컨테이너 위치 설정
+  // 상단 40px 떨어진 위치에 표시 (뷰포트 기준)
+  layerContainer.style.top = '40px';
+  layerContainer.style.height = '';
+  layerContainer.style.maxHeight = '';
+
+  // body 스크롤 잠금
+  document.body.classList.add('layer-open');
+  document.body.style.top = `-${savedScrollPosition}px`;
+
+  // 레이어 표시
+  layer.setAttribute('aria-hidden', 'false');
+}
+
+// 레이어 닫기 함수
+function closeLayer() {
+  if (!layer || !layerContainer) return;
+
+  // 레이어 숨김
+  layer.setAttribute('aria-hidden', 'true');
+
+  // 레이어 컨테이너 위치 초기화
+  layerContainer.style.top = '';
+  layerContainer.style.height = '';
+
+  // body 스크롤 잠금 해제
+  document.body.classList.remove('layer-open');
+  document.body.style.top = '';
+
+  // 저장된 스크롤 위치로 복원
+  window.scrollTo(0, savedScrollPosition);
+  savedScrollPosition = 0;
+}
+
+// 닫기 버튼 클릭 이벤트
+if (layerCloseBtn) {
+  layerCloseBtn.addEventListener('click', closeLayer);
+}
+
+// 딤드 클릭 이벤트
+if (layerDimmed) {
+  layerDimmed.addEventListener('click', closeLayer);
+}
+
+// ESC 키로 닫기
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && layer && layer.getAttribute('aria-hidden') === 'false') {
+    closeLayer();
+  }
+});
+
+// 레이어 컨텐츠 영역 클릭 시 이벤트 전파 방지 (딤드 클릭과 구분)
+if (layer) {
+  const layerContainer = layer.querySelector('.layer-container');
+  if (layerContainer) {
+    layerContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+}
+
+// 레이어 링크 클릭 이벤트 (data-layer-id 속성이 있는 링크에 자동 연결)
+document.addEventListener('click', (e) => {
+  const layerLink = e.target.closest('[data-layer-id]');
+  if (layerLink && !layerLink.classList.contains('layer-tab-btn') && !layerLink.classList.contains('layer-footer-btn')) {
+    e.preventDefault();
+    const layerId = layerLink.getAttribute('data-layer-id');
+    const layerTitle = layerLink.getAttribute('data-layer-title') || '';
+    openLayerById(layerId, layerTitle);
+  }
+});
+
+// 레이어 푸터 버튼 클릭 이벤트
+if (layer) {
+  layer.addEventListener('click', (e) => {
+    const footerBtn = e.target.closest('.layer-footer-btn');
+    if (footerBtn) {
+      e.preventDefault();
+      const layerId = footerBtn.getAttribute('data-layer-id');
+      const layerTitle = footerBtn.getAttribute('data-layer-title') || '';
+      openLayerById(layerId, layerTitle);
+    }
+  });
+}
+
+// 레이어 탭 클릭 이벤트 (레이어 내부 탭 네비게이션) - 이벤트 위임으로 처리
+if (layer) {
+  layer.addEventListener('click', (e) => {
+    const tabBtn = e.target.closest('.layer-tab-btn');
+    if (tabBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const layerId = tabBtn.getAttribute('data-layer-id');
+      const layerTitle = energyLayerGroup.title;
+      
+      // 레이어가 이미 열려있는 경우 부드러운 전환
+      if (layer.getAttribute('aria-hidden') === 'false') {
+        openLayerById(layerId, layerTitle, true);
+      } else {
+        openLayerById(layerId, layerTitle);
+      }
+    }
+  });
+}
+
+// 전역 함수로 export (다른 곳에서 호출 가능하도록)
+window.openLayer = openLayer;
+window.openLayerById = openLayerById;
+window.closeLayer = closeLayer;
