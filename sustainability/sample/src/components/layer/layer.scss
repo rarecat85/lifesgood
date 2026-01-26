@@ -327,6 +327,180 @@
       }
     }
 
+    .layer-content-steps {
+      display: flex;
+      gap: rem(24);
+      margin: rem(32) 0;
+      flex-wrap: wrap;
+    }
+
+    .layer-content-step-item {
+      flex: 1;
+      min-width: rem(200);
+      text-align: center;
+      position: relative;
+      margin-bottom: rem(48);
+
+      .layer-content-step-image {
+        width: 100%;
+        max-width:rem(211);
+        aspect-ratio: 211 / 400;
+        border-radius: rem(999);
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .text-box {
+        @include font(16, 125%, 400, #262626);
+        position: absolute;
+        bottom: rem(14);
+        left: 50%;
+        transform: translateX(-50%);
+        width: rem(180);
+        height: rem(180);
+        padding: 0 rem(24);
+        display:flex;
+        align-items:center;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: rem(999);
+        background:linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), rgba(255, 255, 255, 0.10);
+      }
+    }
+
+    .layer-content-chart-container {
+      background-color: #F5F5F5;
+      border-radius: rem(16);
+      padding: rem(32);
+      margin-top: rem(24);
+    }
+
+    .layer-content-chart-legend {
+      display: flex;
+      justify-content: flex-end;
+      gap: rem(24);
+      margin-bottom: rem(24);
+    }
+
+    .layer-content-chart-legend-item {
+      display: flex;
+      align-items: center;
+      gap: rem(8);
+      @include font(16, 125%, 400, #262626);
+
+      .layer-content-chart-legend-color {
+        width: rem(16);
+        height: rem(16);
+        border-radius: rem(4);
+        display: block;
+      }
+    }
+
+    .layer-content-bar-chart {
+      margin-bottom: rem(32);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h4 {
+        @include font(20, 120%, 550, $black);
+        margin-bottom: rem(24);
+      }
+    }
+
+    .layer-content-bar-chart-content {
+      display: flex;
+      flex-direction: column;
+      gap: rem(16);
+      margin-bottom: rem(16);
+    }
+
+    .layer-content-bar-item {
+      display: flex;
+      align-items: center;
+      gap: rem(16);
+    }
+
+    .layer-content-bar-label {
+      min-width: rem(80);
+      @include font(16, 125%, 400, #262626);
+      text-align: right;
+    }
+
+    .layer-content-bar-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: rem(12);
+      position: relative;
+    }
+
+    .layer-content-bar {
+      height: rem(32);
+      border-radius: rem(4);
+      transition: width 0.3s ease;
+    }
+
+    .layer-content-bar-value {
+      @include font(16, 125%, 550, #262626);
+      min-width: rem(50);
+    }
+
+    .layer-content-bar-chart-axis {
+      display: flex;
+      justify-content: space-between;
+      padding-left: rem(96);
+      margin-bottom: rem(8);
+      @include font(14, 125%, 400, #646464);
+    }
+
+    .layer-content-bar-chart-axis-label {
+      padding-left: rem(96);
+      @include font(14, 125%, 400, #646464);
+      text-align: center;
+    }
+
+    .layer-content-circular-graph {
+      margin-top: rem(32);
+
+      .layer-content-circular-graph-label {
+        @include font(16, 125%, 400, #262626);
+        margin-bottom: rem(24);
+        text-align: center;
+      }
+
+      .layer-content-circular-graph-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .layer-content-summary {
+      margin-top: rem(24);
+
+      p {
+        @include font(16, 125%, 400, #262626);
+        margin-bottom: rem(16);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
     .layer-content-text {
       display: flex;
       flex-direction: column;
