@@ -288,7 +288,7 @@ body.layer-open {
         background-color: $white;
         border-radius: rem(15);
         cursor: pointer;
-        transition: all 0.3s;
+        transition: border-color 0.3s, background-color 0.3s, color 0.3s;
         &::after {
           content: "";
           display: none;
@@ -313,7 +313,6 @@ body.layer-open {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
-          transition: background-image 0.3s;
         }
         &.active {
           background-color: $primary;
@@ -531,6 +530,7 @@ body.layer-open {
         position: relative;
         .booth-detail-img-wrap {
           height: 50%;
+          min-height: rem(280);
           border-radius: rem(30) rem(30) 0 0;
           overflow: auto;
           

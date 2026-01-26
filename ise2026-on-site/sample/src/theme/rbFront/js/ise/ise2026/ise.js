@@ -3811,37 +3811,9 @@ function handleLayerPopup() {
 }
 
 
-// ============================================================================
-// 13. LED MEDIA ART AUDIO CONTROL
-// ============================================================================
-
-/**
- * LED 미디어 아트 섹션의 음악 재생/정지 기능
- * 버튼 클릭 시 음악을 토글하고 버튼 텍스트를 변경합니다.
- */
-function handleLedMediaAudio() {
-  const btnPlay = document.querySelector('.led-media-art .btn-play');
-  const audio = document.getElementById('ledMediaAudio');
-
-  if (!btnPlay || !audio) return;
-
-  let isPlaying = false;
-
-  btnPlay.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      btnPlay.classList.remove('playing');
-    } else {
-      audio.play();
-      btnPlay.classList.add('playing');
-    }
-    isPlaying = !isPlaying;
-  });
-}
-
 
 // ============================================================================
-// 14. INITIALIZATION
+// 13. INITIALIZATION
 // ============================================================================
 
 /**
@@ -3859,7 +3831,6 @@ async function init() {
   handleTechzoneNewsSlide();
   handleHighlightsSlide();
   handleLayerPopup();
-  handleLedMediaAudio();
 
   new fullpage(".ise-container", {
       licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",

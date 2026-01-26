@@ -179,27 +179,4 @@
       }
     }
   }
-  .btn-play {
-    position: absolute;
-    left: 50%;
-    bottom: rem(40);
-    transform: translateX(-50%);
-    width: rem(60);
-    height: rem(60);
-    background-color: $white;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_play.svg');
-    background-size: 100% 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    &.playing {
-      background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_pause.svg');
-    }
-  }
 }
