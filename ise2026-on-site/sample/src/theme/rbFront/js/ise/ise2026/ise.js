@@ -3828,16 +3828,47 @@ function handleLedMediaAudio() {
 
   let isPlaying = false;
 
+  // 재생/일시정지 상태 업데이트 함수
+  const updatePlayState = (playing) => {
+    isPlaying = playing;
+    if (playing) {
+      btnPlay.classList.add('playing');
+    } else {
+      btnPlay.classList.remove('playing');
+    }
+  };
+
+  // 버튼 클릭 이벤트
   btnPlay.addEventListener('click', () => {
     if (isPlaying) {
       audio.pause();
-      btnPlay.classList.remove('playing');
+      updatePlayState(false);
     } else {
       audio.play();
-      btnPlay.classList.add('playing');
+      updatePlayState(true);
     }
-    isPlaying = !isPlaying;
   });
+
+  // Page Visibility API: 백그라운드 전환 시 자동 일시정지
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && isPlaying) {
+      audio.pause();
+      updatePlayState(false);
+    }
+  });
+
+  // Media Session API: 기기 미디어 컨트롤 지원
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('play', () => {
+      audio.play();
+      updatePlayState(true);
+    });
+    
+    navigator.mediaSession.setActionHandler('pause', () => {
+      audio.pause();
+      updatePlayState(false);
+    });
+  }
 }
 
 // ============================================================================
