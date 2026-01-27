@@ -3919,13 +3919,6 @@ async function init() {
       normalScrollElements: ".layer-pop, .layer-pop *",
       responsiveWidth: 1281, // 1081px 이하에서 fullpage 해제
       onLeave: function(origin, destination, direction) {
-          // direction 값을 활용할 수 있습니다
-          if (direction === "down") {
-              console.log("아래로 스크롤 중");
-          } else if (direction === "up") {
-              console.log("위로 스크롤 중");
-          }
-
           const nav = document.querySelector("#fp-nav");
 
           // 다음 섹션이 3번 또는 4번이면 black 클래스 추가
