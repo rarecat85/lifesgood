@@ -475,7 +475,8 @@
               display: block;
             }
           }
-          &.swiper-pagination-bullet-active {
+          &.swiper-pagination-bullet-active,
+          &:hover {
             .bullet-num {
               background-color: $black;
               color: $white;

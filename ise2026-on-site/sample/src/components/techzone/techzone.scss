@@ -167,7 +167,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: rem(14);
       position: static;
       border: 1px solid $white;
       border-radius: rem(25);
@@ -176,6 +175,7 @@
       @include tablet {
         border: 0;
         padding: 0;
+        gap: rem(14);
       }
 
       .swiper-pagination-bullet {
@@ -504,7 +504,7 @@
         }
 
         &-txt {
-          padding: rem(16) rem(20) rem(12);
+          padding: rem(16) rem(20) rem(25);
 
           @include tablet {
             padding: rem(9) rem(24) rem(12);

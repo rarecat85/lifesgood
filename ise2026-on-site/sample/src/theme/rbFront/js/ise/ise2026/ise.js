@@ -69,143 +69,6 @@ function debounce(func, wait) {
 
 
 // ============================================================================
-// 2. FADE-UP ANIMATION
-// ============================================================================
-
-/**
- * Fade-up 애니메이션을 위한 Intersection Observer 초기화
- * .fade-in, .fade-in-up 클래스를 가진 요소들을 감지하여
- * 뷰포트에 진입 시 애니메이션을 적용합니다.
- * 
- * @description
- * - 부모 요소별로 그룹화하여 순차적 딜레이 적용
- * - data-delay 속성으로 커스텀 딜레이 지정 가능
- * - 이미 지나간 요소는 즉시 활성화
- */
-// function initFadeUp() {
-//   const fadeUpElements = document.querySelectorAll(".fade-in, .fade-in-up");
-
-//   if (fadeUpElements.length === 0) return;
-
-//   // 부모 요소별로 그룹화
-//   const parentGroups = new Map();
-
-//   fadeUpElements.forEach((element) => {
-//       // 부모 요소 찾기 (data-fade-group이 있으면 그것을 기준으로, 없으면 가장 가까운 공통 부모)
-//       let parent = element.parentElement;
-//       let groupKey = null;
-
-//       while (parent && parent !== document.body) {
-//           if (parent.hasAttribute("data-fade-group")) {
-//               groupKey = parent.getAttribute("data-fade-group");
-//               break;
-//           }
-//           // text-wrap, inner, section 등을 기준으로 그룹화
-//           if (
-//               parent.classList.contains("text-wrap") ||
-//               parent.classList.contains("inner") ||
-//               parent.tagName === "SECTION"
-//           ) {
-//               // 같은 부모를 가진 요소들을 하나의 그룹으로
-//               groupKey = parent;
-//               break;
-//           }
-//           parent = parent.parentElement;
-//       }
-
-//       // 그룹 키가 없으면 요소의 직접 부모 사용
-//       if (!groupKey) {
-//           groupKey = element.parentElement || "default";
-//       }
-
-//       if (!parentGroups.has(groupKey)) {
-//           parentGroups.set(groupKey, []);
-//       }
-
-//       parentGroups.get(groupKey).push({
-//           element: element,
-//           delay: element.hasAttribute("data-delay") ?
-//               parseFloat(element.getAttribute("data-delay")) :
-//               null,
-//       });
-//   });
-
-//   // 각 그룹별로 transition-delay 설정
-//   const groupObservers = new Map();
-
-//   parentGroups.forEach((group, groupKey) => {
-//       // 같은 그룹 내의 요소들을 DOM 순서대로 정렬
-//       const sortedElements = group.sort((a, b) => {
-//           const position = a.element.compareDocumentPosition(b.element);
-//           return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
-//       });
-
-//       sortedElements.forEach((item, index) => {
-//           const {
-//               element,
-//               delay
-//           } = item;
-
-//           // data-delay가 명시적으로 지정되어 있지 않은 경우, 인덱스에 따라 자동 딜레이 적용
-//           const finalDelay = delay !== null ? delay : index * 0.15; // 기본 딜레이 간격: 0.15초
-
-//           // CSS transition-delay 설정
-//           element.style.transitionDelay = `${finalDelay}s`;
-
-//           // 그룹 정보를 요소에 저장 (나중에 참조하기 위해)
-//           element.dataset.fadeGroupKey = groupKey.toString();
-//       });
-
-//       // 페이지 로드 시 각 요소의 위치를 개별적으로 확인
-//       // 뷰포트 위로 완전히 지나간 요소는 즉시 활성화
-//       sortedElements.forEach((item) => {
-//           const rect = item.element.getBoundingClientRect();
-
-//           // 요소가 뷰포트 위로 완전히 지나갔으면 즉시 활성화
-//           if (rect.bottom < 0) {
-//               item.element.classList.add("is-visible");
-//               item.isPastViewport = true;
-//           } else {
-//               item.isPastViewport = false;
-//           }
-//       });
-
-//       // 아직 안 보이는 요소들만 필터링
-//       const elementsToObserve = sortedElements.filter(
-//           (item) => !item.isPastViewport
-//       );
-
-//       // 관찰할 요소가 있는 경우에만 Intersection Observer 설정
-//       if (elementsToObserve.length > 0) {
-//           const observerOptions = {
-//               root: null,
-//               rootMargin: "0px",
-//               threshold: 0.15, // 요소의 15%가 보이면 트리거
-//           };
-
-//           const observer = new IntersectionObserver((entries) => {
-//               entries.forEach((entry) => {
-//                   if (entry.isIntersecting) {
-//                       // 해당 요소에 is-visible 클래스 추가
-//                       entry.target.classList.add("is-visible");
-//                       // 해당 요소는 더 이상 관찰하지 않음
-//                       observer.unobserve(entry.target);
-//                   }
-//               });
-//           }, observerOptions);
-
-//           // 아직 안 보이는 요소들을 개별적으로 관찰
-//           elementsToObserve.forEach((item) => {
-//               observer.observe(item.element);
-//           });
-
-//           groupObservers.set(groupKey, observer);
-//       }
-//   });
-// }
-
-
-// ============================================================================
 // 3. KV VIDEO CONTROL
 // ============================================================================
 
@@ -514,6 +377,16 @@ function handleFooterNavClick() {
 
   if (footerNavLinks.length === 0) return;
 
+  // data-section 값을 실제 섹션 클래스로 매핑하는 테이블
+  const dataSectionToClassMap = {
+      "ise2026": "kv",
+      "key-attractor": "led-media-art",
+      "products-solutions": "booth-map",
+      "k-brands-collaboration": "culture",
+      "unveiled-led-technology": "techzone",
+      "highlights": "highlights"
+  };
+
   // 실제 섹션 매핑
   const sectionMap = new Map();
   const sections = document.querySelectorAll(
@@ -542,7 +415,9 @@ function handleFooterNavClick() {
   // 각 버튼에 클릭 이벤트 리스너 추가
   footerNavLinks.forEach((button) => {
       button.addEventListener("click", () => {
-          const sectionClass = button.getAttribute("data-section");
+          const dataSection = button.getAttribute("data-section");
+          // data-section 값을 실제 섹션 클래스로 변환
+          const sectionClass = dataSectionToClassMap[dataSection] || dataSection;
           const targetSection = sectionMap.get(sectionClass);
 
           if (targetSection) {
@@ -1141,6 +1016,7 @@ function handleTechzoneSlide() {
                   "LG MAGNIT",
                   "Virtual production",
                   "Indoor LED",
+                  "Mesh LED",
                   "Outdoor LED",
               ];
               return (
@@ -2176,18 +2052,39 @@ const layerPopupData = [
       initialScrollPosition: 0, // 0-100 사이의 퍼센티지 (50 = 중앙)
       tablist: [{
               name: "LG MAGNIT 1",
-              subname: "LG MAGNIT",
+              subname: "LG MAGNIT (Live Demo)",
               id: "tab-10-1",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_1.jpg",
-              title: "LG MAGNIT",
-              description: "More clarity, accuracy, and vibrancy. Less work, lower TCO, and reduced fire risk.",
+              title: "LG MAGNIT (Live Demo)",
+              description: "<span class='dot-txt'>More clarity, accuracy, and vibrancy. <br>Less work, lower TCO, and reduced fire risk.</span> <br> <span class='dot-txt'>Flicker-free clarity, smart pixel recovery, and seamless front-leveling innovation.</span>",
               productList: [{
-                      type: "product",
-                      name: "Commercial Micro LED",
-                      code: "LMPB007",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB007",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_1.png",
-                  },
+                          type: "product",
+                          name: "LG MAGNIT Active Micro LED",
+                          code: "LSAH007",
+                          link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LSAH007",
+                          image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_1.png",
+                      },
+                      {
+                        type: "product",
+                        name: "Commercial Micro LED",
+                        code: "LMPB009",
+                        link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LMPB009",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                      },
+                      {
+                        type: "product",
+                        name: "Commercial Micro LED",
+                        code: "LMPA009",
+                        link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPA009",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                      },
+                      {
+                        type: "product",
+                        name: "Indoor LED",
+                        code: "LMEA012",
+                        link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LMEA012",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                      }
               ],
           },
           {
@@ -2216,7 +2113,7 @@ const layerPopupData = [
               productList: [{
                       type: "product",
                       name: "Virtual Production LED",
-                      code: "LBQB039",
+                      code: "",
                       link: "",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_3_1.png",
                   },
@@ -2288,10 +2185,33 @@ const layerPopupData = [
               ],
           },
           {
-              name: "Outdoor LED",
-              subname: "Outdoor LED",
+              name: "Mesh LED",
+              subname: "Mesh LED",
               id: "tab-10-5",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_5.jpg",
+              title: "Mesh LED",
+              description: "Maximized space with transparent tech",
+              productList: [{
+                      type: "product",
+                      name: "Mesh LED",
+                      code: "GMBD035",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/mesh-led/GMBD035",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
+                  },
+                  {
+                    type: "product",
+                    name: "Outdoor LED",
+                    code: "",
+                    link: "",
+                    image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
+                  },
+              ],
+          },
+          {
+              name: "Outdoor LED",
+              subname: "Outdoor LED",
+              id: "tab-10-6",
+              bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_6.jpg",
               title: "Outdoor LED",
               description: "Maximize space with transparent tech and deliver bright and clear impact in outdoor stadiums.",
               productList: [{
@@ -2299,38 +2219,38 @@ const layerPopupData = [
                       name: "Outdoor LED",
                       code: "LTPA062",
                       link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_1.png",
                   },
                   {
                       type: "product",
                       name: "Mesh LED",
                       code: "GMBD035",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/mesh-led/GMBD035",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_2.png",
                   },
                   {
                       type: "product",
                       name: "Outdoor LED",
                       code: "GSPB039",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPB039",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_3.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_3.png",
                   },
                   {
                       type: "product",
                       name: "Stadium LED",
                       code: "GRPA062",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GRPA062",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_4.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_4.png",
                   },
                   {
                       type: "product",
                       name: "Outdoor LED",
                       code: "GPPA062",
                       link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_5.png",
+                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_5.png",
                   },
               ],
-          },
+          }
       ],
       mediaGallery: [{
               type: "youtube",
@@ -3627,6 +3547,32 @@ function handleLayerPopup() {
               clickedTabDetail.classList.add("active");
           }
 
+          // 모바일에서만 아코디언이 완전히 펼쳐진 후 스크롤
+          if (isMobile) {
+              // tab-detail의 transition이 완료될 때까지 대기 (0.3s + 여유시간)
+              setTimeout(() => {
+                  const layerPop = document.querySelector(".layer-pop");
+                  if (layerPop && clickedTab) {
+                      // sticky 요소들의 높이 계산
+                      const layerTop = document.querySelector(".layer-pop .layer-top");
+                      const layerTab = document.querySelector(".layer-pop .layer-tab");
+                      const stickyHeight = (layerTop ? layerTop.offsetHeight : 0) + 
+                                           (layerTab ? layerTab.offsetHeight : 0);
+                      
+                      // 버튼의 layer-pop 기준 위치 계산
+                      const buttonRect = clickedTab.getBoundingClientRect();
+                      const layerPopRect = layerPop.getBoundingClientRect();
+                      const scrollOffset = buttonRect.top - layerPopRect.top + layerPop.scrollTop - stickyHeight;
+                      
+                      // 스크롤
+                      layerPop.scrollTo({
+                          top: scrollOffset,
+                          behavior: 'smooth'
+                      });
+                  }
+              }, 350); // 0.3s transition + 50ms 여유
+          }
+
           // layer-content에 active 클래스 추가
           layerContent.classList.add("active");
 
@@ -3810,10 +3756,39 @@ function handleLayerPopup() {
     }
 }
 
+// ============================================================================
+// 14. LED MEDIA ART AUDIO CONTROL
+// ============================================================================
 
+/**
+ * LED 미디어 아트 섹션의 음악 재생/정지 기능
+ * 버튼 클릭 시 음악을 토글하고 버튼 텍스트를 변경합니다.
+ */
+function handleLedMediaAudio() {
+  const btnPlay = document.querySelector('.led-media-art .btn-play');
+  const audio = document.getElementById('ledMediaAudio');
+
+  if (!btnPlay || !audio) return;
+
+  // 볼륨을 고정값으로 설정 (0.0 ~ 1.0, 0.5 = 50%)
+  audio.volume = 0.5;
+
+  let isPlaying = false;
+
+  btnPlay.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      btnPlay.classList.remove('playing');
+    } else {
+      audio.play();
+      btnPlay.classList.add('playing');
+    }
+    isPlaying = !isPlaying;
+  });
+}
 
 // ============================================================================
-// 13. INITIALIZATION
+// 15. INITIALIZATION
 // ============================================================================
 
 /**
@@ -3831,6 +3806,7 @@ async function init() {
   handleTechzoneNewsSlide();
   handleHighlightsSlide();
   handleLayerPopup();
+  handleLedMediaAudio();
 
   new fullpage(".ise-container", {
       licenseKey: "5N617-S264H-TKC2I-1JR47-TTJWQ",
@@ -3838,12 +3814,13 @@ async function init() {
       easingcss3: "cubic-bezier(0.645, 0.045, 0.355, 1.000)",
       navigation: true,
       anchors: [
-        "kv",
-        "led-media-art",
-        "booth-map",
-        "culture",
-        "techzone",
-        "highlights"
+        "ise2026",
+        "key-attractor",
+        "products-solutions",
+        "k-brands-collaboration",
+        "unveiled-led-technology",
+        "highlights",
+        ""
     ],
       navigationTooltips: [
           "ISE 2026",

@@ -6,7 +6,7 @@
   position: relative;
   .video-bx {
     width: 100%;
-    padding-bottom: rem(78);
+    padding-bottom: rem(110);
     position: relative;
     overflow: hidden;
     @include tablet {
@@ -15,10 +15,10 @@
     }
     video {
       width: 100%;
-      height: rem(700);
+      height: rem(620);
       object-fit: cover;
       aspect-ratio: 360 / 400;
-      transform: translateY(rem(-72));
+      transform: translateY(rem(-68));
       @include tablet {
         aspect-ratio: 16 / 9;
         height: 100%;
@@ -35,7 +35,7 @@
       background-position: center center;
       background-repeat: no-repeat;
       position: absolute;
-      bottom: rem(8);
+      bottom: rem(22);
       left: 0;
       z-index: 1;
       @include tablet {
@@ -58,7 +58,7 @@
     width: min(calc(100% - rem(60)), rem(288));
     color: $white;
     text-align: center;
-    padding-bottom: rem(60);
+    padding-bottom: rem(104);
     @include tablet {
       position: absolute;
       justify-content: space-between;
@@ -177,6 +177,92 @@
           }
         }
       }
+    }
+  }
+  .btn-play {
+    width: rem(199);
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    border: rem(1) solid rgba($white, 0.5);
+    border-radius: rem(100);
+    padding: rem(8) rem(16);
+    cursor: pointer;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: rem(56);
+    left: 50%;
+    &::before {
+      content: "";
+      display: block;
+      width: rem(16);
+      height: rem(16);
+      background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_play.svg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+    @include tablet {
+      width: rem(200);
+      margin-top: rem(20);
+      padding: rem(9.5) rem(16);
+      position: static;
+      bottom: inherit;
+      left: inherit;
+      transform: unset;
+      &::before {
+        width: rem(20);
+        height: rem(20);
+      }
+    }
+    @include desktop {
+      width: rem(256);
+      margin-top: rem(30);
+    }
+    .btn-play-text {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: max-content;
+      gap: rem(6);
+      @include desktop {
+        gap: rem(10);
+      }
+      span {
+        font-family: $font-headline;
+        @include font(12,1,400, $white);
+        white-space: nowrap;
+        @include tablet {
+          font-size: rem(12);
+        }
+        @include desktop {
+          font-size: rem(16);
+        }
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+    &.playing {
+      &::before {
+        background-image: url('/theme/rbFront/img/w/ise/ise2026/ic_pause.svg');
+      }
+      .btn-play-text {
+        span {
+          display: inline-block;
+          animation: marquee 8s linear infinite;
+        }
+      }
+    }
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - rem(10)));
     }
   }
 }
