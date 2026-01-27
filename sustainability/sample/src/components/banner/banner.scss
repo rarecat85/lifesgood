@@ -1,0 +1,61 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
+.sustainability-banner {
+  position: relative;
+  padding: rem(80) 0;
+
+  &-content {
+    position: relative;
+    border-radius: rem(20);
+    overflow: hidden;
+    background-color: $bg;
+  }
+
+  &-text {
+    position: absolute;
+    left: rem(64);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    max-width: rem(760);
+  }
+
+  &-title {
+    @include font(56, 107%, 550, $white);
+    margin-bottom: rem(8);
+  }
+
+  &-desc {
+    @include font(16, 125%, 400, $white);
+    margin-bottom: rem(24);
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    padding: rem(14) rem(21);
+    border-radius: rem(100);
+    background-color: $white;
+    @include font(16, 100%, 600, $black);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+
+  &-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 420;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

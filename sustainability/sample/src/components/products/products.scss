@@ -136,9 +136,10 @@
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     width: fit-content;
+    background-color: $white;
 
     &:hover {
-      background-color: #ea1917;
+      background-color: $red;
       border:1px solid transparent;
       color: $white;
     }

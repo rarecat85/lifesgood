@@ -1,0 +1,35 @@
+@use "../../assets/scss/mixin" as *;
+@use "../../assets/scss/variable" as *;
+
+.sustainability-news {
+  position: relative;
+  padding: rem(80) 0;
+  background-color: $bg;
+
+  &-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem(38);
+
+    &-title {
+      @include font(56, 107%, 550, $black);
+    }
+
+    &-link {
+      @include btn($red);
+      padding: rem(14) rem(20);
+      @include font(16, 100%, 600, $white);
+      background-color: $red;
+      color: $white;
+      border: 1px solid transparent;
+      border-radius: rem(100);
+
+      &:hover {
+        background-color: $white;
+        color: $black;
+        border: 1px solid $black;
+      }
+    }
+  }
+}

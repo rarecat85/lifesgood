@@ -1,0 +1,39 @@
+<div class="sustainability-layer" id="layer" aria-hidden="true">
+  <div class="layer-dimmed" aria-label="Close layer"></div>
+  <div class="layer-container">
+    <div class="layer-header-fixed">
+      <button type="button" class="layer-close-btn" aria-label="Close layer">
+        <img src="./assets/images/button_close.svg" alt="Close layer">
+      </button>
+    </div>
+    <div class="layer-scrollable">
+      <div class="layer-header-scrollable">
+        <div class="layer-title-area">
+          <!-- 타이틀은 JavaScript로 동적으로 삽입 -->
+        </div>
+        <div class="layer-tabs-area">
+          <!-- 탭 네비게이션은 JavaScript로 동적으로 삽입 -->
+        </div>
+      </div>
+      <div class="layer-content">
+        <!-- 컨텐츠는 JavaScript로 동적으로 삽입 -->
+      </div>
+      <div class="layer-footer">
+        <!-- 푸터 버튼들은 JavaScript로 동적으로 삽입 -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- 레이어 컨텐츠 템플릿 영역 (빌드 시 각 레이어 컨텐츠가 여기에 포함됨) -->
+  <div class="layer-templates" style="display: none;">
+    {{layer-content-energy-washing}}
+    {{layer-content-energy-refrigerator}}
+    {{layer-content-energy-smart-cottage}}
+    {{layer-content-circularity-home-appliances-tv}}
+    {{layer-content-home-steam-sterilization}}
+    {{layer-content-home-purotec}}
+    {{layer-content-biodiversity-microplastic}}
+    {{layer-content-biodiversity-marine-restoration}}
+    {{layer-content-biodiversity-mineral-wash}}
+  </div>
+</div>
