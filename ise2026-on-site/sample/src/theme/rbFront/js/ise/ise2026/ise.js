@@ -2160,7 +2160,7 @@ const layerPopupData = [
               id: "tab-10-2",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_2.jpg",
               title: "LG MAGNIT",
-              description: "The Pinnacle of LG’s Self-Emitting Next Generation Micro LED",
+              description: "The Pinnacle of LG’s Self-Emitting Next Generation Micro LED.",
               productList: [{
                       type: "product",
                       name: "LG MAGNIT Active Micro LED",
@@ -2257,7 +2257,7 @@ const layerPopupData = [
               id: "tab-10-5",
               bg: "/theme/rbFront/img/w/ise/ise2026/booth_layer_bg_10_tab_5.jpg",
               title: "Mesh LED",
-              description: "Maximized space with transparent tech",
+              description: "Maximized space with transparent tech.",
               productList: [{
                       type: "product",
                       name: "Mesh LED",
@@ -3904,7 +3904,7 @@ async function init() {
         "k-brands-collaboration",
         "unveiled-led-technology",
         "highlights",
-        ""
+        "footer"
     ],
       navigationTooltips: [
           "ISE 2026",
