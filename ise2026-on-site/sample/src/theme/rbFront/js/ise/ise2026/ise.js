@@ -762,6 +762,66 @@ function handleBoothSlide() {
       mediaQuery.addListener(handleMediaChange);
   }
 
+  // 페이지 visibility 변경 감지 (백그라운드/절전모드 복귀 시 pagination 동기화)
+  document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && boothSlideSwiper) {
+          // 페이지가 다시 보일 때 pagination 업데이트
+          requestAnimationFrame(() => {
+              if (boothSlideSwiper.pagination) {
+                  // Swiper 업데이트로 내부 상태 동기화
+                  boothSlideSwiper.update();
+                  
+                  // pagination 강제 업데이트
+                  boothSlideSwiper.pagination.render();
+                  boothSlideSwiper.pagination.update();
+                  
+                  // aria-current 속성 재설정
+                  const allBullets = document.querySelectorAll(
+                      ".booth-map .slide-bx .swiper-pagination-bullet"
+                  );
+                  allBullets.forEach((bullet) => {
+                      bullet.removeAttribute("aria-current");
+                  });
+                  
+                  const activeBullet = document.querySelector(
+                      ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                  );
+                  if (activeBullet) {
+                      activeBullet.setAttribute("aria-current", "true");
+                  }
+              }
+          });
+      }
+  });
+
+  // bfcache에서 페이지 복원 시 처리 (뒤로가기/앞으로가기)
+  window.addEventListener("pageshow", (event) => {
+      if (event.persisted && boothSlideSwiper) {
+          // 캐시에서 복원된 경우
+          requestAnimationFrame(() => {
+              if (boothSlideSwiper.pagination) {
+                  boothSlideSwiper.update();
+                  boothSlideSwiper.pagination.render();
+                  boothSlideSwiper.pagination.update();
+                  
+                  const allBullets = document.querySelectorAll(
+                      ".booth-map .slide-bx .swiper-pagination-bullet"
+                  );
+                  allBullets.forEach((bullet) => {
+                      bullet.removeAttribute("aria-current");
+                  });
+                  
+                  const activeBullet = document.querySelector(
+                      ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                  );
+                  if (activeBullet) {
+                      activeBullet.setAttribute("aria-current", "true");
+                  }
+              }
+          });
+      }
+  });
+
   // 키보드 네비게이션 (화살표 키로 bullet 간 이동)
   document.addEventListener("keydown", function(e) {
       const bullets = Array.from(
@@ -1990,24 +2050,31 @@ const layerPopupData = [
           },
           {
               type: "product",
+              name: "OLED Hotel TV",
+              code: "",
+              link: "",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png",
+          },
+          {
+              type: "product",
               name: "4K UHD TV with Pro:Centric",
               code: "65UK767H",
               link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/65UK767H-EU-CIS",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_1.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_2.png",
           },
           {
               type: "product",
               name: "4K UHD TV with Pro:Centric",
               code: "65UK762H",
               link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/65UK762H-EU-CIS",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_2.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_3.png",
           },
           {
               type: "product",
               name: "4K UHD TV with Pro:Centric",
               code: "55UK660H",
               link: "https://www.lg-informationdisplay.com/product/commercial-tv/hotel-tv/55UK660H-EU-CIS",
-              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_3.png",
+              image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_4.png",
           },
       ],
       mediaGallery: [{
@@ -2059,31 +2126,31 @@ const layerPopupData = [
               description: "<span class='dot-txt'>More clarity, accuracy, and vibrancy. <br>Less work, lower TCO, and reduced fire risk.</span> <br> <span class='dot-txt'>Flicker-free clarity, smart pixel recovery, and seamless front-leveling innovation.</span>",
               productList: [{
                           type: "product",
-                          name: "LG MAGNIT Active Micro LED",
-                          code: "LSAH007",
-                          link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LSAH007",
-                          image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_2_1.png",
+                          name: "Commerical Micro LED",
+                          code: "LMPB007",
+                          link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPB007",
+                          image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_1.png",
                       },
                       {
                         type: "product",
                         name: "Commercial Micro LED",
                         code: "LMPB009",
                         link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit-active-micro-led/LMPB009",
-                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_2.png",
                       },
                       {
                         type: "product",
                         name: "Commercial Micro LED",
                         code: "LMPA009",
                         link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/lg-magnit/LMPA009",
-                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_3.png",
                       },
                       {
                         type: "product",
                         name: "Indoor LED",
                         code: "LMEA012",
                         link: "https://www.lg-informationdisplay.com/product/led-signage/indoor-led/LMEA012",
-                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
+                        image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_1_4.png",
                       }
               ],
           },
@@ -2203,7 +2270,7 @@ const layerPopupData = [
                     name: "Outdoor LED",
                     code: "",
                     link: "",
-                    image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_1.png",
+                    image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_5_2.png",
                   },
               ],
           },
@@ -2216,16 +2283,16 @@ const layerPopupData = [
               description: "Maximize space with transparent tech and deliver bright and clear impact in outdoor stadiums.",
               productList: [{
                       type: "product",
-                      name: "Outdoor LED",
-                      code: "LTPA062",
-                      link: "",
+                      name: "Stadium LED",
+                      code: "GRPA062",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GRPA062",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_1.png",
                   },
                   {
                       type: "product",
-                      name: "Mesh LED",
-                      code: "GMBD035",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/mesh-led/GMBD035",
+                      name: "Outdoor LED",
+                      code: "GPPA062",
+                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GPPA062",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_2.png",
                   },
                   {
@@ -2234,20 +2301,6 @@ const layerPopupData = [
                       code: "GSPB039",
                       link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/GSPB039",
                       image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_3.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Stadium LED",
-                      code: "GRPA062",
-                      link: "https://www.lg-informationdisplay.com/product/led-signage/outdoor-led/stadium-led/GRPA062",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_4.png",
-                  },
-                  {
-                      type: "product",
-                      name: "Outdoor LED",
-                      code: "GPPA062",
-                      link: "",
-                      image: "/theme/rbFront/img/w/ise/ise2026/product_img_10_6_5.png",
                   },
               ],
           }
