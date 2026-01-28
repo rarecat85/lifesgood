@@ -339,6 +339,10 @@
                     margin-right: rem(10);
                   }
                 }
+                &.btn-disabled {
+                  opacity: 0;
+                  visibility: hidden;
+                }
                 &.type01 {
                   background-color: $thewhoo;
                   color: $black;

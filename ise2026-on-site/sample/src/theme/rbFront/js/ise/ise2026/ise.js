@@ -1321,35 +1321,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_1_2.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-1/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_6.jpg",
           },
       ],
   },
@@ -1416,35 +1391,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_2_2.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-2/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_6.jpg",
           },
       ],
   },
@@ -1617,35 +1567,10 @@ const layerPopupData = [
               }, ],
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-3/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_6.jpg",
           },
       ],
   },
@@ -1700,35 +1625,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_4_6.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-4/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_6.jpg",
           },
       ],
   },
@@ -1812,35 +1712,10 @@ const layerPopupData = [
           ],
         },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-5/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_6.jpg",
           },
       ],
   },
@@ -1876,35 +1751,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_6_1.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-6/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_6.jpg",
           },
       ],
   },
@@ -1931,35 +1781,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_7_2.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-7/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_6.jpg",
           },
       ],
   },
@@ -2000,35 +1825,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_8_4.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-8/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_6.jpg",
           },
       ],
   },
@@ -2077,35 +1877,10 @@ const layerPopupData = [
               image: "/theme/rbFront/img/w/ise/ise2026/product_img_9_4.png",
           },
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-9/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_6.jpg",
           },
       ],
   },
@@ -2305,35 +2080,10 @@ const layerPopupData = [
               ],
           }
       ],
-      mediaGallery: [{
-              type: "youtube",
-              youtubeUrl: "https://www.youtube.com/watch?v=k7Je05MmGTU&list=PLOqxc6bOOEAVFoQulUBHPz9U77tQRuHzG&index=14",
-              title: "Overview",
-              thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-10/youtube_thumb_1.jpg",
-          },
+      mediaGallery: [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_1.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_2.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_3.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_4.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_5.jpg",
-          },
-          {
-              type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_6.jpg",
           },
       ],
     },
