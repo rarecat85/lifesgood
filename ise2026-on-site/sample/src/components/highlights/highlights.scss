@@ -445,6 +445,7 @@
       @include tablet {
         right: rem(18);
         background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_next.svg");
+        background-position: calc(50% + rem(1)) center;
       }
       @include desktop {
         right: rem(30);
