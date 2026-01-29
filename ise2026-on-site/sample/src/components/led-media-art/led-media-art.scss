@@ -63,19 +63,20 @@
       position: absolute;
       justify-content: space-between;
       width: min(calc(100% - rem(60)), rem(1175));
-      height: unset;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       left: 50%;
       bottom: inherit;
       width: min(calc(100% - rem(60)), rem(756));
-      min-height: rem(298);
-      top: 30vh;
+      min-height: rem(500);
+      top: 50%;
       padding-bottom: 0;
       text-align: left;
     }
     @include desktop {
       width: min(calc(100% - rem(60)), rem(1175));
+      transform: translateX(-50%);
       top: 22vh;
+      height: unset;
       min-height: rem(462);
     }
     @media all and (min-width: 1921px) {
@@ -144,7 +145,7 @@
       }
       @media all and (min-width: 1921px) {
         top: 4vh;
-        right: 5%;
+        right: -2%;
       }
       .title {
         display: none;
