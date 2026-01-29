@@ -29,10 +29,28 @@
         }
       }
       a {
+        span {
+          width: rem(6);
+          height: rem(6);
+        }
         &.active {
           span {
             width: rem(15);
             height: rem(15);
+          }
+        }
+      }
+      &:hover {
+        a {
+          span {
+            width: rem(6);
+            height: rem(6);
+          }
+          &.active {
+            span {
+              width: rem(15);
+              height: rem(15);
+            }
           }
         }
       }

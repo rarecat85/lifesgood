@@ -62,11 +62,10 @@
     @include tablet {
       position: absolute;
       justify-content: space-between;
-      width: min(calc(100% - rem(60)), rem(1175));
       transform: translate(-50%, -50%);
       left: 50%;
       bottom: inherit;
-      width: min(calc(100% - rem(60)), rem(756));
+      width: min(calc(100% - rem(60)), rem(900));
       min-height: rem(500);
       top: 50%;
       padding-bottom: 0;
