@@ -45,6 +45,9 @@
       @include tablet {
         width: min(65%, rem(495));
         margin-bottom: 0;
+        .swiper {
+          height: 100%;
+        }
       }
       @include desktop {
         width: min(100%, rem(795));
@@ -262,15 +265,16 @@
         width: rem(46);
         height: rem(21);
         background: url("/theme/rbFront/img/w/ise/ise2026/ic_lg_red.svg") no-repeat center center / contain;
-        margin-top: rem(20);
         @include tablet {
           display: inline-block;
           width: rem(29);
           height: rem(13);
+          margin-top: rem(10);
         }
         @include desktop {
           width: rem(46);
           height: rem(21);
+          margin-top: rem(20);
         }
       }
       .news-item-sub-title {
@@ -283,7 +287,7 @@
         @include tablet {
           font-weight: 700;
           font-size: rem(13);
-          margin-bottom: rem(15);
+          margin-bottom: rem(10);
         }
         @include desktop {
           font-size: rem(20);
@@ -330,9 +334,11 @@
         @include tablet {
           display: inline-block;
           font-size: rem(16);
+          margin-bottom: rem(6);
         }
         @include desktop {
           font-size: rem(32);
+          margin-bottom: rem(10);
         }
       }
       .news-item-desc {
@@ -348,6 +354,7 @@
           display: -webkit-box;
           font-size: rem(12);
           -webkit-line-clamp: 4;
+          padding-right: rem(0);
         }
         @include desktop {
           font-size: rem(16);

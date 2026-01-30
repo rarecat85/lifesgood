@@ -236,6 +236,7 @@
                   width: rem(230);
                   @include font(14, 1.26, 400, $white);
                   text-wrap: balance;
+                  letter-spacing: -0.025em;
                   z-index: 1;
                   &::before,
                   &::after {
@@ -250,6 +251,7 @@
                     @include tablet {
                       width: rem(40);
                       height: rem(27);
+                      letter-spacing: 0;
                     }
                     @include desktop {
                       width: rem(67);
