@@ -2721,13 +2721,13 @@ async function openVideoLayer(index) {
   // 갤러리 렌더링
   renderMediaGallery(data.mediaGallery);
 
-  // 오버레이 표시
-  videoLayer.classList.add("active");
+  // Swiper를 먼저 초기화 (레이아웃 무너짐 방지)
+  initMediaGallerySwiper();
 
-  // Swiper Thumbs 초기화
+  // Swiper 초기화 완료 후 레이어 표시 (약간의 지연으로 DOM 조작 완료 보장)
   setTimeout(() => {
-      initMediaGallerySwiper();
-    }, 100);
+      videoLayer.classList.add("active");
+    }, 50);
 }
 
 
@@ -2752,15 +2752,18 @@ function closeVideoLayer() {
       layerContentInner.classList.remove("active");
   }
 
-  // Swiper 인스턴스 제거
-  if (mainGallerySwiper) {
-      mainGallerySwiper.destroy();
-      mainGallerySwiper = null;
-  }
-  if (thumbGallerySwiper) {
-      thumbGallerySwiper.destroy();
-      thumbGallerySwiper = null;
-    }
+  // 레이어 애니메이션 완료 후 Swiper 인스턴스 제거 (300ms transition + 여유 50ms)
+  // 이렇게 하면 레이어가 사라지는 동안 레이아웃이 무너지지 않습니다
+  setTimeout(() => {
+      if (mainGallerySwiper) {
+          mainGallerySwiper.destroy();
+          mainGallerySwiper = null;
+      }
+      if (thumbGallerySwiper) {
+          thumbGallerySwiper.destroy();
+          thumbGallerySwiper = null;
+      }
+    }, 350);
 }
 
 
