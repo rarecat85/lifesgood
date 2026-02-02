@@ -2625,9 +2625,6 @@ async function openLayerPopup(index) {
 
   if (!layerPop) return;
 
-  // 레이어 팝업 활성화
-  layerPop.classList.add("active");
-
   // 모든 탭의 active 클래스 제거
   layerTabItems.forEach((item) => item.classList.remove("active"));
 
@@ -2652,13 +2649,16 @@ async function openLayerPopup(index) {
   }. ${activeTabBtn.textContent.trim()}`;
   }
 
-  // 컨텐츠 렌더링 후 Swiper 초기화
-  setTimeout(() => {
-      initProductSwiper();
-  }, 100);
+  // Product Swiper를 먼저 초기화 (레이아웃 무너짐 방지)
+  initProductSwiper();
 
   // body scroll 방지 - 클래스로 처리
-    document.body.classList.add(CLASS_NAMES.LAYER_OPEN);
+  document.body.classList.add(CLASS_NAMES.LAYER_OPEN);
+
+  // Swiper 초기화 완료 후 레이어 표시 (약간의 지연으로 DOM 조작 완료 보장)
+  setTimeout(() => {
+      layerPop.classList.add("active");
+  }, 50);
 }
 
 
@@ -2684,7 +2684,18 @@ function closeLayerPopup() {
   layerTabItems.forEach((item) => item.classList.remove("active"));
 
   // body scroll 복원 - 클래스 제거
-    document.body.classList.remove(CLASS_NAMES.LAYER_OPEN);
+  document.body.classList.remove(CLASS_NAMES.LAYER_OPEN);
+
+  // 레이어 애니메이션 완료 후 Product Swiper 인스턴스 제거 (300ms transition + 여유 50ms)
+  // 이렇게 하면 레이어가 사라지는 동안 레이아웃이 무너지지 않습니다
+  setTimeout(() => {
+      productSwiperInstances.forEach((swiper) => {
+          if (swiper) {
+              swiper.destroy(true, true);
+          }
+      });
+      productSwiperInstances.clear();
+  }, 350);
 }
 
 

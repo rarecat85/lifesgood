@@ -23,7 +23,7 @@ body.layer-open {
   visibility: hidden;
   z-index: 100;
   box-sizing: border-box;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
   overflow: auto;
 
   * {
