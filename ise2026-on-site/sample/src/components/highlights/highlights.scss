@@ -144,6 +144,30 @@
       position: relative;
       @include tablet {
         height: calc(50% - rem(6));
+
+        &::before {
+          content: "Photos";
+          display: inline-block;
+          background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_photo.svg");
+          background-size: rem(17) rem(12);
+          background-repeat: no-repeat;
+          background-position: left center;
+          padding-left: rem(24);
+          position: absolute;
+          top: rem(20);
+          left: rem(20);
+          z-index: 2;
+          white-space: nowrap;
+          font-family: $font-headline;
+          @include font(13,1,700,$white);
+          @include desktop {
+            font-size: rem(20);
+            top: rem(30);
+            left: rem(30);
+            padding-left: rem(36);
+            background-size: rem(26) rem(18);
+          }
+        }
       }
       @include desktop {
         height: calc(50% - rem(10));
@@ -175,6 +199,7 @@
             display: none;
           }
           @include tablet {
+            display: none;
             font-size: rem(13);
             top: rem(18);
             left: rem(18);
