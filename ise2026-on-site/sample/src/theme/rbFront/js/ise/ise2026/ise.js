@@ -766,30 +766,33 @@ function handleBoothSlide() {
   document.addEventListener("visibilitychange", () => {
       if (!document.hidden && boothSlideSwiper) {
           // 페이지가 다시 보일 때 pagination 업데이트
+          // requestAnimationFrame 2회 중첩으로 pagination 렌더링 완료 보장
           requestAnimationFrame(() => {
-              if (boothSlideSwiper.pagination) {
-                  // Swiper 업데이트로 내부 상태 동기화
-                  boothSlideSwiper.update();
-                  
-                  // pagination 강제 업데이트
-                  boothSlideSwiper.pagination.render();
-                  boothSlideSwiper.pagination.update();
-                  
-                  // aria-current 속성 재설정
-                  const allBullets = document.querySelectorAll(
-                      ".booth-map .slide-bx .swiper-pagination-bullet"
-                  );
-                  allBullets.forEach((bullet) => {
-                      bullet.removeAttribute("aria-current");
-                  });
-                  
-                  const activeBullet = document.querySelector(
-                      ".booth-map .slide-bx .swiper-pagination-bullet-active"
-                  );
-                  if (activeBullet) {
-                      activeBullet.setAttribute("aria-current", "true");
+              requestAnimationFrame(() => {
+                  if (boothSlideSwiper && boothSlideSwiper.pagination) {
+                      // Swiper 업데이트로 내부 상태 동기화
+                      boothSlideSwiper.update();
+                      
+                      // pagination 강제 업데이트
+                      boothSlideSwiper.pagination.render();
+                      boothSlideSwiper.pagination.update();
+                      
+                      // aria-current 속성 재설정
+                      const allBullets = document.querySelectorAll(
+                          ".booth-map .slide-bx .swiper-pagination-bullet"
+                      );
+                      allBullets.forEach((bullet) => {
+                          bullet.removeAttribute("aria-current");
+                      });
+                      
+                      const activeBullet = document.querySelector(
+                          ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                      );
+                      if (activeBullet) {
+                          activeBullet.setAttribute("aria-current", "true");
+                      }
                   }
-              }
+              });
           });
       }
   });
@@ -798,26 +801,29 @@ function handleBoothSlide() {
   window.addEventListener("pageshow", (event) => {
       if (event.persisted && boothSlideSwiper) {
           // 캐시에서 복원된 경우
+          // requestAnimationFrame 2회 중첩으로 pagination 렌더링 완료 보장
           requestAnimationFrame(() => {
-              if (boothSlideSwiper.pagination) {
-                  boothSlideSwiper.update();
-                  boothSlideSwiper.pagination.render();
-                  boothSlideSwiper.pagination.update();
-                  
-                  const allBullets = document.querySelectorAll(
-                      ".booth-map .slide-bx .swiper-pagination-bullet"
-                  );
-                  allBullets.forEach((bullet) => {
-                      bullet.removeAttribute("aria-current");
-                  });
-                  
-                  const activeBullet = document.querySelector(
-                      ".booth-map .slide-bx .swiper-pagination-bullet-active"
-                  );
-                  if (activeBullet) {
-                      activeBullet.setAttribute("aria-current", "true");
+              requestAnimationFrame(() => {
+                  if (boothSlideSwiper && boothSlideSwiper.pagination) {
+                      boothSlideSwiper.update();
+                      boothSlideSwiper.pagination.render();
+                      boothSlideSwiper.pagination.update();
+                      
+                      const allBullets = document.querySelectorAll(
+                          ".booth-map .slide-bx .swiper-pagination-bullet"
+                      );
+                      allBullets.forEach((bullet) => {
+                          bullet.removeAttribute("aria-current");
+                      });
+                      
+                      const activeBullet = document.querySelector(
+                          ".booth-map .slide-bx .swiper-pagination-bullet-active"
+                      );
+                      if (activeBullet) {
+                          activeBullet.setAttribute("aria-current", "true");
+                      }
                   }
-              }
+              });
           });
       }
   });
