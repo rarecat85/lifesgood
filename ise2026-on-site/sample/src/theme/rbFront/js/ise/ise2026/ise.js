@@ -1332,6 +1332,18 @@ const layerPopupData = [
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_1.jpg",
           },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_4.jpg",
+          },
       ],
   },
 
@@ -1401,6 +1413,14 @@ const layerPopupData = [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_3.jpg",
           },
       ],
   },
@@ -1578,6 +1598,18 @@ const layerPopupData = [
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_1.jpg",
           },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_4.jpg",
+          },
       ],
   },
 
@@ -1635,6 +1667,10 @@ const layerPopupData = [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_2.jpg",
           },
       ],
   },
@@ -1723,6 +1759,18 @@ const layerPopupData = [
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_1.jpg",
           },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_4.jpg",
+          },
       ],
   },
 
@@ -1762,6 +1810,10 @@ const layerPopupData = [
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_1.jpg",
           },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_2.jpg",
+          },
       ],
   },
 
@@ -1791,6 +1843,14 @@ const layerPopupData = [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_3.jpg",
           },
       ],
   },
@@ -1836,6 +1896,10 @@ const layerPopupData = [
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_1.jpg",
           },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_2.jpg",
+          },
       ],
   },
 
@@ -1880,6 +1944,10 @@ const layerPopupData = [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_2.jpg",
           },
       ],
   },
@@ -2083,6 +2151,14 @@ const layerPopupData = [
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_3.jpg",
           },
       ],
     },
@@ -2708,6 +2784,7 @@ function closeLayerPopup() {
 let mainGallerySwiper = null;
 let thumbGallerySwiper = null;
 let galleryBreakpointState = null;
+let isGalleryProcessing = false; // 갤러리 열기/닫기 처리 중 플래그
 
 
 /**
@@ -2716,11 +2793,18 @@ let galleryBreakpointState = null;
  * @param {number} index - 부스 인덱스 (0-9)
  */
 async function openVideoLayer(index) {
+  // 처리 중이면 무시 (연속 클릭 방지)
+  if (isGalleryProcessing) return;
+  isGalleryProcessing = true;
+
   console.log(`[DEBUG] openVideoLayer 호출: index=${index}, booth-${index + 1}`);
   const videoLayer = document.querySelector(".video-layer");
   const data = layerPopupData[index];
 
-  if (!videoLayer || !data.mediaGallery) return;
+  if (!videoLayer || !data.mediaGallery) {
+    isGalleryProcessing = false;
+    return;
+  }
 
   // 부스 이름 설정
   const boothNameEl = videoLayer.querySelector(".booth-name");
@@ -2737,6 +2821,7 @@ async function openVideoLayer(index) {
   // Swiper 초기화 완료 후 레이어 표시 (약간의 지연으로 DOM 조작 완료 보장)
   setTimeout(() => {
       videoLayer.classList.add("active");
+      isGalleryProcessing = false; // 애니메이션 완료 후 플래그 해제
     }, 50);
 }
 
@@ -2745,8 +2830,15 @@ async function openVideoLayer(index) {
  * Video Layer 닫기
  */
 function closeVideoLayer() {
+  // 처리 중이면 무시 (연속 클릭 방지)
+  if (isGalleryProcessing) return;
+  isGalleryProcessing = true;
+
   const videoLayer = document.querySelector(".video-layer");
-  if (!videoLayer) return;
+  if (!videoLayer) {
+    isGalleryProcessing = false;
+    return;
+  }
 
   videoLayer.classList.remove("active");
 
@@ -2773,6 +2865,7 @@ function closeVideoLayer() {
           thumbGallerySwiper.destroy();
           thumbGallerySwiper = null;
       }
+      isGalleryProcessing = false; // destroy 완료 후 플래그 해제
     }, 350);
 }
 
