@@ -1364,7 +1364,7 @@ body.layer-open {
 
     @include tablet {
       padding: rem(27) rem(24) rem(35) rem(32);
-      border-radius: rem(18);
+      border-radius: rem(15);
       background-color: #242424;
       &.active {
         position: absolute;
@@ -1372,7 +1372,7 @@ body.layer-open {
     }
     @include desktop {
       padding: rem(43) rem(36) rem(57) rem(53);
-      border-radius: rem(20);
+      border-radius: rem(25);
     }
     &.active {
       opacity: 1;
@@ -1501,7 +1501,7 @@ body.layer-open {
             }
 
             img {
-              aspect-ratio: 300 / 170;
+              aspect-ratio: 300 / 189;
               width: 100%;
               height: 100%;
               object-fit: cover;
@@ -1516,33 +1516,41 @@ body.layer-open {
           .video-item {
             width: 100%;
             height: 100%;
-            border: rem(2) solid $primary;
             border-radius: rem(15);
             overflow: hidden;
             position: relative;
             @include tablet {
               border-radius: rem(20);
-              border-width: rem(2);
             }
             @include desktop {
               border-radius: rem(30);
-              border-width: rem(4);
             }
             .txt-bx {
-              width: 80%;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: space-between;
+              width: 100%;
+              height: 100%;
+              padding: rem(24) rem(28) rem(30);
               position: absolute;
-              top: rem(8);
-              left: rem(13);
+              top: 0;
+              left: 0;
               @include tablet {
-                top: rem(19);
-                left: rem(19);
+                display: block;
+                width: 80%;
+                height: auto;
+                padding: 0;
+                top: rem(39);
+                left: rem(47);
               }
               @include desktop {
-                top: rem(30);
-                left: rem(30);
+                top: rem(70);
+                left: rem(85);
               }
               .title {
-                @include font(30,1,550,$white);
+                max-width: 45%;
+                @include font(22,110%,700,$white);
                 text-wrap: balance;
                 word-break: break-all;
                 &::before {
@@ -1550,22 +1558,41 @@ body.layer-open {
                   display: block;
                   width: rem(90);
                   height: rem(17);
-                  background: url('/theme/rbFront/img/w/ise/ise2026/video_label.svg') no-repeat center center / contain;
+                  background: url('/theme/rbFront/img/w/ise/ise2026/label.svg') no-repeat center center / contain;
+                  margin-bottom: rem(8);
                 }
                 @include tablet {
+                  max-width: 33%;
                   font-size: rem(30);
+                  margin-bottom: rem(18.25);
                   &::before {
-                    width: rem(138);
-                    height: rem(27);
+                    width: rem(72);
+                    height: rem(18);
+                    margin-bottom: rem(10.5);
                   }
                 }
                 @include desktop {
-                  font-size: rem(50);
+                  max-width: 33%;
+                  font-size: rem(40);
+                  margin-bottom: rem(24);
                   &::before {
-                    width: rem(224);
-                    height: rem(44);
+                    width: rem(100);
+                    height: rem(25);
+                    margin-bottom: rem(13);
                   }
                 }
+              }
+            }
+            img {
+              aspect-ratio: 300 / 220;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              @include tablet {
+                aspect-ratio: 554 / 314;
+              }
+              @include desktop {
+                aspect-ratio: 900 / 510;
               }
             }
           }
@@ -1573,26 +1600,69 @@ body.layer-open {
           .youtube-link {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             border-radius: rem(100);
-            padding: rem(9) rem(24);
-            background-color: $red;
             color: $white;
+            font-family: $font-headline;
             @include font(11,1,700,$white);
-            position: absolute;
-            bottom: rem(16);
-            right: rem(20);
+            text-decoration: underline;
+            text-underline-position: under;
+            padding-right: rem(8);
+            position: relative;
+            &::before {
+              content: "";
+              display: inline-block;
+              width: rem(15);
+              height: rem(10.69);
+              background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_yt.svg");
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center center;
+              margin-right: rem(5);
+              transform: translateY(rem(2));
+            }
+            &::after {
+              content: "";
+              display: inline-block;
+              width: rem(5);
+              height: rem(9);
+              background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_arrow_right.svg");
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center center;
+              margin-left: rem(3);
+            }
             @include tablet {
-              font-size: rem(10);
-              padding: rem(6) rem(12);
-              bottom: rem(16);
-              right: rem(24);
+              justify-content: center;
+              font-size: rem(8);
+              padding: rem(6) rem(17.57);
+              border-radius: rem(100);
+              background-color: $red;
+              text-decoration: none;
+              &::before {
+                content: "";
+                display: inline-block;
+                width: rem(13.41);
+                height: rem(9.55);
+                background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_yt_w.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+                margin-right: rem(4.6);
+                transform: translateY(0);
+              }
+              &::after {
+                display: none;
+              }
             }
             @include desktop {
-              font-size: rem(18);
-              padding: rem(14) rem(38);
-              bottom: rem(28);
-              right: rem(40);
+              font-size: rem(11);
+              padding: rem(8) rem(24.71);
+              &::before {
+                width: rem(19);
+                height: rem(13.5);
+                margin-right: rem(6.5);
+              }
             }
           }
         }
@@ -1603,11 +1673,11 @@ body.layer-open {
         @include tablet {
           display: block;
           width: min(100%, rem(98));
-          padding-top: rem(51);
+          padding-top: rem(40);
         }
         @include desktop {
           width: min(100%, rem(158));
-          padding-top: rem(83);
+          padding-top: rem(51);
         }
         .booth-name {
           display: none;

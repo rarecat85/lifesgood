@@ -43,7 +43,7 @@
       position: relative;
       margin-bottom: rem(10);
       @include tablet {
-        width: min(65%, rem(495));
+        width: min(67%, rem(490));
         margin-bottom: 0;
         .swiper {
           height: 100%;
@@ -54,44 +54,64 @@
       }
       .slide-item {
         height: 100%;
+        position: relative;
       }
       .link-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
         position: absolute;
-        top: rem(20);
-        left: rem(20);
+        z-index: 2;
+        padding: 8vw 8vw 9vw;
         @include tablet {
-          top: rem(18);
-          left: rem(18);
+          display: block;
+          max-width: 35%;
+          height: auto;
+          top: rem(39);
+          left: rem(47);
+          padding: 0;
         }
         @include desktop {
-          top: rem(30);
-          left: rem(30);
+          max-width: 40%;
+          top: rem(70);
+          left: rem(87);
         }
         img {
           display: block;
           margin-bottom: rem(17);
         }
         .title {
+          max-width: 48%;
           font-family: $font-headline;
-          @include font(30,1,550,$white);
+          @include font(22,110%,700,$white);
           text-wrap: balance;
-          word-break: break-all;
           &::before {
             content: "";
             display: block;
-            width: rem(90);
-            height: rem(17);
+            width: rem(54);
+            height: rem(14);
             background: url('/theme/rbFront/img/w/ise/ise2026/label.svg') no-repeat center center / contain;
+            margin-bottom: rem(7);
           }
           @include tablet {
+            max-width: 100%;
             font-size: rem(30);
-            margin-bottom: rem(24);
+            margin-bottom: rem(14.25);
+            &::before {
+              width: rem(72);
+              height: rem(18);
+              margin-bottom: rem(10.5);
+            }
           }
           @include desktop {
-            font-size: rem(50);
+            font-size: rem(40);
+            margin-bottom: rem(19);
             &::before {
               width: rem(142);
               height: rem(18);
+              margin-bottom: rem(13);
             }
           }
         }
@@ -117,6 +137,65 @@
             right: rem(-10);
           }
         }
+        .yt-link {
+          display: inline-flex;
+          align-items: center;
+          @include font(10,1,550,$white);
+          text-decoration: underline;
+          text-underline-position: under;
+          position: relative;
+          &::before {
+            content: "";
+            display: inline-block;
+            width: rem(15);
+            height: rem(10.69);
+            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_yt.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin-right: rem(5);
+            transform: translateY(rem(2));
+          }
+          &::after {
+            content: "";
+            display: inline-block;
+            width: rem(5);
+            height: rem(9);
+            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_arrow_right.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin-left: rem(3);
+          }
+          @include tablet {
+            font-size: rem(10);
+            &::before {
+              width: rem(15);
+              height: rem(10.69);
+              margin-right: rem(3.75);
+              transform: translateY(rem(2));
+            }
+            &::after {
+              width: rem(3);
+              height: rem(6);
+              margin-left: rem(3);
+            }
+          }
+          @include desktop {
+            font-size: rem(14);
+            &::before {
+              width: rem(20);
+              height: rem(14);
+              margin-right: rem(5);
+              transform: translateY(rem(2));
+            }
+            &::after {
+              width: rem(5);
+              height: rem(9);
+              margin-left: rem(3);
+            }
+          }
+        }
       }
       .img-bx {
         height: 100%;
@@ -124,7 +203,7 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
-          aspect-ratio: 795/572;
+          aspect-ratio: 300/222;
           border-radius: rem(20);
           overflow: hidden;
           @include tablet {
@@ -224,22 +303,18 @@
         .img-bx {
           height: 100%;
           overflow: hidden;
-          picture {
+          img {
             width: 100%;
             height: 100%;
-            display: block;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              aspect-ratio: 145/120;
+            object-fit: cover;
+            aspect-ratio: 145/120;
+            border-radius: rem(20);
+            @include tablet {
+              aspect-ratio: 238/174;
               border-radius: rem(20);
-              @include tablet {
-                aspect-ratio: 238/174;
-              }
-              @include desktop {
-                aspect-ratio: 385/276;
-              }
+            }
+            @include desktop {
+              aspect-ratio: 385/276;
             }
           }
         }
@@ -358,7 +433,7 @@
         margin-bottom: rem(10);
         @include tablet {
           display: inline-block;
-          font-size: rem(16);
+          font-size: rem(14);
           margin-bottom: rem(6);
         }
         @include desktop {
@@ -377,12 +452,13 @@
         padding-right: rem(20);
         @include tablet {
           display: -webkit-box;
-          font-size: rem(10);
-          -webkit-line-clamp: 4;
+          font-size: rem(9);
+          -webkit-line-clamp: 3;
           padding-right: rem(0);
         }
         @include desktop {
           font-size: rem(14);
+          -webkit-line-clamp: 4;
         }
       }
     }

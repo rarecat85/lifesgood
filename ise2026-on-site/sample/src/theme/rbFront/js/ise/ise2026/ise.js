@@ -1329,6 +1329,21 @@ const layerPopupData = [
       ],
       mediaGallery: [
           {
+            type: "youtube",
+            youtubeUrl: "https://www.youtube.com/watch?v=qaEs0jArn8g",
+            title: "Step Inside Booth Tour",
+            thumbnail: "/theme/rbFront/img/w/ise/ise2026/booth-1/youtube_thumb_1.jpg",
+            thumbnail_m: "/theme/rbFront/img/w/ise/ise2026/booth-1/youtube_sub_thumb_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_260204_2.jpg",
+          },
+          {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-1/booth_img_1.jpg",
           },
@@ -1421,6 +1436,14 @@ const layerPopupData = [
           {
             type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-2/booth_img_260204_2.jpg",
           },
       ],
   },
@@ -1604,6 +1627,26 @@ const layerPopupData = [
           },
           {
             type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_260204_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_260204_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_260204_4.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_260204_5.jpg",
+          },
+          {
+            type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-3/booth_img_3.jpg",
           },
           {
@@ -1664,6 +1707,22 @@ const layerPopupData = [
           },
       ],
       mediaGallery: [
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_260204_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_260204_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_260204_4.jpg",
+          },
           {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-4/booth_img_1.jpg",
@@ -1761,6 +1820,18 @@ const layerPopupData = [
           },
           {
             type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_260204_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_260204_3.jpg",
+          },
+          {
+            type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-5/booth_img_2.jpg",
           },
           {
@@ -1807,6 +1878,14 @@ const layerPopupData = [
       ],
       mediaGallery: [
           {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_260204_2.jpg",
+          },
+          {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-6/booth_img_1.jpg",
           },
@@ -1841,16 +1920,20 @@ const layerPopupData = [
       ],
       mediaGallery: [
           {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_260204_1.jpg",
+          },
+          {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_1.jpg",
           },
           {
             type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_2.jpg",
-          },
-          {
-            type: "image",
-            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-7/booth_img_3.jpg",
           },
       ],
   },
@@ -1893,12 +1976,24 @@ const layerPopupData = [
       ],
       mediaGallery: [
           {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_260204_2.jpg",
+          },
+          {
               type: "image",
               imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_1.jpg",
           },
           {
             type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-8/booth_img_260204_3.jpg",
           },
       ],
   },
@@ -1948,6 +2043,14 @@ const layerPopupData = [
           {
             type: "image",
             imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_260204_1.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-9/booth_img_260204_2.jpg",
           },
       ],
   },
@@ -2149,8 +2252,24 @@ const layerPopupData = [
       ],
       mediaGallery: [
           {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_260204_1.jpg",
+          },
+          {
               type: "image",
-              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_1.jpg",
+              imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_260204_2.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_260204_3.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_1.jpg",
           },
           {
             type: "image",
@@ -2158,7 +2277,11 @@ const layerPopupData = [
           },
           {
             type: "image",
-            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_3.jpg",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_260204_4.jpg",
+          },
+          {
+            type: "image",
+            imageUrl: "/theme/rbFront/img/w/ise/ise2026/booth-10/booth_img_260204_5.jpg",
           },
       ],
     },
@@ -2896,11 +3019,15 @@ function renderMediaGallery(mediaGallery) {
               return `
       <div class="swiper-slide">
         <div class="video-item">
-          <img src="${item.thumbnail}" alt="${videoTitle}">
+          <picture>
+            <source srcset="${item.thumbnail}" media="(min-width: 768px)">
+            <source srcset="${item.thumbnail_m}" media="(max-width: 767px)">
+            <img src="${item.thumbnail}" alt="${videoTitle}" loading="lazy">
+          </picture>
           <div class="txt-bx">
             <p class="title">${videoTitle}</p>
+            <a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-link"> Learn more</a>
           </div>
-          <a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-link"> Learn more</a>
         </div>
       </div>
     `;
