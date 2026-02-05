@@ -64,7 +64,7 @@
         height: 100%;
         position: absolute;
         z-index: 2;
-        padding: 8vw 8vw 9vw;
+        padding: 10vw 8vw;
         @include tablet {
           display: block;
           max-width: 35%;
@@ -90,27 +90,30 @@
           &::before {
             content: "";
             display: block;
-            width: rem(54);
-            height: rem(14);
-            background: url('/theme/rbFront/img/w/ise/ise2026/label.svg') no-repeat center center / contain;
-            margin-bottom: rem(7);
+            width: rem(87);
+            height: rem(17);
+            background-image: url("/theme/rbFront/img/w/ise/ise2026/label.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin-bottom: rem(3);
           }
           @include tablet {
             max-width: 100%;
             font-size: rem(30);
-            margin-bottom: rem(14.25);
+            margin-bottom: rem(14);
             &::before {
-              width: rem(72);
-              height: rem(18);
-              margin-bottom: rem(10.5);
+              width: rem(131);
+              height: rem(25);
+              margin-bottom: rem(5);
             }
           }
           @include desktop {
             font-size: rem(40);
-            margin-bottom: rem(19);
+            margin-bottom: rem(22);
             &::before {
-              width: rem(142);
-              height: rem(18);
+              width: rem(174);
+              height: rem(34);
               margin-bottom: rem(13);
             }
           }
@@ -140,60 +143,19 @@
         .yt-link {
           display: inline-flex;
           align-items: center;
-          @include font(10,1,550,$white);
-          text-decoration: underline;
-          text-underline-position: under;
+          width: fit-content;
+          @include font(8,1,700,$black);
+          background-color: $white;
+          border-radius: rem(100);
+          padding: rem(5) rem(10);
           position: relative;
-          &::before {
-            content: "";
-            display: inline-block;
-            width: rem(15);
-            height: rem(10.69);
-            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_yt.svg");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center center;
-            margin-right: rem(5);
-            transform: translateY(rem(2));
-          }
-          &::after {
-            content: "";
-            display: inline-block;
-            width: rem(5);
-            height: rem(9);
-            background-image: url("/theme/rbFront/img/w/ise/ise2026/ic_arrow_right.svg");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center center;
-            margin-left: rem(3);
-          }
           @include tablet {
-            font-size: rem(10);
-            &::before {
-              width: rem(15);
-              height: rem(10.69);
-              margin-right: rem(3.75);
-              transform: translateY(rem(2));
-            }
-            &::after {
-              width: rem(3);
-              height: rem(6);
-              margin-left: rem(3);
-            }
+            font-size: rem(8);
+            padding: rem(5) rem(10);
           }
           @include desktop {
             font-size: rem(14);
-            &::before {
-              width: rem(20);
-              height: rem(14);
-              margin-right: rem(5);
-              transform: translateY(rem(2));
-            }
-            &::after {
-              width: rem(5);
-              height: rem(9);
-              margin-left: rem(3);
-            }
+            padding: rem(10) rem(20);
           }
         }
       }
@@ -214,6 +176,17 @@
             aspect-ratio: 795/572;
             border-radius: rem(30);
           }
+        }
+      }
+      .swiper-pagination {
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: rem(20);
+        @include tablet {
+          bottom: rem(20);
+        }
+        @include desktop {
+          bottom: rem(20);
         }
       }
     }
@@ -334,6 +307,18 @@
         display: none; 
         @include tablet {
           display: block;
+        }
+      }
+      .swiper-pagination {
+        top: rem(20);
+        right: rem(20);
+        @include tablet {
+          top: rem(18);
+          right: rem(18);
+        }
+        @include desktop {
+          top: rem(30);
+          right: rem(30);
         }
       }
     }
@@ -479,8 +464,6 @@
     }
     .swiper-pagination {
       width: auto;
-      top: rem(20);
-      right: rem(20);
       left: inherit;
       bottom: inherit;
       z-index: 2;
@@ -492,13 +475,9 @@
       }
       @include tablet {
         font-size: rem(11);
-        top: rem(18);
-        right: rem(18);
       }
       @include desktop {
         font-size: rem(18);
-        top: rem(30);
-        right: rem(30);
       }
     }
     .slide-prev,
