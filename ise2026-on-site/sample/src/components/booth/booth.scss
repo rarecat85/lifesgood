@@ -545,7 +545,11 @@
     
     .btn {
       @include btn($white, false, $primary);
-      margin: rem(16) auto 0;
+      
+      & {
+        margin: rem(16) auto 0;
+      }
+      
       @include tablet {
         margin-top: 0;
       }
