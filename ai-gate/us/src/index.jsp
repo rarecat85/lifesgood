@@ -1,25 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LG AI strives for your Delightful, Effortless, and Well-cared life through 'Sensing wisely, Understanding deeply, Caring warmly.' Experience a higher quality of life with LG Affectionate Intelligence, where AI goes beyond artificial intelligence to provide warm, human-centered care." />
-    <meta name="keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions" />
-    <meta name="url" content="https://www.lg.com/us/lg-ai">
-    
-    <title>LG Affectionate Intelligence | LG US</title>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/jsp/gp/common/include/head/head.jsp" %>
+<head>
+    <!-- default code -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-default-tag.jsp" %>
+    <!-- sns tag -->
+    <%@ include file="/WEB-INF/jsp/gp/common/include/head/meta-sns-tag.jsp" %>
+    <!-- chrome audits -->
+    <meta name="theme-color" content="#a50034"/>
+    <title><!--타이틀--></title>
+    <meta name="Keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions">
+    <meta name="Description" content="Learn how LG AI, powered by Affectionate Intelligence, brings warmth and awareness to technology—creating smart, human-centered experiences across your daily life.">
+    <meta property="og:title" content="Discover LG AI and Affectionate Intelligence | LG USA"/>
+    <meta property="og:url" content="https://www.lg.com/us/affectionate-intelligence-ai">
+    <meta property="og:description" content="Learn how LG AI, powered by Affectionate Intelligence, brings warmth and awareness to technology—creating smart, human-centered experiences across your daily life."/>
+    <meta property="og:image" content="">
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/head-css.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/font-woff.jsp"/>
+    <!-- // default code -->
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/mic-head-script.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/gp/common/include/head/gateway-foresee.jsp"/>
 
+    <!-- your -->
     <link href="../common/css/ai-gate-reset.css" rel="stylesheet" type="text/css" />
     <link href="../common/css/ai-gate-font.css" rel="stylesheet" type="text/css" />
     <link href="../common/css/ai-gate-swiper-bundle.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/css/ai-gate-css.css" rel="stylesheet" type="text/css" />
+
     <script src="../common/js/ai-gate-swiper-bundle.min.js"></script>
     <script src="./assets/js/ai-gate-js-layer.js" defer></script>
     <script src="./assets/js/ai-gate-js-common.js" defer></script>
 
-  </head>
-  <body>
-    <main>
+    <script>
+        function GA_Event(category,action,label) {
+            dataLayer.push({
+                'event' : 'ga_event', 
+                'category' : category, 
+                'action' : action,
+                'label' : label,
+            });
+        }
+        </script>
+    <!-- //your -->
+</head>
+<body>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/body-noscript.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/google-tag-manager.jsp"/>
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/broswe-check-popup-layer.jsp"/>
+<div class="sr-only" itemscope itemtype="http://schema.org/WebPage">
+    <meta itemprop="name" content="{Browser Title}"/>
+    <meta itemprop="image" content="{Share Image}"/>
+    <meta itemprop="url" content="{Cannonical URL}"/>
+    <meta itemprop="description" content="Learn how LG AI, powered by Affectionate Intelligence, brings warmth and awareness to technology—creating smart, human-centered experiences across your daily life."/>
+    <meta itemprop="Keywords" content="LG AI, Affectionate Intelligence, Human-Centered AI, Smart Life Platform, Technology-Forward Solutions"/>
+</div>
+<c:set var='bizType' value='${$bizType }'/>
+<c:set var='siteType' value='MKT'/>
+<!-- component (navigation) -->
+<c:import url="/${localeCd }/gnb">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+    <c:param name="isMobile" value="${isMobile}"/>
+</c:import>
+<!-- // component (navigation) -->
+<!-- breadcrumb -->
+<c:import url="/${localeCd }/breadCrumb">
+    <c:param name="bizType" value="${bizType}"/>
+</c:import>
+<!-- // breadcrumb -->
+
+<!-- Enter Code Here -->
+<main>
       <div class="gate-container">
         <!-- S : kv-section -->
         <section class="kv-section">
@@ -829,5 +879,63 @@
         <!-- E : layer-popup -->
       </div>
     </main>
-  </body>
+<!-- // Enter Code Here -->
+
+<!-- top button -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/body/top.jsp"/>
+<!-- // top button -->
+
+<!-- footer seo copy -->
+<c:import url="/${localeCd }/footerSeoCopy"/>
+<!-- footer seo copy -->
+
+<!-- footer main contents -->
+<c:import url="/${localeCd }/footer">
+    <c:param name="bizType" value="${bizType}"/>
+    <c:param name="siteType" value="${siteType}"/>
+</c:import>
+<!--// footer main contents -->
+
+<script>
+    var standardData = {};
+    standardData = {
+        "siteType": "B2C",
+        "pageType": "MICROSITE",
+        "pdpStatus": "",
+        "level1": "",
+        "level2": "",
+        "level3": ""
+    };
+    _dl = {
+        "page_name": {
+            "super_category": "",
+            "bu": "ha",
+            "sub_category_list": "",
+            "sub_category": "",
+            "page_purpose": "",
+            "category": "",
+            "microsite_name": ""
+        },
+        "country_code": "",
+        "language_code": "",
+        "appliance_name": ""
+    };
+</script>
+
+<!-- default code -->
+<jsp:include page="/WEB-INF/jsp/gp/common/include/tail/tail-script-default.jsp"/>
+<!-- // default code -->
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+})(window, document, "//rum.beusable.net/load/b210329e143851u463");
+</script>
+</body>
 </html>
